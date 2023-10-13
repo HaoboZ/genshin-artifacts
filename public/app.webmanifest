@@ -1,0 +1,14 @@
+{
+	"name": "GenshinArtifacts",
+	"short_name": "GenshinArtifacts",
+	"description": "Genshin Artifacts",
+	"categories": [
+		"Genshin Impact"
+	],
+	"scope": "/",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#039be5",
+	"background-color": "#ffffff"
+}
