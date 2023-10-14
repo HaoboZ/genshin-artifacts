@@ -25,11 +25,6 @@ const commonTheme: ThemeOptions = {
 		h5: { fontSize: 18 },
 		h6: { fontSize: 16 },
 	},
-	components: {
-		MuiUseMediaQuery: {
-			defaultProps: { noSsr: true },
-		},
-	},
 };
 
 const lightTheme = responsiveFontSizes(

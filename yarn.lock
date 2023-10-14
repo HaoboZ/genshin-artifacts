@@ -4035,8 +4035,6 @@ __metadata:
     react-dom: "npm:18.2.0"
     react-redux: "npm:8.1.3"
     redux: "npm:4.2.1"
-    redux-persist: "npm:6.0.0"
-    redux-persist-transform-compress: "npm:4.2.0"
     rooks: "npm:7.14.1"
     sass: "npm:1.69.0"
     type-fest: "npm:4.4.0"
@@ -5523,13 +5521,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-stringify-safe@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "json-stringify-safe@npm:5.0.1"
-  checksum: 7dbf35cd0411d1d648dceb6d59ce5857ec939e52e4afc37601aa3da611f0987d5cee5b38d58329ceddf3ed48bd7215229c8d52059ab01f2444a338bf24ed0f37
-  languageName: node
-  linkType: hard
-
 "json5@npm:^1.0.2":
   version: 1.0.2
   resolution: "json5@npm:1.0.2"
@@ -5682,15 +5673,6 @@ __metadata:
   version: 7.14.0
   resolution: "lru-cache@npm:7.14.0"
   checksum: 88f1a8c2fd3bafc69121104740dcebc71e4ace97fb03f0ccf3b7d52df7dc10eedb78951af74f08437cf5fdb8c50d5956a0bcc944a073540f027efd8357f87cd1
-  languageName: node
-  linkType: hard
-
-"lz-string@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "lz-string@npm:1.4.4"
-  bin:
-    lz-string: bin/bin.js
-  checksum: 683d2d01607444605bee9902b05851415ae54e4de75ff14971c7e070d0fab53a7f1f82e659f24e6ccdc63080832b937418e278a611ed4a354bf2e7ad6f0b874b
   languageName: node
   linkType: hard
 
@@ -6656,27 +6638,6 @@ __metadata:
   dependencies:
     picomatch: "npm:^2.2.1"
   checksum: 6fa848cf63d1b82ab4e985f4cf72bd55b7dcfd8e0a376905804e48c3634b7e749170940ba77b32804d5fe93b3cc521aa95a8d7e7d725f830da6d93f3669ce66b
-  languageName: node
-  linkType: hard
-
-"redux-persist-transform-compress@npm:4.2.0":
-  version: 4.2.0
-  resolution: "redux-persist-transform-compress@npm:4.2.0"
-  dependencies:
-    json-stringify-safe: "npm:^5.0.1"
-    lz-string: "npm:^1.4.4"
-  peerDependencies:
-    redux-persist: ">=4.0.0"
-  checksum: a45d4c314b66e9c89cae7aaf698255d6996876d30e2f4fbecfe7024e01a8bb7e9cce990ecfa82495ecf6e31ba3f4e4f875235d284c5bfd8cdf50c67e6cd5c7a6
-  languageName: node
-  linkType: hard
-
-"redux-persist@npm:6.0.0":
-  version: 6.0.0
-  resolution: "redux-persist@npm:6.0.0"
-  peerDependencies:
-    redux: ">4.0.0"
-  checksum: 8242d265ab8d28bbc95cf2dc2a05b869eb67aa309b1ed08163c926f3af56dd8eb1ea62118286083461b8ef2024d3b349fd264e5a62a70eb2e74d068c832d5bf2
   languageName: node
   linkType: hard
 
