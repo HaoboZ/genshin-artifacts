@@ -41,7 +41,7 @@ export default function ArtifactCard({
 					},
 					{
 						weight: 4 / 12,
-						max: 2 - (artifact?.rarity === artifactData?.rarity),
+						max: 2 - +(artifact?.rarity === artifactData?.rarity),
 						current: +mainStat,
 					},
 					{

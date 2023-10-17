@@ -49,7 +49,7 @@ export default function Artifacts() {
 				))}
 			</Grid>
 			{map(
-				groupBy(tier, (character) => character.artifact.indexOf(artifactSet)),
+				groupBy(tier, (character) => character.artifact.indexOf(artifactSet as any)),
 				(tier, key) => {
 					if (key === '-1') return null;
 					return (
@@ -60,7 +60,7 @@ export default function Artifacts() {
 									key={character.key}
 									character={data.characters[character.key]}
 								/>
-							))}{' '}
+							))}
 						</Box>
 					);
 				},
