@@ -1,4 +1,4 @@
-const KEY = 'persist';
+const KEY = 'genshinArtifactsPersist';
 
 export function loadState() {
 	try {
@@ -11,8 +11,6 @@ export function loadState() {
 }
 
 export async function saveState(state: any) {
-	try {
-		const serializedState = JSON.stringify(state);
-		localStorage.setItem(KEY, serializedState);
-	} catch (e) {}
+	const serializedState = JSON.stringify(state);
+	localStorage.setItem(KEY, serializedState);
 }

@@ -9,19 +9,19 @@ import PageTitle from './title';
 export default function Page({
 	title,
 	titleProps,
-	hideBack,
+	showBack,
 	backProps,
 	children,
 }: {
 	title?: string;
 	titleProps?: PageTitleProps;
-	hideBack?: boolean;
+	showBack?: boolean;
 	backProps?: PageBackProps;
 	children?: ReactNode;
 }) {
 	return (
 		<PageContainer>
-			{!hideBack && <PageBack {...backProps} />}
+			{showBack && <PageBack {...backProps} />}
 			{title && <PageTitle {...titleProps}>{title}</PageTitle>}
 			{children}
 		</PageContainer>
