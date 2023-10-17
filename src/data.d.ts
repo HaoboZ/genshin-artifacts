@@ -24,8 +24,8 @@ export interface DCharacter {
 export interface DArtifact {
 	'key': string;
 	'name': string;
-	'2pc': string;
-	'4pc': string;
+	'2pc'?: string;
+	'4pc'?: string;
 	'rarity': number;
 	'flower'?: string;
 	'plume'?: string;
