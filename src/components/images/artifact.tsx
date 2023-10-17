@@ -1,4 +1,3 @@
-import data from '@/public/data.json';
 import type { SxProps } from '@mui/material';
 import type { DArtifact } from '../../data';
 import Image from '../image';
@@ -26,7 +25,7 @@ export default function ArtifactImage({
 	return (
 		<Image
 			alt={artifact?.name ?? 'artifact'}
-			src={data.artifacts[artifact?.key]?.[type] ?? images[type]}
+			src={artifact?.[type] ?? artifact?.circlet ?? images[type]}
 			width={size}
 			height={size}
 			className={`rarity${artifact?.rarity}`}

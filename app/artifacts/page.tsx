@@ -1,4 +1,5 @@
 'use client';
+import ArtifactImage from '@/components/images/artifact';
 import CharacterImage from '@/components/images/character';
 import Page from '@/components/page';
 import data from '@/public/data.json';
@@ -6,7 +7,6 @@ import { useAppSelector } from '@/src/store/hooks';
 import { Grid, ToggleButton, toggleButtonClasses, ToggleButtonGroup } from '@mui/material';
 import { Box } from '@mui/system';
 import { groupBy, map, sortBy } from 'lodash';
-import Image from 'next/image';
 import { useState } from 'react';
 import { tier } from '../tier';
 import ArtifactCard from './artifactCard';
@@ -41,12 +41,7 @@ export default function Artifacts() {
 							onChange={(e, newElement) => newElement && setArtifactSet(newElement)}>
 							{sortBy(artifactGroup, 'order').map((artifact) => (
 								<ToggleButton key={artifact.key} value={artifact.key} sx={{ p: 0 }}>
-									<Image
-										alt={artifact.key}
-										src={artifact.flower ?? artifact.circlet}
-										width={50}
-										height={50}
-									/>
+									<ArtifactImage artifact={artifact} type='flower' />
 								</ToggleButton>
 							))}
 						</ToggleButtonGroup>
