@@ -4043,7 +4043,7 @@ __metadata:
     eslint-config-prettier: "npm:9.0.0"
     eslint-plugin-prettier: "npm:5.0.1"
     events: "npm:3.3.0"
-    genshin-db: "npm:^4.3.15"
+    genshin-db: "npm:^5.0.0"
     jest: "npm:29.7.0"
     lodash: "npm:4.17.21"
     nanoid: "npm:5.0.2"
@@ -4061,13 +4061,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"genshin-db@npm:^4.3.15":
-  version: 4.3.15
-  resolution: "genshin-db@npm:4.3.15"
+"genshin-db@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "genshin-db@npm:5.0.0"
   dependencies:
     fuzzysort: "npm:^1.1.4"
     pako: "npm:^2.0.4"
-  checksum: 9989af959b5fb6c0ecce4bbd1d04afef66d896b6f79b071150d48b8faf9ee66e5e2e8bac55fb45a0d7dd2f04b9b126eb482d2ec5ca0c5c3515e8a945fe4d7e27
+  checksum: 120ca65691ee450cc09d7c872523bf0f563fa077bffbaa4b362137c3ca68c43bb85991bb5efb6f386efe1114c153f37c83a52652e791cd4c12a5efeefedf78d8
   languageName: node
   linkType: hard
 
