@@ -32,15 +32,16 @@ export default function Artifacts() {
 		: orderBy(data.artifacts, 'order').map((artifact) => (
 				<Box key={artifact.key}>
 					<ArtifactImage artifact={artifact} type='flower' />
-					{filter(tier, (character) => character.artifact.indexOf(artifact.key) === 0).map(
-						(character) => (
-							<CharacterImage
-								key={character.key}
-								character={data.characters[character.key]}
-								sx={{ ml: 1 }}
-							/>
-						),
-					)}
+					{filter(
+						tier,
+						(character) => character.artifact.indexOf(artifact.key as any) === 0,
+					).map((character) => (
+						<CharacterImage
+							key={character.key}
+							character={data.characters[character.key]}
+							sx={{ ml: 1 }}
+						/>
+					))}
 				</Box>
 		  ));
 
