@@ -4,7 +4,7 @@ import { startCase } from 'lodash';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEventHandler } from 'react';
 import { useMemo } from 'react';
-import useWideMedia from '../../hooks/useWideMedia';
+import useIsMobile from '../../hooks/useIsMobile';
 import PageLink, { PageLinkComponent } from './link';
 
 export type PageBackProps = {
@@ -22,7 +22,7 @@ export default function PageBack({
 }: PageBackProps) {
 	const router = useRouter();
 	const pathname = usePathname();
-	const wide = useWideMedia();
+	const isMobile = useIsMobile();
 
 	const routes = useMemo(() => {
 		if (pathname === '/') return [];
@@ -33,7 +33,11 @@ export default function PageBack({
 		return paths.reduce<{ name: string; href: string }[]>((arr, name, index) => {
 			if (paths[index]) href += `/${paths[index]}`;
 			if (pathMap?.[index] !== undefined) name = pathMap[index] as string;
-			if (name) arr.push({ name: startCase(name), href: href || '/' });
+			if (name)
+				arr.push({
+					name: startCase(name),
+					href: href || '/',
+				});
 			return arr;
 		}, []);
 	}, [pathname]);
@@ -45,7 +49,20 @@ export default function PageBack({
 		if (backButton) router.back();
 	};
 
-	if (!backButton && wide) {
+	if (isMobile || backButton) {
+		const path = routes.at(-2);
+		if (!path) return null;
+
+		return (
+			<Button
+				component={backButton ? undefined : PageLinkComponent}
+				href={backButton ? undefined : path.href}
+				startIcon={<ArrowBackIcon />}
+				onClick={clickListener}>
+				{backButton ? 'Back' : path.name}
+			</Button>
+		);
+	} else {
 		return (
 			<Breadcrumbs sx={{ pt: 1 }}>
 				<div />
@@ -66,19 +83,6 @@ export default function PageBack({
 					}
 				})}
 			</Breadcrumbs>
-		);
-	} else {
-		const path = routes.at(-2);
-		if (!path) return null;
-
-		return (
-			<Button
-				component={backButton ? undefined : PageLinkComponent}
-				href={backButton ? undefined : path.href}
-				startIcon={<ArrowBackIcon />}
-				onClick={clickListener}>
-				{backButton ? 'Back' : path.name}
-			</Button>
 		);
 	}
 }

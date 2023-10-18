@@ -16,28 +16,30 @@ export interface DCharacter {
 	key: string;
 	name: string;
 	element: string;
-	weapontype: string;
+	weaponType: string;
 	rarity: number;
 	image: string;
 }
 
 export interface DArtifact {
-	'key': string;
-	'name': string;
-	'2pc'?: string;
-	'4pc'?: string;
-	'rarity': number;
-	'flower'?: string;
-	'plume'?: string;
-	'sands'?: string;
-	'goblet'?: string;
-	'circlet': string;
+	key: string;
+	name: string;
+	effect2Pc?: string;
+	effect4Pc?: string;
+	rarity: number;
+	order: number;
+	group: number;
+	flower?: string;
+	plume?: string;
+	sands?: string;
+	goblet?: string;
+	circlet: string;
 }
 
 export interface DWeapon {
 	key: string;
 	name: string;
-	weapontype: string;
+	weaponType: string;
 	rarity: number;
 	image: string;
 }

@@ -21,7 +21,7 @@ export default function WeaponImage({
 			width={size}
 			height={size}
 			className={`rarity${weapon?.rarity}`}
-			sx={sx}
+			sx={{ borderRadius: 1, ...sx }}
 		/>
 	);
 }

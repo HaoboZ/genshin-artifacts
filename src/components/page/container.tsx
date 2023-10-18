@@ -1,11 +1,11 @@
 import type { ContainerProps } from '@mui/material';
 import { Container } from '@mui/material';
-import useWideMedia from '../../hooks/useWideMedia';
+import useIsMobile from '../../hooks/useIsMobile';
 import ScrollTop from '../scrollTop';
 
 export default function PageContainer({ children, ...props }: ContainerProps) {
 	return (
-		<Container disableGutters={!useWideMedia()} {...props}>
+		<Container disableGutters={useIsMobile()} {...props}>
 			<ScrollTop />
 			{children}
 		</Container>

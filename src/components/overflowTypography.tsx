@@ -14,7 +14,7 @@ export default function OverflowTypography({
 	const [overFlowed, setOverFlowed] = useState(false);
 
 	useEventListener(
-		window,
+		typeof window !== 'undefined' ? window : null,
 		'resize',
 		() => {
 			if (!contentRef.current) return;

@@ -33,577 +33,585 @@
     "Traveler": {
       "key": "Traveler",
       "name": "Traveler",
-      "element": "None",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "None",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png"
     },
     "Albedo": {
       "key": "Albedo",
       "name": "Albedo",
-      "element": "Geo",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png"
     },
     "Alhaitham": {
       "key": "Alhaitham",
       "name": "Alhaitham",
-      "element": "Dendro",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Alhaitham_Icon.png"
     },
     "Aloy": {
       "key": "Aloy",
       "name": "Aloy",
-      "element": "Cryo",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Aloy_Icon.png"
     },
     "Amber": {
       "key": "Amber",
       "name": "Amber",
-      "element": "Pyro",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/75/Amber_Icon.png"
     },
     "AratakiItto": {
       "key": "AratakiItto",
       "name": "Arataki Itto",
-      "element": "Geo",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png"
     },
     "Baizhu": {
       "key": "Baizhu",
       "name": "Baizhu",
-      "element": "Dendro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png"
     },
     "Barbara": {
       "key": "Barbara",
       "name": "Barbara",
-      "element": "Hydro",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Barbara_Icon.png"
     },
     "Beidou": {
       "key": "Beidou",
       "name": "Beidou",
-      "element": "Electro",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png"
     },
     "Bennett": {
       "key": "Bennett",
       "name": "Bennett",
-      "element": "Pyro",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png"
     },
     "Candace": {
       "key": "Candace",
       "name": "Candace",
-      "element": "Hydro",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png"
     },
     "Chongyun": {
       "key": "Chongyun",
       "name": "Chongyun",
-      "element": "Cryo",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png"
     },
     "Collei": {
       "key": "Collei",
       "name": "Collei",
-      "element": "Dendro",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png"
     },
     "Cyno": {
       "key": "Cyno",
       "name": "Cyno",
-      "element": "Electro",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png"
     },
     "Dehya": {
       "key": "Dehya",
       "name": "Dehya",
-      "element": "Pyro",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Dehya_Icon.png"
     },
     "Diluc": {
       "key": "Diluc",
       "name": "Diluc",
-      "element": "Pyro",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Diluc_Icon.png"
     },
     "Diona": {
       "key": "Diona",
       "name": "Diona",
-      "element": "Cryo",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Diona_Icon.png"
     },
     "Dori": {
       "key": "Dori",
       "name": "Dori",
-      "element": "Electro",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png"
     },
     "Eula": {
       "key": "Eula",
       "name": "Eula",
-      "element": "Cryo",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Eula_Icon.png"
     },
     "Faruzan": {
       "key": "Faruzan",
       "name": "Faruzan",
-      "element": "Anemo",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png"
     },
     "Fischl": {
       "key": "Fischl",
       "name": "Fischl",
-      "element": "Electro",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png"
     },
     "Freminet": {
       "key": "Freminet",
       "name": "Freminet",
-      "element": "Cryo",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png"
     },
     "Ganyu": {
       "key": "Ganyu",
       "name": "Ganyu",
-      "element": "Cryo",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png"
     },
     "Gorou": {
       "key": "Gorou",
       "name": "Gorou",
-      "element": "Geo",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png"
     },
     "HuTao": {
       "key": "HuTao",
       "name": "Hu Tao",
-      "element": "Pyro",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png"
     },
     "Jean": {
       "key": "Jean",
       "name": "Jean",
-      "element": "Anemo",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png"
     },
     "KaedeharaKazuha": {
       "key": "KaedeharaKazuha",
       "name": "Kaedehara Kazuha",
-      "element": "Anemo",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Kaedehara_Kazuha_Icon.png"
     },
     "Kaeya": {
       "key": "Kaeya",
       "name": "Kaeya",
-      "element": "Cryo",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kaeya_Icon.png"
     },
     "KamisatoAyaka": {
       "key": "KamisatoAyaka",
       "name": "Kamisato Ayaka",
-      "element": "Cryo",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Kamisato_Ayaka_Icon.png"
     },
     "KamisatoAyato": {
       "key": "KamisatoAyato",
       "name": "Kamisato Ayato",
-      "element": "Hydro",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Kamisato_Ayato_Icon.png"
     },
     "Kaveh": {
       "key": "Kaveh",
       "name": "Kaveh",
-      "element": "Dendro",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Kaveh_Icon.png"
     },
     "Keqing": {
       "key": "Keqing",
       "name": "Keqing",
-      "element": "Electro",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png"
     },
     "Kirara": {
       "key": "Kirara",
       "name": "Kirara",
-      "element": "Dendro",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png"
     },
     "Klee": {
       "key": "Klee",
       "name": "Klee",
-      "element": "Pyro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png"
     },
     "KujouSara": {
       "key": "KujouSara",
       "name": "Kujou Sara",
-      "element": "Electro",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png"
     },
     "KukiShinobu": {
       "key": "KukiShinobu",
       "name": "Kuki Shinobu",
-      "element": "Electro",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png"
     },
     "Layla": {
       "key": "Layla",
       "name": "Layla",
-      "element": "Cryo",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Layla_Icon.png"
     },
     "Lisa": {
       "key": "Lisa",
       "name": "Lisa",
-      "element": "Electro",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png"
     },
     "Lynette": {
       "key": "Lynette",
       "name": "Lynette",
-      "element": "Anemo",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png"
     },
     "Lyney": {
       "key": "Lyney",
       "name": "Lyney",
-      "element": "Pyro",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png"
     },
     "Mika": {
       "key": "Mika",
       "name": "Mika",
-      "element": "Cryo",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png"
     },
     "Mona": {
       "key": "Mona",
       "name": "Mona",
-      "element": "Hydro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png"
     },
     "Nahida": {
       "key": "Nahida",
       "name": "Nahida",
-      "element": "Dendro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png"
     },
     "Neuvillette": {
       "key": "Neuvillette",
       "name": "Neuvillette",
-      "element": "Hydro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png"
     },
     "Nilou": {
       "key": "Nilou",
       "name": "Nilou",
-      "element": "Hydro",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png"
     },
     "Ningguang": {
       "key": "Ningguang",
       "name": "Ningguang",
-      "element": "Geo",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png"
     },
     "Noelle": {
       "key": "Noelle",
       "name": "Noelle",
-      "element": "Geo",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png"
     },
     "Qiqi": {
       "key": "Qiqi",
       "name": "Qiqi",
-      "element": "Cryo",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Qiqi_Icon.png"
     },
     "RaidenShogun": {
       "key": "RaidenShogun",
       "name": "Raiden Shogun",
-      "element": "Electro",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Raiden_Shogun_Icon.png"
     },
     "Razor": {
       "key": "Razor",
       "name": "Razor",
-      "element": "Electro",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Razor_Icon.png"
     },
     "Rosaria": {
       "key": "Rosaria",
       "name": "Rosaria",
-      "element": "Cryo",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Rosaria_Icon.png"
     },
     "SangonomiyaKokomi": {
       "key": "SangonomiyaKokomi",
       "name": "Sangonomiya Kokomi",
-      "element": "Hydro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Sangonomiya_Kokomi_Icon.png"
     },
     "Sayu": {
       "key": "Sayu",
       "name": "Sayu",
-      "element": "Anemo",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png"
     },
     "Shenhe": {
       "key": "Shenhe",
       "name": "Shenhe",
-      "element": "Cryo",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Cryo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png"
     },
     "ShikanoinHeizou": {
       "key": "ShikanoinHeizou",
       "name": "Shikanoin Heizou",
-      "element": "Anemo",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png"
     },
     "Sucrose": {
       "key": "Sucrose",
       "name": "Sucrose",
-      "element": "Anemo",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png"
     },
     "Tartaglia": {
       "key": "Tartaglia",
       "name": "Tartaglia",
-      "element": "Hydro",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Tartaglia_Icon.png"
     },
     "Thoma": {
       "key": "Thoma",
       "name": "Thoma",
-      "element": "Pyro",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Thoma_Icon.png"
     },
     "Tighnari": {
       "key": "Tighnari",
       "name": "Tighnari",
-      "element": "Dendro",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Tighnari_Icon.png"
     },
     "Venti": {
       "key": "Venti",
       "name": "Venti",
-      "element": "Anemo",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Venti_Icon.png"
     },
     "Wanderer": {
       "key": "Wanderer",
       "name": "Wanderer",
-      "element": "Anemo",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png"
+    },
+    "Wriothesley": {
+      "key": "Wriothesley",
+      "name": "Wriothesley",
+      "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Cryo",
+      "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png"
     },
     "Xiangling": {
       "key": "Xiangling",
       "name": "Xiangling",
-      "element": "Pyro",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png"
     },
     "Xiao": {
       "key": "Xiao",
       "name": "Xiao",
-      "element": "Anemo",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Anemo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png"
     },
     "Xingqiu": {
       "key": "Xingqiu",
       "name": "Xingqiu",
-      "element": "Hydro",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png"
     },
     "Xinyan": {
       "key": "Xinyan",
       "name": "Xinyan",
-      "element": "Pyro",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png"
     },
     "YaeMiko": {
       "key": "YaeMiko",
       "name": "Yae Miko",
-      "element": "Electro",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
+      "element": "Electro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Yae_Miko_Icon.png"
     },
     "Yanfei": {
       "key": "Yanfei",
       "name": "Yanfei",
-      "element": "Pyro",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Yanfei_Icon.png"
     },
     "Yaoyao": {
       "key": "Yaoyao",
       "name": "Yaoyao",
-      "element": "Dendro",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Dendro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Yaoyao_Icon.png"
     },
     "Yelan": {
       "key": "Yelan",
       "name": "Yelan",
-      "element": "Hydro",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Hydro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Yelan_Icon.png"
     },
     "Yoimiya": {
       "key": "Yoimiya",
       "name": "Yoimiya",
-      "element": "Pyro",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
+      "element": "Pyro",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png"
     },
     "YunJin": {
       "key": "YunJin",
       "name": "Yun Jin",
-      "element": "Geo",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Yun_Jin_Icon.png"
     },
     "Zhongli": {
       "key": "Zhongli",
       "name": "Zhongli",
-      "element": "Geo",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
+      "element": "Geo",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png"
     }
   },
@@ -611,8 +619,8 @@
     "Adventurer": {
       "key": "Adventurer",
       "name": "Adventurer",
-      "2pc": "Max HP increased by 1000.",
-      "4pc": "Opening a chest regenerates 30% Max HP over 5s.",
+      "effect2Pc": "Max HP increased by 1000.",
+      "effect4Pc": "Opening a chest regenerates 30% Max HP over 5s.",
       "rarity": 3,
       "order": 0,
       "group": 1,
@@ -625,8 +633,8 @@
     "ArchaicPetra": {
       "key": "ArchaicPetra",
       "name": "Archaic Petra",
-      "2pc": "Gain a 15% Geo DMG Bonus.",
-      "4pc": "Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain a 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.",
+      "effect2Pc": "Gain a 15% Geo DMG Bonus.",
+      "effect4Pc": "Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain a 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.",
       "rarity": 5,
       "order": 23,
       "group": 7,
@@ -639,8 +647,8 @@
     "Berserker": {
       "key": "Berserker",
       "name": "Berserker",
-      "2pc": "CRIT Rate +12%",
-      "4pc": "When HP is below 70%, CRIT Rate increases by an additional 24%.",
+      "effect2Pc": "CRIT Rate +12%",
+      "effect4Pc": "When HP is below 70%, CRIT Rate increases by an additional 24%.",
       "rarity": 4,
       "order": 5,
       "group": 1,
@@ -653,8 +661,8 @@
     "BlizzardStrayer": {
       "key": "BlizzardStrayer",
       "name": "Blizzard Strayer",
-      "2pc": "Cryo DMG Bonus +15%",
-      "4pc": "When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.",
+      "effect2Pc": "Cryo DMG Bonus +15%",
+      "effect4Pc": "When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.",
       "rarity": 5,
       "order": 29,
       "group": 10,
@@ -667,8 +675,8 @@
     "BloodstainedChivalry": {
       "key": "BloodstainedChivalry",
       "name": "Bloodstained Chivalry",
-      "2pc": "Physical DMG +25%",
-      "4pc": "After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s.",
+      "effect2Pc": "Physical DMG +25%",
+      "effect4Pc": "After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s.",
       "rarity": 5,
       "order": 20,
       "group": 5,
@@ -681,8 +689,8 @@
     "BraveHeart": {
       "key": "BraveHeart",
       "name": "Brave Heart",
-      "2pc": "ATK +18%.",
-      "4pc": "Increases DMG by 30% against opponents with more than 50% HP.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "Increases DMG by 30% against opponents with more than 50% HP.",
       "rarity": 4,
       "order": 9,
       "group": 2,
@@ -695,8 +703,8 @@
     "CrimsonWitchOfFlames": {
       "key": "CrimsonWitchOfFlames",
       "name": "Crimson Witch of Flames",
-      "2pc": "Pyro DMG Bonus +15%",
-      "4pc": "Increases Overloaded, Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.",
+      "effect2Pc": "Pyro DMG Bonus +15%",
+      "effect4Pc": "Increases Overloaded, Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.",
       "rarity": 5,
       "order": 28,
       "group": 9,
@@ -709,8 +717,8 @@
     "DeepwoodMemories": {
       "key": "DeepwoodMemories",
       "name": "Deepwood Memories",
-      "2pc": "Dendro DMG Bonus +15%.",
-      "4pc": "After Elemental Skills or Bursts hit opponents, the targets' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.",
+      "effect2Pc": "Dendro DMG Bonus +15%.",
+      "effect4Pc": "After Elemental Skills or Bursts hit opponents, the targets' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.",
       "rarity": 5,
       "order": 39,
       "group": 15,
@@ -723,8 +731,8 @@
     "DefendersWill": {
       "key": "DefendersWill",
       "name": "Defender's Will",
-      "2pc": "DEF +30%",
-      "4pc": "For each different element present in your own party, the wearer's Elemental RES to that corresponding element is increased by 30%.",
+      "effect2Pc": "DEF +30%",
+      "effect4Pc": "For each different element present in your own party, the wearer's Elemental RES to that corresponding element is increased by 30%.",
       "rarity": 4,
       "order": 8,
       "group": 2,
@@ -737,8 +745,8 @@
     "DesertPavilionChronicle": {
       "key": "DesertPavilionChronicle",
       "name": "Desert Pavilion Chronicle",
-      "2pc": "Anemo DMG Bonus +15%",
-      "4pc": "When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.",
+      "effect2Pc": "Anemo DMG Bonus +15%",
+      "effect4Pc": "When Charged Attacks hit opponents, the equipping character's Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.",
       "rarity": 5,
       "order": 41,
       "group": 16,
@@ -751,8 +759,8 @@
     "EchoesOfAnOffering": {
       "key": "EchoesOfAnOffering",
       "name": "Echoes of an Offering",
-      "2pc": "ATK +18%.",
-      "4pc": "When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK. This effect will be dispelled 0.05s after a Normal Attack deals DMG. If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%. This trigger can occur once every 0.2s.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK. This effect will be dispelled 0.05s after a Normal Attack deals DMG. If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%. This trigger can occur once every 0.2s.",
       "rarity": 5,
       "order": 38,
       "group": 14,
@@ -765,8 +773,8 @@
     "EmblemOfSeveredFate": {
       "key": "EmblemOfSeveredFate",
       "name": "Emblem of Severed Fate",
-      "2pc": "Energy Recharge +20%",
-      "4pc": "Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.",
+      "effect2Pc": "Energy Recharge +20%",
+      "effect4Pc": "Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.",
       "rarity": 5,
       "order": 34,
       "group": 12,
@@ -779,8 +787,8 @@
     "FlowerOfParadiseLost": {
       "key": "FlowerOfParadiseLost",
       "name": "Flower of Paradise Lost",
-      "2pc": "Increases Elemental Mastery by 80.",
-      "4pc": "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.",
+      "effect2Pc": "Increases Elemental Mastery by 80.",
+      "effect4Pc": "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.",
       "rarity": 5,
       "order": 42,
       "group": 16,
@@ -793,8 +801,8 @@
     "Gambler": {
       "key": "Gambler",
       "name": "Gambler",
-      "2pc": "Increases Elemental Skill DMG by 20%.",
-      "4pc": "Defeating an opponent has a 100% chance to remove Elemental Skill CD. Can only occur once every 15s.",
+      "effect2Pc": "Increases Elemental Skill DMG by 20%.",
+      "effect4Pc": "Defeating an opponent has a 100% chance to remove Elemental Skill CD. Can only occur once every 15s.",
       "rarity": 4,
       "order": 11,
       "group": 2,
@@ -807,8 +815,8 @@
     "GildedDreams": {
       "key": "GildedDreams",
       "name": "Gilded Dreams",
-      "2pc": "Increases Elemental Mastery by 80.",
-      "4pc": "Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.",
+      "effect2Pc": "Increases Elemental Mastery by 80.",
+      "effect4Pc": "Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.",
       "rarity": 5,
       "order": 40,
       "group": 15,
@@ -821,8 +829,8 @@
     "GladiatorsFinale": {
       "key": "GladiatorsFinale",
       "name": "Gladiator's Finale",
-      "2pc": "ATK +18%.",
-      "4pc": "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.",
       "rarity": 5,
       "order": 17,
       "group": 4,
@@ -835,8 +843,8 @@
     "GoldenTroupe": {
       "key": "GoldenTroupe",
       "name": "Golden Troupe",
-      "2pc": "Increases Elemental Skill DMG by 20%.",
-      "4pc": "Increases Elemental Skill DMG by 25%. Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.",
+      "effect2Pc": "Increases Elemental Skill DMG by 20%.",
+      "effect4Pc": "Increases Elemental Skill DMG by 25%. Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.",
       "rarity": 5,
       "order": 46,
       "group": 18,
@@ -849,8 +857,8 @@
     "HeartOfDepth": {
       "key": "HeartOfDepth",
       "name": "Heart of Depth",
-      "2pc": "Hydro DMG Bonus +15%",
-      "4pc": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.",
+      "effect2Pc": "Hydro DMG Bonus +15%",
+      "effect4Pc": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.",
       "rarity": 5,
       "order": 30,
       "group": 10,
@@ -863,8 +871,8 @@
     "HuskOfOpulentDreams": {
       "key": "HuskOfOpulentDreams",
       "name": "Husk of Opulent Dreams",
-      "2pc": "DEF +30%",
-      "4pc": "A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions: When on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.",
+      "effect2Pc": "DEF +30%",
+      "effect4Pc": "A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions: When on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.",
       "rarity": 5,
       "order": 35,
       "group": 13,
@@ -877,8 +885,8 @@
     "Instructor": {
       "key": "Instructor",
       "name": "Instructor",
-      "2pc": "Increases Elemental Mastery by 80.",
-      "4pc": "Upon triggering an Elemental Reaction, increases all party members' Elemental Mastery by 120 for 8s.",
+      "effect2Pc": "Increases Elemental Mastery by 80.",
+      "effect4Pc": "Upon triggering an Elemental Reaction, increases all party members' Elemental Mastery by 120 for 8s.",
       "rarity": 4,
       "order": 6,
       "group": 1,
@@ -891,8 +899,8 @@
     "Lavawalker": {
       "key": "Lavawalker",
       "name": "Lavawalker",
-      "2pc": "Pyro RES increased by 40%.",
-      "4pc": "Increases DMG against opponents affected by Pyro by 35%.",
+      "effect2Pc": "Pyro RES increased by 40%.",
+      "effect4Pc": "Increases DMG against opponents affected by Pyro by 35%.",
       "rarity": 5,
       "order": 27,
       "group": 9,
@@ -905,8 +913,8 @@
     "LuckyDog": {
       "key": "LuckyDog",
       "name": "Lucky Dog",
-      "2pc": "DEF increased by 100.",
-      "4pc": "Picking up Mora restores 300 HP.",
+      "effect2Pc": "DEF increased by 100.",
+      "effect4Pc": "Picking up Mora restores 300 HP.",
       "rarity": 3,
       "order": 1,
       "group": 1,
@@ -919,8 +927,8 @@
     "MaidenBeloved": {
       "key": "MaidenBeloved",
       "name": "Maiden Beloved",
-      "2pc": "Character Healing Effectiveness +15%",
-      "4pc": "Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s.",
+      "effect2Pc": "Character Healing Effectiveness +15%",
+      "effect4Pc": "Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s.",
       "rarity": 5,
       "order": 21,
       "group": 6,
@@ -933,8 +941,8 @@
     "MarechausseeHunter": {
       "key": "MarechausseeHunter",
       "name": "Marechaussee Hunter",
-      "2pc": "Normal and Charged Attack DMG +15%",
-      "4pc": "When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.",
+      "effect2Pc": "Normal and Charged Attack DMG +15%",
+      "effect4Pc": "When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.",
       "rarity": 5,
       "order": 45,
       "group": 18,
@@ -947,8 +955,8 @@
     "MartialArtist": {
       "key": "MartialArtist",
       "name": "Martial Artist",
-      "2pc": "Normal and Charged Attack DMG +15%",
-      "4pc": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s.",
+      "effect2Pc": "Normal and Charged Attack DMG +15%",
+      "effect4Pc": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s.",
       "rarity": 4,
       "order": 10,
       "group": 2,
@@ -961,8 +969,8 @@
     "NoblesseOblige": {
       "key": "NoblesseOblige",
       "name": "Noblesse Oblige",
-      "2pc": "Elemental Burst DMG +20%",
-      "4pc": "Using an Elemental Burst increases all party members' ATK by 20% for 12s. This effect cannot stack.",
+      "effect2Pc": "Elemental Burst DMG +20%",
+      "effect4Pc": "Using an Elemental Burst increases all party members' ATK by 20% for 12s. This effect cannot stack.",
       "rarity": 5,
       "order": 19,
       "group": 5,
@@ -975,8 +983,8 @@
     "NymphsDream": {
       "key": "NymphsDream",
       "name": "Nymph's Dream",
-      "2pc": "Hydro DMG Bonus +15%",
-      "4pc": "After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will be triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG Bonus will be increased by 4%/9%/15%. Mirrored Nymph stacks created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.",
+      "effect2Pc": "Hydro DMG Bonus +15%",
+      "effect4Pc": "After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will be triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG Bonus will be increased by 4%/9%/15%. Mirrored Nymph stacks created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.",
       "rarity": 5,
       "order": 43,
       "group": 17,
@@ -989,8 +997,8 @@
     "OceanHuedClam": {
       "key": "OceanHuedClam",
       "name": "Ocean-Hued Clam",
-      "2pc": "Healing Bonus +15%.",
-      "4pc": "When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.",
+      "effect2Pc": "Healing Bonus +15%.",
+      "effect4Pc": "When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.",
       "rarity": 5,
       "order": 36,
       "group": 13,
@@ -1003,8 +1011,8 @@
     "PaleFlame": {
       "key": "PaleFlame",
       "name": "Pale Flame",
-      "2pc": "Physical DMG is increased by 25%.",
-      "4pc": "When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.",
+      "effect2Pc": "Physical DMG is increased by 25%.",
+      "effect4Pc": "When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.",
       "rarity": 5,
       "order": 32,
       "group": 11,
@@ -1049,8 +1057,8 @@
     "ResolutionOfSojourner": {
       "key": "ResolutionOfSojourner",
       "name": "Resolution of Sojourner",
-      "2pc": "ATK +18%.",
-      "4pc": "Increases Charged Attack CRIT Rate by 30%.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "Increases Charged Attack CRIT Rate by 30%.",
       "rarity": 4,
       "order": 3,
       "group": 2,
@@ -1063,8 +1071,8 @@
     "RetracingBolide": {
       "key": "RetracingBolide",
       "name": "Retracing Bolide",
-      "2pc": "Increases Shield Strength by 35%.",
-      "4pc": "While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.",
+      "effect2Pc": "Increases Shield Strength by 35%.",
+      "effect4Pc": "While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.",
       "rarity": 5,
       "order": 24,
       "group": 7,
@@ -1077,8 +1085,8 @@
     "Scholar": {
       "key": "Scholar",
       "name": "Scholar",
-      "2pc": "Energy Recharge +20%",
-      "4pc": "Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s.",
+      "effect2Pc": "Energy Recharge +20%",
+      "effect4Pc": "Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s.",
       "rarity": 4,
       "order": 12,
       "group": 2,
@@ -1091,8 +1099,8 @@
     "ShimenawasReminiscence": {
       "key": "ShimenawasReminiscence",
       "name": "Shimenawa's Reminiscence",
-      "2pc": "ATK +18%.",
-      "4pc": "When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.",
       "rarity": 5,
       "order": 33,
       "group": 12,
@@ -1105,8 +1113,8 @@
     "TenacityOfTheMillelith": {
       "key": "TenacityOfTheMillelith",
       "name": "Tenacity of the Millelith",
-      "2pc": "HP +20%",
-      "4pc": "When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by 20% and their Shield Strength is increased by 30% for 3s. This effect can be triggered once every 0.5s. This effect can still be triggered even when the character who is using this artifact set is not on the field.",
+      "effect2Pc": "HP +20%",
+      "effect4Pc": "When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by 20% and their Shield Strength is increased by 30% for 3s. This effect can be triggered once every 0.5s. This effect can still be triggered even when the character who is using this artifact set is not on the field.",
       "rarity": 5,
       "order": 31,
       "group": 11,
@@ -1119,8 +1127,8 @@
     "TheExile": {
       "key": "TheExile",
       "name": "The Exile",
-      "2pc": "Energy Recharge +20%",
-      "4pc": "Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every 2s for 6s. This effect cannot stack.",
+      "effect2Pc": "Energy Recharge +20%",
+      "effect4Pc": "Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every 2s for 6s. This effect cannot stack.",
       "rarity": 4,
       "order": 7,
       "group": 1,
@@ -1133,8 +1141,8 @@
     "ThunderingFury": {
       "key": "ThunderingFury",
       "name": "Thundering Fury",
-      "2pc": "Electro DMG Bonus +15%",
-      "4pc": "Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.",
+      "effect2Pc": "Electro DMG Bonus +15%",
+      "effect4Pc": "Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.",
       "rarity": 5,
       "order": 26,
       "group": 8,
@@ -1147,8 +1155,8 @@
     "Thundersoother": {
       "key": "Thundersoother",
       "name": "Thundersoother",
-      "2pc": "Electro RES increased by 40%.",
-      "4pc": "Increases DMG against opponents affected by Electro by 35%.",
+      "effect2Pc": "Electro RES increased by 40%.",
+      "effect4Pc": "Increases DMG against opponents affected by Electro by 35%.",
       "rarity": 5,
       "order": 25,
       "group": 8,
@@ -1161,8 +1169,8 @@
     "TinyMiracle": {
       "key": "TinyMiracle",
       "name": "Tiny Miracle",
-      "2pc": "All Elemental RES increased by 20%.",
-      "4pc": "Incoming elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s.",
+      "effect2Pc": "All Elemental RES increased by 20%.",
+      "effect4Pc": "Incoming elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s.",
       "rarity": 4,
       "order": 4,
       "group": 2,
@@ -1175,8 +1183,8 @@
     "TravelingDoctor": {
       "key": "TravelingDoctor",
       "name": "Traveling Doctor",
-      "2pc": "Increases incoming healing by 20%.",
-      "4pc": "Using Elemental Burst restores 20% HP.",
+      "effect2Pc": "Increases incoming healing by 20%.",
+      "effect4Pc": "Using Elemental Burst restores 20% HP.",
       "rarity": 3,
       "order": 2,
       "group": 1,
@@ -1189,8 +1197,8 @@
     "VermillionHereafter": {
       "key": "VermillionHereafter",
       "name": "Vermillion Hereafter",
-      "2pc": "ATK +18%.",
-      "4pc": "After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This further increase can occur this way a maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.",
+      "effect2Pc": "ATK +18%.",
+      "effect4Pc": "After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This further increase can occur this way a maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.",
       "rarity": 5,
       "order": 37,
       "group": 14,
@@ -1203,8 +1211,8 @@
     "ViridescentVenerer": {
       "key": "ViridescentVenerer",
       "name": "Viridescent Venerer",
-      "2pc": "Anemo DMG Bonus +15%",
-      "4pc": "Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s.",
+      "effect2Pc": "Anemo DMG Bonus +15%",
+      "effect4Pc": "Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s.",
       "rarity": 5,
       "order": 22,
       "group": 6,
@@ -1217,8 +1225,8 @@
     "VourukashasGlow": {
       "key": "VourukashasGlow",
       "name": "Vourukasha's Glow",
-      "2pc": "HP +20%",
-      "4pc": "Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.",
+      "effect2Pc": "HP +20%",
+      "effect4Pc": "Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.",
       "rarity": 5,
       "order": 44,
       "group": 17,
@@ -1231,8 +1239,8 @@
     "WanderersTroupe": {
       "key": "WanderersTroupe",
       "name": "Wanderer's Troupe",
-      "2pc": "Increases Elemental Mastery by 80.",
-      "4pc": "Increases Charged Attack DMG by 35% if the character uses a Catalyst or a Bow.",
+      "effect2Pc": "Increases Elemental Mastery by 80.",
+      "effect4Pc": "Increases Charged Attack DMG by 35% if the character uses a Catalyst or a Bow.",
       "rarity": 5,
       "order": 18,
       "group": 4,
@@ -1247,1219 +1255,1219 @@
     "Akuoumaru": {
       "key": "Akuoumaru",
       "name": "Akuoumaru",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png"
     },
     "AlleyHunter": {
       "key": "AlleyHunter",
       "name": "Alley Hunter",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png"
     },
     "AmenomaKageuchi": {
       "key": "AmenomaKageuchi",
       "name": "Amenoma Kageuchi",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png"
     },
     "AmosBow": {
       "key": "AmosBow",
       "name": "Amos' Bow",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png"
     },
     "ApprenticesNotes": {
       "key": "ApprenticesNotes",
       "name": "Apprentice's Notes",
-      "weapontype": "Catalyst",
       "rarity": 1,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_Apprentice%27s_Notes.png"
     },
     "AquaSimulacra": {
       "key": "AquaSimulacra",
       "name": "Aqua Simulacra",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png"
     },
     "AquilaFavonia": {
       "key": "AquilaFavonia",
       "name": "Aquila Favonia",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png"
     },
     "AThousandFloatingDreams": {
       "key": "AThousandFloatingDreams",
       "name": "A Thousand Floating Dreams",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png"
     },
     "BalladOfTheBoundlessBlue": {
       "key": "BalladOfTheBoundlessBlue",
       "name": "Ballad of the Boundless Blue",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Ballad_of_the_Boundless_Blue.png"
     },
     "BalladOfTheFjords": {
       "key": "BalladOfTheFjords",
       "name": "Ballad of the Fjords",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Ballad_of_the_Fjords.png"
     },
     "BeaconOfTheReedSea": {
       "key": "BeaconOfTheReedSea",
       "name": "Beacon of the Reed Sea",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png"
     },
     "BeginnersProtector": {
       "key": "BeginnersProtector",
       "name": "Beginner's Protector",
-      "weapontype": "Polearm",
       "rarity": 1,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Beginner%27s_Protector.png"
     },
     "BlackcliffAgate": {
       "key": "BlackcliffAgate",
       "name": "Blackcliff Agate",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Blackcliff_Agate.png"
     },
     "BlackcliffLongsword": {
       "key": "BlackcliffLongsword",
       "name": "Blackcliff Longsword",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Blackcliff_Longsword.png"
     },
     "BlackcliffPole": {
       "key": "BlackcliffPole",
       "name": "Blackcliff Pole",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Weapon_Blackcliff_Pole.png"
     },
     "BlackcliffSlasher": {
       "key": "BlackcliffSlasher",
       "name": "Blackcliff Slasher",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Blackcliff_Slasher.png"
     },
     "BlackcliffWarbow": {
       "key": "BlackcliffWarbow",
       "name": "Blackcliff Warbow",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Blackcliff_Warbow.png"
     },
     "BlackTassel": {
       "key": "BlackTassel",
       "name": "Black Tassel",
-      "weapontype": "Polearm",
       "rarity": 3,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png"
     },
     "BloodtaintedGreatsword": {
       "key": "BloodtaintedGreatsword",
       "name": "Bloodtainted Greatsword",
-      "weapontype": "Claymore",
       "rarity": 3,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png"
     },
     "CalamityQueller": {
       "key": "CalamityQueller",
       "name": "Calamity Queller",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png"
     },
     "CashflowSupervision": {
       "key": "CashflowSupervision",
       "name": "Cashflow Supervision",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png"
     },
     "CinnabarSpindle": {
       "key": "CinnabarSpindle",
       "name": "Cinnabar Spindle",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png"
     },
     "CompoundBow": {
       "key": "CompoundBow",
       "name": "Compound Bow",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Compound_Bow.png"
     },
     "CoolSteel": {
       "key": "CoolSteel",
       "name": "Cool Steel",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png"
     },
     "CrescentPike": {
       "key": "CrescentPike",
       "name": "Crescent Pike",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png"
     },
     "DarkIronSword": {
       "key": "DarkIronSword",
       "name": "Dark Iron Sword",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png"
     },
     "Deathmatch": {
       "key": "Deathmatch",
       "name": "Deathmatch",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Deathmatch.png"
     },
     "DebateClub": {
       "key": "DebateClub",
       "name": "Debate Club",
-      "weapontype": "Claymore",
       "rarity": 3,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png"
     },
     "DodocoTales": {
       "key": "DodocoTales",
       "name": "Dodoco Tales",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Dodoco_Tales.png"
     },
     "DragonsBane": {
       "key": "DragonsBane",
       "name": "Dragon's Bane",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Dragon%27s_Bane.png"
     },
     "DragonspineSpear": {
       "key": "DragonspineSpear",
       "name": "Dragonspine Spear",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png"
     },
     "DullBlade": {
       "key": "DullBlade",
       "name": "Dull Blade",
-      "weapontype": "Sword",
       "rarity": 1,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Weapon_Dull_Blade.png"
     },
     "ElegyForTheEnd": {
       "key": "ElegyForTheEnd",
       "name": "Elegy for the End",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png"
     },
     "EmeraldOrb": {
       "key": "EmeraldOrb",
       "name": "Emerald Orb",
-      "weapontype": "Catalyst",
       "rarity": 3,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Emerald_Orb.png"
     },
     "EndOfTheLine": {
       "key": "EndOfTheLine",
       "name": "End of the Line",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_End_of_the_Line.png"
     },
     "EngulfingLightning": {
       "key": "EngulfingLightning",
       "name": "Engulfing Lightning",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png"
     },
     "EverlastingMoonglow": {
       "key": "EverlastingMoonglow",
       "name": "Everlasting Moonglow",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png"
     },
     "EyeOfPerception": {
       "key": "EyeOfPerception",
       "name": "Eye of Perception",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Eye_of_Perception.png"
     },
     "FadingTwilight": {
       "key": "FadingTwilight",
       "name": "Fading Twilight",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png"
     },
     "FavoniusCodex": {
       "key": "FavoniusCodex",
       "name": "Favonius Codex",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/36/Weapon_Favonius_Codex.png"
     },
     "FavoniusGreatsword": {
       "key": "FavoniusGreatsword",
       "name": "Favonius Greatsword",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Favonius_Greatsword.png"
     },
     "FavoniusLance": {
       "key": "FavoniusLance",
       "name": "Favonius Lance",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Favonius_Lance.png"
     },
     "FavoniusSword": {
       "key": "FavoniusSword",
       "name": "Favonius Sword",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Favonius_Sword.png"
     },
     "FavoniusWarbow": {
       "key": "FavoniusWarbow",
       "name": "Favonius Warbow",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Favonius_Warbow.png"
     },
     "FerrousShadow": {
       "key": "FerrousShadow",
       "name": "Ferrous Shadow",
-      "weapontype": "Claymore",
       "rarity": 3,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Ferrous_Shadow.png"
     },
     "FesteringDesire": {
       "key": "FesteringDesire",
       "name": "Festering Desire",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/70/Weapon_Festering_Desire.png"
     },
     "FilletBlade": {
       "key": "FilletBlade",
       "name": "Fillet Blade",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Fillet_Blade.png"
     },
     "FinaleOfTheDeep": {
       "key": "FinaleOfTheDeep",
       "name": "Finale of the Deep",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Weapon_Finale_of_the_Deep.png"
     },
     "FleuveCendreFerryman": {
       "key": "FleuveCendreFerryman",
       "name": "Fleuve Cendre Ferryman",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png"
     },
     "FlowingPurity": {
       "key": "FlowingPurity",
       "name": "Flowing Purity",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png"
     },
     "ForestRegalia": {
       "key": "ForestRegalia",
       "name": "Forest Regalia",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Forest_Regalia.png"
     },
     "FreedomSworn": {
       "key": "FreedomSworn",
       "name": "Freedom-Sworn",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Freedom-Sworn.png"
     },
     "Frostbearer": {
       "key": "Frostbearer",
       "name": "Frostbearer",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png"
     },
     "FruitOfFulfillment": {
       "key": "FruitOfFulfillment",
       "name": "Fruit of Fulfillment",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Fruit_of_Fulfillment.png"
     },
     "HakushinRing": {
       "key": "HakushinRing",
       "name": "Hakushin Ring",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Hakushin_Ring.png"
     },
     "Halberd": {
       "key": "Halberd",
       "name": "Halberd",
-      "weapontype": "Polearm",
       "rarity": 3,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Halberd.png"
     },
     "Hamayumi": {
       "key": "Hamayumi",
       "name": "Hamayumi",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Weapon_Hamayumi.png"
     },
     "HaranGeppakuFutsu": {
       "key": "HaranGeppakuFutsu",
       "name": "Haran Geppaku Futsu",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Haran_Geppaku_Futsu.png"
     },
     "HarbingerOfDawn": {
       "key": "HarbingerOfDawn",
       "name": "Harbinger of Dawn",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png"
     },
     "HuntersBow": {
       "key": "HuntersBow",
       "name": "Hunter's Bow",
-      "weapontype": "Bow",
       "rarity": 1,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png"
     },
     "HuntersPath": {
       "key": "HuntersPath",
       "name": "Hunter's Path",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Hunter%27s_Path.png"
     },
     "IbisPiercer": {
       "key": "IbisPiercer",
       "name": "Ibis Piercer",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png"
     },
     "IronPoint": {
       "key": "IronPoint",
       "name": "Iron Point",
-      "weapontype": "Polearm",
       "rarity": 2,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Iron_Point.png"
     },
     "IronSting": {
       "key": "IronSting",
       "name": "Iron Sting",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Iron_Sting.png"
     },
     "JadefallsSplendor": {
       "key": "JadefallsSplendor",
       "name": "Jadefall's Splendor",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Jadefall%27s_Splendor.png"
     },
     "KagotsurubeIsshin": {
       "key": "KagotsurubeIsshin",
       "name": "Kagotsurube Isshin",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Weapon_Kagotsurube_Isshin.png"
     },
     "KagurasVerity": {
       "key": "KagurasVerity",
       "name": "Kagura's Verity",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Weapon_Kagura%27s_Verity.png"
     },
     "KatsuragikiriNagamasa": {
       "key": "KatsuragikiriNagamasa",
       "name": "Katsuragikiri Nagamasa",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Katsuragikiri_Nagamasa.png"
     },
     "KeyOfKhajNisut": {
       "key": "KeyOfKhajNisut",
       "name": "Key of Khaj-Nisut",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Key_of_Khaj-Nisut.png"
     },
     "KingsSquire": {
       "key": "KingsSquire",
       "name": "King's Squire",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_King%27s_Squire.png"
     },
     "KitainCrossSpear": {
       "key": "KitainCrossSpear",
       "name": "Kitain Cross Spear",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/13/Weapon_Kitain_Cross_Spear.png"
     },
     "LightOfFoliarIncision": {
       "key": "LightOfFoliarIncision",
       "name": "Light of Foliar Incision",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Light_of_Foliar_Incision.png"
     },
     "LionsRoar": {
       "key": "LionsRoar",
       "name": "Lion's Roar",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Lion%27s_Roar.png"
     },
     "LithicBlade": {
       "key": "LithicBlade",
       "name": "Lithic Blade",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Lithic_Blade.png"
     },
     "LithicSpear": {
       "key": "LithicSpear",
       "name": "Lithic Spear",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Lithic_Spear.png"
     },
     "LostPrayerToTheSacredWinds": {
       "key": "LostPrayerToTheSacredWinds",
       "name": "Lost Prayer to the Sacred Winds",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png"
     },
     "LuxuriousSeaLord": {
       "key": "LuxuriousSeaLord",
       "name": "Luxurious Sea-Lord",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Luxurious_Sea-Lord.png"
     },
     "MagicGuide": {
       "key": "MagicGuide",
       "name": "Magic Guide",
-      "weapontype": "Catalyst",
       "rarity": 3,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Magic_Guide.png"
     },
     "MailedFlower": {
       "key": "MailedFlower",
       "name": "Mailed Flower",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Mailed_Flower.png"
     },
     "MakhairaAquamarine": {
       "key": "MakhairaAquamarine",
       "name": "Makhaira Aquamarine",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Makhaira_Aquamarine.png"
     },
     "MappaMare": {
       "key": "MappaMare",
       "name": "Mappa Mare",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Mappa_Mare.png"
     },
     "MemoryOfDust": {
       "key": "MemoryOfDust",
       "name": "Memory of Dust",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Memory_of_Dust.png"
     },
     "Messenger": {
       "key": "Messenger",
       "name": "Messenger",
-      "weapontype": "Bow",
       "rarity": 3,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Messenger.png"
     },
     "MissiveWindspear": {
       "key": "MissiveWindspear",
       "name": "Missive Windspear",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Weapon_Missive_Windspear.png"
     },
     "MistsplitterReforged": {
       "key": "MistsplitterReforged",
       "name": "Mistsplitter Reforged",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Mistsplitter_Reforged.png"
     },
     "MitternachtsWaltz": {
       "key": "MitternachtsWaltz",
       "name": "Mitternachts Waltz",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Mitternachts_Waltz.png"
     },
     "Moonpiercer": {
       "key": "Moonpiercer",
       "name": "Moonpiercer",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png"
     },
     "MouunsMoon": {
       "key": "MouunsMoon",
       "name": "Mouun's Moon",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/42/Weapon_Mouun%27s_Moon.png"
     },
     "OathswornEye": {
       "key": "OathswornEye",
       "name": "Oathsworn Eye",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png"
     },
     "OldMercsPal": {
       "key": "OldMercsPal",
       "name": "Old Merc's Pal",
-      "weapontype": "Claymore",
       "rarity": 2,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Old_Merc%27s_Pal.png"
     },
     "OtherworldlyStory": {
       "key": "OtherworldlyStory",
       "name": "Otherworldly Story",
-      "weapontype": "Catalyst",
       "rarity": 3,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png"
     },
     "PocketGrimoire": {
       "key": "PocketGrimoire",
       "name": "Pocket Grimoire",
-      "weapontype": "Catalyst",
       "rarity": 2,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Pocket_Grimoire.png"
     },
     "PolarStar": {
       "key": "PolarStar",
       "name": "Polar Star",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Polar_Star.png"
     },
     "PortablePowerSaw": {
       "key": "PortablePowerSaw",
       "name": "Portable Power Saw",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Portable_Power_Saw.png"
     },
     "Predator": {
       "key": "Predator",
       "name": "Predator",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Predator.png"
     },
     "PrimordialJadeCutter": {
       "key": "PrimordialJadeCutter",
       "name": "Primordial Jade Cutter",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Primordial_Jade_Cutter.png"
     },
     "PrimordialJadeWingedSpear": {
       "key": "PrimordialJadeWingedSpear",
       "name": "Primordial Jade Winged-Spear",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/80/Weapon_Primordial_Jade_Winged-Spear.png"
     },
     "ProspectorsDrill": {
       "key": "ProspectorsDrill",
       "name": "Prospector's Drill",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png"
     },
     "PrototypeAmber": {
       "key": "PrototypeAmber",
       "name": "Prototype Amber",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Prototype_Amber.png"
     },
     "PrototypeArchaic": {
       "key": "PrototypeArchaic",
       "name": "Prototype Archaic",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Prototype_Archaic.png"
     },
     "PrototypeCrescent": {
       "key": "PrototypeCrescent",
       "name": "Prototype Crescent",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Prototype_Crescent.png"
     },
     "PrototypeRancour": {
       "key": "PrototypeRancour",
       "name": "Prototype Rancour",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png"
     },
     "PrototypeStarglitter": {
       "key": "PrototypeStarglitter",
       "name": "Prototype Starglitter",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png"
     },
     "Rainslasher": {
       "key": "Rainslasher",
       "name": "Rainslasher",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png"
     },
     "RangeGauge": {
       "key": "RangeGauge",
       "name": "Range Gauge",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png"
     },
     "RavenBow": {
       "key": "RavenBow",
       "name": "Raven Bow",
-      "weapontype": "Bow",
       "rarity": 3,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d0/Weapon_Raven_Bow.png"
     },
     "RecurveBow": {
       "key": "RecurveBow",
       "name": "Recurve Bow",
-      "weapontype": "Bow",
       "rarity": 3,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Recurve_Bow.png"
     },
     "RedhornStonethresher": {
       "key": "RedhornStonethresher",
       "name": "Redhorn Stonethresher",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Redhorn_Stonethresher.png"
     },
     "RightfulReward": {
       "key": "RightfulReward",
       "name": "Rightful Reward",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png"
     },
     "RoyalBow": {
       "key": "RoyalBow",
       "name": "Royal Bow",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png"
     },
     "RoyalGreatsword": {
       "key": "RoyalGreatsword",
       "name": "Royal Greatsword",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png"
     },
     "RoyalGrimoire": {
       "key": "RoyalGrimoire",
       "name": "Royal Grimoire",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Grimoire.png"
     },
     "RoyalLongsword": {
       "key": "RoyalLongsword",
       "name": "Royal Longsword",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Royal_Longsword.png"
     },
     "RoyalSpear": {
       "key": "RoyalSpear",
       "name": "Royal Spear",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Royal_Spear.png"
     },
     "Rust": {
       "key": "Rust",
       "name": "Rust",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Rust.png"
     },
     "SacrificialBow": {
       "key": "SacrificialBow",
       "name": "Sacrificial Bow",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Sacrificial_Bow.png"
     },
     "SacrificialFragments": {
       "key": "SacrificialFragments",
       "name": "Sacrificial Fragments",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Sacrificial_Fragments.png"
     },
     "SacrificialGreatsword": {
       "key": "SacrificialGreatsword",
       "name": "Sacrificial Greatsword",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sacrificial_Greatsword.png"
     },
     "SacrificialJade": {
       "key": "SacrificialJade",
       "name": "Sacrificial Jade",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Sacrificial_Jade.png"
     },
     "SacrificialSword": {
       "key": "SacrificialSword",
       "name": "Sacrificial Sword",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Sacrificial_Sword.png"
     },
     "SapwoodBlade": {
       "key": "SapwoodBlade",
       "name": "Sapwood Blade",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Sapwood_Blade.png"
     },
     "ScionOfTheBlazingSun": {
       "key": "ScionOfTheBlazingSun",
       "name": "Scion of the Blazing Sun",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png"
     },
     "SeasonedHuntersBow": {
       "key": "SeasonedHuntersBow",
       "name": "Seasoned Hunter's Bow",
-      "weapontype": "Bow",
       "rarity": 2,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png"
     },
     "SerpentSpine": {
       "key": "SerpentSpine",
       "name": "Serpent Spine",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Serpent_Spine.png"
     },
     "SharpshootersOath": {
       "key": "SharpshootersOath",
       "name": "Sharpshooter's Oath",
-      "weapontype": "Bow",
       "rarity": 3,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png"
     },
     "SilverSword": {
       "key": "SilverSword",
       "name": "Silver Sword",
-      "weapontype": "Sword",
       "rarity": 2,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Silver_Sword.png"
     },
     "SkyriderGreatsword": {
       "key": "SkyriderGreatsword",
       "name": "Skyrider Greatsword",
-      "weapontype": "Claymore",
       "rarity": 3,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Skyrider_Greatsword.png"
     },
     "SkyriderSword": {
       "key": "SkyriderSword",
       "name": "Skyrider Sword",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Skyrider_Sword.png"
     },
     "SkywardAtlas": {
       "key": "SkywardAtlas",
       "name": "Skyward Atlas",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Skyward_Atlas.png"
     },
     "SkywardBlade": {
       "key": "SkywardBlade",
       "name": "Skyward Blade",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png"
     },
     "SkywardHarp": {
       "key": "SkywardHarp",
       "name": "Skyward Harp",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Skyward_Harp.png"
     },
     "SkywardPride": {
       "key": "SkywardPride",
       "name": "Skyward Pride",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Skyward_Pride.png"
     },
     "SkywardSpine": {
       "key": "SkywardSpine",
       "name": "Skyward Spine",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Skyward_Spine.png"
     },
     "Slingshot": {
       "key": "Slingshot",
       "name": "Slingshot",
-      "weapontype": "Bow",
       "rarity": 3,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Slingshot.png"
     },
     "SnowTombedStarsilver": {
       "key": "SnowTombedStarsilver",
       "name": "Snow-Tombed Starsilver",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Snow-Tombed_Starsilver.png"
     },
     "SolarPearl": {
       "key": "SolarPearl",
       "name": "Solar Pearl",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Solar_Pearl.png"
     },
     "SongOfBrokenPines": {
       "key": "SongOfBrokenPines",
       "name": "Song of Broken Pines",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Song_of_Broken_Pines.png"
     },
     "SongOfStillness": {
       "key": "SongOfStillness",
       "name": "Song of Stillness",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png"
     },
     "StaffOfHoma": {
       "key": "StaffOfHoma",
       "name": "Staff of Homa",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Staff_of_Homa.png"
     },
     "StaffOfTheScarletSands": {
       "key": "StaffOfTheScarletSands",
       "name": "Staff of the Scarlet Sands",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png"
     },
     "SummitShaper": {
       "key": "SummitShaper",
       "name": "Summit Shaper",
-      "weapontype": "Sword",
       "rarity": 5,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png"
     },
     "SwordOfDescension": {
       "key": "SwordOfDescension",
       "name": "Sword of Descension",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png"
     },
     "TalkingStick": {
       "key": "TalkingStick",
       "name": "Talking Stick",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png"
     },
     "TheAlleyFlash": {
       "key": "TheAlleyFlash",
       "name": "The Alley Flash",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_The_Alley_Flash.png"
     },
     "TheBell": {
       "key": "TheBell",
       "name": "The Bell",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_The_Bell.png"
     },
     "TheBlackSword": {
       "key": "TheBlackSword",
       "name": "The Black Sword",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_The_Black_Sword.png"
     },
     "TheCatch": {
       "key": "TheCatch",
       "name": "\"The Catch\"",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png"
     },
     "TheDockhandsAssistant": {
       "key": "TheDockhandsAssistant",
       "name": "The Dockhand's Assistant",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_The_Dockhand%27s_Assistant.png"
     },
     "TheFirstGreatMagic": {
       "key": "TheFirstGreatMagic",
       "name": "The First Great Magic",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_The_First_Great_Magic.png"
     },
     "TheFlute": {
       "key": "TheFlute",
       "name": "The Flute",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_The_Flute.png"
     },
     "TheStringless": {
       "key": "TheStringless",
       "name": "The Stringless",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_The_Stringless.png"
     },
     "TheUnforged": {
       "key": "TheUnforged",
       "name": "The Unforged",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_The_Unforged.png"
     },
     "TheViridescentHunt": {
       "key": "TheViridescentHunt",
       "name": "The Viridescent Hunt",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_The_Viridescent_Hunt.png"
     },
     "TheWidsith": {
       "key": "TheWidsith",
       "name": "The Widsith",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Widsith.png"
     },
     "ThrillingTalesOfDragonSlayers": {
       "key": "ThrillingTalesOfDragonSlayers",
       "name": "Thrilling Tales of Dragon Slayers",
-      "weapontype": "Catalyst",
       "rarity": 3,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Thrilling_Tales_of_Dragon_Slayers.png"
     },
     "ThunderingPulse": {
       "key": "ThunderingPulse",
       "name": "Thundering Pulse",
-      "weapontype": "Bow",
       "rarity": 5,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Thundering_Pulse.png"
     },
     "TidalShadow": {
       "key": "TidalShadow",
       "name": "Tidal Shadow",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Tidal_Shadow.png"
     },
     "TomeOfTheEternalFlow": {
       "key": "TomeOfTheEternalFlow",
       "name": "Tome of the Eternal Flow",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Tome_of_the_Eternal_Flow.png"
     },
     "ToukabouShigure": {
       "key": "ToukabouShigure",
       "name": "Toukabou Shigure",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Toukabou_Shigure.png"
     },
     "TravelersHandySword": {
       "key": "TravelersHandySword",
       "name": "Traveler's Handy Sword",
-      "weapontype": "Sword",
       "rarity": 3,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Weapon_Traveler%27s_Handy_Sword.png"
     },
     "TulaytullahsRemembrance": {
       "key": "TulaytullahsRemembrance",
       "name": "Tulaytullah's Remembrance",
-      "weapontype": "Catalyst",
       "rarity": 5,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Tulaytullah%27s_Remembrance.png"
     },
     "TwinNephrite": {
       "key": "TwinNephrite",
       "name": "Twin Nephrite",
-      "weapontype": "Catalyst",
       "rarity": 3,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png"
     },
     "VortexVanquisher": {
       "key": "VortexVanquisher",
       "name": "Vortex Vanquisher",
-      "weapontype": "Polearm",
       "rarity": 5,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png"
     },
     "WanderingEvenstar": {
       "key": "WanderingEvenstar",
       "name": "Wandering Evenstar",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png"
     },
     "WasterGreatsword": {
       "key": "WasterGreatsword",
       "name": "Waster Greatsword",
-      "weapontype": "Claymore",
       "rarity": 1,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png"
     },
     "WavebreakersFin": {
       "key": "WavebreakersFin",
       "name": "Wavebreaker's Fin",
-      "weapontype": "Polearm",
       "rarity": 4,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png"
     },
     "Whiteblind": {
       "key": "Whiteblind",
       "name": "Whiteblind",
-      "weapontype": "Claymore",
       "rarity": 4,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Whiteblind.png"
     },
     "WhiteIronGreatsword": {
       "key": "WhiteIronGreatsword",
       "name": "White Iron Greatsword",
-      "weapontype": "Claymore",
       "rarity": 3,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png"
     },
     "WhiteTassel": {
       "key": "WhiteTassel",
       "name": "White Tassel",
-      "weapontype": "Polearm",
       "rarity": 3,
+      "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png"
     },
     "WindblumeOde": {
       "key": "WindblumeOde",
       "name": "Windblume Ode",
-      "weapontype": "Bow",
       "rarity": 4,
+      "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Windblume_Ode.png"
     },
     "WineAndSong": {
       "key": "WineAndSong",
       "name": "Wine and Song",
-      "weapontype": "Catalyst",
       "rarity": 4,
+      "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Wine_and_Song.png"
     },
     "WolfFang": {
       "key": "WolfFang",
       "name": "Wolf-Fang",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png"
     },
     "WolfsGravestone": {
       "key": "WolfsGravestone",
       "name": "Wolf's Gravestone",
-      "weapontype": "Claymore",
       "rarity": 5,
+      "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png"
     },
     "XiphosMoonlight": {
       "key": "XiphosMoonlight",
       "name": "Xiphos' Moonlight",
-      "weapontype": "Sword",
       "rarity": 4,
+      "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png"
     }
   }

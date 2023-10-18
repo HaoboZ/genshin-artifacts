@@ -7,12 +7,7 @@ export default function Progress({
 	isLoading,
 	delay,
 	children = (progress) => (
-		<Box
-			sx={{
-				display: 'flex',
-				justifyContent: 'center',
-				pt: 5,
-			}}>
+		<Box display='flex' justifyContent='center' pt={5}>
 			<CircularProgress value={progress} />
 		</Box>
 	),

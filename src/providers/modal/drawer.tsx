@@ -28,7 +28,10 @@ export default function ModalDrawer({
 			closeAfterTransition
 			open={modalStatus.open}
 			anchor='bottom'
-			sx={{ display: 'flex', justifyContent: 'center' }}
+			sx={{
+				display: 'flex',
+				justifyContent: 'center',
+			}}
 			PaperProps={{
 				sx: {
 					maxWidth: '100%',

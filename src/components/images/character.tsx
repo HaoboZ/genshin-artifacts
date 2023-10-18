@@ -18,7 +18,7 @@ export default function CharacterImage({
 			height={size}
 			src={character.image}
 			className={`rarity${character.rarity}`}
-			sx={sx}
+			sx={{ borderRadius: 1, ...sx }}
 		/>
 	);
 }

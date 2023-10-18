@@ -1,7 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { createContext, Suspense, useContext, useState } from 'react';
 
 type ModalStatus<T> = {
@@ -38,7 +38,7 @@ const ModalControlsContext = createContext<ModalControlsType>({
 });
 ModalControlsContext.displayName = 'ModalControls';
 
-export default function ModalProvider({ children }) {
+export default function ModalProvider({ children }: { children: ReactNode }) {
 	const [modals, setModals] = useState<ModalStatus<any>[]>([]);
 
 	function controls(id: string): ModalControlsType {
@@ -49,11 +49,14 @@ export default function ModalProvider({ children }) {
 					const index = modals.findIndex((modal) => modal.id === id);
 					if (index === -1) return modals;
 					const newModals = [...modals];
-					newModals[index] = { ...newModals[index], open: false };
+					newModals[index] = {
+						...newModals[index],
+						open: false,
+					};
 					newModals[index].controls.events.emit('close', ...args);
 					setTimeout(
 						() => setModals((modals) => modals.filter((modal) => modal.id !== id)),
-						500,
+						250,
 					);
 					return newModals;
 				}),
@@ -78,7 +81,10 @@ export default function ModalProvider({ children }) {
 							});
 						} else {
 							// found modal with same id
-							newModals[index] = { ...newModals[index], props };
+							newModals[index] = {
+								...newModals[index],
+								props,
+							};
 							if (newModals[index].open) return newModals;
 						}
 						setTimeout(
@@ -88,7 +94,10 @@ export default function ModalProvider({ children }) {
 									if (index === -1) return modals;
 									const newModals = [...modals];
 									newModals[index].controls.events.emit('open');
-									newModals[index] = { ...newModals[index], open: true };
+									newModals[index] = {
+										...newModals[index],
+										open: true,
+									};
 									return newModals;
 								}),
 							0,
@@ -114,7 +123,10 @@ export default function ModalProvider({ children }) {
 			{modals.map((modal) => (
 				<ModalControlsContext.Provider
 					key={modal.id}
-					value={{ ...modal.controls, modalStatus: modal }}>
+					value={{
+						...modal.controls,
+						modalStatus: modal,
+					}}>
 					<Suspense fallback={<CircularProgress />}>
 						<modal.Component {...modal.props} />
 					</Suspense>
@@ -124,12 +136,12 @@ export default function ModalProvider({ children }) {
 	);
 }
 
-export function useModal(): ModalType {
+export function useModal() {
 	return useContext(ModalContext);
 }
 
-export function withModal<P>(Component: ComponentType<P>) {
-	return (props: P) => (
+export function withModal(Component) {
+	return (props) => (
 		<ModalContext.Consumer>
 			{(modal) => <Component modal={modal} {...props} />}
 		</ModalContext.Consumer>

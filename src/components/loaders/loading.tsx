@@ -6,12 +6,7 @@ export default function Loading({
 	isLoading,
 	delay,
 	children = (
-		<Box
-			sx={{
-				display: 'flex',
-				justifyContent: 'center',
-				pt: 5,
-			}}>
+		<Box display='flex' justifyContent='center' pt={5}>
 			<CircularProgress />
 		</Box>
 	),

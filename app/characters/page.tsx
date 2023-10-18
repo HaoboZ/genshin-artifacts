@@ -1,10 +1,10 @@
 'use client';
-import Image from '@/components/image';
 import Page from '@/components/page';
 import data from '@/public/data.json';
-import { Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useState } from 'react';
 import CharacterCard from './characterCard';
+import ElementFilter from './elementFilter';
 
 /*
 click on weapon/artifact
@@ -15,18 +15,8 @@ export default function Characters() {
 	const [element, setElement] = useState('');
 
 	return (
-		<Page title='Characters'>
-			<ToggleButtonGroup
-				exclusive
-				value={element}
-				onChange={(e, newElement) => setElement(newElement ?? '')}>
-				<ToggleButton value=''>All</ToggleButton>
-				{Object.values(data.elements).map((element) => (
-					<ToggleButton key={element.key} value={element.key}>
-						<Image alt={element.key} src={element.image} width={30} height={30} />
-					</ToggleButton>
-				))}
-			</ToggleButtonGroup>
+		<Page noSsr title='Characters'>
+			<ElementFilter element={element} setElement={setElement} />
 			<Grid container spacing={2} justifyContent='center'>
 				{Object.values(data.characters)
 					.filter((character) => !element || character.element === element)

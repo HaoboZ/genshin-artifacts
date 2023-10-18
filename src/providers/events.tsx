@@ -1,11 +1,11 @@
 import { EventEmitter } from 'events';
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';
 
 const EventsContext = createContext<EventEmitter>(null);
 EventsContext.displayName = 'Events';
 
-export default function EventsProvider({ children }) {
+export default function EventsProvider({ children }: { children: ReactNode }) {
 	const [events] = useState(() => new EventEmitter());
 
 	return <EventsContext.Provider value={events}>{children}</EventsContext.Provider>;

@@ -18,7 +18,7 @@ export default function ArtifactImage({
 	sx,
 }: {
 	artifact: DArtifact;
-	type: 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
+	type?: 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
 	size?: number;
 	sx?: SxProps;
 }) {
@@ -29,7 +29,7 @@ export default function ArtifactImage({
 			width={size}
 			height={size}
 			className={`rarity${artifact?.rarity}`}
-			sx={sx}
+			sx={{ borderRadius: 1, ...sx }}
 		/>
 	);
 }

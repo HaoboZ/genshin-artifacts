@@ -1,6 +1,6 @@
 import '@/src/layout/style.scss';
+import Providers from '@/src/providers';
 import { Analytics } from '@vercel/analytics/react';
-import dynamic from 'next/dynamic';
 import { Roboto } from 'next/font/google';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
@@ -14,13 +14,11 @@ const roboto = Roboto({
 	weight: ['300', '400', '500', '700'],
 });
 
-const Providers = dynamic(() => import('@/src/providers'), { ssr: false });
-
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang='en' className={roboto.className}>
 			<head>
-				<title>Genshin Artifacts</title>
+				<title>Template</title>
 				<meta charSet='utf-8' />
 				<meta
 					name='viewport'

@@ -2,19 +2,19 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 type State = {
-	theme: string;
+	value: string;
 };
 
 const initialState: State = {
-	theme: 'default',
+	value: '',
 };
 
 const mainSlice = createSlice({
 	name: 'main',
 	initialState,
 	reducers: {
-		setTheme(state, { payload }: PayloadAction<string>) {
-			state.theme = payload;
+		setValue(state, { payload }: PayloadAction<string>) {
+			state.value = payload;
 		},
 	},
 });

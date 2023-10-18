@@ -1,5 +1,5 @@
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-import type { ButtonProps, MenuItemProps } from '@mui/material';
+import type { ButtonBaseTypeMap, ButtonProps, MenuItemProps } from '@mui/material';
 import { ButtonGroup, MenuList } from '@mui/material';
 import type { MouseEventHandler, ReactNode } from 'react';
 import { useMemo } from 'react';
@@ -12,7 +12,7 @@ export type ActionProps = {
 	onClick?: MouseEventHandler;
 	buttonProps?: ButtonProps<any>;
 	menuItemProps?: MenuItemProps<any>;
-} & Record<string, any>;
+} & ButtonBaseTypeMap['props'];
 
 export default function Actions({
 	items,

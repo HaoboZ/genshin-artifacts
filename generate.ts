@@ -65,6 +65,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Venti_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png',
@@ -299,14 +300,13 @@ const artifactImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Golden_Troupe%27s_Reward.png',
 ];
 const weaponImages = [
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Icon_5_Stars.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png',
@@ -341,7 +341,6 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Icon_4_Stars.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png',
@@ -402,6 +401,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png',
@@ -440,7 +440,6 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Icon_3_Stars.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png',
@@ -465,19 +464,16 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Iron_Point.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_2_Stars.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Old_Merc%27s_Pal.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Pocket_Grimoire.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Silver_Sword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_Apprentice%27s_Notes.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Icon_1_Star.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Beginner%27s_Protector.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Weapon_Dull_Blade.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Hunter%27s_Bow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
@@ -561,8 +557,9 @@ const artifactOrder = Object.keys(artifactLocation);
 
 				return {
 					key: upperFirst(camelCase(character.name)),
-					...pick(character, ['name', 'element', 'weapontype']),
-					rarity: +character.rarity,
+					...pick(character, ['name', 'rarity']),
+					weaponType: character.weaponText,
+					element: character.elementText,
 					image,
 				};
 			})
@@ -602,8 +599,8 @@ const artifactOrder = Object.keys(artifactLocation);
 			const key = upperFirst(camelCase(artifact.name));
 			return {
 				key,
-				...pick(artifact, ['name', '2pc', '4pc']),
-				rarity: +max(artifact.rarity),
+				...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
+				rarity: max(artifact.rarityList),
 				order: artifactOrder.indexOf(key),
 				group: artifactLocation[key],
 				flower,
@@ -632,8 +629,8 @@ const artifactOrder = Object.keys(artifactLocation);
 
 				return {
 					key: upperFirst(camelCase(weapon.name)),
-					...pick(weapon, ['name', 'weapontype']),
-					rarity: +weapon.rarity,
+					...pick(weapon, ['name', 'rarity']),
+					weaponType: weapon.weaponText,
 					image,
 				};
 			})

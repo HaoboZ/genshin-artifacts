@@ -7,7 +7,7 @@ import { store } from '../store';
 import EventsProvider from './events';
 import ModalProvider from './modal';
 import SnackbarAction from './snackbar/action';
-import ThemeProvider from './theme';
+import ThemeRegistry from './theme';
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
@@ -17,7 +17,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				component(StoreProvider, { store }),
 				component(EventsProvider),
 				// styling
-				component(ThemeProvider),
+				component(ThemeRegistry),
 				// visual
 				component(SnackbarProvider, {
 					preventDuplicate: true,
