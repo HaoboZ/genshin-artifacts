@@ -1,5 +1,8 @@
-import type { SxProps } from '@mui/material';
+import type { BoxProps } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 import type { DArtifact } from '../../data';
+import type { IArtifact } from '../../good';
+import { data } from '../../resources/data';
 import Image from '../image';
 
 const images = {
@@ -13,23 +16,51 @@ const images = {
 
 export default function ArtifactImage({
 	artifact,
+	hideCharacter,
+	artifactSet,
 	type,
 	size = 50,
-	sx,
+	...props
 }: {
-	artifact: DArtifact;
+	artifact?: IArtifact;
+	hideCharacter?: boolean;
+	artifactSet?: DArtifact;
 	type?: 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
 	size?: number;
-	sx?: SxProps;
-}) {
+} & BoxProps) {
+	let character;
+	if (artifact) {
+		artifactSet = data.artifacts[artifact.setKey];
+		type = artifact.slotKey;
+		if (!hideCharacter) character = data.characters[artifact.location];
+	}
+
 	return (
-		<Image
-			alt={artifact?.name ?? 'artifact'}
-			src={artifact?.[type] ?? artifact?.circlet ?? images[type]}
-			width={size}
-			height={size}
-			className={`rarity${artifact?.rarity}`}
-			sx={{ borderRadius: 1, ...sx }}
-		/>
+		<Tooltip followCursor title={artifactSet?.name}>
+			<Box height={size} position='relative' {...props}>
+				<Image
+					alt={artifactSet?.name ?? 'artifact'}
+					src={artifactSet?.[type] ?? artifactSet?.circlet ?? images[type]}
+					width={size}
+					height={size}
+					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}
+					sx={{ borderRadius: 1 }}
+				/>
+				{artifact && (
+					<Typography position='absolute' top={0} left={0}>
+						&nbsp;{artifact.level}
+					</Typography>
+				)}
+				{character && (
+					<Image
+						alt={character.name}
+						src={character.image}
+						width={size * 0.4}
+						height={size * 0.4}
+						sx={{ position: 'absolute', left: size * 0.6, top: size * 0.6 }}
+					/>
+				)}
+			</Box>
+		</Tooltip>
 	);
 }

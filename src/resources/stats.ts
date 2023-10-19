@@ -1,5 +1,28 @@
-import type { StatKey } from '@/src/good';
-import { findIndex, includes } from 'lodash';
+import type { StatKey } from '../good';
+
+export const artifactOrder = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
+
+export const statName: Record<StatKey, string> = {
+	anemo_dmg_: 'Anemo DMG',
+	atk: 'ATK',
+	atk_: 'ATK%',
+	critDMG_: 'Crit DMG',
+	critRate_: 'Crit Rate',
+	cryo_dmg_: 'Cryo DMG',
+	def: 'DEF',
+	def_: 'DEF%',
+	dendro_dmg_: 'Dendro DMG',
+	eleMas: 'EM',
+	electro_dmg_: 'Electro DMG',
+	enerRech_: 'ER',
+	geo_dmg_: 'Geo DMG',
+	heal_: 'Healing',
+	hp: 'HP',
+	hp_: 'HP%',
+	hydro_dmg_: 'Hydro DMG',
+	physical_dmg_: 'Physical DMG',
+	pyro_dmg_: 'Pyro DMG',
+};
 
 export const stats: Record<StatKey, Record<number, number>> = {
 	hp: { 3: 287, 4: 956, 5: 1793 },
@@ -28,12 +51,3 @@ export const rarityWeight = {
 	4: 1.45,
 	5: 1.3,
 };
-
-export function getWeightedTier(subStatArr, subStat) {
-	if (!subStat) return 0;
-	const statTier = findIndex(subStatArr, (subStatTier) =>
-		Array.isArray(subStatTier) ? includes(subStatTier, subStat) : subStatTier === subStat,
-	);
-
-	return statTier === -1 ? 0 : 1 - Math.min(4, statTier) * 0.2;
-}

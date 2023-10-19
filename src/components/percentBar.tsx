@@ -1,28 +1,31 @@
 import { Box, Typography } from '@mui/material';
 import { round } from 'lodash';
 
+export function combinePercents(...vals: { percent: number; weight: number }[]) {
+	return vals.reduce((total, { percent, weight }) => {
+		if (percent === -1) return total;
+		return total + weight * percent;
+	}, 0);
+}
+
 export default function PercentBar({
-	vals,
+	p,
+	size = 11,
 	children,
 }: {
-	vals: {
-		reverse?: boolean;
-		max: number;
-		current: number;
-		weight?: number;
-	}[];
+	p: number;
+	size?: number;
 	children?: string;
 }) {
-	const p = vals.reduce((total, { reverse, weight, current, max }) => {
-		if (current === undefined || current === -1 || isNaN(current)) return total;
-		return total + (weight ?? 1) * (reverse ? 1 - current / max : current / max);
-	}, 0);
-
 	const rounded = round(p * 100);
 
 	return (
-		<Box>
-			<Typography fontSize={11} width={`${rounded}%`} bgcolor={`hsl(${p * 120}, 50%, 50%)`}>
+		<Box border={1} borderColor='divider'>
+			<Typography
+				fontSize={size}
+				width={`${rounded}%`}
+				sx={{ textWrap: 'nowrap' }}
+				bgcolor={`hsl(${p * 120}, 50%, 50%)`}>
 				&nbsp;{children ?? `${rounded}%`}
 			</Typography>
 		</Box>

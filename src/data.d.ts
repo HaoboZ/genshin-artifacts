@@ -48,7 +48,7 @@ export interface Tier {
 	key: string;
 	role: string;
 	weapon: (WeaponKey | WeaponKey[])[];
-	artifact: ArtifactSetKey[];
+	artifact: (ArtifactSetKey | ArtifactSetKey[])[];
 	mainStat: {
 		sands: StatKey | StatKey[];
 		goblet: StatKey | StatKey[];

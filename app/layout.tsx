@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang='en' className={roboto.className}>
 			<head>
-				<title>Template</title>
+				<title>Genshin Artifacts</title>
 				<meta charSet='utf-8' />
 				<meta
 					name='viewport'

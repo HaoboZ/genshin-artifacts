@@ -1,3 +1,5 @@
+// https://frzyc.github.io/genshin-optimizer/#/doc
+
 export interface IGOOD {
 	format: 'GOOD'; // A way for people to recognize this format.
 	version: number; // GOOD API version.
@@ -179,6 +181,7 @@ export type CharacterKey =
 	| 'Traveler' //Lumine
 	| 'Venti' //Venti
 	| 'Wanderer' //Wanderer
+	| 'Wriothesley' //Wriothesley
 	| 'Xiangling' //Xiangling
 	| 'Xiao' //Xiao
 	| 'Xingqiu' //Xingqiu

@@ -1280,13 +1280,6 @@
       "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png"
     },
-    "ApprenticesNotes": {
-      "key": "ApprenticesNotes",
-      "name": "Apprentice's Notes",
-      "rarity": 1,
-      "weaponType": "Catalyst",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_Apprentice%27s_Notes.png"
-    },
     "AquaSimulacra": {
       "key": "AquaSimulacra",
       "name": "Aqua Simulacra",
@@ -1328,13 +1321,6 @@
       "rarity": 5,
       "weaponType": "Claymore",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png"
-    },
-    "BeginnersProtector": {
-      "key": "BeginnersProtector",
-      "name": "Beginner's Protector",
-      "rarity": 1,
-      "weaponType": "Polearm",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Beginner%27s_Protector.png"
     },
     "BlackcliffAgate": {
       "key": "BlackcliffAgate",
@@ -1468,13 +1454,6 @@
       "rarity": 4,
       "weaponType": "Polearm",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png"
-    },
-    "DullBlade": {
-      "key": "DullBlade",
-      "name": "Dull Blade",
-      "rarity": 1,
-      "weaponType": "Sword",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Weapon_Dull_Blade.png"
     },
     "ElegyForTheEnd": {
       "key": "ElegyForTheEnd",
@@ -1665,13 +1644,6 @@
       "weaponType": "Sword",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png"
     },
-    "HuntersBow": {
-      "key": "HuntersBow",
-      "name": "Hunter's Bow",
-      "rarity": 1,
-      "weaponType": "Bow",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png"
-    },
     "HuntersPath": {
       "key": "HuntersPath",
       "name": "Hunter's Path",
@@ -1685,13 +1657,6 @@
       "rarity": 4,
       "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png"
-    },
-    "IronPoint": {
-      "key": "IronPoint",
-      "name": "Iron Point",
-      "rarity": 2,
-      "weaponType": "Polearm",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Iron_Point.png"
     },
     "IronSting": {
       "key": "IronSting",
@@ -1875,26 +1840,12 @@
       "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png"
     },
-    "OldMercsPal": {
-      "key": "OldMercsPal",
-      "name": "Old Merc's Pal",
-      "rarity": 2,
-      "weaponType": "Claymore",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Old_Merc%27s_Pal.png"
-    },
     "OtherworldlyStory": {
       "key": "OtherworldlyStory",
       "name": "Otherworldly Story",
       "rarity": 3,
       "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png"
-    },
-    "PocketGrimoire": {
-      "key": "PocketGrimoire",
-      "name": "Pocket Grimoire",
-      "rarity": 2,
-      "weaponType": "Catalyst",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Pocket_Grimoire.png"
     },
     "PolarStar": {
       "key": "PolarStar",
@@ -2106,13 +2057,6 @@
       "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png"
     },
-    "SeasonedHuntersBow": {
-      "key": "SeasonedHuntersBow",
-      "name": "Seasoned Hunter's Bow",
-      "rarity": 2,
-      "weaponType": "Bow",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png"
-    },
     "SerpentSpine": {
       "key": "SerpentSpine",
       "name": "Serpent Spine",
@@ -2126,13 +2070,6 @@
       "rarity": 3,
       "weaponType": "Bow",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png"
-    },
-    "SilverSword": {
-      "key": "SilverSword",
-      "name": "Silver Sword",
-      "rarity": 2,
-      "weaponType": "Sword",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Silver_Sword.png"
     },
     "SkyriderGreatsword": {
       "key": "SkyriderGreatsword",
@@ -2399,13 +2336,6 @@
       "rarity": 4,
       "weaponType": "Catalyst",
       "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png"
-    },
-    "WasterGreatsword": {
-      "key": "WasterGreatsword",
-      "name": "Waster Greatsword",
-      "rarity": 1,
-      "weaponType": "Claymore",
-      "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png"
     },
     "WavebreakersFin": {
       "key": "WavebreakersFin",

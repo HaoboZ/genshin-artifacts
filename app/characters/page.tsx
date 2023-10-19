@@ -1,8 +1,9 @@
 'use client';
 import Page from '@/components/page';
-import data from '@/public/data.json';
+import PageSection from '@/components/page/section';
+import useParamState from '@/src/hooks/useParamState';
+import { data } from '@/src/resources/data';
 import { Grid } from '@mui/material';
-import { useState } from 'react';
 import CharacterCard from './characterCard';
 import ElementFilter from './elementFilter';
 
@@ -12,20 +13,22 @@ click on weapon/artifact
 	may go to artifact/weapon page with url param?
 */
 export default function Characters() {
-	const [element, setElement] = useState('');
+	const [element, setElement] = useParamState('element', '');
 
 	return (
-		<Page noSsr title='Characters'>
+		<Page noSsr hideBack title='Characters'>
 			<ElementFilter element={element} setElement={setElement} />
-			<Grid container spacing={2} justifyContent='center'>
-				{Object.values(data.characters)
-					.filter((character) => !element || character.element === element)
-					.map((character) => (
-						<Grid key={character.key} item>
-							<CharacterCard character={character} />
-						</Grid>
-					))}
-			</Grid>
+			<PageSection title={element || 'All'}>
+				<Grid container spacing={2} py={1} justifyContent='center'>
+					{Object.values(data.characters)
+						.filter((character) => !element || character.element === element)
+						.map((character) => (
+							<Grid key={character.key} item>
+								<CharacterCard character={character} />
+							</Grid>
+						))}
+				</Grid>
+			</PageSection>
 		</Page>
 	);
 }

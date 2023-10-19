@@ -619,6 +619,7 @@ const artifactOrder = Object.keys(artifactLocation);
 	});
 	const weapons = keyBy(
 		weaponsData
+			.filter(({ rarity }) => rarity >= 3)
 			.map((weapon) => {
 				const weaponName = weapon.name
 					.replaceAll(' ', '_')

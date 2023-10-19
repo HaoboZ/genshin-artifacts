@@ -1,24 +1,28 @@
-import type { SxProps } from '@mui/material';
+import type { BoxProps } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 import type { DCharacter } from '../../data';
 import Image from '../image';
 
 export default function CharacterImage({
 	character,
 	size = 50,
-	sx,
+	...props
 }: {
 	character: DCharacter;
 	size?: number;
-	sx?: SxProps;
-}) {
+} & BoxProps) {
 	return (
-		<Image
-			alt={character.name}
-			width={size}
-			height={size}
-			src={character.image}
-			className={`rarity${character.rarity}`}
-			sx={{ borderRadius: 1, ...sx }}
-		/>
+		<Tooltip followCursor title={character.name}>
+			<Box height={size} {...props}>
+				<Image
+					alt={character.name}
+					width={size}
+					height={size}
+					src={character.image}
+					className={`rarity${character.rarity}`}
+					sx={{ borderRadius: 1 }}
+				/>
+			</Box>
+		</Tooltip>
 	);
 }

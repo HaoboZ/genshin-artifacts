@@ -1,5 +1,5 @@
 import ArtifactImage from '@/components/images/artifact';
-import data from '@/public/data.json';
+import { data } from '@/src/resources/data';
 import { Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { groupBy, map, sortBy } from 'lodash';
 
@@ -32,7 +32,7 @@ export default function ArtifactFilter({
 								key={artifact.key}
 								value={artifact.key}
 								sx={{ p: 0, height: 50 }}>
-								<ArtifactImage artifact={artifact} type='flower' />
+								<ArtifactImage artifactSet={artifact} type='flower' />
 							</ToggleButton>
 						))}
 					</ToggleButtonGroup>

@@ -16,7 +16,7 @@ export default function Page({
 	children,
 }: {
 	noSsr?: boolean;
-	title?: string;
+	title?: ReactNode;
 	titleProps?: PageTitleProps;
 	hideBack?: boolean;
 	backProps?: PageBackProps;

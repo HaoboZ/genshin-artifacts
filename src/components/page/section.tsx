@@ -1,4 +1,4 @@
-import type { TypographyProps } from '@mui/material';
+import type { BoxProps, TypographyProps } from '@mui/material';
 import { Box, Divider, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
 import type { ActionProps } from '../actions';
@@ -6,17 +6,19 @@ import Actions from '../actions';
 
 export default function PageSection({
 	title,
+	titleProps,
 	actions,
 	children,
 	max,
 	...props
 }: {
 	title?: string;
+	titleProps?: TypographyProps;
 	actions?: ActionProps[] | ReactNode;
 	max?: number;
-} & TypographyProps) {
+} & BoxProps) {
 	return (
-		<Box>
+		<Box {...props}>
 			<Box
 				display='flex'
 				justifyContent='space-between'
@@ -25,7 +27,7 @@ export default function PageSection({
 					xs: 1,
 					sm: 0,
 				}}>
-				<Typography variant='h4' py={1} {...props}>
+				<Typography variant='h4' py={1} {...titleProps}>
 					{title}
 				</Typography>
 				{Array.isArray(actions) ? <Actions items={actions} max={max} /> : actions}

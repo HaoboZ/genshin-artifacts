@@ -2,63 +2,78 @@
 import ArtifactImage from '@/components/images/artifact';
 import CharacterImage from '@/components/images/character';
 import Page from '@/components/page';
-import data from '@/public/data.json';
+import { PageLinkComponent } from '@/components/page/link';
+import PageSection from '@/components/page/section';
+import strArrMatch from '@/src/helpers/strArrMatch';
+import useParamState from '@/src/hooks/useParamState';
+import { useModal } from '@/src/providers/modal';
+import { data } from '@/src/resources/data';
+import { artifactOrder } from '@/src/resources/stats';
+import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Box, Grid } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import { filter, orderBy } from 'lodash';
-import { useState } from 'react';
-import { tier } from '../tier';
 import ArtifactCard from './artifactCard';
 import ArtifactFilter from './artifactFilter';
+import ArtifactModal from './artifactModal';
+import BestInSlot from './bestInSlot';
 
-/*
-click artifact to show who best can equip it ranked by character I guess? and compares with current equip
-*/
 export default function Artifacts() {
+	const { showModal } = useModal();
+
 	const good = useAppSelector(({ good }) => good);
 
-	const [artifactSet, setArtifactSet] = useState('');
-
-	const content = artifactSet
-		? filter(tier, (character) => character.artifact.indexOf(artifactSet as any) === 0).map(
-				(character) => (
-					<CharacterImage
-						key={character.key}
-						character={data.characters[character.key]}
-						sx={{ mr: 1 }}
-					/>
-				),
-		  )
-		: orderBy(data.artifacts, 'order').map((artifact) => (
-				<Box key={artifact.key}>
-					<ArtifactImage artifact={artifact} type='flower' />
-					{filter(
-						tier,
-						(character) => character.artifact.indexOf(artifact.key as any) === 0,
-					).map((character) => (
-						<CharacterImage
-							key={character.key}
-							character={data.characters[character.key]}
-							sx={{ ml: 1 }}
-						/>
-					))}
-				</Box>
-		  ));
+	const [artifactSet, setArtifactSet] = useParamState('set', '');
 
 	return (
 		<Page noSsr title='Artifacts'>
 			<ArtifactFilter artifactSet={artifactSet} setArtifactSet={setArtifactSet} />
-			{content}
+			<PageSection title='Best in Slot'>
+				{artifactSet ? (
+					<BestInSlot artifactSet={artifactSet as any} />
+				) : (
+					orderBy(data.artifacts, 'order', 'desc').map((artifact) => (
+						<Stack key={artifact.key} direction='row'>
+							<ArtifactImage
+								artifactSet={artifact}
+								type='flower'
+								mr={1}
+								sx={{ ':hover': { cursor: 'pointer' } }}
+								onClick={() => setArtifactSet(artifact.key)}
+							/>
+							{filter(tier, (character) =>
+								strArrMatch(character.artifact[0], artifact.key),
+							).map(({ key }) => (
+								<CharacterImage
+									key={key}
+									character={data.characters[key]}
+									component={PageLinkComponent}
+									//@ts-ignore
+									href={`characters/${key}`}
+								/>
+							))}
+						</Stack>
+					))
+				)}
+			</PageSection>
 			{artifactSet && (
-				<Grid container spacing={1}>
-					{good.artifacts
-						.filter((artifact) => artifact.setKey === artifactSet)
-						.map((artifact, index) => (
+				<PageSection title={data.artifacts[artifactSet]?.name}>
+					<Grid container spacing={1}>
+						{orderBy(
+							good.artifacts.filter(({ setKey }) => setKey === artifactSet),
+							[({ slotKey }) => artifactOrder.indexOf(slotKey), 'level'],
+							['asc', 'desc'],
+						).map((artifact, index) => (
 							<Grid key={index} item>
-								<ArtifactCard artifact={artifact} />
+								<ArtifactCard
+									artifact={artifact}
+									sx={{ ':hover': { cursor: 'pointer' } }}
+									onClick={() => showModal(ArtifactModal, { props: { artifact } })}
+								/>
 							</Grid>
 						))}
-				</Grid>
+					</Grid>
+				</PageSection>
 			)}
 		</Page>
 	);

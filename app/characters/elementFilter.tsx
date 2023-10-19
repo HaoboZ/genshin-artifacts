@@ -1,5 +1,5 @@
 import Image from '@/components/image';
-import data from '@/public/data.json';
+import { data } from '@/src/resources/data';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 export default function ElementFilter({

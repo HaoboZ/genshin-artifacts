@@ -1,11 +1,13 @@
 import CharacterImage from '@/components/images/character';
+import { PageLinkComponent } from '@/components/page/link';
 import type { DCharacter } from '@/src/data';
+import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Box, Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
+import { Stack } from '@mui/system';
 import { useMemo } from 'react';
-import { tier } from '../tier';
-import ArtifactCard from './artifactCard';
-import WeaponCard from './weaponCard';
+import CharactersArtifact from './charactersArtifact';
+import CharactersWeapon from './charactersWeapon';
 
 export default function CharacterCard({ character }: { character: DCharacter }) {
 	const good = useAppSelector(({ good }) => good);
@@ -23,18 +25,24 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 	}, [good, character]);
 
 	return (
-		<Paper sx={{ display: 'flex', alignItems: 'center', p: 1 }}>
-			<Box display='flex' flexDirection='column'>
-				<WeaponCard weapon={weapon} tier={characterTier} />
-				<ArtifactCard type='flower' artifact={flower} tier={characterTier} />
-				<ArtifactCard type='plume' artifact={plume} tier={characterTier} />
-			</Box>
-			<CharacterImage character={character} size={80} sx={{ m: 1 }} />
-			<Box display='flex' flexDirection='column'>
-				<ArtifactCard type='sands' artifact={sands} tier={characterTier} />
-				<ArtifactCard type='goblet' artifact={goblet} tier={characterTier} />
-				<ArtifactCard type='circlet' artifact={circlet} tier={characterTier} />
-			</Box>
+		<Paper
+			sx={{ display: 'flex', alignItems: 'center', p: 1, textDecoration: 'none' }}
+			component={PageLinkComponent}
+			href={`/characters/${character.key}`}>
+			<Stack spacing={0.5}>
+				<CharactersWeapon weapon={weapon} tier={characterTier} />
+				<CharactersArtifact type='flower' artifact={flower} tier={characterTier} />
+				<CharactersArtifact type='plume' artifact={plume} tier={characterTier} />
+			</Stack>
+			<Stack alignItems='center' textAlign='center' mx={1}>
+				<CharacterImage character={character} size={80} />
+				<Typography width={80}>{character.name}</Typography>
+			</Stack>
+			<Stack spacing={0.5}>
+				<CharactersArtifact type='sands' artifact={sands} tier={characterTier} />
+				<CharactersArtifact type='goblet' artifact={goblet} tier={characterTier} />
+				<CharactersArtifact type='circlet' artifact={circlet} tier={characterTier} />
+			</Stack>
 		</Paper>
 	);
 }
