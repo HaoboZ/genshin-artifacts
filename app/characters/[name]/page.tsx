@@ -56,7 +56,7 @@ export default function Character({ params }: { params: { name: string } }) {
 						<Paper sx={{ display: 'flex', p: 1 }}>
 							<WeaponImage
 								weapon={data.weapons[weapon?.key]}
-								type={character.weaponType}
+								type={character.weaponType as any}
 								size={100}
 							/>
 						</Paper>
@@ -73,7 +73,7 @@ export default function Character({ params }: { params: { name: string } }) {
 								<ArtifactCard
 									hideCharacter
 									artifact={artifact}
-									type={slot}
+									type={slot as any}
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() =>
 										showModal(CharacterArtifactModal, {

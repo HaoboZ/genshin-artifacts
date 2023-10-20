@@ -58,7 +58,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 							onClick={() => {
 								if (!confirm(`Give this artifact to ${data.characters[tier.key].name}?`))
 									return;
-								dispatch(goodActions.giveArtifact([tier.key, artifact]));
+								dispatch(goodActions.giveArtifact([tier.key as any, artifact]));
 								closeModal();
 							}}
 						/>

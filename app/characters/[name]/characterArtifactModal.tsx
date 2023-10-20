@@ -10,7 +10,7 @@ import { data } from '@/src/resources/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { Grid } from '@mui/material';
-import { orderBy } from 'lodash';
+import { capitalize, orderBy } from 'lodash';
 import ArtifactCard from '../../artifacts/artifactCard';
 
 export default function CharacterArtifactModal({
@@ -40,9 +40,16 @@ export default function CharacterArtifactModal({
 		['tier.rating', 'tier.subStat'],
 		['desc', 'desc'],
 	);
+	const artifactTier = getArtifactTier(tier, artifact);
 
 	return (
-		<ModalDialog title={data.characters[tier.key].name}>
+		<ModalDialog title={`${capitalize(type)} for ${data.characters[tier.key].name}`}>
+			{artifact && (
+				<ArtifactCard hideCharacter artifact={artifact}>
+					<PercentBar p={artifactTier.rating}>Artifact Set: %p</PercentBar>
+					<PercentBar p={artifactTier.subStat}>SubStat: %p</PercentBar>
+				</ArtifactCard>
+			)}
 			<Grid container spacing={1}>
 				{artifactsSorted.map(({ artifact, artifactTier }, index) => (
 					<Grid key={index} item xs={6} md={4}>
@@ -52,7 +59,7 @@ export default function CharacterArtifactModal({
 							onClick={() => {
 								if (!confirm(`Give this artifact to ${data.characters[tier.key].name}?`))
 									return;
-								dispatch(goodActions.giveArtifact([tier.key, artifact]));
+								dispatch(goodActions.giveArtifact([tier.key as any, artifact]));
 								closeModal();
 							}}>
 							<PercentBar p={artifactTier.rating}>Artifact Set: %p</PercentBar>

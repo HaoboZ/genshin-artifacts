@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { round } from 'lodash';
+import type { ReactNode } from 'react';
 
 export function combinePercents(...vals: { percent: number; weight: number }[]) {
 	return vals.reduce((total, { percent, weight }) => {
@@ -15,7 +16,7 @@ export default function PercentBar({
 }: {
 	p: number;
 	size?: number;
-	children?: string;
+	children?: ReactNode;
 }) {
 	const rounded = round(p * 100);
 
