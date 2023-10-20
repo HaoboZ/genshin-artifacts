@@ -1,7 +1,7 @@
 import ArtifactImage from '@/components/images/artifact';
 import PercentBar, { combinePercents } from '@/components/percentBar';
 import type { Tier } from '@/src/data';
-import type { IArtifact } from '@/src/good';
+import type { IArtifact, SlotKey } from '@/src/good';
 import getArtifactTier from '@/src/helpers/getArtifactTier';
 import { data } from '@/src/resources/data';
 import { Box } from '@mui/material';
@@ -11,7 +11,7 @@ export default function CharactersArtifact({
 	artifact,
 	tier,
 }: {
-	type: 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
+	type: SlotKey;
 	artifact: IArtifact;
 	tier: Tier;
 }) {

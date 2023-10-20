@@ -7,11 +7,6 @@ import { Grid } from '@mui/material';
 import CharacterCard from './characterCard';
 import ElementFilter from './elementFilter';
 
-/*
-click on weapon/artifact
-	show inventory to select or add new equip, sorted by best option
-	may go to artifact/weapon page with url param?
-*/
 export default function Characters() {
 	const [element, setElement] = useParamState('element', '');
 

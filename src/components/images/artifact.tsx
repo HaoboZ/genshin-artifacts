@@ -1,9 +1,9 @@
-import type { BoxProps } from '@mui/material';
-import { Box, Tooltip, Typography } from '@mui/material';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip, Typography } from '@mui/material';
+import Image from 'next/image';
 import type { DArtifact } from '../../data';
-import type { IArtifact } from '../../good';
+import type { IArtifact, SlotKey } from '../../good';
 import { data } from '../../resources/data';
-import Image from '../image';
 
 const images = {
 	flower: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Icon_Flower_of_Life.png',
@@ -17,50 +17,69 @@ const images = {
 export default function ArtifactImage({
 	artifact,
 	hideCharacter,
+	hideLevel,
 	artifactSet,
 	type,
 	size = 50,
+	sx,
 	...props
 }: {
 	artifact?: IArtifact;
 	hideCharacter?: boolean;
+	hideLevel?: boolean;
 	artifactSet?: DArtifact;
-	type?: 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
+	type?: SlotKey;
 	size?: number;
-} & BoxProps) {
+} & AvatarProps) {
 	let character;
 	if (artifact) {
 		artifactSet = data.artifacts[artifact.setKey];
 		type = artifact.slotKey;
 		if (!hideCharacter) character = data.characters[artifact.location];
 	}
+	const scale = size * 0.4;
+	const offset = size * 0.6;
 
 	return (
 		<Tooltip followCursor title={artifactSet?.name}>
-			<Box height={size} position='relative' {...props}>
+			<Avatar
+				variant='rounded'
+				sx={{ width: size, height: size, position: 'relative', ...sx }}
+				{...props}>
 				<Image
 					alt={artifactSet?.name ?? 'artifact'}
 					src={artifactSet?.[type] ?? artifactSet?.circlet ?? images[type]}
 					width={size}
 					height={size}
 					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}
-					sx={{ borderRadius: 1 }}
 				/>
-				{artifact && (
+				{!hideLevel && artifact && (
 					<Typography position='absolute' top={0} left={0}>
 						&nbsp;{artifact.level}
 					</Typography>
 				)}
 				{character && (
-					<Image
-						alt={character.name}
-						src={character.image}
-						width={size * 0.4}
-						height={size * 0.4}
-						sx={{ position: 'absolute', left: size * 0.6, top: size * 0.6 }}
-					/>
+					<Avatar
+						variant='rounded'
+						sx={{
+							width: scale,
+							height: scale,
+							position: 'absolute',
+							left: offset,
+							top: offset,
+							border: 1,
+							borderColor: 'white',
+						}}>
+						<Image
+							alt={character.name}
+							width={scale}
+							height={scale}
+							src={character.image}
+							className={`rarity${character.rarity}`}
+						/>
+					</Avatar>
 				)}
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

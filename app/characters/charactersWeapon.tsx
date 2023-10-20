@@ -16,7 +16,7 @@ export default function CharactersWeapon({ weapon, tier }: { weapon: IWeapon; ti
 	return (
 		<Box>
 			<WeaponImage weapon={weaponData} type={data.characters[tier.key].weaponType as any} />
-			<PercentBar p={1 - tierIndex / tier.weapon.length} />
+			<PercentBar p={weapon && tierIndex !== -1 ? 1 - tierIndex / tier.weapon.length : 0} />
 		</Box>
 	);
 }

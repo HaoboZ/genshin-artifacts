@@ -10,6 +10,7 @@ export interface IGOOD {
 }
 
 export interface IArtifact {
+	id?: string;
 	setKey: ArtifactSetKey; //e.g. "GladiatorsFinale"
 	slotKey: SlotKey; //e.g. "plume"
 	level: number; //0-20 inclusive
@@ -28,6 +29,7 @@ export interface ISubstat {
 export type SlotKey = 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';
 
 export interface IWeapon {
+	id?: string;
 	key: WeaponKey; //"CrescentPike"
 	level: number; //1-90 inclusive
 	ascension: number; //0-6 inclusive. need to disambiguate 80/90 or 80/80

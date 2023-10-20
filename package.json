@@ -2,7 +2,7 @@
 	"name": "genshin-artifacts",
 	"description": "Genshin Artifacts",
 	"author": "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"generate": "npx tsx generate.ts",

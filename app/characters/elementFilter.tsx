@@ -1,6 +1,6 @@
-import Image from '@/components/image';
 import { data } from '@/src/resources/data';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import Image from 'next/image';
 
 export default function ElementFilter({
 	element,

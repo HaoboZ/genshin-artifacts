@@ -1,7 +1,7 @@
-import type { BoxProps } from '@mui/material';
-import { Box, Tooltip } from '@mui/material';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
+import Image from 'next/image';
 import type { DWeapon } from '../../data';
-import Image from '../image';
 
 const images = {
 	Sword: 'https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Sword.png',
@@ -15,24 +15,27 @@ export default function WeaponImage({
 	weapon,
 	type,
 	size = 50,
+	sx,
 	...props
 }: {
 	weapon?: DWeapon;
 	type?: 'Sword' | 'Claymore' | 'Polearm' | 'Catalyst' | 'Bow';
 	size?: number;
-} & BoxProps) {
+} & AvatarProps) {
 	return (
 		<Tooltip followCursor title={weapon?.name}>
-			<Box height={size} {...props}>
+			<Avatar
+				variant='rounded'
+				sx={{ bgcolor: 'unset', width: size, height: size, ...sx }}
+				{...props}>
 				<Image
 					alt={weapon?.name ?? type ?? 'weapon'}
 					src={weapon?.image ?? images[type]}
 					width={size}
 					height={size}
 					className={`rarity${weapon?.rarity}`}
-					sx={{ borderRadius: 1 }}
 				/>
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

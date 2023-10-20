@@ -19,6 +19,8 @@ export default function PercentBar({
 }) {
 	const rounded = round(p * 100);
 
+	const text = typeof children === 'string' ? children.replaceAll('%p', `${rounded}%`) : children;
+
 	return (
 		<Box border={1} borderColor='divider'>
 			<Typography
@@ -26,7 +28,7 @@ export default function PercentBar({
 				width={`${rounded}%`}
 				sx={{ textWrap: 'nowrap' }}
 				bgcolor={`hsl(${p * 120}, 50%, 50%)`}>
-				&nbsp;{children ?? `${rounded}%`}
+				&nbsp;{text ?? `${rounded}%`}
 			</Typography>
 		</Box>
 	);

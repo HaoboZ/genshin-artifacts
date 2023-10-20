@@ -15,16 +15,12 @@ export default function getArtifactTier(
 	mainStat: boolean;
 	subStat: number;
 } {
-	if (!artifact)
-		return {
-			rating: 0,
-			rarity: false,
-			mainStat: false,
-			subStat: 0,
-		};
+	if (!artifact) return { rating: 0, rarity: false, mainStat: false, subStat: 0 };
+
+	const artifactIndex = arrDeepIndex(tier.artifact, artifact.setKey);
 
 	return {
-		rating: 1 - arrDeepIndex(tier.artifact, artifact.setKey) / tier.artifact.length,
+		rating: artifactIndex === -1 ? 0 : 1 - artifactIndex / tier.artifact.length,
 		rarity: artifact.rarity === data.artifacts[artifact.setKey].rarity,
 		mainStat: strArrMatch(tier.mainStat[artifact.slotKey], artifact.mainStatKey),
 		subStat:

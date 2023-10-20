@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { findIndex } from 'lodash';
-import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../good';
+import { nanoid } from 'nanoid';
+import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',
@@ -22,16 +22,26 @@ const goodSlice = createSlice({
 		import(state, { payload }: PayloadAction<IGOOD>) {
 			return payload;
 		},
-		addCharacter(state, { payload }: PayloadAction<ICharacter>) {
-			state.characters = [...state.characters, payload];
-		},
-		editCharacter(state, { payload }: PayloadAction<[CharacterKey, ICharacter]>) {
-			const index = findIndex(state.characters, { key: payload[0] });
-			state.characters = [...state.characters];
-			state.characters[index] = payload[1];
-		},
-		deleteCharacter(state, { payload }: PayloadAction<CharacterKey>) {
-			state.characters = state.characters.filter(({ key }) => key !== payload);
+		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
+			const characterA = payload[0];
+			const artifactA = payload[1];
+			const characterB = artifactA.location;
+			let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifactA.id);
+			if (artifactAIndex === -1) {
+				artifactA.id = nanoid();
+				artifactAIndex = state.artifacts.length;
+			}
+			const artifactBIndex = state.artifacts.findIndex(
+				({ location, slotKey }) => location === characterA && slotKey === artifactA.slotKey,
+			);
+
+			state.artifacts = [...state.artifacts];
+			if (artifactBIndex)
+				state.artifacts[artifactBIndex] = {
+					...state.artifacts[artifactBIndex],
+					location: characterB || '',
+				};
+			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			state.artifacts = [...state.artifacts, payload];

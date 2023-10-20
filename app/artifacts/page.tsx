@@ -37,8 +37,7 @@ export default function Artifacts() {
 							<ArtifactImage
 								artifactSet={artifact}
 								type='flower'
-								mr={1}
-								sx={{ ':hover': { cursor: 'pointer' } }}
+								sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
 								onClick={() => setArtifactSet(artifact.key)}
 							/>
 							{filter(tier, (character) =>
@@ -64,7 +63,7 @@ export default function Artifacts() {
 							[({ slotKey }) => artifactOrder.indexOf(slotKey), 'level'],
 							['asc', 'desc'],
 						).map((artifact, index) => (
-							<Grid key={index} item>
+							<Grid key={index} item xs={6} sm={4} md={3}>
 								<ArtifactCard
 									artifact={artifact}
 									sx={{ ':hover': { cursor: 'pointer' } }}
