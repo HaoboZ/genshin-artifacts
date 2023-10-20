@@ -12,8 +12,8 @@ export default function Main() {
 
 	return (
 		<Page noSsr title='Genshin Artifacts'>
-			<ButtonGroup>
-				<Button component='label' variant='contained'>
+			<ButtonGroup variant='contained'>
+				<Button component='label'>
 					Import
 					<input
 						hidden
@@ -31,7 +31,6 @@ export default function Main() {
 					/>
 				</Button>
 				<Button
-					variant='contained'
 					onClick={() => {
 						const a = document.createElement('a');
 						a.href = URL.createObjectURL(
@@ -46,9 +45,7 @@ export default function Main() {
 					}}>
 					Export
 				</Button>
-				<Button variant='contained' onClick={() => dispatch(goodActions.reset())}>
-					Reset
-				</Button>
+				<Button onClick={() => dispatch(goodActions.reset())}>Reset</Button>
 			</ButtonGroup>
 			<Typography>Artifacts: {good.artifacts.length}</Typography>
 			<Typography>Weapons: {good.weapons.length}</Typography>

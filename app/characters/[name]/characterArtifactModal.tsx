@@ -37,7 +37,7 @@ export default function CharacterArtifactModal({
 		.map((artifact) => ({ artifact, artifactTier: getArtifactTier(tier, artifact) }));
 	const artifactsSorted = orderBy(
 		artifactsFiltered,
-		['tier.rating', 'tier.subStat'],
+		['artifactTier.rating', 'artifactTier.subStat'],
 		['desc', 'desc'],
 	);
 	const artifactTier = getArtifactTier(tier, artifact);

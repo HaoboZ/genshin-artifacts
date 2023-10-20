@@ -1,6 +1,32 @@
-import type { StatKey } from '../good';
+import type { SlotKey, StatKey } from '../good';
 
-export const artifactOrder = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
+export const artifactOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
+export const artifactTypeInfo: Record<SlotKey, { name: string; stats: StatKey[] }> = {
+	flower: { name: 'Flower', stats: ['hp'] },
+	plume: { name: 'Plume', stats: ['atk'] },
+	sands: { name: 'Sands', stats: ['hp_', 'atk_', 'def_', 'eleMas', 'enerRech_'] },
+	goblet: {
+		name: 'Goblet',
+		stats: [
+			'hp_',
+			'atk_',
+			'def_',
+			'eleMas',
+			'pyro_dmg_',
+			'electro_dmg_',
+			'cryo_dmg_',
+			'hydro_dmg_',
+			'dendro_dmg_',
+			'anemo_dmg_',
+			'geo_dmg_',
+			'physical_dmg_',
+		],
+	},
+	circlet: {
+		name: 'Circlet',
+		stats: ['hp_', 'atk_', 'def_', 'eleMas', 'critRate_', 'critDMG_', 'heal_'],
+	},
+};
 
 export const statName: Record<StatKey, string> = {
 	anemo_dmg_: 'Anemo DMG',
@@ -23,6 +49,19 @@ export const statName: Record<StatKey, string> = {
 	physical_dmg_: 'Physical DMG',
 	pyro_dmg_: 'Pyro DMG',
 };
+
+export const subStats = [
+	'hp',
+	'hp_',
+	'atk',
+	'atk_',
+	'def',
+	'def_',
+	'eleMas',
+	'enerRech_',
+	'critRate_',
+	'critDMG_',
+];
 
 export const stats: Record<StatKey, Record<number, number>> = {
 	hp: { 3: 287, 4: 956, 5: 1793 },

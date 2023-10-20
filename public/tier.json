@@ -477,7 +477,7 @@
 			"PrototypeAmber",
 			"FavoniusCodex"
 		],
-		"artifact": [ [ "OceanHuedClam", "MaidenBeloved" ], "Instructor" ],
+		"artifact": [ [ "MaidenBeloved", "OceanHuedClam" ], "Instructor" ],
 		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "heal_" },
 		"subStat": [ "hp_", "hp_" ]
 	},
@@ -549,7 +549,7 @@
 			"HakushinRing",
 			"SacrificialFragments"
 		],
-		"artifact": [ "TenacityOfTheMillelith", "OceanHuedClam", "MaidenBeloved" ],
+		"artifact": [ [ "OceanHuedClam", "TenacityOfTheMillelith" ], "MaidenBeloved" ],
 		"mainStat": {
 			"sands": [ "enerRech_", "hp_" ],
 			"goblet": "hp_",
@@ -774,7 +774,7 @@
 			[ "LionsRoar", "TheBlackSword" ],
 			"IronSting"
 		],
-		"artifact": [ [ "ThunderingFury", "Thundersoother" ], "GildedDreams" ],
+		"artifact": [ [ "Thundersoother", "ThunderingFury" ], "GildedDreams" ],
 		"mainStat": {
 			"sands": [ "atk_", "eleMas" ],
 			"goblet": "electro_dmg_",
@@ -1027,7 +1027,7 @@
 			"PrototypeCrescent"
 		],
 		"artifact": [
-			[ "ShimenawasReminiscence", "WanderersTroupe" ],
+			[ "WanderersTroupe", "ShimenawasReminiscence" ],
 			[ "Lavawalker", "RetracingBolide" ],
 			"GildedDreams"
 		],
@@ -1124,9 +1124,13 @@
 	"Wriothesley": {
 		"key": "Wriothesley",
 		"role": "DPS",
-		"weapon": [ "DarkIronSword" ],
-		"artifact": [ "GladiatorsFinale" ],
-		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": [ "critRate_", "critDMG_" ] },
+		"weapon": [ "CashflowSupervision" ],
+		"artifact": [ "MarechausseeHunter" ],
+		"mainStat": {
+			"sands": [ "atk_", "enerRech_" ],
+			"goblet": "cryo_dmg_",
+			"circlet": [ "critRate_", "critDMG_" ]
+		},
 		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
 	},
 	"Sucrose": {
@@ -1369,7 +1373,7 @@
 			"Whiteblind",
 			"FavoniusGreatsword"
 		],
-		"artifact": [ [ "HuskOfOpulentDreams", "RetracingBolide" ], "GladiatorsFinale" ],
+		"artifact": [ [ "RetracingBolide", "HuskOfOpulentDreams" ], "GladiatorsFinale" ],
 		"mainStat": {
 			"sands": [ "def_", "atk_" ],
 			"goblet": "geo_dmg_",

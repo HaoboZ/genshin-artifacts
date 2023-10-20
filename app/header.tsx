@@ -5,17 +5,17 @@ import { Button, ButtonGroup } from '@mui/material';
 export default function Header() {
 	return (
 		<header>
-			<ButtonGroup>
-				<Button component={PageLinkComponent} href='/' variant='contained'>
+			<ButtonGroup variant='contained'>
+				<Button component={PageLinkComponent} href='/'>
 					Home
 				</Button>
-				<Button component={PageLinkComponent} href='/characters' variant='contained'>
+				<Button component={PageLinkComponent} href='/characters'>
 					Characters
 				</Button>
-				<Button component={PageLinkComponent} href='/artifacts' variant='contained'>
+				<Button component={PageLinkComponent} href='/artifacts'>
 					Artifacts
 				</Button>
-				<Button component={PageLinkComponent} href='/weapons' variant='contained'>
+				<Button component={PageLinkComponent} href='/weapons'>
 					Weapons
 				</Button>
 			</ButtonGroup>
