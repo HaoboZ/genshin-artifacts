@@ -1,10 +1,10 @@
-import WeaponImage from '@/components/images/weapon';
 import PercentBar from '@/components/percentBar';
-import type { DWeapon, Tier } from '@/src/data';
-import type { IWeapon } from '@/src/good';
 import { data } from '@/src/resources/data';
-import { Box } from '@mui/material';
+import type { DWeapon, Tier } from '@/src/types/data';
+import type { IWeapon } from '@/src/types/good';
+import { Box } from '@mui/joy';
 import { findIndex, includes } from 'lodash';
+import WeaponImage from '../weapons/weaponImage';
 
 export default function CharactersWeapon({ weapon, tier }: { weapon: IWeapon; tier: Tier }) {
 	const weaponData = data.weapons[weapon?.key] as DWeapon;

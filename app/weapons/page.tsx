@@ -1,29 +1,32 @@
 'use client';
-import WeaponImage from '@/components/images/weapon';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
+import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
-import { data } from '@/src/resources/data';
-import { Grid } from '@mui/material';
+import { Grid } from '@mui/joy';
+import type { WeaponType } from './weaponData';
+import { weaponsInfo } from './weaponData';
+import WeaponImage from './weaponImage';
 import WeaponTypeFilter from './weaponTypeFilter';
 
 export default function Weapons() {
-	const [weaponType, setWeaponType] = useParamState('type', '');
+	const [weaponType, setWeaponType] = useParamState<WeaponType>('type', null);
 
 	return (
-		<Page title='Weapons'>
+		<PageContainer>
+			<PageTitle>Weapons</PageTitle>
 			<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
 			<PageSection title={weaponType || 'All'}>
-				<Grid container spacing={0.5} py={1}>
-					{Object.values(data.weapons)
+				<Grid container spacing={1}>
+					{Object.values(weaponsInfo)
 						.filter((weapon) => !weaponType || weapon.weaponType === weaponType)
 						.map((weapon) => (
-							<Grid key={weapon.key} item>
-								<WeaponImage weapon={weapon} size={80} />
+							<Grid key={weapon.key}>
+								<WeaponImage weapon={weapon} />
 							</Grid>
 						))}
 				</Grid>
 			</PageSection>
-		</Page>
+		</PageContainer>
 	);
 }

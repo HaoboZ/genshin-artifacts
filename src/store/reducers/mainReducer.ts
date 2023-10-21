@@ -1,13 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-type State = {
-	value: string;
-};
+type State = { value: string };
 
-const initialState: State = {
-	value: '',
-};
+const initialState: State = { value: '' };
 
 const mainSlice = createSlice({
 	name: 'main',

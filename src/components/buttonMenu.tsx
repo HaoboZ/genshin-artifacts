@@ -1,5 +1,5 @@
-import type { ButtonProps, MenuProps } from '@mui/material';
-import { Button, Menu } from '@mui/material';
+import type { ButtonProps, MenuProps } from '@mui/joy';
+import { Button, Menu } from '@mui/joy';
 import type { ReactNode } from 'react';
 import { Fragment, useState } from 'react';
 
@@ -8,10 +8,7 @@ export default function ButtonMenu({
 	menuProps,
 	renderMenu,
 	...props
-}: {
-	renderMenu: (closeMenu: () => void) => ReactNode;
-	menuProps?: MenuProps;
-} & ButtonProps) {
+}: { renderMenu: (closeMenu: () => void) => ReactNode; menuProps?: MenuProps } & ButtonProps) {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	return (

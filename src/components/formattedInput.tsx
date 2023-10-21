@@ -1,8 +1,8 @@
-import type { TextFieldProps } from '@mui/material';
-import { TextField } from '@mui/material';
+import type { InputProps } from '@mui/joy';
+import { Input } from '@mui/joy';
 import { useEffect, useState } from 'react';
 
-export default function FormattedTextField(props: TextFieldProps) {
+export default function FormattedInput(props: InputProps) {
 	const [text, setText] = useState(props.value);
 	const [focused, setFocused] = useState(false);
 
@@ -11,7 +11,7 @@ export default function FormattedTextField(props: TextFieldProps) {
 	}, [focused, props.value]);
 
 	return (
-		<TextField
+		<Input
 			{...props}
 			value={text}
 			onFocus={(e) => {

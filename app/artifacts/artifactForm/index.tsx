@@ -1,0 +1,141 @@
+import AutocompleteField from '@/components/fields/autocomplete';
+import InputField from '@/components/fields/input';
+import SelectField from '@/components/fields/select';
+import { Button, Grid, Option } from '@mui/joy';
+import { useFormikContext } from 'formik';
+import { clamp } from 'lodash';
+import {
+	artifactSetsInfo,
+	artifactSlotInfo,
+	artifactSlotOrder,
+	statName,
+	statsMax,
+	subStats,
+} from '../artifactData';
+import ArtifactImage from '../artifactImage';
+
+export default function ArtifactForm() {
+	const { handleSubmit, values, setFieldValue } = useFormikContext();
+
+	const artifactSet = artifactSetsInfo[values.setKey];
+
+	return (
+		<Grid container spacing={1} my={1}>
+			<Grid xs={6}>
+				<AutocompleteField
+					autoHighlight
+					disableClearable
+					name='setKey'
+					label='Set'
+					options={Object.keys(artifactSetsInfo)}
+					getOptionLabel={(set) => artifactSetsInfo[set]?.name}
+					onChange={(e, value) => {
+						const rarity = artifactSetsInfo[value].rarity;
+						setFieldValue('rarity', rarity);
+						setFieldValue('level', rarity * 4);
+					}}
+				/>
+			</Grid>
+			<Grid xs={6} />
+			<Grid xs={3}>
+				<SelectField
+					name='slotKey'
+					label='Type'
+					onChange={(e, value) => {
+						setFieldValue('mainStatKey', artifactSlotInfo[value].stats[0]);
+					}}>
+					{artifactSlotOrder.map((key) => (
+						<Option key={key} value={key}>
+							{artifactSlotInfo[key].name}
+						</Option>
+					))}
+				</SelectField>
+			</Grid>
+			<Grid xs={3}>
+				<SelectField
+					name='mainStatKey'
+					label='Main Stat'
+					disabled={values.slotKey === 'flower' || values.slotKey === 'plume'}>
+					{artifactSlotInfo[values.slotKey].stats.map((key) => (
+						<Option key={key} value={key}>
+							{statName[key]}
+						</Option>
+					))}
+				</SelectField>
+			</Grid>
+			<Grid xs={3}>
+				<SelectField
+					name='rarity'
+					label='Rarity'
+					onChange={(e, rarity) => {
+						setFieldValue('level', rarity * 4);
+					}}>
+					{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
+						<Option key={rarity} value={rarity}>
+							{rarity}*
+						</Option>
+					))}
+				</SelectField>
+			</Grid>
+			<Grid xs={3}>
+				<InputField
+					name='level'
+					label='Level'
+					type='number'
+					onChange={({ target }) => {
+						setFieldValue('level', clamp(+target.value, 1, artifactSet.rarity * 4));
+					}}
+				/>
+			</Grid>
+			<Grid xs='auto'>
+				<ArtifactImage artifact={values} size={150} />
+			</Grid>
+			<Grid xs>
+				{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
+					<SelectField
+						key={index}
+						name={`substats.${index}.key`}
+						size='sm'
+						placeholder={`SubStat ${index + 1}`}
+						onChange={(e, subStat) => {
+							const substats = [...values.substats];
+							if (!subStat) substats.splice(index, 1);
+							else substats[index] = { key: subStat, value: 0 };
+							setFieldValue('substats', substats);
+							return false;
+						}}>
+						<Option value=''>None</Option>
+						{subStats.map((subStat) => (
+							<Option key={subStat} value={subStat}>
+								{statName[subStat]}
+							</Option>
+						))}
+					</SelectField>
+				))}
+			</Grid>
+			<Grid xs>
+				{[...Array(values.substats.length)].map((_, index) => (
+					<InputField
+						key={index}
+						name={`substats.${index}.value`}
+						size='sm'
+						type='number'
+						onChange={({ target }) => {
+							const substats = [...values.substats];
+							const { key } = values.substats[index];
+							substats[index] = {
+								key,
+								value: clamp(+target.value, 0, statsMax[key][values.rarity]),
+							};
+							setFieldValue('substats', substats);
+							return false;
+						}}
+					/>
+				))}
+			</Grid>
+			<Grid xs={12}>
+				<Button onClick={handleSubmit}>Save</Button>
+			</Grid>
+		</Grid>
+	);
+}

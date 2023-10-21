@@ -1,12 +1,12 @@
-import ArtifactImage from '@/components/images/artifact';
-import WeaponImage from '@/components/images/weapon';
+import ChipArray from '@/components/chipArray';
 import PageSection from '@/components/page/section';
-import StatChips from '@/components/statChips';
-import type { Tier } from '@/src/data';
 import makeArray from '@/src/helpers/makeArray';
 import { data } from '@/src/resources/data';
-import { AvatarGroup, Stack, Typography } from '@mui/material';
+import type { Tier } from '@/src/types/data';
+import { AvatarGroup, Stack, Typography } from '@mui/joy';
 import { flatten } from 'lodash';
+import ArtifactImage from '../../artifacts/artifactImage';
+import WeaponImage from '../../weapons/weaponImage';
 
 export default function CharacterTier({ tier }: { tier: Tier }) {
 	return (
@@ -36,10 +36,10 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 						</AvatarGroup>
 					))}
 				</Stack>
-				<StatChips name='Sands' statArr={tier.mainStat.sands} />
-				<StatChips name='Goblet' statArr={tier.mainStat.goblet} />
-				<StatChips name='Circlet' statArr={tier.mainStat.circlet} />
-				<StatChips name='SubStats' statArr={flatten(tier.subStat)} />
+				<ChipArray name='Sands' arr={tier.mainStat.sands} />
+				<ChipArray name='Goblet' arr={tier.mainStat.goblet} />
+				<ChipArray name='Circlet' arr={tier.mainStat.circlet} />
+				<ChipArray name='SubStats' arr={flatten(tier.subStat)} />
 			</Stack>
 		</PageSection>
 	);

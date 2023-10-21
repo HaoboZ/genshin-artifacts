@@ -1,11 +1,4 @@
-import type { ArtifactSetKey, StatKey, WeaponKey } from './good';
-
-export interface Data {
-	elements: Record<string, DElement>;
-	characters: Record<string, DCharacter>;
-	artifacts: Record<string, DArtifact>;
-	weapons: Record<string, DWeapon>;
-}
+import type { ArtifactSetKey, CharacterKey, StatKey, WeaponKey } from './good';
 
 export interface DElement {
 	key: string;
@@ -13,7 +6,7 @@ export interface DElement {
 }
 
 export interface DCharacter {
-	key: string;
+	key: CharacterKey;
 	name: string;
 	element: string;
 	weaponType: string;
@@ -22,7 +15,7 @@ export interface DCharacter {
 }
 
 export interface DArtifact {
-	key: string;
+	key: ArtifactSetKey;
 	name: string;
 	effect2Pc?: string;
 	effect4Pc?: string;
@@ -37,7 +30,7 @@ export interface DArtifact {
 }
 
 export interface DWeapon {
-	key: string;
+	key: WeaponKey;
 	name: string;
 	weaponType: string;
 	rarity: number;
@@ -45,7 +38,7 @@ export interface DWeapon {
 }
 
 export interface Tier {
-	key: string;
+	key: CharacterKey;
 	role: string;
 	weapon: (WeaponKey | WeaponKey[])[];
 	artifact: (ArtifactSetKey | ArtifactSetKey[])[];

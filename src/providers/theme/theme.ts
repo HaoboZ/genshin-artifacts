@@ -1,43 +1,33 @@
-import { colors, darkScrollbar, experimental_extendTheme } from '@mui/material';
+import { extendTheme } from '@mui/joy';
+import { Inter, Source_Code_Pro } from 'next/font/google';
 
-export default experimental_extendTheme({
-	colorSchemes: {
-		light: {
-			palette: {
-				primary: { main: colors.lightBlue['600'] },
-				secondary: { main: colors.red['900'] },
-				background: { paper: colors.grey['100'] },
-			},
-		},
-		dark: {
-			palette: {
-				primary: { main: colors.lightBlue['600'] },
-				secondary: { main: colors.red['900'] },
-				background: { paper: colors.grey['900'] },
-			},
-			// @ts-ignore
-			components: {
-				MuiCssBaseline: {
-					styleOverrides: {
-						body: darkScrollbar(),
-					},
-				},
-			},
-		},
-	},
-	typography: {
-		h1: { fontSize: 28 },
-		h2: { fontSize: 24 },
-		h3: { fontSize: 22 },
-		h4: { fontSize: 20 },
-		h5: { fontSize: 18 },
-		h6: { fontSize: 16 },
-	},
-	components: {
-		MuiAppBar: {
-			styleOverrides: {
-				root: { backgroundImage: 'none' },
-			},
-		},
+const inter = Inter({
+	subsets: ['latin'],
+	adjustFontFallback: false,
+	fallback: ['var(--joy-fontFamily-fallback)'],
+	display: 'swap',
+});
+
+const sourceCodePro = Source_Code_Pro({
+	subsets: ['latin'],
+	adjustFontFallback: false,
+	fallback: [
+		'ui-monospace',
+		'SFMono-Regular',
+		'Menlo',
+		'Monaco',
+		'Consolas',
+		'Liberation Mono',
+		'Courier New',
+		'monospace',
+	],
+	display: 'swap',
+});
+
+export default extendTheme({
+	fontFamily: {
+		body: inter.style.fontFamily,
+		display: inter.style.fontFamily,
+		code: sourceCodePro.style.fontFamily,
 	},
 });

@@ -1,21 +1,20 @@
-'use client';
-import { PageLinkComponent } from '@/components/page/link';
-import { Button, ButtonGroup } from '@mui/material';
+import { Button, ButtonGroup } from '@mui/joy';
+import Link from 'next/link';
 
 export default function Header() {
 	return (
 		<header>
-			<ButtonGroup variant='contained'>
-				<Button component={PageLinkComponent} href='/'>
+			<ButtonGroup variant='solid' color='primary'>
+				<Button component={Link} href='/'>
 					Home
 				</Button>
-				<Button component={PageLinkComponent} href='/characters'>
+				<Button component={Link} href='/characters'>
 					Characters
 				</Button>
-				<Button component={PageLinkComponent} href='/artifacts'>
+				<Button component={Link} href='/artifacts'>
 					Artifacts
 				</Button>
-				<Button component={PageLinkComponent} href='/weapons'>
+				<Button component={Link} href='/weapons'>
 					Weapons
 				</Button>
 			</ButtonGroup>

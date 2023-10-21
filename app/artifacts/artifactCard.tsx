@@ -1,41 +1,47 @@
-import ArtifactImage from '@/components/images/artifact';
+import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/subStatBar';
-import type { IArtifact, SlotKey } from '@/src/good';
-import { statName } from '@/src/resources/stats';
-import type { PaperProps } from '@mui/material';
-import { Box, Paper, Typography } from '@mui/material';
+import type { IArtifact } from '@/src/types/good';
+import type { CardProps } from '@mui/joy';
+import { Box, Card, Grid } from '@mui/joy';
+import { charactersInfo } from '../characters/characterData';
+import CharacterImage from '../characters/characterImage';
+import { statName } from './artifactData';
+import ArtifactImage from './artifactImage';
 
 export default function ArtifactCard({
 	artifact,
-	type,
-	hideCharacter,
-	sx,
 	children,
 	...props
-}: {
-	artifact: IArtifact;
-	type?: SlotKey;
-	hideCharacter?: boolean;
-} & PaperProps) {
+}: { artifact: IArtifact } & CardProps) {
 	return (
-		<Paper sx={{ p: 1, ...sx }} {...props}>
-			<Box display='flex'>
-				<ArtifactImage
-					hideCharacter={hideCharacter}
-					artifact={artifact}
-					type={type}
-					size={100}
-				/>
-				{artifact && (
-					<Box width='100%' ml={1}>
-						<Typography>{statName[artifact.mainStatKey]}</Typography>
-						{artifact.substats.map((substat) => (
-							<SubStatBar key={substat.key} substat={substat} rarity={artifact.rarity} />
-						))}
-					</Box>
-				)}
-			</Box>
-			{children}
-		</Paper>
+		<Card {...props}>
+			<Grid container>
+				<Grid xs='auto'>
+					<ArtifactImage artifact={artifact}>
+						{artifact.location && (
+							<CharacterImage
+								character={charactersInfo[artifact.location]}
+								size={40}
+								position='absolute'
+								bottom={0}
+								right={0}
+								border={1}
+							/>
+						)}
+					</ArtifactImage>
+				</Grid>
+				<Grid xs>
+					{artifact && (
+						<Box ml={1}>
+							<OverflowTypography>{statName[artifact.mainStatKey]}</OverflowTypography>
+							{artifact.substats.map((substat) => (
+								<SubStatBar key={substat.key} substat={substat} rarity={artifact.rarity} />
+							))}
+						</Box>
+					)}
+				</Grid>
+				<Grid xs={12}>{children}</Grid>
+			</Grid>
+		</Card>
 	);
 }

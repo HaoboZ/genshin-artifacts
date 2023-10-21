@@ -1,16 +1,19 @@
+'use client';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import { Breadcrumbs, Button, Typography } from '@mui/material';
+import { Breadcrumbs, Button, Typography } from '@mui/joy';
 import { startCase } from 'lodash';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEventHandler } from 'react';
 import { useMemo } from 'react';
-import useIsMobile from '../../hooks/useIsMobile';
-import PageLink, { PageLinkComponent } from './link';
+import PageLink from './link';
 
 export type PageBackProps = {
 	confirm?: boolean;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 	pathMap?: Record<number, boolean | string>;
+	homeName?: string;
+	button?: boolean;
 	backButton?: boolean;
 };
 
@@ -18,11 +21,12 @@ export default function PageBack({
 	confirm: confirmBack,
 	onClick,
 	pathMap,
+	homeName = 'Home',
+	button,
 	backButton,
 }: PageBackProps) {
 	const router = useRouter();
 	const pathname = usePathname();
-	const isMobile = useIsMobile();
 
 	const routes = useMemo(() => {
 		if (pathname === '/') return [];
@@ -33,11 +37,7 @@ export default function PageBack({
 		return paths.reduce<{ name: string; href: string }[]>((arr, name, index) => {
 			if (paths[index]) href += `/${paths[index]}`;
 			if (pathMap?.[index] !== undefined) name = pathMap[index] as string;
-			if (name)
-				arr.push({
-					name: startCase(name),
-					href: href || '/',
-				});
+			if (name) arr.push({ name: startCase(name), href: href || '/' });
 			return arr;
 		}, []);
 	}, [pathname]);
@@ -49,38 +49,41 @@ export default function PageBack({
 		if (backButton) router.back();
 	};
 
-	if (isMobile || backButton) {
-		const path = routes.at(-2);
-		if (!path) return null;
+	if (!routes.length) return;
 
+	if (backButton)
+		return (
+			<Button variant='plain' startDecorator={<ArrowBackIcon />} onClick={clickListener}>
+				Back
+			</Button>
+		);
+
+	if (button || backButton) {
+		const lastRoute = routes[routes.length - 2] ?? { name: homeName, href: '/' };
 		return (
 			<Button
-				component={backButton ? undefined : PageLinkComponent}
-				href={backButton ? undefined : path.href}
-				startIcon={<ArrowBackIcon />}
+				variant='plain'
+				startDecorator={<ArrowBackIcon />}
+				component={Link}
+				href={lastRoute.href}
 				onClick={clickListener}>
-				{backButton ? 'Back' : path.name}
+				{lastRoute.name}
 			</Button>
 		);
 	} else {
 		return (
 			<Breadcrumbs sx={{ pt: 1 }}>
-				<div />
+				<PageLink href='/' onClick={clickListener}>
+					{homeName}
+				</PageLink>
 				{routes.map(({ href, name }, index) => {
-					if (routes.length - 1 === index) {
-						return <Typography key={index}>{name}</Typography>;
-					} else {
+					if (routes.length - 1 === index) return <Typography key={index}>{name}</Typography>;
+					else
 						return (
-							<PageLink
-								key={index}
-								underline='none'
-								color='primary'
-								href={href}
-								onClick={clickListener}>
+							<PageLink key={index} href={href} onClick={clickListener}>
 								{name}
 							</PageLink>
 						);
-					}
 				})}
 			</Breadcrumbs>
 		);

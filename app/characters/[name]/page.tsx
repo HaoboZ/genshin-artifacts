@@ -1,20 +1,21 @@
 'use client';
-import CharacterImage from '@/components/images/character';
-import WeaponImage from '@/components/images/weapon';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
+import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
-import getArtifactTier from '@/src/helpers/getArtifactTier';
 import { useModal } from '@/src/providers/modal';
 import { data } from '@/src/resources/data';
 import { artifactOrder } from '@/src/resources/stats';
 import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Grid, Paper, Stack } from '@mui/material';
+import { Grid, Paper, Stack } from '@mui/joy';
 import { keyBy } from 'lodash';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ArtifactCard from '../../artifacts/artifactCard';
+import getArtifactTier from '../../artifacts/getArtifactTier';
+import WeaponImage from '../../weapons/weaponImage';
+import CharacterImage from '../characterImage';
 import CharacterArtifactModal from './characterArtifactModal';
 import CharacterTier from './tier';
 
@@ -35,9 +36,8 @@ export default function Character({ params }: { params: { name: string } }) {
 	const characterTier = tier[character.key];
 
 	return (
-		<Page
-			noSsr
-			title={
+		<PageContainer noSsr>
+			<PageTitle>
 				<Stack direction='row' spacing={1}>
 					{character.name}
 					<Image
@@ -47,17 +47,16 @@ export default function Character({ params }: { params: { name: string } }) {
 						height={30}
 					/>
 				</Stack>
-			}>
-			<CharacterImage character={character} size={100} />
+			</PageTitle>
+			<CharacterImage character={character} />
 			<CharacterTier tier={characterTier} />
 			<PageSection title='Equipped'>
 				<Grid container spacing={1}>
-					<Grid item xs={6} sm={4}>
+					<Grid xs={6} sm={4}>
 						<Paper sx={{ display: 'flex', p: 1 }}>
 							<WeaponImage
 								weapon={data.weapons[weapon?.key]}
 								type={character.weaponType as any}
-								size={100}
 							/>
 						</Paper>
 					</Grid>
@@ -69,7 +68,7 @@ export default function Character({ params }: { params: { name: string } }) {
 						);
 
 						return (
-							<Grid key={slot} item xs={6} sm={4}>
+							<Grid key={slot} xs={6} sm={4}>
 								<ArtifactCard
 									hideCharacter
 									artifact={artifact}
@@ -90,6 +89,6 @@ export default function Character({ params }: { params: { name: string } }) {
 					})}
 				</Grid>
 			</PageSection>
-		</Page>
+		</PageContainer>
 	);
 }

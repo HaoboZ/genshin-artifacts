@@ -1,54 +1,57 @@
 'use client';
-import ArtifactImage from '@/components/images/artifact';
-import CharacterImage from '@/components/images/character';
-import Page from '@/components/page';
-import { PageLinkComponent } from '@/components/page/link';
+import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
+import PageTitle from '@/components/page/title';
 import makeArray from '@/src/helpers/makeArray';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
-import { data } from '@/src/resources/data';
-import { artifactOrder } from '@/src/resources/stats';
 import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Grid, Stack } from '@mui/material';
+import type { ArtifactSetKey } from '@/src/types/good';
+import { Grid, Stack } from '@mui/joy';
 import { filter, orderBy } from 'lodash';
-import AddArtifactModal from './addArtifactModal';
+import Link from 'next/link';
+import { charactersInfo } from '../characters/characterData';
+import CharacterImage from '../characters/characterImage';
 import ArtifactCard from './artifactCard';
-import ArtifactFilter from './artifactFilter';
+import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
+import AddArtifactModal from './artifactForm/addArtifactModal';
 import ArtifactModal from './artifactModal';
+import ArtifactSetFilter from './artifactSetFilter';
+import ArtifactSetImage from './artifactSetImage';
 import BestInSlot from './bestInSlot';
 
 export default function Artifacts() {
 	const good = useAppSelector(({ good }) => good);
 	const { showModal } = useModal();
 
-	const [artifactSet, setArtifactSet] = useParamState('set', '');
+	const [artifactSet, setArtifactSet] = useParamState<ArtifactSetKey>('set', null);
 
 	return (
-		<Page noSsr title='Artifacts'>
-			<ArtifactFilter artifactSet={artifactSet} setArtifactSet={setArtifactSet} />
+		<PageContainer noSsr>
+			<PageTitle>Artifacts</PageTitle>
+			<ArtifactSetFilter artifactSet={artifactSet} setArtifactSet={setArtifactSet} />
 			<PageSection title='Best in Slot'>
 				{artifactSet ? (
-					<BestInSlot artifactSet={artifactSet as any} />
+					<BestInSlot artifactSet={artifactSet} />
 				) : (
-					orderBy(data.artifacts, 'order', 'desc').map((artifact) => (
-						<Stack key={artifact.key} direction='row'>
-							<ArtifactImage
-								artifactSet={artifact}
-								type='flower'
+					orderBy(artifactSetsInfo, 'order', 'desc').map((artifactSet) => (
+						<Stack key={artifactSet.key} direction='row'>
+							<ArtifactSetImage
+								artifactSet={artifactSet}
+								size={50}
 								sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-								onClick={() => setArtifactSet(artifact.key)}
+								onClick={() => setArtifactSet(artifactSet.key)}
 							/>
 							{filter(
 								tier,
-								(character) => makeArray(character.artifact[0])[0] === artifact.key,
+								({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key,
 							).map(({ key }) => (
 								<CharacterImage
 									key={key}
-									character={data.characters[key]}
-									component={PageLinkComponent}
-									//@ts-ignore
+									character={charactersInfo[key]}
+									size={50}
+									component={Link}
 									href={`characters/${key}`}
 								/>
 							))}
@@ -58,20 +61,20 @@ export default function Artifacts() {
 			</PageSection>
 			{artifactSet && (
 				<PageSection
-					title={data.artifacts[artifactSet]?.name}
+					title={artifactSetsInfo[artifactSet].name}
 					actions={[
 						{
 							name: 'Add',
-							onClick: () => showModal(AddArtifactModal, { props: { set: artifactSet } }),
+							onClick: () => showModal(AddArtifactModal, { props: { setKey: artifactSet } }),
 						},
 					]}>
 					<Grid container spacing={1}>
 						{orderBy(
 							good.artifacts.filter(({ setKey }) => setKey === artifactSet),
-							[({ slotKey }) => artifactOrder.indexOf(slotKey), 'level'],
+							[({ slotKey }) => artifactSlotOrder.indexOf(slotKey), 'level'],
 							['asc', 'desc'],
 						).map((artifact, index) => (
-							<Grid key={index} item xs={6} sm={4} md={3}>
+							<Grid key={index} xs={6} sm={4} md={3}>
 								<ArtifactCard
 									artifact={artifact}
 									sx={{ ':hover': { cursor: 'pointer' } }}
@@ -82,6 +85,6 @@ export default function Artifacts() {
 					</Grid>
 				</PageSection>
 			)}
-		</Page>
+		</PageContainer>
 	);
 }

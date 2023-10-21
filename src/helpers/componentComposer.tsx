@@ -1,10 +1,7 @@
 import type { ComponentType, ReactNode } from 'react';
 
 export function component<P>(component: ComponentType<P>, props?: Omit<P, 'children'>) {
-	return {
-		component,
-		props,
-	};
+	return { component, props };
 }
 
 export default function ComponentComposer({

@@ -1,5 +1,5 @@
-import { data } from '@/src/resources/data';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { elementsInfo } from '@/src/resources/data';
+import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
 
 export default function ElementFilter({
@@ -10,15 +10,12 @@ export default function ElementFilter({
 	setElement: (element: string) => void;
 }) {
 	return (
-		<ToggleButtonGroup
-			exclusive
-			value={element}
-			onChange={(e, newElement) => setElement(newElement ?? '')}>
-			<ToggleButton value=''>All</ToggleButton>
-			{Object.values(data.elements).map((element) => (
-				<ToggleButton key={element.key} value={element.key}>
+		<ToggleButtonGroup value={element} onChange={(e, newElement) => setElement(newElement)}>
+			<Button value={null}>All</Button>
+			{Object.values(elementsInfo).map((element) => (
+				<Button key={element.key} value={element.key}>
 					<Image alt={element.key} src={element.image} width={30} height={30} />
-				</ToggleButton>
+				</Button>
 			))}
 		</ToggleButtonGroup>
 	);

@@ -1,14 +1,12 @@
-import type { TooltipProps, TypographyProps } from '@mui/material';
-import { Tooltip, Typography } from '@mui/material';
+import type { TooltipProps, TypographyProps } from '@mui/joy';
+import { Tooltip, Typography } from '@mui/joy';
 import { useRef, useState } from 'react';
 import useEventListener from '../hooks/useEventListener';
 
 export default function OverflowTypography({
 	tooltipProps,
 	...props
-}: {
-	tooltipProps?: TooltipProps;
-} & TypographyProps) {
+}: { tooltipProps?: TooltipProps } & TypographyProps) {
 	const contentRef = useRef<HTMLElement>();
 
 	const [overFlowed, setOverFlowed] = useState(false);
@@ -24,11 +22,7 @@ export default function OverflowTypography({
 	);
 
 	return (
-		<Tooltip
-			arrow
-			title={props.children ?? ''}
-			disableHoverListener={!overFlowed}
-			{...tooltipProps}>
+		<Tooltip title={props.children ?? ''} disableHoverListener={!overFlowed} {...tooltipProps}>
 			<Typography ref={contentRef} noWrap {...props} />
 		</Tooltip>
 	);

@@ -1,10 +1,10 @@
-import ArtifactImage from '@/components/images/artifact';
 import PercentBar, { combinePercents } from '@/components/percentBar';
-import type { Tier } from '@/src/data';
-import type { IArtifact, SlotKey } from '@/src/good';
-import getArtifactTier from '@/src/helpers/getArtifactTier';
 import { data } from '@/src/resources/data';
-import { Box } from '@mui/material';
+import type { Tier } from '@/src/types/data';
+import type { IArtifact, SlotKey } from '@/src/types/good';
+import { Box } from '@mui/joy';
+import ArtifactImage from '../artifacts/artifactImage';
+import getArtifactTier from '../artifacts/getArtifactTier';
 
 export default function CharactersArtifact({
 	type,

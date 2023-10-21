@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/joy';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
@@ -17,13 +17,5 @@ export default function Loading({
 }) {
 	const loading = useLoading(isLoading, delay);
 
-	return (
-		<Box
-			sx={{
-				opacity: loading ? 0 : 1,
-				transition: ({ transitions }) => transitions.create('opacity'),
-			}}>
-			{children}
-		</Box>
-	);
+	return <Box sx={{ opacity: loading ? 0 : 1 }}>{children}</Box>;
 }

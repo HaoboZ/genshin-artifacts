@@ -1,4 +1,4 @@
-import _data from '@/public/data.json';
-import type { Data } from '../data';
+import type { DElement } from '../types/data';
+import data from './data.json';
 
-export const data: Data = _data as any;
+export const elementsInfo: Record<string, DElement> = data.elements;

@@ -1,13 +1,14 @@
-import type { ContainerProps } from '@mui/material';
-import { Container } from '@mui/material';
-import useIsMobile from '../../hooks/useIsMobile';
-import ScrollTop from '../scrollTop';
+import { NoSsr } from '@mui/base';
+import type { ContainerProps } from '@mui/joy';
+import { Container } from '@mui/joy';
 
-export default function PageContainer({ children, ...props }: ContainerProps) {
-	return (
-		<Container disableGutters={useIsMobile()} {...props}>
-			<ScrollTop />
-			{children}
-		</Container>
-	);
+export default function PageContainer({ noSsr, ...props }: { noSsr?: boolean } & ContainerProps) {
+	if (noSsr)
+		return (
+			<NoSsr>
+				<Container {...props} />
+			</NoSsr>
+		);
+
+	return <Container {...props} />;
 }

@@ -1,12 +1,12 @@
-import CharacterImage from '@/components/images/character';
-import { PageLinkComponent } from '@/components/page/link';
-import StatChips from '@/components/statChips';
-import type { ArtifactSetKey } from '@/src/good';
+import ChipArray from '@/components/chipArray';
 import makeArray from '@/src/helpers/makeArray';
-import { data } from '@/src/resources/data';
 import { tier } from '@/src/resources/tier';
-import { Stack } from '@mui/material';
-import { filter, flatMap, flatMapDeep, sortBy, uniq } from 'lodash';
+import type { ArtifactSetKey } from '@/src/types/good';
+import { Stack } from '@mui/joy';
+import { filter, flatMap, groupBy, sortBy, uniq } from 'lodash';
+import Link from 'next/link';
+import { charactersInfo } from '../characters/characterData';
+import CharacterImage from '../characters/characterImage';
 
 export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKey }) {
 	const characters = filter(tier, ({ artifact }) => makeArray(artifact[0])[0] === artifactSet);
@@ -17,20 +17,35 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 				{characters.map(({ key }) => (
 					<CharacterImage
 						key={key}
-						character={data.characters[key]}
-						component={PageLinkComponent}
-						//@ts-ignore
+						character={charactersInfo[key]}
+						size={50}
+						component={Link}
 						href={`characters/${key}`}
 					/>
 				))}
 			</Stack>
-			<StatChips name='Sands' statArr={sortBy(uniq(flatMap(characters, 'mainStat.sands')))} />
-			<StatChips name='Goblet' statArr={sortBy(uniq(flatMap(characters, 'mainStat.goblet')))} />
-			<StatChips
-				name='Circlet'
-				statArr={sortBy(uniq(flatMap(characters, 'mainStat.circlet')))}
+			<ChipArray name='Sands' arr={sortBy(uniq(flatMap(characters, 'mainStat.sands')))} />
+			<ChipArray name='Goblet' arr={sortBy(uniq(flatMap(characters, 'mainStat.goblet')))} />
+			<ChipArray name='Circlet' arr={sortBy(uniq(flatMap(characters, 'mainStat.circlet')))} />
+			<ChipArray
+				breadcrumbs
+				name='SubStats'
+				arr={Object.values(
+					groupBy(
+						Object.entries(
+							characters.reduce((res, { subStat }) => {
+								subStat.forEach((statArr, index) =>
+									makeArray(statArr).forEach((stat) => {
+										if (!(stat in res) || res[stat] > index) res[stat] = index;
+									}),
+								);
+								return res;
+							}, {}),
+						),
+						1,
+					),
+				).map((stat) => flatMap(stat, 0))}
 			/>
-			<StatChips name='SubStats' statArr={uniq(flatMapDeep(characters, 'subStat'))} />
 		</Stack>
 	);
 }

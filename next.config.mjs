@@ -4,6 +4,7 @@ import bundleAnalyzer from '@next/bundle-analyzer';
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+	swcMinify: true,
 	headers: async () => [
 		{
 			// matching all API routes
@@ -21,6 +22,7 @@ const nextConfig = {
 			},
 		],
 	},
+	experimental: { optimizePackageImports: [ '@mui/joy' ] },
 };
 
 const plugins = [ bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ) ];

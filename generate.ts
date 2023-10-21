@@ -1,4 +1,4 @@
-import type { ArtifactSetKey } from '@/src/good';
+import type { ArtifactSetKey } from '@/src/types/good';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
 import { camelCase, keyBy, max, pick, upperFirst } from 'lodash';

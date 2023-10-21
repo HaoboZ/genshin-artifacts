@@ -1,15 +1,15 @@
-import type { LoadingButtonProps } from '@mui/lab';
-import { LoadingButton } from '@mui/lab';
+import type { ButtonProps } from '@mui/joy';
+import { Button } from '@mui/joy';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 
-export default function AsyncButton({ onClick, ...props }: LoadingButtonProps) {
+export default function AsyncButton({ onClick, ...props }: ButtonProps) {
 	const { enqueueSnackbar } = useSnackbar();
 
 	const [loading, setLoading] = useState(false);
 
 	return (
-		<LoadingButton
+		<Button
 			loading={loading}
 			onClick={async (arg) => {
 				try {

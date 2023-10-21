@@ -1,17 +1,17 @@
 import PercentBar from '@/components/percentBar';
-import type { Tier } from '@/src/data';
-import type { IArtifact, SlotKey } from '@/src/good';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import getArtifactTier from '@/src/helpers/getArtifactTier';
 import makeArray from '@/src/helpers/makeArray';
 import { useModalControls } from '@/src/providers/modal';
 import ModalDialog from '@/src/providers/modal/dialog';
 import { data } from '@/src/resources/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import { Grid } from '@mui/material';
+import type { Tier } from '@/src/types/data';
+import type { IArtifact, SlotKey } from '@/src/types/good';
+import { Grid } from '@mui/joy';
 import { capitalize, orderBy } from 'lodash';
 import ArtifactCard from '../../artifacts/artifactCard';
+import getArtifactTier from '../../artifacts/getArtifactTier';
 
 export default function CharacterArtifactModal({
 	tier,
@@ -52,7 +52,7 @@ export default function CharacterArtifactModal({
 			)}
 			<Grid container spacing={1}>
 				{artifactsSorted.map(({ artifact, artifactTier }, index) => (
-					<Grid key={index} item xs={6} md={4}>
+					<Grid key={index} xs={6} md={4}>
 						<ArtifactCard
 							artifact={artifact}
 							sx={{ ':hover': { cursor: 'pointer' } }}

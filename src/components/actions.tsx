@@ -1,70 +1,52 @@
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-import type { ButtonBaseTypeMap, ButtonProps, MenuItemProps } from '@mui/material';
-import { ButtonGroup, MenuList } from '@mui/material';
+import type { ButtonProps, MenuItemProps } from '@mui/joy';
+import { ButtonGroup, Dropdown, Menu, MenuButton } from '@mui/joy';
 import type { MouseEventHandler, ReactNode } from 'react';
-import { useMemo } from 'react';
-import ButtonMenu from './buttonMenu';
+import { forwardRef, useMemo } from 'react';
 import AsyncButton from './loaders/asyncButton';
 import AsyncMenuItem from './loaders/asyncMenuItem';
 
 export type ActionProps = {
 	name: ReactNode;
 	onClick?: MouseEventHandler;
-	buttonProps?: ButtonProps<any>;
-	menuItemProps?: MenuItemProps<any>;
-} & ButtonBaseTypeMap['props'];
+	buttonProps?: ButtonProps;
+	menuItemProps?: MenuItemProps;
+};
 
-export default function Actions({
-	items,
-	max,
-}: {
-	items: ActionProps[];
-	// max number of buttons displayed
-	max?: number;
-}) {
+export default function Actions({ items, max }: { items: ActionProps[]; max?: number }) {
 	const [buttons, menu] = useMemo(() => {
 		const filtered = items.filter(Boolean);
 		if (!max || filtered.length <= max) return [filtered, []];
 
-		const buttons = filtered.slice(0, max);
-		const menu = filtered.slice(max);
+		const buttons = filtered.slice(0, max - 1);
+		const menu = filtered.slice(max - 1);
 		return [buttons, menu];
 	}, [items, max]);
 
-	return (
-		<ButtonGroup>
-			{buttons.map(({ name, onClick, buttonProps, ...props }, index) => (
-				<AsyncButton
-					key={index}
-					variant='outlined'
-					onClick={onClick}
-					{...buttonProps}
-					{...props}>
-					{name}
-				</AsyncButton>
-			))}
-			{Boolean(menu.length) && (
-				<ButtonMenu
-					variant='outlined'
-					renderMenu={(closeMenu) => (
-						<MenuList>
-							{menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
-								<AsyncMenuItem
-									key={index}
-									onClick={async (e) => {
-										await onClick(e);
-										closeMenu();
-									}}
-									{...menuItemProps}
-									{...props}>
-									{name}
-								</AsyncMenuItem>
-							))}
-						</MenuList>
-					)}>
-					<MoreHorizIcon />
-				</ButtonMenu>
-			)}
-		</ButtonGroup>
-	);
+	const buttonElements = buttons.map(({ name, onClick, buttonProps, ...props }, index) => (
+		<AsyncButton key={index} variant='outlined' onClick={onClick} {...buttonProps} {...props}>
+			{name}
+		</AsyncButton>
+	));
+
+	if (menu.length) buttonElements.push(<ButtonMenu key={-1} menu={menu} />);
+
+	return <ButtonGroup>{buttonElements}</ButtonGroup>;
 }
+
+const ButtonMenu = forwardRef<HTMLButtonElement, { menu: ActionProps[] }>(function ({ menu }, ref) {
+	return (
+		<Dropdown>
+			<MenuButton ref={ref} data-last-child>
+				<MoreHorizIcon />
+			</MenuButton>
+			<Menu>
+				{menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
+					<AsyncMenuItem key={index} onClick={onClick} {...menuItemProps} {...props}>
+						{name}
+					</AsyncMenuItem>
+				))}
+			</Menu>
+		</Dropdown>
+	);
+});

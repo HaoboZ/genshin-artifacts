@@ -19,10 +19,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				// styling
 				component(ThemeRegistry),
 				// visual
-				component(SnackbarProvider, {
-					preventDuplicate: true,
-					action: SnackbarAction,
-				}),
+				component(SnackbarProvider, { preventDuplicate: true, action: SnackbarAction }),
 				component(ModalProvider),
 			]}>
 			{children}

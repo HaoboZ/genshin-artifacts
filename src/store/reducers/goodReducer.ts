@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../good';
+import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',

@@ -1,13 +1,10 @@
-import CharacterImage from '@/components/images/character';
-import { PageLinkComponent } from '@/components/page/link';
-import type { DCharacter } from '@/src/data';
 import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Paper, Typography } from '@mui/material';
-import { Stack } from '@mui/system';
+import type { DCharacter } from '@/src/types/data';
+import { Card, Grid } from '@mui/joy';
+import Link from 'next/link';
 import { useMemo } from 'react';
-import CharactersArtifact from './charactersArtifact';
-import CharactersWeapon from './charactersWeapon';
+import CharacterImage from './characterImage';
 
 export default function CharacterCard({ character }: { character: DCharacter }) {
 	const good = useAppSelector(({ good }) => good);
@@ -25,24 +22,18 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 	}, [good, character]);
 
 	return (
-		<Paper
-			sx={{ display: 'flex', alignItems: 'center', p: 1, textDecoration: 'none' }}
-			component={PageLinkComponent}
-			href={`/characters/${character.key}`}>
-			<Stack spacing={0.5}>
-				<CharactersWeapon weapon={weapon} tier={characterTier} />
-				<CharactersArtifact type='flower' artifact={flower} tier={characterTier} />
-				<CharactersArtifact type='plume' artifact={plume} tier={characterTier} />
-			</Stack>
-			<Stack alignItems='center' textAlign='center' mx={1}>
-				<CharacterImage character={character} size={80} />
-				<Typography width={80}>{character.name}</Typography>
-			</Stack>
-			<Stack spacing={0.5}>
-				<CharactersArtifact type='sands' artifact={sands} tier={characterTier} />
-				<CharactersArtifact type='goblet' artifact={goblet} tier={characterTier} />
-				<CharactersArtifact type='circlet' artifact={circlet} tier={characterTier} />
-			</Stack>
-		</Paper>
+		<Card component={Link} href={`/characters/${character.key}`}>
+			<Grid container>
+				<Grid xs={12} display='flex' justifyContent='center'>
+					<CharacterImage character={character} size={80} />
+				</Grid>
+			</Grid>
+			{/*	<CharactersWeapon weapon={weapon} tier={characterTier} />*/}
+			{/*	<CharactersArtifact type='flower' artifact={flower} tier={characterTier} />*/}
+			{/*	<CharactersArtifact type='plume' artifact={plume} tier={characterTier} />*/}
+			{/*	<CharactersArtifact type='sands' artifact={sands} tier={characterTier} />*/}
+			{/*	<CharactersArtifact type='goblet' artifact={goblet} tier={characterTier} />*/}
+			{/*	<CharactersArtifact type='circlet' artifact={circlet} tier={characterTier} />*/}
+		</Card>
 	);
 }

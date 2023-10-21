@@ -1,7 +1,21 @@
-import type { SlotKey, StatKey } from '../good';
+import data from '@/src/resources/data.json';
+import type { DArtifact } from '@/src/types/data';
+import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 
-export const artifactOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
-export const artifactTypeInfo: Record<SlotKey, { name: string; stats: StatKey[] }> = {
+export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data.artifacts;
+
+export const artifactSlotImages = {
+	flower: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Icon_Flower_of_Life.png',
+	plume: 'https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Icon_Plume_of_Death.png',
+	sands: 'https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Icon_Sands_of_Eon.png',
+	goblet:
+		'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Icon_Goblet_of_Eonothem.png',
+	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
+};
+
+export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
+
+export const artifactSlotInfo: Record<SlotKey, { name: string; stats: StatKey[] }> = {
 	flower: { name: 'Flower', stats: ['hp'] },
 	plume: { name: 'Plume', stats: ['atk'] },
 	sands: { name: 'Sands', stats: ['hp_', 'atk_', 'def_', 'eleMas', 'enerRech_'] },
@@ -50,7 +64,7 @@ export const statName: Record<StatKey, string> = {
 	pyro_dmg_: 'Pyro DMG',
 };
 
-export const subStats = [
+export const subStats: StatKey[] = [
 	'hp',
 	'hp_',
 	'atk',
@@ -63,7 +77,7 @@ export const subStats = [
 	'critDMG_',
 ];
 
-export const stats: Record<StatKey, Record<number, number>> = {
+export const statsMax: Record<StatKey, Record<number, number>> = {
 	hp: { 3: 287, 4: 956, 5: 1793 },
 	hp_: { 3: 7, 4: 18.6, 5: 35 },
 	atk: { 3: 19, 4: 62, 5: 117 },
@@ -85,8 +99,4 @@ export const stats: Record<StatKey, Record<number, number>> = {
 	pyro_dmg_: undefined,
 };
 
-export const rarityWeight = {
-	3: 1.9,
-	4: 1.45,
-	5: 1.3,
-};
+export const rarityWeight = { 3: 1.9, 4: 1.45, 5: 1.3 };

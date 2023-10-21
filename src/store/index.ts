@@ -1,14 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { debounce } from 'lodash';
 import { loadState, saveState } from './persist';
-import main from './reducers/mainReducer';
 import good from './reducers/goodReducer';
+import main from './reducers/mainReducer';
 
 export const store = configureStore({
-	reducer: {
-		main,
-		good,
-	},
+	reducer: { main, good },
 	devTools: process.env.NODE_ENV === 'development',
 	preloadedState: loadState(),
 });
