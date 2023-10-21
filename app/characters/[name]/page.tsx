@@ -4,25 +4,27 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
 import { useModal } from '@/src/providers/modal';
-import { data } from '@/src/resources/data';
-import { artifactOrder } from '@/src/resources/stats';
+import { elementsInfo } from '@/src/resources/data';
 import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Grid, Paper, Stack } from '@mui/joy';
+import { Card, Grid, Stack } from '@mui/joy';
 import { keyBy } from 'lodash';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ArtifactCard from '../../artifacts/artifactCard';
+import { artifactSlotOrder } from '../../artifacts/artifactData';
 import getArtifactTier from '../../artifacts/getArtifactTier';
+import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
+import { charactersInfo } from '../characterData';
 import CharacterImage from '../characterImage';
 import CharacterArtifactModal from './characterArtifactModal';
-import CharacterTier from './tier';
+import CharacterTier from './characterTier';
 
 export default function Character({ params }: { params: { name: string } }) {
 	const { showModal } = useModal();
 
-	const character = data.characters[params.name];
+	const character = charactersInfo[params.name];
 	if (!character) notFound();
 
 	const weapon = useAppSelector(({ good }) =>
@@ -42,7 +44,7 @@ export default function Character({ params }: { params: { name: string } }) {
 					{character.name}
 					<Image
 						alt={character.element}
-						src={data.elements[character.element]?.image}
+						src={elementsInfo[character.element].image}
 						width={30}
 						height={30}
 					/>
@@ -53,14 +55,11 @@ export default function Character({ params }: { params: { name: string } }) {
 			<PageSection title='Equipped'>
 				<Grid container spacing={1}>
 					<Grid xs={6} sm={4}>
-						<Paper sx={{ display: 'flex', p: 1 }}>
-							<WeaponImage
-								weapon={data.weapons[weapon?.key]}
-								type={character.weaponType as any}
-							/>
-						</Paper>
+						<Card>
+							<WeaponImage weapon={weaponsInfo[weapon?.key]} type={character.weaponType} />
+						</Card>
 					</Grid>
-					{artifactOrder.map((slot) => {
+					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsKey[slot];
 						const { rating, rarity, mainStat, subStat } = getArtifactTier(
 							characterTier,
@@ -72,13 +71,13 @@ export default function Character({ params }: { params: { name: string } }) {
 								<ArtifactCard
 									hideCharacter
 									artifact={artifact}
-									type={slot as any}
+									slot={slot}
 									sx={{ ':hover': { cursor: 'pointer' } }}
-									onClick={() =>
+									onClick={() => {
 										showModal(CharacterArtifactModal, {
-											props: { tier: characterTier, type: slot, artifact },
-										})
-									}>
+											props: { tier: characterTier, slot, artifact },
+										});
+									}}>
 									<PercentBar p={+rarity}>Rarity: %p</PercentBar>
 									<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
 									<PercentBar p={rating}>Artifact Set: %p</PercentBar>

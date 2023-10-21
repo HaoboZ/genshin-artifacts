@@ -77,7 +77,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 							newModals.push({
 								id,
 								open: false,
-								Component: forwardRef(Component) as any,
+								Component: forwardRef(Component as any) as any,
 								modalProps,
 								props,
 								controls: controls(id),

@@ -16,6 +16,7 @@ export default function SelectField<DefaultValue>({
 				{...field}
 				{...props}
 				onChange={(e, value) => {
+					// @ts-ignore
 					if (props.onChange?.(e, value) !== false) helpers.setValue(value);
 				}}
 			/>

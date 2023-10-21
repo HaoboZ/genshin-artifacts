@@ -24,7 +24,7 @@ import EditArtifactModal from './artifactForm/editArtifactModal';
 import ArtifactImage from './artifactImage';
 import getArtifactTier from './getArtifactTier';
 
-export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
+export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref) {
 	const { showModal } = useModal();
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
@@ -46,7 +46,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 	);
 
 	return (
-		<ModalDialog minWidth='md'>
+		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>{artifactSetsInfo[artifact.setKey].name}</DialogTitle>
 			<ModalClose variant='outlined' />
 			<ButtonGroup>
@@ -66,7 +66,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 					Delete
 				</Button>
 			</ButtonGroup>
-			<Grid container>
+			<Grid container spacing={1}>
 				<Grid xs='auto'>
 					<ArtifactImage artifact={artifact} size={120}>
 						{artifact.location && (
@@ -81,14 +81,14 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 						)}
 					</ArtifactImage>
 				</Grid>
-				<Grid xs ml={1}>
+				<Grid xs>
 					<Typography>{statName[artifact.mainStatKey]}</Typography>
 					{artifact.substats.map((substat) => (
 						<SubStatBar key={substat.key} substat={substat} rarity={artifact.rarity} />
 					))}
 				</Grid>
 			</Grid>
-			<Grid container spacing={1} mt={1} sx={{ overflowY: 'scroll' }}>
+			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
 				{tiers.map(({ tier, rating, subStat }) => (
 					<Grid key={tier.key} xs={6} md={4}>
 						<ArtifactCharacterCard
@@ -104,7 +104,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 								}
 								if (!confirm(`Give this artifact to ${charactersInfo[tier.key].name}?`))
 									return;
-								dispatch(goodActions.giveArtifact([tier.key as any, artifact]));
+								dispatch(goodActions.giveArtifact([tier.key, artifact]));
 								closeModal();
 							}}
 						/>

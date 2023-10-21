@@ -12,8 +12,8 @@ export default function ChipArray({
 	breadcrumbs?: boolean;
 }) {
 	return (
-		<Stack direction='row' alignItems='center'>
-			<Typography mr={1}>{name}:</Typography>
+		<Stack direction='row' alignItems='center' spacing={1}>
+			<Typography>{name}:</Typography>
 			{breadcrumbs ? (
 				<Breadcrumbs sx={{ p: 0 }}>
 					{arr.map((subArr, index) => (
@@ -26,7 +26,7 @@ export default function ChipArray({
 				</Breadcrumbs>
 			) : (
 				<Stack direction='row' spacing={0.5}>
-					{makeArray(arr).map((stat) => (
+					{makeArray(arr).map((stat: string) => (
 						<Chip key={stat}>{statName[stat]}</Chip>
 					))}
 				</Stack>

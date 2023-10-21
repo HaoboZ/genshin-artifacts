@@ -1,13 +1,14 @@
 import PercentBar from '@/components/percentBar';
-import { data } from '@/src/resources/data';
-import type { DWeapon, Tier } from '@/src/types/data';
+import type { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import { Box } from '@mui/joy';
 import { findIndex, includes } from 'lodash';
+import { weaponsInfo } from '../weapons/weaponData';
 import WeaponImage from '../weapons/weaponImage';
+import { charactersInfo } from './characterData';
 
 export default function CharactersWeapon({ weapon, tier }: { weapon: IWeapon; tier: Tier }) {
-	const weaponData = data.weapons[weapon?.key] as DWeapon;
+	const weaponData = weaponsInfo[weapon?.key];
 
 	const tierIndex = findIndex(tier.weapon, (weaponTier) =>
 		Array.isArray(weaponTier) ? includes(weaponTier, weapon?.key) : weaponTier === weapon?.key,
@@ -15,7 +16,7 @@ export default function CharactersWeapon({ weapon, tier }: { weapon: IWeapon; ti
 
 	return (
 		<Box>
-			<WeaponImage weapon={weaponData} type={data.characters[tier.key].weaponType as any} />
+			<WeaponImage weapon={weaponData} type={charactersInfo[tier.key].weaponType} size={50} />
 			<PercentBar p={weapon && tierIndex !== -1 ? 1 - tierIndex / tier.weapon.length : 0} />
 		</Box>
 	);

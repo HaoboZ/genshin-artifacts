@@ -28,13 +28,13 @@ export default function ArtifactCharacterCard({
 
 	return (
 		<Card {...props}>
-			<Grid container>
+			<Grid container columnSpacing={1}>
 				<Grid xs='auto'>
 					<CharacterImage character={charactersInfo[tier.key]} position='relative'>
 						{currentArtifact && (
 							<ArtifactImage
 								artifact={currentArtifact}
-								size={40}
+								size={50}
 								position='absolute'
 								bottom={0}
 								right={0}
@@ -45,7 +45,7 @@ export default function ArtifactCharacterCard({
 				</Grid>
 				<Grid xs>
 					{currentArtifact && (
-						<Box ml={1}>
+						<Box>
 							<OverflowTypography>
 								{statName[currentArtifact.mainStatKey]}
 							</OverflowTypography>

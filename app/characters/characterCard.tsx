@@ -5,6 +5,8 @@ import { Card, Grid } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import CharacterImage from './characterImage';
+import CharactersArtifact from './charactersArtifact';
+import CharactersWeapon from './charactersWeapon';
 
 export default function CharacterCard({ character }: { character: DCharacter }) {
 	const good = useAppSelector(({ good }) => good);
@@ -22,18 +24,30 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 	}, [good, character]);
 
 	return (
-		<Card component={Link} href={`/characters/${character.key}`}>
-			<Grid container>
+		<Card component={Link} href={`/characters/${character.key}`} sx={{ width: 188 }}>
+			<Grid container spacing={0.5}>
 				<Grid xs={12} display='flex' justifyContent='center'>
-					<CharacterImage character={character} size={80} />
+					<CharacterImage character={character} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersWeapon weapon={weapon} tier={characterTier} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersArtifact artifact={flower} slot='flower' tier={characterTier} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersArtifact artifact={plume} slot='plume' tier={characterTier} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersArtifact artifact={sands} slot='sands' tier={characterTier} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersArtifact artifact={goblet} slot='goblet' tier={characterTier} />
+				</Grid>
+				<Grid xs={4}>
+					<CharactersArtifact artifact={circlet} slot='circlet' tier={characterTier} />
 				</Grid>
 			</Grid>
-			{/*	<CharactersWeapon weapon={weapon} tier={characterTier} />*/}
-			{/*	<CharactersArtifact type='flower' artifact={flower} tier={characterTier} />*/}
-			{/*	<CharactersArtifact type='plume' artifact={plume} tier={characterTier} />*/}
-			{/*	<CharactersArtifact type='sands' artifact={sands} tier={characterTier} />*/}
-			{/*	<CharactersArtifact type='goblet' artifact={goblet} tier={characterTier} />*/}
-			{/*	<CharactersArtifact type='circlet' artifact={circlet} tier={characterTier} />*/}
 		</Card>
 	);
 }

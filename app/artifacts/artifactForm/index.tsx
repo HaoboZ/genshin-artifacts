@@ -1,6 +1,7 @@
 import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
+import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
 import { Button, Grid, Option } from '@mui/joy';
 import { useFormikContext } from 'formik';
 import { clamp } from 'lodash';
@@ -15,7 +16,7 @@ import {
 import ArtifactImage from '../artifactImage';
 
 export default function ArtifactForm() {
-	const { handleSubmit, values, setFieldValue } = useFormikContext();
+	const { handleSubmit, values, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
 
@@ -28,9 +29,9 @@ export default function ArtifactForm() {
 					name='setKey'
 					label='Set'
 					options={Object.keys(artifactSetsInfo)}
-					getOptionLabel={(set) => artifactSetsInfo[set]?.name}
+					getOptionLabel={(set) => artifactSetsInfo[set].name}
 					onChange={(e, value) => {
-						const rarity = artifactSetsInfo[value].rarity;
+						const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
 						setFieldValue('rarity', rarity);
 						setFieldValue('level', rarity * 4);
 					}}
@@ -42,7 +43,7 @@ export default function ArtifactForm() {
 					name='slotKey'
 					label='Type'
 					onChange={(e, value) => {
-						setFieldValue('mainStatKey', artifactSlotInfo[value].stats[0]);
+						setFieldValue('mainStatKey', artifactSlotInfo[value as any as SlotKey].stats[0]);
 					}}>
 					{artifactSlotOrder.map((key) => (
 						<Option key={key} value={key}>
@@ -68,7 +69,7 @@ export default function ArtifactForm() {
 					name='rarity'
 					label='Rarity'
 					onChange={(e, rarity) => {
-						setFieldValue('level', rarity * 4);
+						setFieldValue('level', (rarity as number) * 4);
 					}}>
 					{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
 						<Option key={rarity} value={rarity}>
@@ -87,8 +88,8 @@ export default function ArtifactForm() {
 					}}
 				/>
 			</Grid>
-			<Grid xs='auto'>
-				<ArtifactImage artifact={values} size={150} />
+			<Grid xs='auto' display='flex' alignItems='center'>
+				<ArtifactImage artifact={values} size={120} />
 			</Grid>
 			<Grid xs>
 				{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
@@ -100,7 +101,7 @@ export default function ArtifactForm() {
 						onChange={(e, subStat) => {
 							const substats = [...values.substats];
 							if (!subStat) substats.splice(index, 1);
-							else substats[index] = { key: subStat, value: 0 };
+							else substats[index] = { key: subStat as StatKey, value: 0 };
 							setFieldValue('substats', substats);
 							return false;
 						}}>
@@ -134,7 +135,7 @@ export default function ArtifactForm() {
 				))}
 			</Grid>
 			<Grid xs={12}>
-				<Button onClick={handleSubmit}>Save</Button>
+				<Button onClick={(e) => handleSubmit(e as any)}>Save</Button>
 			</Grid>
 		</Grid>
 	);

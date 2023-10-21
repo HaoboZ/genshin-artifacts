@@ -14,4 +14,4 @@ export const weaponImages: Record<WeaponType, string> = {
 	Bow: 'https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Bow.png',
 };
 
-export const weaponsInfo: Record<WeaponKey, DWeapon> = data.weapons;
+export const weaponsInfo: Record<WeaponKey, DWeapon> = data.weapons as any;

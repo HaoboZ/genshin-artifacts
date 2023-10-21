@@ -2,7 +2,7 @@ import data from '@/src/resources/data.json';
 import type { DArtifact } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 
-export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data.artifacts;
+export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data.artifacts as any;
 
 export const artifactSlotImages = {
 	flower: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Icon_Flower_of_Life.png',

@@ -6,12 +6,12 @@ import { DialogTitle, ModalDialog } from '@mui/joy';
 import { Formik } from 'formik';
 import ArtifactForm from './index';
 
-export default function EditArtifactModal({ artifact }: { artifact: IArtifact }) {
+export default function EditArtifactModal({ artifact }: { artifact: IArtifact }, ref) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
 	return (
-		<ModalDialog>
+		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>Edit Artifact</DialogTitle>
 			<Formik<IArtifact>
 				initialValues={artifact}

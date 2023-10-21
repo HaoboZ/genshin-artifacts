@@ -52,6 +52,7 @@ export default function Artifacts() {
 									character={charactersInfo[key]}
 									size={50}
 									component={Link}
+									// @ts-ignore
 									href={`characters/${key}`}
 								/>
 							))}

@@ -20,6 +20,7 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 						character={charactersInfo[key]}
 						size={50}
 						component={Link}
+						// @ts-ignore
 						href={`characters/${key}`}
 					/>
 				))}
@@ -44,7 +45,7 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 						),
 						1,
 					),
-				).map((stat) => flatMap(stat, 0))}
+				).map((stat) => flatMap(stat, '0'))}
 			/>
 		</Stack>
 	);

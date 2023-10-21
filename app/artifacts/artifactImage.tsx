@@ -6,11 +6,11 @@ import { artifactSetsInfo, artifactSlotImages } from './artifactData';
 
 export default function ArtifactImage({
 	artifact,
-	type,
+	slot,
 	size = 100,
 	children,
 	...props
-}: { artifact: IArtifact; type?: SlotKey; size?: number } & BoxProps) {
+}: { artifact: IArtifact; slot?: SlotKey; size?: number } & BoxProps) {
 	const artifactSet = artifactSetsInfo[artifact?.setKey];
 
 	return (
@@ -23,8 +23,8 @@ export default function ArtifactImage({
 				position='relative'
 				{...props}>
 				<Image
-					alt={artifactSet?.name ?? type ?? 'artifact'}
-					src={artifactSet?.[type] ?? artifactSet?.circlet ?? artifactSlotImages[type]}
+					alt={artifactSet?.name ?? slot ?? 'artifact'}
+					src={artifactSet?.[artifact?.slotKey ?? slot] ?? artifactSlotImages[slot]}
 					width={size}
 					height={size}
 					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}

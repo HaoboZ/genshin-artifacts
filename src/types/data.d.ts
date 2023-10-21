@@ -1,3 +1,4 @@
+import type { WeaponType } from '@/app/weapons/weaponData';
 import type { ArtifactSetKey, CharacterKey, StatKey, WeaponKey } from './good';
 
 export interface DElement {
@@ -9,7 +10,7 @@ export interface DCharacter {
 	key: CharacterKey;
 	name: string;
 	element: string;
-	weaponType: string;
+	weaponType: WeaponType;
 	rarity: number;
 	image: string;
 }
