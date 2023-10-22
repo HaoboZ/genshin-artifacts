@@ -42,7 +42,7 @@ export default function ArtifactCard({
 						</Box>
 					)}
 				</Grid>
-				{children && <Grid xs={12}>{children}</Grid>}
+				{children}
 			</Grid>
 		</Card>
 	);

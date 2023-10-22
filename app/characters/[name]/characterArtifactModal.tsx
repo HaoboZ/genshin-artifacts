@@ -1,4 +1,3 @@
-import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import { useModal, useModalControls } from '@/src/providers/modal';
@@ -12,6 +11,7 @@ import ArtifactCard from '../../artifacts/artifactCard';
 import EditArtifactModal from '../../artifacts/artifactForm/editArtifactModal';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { charactersInfo } from '../characterData';
+import QuadBars from './quadBars';
 
 export default function CharacterArtifactModal(
 	{
@@ -71,18 +71,7 @@ export default function CharacterArtifactModal(
 			</ButtonGroup>
 			{artifact && (
 				<ArtifactCard hideCharacter artifact={artifact}>
-					<Grid item xs={6}>
-						<PercentBar p={artifactTier.rating}>Set: %p</PercentBar>
-					</Grid>
-					<Grid item xs={6}>
-						<PercentBar p={+artifactTier.rarity}>Rarity: %p</PercentBar>
-					</Grid>
-					<Grid item xs={6}>
-						<PercentBar p={+artifactTier.mainStat}>MainStat: %p</PercentBar>
-					</Grid>
-					<Grid item xs={6}>
-						<PercentBar p={artifactTier.subStat}>SubStat: %p</PercentBar>
-					</Grid>
+					<QuadBars artifactTier={artifactTier} />
 				</ArtifactCard>
 			)}
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
@@ -97,18 +86,7 @@ export default function CharacterArtifactModal(
 								dispatch(goodActions.giveArtifact([tier.key, artifact]));
 								closeModal();
 							}}>
-							<Grid item xs={6}>
-								<PercentBar p={artifactTier.rating}>Set: %p</PercentBar>
-							</Grid>
-							<Grid item xs={6}>
-								<PercentBar p={+artifactTier.rarity}>Rarity: %p</PercentBar>
-							</Grid>
-							<Grid item xs={6}>
-								<PercentBar p={+artifactTier.mainStat}>MainStat: %p</PercentBar>
-							</Grid>
-							<Grid item xs={6}>
-								<PercentBar p={artifactTier.subStat}>SubStat: %p</PercentBar>
-							</Grid>
+							<QuadBars artifactTier={artifactTier} />
 						</ArtifactCard>
 					</Grid>
 				))}

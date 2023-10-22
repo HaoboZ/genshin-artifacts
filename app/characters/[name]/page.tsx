@@ -2,7 +2,6 @@
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
-import PercentBar from '@/components/percentBar';
 import { useModal } from '@/src/providers/modal';
 import { elementsInfo } from '@/src/resources/data';
 import { tier } from '@/src/resources/tier';
@@ -20,6 +19,7 @@ import { charactersInfo } from '../characterData';
 import CharacterImage from '../characterImage';
 import CharacterArtifactModal from './characterArtifactModal';
 import CharacterTier from './characterTier';
+import QuadBars from './quadBars';
 
 export default function Character({ params }: { params: { name: string } }) {
 	const { showModal } = useModal();
@@ -63,10 +63,7 @@ export default function Character({ params }: { params: { name: string } }) {
 					</Grid>
 					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsKey[slot];
-						const { rating, rarity, mainStat, subStat } = getArtifactTier(
-							characterTier,
-							artifact,
-						);
+						const artifactTier = getArtifactTier(characterTier, artifact);
 
 						return (
 							<Grid key={slot} xs={6} sm={4}>
@@ -80,12 +77,7 @@ export default function Character({ params }: { params: { name: string } }) {
 											props: { tier: characterTier, slot, artifact },
 										});
 									}}>
-									<Grid item xs={12}>
-										<PercentBar p={+rarity}>Rarity: %p</PercentBar>
-										<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
-										<PercentBar p={rating}>Artifact Set: %p</PercentBar>
-										<PercentBar p={subStat}>SubStat: %p</PercentBar>
-									</Grid>
+									<QuadBars artifactTier={artifactTier} />
 								</ArtifactCard>
 							</Grid>
 						);
