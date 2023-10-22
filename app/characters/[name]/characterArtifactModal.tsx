@@ -1,6 +1,6 @@
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
-import { useModal, useModalControls } from '@/src/providers/modal';
+import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
@@ -27,7 +27,6 @@ export default function CharacterArtifactModal(
 ) {
 	const artifacts = useAppSelector(({ good }) => good.artifacts);
 	const dispatch = useAppDispatch();
-	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
 
 	const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);

@@ -1,7 +1,7 @@
 import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import strArrMatch from '@/src/helpers/strArrMatch';
-import { useModal, useModalControls } from '@/src/providers/modal';
+import { useModalControls } from '@/src/providers/modal';
 import { tier } from '@/src/resources/tier';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -17,7 +17,6 @@ import ArtifactImage from './artifactImage';
 import getArtifactTier from './getArtifactTier';
 
 export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref) {
-	const { showModal } = useModal();
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
