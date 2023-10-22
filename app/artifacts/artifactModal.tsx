@@ -6,21 +6,13 @@ import { tier } from '@/src/resources/tier';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
-import {
-	Button,
-	ButtonGroup,
-	DialogTitle,
-	Grid,
-	ModalClose,
-	ModalDialog,
-	Typography,
-} from '@mui/joy';
+import { DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
 import { filter, orderBy } from 'lodash';
 import { charactersInfo } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
+import ArtifactActions from './artifactActions';
 import ArtifactCharacterCard from './artifactCharacterCard';
 import { artifactSetsInfo, statName } from './artifactData';
-import EditArtifactModal from './artifactForm/editArtifactModal';
 import ArtifactImage from './artifactImage';
 import getArtifactTier from './getArtifactTier';
 
@@ -49,23 +41,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>{artifactSetsInfo[artifact.setKey].name}</DialogTitle>
 			<ModalClose variant='outlined' />
-			<ButtonGroup>
-				<Button
-					onClick={() => {
-						closeModal();
-						showModal(EditArtifactModal, { props: { artifact } });
-					}}>
-					Edit
-				</Button>
-				<Button
-					onClick={() => {
-						if (!confirm('Delete this artifact?')) return;
-						dispatch(goodActions.deleteArtifact(artifact));
-						closeModal();
-					}}>
-					Delete
-				</Button>
-			</ButtonGroup>
+			<ArtifactActions artifact={artifact} />
 			<Grid container spacing={1}>
 				<Grid xs='auto'>
 					<ArtifactImage artifact={artifact} size={120}>

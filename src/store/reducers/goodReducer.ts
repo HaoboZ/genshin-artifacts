@@ -51,6 +51,11 @@ const goodSlice = createSlice({
 			state.artifacts = [...state.artifacts];
 			if (index !== -1) state.artifacts[index] = payload;
 		},
+		removeArtifact(state, { payload }: PayloadAction<IArtifact>) {
+			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
+			state.artifacts = [...state.artifacts];
+			if (index !== -1) state.artifacts[index] = { ...payload, location: '' };
+		},
 		deleteArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			if (index !== -1) state.artifacts = state.artifacts.filter((_, i) => i !== index);

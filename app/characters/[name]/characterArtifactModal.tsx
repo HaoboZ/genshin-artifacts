@@ -5,10 +5,10 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import { Button, ButtonGroup, DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
+import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
 import { capitalize, orderBy } from 'lodash';
+import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
-import EditArtifactModal from '../../artifacts/artifactForm/editArtifactModal';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { charactersInfo } from '../characterData';
 import QuadBars from './quadBars';
@@ -52,23 +52,7 @@ export default function CharacterArtifactModal(
 				{capitalize(slot)} for {charactersInfo[tier.key].name}
 			</DialogTitle>
 			<ModalClose variant='outlined' />
-			<ButtonGroup>
-				<Button
-					onClick={() => {
-						closeModal();
-						showModal(EditArtifactModal, { props: { artifact } });
-					}}>
-					Edit
-				</Button>
-				<Button
-					onClick={() => {
-						if (!confirm('Delete this artifact?')) return;
-						dispatch(goodActions.deleteArtifact(artifact));
-						closeModal();
-					}}>
-					Delete
-				</Button>
-			</ButtonGroup>
+			<ArtifactActions artifact={artifact} />
 			{artifact && (
 				<ArtifactCard hideCharacter artifact={artifact}>
 					<QuadBars artifactTier={artifactTier} />

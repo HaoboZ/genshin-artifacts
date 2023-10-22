@@ -5,6 +5,7 @@ import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
 import { DialogTitle, ModalClose, ModalDialog } from '@mui/joy';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
+import { useMemo } from 'react';
 import { artifactSetsInfo } from '../artifactData';
 import ArtifactForm from './index';
 
@@ -14,22 +15,27 @@ export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey },
 
 	const artifactSet = artifactSetsInfo[setKey];
 
+	const initialValues = useMemo<IArtifact>(
+		() => ({
+			id: nanoid(),
+			setKey,
+			slotKey: 'flower',
+			mainStatKey: 'hp',
+			rarity: artifactSet.rarity,
+			level: artifactSet.rarity * 4,
+			substats: [],
+			location: '',
+			lock: false,
+		}),
+		[],
+	);
+
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>Add Artifact</DialogTitle>
 			<ModalClose variant='outlined' />
 			<Formik<IArtifact>
-				initialValues={{
-					id: nanoid(),
-					setKey,
-					slotKey: 'flower',
-					mainStatKey: 'hp',
-					rarity: artifactSet.rarity,
-					level: artifactSet.rarity * 4,
-					substats: [],
-					location: '',
-					lock: false,
-				}}
+				initialValues={initialValues}
 				onSubmit={(artifact) => {
 					dispatch(goodActions.addArtifact(artifact));
 					closeModal();
