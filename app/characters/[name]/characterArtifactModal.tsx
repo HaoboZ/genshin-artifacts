@@ -1,14 +1,15 @@
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
-import { useModalControls } from '@/src/providers/modal';
+import { useModal, useModalControls } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import { DialogTitle, Grid, ModalDialog } from '@mui/joy';
+import { Button, ButtonGroup, DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
 import { capitalize, orderBy } from 'lodash';
 import ArtifactCard from '../../artifacts/artifactCard';
+import EditArtifactModal from '../../artifacts/artifactForm/editArtifactModal';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { charactersInfo } from '../characterData';
 
@@ -26,6 +27,7 @@ export default function CharacterArtifactModal(
 ) {
 	const artifacts = useAppSelector(({ good }) => good.artifacts);
 	const dispatch = useAppDispatch();
+	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
 
 	const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
@@ -47,8 +49,26 @@ export default function CharacterArtifactModal(
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>
-				{capitalize(slot)} for ${charactersInfo[tier.key].name}
+				{capitalize(slot)} for {charactersInfo[tier.key].name}
 			</DialogTitle>
+			<ModalClose variant='outlined' />
+			<ButtonGroup>
+				<Button
+					onClick={() => {
+						closeModal();
+						showModal(EditArtifactModal, { props: { artifact } });
+					}}>
+					Edit
+				</Button>
+				<Button
+					onClick={() => {
+						if (!confirm('Delete this artifact?')) return;
+						dispatch(goodActions.deleteArtifact(artifact));
+						closeModal();
+					}}>
+					Delete
+				</Button>
+			</ButtonGroup>
 			{artifact && (
 				<ArtifactCard hideCharacter artifact={artifact}>
 					<PercentBar p={artifactTier.rating}>Artifact Set: %p</PercentBar>

@@ -2,7 +2,7 @@ import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
-import { DialogTitle, ModalDialog } from '@mui/joy';
+import { DialogTitle, ModalClose, ModalDialog } from '@mui/joy';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { artifactSetsInfo } from '../artifactData';
@@ -17,6 +17,7 @@ export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey },
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>Add Artifact</DialogTitle>
+			<ModalClose variant='outlined' />
 			<Formik<IArtifact>
 				initialValues={{
 					id: nanoid(),
