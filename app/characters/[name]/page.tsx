@@ -7,7 +7,7 @@ import { useModal } from '@/src/providers/modal';
 import { elementsInfo } from '@/src/resources/data';
 import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
-import { Card, Grid, Stack } from '@mui/joy';
+import { Card, Grid, Stack, Typography } from '@mui/joy';
 import { keyBy } from 'lodash';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -40,14 +40,16 @@ export default function Character({ params }: { params: { name: string } }) {
 	return (
 		<PageContainer noSsr>
 			<PageTitle>
-				<Stack direction='row' spacing={1}>
-					{character.name}
-					<Image
-						alt={character.element}
-						src={elementsInfo[character.element].image}
-						width={30}
-						height={30}
-					/>
+				<Stack direction='row' spacing={1} alignItems='center'>
+					<Typography>{character.name}</Typography>
+					{character.element !== 'None' && (
+						<Image
+							alt={character.element}
+							src={elementsInfo[character.element].image}
+							width={30}
+							height={30}
+						/>
+					)}
 				</Stack>
 			</PageTitle>
 			<CharacterImage character={character} />
@@ -78,10 +80,12 @@ export default function Character({ params }: { params: { name: string } }) {
 											props: { tier: characterTier, slot, artifact },
 										});
 									}}>
-									<PercentBar p={+rarity}>Rarity: %p</PercentBar>
-									<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
-									<PercentBar p={rating}>Artifact Set: %p</PercentBar>
-									<PercentBar p={subStat}>SubStat: %p</PercentBar>
+									<Grid item xs={12}>
+										<PercentBar p={+rarity}>Rarity: %p</PercentBar>
+										<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
+										<PercentBar p={rating}>Artifact Set: %p</PercentBar>
+										<PercentBar p={subStat}>SubStat: %p</PercentBar>
+									</Grid>
 								</ArtifactCard>
 							</Grid>
 						);
