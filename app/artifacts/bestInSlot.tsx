@@ -14,12 +14,10 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 
 	const characters = useMemo(() => {
 		const priorityIndex = priority.flat();
-		console.log(priorityIndex);
 		return sortBy(
 			filter(charactersTier, ({ artifact }) => makeArray(artifact[0])[0] === artifactSet),
 			({ key }) => {
 				const index = priorityIndex.indexOf(key);
-				console.log(key, index);
 				return index === -1 ? Infinity : index;
 			},
 		);
