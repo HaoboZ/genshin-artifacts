@@ -1,4 +1,4 @@
-import { useModalControls } from '@/src/providers/modal';
+import { useModal, useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
@@ -7,10 +7,12 @@ import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { artifactSetsInfo } from '../artifactData';
+import ArtifactModal from '../artifactModal';
 import ArtifactForm from './index';
 
 export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey }, ref) {
 	const dispatch = useAppDispatch();
+	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
 
 	const artifactSet = artifactSetsInfo[setKey];
@@ -39,6 +41,7 @@ export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey },
 				onSubmit={(artifact) => {
 					dispatch(goodActions.addArtifact(artifact));
 					closeModal();
+					showModal(ArtifactModal, { props: { artifact } });
 				}}>
 				<ArtifactForm />
 			</Formik>

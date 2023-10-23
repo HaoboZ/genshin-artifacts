@@ -24,7 +24,10 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 	}, [good, character]);
 
 	return (
-		<Card component={Link} href={`/characters/${character.key}`} sx={{ width: 188 }}>
+		<Card
+			component={Link}
+			href={`/characters/${character.key}`}
+			sx={{ width: 188, textDecoration: 'none' }}>
 			<Grid container spacing={0.5}>
 				<Grid xs={12} display='flex' justifyContent='center'>
 					<CharacterImage character={character} />

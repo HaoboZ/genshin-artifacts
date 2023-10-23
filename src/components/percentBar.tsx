@@ -1,5 +1,4 @@
 import { LinearProgress, Typography } from '@mui/joy';
-import { round } from 'lodash';
 import type { ReactNode } from 'react';
 
 export function combinePercents(...vals: { percent: number; weight: number }[]) {
@@ -10,7 +9,7 @@ export function combinePercents(...vals: { percent: number; weight: number }[]) 
 }
 
 export default function PercentBar({ p, children }: { p: number; children?: ReactNode }) {
-	const rounded = round(p * 100);
+	const rounded = Math.round(p * 100);
 
 	const text = typeof children === 'string' ? children.replaceAll('%p', `${rounded}%`) : children;
 

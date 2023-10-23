@@ -1,17 +1,29 @@
 import ChipArray from '@/components/chipArray';
 import makeArray from '@/src/helpers/makeArray';
+import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import { filter, flatMap, groupBy, sortBy, uniq } from 'lodash';
 import Link from 'next/link';
+import { useMemo } from 'react';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 
 export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKey }) {
-	const characters = filter(
-		charactersTier,
-		({ artifact }) => makeArray(artifact[0])[0] === artifactSet,
-	);
+	const priority = useAppSelector(({ main }) => main.priority);
+
+	const characters = useMemo(() => {
+		const priorityIndex = priority.flat();
+		console.log(priorityIndex);
+		return sortBy(
+			filter(charactersTier, ({ artifact }) => makeArray(artifact[0])[0] === artifactSet),
+			({ key }) => {
+				const index = priorityIndex.indexOf(key);
+				console.log(key, index);
+				return index === -1 ? Infinity : index;
+			},
+		);
+	}, [artifactSet, priority]);
 
 	return (
 		<Stack spacing={1}>

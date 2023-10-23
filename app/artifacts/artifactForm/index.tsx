@@ -91,7 +91,7 @@ export default function ArtifactForm() {
 				/>
 			</Grid>
 			<Grid xs='auto' display='flex' alignItems='center'>
-				<ArtifactImage artifact={values} size={120} />
+				<ArtifactImage artifact={values} />
 			</Grid>
 			<Grid xs>
 				{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (

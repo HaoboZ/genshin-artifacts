@@ -1,7 +1,7 @@
 import type { ArtifactSetKey } from '@/src/types/good';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
-import { camelCase, keyBy, max, pick, upperFirst } from 'lodash';
+import { camelCase, keyBy, pick, upperFirst } from 'lodash';
 
 const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png',
@@ -600,7 +600,7 @@ const artifactOrder = Object.keys(artifactLocation);
 			return {
 				key,
 				...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
-				rarity: max(artifact.rarityList),
+				rarity: Math.max(...artifact.rarityList),
 				order: artifactOrder.indexOf(key),
 				group: artifactLocation[key],
 				flower,

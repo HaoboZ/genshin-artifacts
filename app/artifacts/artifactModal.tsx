@@ -42,7 +42,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 			<ArtifactActions artifact={artifact} />
 			<Grid container spacing={1}>
 				<Grid xs='auto'>
-					<ArtifactImage artifact={artifact} size={120}>
+					<ArtifactImage artifact={artifact}>
 						{artifact.location && (
 							<CharacterImage
 								character={charactersInfo[artifact.location]}

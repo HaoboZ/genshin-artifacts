@@ -1,16 +1,17 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import type { CharacterKey } from '../../types/good';
 
-type State = { value: string };
+type State = { priority: CharacterKey[][] };
 
-const initialState: State = { value: '' };
+const initialState: State = { priority: [[], [], [], [], []] };
 
 const mainSlice = createSlice({
 	name: 'main',
 	initialState,
 	reducers: {
-		setValue(state, { payload }: PayloadAction<string>) {
-			state.value = payload;
+		setPriority(state, { payload }: PayloadAction<CharacterKey[][]>) {
+			state.priority = payload;
 		},
 	},
 });
