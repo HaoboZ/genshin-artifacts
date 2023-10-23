@@ -1,15 +1,17 @@
 import ChipArray from '@/components/chipArray';
 import makeArray from '@/src/helpers/makeArray';
-import { tier } from '@/src/resources/tier';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import { filter, flatMap, groupBy, sortBy, uniq } from 'lodash';
 import Link from 'next/link';
-import { charactersInfo } from '../characters/characterData';
+import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 
 export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKey }) {
-	const characters = filter(tier, ({ artifact }) => makeArray(artifact[0])[0] === artifactSet);
+	const characters = filter(
+		charactersTier,
+		({ artifact }) => makeArray(artifact[0])[0] === artifactSet,
+	);
 
 	return (
 		<Stack spacing={1}>

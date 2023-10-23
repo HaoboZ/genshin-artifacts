@@ -1,6 +1,6 @@
-import { elementsInfo } from '@/src/resources/data';
 import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
+import { elementsInfo } from './element';
 
 export default function ElementFilter({
 	element,

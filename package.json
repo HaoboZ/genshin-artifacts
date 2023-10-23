@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"scripts": {
 		"generate": "npx tsx generate.ts",
@@ -41,6 +41,7 @@
 		"redux": "4.2.1",
 		"rooks": "7.14.1",
 		"sass": "1.69.4",
+		"tesseract.js": "^5.0.2",
 		"type-fest": "4.5.0"
 	},
 	"devDependencies": {

@@ -15,9 +15,9 @@ export default function useEventListener(
 	useEffect(() => {
 		if (!event) return;
 		// @ts-ignore
-		const add = event.on || event.addListener || event.addEventListener;
+		const add = event.addEventListener || event.addListener || event.on;
 		// @ts-ignore
-		const remove = event.off || event.removeListener || event.removeEventListener;
+		const remove = event.removeEventListener || event.removeListener || event.off;
 
 		if (callOnce) tick();
 		add.bind(event)(name, tick);

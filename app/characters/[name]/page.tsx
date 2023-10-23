@@ -3,8 +3,6 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import { useModal } from '@/src/providers/modal';
-import { elementsInfo } from '@/src/resources/data';
-import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
 import { keyBy } from 'lodash';
@@ -15,8 +13,9 @@ import { artifactSlotOrder } from '../../artifacts/artifactData';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
-import { charactersInfo } from '../characterData';
+import { charactersInfo, charactersTier } from '../characterData';
 import CharacterImage from '../characterImage';
+import { elementsInfo } from '../element';
 import CharacterArtifactModal from './characterArtifactModal';
 import CharacterTier from './characterTier';
 import QuadBars from './quadBars';
@@ -35,7 +34,7 @@ export default function Character({ params }: { params: { name: string } }) {
 		artifacts.filter(({ location }) => location === character.key),
 		'slotKey',
 	);
-	const characterTier = tier[character.key];
+	const characterTier = charactersTier[character.key];
 
 	return (
 		<PageContainer noSsr>

@@ -11,8 +11,6 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	if (!artifact) return null;
-
 	return (
 		<ButtonGroup>
 			<Button

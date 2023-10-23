@@ -8,7 +8,7 @@ export default function getArtifactTier(
 	tier: Tier,
 	artifact: IArtifact,
 ): { rating: number; rarity: boolean; mainStat: boolean; subStat: number } {
-	if (!artifact) return { rating: 0, rarity: false, mainStat: false, subStat: 0 };
+	if (!tier || !artifact) return { rating: 0, rarity: false, mainStat: false, subStat: 0 };
 
 	const artifactIndex = arrDeepIndex(tier.artifact, artifact.setKey);
 

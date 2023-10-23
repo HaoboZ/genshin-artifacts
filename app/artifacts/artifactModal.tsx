@@ -2,13 +2,12 @@ import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import strArrMatch from '@/src/helpers/strArrMatch';
 import { useModalControls } from '@/src/providers/modal';
-import { tier } from '@/src/resources/tier';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
 import { filter, orderBy } from 'lodash';
-import { charactersInfo } from '../characters/characterData';
+import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactActions from './artifactActions';
 import ArtifactCharacterCard from './artifactCharacterCard';
@@ -21,7 +20,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 	const { closeModal } = useModalControls();
 
 	const characters = filter(
-		tier,
+		charactersTier,
 		(character) =>
 			arrDeepIndex(character.artifact, artifact.setKey) !== -1 &&
 			strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),

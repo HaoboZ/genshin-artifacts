@@ -1,9 +1,9 @@
-import { tier } from '@/src/resources/tier';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DCharacter } from '@/src/types/data';
 import { Card, Grid } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import { charactersTier } from './characterData';
 import CharacterImage from './characterImage';
 import CharactersArtifact from './charactersArtifact';
 import CharactersWeapon from './charactersWeapon';
@@ -12,7 +12,7 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 	const good = useAppSelector(({ good }) => good);
 
 	const [characterTier, weapon, flower, plume, sands, goblet, circlet] = useMemo(() => {
-		const characterTier = tier[character.key];
+		const characterTier = charactersTier[character.key];
 		const weapon = good.weapons.find(({ location }) => location === character.key);
 		const artifacts = good.artifacts.filter(({ location }) => location === character.key);
 		const flower = artifacts.find(({ slotKey }) => slotKey === 'flower');

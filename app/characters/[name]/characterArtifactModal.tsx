@@ -5,8 +5,17 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
+import {
+	DialogTitle,
+	FormControl,
+	FormLabel,
+	Grid,
+	ModalClose,
+	ModalDialog,
+	Switch,
+} from '@mui/joy';
 import { capitalize, orderBy } from 'lodash';
+import { Fragment, useMemo, useState } from 'react';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
 import getArtifactTier from '../../artifacts/getArtifactTier';
@@ -29,21 +38,29 @@ export default function CharacterArtifactModal(
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
-	const artifactsFiltered = artifacts
-		.filter(
-			({ slotKey, setKey, mainStatKey }) =>
+	const [checked, setChecked] = useState(false);
+
+	const artifactsResult = useMemo(() => {
+		const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
+
+		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
+			if (checked) return arrDeepIndex(tier.artifact, setKey) === 0;
+			return (
 				slotKey === slot &&
 				(mainStat ? mainStat.includes(mainStatKey) : true) &&
-				arrDeepIndex(tier.artifact, setKey) !== -1,
-		)
-		.map((artifact) => ({ artifact, artifactTier: getArtifactTier(tier, artifact) }));
-	const artifactsSorted = orderBy(
-		artifactsFiltered,
-		['artifactTier.rating', 'artifactTier.subStat'],
-		['desc', 'desc'],
-	);
-	const artifactTier = getArtifactTier(tier, artifact);
+				arrDeepIndex(tier.artifact, setKey) !== -1
+			);
+		});
+
+		return orderBy(
+			artifactsFiltered.map((artifact) => ({
+				artifact,
+				artifactTier: getArtifactTier(tier, artifact),
+			})),
+			['artifactTier.rating', 'artifactTier.subStat'],
+			['desc', 'desc'],
+		);
+	}, [checked]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
@@ -51,14 +68,25 @@ export default function CharacterArtifactModal(
 				{capitalize(slot)} for {charactersInfo[tier.key].name}
 			</DialogTitle>
 			<ModalClose variant='outlined' />
-			<ArtifactActions artifact={artifact} />
 			{artifact && (
-				<ArtifactCard hideCharacter artifact={artifact}>
-					<QuadBars artifactTier={artifactTier} />
-				</ArtifactCard>
+				<Fragment>
+					<ArtifactActions artifact={artifact} />
+					<ArtifactCard hideCharacter artifact={artifact}>
+						<QuadBars artifactTier={getArtifactTier(tier, artifact)} />
+					</ArtifactCard>
+				</Fragment>
 			)}
+			<FormControl orientation='horizontal'>
+				<FormLabel>All in Best Set</FormLabel>
+				<Switch
+					size='lg'
+					sx={{ ml: 0 }}
+					checked={checked}
+					onChange={({ target }) => setChecked(target.checked)}
+				/>
+			</FormControl>
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{artifactsSorted.map(({ artifact, artifactTier }, index) => (
+				{artifactsResult.map(({ artifact, artifactTier }, index) => (
 					<Grid key={index} xs={6} md={4}>
 						<ArtifactCard
 							artifact={artifact}

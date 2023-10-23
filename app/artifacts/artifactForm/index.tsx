@@ -14,9 +14,10 @@ import {
 	subStats,
 } from '../artifactData';
 import ArtifactImage from '../artifactImage';
+import ArtifactScanner from './artifactScanner';
 
 export default function ArtifactForm() {
-	const { handleSubmit, values, setFieldValue } = useFormikContext<IArtifact>();
+	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
 
@@ -32,12 +33,13 @@ export default function ArtifactForm() {
 					getOptionLabel={(set) => artifactSetsInfo[set].name}
 					onChange={(e, value) => {
 						const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
-						setFieldValue('rarity', rarity);
-						setFieldValue('level', rarity * 4);
+						setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
 					}}
 				/>
 			</Grid>
-			<Grid xs={6} />
+			<Grid xs={6}>
+				<ArtifactScanner setArtifact={setValues} />
+			</Grid>
 			<Grid xs={3}>
 				<SelectField
 					name='slotKey'
@@ -84,7 +86,7 @@ export default function ArtifactForm() {
 					label='Level'
 					type='number'
 					onChange={({ target }) => {
-						setFieldValue('level', clamp(+target.value, 1, artifactSet.rarity * 4));
+						setFieldValue('level', clamp(+target.value, 0, artifactSet.rarity * 4));
 					}}
 				/>
 			</Grid>
