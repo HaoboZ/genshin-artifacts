@@ -13,7 +13,7 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 	const priority = useAppSelector(({ main }) => main.priority);
 
 	const characters = useMemo(() => {
-		const priorityIndex = priority.flat();
+		const priorityIndex = Object.values(priority).flat();
 		return sortBy(
 			({ key }) => {
 				const index = priorityIndex.indexOf(key);

@@ -6,14 +6,17 @@ export default function SortableItem({ id, item, renderItem }) {
 		id,
 	});
 
-	return renderItem(item, {
-		ref: setNodeRef,
-		style: {
-			opacity: isDragging ? 0.4 : undefined,
-			transform: CSS.Transform.toString(transform),
-			transition,
+	return renderItem(
+		item,
+		{
+			ref: setNodeRef,
+			style: {
+				opacity: isDragging ? 0.4 : undefined,
+				transform: CSS.Transform.toString(transform),
+				transition,
+			},
+			...attributes,
 		},
-		...attributes,
-		...listeners,
-	});
+		listeners,
+	);
 }

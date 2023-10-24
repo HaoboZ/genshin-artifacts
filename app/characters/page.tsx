@@ -18,7 +18,7 @@ export default function Characters() {
 	const [element, setElement] = useParamState('element', null);
 
 	const characters = useMemo(() => {
-		const priorityIndex = priority.flat();
+		const priorityIndex = Object.values(priority).flat();
 		return sortBy(({ key }) => {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;

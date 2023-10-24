@@ -2,7 +2,7 @@ export function moveBetweenContainers(items, activeContainer, activeId, overCont
 	const activeIndex = items[activeContainer].findIndex(({ id }) => id === activeId);
 	if (activeIndex === -1) return items;
 	const item = items[activeContainer][activeIndex];
-	const newItems = [...items];
+	const newItems = { ...items };
 	newItems[activeContainer] = removeAtIndex(newItems[activeContainer], activeIndex);
 	newItems[overContainer] = insertAtIndex(newItems[overContainer], overIndex, item);
 	return newItems;

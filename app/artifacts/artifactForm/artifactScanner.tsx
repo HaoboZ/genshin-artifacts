@@ -98,7 +98,7 @@ function scanFile(file: File, { setProgress, setArtifact }) {
 				value: +match[2],
 			}));
 
-		const { rarity } = artifactSetsInfo[setKey as any];
+		const artifactSet = artifactSetsInfo[setKey as any];
 		setArtifact(
 			(artifact) =>
 				({
@@ -107,8 +107,8 @@ function scanFile(file: File, { setProgress, setArtifact }) {
 					slotKey,
 					mainStatKey,
 					substats,
-					rarity,
-					level: rarity * 4,
+					rarity: artifactSet?.rarity,
+					level: artifactSet?.rarity && artifactSet.rarity * 4,
 				}) as any,
 		);
 	});

@@ -3,23 +3,20 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
-import makeArray from '@/src/helpers/makeArray';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
-import { Grid, Stack } from '@mui/joy';
-import Link from 'next/link';
-import { compose, sortBy, sortByPath } from 'rambdax';
-import { charactersInfo, charactersTier } from '../characters/characterData';
-import CharacterImage from '../characters/characterImage';
+import { Grid } from '@mui/joy';
+import { compose, sortBy } from 'rambdax';
+import { charactersTier } from '../characters/characterData';
 import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
 import AddArtifactModal from './artifactForm/addArtifactModal';
 import ArtifactModal from './artifactModal';
 import ArtifactSetFilter from './artifactSetFilter';
-import ArtifactSetImage from './artifactSetImage';
 import BestInSlot from './bestInSlot';
+import BestInSlotAll from './bestInSlotAll';
 import getArtifactTier from './getArtifactTier';
 
 export default function Artifacts() {
@@ -46,30 +43,7 @@ export default function Artifacts() {
 				{artifactSet ? (
 					<BestInSlot artifactSet={artifactSet} />
 				) : (
-					sortByPath('order', Object.values(artifactSetsInfo))
-						.toReversed()
-						.map((artifactSet) => (
-							<Stack key={artifactSet.key} direction='row'>
-								<ArtifactSetImage
-									artifactSet={artifactSet}
-									size={50}
-									sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-									onClick={() => setArtifactSet(artifactSet.key)}
-								/>
-								{Object.values(charactersTier)
-									.filter(({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key)
-									.map(({ key }) => (
-										<CharacterImage
-											key={key}
-											character={charactersInfo[key]}
-											size={50}
-											component={Link}
-											// @ts-ignore
-											href={`characters/${key}`}
-										/>
-									))}
-							</Stack>
-						))
+					<BestInSlotAll setArtifactSet={setArtifactSet} />
 				)}
 			</PageSection>
 			{artifactSet && (

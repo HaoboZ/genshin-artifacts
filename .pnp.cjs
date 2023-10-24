@@ -53,7 +53,6 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.5.1"],\
           ["change-case", "npm:4.1.2"],\
           ["cross-env", "npm:7.0.3"],\
-          ["date-fns", "npm:2.30.0"],\
           ["eslint", "npm:8.52.0"],\
           ["eslint-config-next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:13.5.6"],\
           ["eslint-config-prettier", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.0.0"],\
@@ -3836,16 +3835,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["date-fns", [\
-      ["npm:2.30.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/date-fns-npm-2.30.0-895c790e0f-10c0.zip/node_modules/date-fns/",\
-        "packageDependencies": [\
-          ["date-fns", "npm:2.30.0"],\
-          ["@babel/runtime", "npm:7.23.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["debug", [\
       ["npm:3.2.7", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/debug-npm-3.2.7-754e818c7a-10c0.zip/node_modules/debug/",\
@@ -5212,7 +5201,6 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.5.1"],\
           ["change-case", "npm:4.1.2"],\
           ["cross-env", "npm:7.0.3"],\
-          ["date-fns", "npm:2.30.0"],\
           ["eslint", "npm:8.52.0"],\
           ["eslint-config-next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:13.5.6"],\
           ["eslint-config-prettier", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.0.0"],\

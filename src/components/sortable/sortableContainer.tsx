@@ -12,7 +12,7 @@ export default function SortableContainer({ id, items, renderItems, renderItem }
 					<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
 				)),
 				setNodeRef,
-				+id,
+				id,
 			)}
 		</SortableContext>
 	);

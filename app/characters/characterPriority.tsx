@@ -1,9 +1,9 @@
-import Sortable from '@/components/sortable';
+import MultiSortable from '@/components/sortable/multi';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid, Sheet, Typography } from '@mui/joy';
-import { clone, difference } from 'rambdax';
+import { clone, difference, omit } from 'rambdax';
 import { useState } from 'react';
 import { useDidUpdate } from 'rooks';
 import { charactersInfo } from './characterData';
@@ -15,18 +15,18 @@ export default function CharacterPriority() {
 
 	const [characters, setCharacters] = useState(
 		() =>
-			[
-				difference(Object.keys(charactersInfo), priority.flat()),
+			({
+				unSorted: difference(Object.keys(charactersInfo), Object.values(priority).flat()),
 				...clone(priority),
-			] as CharacterKey[][],
+			}) as Record<string, CharacterKey[]>,
 	);
 
 	useDidUpdate(() => {
-		dispatch(mainActions.setPriority(characters.slice(1)));
+		dispatch(mainActions.setPriority(omit('unSorted', characters)));
 	}, [characters]);
 
 	return (
-		<Sortable<CharacterKey>
+		<MultiSortable<CharacterKey>
 			groups={characters}
 			setGroups={setCharacters}
 			renderItems={(list, ref) => (
@@ -34,20 +34,20 @@ export default function CharacterPriority() {
 					{list}
 				</Grid>
 			)}
-			renderItem={(key, props) => (
-				<Grid {...props}>
+			renderItem={(key, containerProps, handleProps) => (
+				<Grid {...containerProps} {...handleProps}>
 					<CharacterImage character={charactersInfo[key]} size={50} />
 				</Grid>
 			)}>
-			{([list1, ...lists]) => (
+			{({ unSorted, ...lists }) => (
 				<Grid container spacing={1}>
 					<Grid xs={5}>
 						<Sheet variant='outlined' sx={{ p: 1 }}>
-							{list1}
+							{unSorted}
 						</Sheet>
 					</Grid>
 					<Grid container xs={7} alignContent='flex-start'>
-						{lists.map((list, index) => (
+						{Object.values(lists).map((list, index) => (
 							<Grid key={index} xs={12}>
 								<Sheet variant='outlined' sx={{ p: 1 }}>
 									<Typography>Priority {index}</Typography>
@@ -58,6 +58,6 @@ export default function CharacterPriority() {
 					</Grid>
 				</Grid>
 			)}
-		</Sortable>
+		</MultiSortable>
 	);
 }
