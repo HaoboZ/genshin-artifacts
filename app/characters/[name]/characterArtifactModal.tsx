@@ -33,7 +33,7 @@ export default function CharacterArtifactModal(
 
 	const [checked, setChecked] = useState(false);
 
-	const artifactsResult = useMemo(() => {
+	const artifactsSorted = useMemo(() => {
 		const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
 
 		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
@@ -54,7 +54,7 @@ export default function CharacterArtifactModal(
 				...getArtifactTier(tier, artifact),
 			})),
 		);
-	}, [checked]);
+	}, [artifacts, checked, slot, tier]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
@@ -80,7 +80,7 @@ export default function CharacterArtifactModal(
 				/>
 			</FormControl>
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{artifactsResult.map(({ artifact, ...artifactTier }, index) => (
+				{artifactsSorted.map(({ artifact, ...artifactTier }, index) => (
 					<Grid key={index} xs={6} md={4}>
 						<ArtifactCard
 							artifact={artifact}

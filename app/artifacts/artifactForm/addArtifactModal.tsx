@@ -10,15 +10,18 @@ import { artifactSetsInfo } from '../artifactData';
 import ArtifactModal from '../artifactModal';
 import ArtifactForm from './index';
 
-export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey }, ref) {
+export default function AddArtifactModal(
+	{ setKey, file }: { setKey: ArtifactSetKey; file?: File },
+	ref,
+) {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
 
-	const artifactSet = artifactSetsInfo[setKey];
+	const initialValues = useMemo<IArtifact>(() => {
+		const artifactSet = artifactSetsInfo[setKey];
 
-	const initialValues = useMemo<IArtifact>(
-		() => ({
+		return {
 			id: nanoid(),
 			setKey,
 			slotKey: 'flower',
@@ -28,9 +31,8 @@ export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey },
 			substats: [],
 			location: '',
 			lock: false,
-		}),
-		[],
-	);
+		};
+	}, [setKey]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
@@ -43,7 +45,7 @@ export default function AddArtifactModal({ setKey }: { setKey: ArtifactSetKey },
 					closeModal();
 					showModal(ArtifactModal, { props: { artifact } });
 				}}>
-				<ArtifactForm />
+				<ArtifactForm file={file} />
 			</Formik>
 		</ModalDialog>
 	);

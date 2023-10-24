@@ -1,13 +1,24 @@
 import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
+import makeArray from '@/src/helpers/makeArray';
 import strArrMatch from '@/src/helpers/strArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
-import { DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
+import {
+	DialogTitle,
+	FormControl,
+	FormLabel,
+	Grid,
+	ModalClose,
+	ModalDialog,
+	Switch,
+	Typography,
+} from '@mui/joy';
 import { compose, sortBy } from 'rambdax';
+import { useMemo, useState } from 'react';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactActions from './artifactActions';
@@ -20,21 +31,27 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const characters = Object.values(charactersTier).filter(
-		(character) =>
-			arrDeepIndex(character.artifact, artifact.setKey) !== -1 &&
-			strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),
-	);
+	const [checked, setChecked] = useState(false);
 
-	const tiers = compose(
-		sortBy<{ tier: Tier; rating: number; subStat: number }>(({ rating }) => -rating),
-		sortBy(({ subStat }) => -subStat),
-	)(
-		characters.map((tier) => {
-			const { rating, subStat } = getArtifactTier(tier, artifact);
-			return { tier, rating, subStat };
-		}),
-	);
+	const charactersTiered = useMemo(() => {
+		const characters = Object.values(charactersTier).filter(
+			(character) =>
+				(checked
+					? arrDeepIndex(character.artifact, artifact.setKey) !== -1
+					: makeArray(character.artifact[0])[0] === artifact.setKey) &&
+				strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),
+		);
+
+		return compose(
+			sortBy<{ tier: Tier; rating: number; subStat: number }>(({ rating }) => -rating),
+			sortBy(({ subStat }) => -subStat),
+		)(
+			characters.map((tier) => {
+				const { rating, subStat } = getArtifactTier(tier, artifact);
+				return { tier, rating, subStat };
+			}),
+		);
+	}, [artifact]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
@@ -63,8 +80,17 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 					))}
 				</Grid>
 			</Grid>
+			<FormControl orientation='horizontal'>
+				<FormLabel>All Tiered Sets</FormLabel>
+				<Switch
+					size='lg'
+					sx={{ ml: 0 }}
+					checked={checked}
+					onChange={({ target }) => setChecked(target.checked)}
+				/>
+			</FormControl>
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{tiers.map(({ tier, rating, subStat }) => (
+				{charactersTiered.map(({ tier, rating, subStat }) => (
 					<Grid key={tier.key} xs={6} md={4}>
 						<ArtifactCharacterCard
 							artifact={artifact}

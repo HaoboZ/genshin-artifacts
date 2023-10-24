@@ -6,28 +6,16 @@
 		"incremental": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
+		"lib": ["dom", "dom.iterable", "esnext"],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmit": true,
 		"noImplicitAny": false,
 		"paths": {
-			"@/src/*": [
-				"./src/*"
-			],
-			"@/components/*": [
-				"./src/components/*"
-			],
-			"@/app/*": [
-				"./app/*"
-			],
-			"@/public/*": [
-				"./public/*"
-			]
+			"@/src/*": ["./src/*"],
+			"@/components/*": ["./src/components/*"],
+			"@/app/*": ["./app/*"],
+			"@/public/*": ["./public/*"]
 		},
 		"plugins": [
 			{
@@ -48,8 +36,5 @@
 		"**/*.*js",
 		"**/*.jsx"
 	],
-	"exclude": [
-		"node_modules",
-		"out"
-	]
+	"exclude": ["node_modules", "out"]
 }

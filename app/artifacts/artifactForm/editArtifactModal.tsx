@@ -12,7 +12,7 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact },
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const initialValues = useMemo(() => clone(artifact), []);
+	const initialValues = useMemo(() => clone(artifact), [artifact]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>

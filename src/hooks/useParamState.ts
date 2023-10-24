@@ -1,5 +1,5 @@
-import { isEmpty } from 'rambdax';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { isEmpty } from 'rambdax';
 import { useCallback } from 'react';
 
 export default function useParamState<T>(key: string, initialState: T): [T, (value: T) => void] {
@@ -15,7 +15,7 @@ export default function useParamState<T>(key: string, initialState: T): [T, (val
 			if (isEmpty(obj)) return '';
 			return `?${new URLSearchParams(obj).toString()}`;
 		},
-		[key, searchParams],
+		[key, searchParams, initialState],
 	);
 
 	return [

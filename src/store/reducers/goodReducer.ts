@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
+import { difference } from 'rambdax';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
@@ -59,6 +60,9 @@ const goodSlice = createSlice({
 		deleteArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			if (index !== -1) state.artifacts = state.artifacts.filter((_, i) => i !== index);
+		},
+		deleteArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
+			state.artifacts = difference(state.artifacts, payload);
 		},
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];

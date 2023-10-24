@@ -16,7 +16,7 @@ import {
 import ArtifactImage from '../artifactImage';
 import ArtifactScanner from './artifactScanner';
 
-export default function ArtifactForm() {
+export default function ArtifactForm({ file }: { file?: File }) {
 	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
@@ -38,7 +38,7 @@ export default function ArtifactForm() {
 				/>
 			</Grid>
 			<Grid xs={6}>
-				<ArtifactScanner setArtifact={setValues} />
+				<ArtifactScanner setArtifact={setValues} file={file} />
 			</Grid>
 			<Grid xs={3}>
 				<SelectField

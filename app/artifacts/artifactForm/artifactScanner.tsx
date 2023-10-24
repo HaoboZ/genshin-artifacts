@@ -2,7 +2,7 @@ import useEventListener from '@/src/hooks/useEventListener';
 import type { IArtifact, StatKey } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/joy';
 import type { Dispatch, SetStateAction } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createWorker, OEM, PSM } from 'tesseract.js';
 import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
 
@@ -99,28 +99,32 @@ function scanFile(file: File, { setProgress, setArtifact }) {
 			}));
 
 		const artifactSet = artifactSetsInfo[setKey as any];
-		setArtifact(
-			(artifact) =>
-				({
-					...artifact,
-					setKey,
-					slotKey,
-					mainStatKey,
-					substats,
-					rarity: artifactSet?.rarity,
-					level: artifactSet?.rarity && artifactSet.rarity * 4,
-				}) as any,
-		);
+		setArtifact((artifact) => ({
+			...artifact,
+			setKey,
+			slotKey,
+			mainStatKey,
+			substats,
+			rarity: artifactSet?.rarity,
+			level: artifactSet?.rarity && artifactSet.rarity * 4,
+		}));
 	});
 	image.src = URL.createObjectURL(file);
 }
 
 export default function ArtifactScanner({
 	setArtifact,
+	file,
 }: {
 	setArtifact: Dispatch<SetStateAction<IArtifact>>;
+	file?: File;
 }) {
 	const [progress, setProgress] = useState(0);
+
+	useEffect(() => {
+		if (!file) return;
+		scanFile(file, { setProgress, setArtifact });
+	}, [file]);
 
 	useEventListener(window, 'paste', ({ clipboardData }: ClipboardEvent) => {
 		const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
