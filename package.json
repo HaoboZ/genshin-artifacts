@@ -31,7 +31,7 @@
 		"@tanem/react-nprogress": "5.0.51",
 		"@vercel/analytics": "1.1.1",
 		"axios": "1.5.1",
-		"change-case": "4.1.2",
+		"change-case": "5.1.2",
 		"events": "3.3.0",
 		"formik": "2.4.5",
 		"nanoid": "5.0.2",
