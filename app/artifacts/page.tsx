@@ -7,10 +7,10 @@ import makeArray from '@/src/helpers/makeArray';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
-import type { ArtifactSetKey } from '@/src/types/good';
+import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
 import { Grid, Stack } from '@mui/joy';
-import { filter, orderBy } from 'lodash';
 import Link from 'next/link';
+import { compose, sortBy, sortByPath } from 'rambdax';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactCard from './artifactCard';
@@ -46,60 +46,62 @@ export default function Artifacts() {
 				{artifactSet ? (
 					<BestInSlot artifactSet={artifactSet} />
 				) : (
-					orderBy(artifactSetsInfo, 'order', 'desc').map((artifactSet) => (
-						<Stack key={artifactSet.key} direction='row'>
-							<ArtifactSetImage
-								artifactSet={artifactSet}
-								size={50}
-								sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-								onClick={() => setArtifactSet(artifactSet.key)}
-							/>
-							{filter(
-								charactersTier,
-								({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key,
-							).map(({ key }) => (
-								<CharacterImage
-									key={key}
-									character={charactersInfo[key]}
+					sortByPath('order', Object.values(artifactSetsInfo))
+						.toReversed()
+						.map((artifactSet) => (
+							<Stack key={artifactSet.key} direction='row'>
+								<ArtifactSetImage
+									artifactSet={artifactSet}
 									size={50}
-									component={Link}
-									// @ts-ignore
-									href={`characters/${key}`}
+									sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
+									onClick={() => setArtifactSet(artifactSet.key)}
 								/>
-							))}
-						</Stack>
-					))
+								{Object.values(charactersTier)
+									.filter(({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key)
+									.map(({ key }) => (
+										<CharacterImage
+											key={key}
+											character={charactersInfo[key]}
+											size={50}
+											component={Link}
+											// @ts-ignore
+											href={`characters/${key}`}
+										/>
+									))}
+							</Stack>
+						))
 				)}
 			</PageSection>
 			{artifactSet && (
 				<PageSection title={artifactSetsInfo[artifactSet].name}>
 					<Grid container spacing={1}>
-						{orderBy(
-							good.artifacts.filter(({ setKey }) => setKey === artifactSet),
-							[({ slotKey }) => artifactSlotOrder.indexOf(slotKey), 'level'],
-							['asc', 'desc'],
-						).map((artifact, index) => {
-							const characterTier = charactersTier[artifact.location];
-							const { mainStat, subStat } = getArtifactTier(characterTier, artifact);
+						{compose(
+							sortBy<IArtifact>(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
+							sortBy<IArtifact>(({ level }) => -level),
+						)(good.artifacts.filter(({ setKey }) => setKey === artifactSet)).map(
+							(artifact, index) => {
+								const characterTier = charactersTier[artifact.location];
+								const { mainStat, subStat } = getArtifactTier(characterTier, artifact);
 
-							return (
-								<Grid key={index} xs={6} sm={4} md={3}>
-									<ArtifactCard
-										artifact={artifact}
-										sx={{ ':hover': { cursor: 'pointer' } }}
-										onClick={() => showModal(ArtifactModal, { props: { artifact } })}>
-										<Grid container xs={12} spacing={0}>
-											<Grid xs={6}>
-												<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
+								return (
+									<Grid key={index} xs={6} sm={4} md={3}>
+										<ArtifactCard
+											artifact={artifact}
+											sx={{ ':hover': { cursor: 'pointer' } }}
+											onClick={() => showModal(ArtifactModal, { props: { artifact } })}>
+											<Grid container xs={12} spacing={0}>
+												<Grid xs={6}>
+													<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
+												</Grid>
+												<Grid xs={6}>
+													<PercentBar p={subStat}>SubStat: %p</PercentBar>
+												</Grid>
 											</Grid>
-											<Grid xs={6}>
-												<PercentBar p={subStat}>SubStat: %p</PercentBar>
-											</Grid>
-										</Grid>
-									</ArtifactCard>
-								</Grid>
-							);
-						})}
+										</ArtifactCard>
+									</Grid>
+								);
+							},
+						)}
 					</Grid>
 				</PageSection>
 			)}

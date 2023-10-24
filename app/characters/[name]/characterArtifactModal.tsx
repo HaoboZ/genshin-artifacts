@@ -14,7 +14,8 @@ import {
 	ModalDialog,
 	Switch,
 } from '@mui/joy';
-import { capitalize, orderBy } from 'lodash';
+import { capitalCase } from 'change-case';
+import { compose, sortBy } from 'rambdax';
 import { Fragment, useMemo, useState } from 'react';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
@@ -23,15 +24,7 @@ import { charactersInfo } from '../characterData';
 import QuadBars from './quadBars';
 
 export default function CharacterArtifactModal(
-	{
-		tier,
-		slot,
-		artifact,
-	}: {
-		tier: Tier;
-		slot: SlotKey;
-		artifact: IArtifact;
-	},
+	{ tier, slot, artifact }: { tier: Tier; slot: SlotKey; artifact: IArtifact },
 	ref,
 ) {
 	const artifacts = useAppSelector(({ good }) => good.artifacts);
@@ -52,20 +45,21 @@ export default function CharacterArtifactModal(
 			);
 		});
 
-		return orderBy(
+		return compose(
+			sortBy(({ rating }) => -rating),
+			sortBy(({ subStat }) => -subStat),
+		)(
 			artifactsFiltered.map((artifact) => ({
 				artifact,
-				artifactTier: getArtifactTier(tier, artifact),
+				...getArtifactTier(tier, artifact),
 			})),
-			['artifactTier.rating', 'artifactTier.subStat'],
-			['desc', 'desc'],
 		);
 	}, [checked]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>
-				{capitalize(slot)} for {charactersInfo[tier.key].name}
+				{capitalCase(slot)} for {charactersInfo[tier.key].name}
 			</DialogTitle>
 			<ModalClose variant='outlined' />
 			{artifact && (
@@ -86,7 +80,7 @@ export default function CharacterArtifactModal(
 				/>
 			</FormControl>
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{artifactsResult.map(({ artifact, artifactTier }, index) => (
+				{artifactsResult.map(({ artifact, ...artifactTier }, index) => (
 					<Grid key={index} xs={6} md={4}>
 						<ArtifactCard
 							artifact={artifact}
@@ -97,7 +91,7 @@ export default function CharacterArtifactModal(
 								dispatch(goodActions.giveArtifact([tier.key, artifact]));
 								closeModal();
 							}}>
-							<QuadBars artifactTier={artifactTier} />
+							<QuadBars artifactTier={artifactTier as any} />
 						</ArtifactCard>
 					</Grid>
 				))}

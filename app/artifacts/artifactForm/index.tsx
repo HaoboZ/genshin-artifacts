@@ -4,7 +4,7 @@ import SelectField from '@/components/fields/select';
 import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
 import { Button, Grid, Option } from '@mui/joy';
 import { useFormikContext } from 'formik';
-import { clamp } from 'lodash';
+import { clamp } from 'rambdax';
 import {
 	artifactSetsInfo,
 	artifactSlotInfo,
@@ -86,7 +86,7 @@ export default function ArtifactForm() {
 					label='Level'
 					type='number'
 					onChange={({ target }) => {
-						setFieldValue('level', clamp(+target.value, 0, artifactSet.rarity * 4));
+						setFieldValue('level', clamp(0, artifactSet.rarity * 4, +target.value));
 					}}
 				/>
 			</Grid>
@@ -128,7 +128,7 @@ export default function ArtifactForm() {
 							const { key } = values.substats[index];
 							substats[index] = {
 								key,
-								value: clamp(+target.value, 0, statsMax[key][values.rarity]),
+								value: clamp(0, statsMax[key][values.rarity], +target.value),
 							};
 							setFieldValue('substats', substats);
 							return false;

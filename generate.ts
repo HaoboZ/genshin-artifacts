@@ -1,7 +1,8 @@
 import type { ArtifactSetKey } from '@/src/types/good';
+import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
-import { camelCase, keyBy, pick, upperFirst } from 'lodash';
+import { indexBy, pick } from 'rambdax';
 
 const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png',
@@ -535,19 +536,20 @@ const artifactOrder = Object.keys(artifactLocation);
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const elements = keyBy(
+	const elements = indexBy(
+		'key',
 		elementsData.map((element) => ({
 			key: element.name,
 			image: element.images.base64,
 		})),
-		'key',
 	);
 
 	const charactersData = genshindb.characters('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const characters = keyBy(
+	const characters = indexBy(
+		'key',
 		charactersData
 			.map((character) => {
 				if (character.name === 'Aether') character.name = 'Traveler';
@@ -556,22 +558,22 @@ const artifactOrder = Object.keys(artifactLocation);
 				if (!image && character.name !== 'Lumine') console.log(characterName);
 
 				return {
-					key: upperFirst(camelCase(character.name)),
-					...pick(character, ['name', 'rarity']),
+					key: pascalCase(character.name),
+					...pick(['name', 'rarity'], character),
 					weaponType: character.weaponText,
 					element: character.elementText,
 					image,
 				};
 			})
 			.filter(({ image }) => image),
-		'key',
 	);
 
 	const artifactsData = genshindb.artifacts('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const artifacts = keyBy(
+	const artifacts = indexBy(
+		'key',
 		artifactsData.map((artifact) => {
 			const flowerName = artifact.flower?.name.replaceAll(' ', '_').replaceAll("'", '%27');
 			const flower =
@@ -596,10 +598,10 @@ const artifactOrder = Object.keys(artifactLocation);
 				artifact.circlet && artifactImages.find((url) => url.indexOf(circletName) !== -1);
 			if (artifact.circlet && !circlet) console.log(circletName);
 
-			const key = upperFirst(camelCase(artifact.name));
+			const key = pascalCase(artifact.name.replaceAll("'", ''));
 			return {
 				key,
-				...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
+				...pick(['name', 'effect2Pc', 'effect4Pc'], artifact),
 				rarity: Math.max(...artifact.rarityList),
 				order: artifactOrder.indexOf(key),
 				group: artifactLocation[key],
@@ -610,14 +612,14 @@ const artifactOrder = Object.keys(artifactLocation);
 				circlet,
 			};
 		}),
-		'key',
 	);
 
 	const weaponsData = genshindb.weapons('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const weapons = keyBy(
+	const weapons = indexBy(
+		'key',
 		weaponsData
 			.filter(({ rarity }) => rarity >= 3)
 			.map((weapon) => {
@@ -629,19 +631,18 @@ const artifactOrder = Object.keys(artifactLocation);
 				if (!image && weaponName !== 'Prized_Isshin_Blade') console.log(weaponName);
 
 				return {
-					key: upperFirst(camelCase(weapon.name)),
-					...pick(weapon, ['name', 'rarity']),
+					key: pascalCase(weapon.name.replaceAll("'", '')),
+					...pick(['name', 'rarity'], weapon),
 					weaponType: weapon.weaponText,
 					image,
 				};
 			})
 			.filter(({ image }) => image),
-		'key',
 	);
 
 	try {
 		writeFileSync(
-			'./public/data.json',
+			'./src/resources/data.json',
 			JSON.stringify({ elements, characters, artifacts, weapons }, null, 2),
 		);
 		console.log('Data successfully saved to disk');

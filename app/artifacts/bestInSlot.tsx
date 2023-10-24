@@ -3,8 +3,8 @@ import makeArray from '@/src/helpers/makeArray';
 import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
-import { filter, flatMap, groupBy, sortBy, uniq } from 'lodash';
 import Link from 'next/link';
+import { groupBy, path, sortBy, uniq } from 'rambdax';
 import { useMemo } from 'react';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
@@ -15,11 +15,13 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 	const characters = useMemo(() => {
 		const priorityIndex = priority.flat();
 		return sortBy(
-			filter(charactersTier, ({ artifact }) => makeArray(artifact[0])[0] === artifactSet),
 			({ key }) => {
 				const index = priorityIndex.indexOf(key);
 				return index === -1 ? Infinity : index;
 			},
+			Object.values(charactersTier).filter(
+				({ artifact }) => makeArray(artifact[0])[0] === artifactSet,
+			),
 		);
 	}, [artifactSet, priority]);
 
@@ -37,14 +39,24 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 					/>
 				))}
 			</Stack>
-			<ChipArray name='Sands' arr={sortBy(uniq(flatMap(characters, 'mainStat.sands')))} />
-			<ChipArray name='Goblet' arr={sortBy(uniq(flatMap(characters, 'mainStat.goblet')))} />
-			<ChipArray name='Circlet' arr={sortBy(uniq(flatMap(characters, 'mainStat.circlet')))} />
+			<ChipArray
+				name='Sands'
+				arr={uniq(characters.flatMap(path<string>('mainStat.sands'))).sort()}
+			/>
+			<ChipArray
+				name='Goblet'
+				arr={uniq(characters.flatMap(path<string>('mainStat.goblet'))).sort()}
+			/>
+			<ChipArray
+				name='Circlet'
+				arr={uniq(characters.flatMap(path<string>('mainStat.circlet'))).sort()}
+			/>
 			<ChipArray
 				breadcrumbs
 				name='SubStats'
 				arr={Object.values(
 					groupBy(
+						(stat: string[]) => stat[1],
 						Object.entries(
 							characters.reduce((res, { subStat }) => {
 								subStat.forEach((statArr, index) =>
@@ -55,9 +67,8 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 								return res;
 							}, {}),
 						),
-						1,
 					),
-				).map((stat) => flatMap(stat, '0'))}
+				).map((stat) => stat.flatMap((stat) => stat[0]))}
 			/>
 		</Stack>
 	);

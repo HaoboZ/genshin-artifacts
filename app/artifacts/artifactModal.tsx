@@ -4,9 +4,10 @@ import strArrMatch from '@/src/helpers/strArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
+import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
-import { filter, orderBy } from 'lodash';
+import { compose, sortBy } from 'rambdax';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactActions from './artifactActions';
@@ -19,20 +20,20 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const characters = filter(
-		charactersTier,
+	const characters = Object.values(charactersTier).filter(
 		(character) =>
 			arrDeepIndex(character.artifact, artifact.setKey) !== -1 &&
 			strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),
 	);
 
-	const tiers = orderBy(
+	const tiers = compose(
+		sortBy<{ tier: Tier; rating: number; subStat: number }>(({ rating }) => -rating),
+		sortBy(({ subStat }) => -subStat),
+	)(
 		characters.map((tier) => {
 			const { rating, subStat } = getArtifactTier(tier, artifact);
 			return { tier, rating, subStat };
 		}),
-		['rating', 'subStat'],
-		['desc', 'desc'],
 	);
 
 	return (

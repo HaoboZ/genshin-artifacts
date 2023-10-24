@@ -4,7 +4,7 @@ import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { DialogTitle, ModalClose, ModalDialog } from '@mui/joy';
 import { Formik } from 'formik';
-import { cloneDeep } from 'lodash';
+import { clone } from 'rambdax';
 import { useMemo } from 'react';
 import ArtifactForm from './index';
 
@@ -12,7 +12,7 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact },
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const initialValues = useMemo(() => cloneDeep(artifact), []);
+	const initialValues = useMemo(() => clone(artifact), []);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>

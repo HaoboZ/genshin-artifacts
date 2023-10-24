@@ -5,7 +5,7 @@ import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useAppSelector } from '@/src/store/hooks';
 import { Grid } from '@mui/joy';
-import { sortBy } from 'lodash';
+import { sortBy } from 'rambdax';
 import { useMemo } from 'react';
 import CharacterCard from './characterCard';
 import { charactersInfo } from './characterData';
@@ -19,10 +19,10 @@ export default function Characters() {
 
 	const characters = useMemo(() => {
 		const priorityIndex = priority.flat();
-		return sortBy(Object.values(charactersInfo), ({ key }) => {
+		return sortBy(({ key }) => {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;
-		});
+		}, Object.values(charactersInfo));
 	}, [priority]);
 
 	return (

@@ -5,7 +5,7 @@ import PageTitle from '@/components/page/title';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
-import { keyBy } from 'lodash';
+import { indexBy } from 'rambdax';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ArtifactCard from '../../artifacts/artifactCard';
@@ -30,9 +30,9 @@ export default function Character({ params }: { params: { name: string } }) {
 		good.weapons.find(({ location }) => location === character.key),
 	);
 	const artifacts = useAppSelector(({ good }) => good.artifacts);
-	const artifactsKey = keyBy(
-		artifacts.filter(({ location }) => location === character.key),
+	const artifactsKey = indexBy(
 		'slotKey',
+		artifacts.filter(({ location }) => location === character.key),
 	);
 	const characterTier = charactersTier[character.key];
 

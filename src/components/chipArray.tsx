@@ -18,8 +18,8 @@ export default function ChipArray({
 				<Breadcrumbs sx={{ p: 0 }}>
 					{arr.map((subArr, index) => (
 						<Stack key={index} direction='row' spacing={0.5}>
-							{makeArray(subArr).map((stat) => (
-								<Chip key={stat}>{statName[stat]}</Chip>
+							{makeArray(subArr).map((stat, index) => (
+								<Chip key={index}>{statName[stat]}</Chip>
 							))}
 						</Stack>
 					))}

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid, Sheet, Typography } from '@mui/joy';
-import { cloneDeep, difference } from 'lodash';
+import { clone, difference } from 'rambdax';
 import { useState } from 'react';
 import { useDidUpdate } from 'rooks';
 import { charactersInfo } from './characterData';
@@ -16,8 +16,8 @@ export default function CharacterPriority() {
 	const [characters, setCharacters] = useState(
 		() =>
 			[
-				difference(Object.keys(charactersInfo), ...priority),
-				...cloneDeep(priority),
+				difference(Object.keys(charactersInfo), priority.flat()),
+				...clone(priority),
 			] as CharacterKey[][],
 	);
 
