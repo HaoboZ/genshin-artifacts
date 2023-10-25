@@ -1,4 +1,3 @@
-import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -6,11 +5,9 @@ import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
-import { sortByPath } from 'rambdax';
+import { sortBy } from 'rambdax';
 import { useMemo } from 'react';
 import WeaponCharacterImage from '../../weapons/weaponCharacterImage';
-import { weaponsInfo } from '../../weapons/weaponData';
-import WeaponImage from '../../weapons/weaponImage';
 import { charactersInfo } from '../characterData';
 
 export default function CharacterWeaponModal(
@@ -23,14 +20,9 @@ export default function CharacterWeaponModal(
 
 	const weaponsSorted = useMemo(
 		() =>
-			sortByPath(
-				'weaponTier',
-				weapons
-					.filter(({ key }) => arrDeepIndex(tier.weapon, key) !== -1)
-					.map((weapon) => ({
-						weapon,
-						weaponTier: arrDeepIndex(tier.weapon, weapon.key) / tier.weapon.length,
-					})),
+			sortBy(
+				(weapon) => arrDeepIndex(tier.weapon, weapon.key) / tier.weapon.length,
+				weapons.filter(({ key }) => arrDeepIndex(tier.weapon, key) !== -1),
 			),
 		[weapons, tier],
 	);
@@ -39,9 +31,9 @@ export default function CharacterWeaponModal(
 		<ModalDialog ref={ref} minWidth='md'>
 			<DialogTitle>Weapon for {charactersInfo[tier.key].name}</DialogTitle>
 			<ModalClose variant='outlined' />
-			{weapon && <WeaponImage weapon={weaponsInfo[weapon.key]} />}
+			{weapon && <WeaponCharacterImage weapon={weapon} />}
 			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{weaponsSorted.map(({ weapon, weaponTier }, index) => (
+				{weaponsSorted.map((weapon, index) => (
 					<Grid key={index}>
 						<WeaponCharacterImage
 							weapon={weapon}
@@ -53,7 +45,6 @@ export default function CharacterWeaponModal(
 								closeModal();
 							}}
 						/>
-						<PercentBar p={1 - weaponTier} />
 					</Grid>
 				))}
 			</Grid>
