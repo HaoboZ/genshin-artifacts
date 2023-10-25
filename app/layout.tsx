@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang='en'>
+		<html suppressHydrationWarning lang='en'>
 			<body>
 				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
 				<Providers>

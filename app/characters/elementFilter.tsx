@@ -1,6 +1,6 @@
 import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
-import { elementsInfo } from './element';
+import { elementsInfo } from './characterData';
 
 export default function ElementFilter({
 	element,

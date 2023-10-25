@@ -5,19 +5,19 @@ import PageTitle from '@/components/page/title';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
-import { indexBy } from 'rambdax';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { indexBy } from 'rambdax';
 import ArtifactCard from '../../artifacts/artifactCard';
 import { artifactSlotOrder } from '../../artifacts/artifactData';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
-import { charactersInfo, charactersTier } from '../characterData';
+import { charactersInfo, charactersTier, elementsInfo } from '../characterData';
 import CharacterImage from '../characterImage';
-import { elementsInfo } from '../element';
 import CharacterArtifactModal from './characterArtifactModal';
 import CharacterTier from './characterTier';
+import CharacterWeaponModal from './characterWeaponModal';
 import QuadBars from './quadBars';
 
 export default function Character({ params }: { params: { name: string } }) {
@@ -56,7 +56,13 @@ export default function Character({ params }: { params: { name: string } }) {
 			<PageSection title='Equipped'>
 				<Grid container spacing={1}>
 					<Grid xs={6} sm={4}>
-						<Card>
+						<Card
+							sx={{ ':hover': { cursor: 'pointer' } }}
+							onClick={() =>
+								showModal(CharacterWeaponModal, {
+									props: { tier: characterTier, weapon },
+								})
+							}>
 							<WeaponImage weapon={weaponsInfo[weapon?.key]} type={character.weaponType} />
 						</Card>
 					</Grid>
@@ -71,11 +77,11 @@ export default function Character({ params }: { params: { name: string } }) {
 									artifact={artifact}
 									slot={slot}
 									sx={{ ':hover': { cursor: 'pointer' } }}
-									onClick={() => {
+									onClick={() =>
 										showModal(CharacterArtifactModal, {
 											props: { tier: characterTier, slot, artifact },
-										});
-									}}>
+										})
+									}>
 									<QuadBars artifactTier={artifactTier} />
 								</ArtifactCard>
 							</Grid>

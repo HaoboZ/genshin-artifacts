@@ -23,6 +23,14 @@ const goodSlice = createSlice({
 		import(state, { payload }: PayloadAction<IGOOD>) {
 			return { ...state, ...payload };
 		},
+		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
+			state.artifacts = [...state.artifacts, payload];
+		},
+		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
+			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
+			state.artifacts = [...state.artifacts];
+			if (index !== -1) state.artifacts[index] = payload;
+		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
 			const characterA = payload[0];
 			const artifactA = payload[1];
@@ -44,14 +52,6 @@ const goodSlice = createSlice({
 				};
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
 		},
-		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
-			state.artifacts = [...state.artifacts, payload];
-		},
-		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
-			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
-			state.artifacts = [...state.artifacts];
-			if (index !== -1) state.artifacts[index] = payload;
-		},
 		removeArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			state.artifacts = [...state.artifacts];
@@ -67,10 +67,29 @@ const goodSlice = createSlice({
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];
 		},
-		editWeapon(state, { payload }: PayloadAction<IWeapon>) {
+		giveWeapon(state, { payload }: PayloadAction<[CharacterKey, IWeapon]>) {
+			const characterA = payload[0];
+			const weaponA = payload[1];
+			const characterB = weaponA.location;
+			let weaponAIndex = state.weapons.findIndex(({ id }) => id === weaponA.id);
+			if (weaponAIndex === -1) {
+				weaponA.id = nanoid();
+				weaponAIndex = state.weapons.length;
+			}
+			const weaponBIndex = state.weapons.findIndex(({ location }) => location === characterA);
+
+			state.weapons = [...state.weapons];
+			if (weaponBIndex)
+				state.weapons[weaponBIndex] = {
+					...state.weapons[weaponBIndex],
+					location: characterB || '',
+				};
+			state.weapons[weaponAIndex] = { ...weaponA, location: characterA };
+		},
+		removeWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);
 			state.weapons = [...state.weapons];
-			if (index !== -1) state.weapons[index] = payload;
+			if (index !== -1) state.weapons[index] = { ...payload, location: '' };
 		},
 		deleteWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);

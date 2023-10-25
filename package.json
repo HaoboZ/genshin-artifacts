@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"generate": "npx tsx generate.mts",

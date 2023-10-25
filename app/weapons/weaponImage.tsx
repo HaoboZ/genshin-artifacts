@@ -9,11 +9,18 @@ export default function WeaponImage({
 	weapon,
 	type,
 	size = 100,
+	children,
 	...props
 }: { weapon?: DWeapon; type?: WeaponType; size?: number } & BoxProps) {
 	return (
 		<Tooltip followCursor title={weapon?.name}>
-			<Box width={size} height={size} overflow='hidden' borderRadius={size / 10} {...props}>
+			<Box
+				width={size}
+				height={size}
+				overflow='hidden'
+				borderRadius={size / 10}
+				position='relative'
+				{...props}>
 				<Image
 					alt={weapon?.name ?? type ?? 'weapon'}
 					src={weapon?.image ?? weaponImages[type]}
@@ -21,6 +28,7 @@ export default function WeaponImage({
 					height={size}
 					className={`rarity${weapon?.rarity}`}
 				/>
+				{children}
 			</Box>
 		</Tooltip>
 	);

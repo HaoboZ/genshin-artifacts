@@ -6,7 +6,7 @@ import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
 import { Button, FormControl, FormLabel, Grid, Switch } from '@mui/joy';
 import { compose, sortBy } from 'rambdax';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { charactersTier } from '../characters/characterData';
 import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
@@ -20,6 +20,15 @@ export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSet
 
 	const [deleteMode, setDeleteMode] = useState(false);
 	const [marked, setMarked] = useState([]);
+
+	const artifacts = useMemo(
+		() =>
+			compose(
+				sortBy<IArtifact>(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
+				sortBy<IArtifact>(({ level }) => -level),
+			)(good.artifacts.filter(({ setKey }) => setKey === artifactSet)),
+		[good.artifacts, artifactSet],
+	);
 
 	return (
 		<PageSection
@@ -46,45 +55,40 @@ export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSet
 				</FormControl>
 			}>
 			<Grid container spacing={1}>
-				{compose(
-					sortBy<IArtifact>(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
-					sortBy<IArtifact>(({ level }) => -level),
-				)(good.artifacts.filter(({ setKey }) => setKey === artifactSet)).map(
-					(artifact, index) => {
-						const characterTier = charactersTier[artifact.location];
-						const { mainStat, subStat } = getArtifactTier(characterTier, artifact);
-						const isMarked = marked.indexOf(artifact) !== -1;
+				{artifacts.map((artifact, index) => {
+					const characterTier = charactersTier[artifact.location];
+					const { mainStat, subStat } = getArtifactTier(characterTier, artifact);
+					const isMarked = marked.indexOf(artifact) !== -1;
 
-						return (
-							<Grid key={index} xs={6} sm={4} md={3}>
-								<ArtifactCard
-									artifact={artifact}
-									sx={{
-										':hover': { cursor: 'pointer' },
-										'borderColor': isMarked ? 'red' : undefined,
-									}}
-									onClick={() => {
-										if (deleteMode)
-											setMarked((marked) => {
-												return isMarked
-													? marked.filter((item) => item !== artifact)
-													: [...marked, artifact];
-											});
-										else showModal(ArtifactModal, { props: { artifact } });
-									}}>
-									<Grid container xs={12} spacing={0}>
-										<Grid xs={6}>
-											<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
-										</Grid>
-										<Grid xs={6}>
-											<PercentBar p={subStat}>SubStat: %p</PercentBar>
-										</Grid>
+					return (
+						<Grid key={index} xs={6} sm={4} md={3}>
+							<ArtifactCard
+								artifact={artifact}
+								sx={{
+									':hover': { cursor: 'pointer' },
+									'borderColor': isMarked ? 'red' : undefined,
+								}}
+								onClick={() => {
+									if (deleteMode)
+										setMarked((marked) => {
+											return isMarked
+												? marked.filter((item) => item !== artifact)
+												: [...marked, artifact];
+										});
+									else showModal(ArtifactModal, { props: { artifact } });
+								}}>
+								<Grid container xs={12} spacing={0}>
+									<Grid xs={6}>
+										<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
 									</Grid>
-								</ArtifactCard>
-							</Grid>
-						);
-					},
-				)}
+									<Grid xs={6}>
+										<PercentBar p={subStat}>SubStat: %p</PercentBar>
+									</Grid>
+								</Grid>
+							</ArtifactCard>
+						</Grid>
+					);
+				})}
 			</Grid>
 		</PageSection>
 	);

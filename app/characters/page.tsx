@@ -22,8 +22,8 @@ export default function Characters() {
 		return sortBy(({ key }) => {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;
-		}, Object.values(charactersInfo));
-	}, [priority]);
+		}, Object.values(charactersInfo)).filter((character) => character.element === element);
+	}, [priority, element]);
 
 	return (
 		<PageContainer noSsr>
@@ -32,13 +32,11 @@ export default function Characters() {
 			<PageSection title={element || 'All'}>
 				{element ? (
 					<Grid container spacing={1} justifyContent='center'>
-						{characters
-							.filter((character) => character.element === element)
-							.map((character) => (
-								<Grid key={character.key}>
-									<CharacterCard character={character} />
-								</Grid>
-							))}
+						{characters.map((character) => (
+							<Grid key={character.key}>
+								<CharacterCard character={character} />
+							</Grid>
+						))}
 					</Grid>
 				) : (
 					<CharacterPriority />

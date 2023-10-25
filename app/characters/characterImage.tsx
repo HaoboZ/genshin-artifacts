@@ -11,7 +11,13 @@ export default function CharacterImage({
 }: { character: DCharacter; size?: number } & BoxProps) {
 	return (
 		<Tooltip followCursor title={character.name}>
-			<Box width={size} height={size} overflow='hidden' borderRadius={size / 10} {...props}>
+			<Box
+				width={size}
+				height={size}
+				overflow='hidden'
+				borderRadius={size / 10}
+				position='relative'
+				{...props}>
 				<Image
 					alt={character.name}
 					src={character.image}
