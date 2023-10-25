@@ -2,7 +2,7 @@ import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
 import { elementsInfo } from './characterData';
 
-export default function ElementFilter({
+export default function ElementsFilter({
 	element,
 	setElement,
 }: {
@@ -13,8 +13,8 @@ export default function ElementFilter({
 		<ToggleButtonGroup value={element} onChange={(e, newElement) => setElement(newElement)}>
 			<Button value={null}>All</Button>
 			{Object.values(elementsInfo).map((element) => (
-				<Button key={element.key} value={element.key}>
-					<Image alt={element.key} src={element.image} width={30} height={30} />
+				<Button key={element.key} value={element.key} sx={{ p: 0.5 }}>
+					<Image alt={element.key} src={element.image} width={40} height={40} />
 				</Button>
 			))}
 		</ToggleButtonGroup>

@@ -7,43 +7,56 @@ import { useAppSelector } from '@/src/store/hooks';
 import { FormControl, FormLabel, Grid, Switch } from '@mui/joy';
 import { sortBy } from 'rambdax';
 import { useMemo, useState } from 'react';
+import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterCard from './characterCard';
 import { charactersInfo } from './characterData';
 import CharacterPriority from './characterPriority';
-import ElementFilter from './elementFilter';
+import ElementsFilter from './elementsFilter';
 
 export default function Characters() {
 	const priority = useAppSelector(({ main }) => main.priority);
 
 	const [element, setElement] = useParamState('element', null);
-	const [checked, setChecked] = useState(false);
+	const [weaponType, setWeaponType] = useParamState('weapon', null);
+	const [editMode, setEditMode] = useState(false);
 
 	const characters = useMemo(() => {
+		if (!element && !weaponType) return [];
 		const priorityIndex = Object.values(priority).flat();
 		return sortBy(({ key }) => {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;
-		}, Object.values(charactersInfo)).filter((character) => character.element === element);
-	}, [priority, element]);
+		}, Object.values(charactersInfo))
+			.filter((character) => !element || character.element === element)
+			.filter((character) => !weaponType || character.weaponType === weaponType);
+	}, [priority, element, weaponType]);
 
 	return (
 		<PageContainer noSsr>
 			<PageTitle>Characters</PageTitle>
-			<ElementFilter element={element} setElement={setElement} />
-			<PageSection
-				title={element || 'All'}
-				actions={
-					<FormControl orientation='horizontal'>
-						<FormLabel>Edit Mode</FormLabel>
-						<Switch
-							size='lg'
-							sx={{ ml: 0 }}
-							checked={checked}
-							onChange={({ target }) => setChecked(target.checked)}
-						/>
-					</FormControl>
-				}>
-				{element ? (
+			<ElementsFilter element={element} setElement={setElement} />
+			<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
+			{!element && !weaponType ? (
+				<PageSection
+					title='All'
+					actions={
+						<FormControl orientation='horizontal'>
+							<FormLabel>Edit Mode</FormLabel>
+							<Switch
+								size='lg'
+								sx={{ ml: 0 }}
+								checked={editMode}
+								onChange={({ target }) => setEditMode(target.checked)}
+							/>
+						</FormControl>
+					}>
+					<CharacterPriority editMode={editMode} />
+				</PageSection>
+			) : (
+				<PageSection
+					title={[element && `Element: ${element}`, weaponType && `Weapon: ${weaponType}`]
+						.filter(Boolean)
+						.join(', ')}>
 					<Grid container spacing={1} justifyContent='center'>
 						{characters.map((character) => (
 							<Grid key={character.key}>
@@ -51,10 +64,8 @@ export default function Characters() {
 							</Grid>
 						))}
 					</Grid>
-				) : (
-					<CharacterPriority editMode={checked} />
-				)}
-			</PageSection>
+				</PageSection>
+			)}
 		</PageContainer>
 	);
 }

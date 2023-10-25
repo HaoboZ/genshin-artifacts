@@ -16,7 +16,7 @@ export default function WeaponTypeFilter({
 			onChange={(e, newWeaponType) => setWeaponType(newWeaponType)}>
 			<Button value={null}>All</Button>
 			{weaponsTypes.map((weaponType) => (
-				<Button key={weaponType} value={weaponType} sx={{ p: 0.2 }}>
+				<Button key={weaponType} value={weaponType} sx={{ p: 0 }}>
 					<WeaponImage type={weaponType} size={50} />
 				</Button>
 			))}
