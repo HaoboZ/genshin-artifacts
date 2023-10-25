@@ -4,12 +4,7 @@ import { Grid } from '@mui/joy';
 export default function QuadBars({
 	artifactTier,
 }: {
-	artifactTier: {
-		rating: number;
-		rarity: boolean;
-		mainStat: boolean;
-		subStat: number;
-	};
+	artifactTier: { rating: number; rarity: boolean; mainStat: boolean; subStat: number };
 }) {
 	return (
 		<Grid container xs={12} spacing={0}>

@@ -59,9 +59,7 @@ export default function Character({ params }: { params: { name: string } }) {
 						<Card
 							sx={{ ':hover': { cursor: 'pointer' } }}
 							onClick={() =>
-								showModal(CharacterWeaponModal, {
-									props: { tier: characterTier, weapon },
-								})
+								showModal(CharacterWeaponModal, { props: { tier: characterTier, weapon } })
 							}>
 							<WeaponImage weapon={weaponsInfo[weapon?.key]} type={character.weaponType} />
 						</Card>

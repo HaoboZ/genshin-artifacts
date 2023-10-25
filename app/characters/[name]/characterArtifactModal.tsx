@@ -48,12 +48,7 @@ export default function CharacterArtifactModal(
 		return compose(
 			sortBy(({ rating }) => -rating),
 			sortBy(({ subStat }) => -subStat),
-		)(
-			artifactsFiltered.map((artifact) => ({
-				artifact,
-				...getArtifactTier(tier, artifact),
-			})),
-		);
+		)(artifactsFiltered.map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })));
 	}, [artifacts, checked, slot, tier]);
 
 	return (

@@ -538,10 +538,7 @@ const artifactOrder = Object.keys(artifactLocation);
 	});
 	const elements = indexBy(
 		'key',
-		elementsData.map((element) => ({
-			key: element.name,
-			image: element.images.base64,
-		})),
+		elementsData.map((element) => ({ key: element.name, image: element.images.base64 })),
 	);
 
 	const charactersData = genshindb.characters('names', {

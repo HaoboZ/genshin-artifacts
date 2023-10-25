@@ -2,29 +2,29 @@
 	"Traveler": {
 		"key": "Traveler",
 		"role": "DPS",
-		"weapon": [ "DarkIronSword" ],
-		"artifact": [ "GladiatorsFinale" ],
-		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": [ "critRate_", "critDMG_" ] },
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"weapon": ["DarkIronSword"],
+		"artifact": ["GladiatorsFinale"],
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": ["critRate_", "critDMG_"] },
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Amber": {
 		"key": "Amber",
 		"role": "Support",
-		"weapon": [ "ElegyForTheEnd", "FavoniusWarbow", "SacrificialBow", "TheViridescentHunt" ],
-		"artifact": [ "NoblesseOblige", "Instructor", "TheExile" ],
+		"weapon": ["ElegyForTheEnd", "FavoniusWarbow", "SacrificialBow", "TheViridescentHunt"],
+		"artifact": ["NoblesseOblige", "Instructor", "TheExile"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "eleMas", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "eleMas", "atk"]
 	},
 	"Xiangling": {
 		"key": "Xiangling",
 		"role": "Off-Field DPS",
 		"weapon": [
 			"StaffOfTheScarletSands",
-			[ "StaffOfHoma", "EngulfingLightning", "TheCatch" ],
+			["StaffOfHoma", "EngulfingLightning", "TheCatch"],
 			[
 				"PrimordialJadeWingedSpear",
 				"SkywardSpine",
@@ -32,20 +32,20 @@
 				"Deathmatch",
 				"BalladOfTheFjords"
 			],
-			[ "VortexVanquisher", "WavebreakersFin", "DragonsBane" ],
+			["VortexVanquisher", "WavebreakersFin", "DragonsBane"],
 			"MissiveWindspear",
 			"KitainCrossSpear",
 			"LithicSpear",
 			"FavoniusLance",
 			"PrototypeStarglitter"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "CrimsonWitchOfFlames", "NoblesseOblige" ],
+		"artifact": ["EmblemOfSeveredFate", "CrimsonWitchOfFlames", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_", "eleMas" ],
+			"sands": ["enerRech_", "atk_", "eleMas"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "eleMas", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "eleMas", "atk"]
 	},
 	"Bennett": {
 		"key": "Bennett",
@@ -61,13 +61,13 @@
 			"PrototypeRancour",
 			"FesteringDesire"
 		],
-		"artifact": [ "NoblesseOblige", "EmblemOfSeveredFate", "CrimsonWitchOfFlames" ],
+		"artifact": ["NoblesseOblige", "EmblemOfSeveredFate", "CrimsonWitchOfFlames"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_" ],
+			"sands": ["atk_", "enerRech_"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas"]
 	},
 	"Xinyan": {
 		"key": "Xinyan",
@@ -83,19 +83,19 @@
 			"SnowTombedStarsilver",
 			"PrototypeArchaic"
 		],
-		"artifact": [ "PaleFlame" ],
+		"artifact": ["PaleFlame"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_" ],
+			"sands": ["atk_", "enerRech_"],
 			"goblet": "physical_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "def_" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "def_"]
 	},
 	"Yanfei": {
 		"key": "Yanfei",
 		"role": "DPS",
 		"weapon": [
-			[ "SkywardAtlas", "MemoryOfDust" ],
+			["SkywardAtlas", "MemoryOfDust"],
 			"LostPrayerToTheSacredWinds",
 			"KagurasVerity",
 			"TheWidsith",
@@ -112,54 +112,48 @@
 			"RetracingBolide"
 		],
 		"mainStat": {
-			"sands": [ "atk_", "eleMas" ],
+			"sands": ["atk_", "eleMas"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Thoma": {
 		"key": "Thoma",
 		"role": "Burgeon",
-		"weapon": [
-			"KitainCrossSpear",
-			"FavoniusLance",
-			"DragonsBane",
-			"Moonpiercer",
-			"BlackTassel"
-		],
-		"artifact": [ "FlowerOfParadiseLost", "GildedDreams", "CrimsonWitchOfFlames" ],
-		"mainStat": { "sands": [ "enerRech_", "eleMas" ], "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "enerRech_", "eleMas", "hp_", "hp", "critRate_" ]
+		"weapon": ["KitainCrossSpear", "FavoniusLance", "DragonsBane", "Moonpiercer", "BlackTassel"],
+		"artifact": ["FlowerOfParadiseLost", "GildedDreams", "CrimsonWitchOfFlames"],
+		"mainStat": { "sands": ["enerRech_", "eleMas"], "goblet": "eleMas", "circlet": "eleMas" },
+		"subStat": ["enerRech_", "eleMas", "hp_", "hp", "critRate_"]
 	},
 	"Diluc": {
 		"key": "Diluc",
 		"role": "DPS",
 		"weapon": [
-			[ "RedhornStonethresher", "BeaconOfTheReedSea" ],
+			["RedhornStonethresher", "BeaconOfTheReedSea"],
 			"SerpentSpine",
-			[ "WolfsGravestone", "TheUnforged" ],
-			[ "Rainslasher", "MailedFlower" ],
+			["WolfsGravestone", "TheUnforged"],
+			["Rainslasher", "MailedFlower"],
 			"SkywardPride",
 			"SongOfBrokenPines",
-			[ "BlackcliffSlasher", "LuxuriousSeaLord" ],
+			["BlackcliffSlasher", "LuxuriousSeaLord"],
 			"PrototypeArchaic"
 		],
-		"artifact": [ "CrimsonWitchOfFlames", "GildedDreams", "GladiatorsFinale" ],
+		"artifact": ["CrimsonWitchOfFlames", "GildedDreams", "GladiatorsFinale"],
 		"mainStat": {
-			"sands": [ "eleMas", "atk_" ],
+			"sands": ["eleMas", "atk_"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_"]
 	},
 	"Klee": {
 		"key": "Klee",
 		"role": "DPS",
 		"weapon": [
 			"TheWidsith",
-			[ "LostPrayerToTheSacredWinds", "KagurasVerity" ],
-			[ "SkywardAtlas", "TulaytullahsRemembrance" ],
+			["LostPrayerToTheSacredWinds", "KagurasVerity"],
+			["SkywardAtlas", "TulaytullahsRemembrance"],
 			"MemoryOfDust",
 			"SolarPearl",
 			"DodocoTales",
@@ -167,13 +161,13 @@
 			"MappaMare",
 			"MagicGuide"
 		],
-		"artifact": [ "Lavawalker", "CrimsonWitchOfFlames", "WanderersTroupe" ],
+		"artifact": ["Lavawalker", "CrimsonWitchOfFlames", "WanderersTroupe"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_", "atk"]
 	},
 	"HuTao": {
 		"key": "HuTao",
@@ -182,11 +176,11 @@
 			"StaffOfHoma",
 			"StaffOfTheScarletSands",
 			"BalladOfTheFjords",
-			[ "DragonsBane", "Deathmatch" ],
+			["DragonsBane", "Deathmatch"],
 			"PrimordialJadeWingedSpear",
 			"LithicSpear",
 			"MissiveWindspear",
-			[ "WhiteTassel", "BlackcliffPole", "KitainCrossSpear", "RightfulReward" ]
+			["WhiteTassel", "BlackcliffPole", "KitainCrossSpear", "RightfulReward"]
 		],
 		"artifact": [
 			"CrimsonWitchOfFlames",
@@ -195,21 +189,21 @@
 			"RetracingBolide"
 		],
 		"mainStat": {
-			"sands": [ "hp_", "eleMas" ],
+			"sands": ["hp_", "eleMas"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "eleMas", "hp_", "atk_", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], "eleMas", "hp_", "atk_", "enerRech_"]
 	},
 	"Yoimiya": {
 		"key": "Yoimiya",
 		"role": "DPS",
 		"weapon": [
 			"ThunderingPulse",
-			[ "AquaSimulacra", "PolarStar" ],
+			["AquaSimulacra", "PolarStar"],
 			"HuntersPath",
 			"Slingshot",
-			[ "AmosBow", "SkywardHarp" ],
+			["AmosBow", "SkywardHarp"],
 			"Rust"
 		],
 		"artifact": [
@@ -220,18 +214,18 @@
 			"RetracingBolide"
 		],
 		"mainStat": {
-			"sands": [ "atk_", "eleMas" ],
+			"sands": ["atk_", "eleMas"],
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_", "atk"]
 	},
 	"Dehya": {
 		"key": "Dehya",
 		"role": "Support",
 		"weapon": [
 			"FavoniusGreatsword",
-			[ "WolfsGravestone", "MakhairaAquamarine" ],
+			["WolfsGravestone", "MakhairaAquamarine"],
 			"TheBell",
 			"PrototypeArchaic"
 		],
@@ -242,8 +236,8 @@
 			"MaidenBeloved",
 			"DeepwoodMemories"
 		],
-		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": [ "hp_", "critRate_" ] },
-		"subStat": [ "hp_", "hp", "eleMas", "atk_", "atk" ]
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": ["hp_", "critRate_"] },
+		"subStat": ["hp_", "hp", "eleMas", "atk_", "atk"]
 	},
 	"Lyney": {
 		"key": "Lyney",
@@ -254,26 +248,26 @@
 			"ThunderingPulse",
 			"SkywardHarp",
 			"AmosBow",
-			[ "PolarStar", "SongOfStillness", "PrototypeCrescent" ],
-			[ "ScionOfTheBlazingSun", "BlackcliffWarbow" ]
+			["PolarStar", "SongOfStillness", "PrototypeCrescent"],
+			["ScionOfTheBlazingSun", "BlackcliffWarbow"]
 		],
 		"artifact": [
 			"MarechausseeHunter",
-			[ "Lavawalker", "VermillionHereafter", "ShimenawasReminiscence" ],
-			[ "RetracingBolide", "DesertPavilionChronicle" ],
+			["Lavawalker", "VermillionHereafter", "ShimenawasReminiscence"],
+			["RetracingBolide", "DesertPavilionChronicle"],
 			"WanderersTroupe"
 		],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "pyro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "atk"]
 	},
 	"Collei": {
 		"key": "Collei",
 		"role": "Support",
-		"weapon": [ "ElegyForTheEnd", "PolarStar", "SacrificialBow", "FavoniusWarbow" ],
+		"weapon": ["ElegyForTheEnd", "PolarStar", "SacrificialBow", "FavoniusWarbow"],
 		"artifact": [
 			"DeepwoodMemories",
 			"NoblesseOblige",
@@ -283,18 +277,18 @@
 			"TheExile"
 		],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_", "eleMas" ],
-			"goblet": [ "dendro_dmg_", "eleMas" ],
-			"circlet": [ "critRate_", "critDMG_", "eleMas" ]
+			"sands": ["enerRech_", "atk_", "eleMas"],
+			"goblet": ["dendro_dmg_", "eleMas"],
+			"circlet": ["critRate_", "critDMG_", "eleMas"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], [ "atk_", "eleMas" ] ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], ["atk_", "eleMas"]]
 	},
 	"Yaoyao": {
 		"key": "Yaoyao",
 		"role": "Support",
 		"weapon": [
 			"FavoniusLance",
-			[ "BlackTassel", "RightfulReward" ],
+			["BlackTassel", "RightfulReward"],
 			"Moonpiercer",
 			"KitainCrossSpear"
 		],
@@ -307,8 +301,8 @@
 			"FlowerOfParadiseLost",
 			"GildedDreams"
 		],
-		"mainStat": { "sands": [ "hp_", "enerRech_" ], "goblet": "hp_", "circlet": "heal_" },
-		"subStat": [ "enerRech_", "hp_", "critRate_", "hp" ]
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": "heal_" },
+		"subStat": ["enerRech_", "hp_", "critRate_", "hp"]
 	},
 	"Kaveh": {
 		"key": "Kaveh",
@@ -317,9 +311,9 @@
 			"FavoniusGreatsword",
 			"SacrificialGreatsword",
 			"MailedFlower",
-			[ "WolfsGravestone", "SongOfBrokenPines" ],
-			[ "MakhairaAquamarine", "KatsuragikiriNagamasa" ],
-			[ "SkywardPride", "ForestRegalia", "Rainslasher" ]
+			["WolfsGravestone", "SongOfBrokenPines"],
+			["MakhairaAquamarine", "KatsuragikiriNagamasa"],
+			["SkywardPride", "ForestRegalia", "Rainslasher"]
 		],
 		"artifact": [
 			"DeepwoodMemories",
@@ -329,29 +323,29 @@
 			"GildedDreams"
 		],
 		"mainStat": {
-			"sands": [ "enerRech_", "eleMas" ],
+			"sands": ["enerRech_", "eleMas"],
 			"goblet": "eleMas",
-			"circlet": [ "eleMas", "critRate_" ]
+			"circlet": ["eleMas", "critRate_"]
 		},
-		"subStat": [ "enerRech_", "eleMas", "critRate_" ]
+		"subStat": ["enerRech_", "eleMas", "critRate_"]
 	},
 	"Kirara": {
 		"key": "Kirara",
 		"role": "Shield Support",
 		"weapon": [
-			[ "FavoniusSword", "KeyOfKhajNisut" ],
+			["FavoniusSword", "KeyOfKhajNisut"],
 			"TheDockhandsAssistant",
 			"SacrificialSword",
-			[ "SapwoodBlade", "FesteringDesire", "FreedomSworn" ],
+			["SapwoodBlade", "FesteringDesire", "FreedomSworn"],
 			"PrimordialJadeCutter"
 		],
-		"artifact": [ "Instructor", "TenacityOfTheMillelith", "DeepwoodMemories", "NoblesseOblige" ],
+		"artifact": ["Instructor", "TenacityOfTheMillelith", "DeepwoodMemories", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "hp_", "enerRech_" ],
+			"sands": ["hp_", "enerRech_"],
 			"goblet": "hp_",
-			"circlet": [ "hp_", "critRate_" ]
+			"circlet": ["hp_", "critRate_"]
 		},
-		"subStat": [ "enerRech_", "hp_", "critRate_", "hp" ]
+		"subStat": ["enerRech_", "hp_", "critRate_", "hp"]
 	},
 	"Tighnari": {
 		"key": "Tighnari",
@@ -359,10 +353,10 @@
 		"weapon": [
 			"HuntersPath",
 			"ElegyForTheEnd",
-			[ "AquaSimulacra", "PolarStar", "TheFirstGreatMagic" ],
-			[ "SkywardHarp", "ThunderingPulse" ],
+			["AquaSimulacra", "PolarStar", "TheFirstGreatMagic"],
+			["SkywardHarp", "ThunderingPulse"],
 			"AmosBow",
-			[ "Slingshot", "TheViridescentHunt", "WindblumeOde" ],
+			["Slingshot", "TheViridescentHunt", "WindblumeOde"],
 			[
 				"FadingTwilight",
 				"PrototypeCrescent",
@@ -372,13 +366,13 @@
 				"SongOfStillness"
 			]
 		],
-		"artifact": [ [ "WanderersTroupe", "GildedDreams" ], "DeepwoodMemories" ],
+		"artifact": [["WanderersTroupe", "GildedDreams"], "DeepwoodMemories"],
 		"mainStat": {
-			"sands": [ "atk_", "eleMas" ],
+			"sands": ["atk_", "eleMas"],
 			"goblet": "dendro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "eleMas", "atk_", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], "eleMas", "atk_", "enerRech_"]
 	},
 	"Nahida": {
 		"key": "Nahida",
@@ -389,9 +383,9 @@
 			"SacrificialFragments",
 			"WanderingEvenstar",
 			"TheWidsith",
-			[ "SkywardAtlas", "LostPrayerToTheSacredWinds", "MemoryOfDust", "SolarPearl" ],
+			["SkywardAtlas", "LostPrayerToTheSacredWinds", "MemoryOfDust", "SolarPearl"],
 			"FavoniusCodex",
-			[ "MappaMare", "MagicGuide", "HakushinRing" ],
+			["MappaMare", "MagicGuide", "HakushinRing"],
 			"ThrillingTalesOfDragonSlayers",
 			"PrototypeAmber"
 		],
@@ -403,10 +397,10 @@
 		],
 		"mainStat": {
 			"sands": "eleMas",
-			"goblet": [ "eleMas", "dendro_dmg_" ],
-			"circlet": [ "eleMas", "critRate_", "critDMG_" ]
+			"goblet": ["eleMas", "dendro_dmg_"],
+			"circlet": ["eleMas", "critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_", "eleMas" ], "atk_" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_", "eleMas"], "atk_"]
 	},
 	"Alhaitham": {
 		"key": "Alhaitham",
@@ -414,22 +408,22 @@
 		"weapon": [
 			"LightOfFoliarIncision",
 			"PrimordialJadeCutter",
-			[ "MistsplitterReforged", "HaranGeppakuFutsu" ],
+			["MistsplitterReforged", "HaranGeppakuFutsu"],
 			"FreedomSworn",
 			"WolfFang",
 			"ToukabouShigure",
 			"TheBlackSword",
-			[ "SummitShaper", "IronSting", "BlackcliffLongsword", "HarbingerOfDawn" ],
-			[ "XiphosMoonlight", "FesteringDesire" ],
+			["SummitShaper", "IronSting", "BlackcliffLongsword", "HarbingerOfDawn"],
+			["XiphosMoonlight", "FesteringDesire"],
 			"SkywardBlade"
 		],
-		"artifact": [ "GildedDreams", "DeepwoodMemories" ],
+		"artifact": ["GildedDreams", "DeepwoodMemories"],
 		"mainStat": {
-			"sands": [ "eleMas", "atk_" ],
+			"sands": ["eleMas", "atk_"],
 			"goblet": "dendro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "eleMas", "atk_", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "eleMas", "atk_", "atk"]
 	},
 	"Baizhu": {
 		"key": "Baizhu",
@@ -441,9 +435,9 @@
 			"HakushinRing",
 			"ThrillingTalesOfDragonSlayers"
 		],
-		"artifact": [ "DeepwoodMemories", "OceanHuedClam", "Instructor", "NoblesseOblige" ],
-		"mainStat": { "sands": [ "hp_", "enerRech_" ], "goblet": "hp_", "circlet": "hp_" },
-		"subStat": [ "enerRech_", "hp_", "hp" ]
+		"artifact": ["DeepwoodMemories", "OceanHuedClam", "Instructor", "NoblesseOblige"],
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": "hp_" },
+		"subStat": ["enerRech_", "hp_", "hp"]
 	},
 	"Xingqiu": {
 		"key": "Xingqiu",
@@ -453,20 +447,20 @@
 			"MistsplitterReforged",
 			"HaranGeppakuFutsu",
 			"LightOfFoliarIncision",
-			[ "SkywardBlade", "WolfFang" ],
+			["SkywardBlade", "WolfFang"],
 			"SummitShaper",
-			[ "FavoniusSword", "FleuveCendreFerryman" ],
+			["FavoniusSword", "FleuveCendreFerryman"],
 			"FinaleOfTheDeep",
-			[ "FesteringDesire", "SacrificialSword", "AmenomaKageuchi", "HarbingerOfDawn" ],
-			[ "SapwoodBlade", "FreedomSworn", "LionsRoar" ]
+			["FesteringDesire", "SacrificialSword", "AmenomaKageuchi", "HarbingerOfDawn"],
+			["SapwoodBlade", "FreedomSworn", "LionsRoar"]
 		],
-		"artifact": [ "EmblemOfSeveredFate", "NoblesseOblige", "NymphsDream", "BlizzardStrayer" ],
+		"artifact": ["EmblemOfSeveredFate", "NoblesseOblige", "NymphsDream", "BlizzardStrayer"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
 			"goblet": "hydro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Barbara": {
 		"key": "Barbara",
@@ -477,9 +471,9 @@
 			"PrototypeAmber",
 			"FavoniusCodex"
 		],
-		"artifact": [ [ "MaidenBeloved", "OceanHuedClam" ], "Instructor" ],
+		"artifact": [["MaidenBeloved", "OceanHuedClam"], "Instructor"],
 		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "heal_" },
-		"subStat": [ "hp_", "hp_" ]
+		"subStat": ["hp_", "hp_"]
 	},
 	"Candace": {
 		"key": "Candace",
@@ -487,40 +481,40 @@
 		"weapon": [
 			"FavoniusLance",
 			"EngulfingLightning",
-			[ "StaffOfHoma", "Deathmatch", "TheCatch" ],
+			["StaffOfHoma", "Deathmatch", "TheCatch"],
 			"PrototypeStarglitter",
 			"SerpentSpine",
 			"BlackTassel"
 		],
-		"artifact": [ "EmblemOfSeveredFate" ],
+		"artifact": ["EmblemOfSeveredFate"],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_" ],
-			"goblet": [ "hp_", "hydro_dmg_" ],
-			"circlet": [ "hp_", "critRate_", "critDMG_" ]
+			"sands": ["enerRech_", "hp_"],
+			"goblet": ["hp_", "hydro_dmg_"],
+			"circlet": ["hp_", "critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", "critRate_", "hp_", "hp" ]
+		"subStat": ["enerRech_", "critRate_", "hp_", "hp"]
 	},
 	"Tartaglia": {
 		"key": "Tartaglia",
 		"role": "DPS",
 		"weapon": [
 			"PolarStar",
-			[ "ThunderingPulse", "HuntersPath", "AquaSimulacra" ],
+			["ThunderingPulse", "HuntersPath", "AquaSimulacra"],
 			"SkywardHarp",
 			"AmosBow",
 			"TheViridescentHunt",
 			"BlackcliffWarbow",
-			[ "MouunsMoon", "PrototypeCrescent" ],
-			[ "Rust", "KingsSquire", "Hamayumi", "TheStringless" ],
+			["MouunsMoon", "PrototypeCrescent"],
+			["Rust", "KingsSquire", "Hamayumi", "TheStringless"],
 			"Slingshot"
 		],
-		"artifact": [ "NymphsDream", "HeartOfDepth", "ShimenawasReminiscence" ],
+		"artifact": ["NymphsDream", "HeartOfDepth", "ShimenawasReminiscence"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "hydro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_", "atk"]
 	},
 	"Mona": {
 		"key": "Mona",
@@ -532,13 +526,13 @@
 			"PrototypeAmber",
 			"WineAndSong"
 		],
-		"artifact": [ "NoblesseOblige", "Instructor", "TenacityOfTheMillelith" ],
+		"artifact": ["NoblesseOblige", "Instructor", "TenacityOfTheMillelith"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
-			"goblet": [ "hydro_dmg_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
+			"goblet": ["hydro_dmg_", "atk_"],
 			"circlet": "critRate_"
 		},
-		"subStat": [ "enerRech_", "critRate_", "atk_" ]
+		"subStat": ["enerRech_", "critRate_", "atk_"]
 	},
 	"SangonomiyaKokomi": {
 		"key": "SangonomiyaKokomi",
@@ -549,28 +543,28 @@
 			"HakushinRing",
 			"SacrificialFragments"
 		],
-		"artifact": [ [ "OceanHuedClam", "TenacityOfTheMillelith" ], "MaidenBeloved" ],
+		"artifact": [["OceanHuedClam", "TenacityOfTheMillelith"], "MaidenBeloved"],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_" ],
+			"sands": ["enerRech_", "hp_"],
 			"goblet": "hp_",
-			"circlet": [ "heal_", "hp_" ]
+			"circlet": ["heal_", "hp_"]
 		},
-		"subStat": [ "enerRech_", "hp_", "atk_", "hp", "atk" ]
+		"subStat": ["enerRech_", "hp_", "atk_", "hp", "atk"]
 	},
 	"KamisatoAyato": {
 		"key": "KamisatoAyato",
 		"role": "DPS",
 		"weapon": [
-			[ "HaranGeppakuFutsu", "PrimordialJadeCutter" ],
+			["HaranGeppakuFutsu", "PrimordialJadeCutter"],
 			"MistsplitterReforged",
 			"TheBlackSword",
 			"SummitShaper",
 			"KagotsurubeIsshin",
 			"LionsRoar",
-			[ "AmenomaKageuchi", "SkywardBlade" ]
+			["AmenomaKageuchi", "SkywardBlade"]
 		],
 		"artifact": [
-			[ "HeartOfDepth", "GladiatorsFinale", "NymphsDream" ],
+			["HeartOfDepth", "GladiatorsFinale", "NymphsDream"],
 			"BlizzardStrayer",
 			"ThunderingFury",
 			"EchoesOfAnOffering"
@@ -578,21 +572,21 @@
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "hydro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "hp_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "hp_", "eleMas", "atk"]
 	},
 	"Yelan": {
 		"key": "Yelan",
 		"role": "Off-Field DPS",
-		"weapon": [ "ElegyForTheEnd", "FavoniusWarbow", "AquaSimulacra", "SacrificialBow" ],
-		"artifact": [ "EmblemOfSeveredFate" ],
+		"weapon": ["ElegyForTheEnd", "FavoniusWarbow", "AquaSimulacra", "SacrificialBow"],
+		"artifact": ["EmblemOfSeveredFate"],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_" ],
-			"goblet": [ "hydro_dmg_", "hp_" ],
-			"circlet": [ "critRate_", "critDMG_", "hp_" ]
+			"sands": ["enerRech_", "hp_"],
+			"goblet": ["hydro_dmg_", "hp_"],
+			"circlet": ["critRate_", "critDMG_", "hp_"]
 		},
-		"subStat": [ "enerRech_", [ "hp_", "critRate_", "critDMG_" ], "hp" ]
+		"subStat": ["enerRech_", ["hp_", "critRate_", "critDMG_"], "hp"]
 	},
 	"Nilou": {
 		"key": "Nilou",
@@ -600,14 +594,14 @@
 		"weapon": [
 			"KeyOfKhajNisut",
 			"TheDockhandsAssistant",
-			[ "FreedomSworn", "XiphosMoonlight" ],
-			[ "IronSting", "ToukabouShigure" ],
-			[ "FavoniusSword", "FesteringDesire", "SacrificialSword", "SapwoodBlade" ],
+			["FreedomSworn", "XiphosMoonlight"],
+			["IronSting", "ToukabouShigure"],
+			["FavoniusSword", "FesteringDesire", "SacrificialSword", "SapwoodBlade"],
 			"PrimordialJadeCutter"
 		],
-		"artifact": [ "DeepwoodMemories" ],
-		"mainStat": { "sands": [ "hp_", "enerRech_" ], "goblet": "hp_", "circlet": "hp_" },
-		"subStat": [ "hp_", "hp", "enerRech_", "eleMas", [ "critRate_", "critDMG_" ] ]
+		"artifact": ["DeepwoodMemories"],
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": "hp_" },
+		"subStat": ["hp_", "hp", "enerRech_", "eleMas", ["critRate_", "critDMG_"]]
 	},
 	"Neuvillette": {
 		"key": "Neuvillette",
@@ -615,19 +609,19 @@
 		"weapon": [
 			"TomeOfTheEternalFlow",
 			"SacrificialJade",
-			[ "JadefallsSplendor", "PrototypeAmber", "KagurasVerity", "LostPrayerToTheSacredWinds" ]
+			["JadefallsSplendor", "PrototypeAmber", "KagurasVerity", "LostPrayerToTheSacredWinds"]
 		],
 		"artifact": [
 			"MarechausseeHunter",
 			"HeartOfDepth",
-			[ "RetracingBolide", "WanderersTroupe", "NymphsDream" ]
+			["RetracingBolide", "WanderersTroupe", "NymphsDream"]
 		],
 		"mainStat": {
 			"sands": "hp_",
-			"goblet": [ "hydro_dmg_", "hp_" ],
-			"circlet": [ "critRate_", "critDMG_", "hp_" ]
+			"goblet": ["hydro_dmg_", "hp_"],
+			"circlet": ["critRate_", "critDMG_", "hp_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_", "hp_" ], "hp" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_", "hp_"], "hp"]
 	},
 	"Fischl": {
 		"key": "Fischl",
@@ -635,20 +629,20 @@
 		"weapon": [
 			"PolarStar",
 			"AquaSimulacra",
-			[ "SkywardHarp", "ThunderingPulse", "HuntersPath" ],
-			[ "AmosBow", "AlleyHunter", "TheViridescentHunt" ],
+			["SkywardHarp", "ThunderingPulse", "HuntersPath"],
+			["AmosBow", "AlleyHunter", "TheViridescentHunt"],
 			"ElegyForTheEnd",
 			"FadingTwilight",
 			"TheStringless",
 			"PrototypeCrescent"
 		],
-		"artifact": [ "GoldenTroupe", "Thundersoother", "TenacityOfTheMillelith" ],
+		"artifact": ["GoldenTroupe", "Thundersoother", "TenacityOfTheMillelith"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Beidou": {
 		"key": "Beidou",
@@ -656,19 +650,19 @@
 		"weapon": [
 			"WolfsGravestone",
 			"BeaconOfTheReedSea",
-			[ "TheUnforged", "SerpentSpine", "RedhornStonethresher" ],
+			["TheUnforged", "SerpentSpine", "RedhornStonethresher"],
 			"Akuoumaru",
-			[ "SkywardPride", "LuxuriousSeaLord" ],
+			["SkywardPride", "LuxuriousSeaLord"],
 			"PrototypeArchaic",
 			"Rainslasher"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "Thundersoother" ],
+		"artifact": ["EmblemOfSeveredFate", "Thundersoother"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_" ],
+			"sands": ["atk_", "enerRech_"],
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "eleMas", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "eleMas", "atk"]
 	},
 	"Lisa": {
 		"key": "Lisa",
@@ -676,32 +670,32 @@
 		"weapon": [
 			"KagurasVerity",
 			"LostPrayerToTheSacredWinds",
-			[ "SkywardAtlas", "AThousandFloatingDreams", "TheWidsith" ],
-			[ "TulaytullahsRemembrance", "SolarPearl", "MemoryOfDust" ],
+			["SkywardAtlas", "AThousandFloatingDreams", "TheWidsith"],
+			["TulaytullahsRemembrance", "SolarPearl", "MemoryOfDust"],
 			"BlackcliffAgate",
 			"MappaMare",
-			[ "DodocoTales", "MagicGuide" ]
+			["DodocoTales", "MagicGuide"]
 		],
-		"artifact": [ "ThunderingFury", "GildedDreams", "Thundersoother" ],
+		"artifact": ["ThunderingFury", "GildedDreams", "Thundersoother"],
 		"mainStat": {
-			"sands": [ "eleMas", "atk_" ],
+			"sands": ["eleMas", "atk_"],
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], [ "atk_", "eleMas" ], "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], ["atk_", "eleMas"], "enerRech_", "atk"]
 	},
 	"Razor": {
 		"key": "Razor",
 		"role": "Hyperbloom/EM Build",
 		"weapon": [
-			[ "MailedFlower", "MakhairaAquamarine" ],
-			[ "Rainslasher", "BloodtaintedGreatsword" ],
+			["MailedFlower", "MakhairaAquamarine"],
+			["Rainslasher", "BloodtaintedGreatsword"],
 			"FavoniusGreatsword",
 			"ForestRegalia"
 		],
-		"artifact": [ [ "GildedDreams", "FlowerOfParadiseLost" ], "ThunderingFury" ],
+		"artifact": [["GildedDreams", "FlowerOfParadiseLost"], "ThunderingFury"],
 		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "eleMas", "enerRech_", "critRate_" ]
+		"subStat": ["eleMas", "enerRech_", "critRate_"]
 	},
 	"KujouSara": {
 		"key": "KujouSara",
@@ -709,11 +703,11 @@
 		"weapon": [
 			"PolarStar",
 			"SkywardHarp",
-			[ "HuntersPath", "AquaSimulacra" ],
+			["HuntersPath", "AquaSimulacra"],
 			"ThunderingPulse",
-			[ "AmosBow", "MouunsMoon" ],
+			["AmosBow", "MouunsMoon"],
 			"ElegyForTheEnd",
-			[ "AlleyHunter", "FadingTwilight" ],
+			["AlleyHunter", "FadingTwilight"],
 			"TheViridescentHunt",
 			"BlackcliffWarbow",
 			"SacrificialBow",
@@ -721,13 +715,13 @@
 			"FavoniusWarbow",
 			"Messenger"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "NoblesseOblige" ],
+		"artifact": ["EmblemOfSeveredFate", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "atk"]
 	},
 	"KukiShinobu": {
 		"key": "KukiShinobu",
@@ -735,12 +729,12 @@
 		"weapon": [
 			"FreedomSworn",
 			"XiphosMoonlight",
-			[ "IronSting", "KeyOfKhajNisut", "ToukabouShigure" ],
-			[ "DarkIronSword", "SapwoodBlade" ]
+			["IronSting", "KeyOfKhajNisut", "ToukabouShigure"],
+			["DarkIronSword", "SapwoodBlade"]
 		],
-		"artifact": [ "FlowerOfParadiseLost", "GildedDreams", "ThunderingFury" ],
+		"artifact": ["FlowerOfParadiseLost", "GildedDreams", "ThunderingFury"],
 		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "eleMas", "hp_", "hp", "enerRech_" ]
+		"subStat": ["eleMas", "hp_", "hp", "enerRech_"]
 	},
 	"Dori": {
 		"key": "Dori",
@@ -751,45 +745,45 @@
 			"KatsuragikiriNagamasa",
 			"ForestRegalia"
 		],
-		"artifact": [ "NoblesseOblige", "DeepwoodMemories", "Instructor", "TheExile" ],
+		"artifact": ["NoblesseOblige", "DeepwoodMemories", "Instructor", "TheExile"],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_", "eleMas" ],
-			"goblet": [ "hp_", "eleMas" ],
-			"circlet": [ "heal_", "hp_", "eleMas" ]
+			"sands": ["enerRech_", "hp_", "eleMas"],
+			"goblet": ["hp_", "eleMas"],
+			"circlet": ["heal_", "hp_", "eleMas"]
 		},
-		"subStat": [ "critRate_", "enerRech_", "hp_", "eleMas" ]
+		"subStat": ["critRate_", "enerRech_", "hp_", "eleMas"]
 	},
 	"Keqing": {
 		"key": "Keqing",
 		"role": "Aggravate DPS",
 		"weapon": [
 			"MistsplitterReforged",
-			[ "PrimordialJadeCutter", "HaranGeppakuFutsu" ],
+			["PrimordialJadeCutter", "HaranGeppakuFutsu"],
 			"FreedomSworn",
 			"LightOfFoliarIncision",
 			"HarbingerOfDawn",
 			"SummitShaper",
 			"ToukabouShigure",
 			"WolfFang",
-			[ "LionsRoar", "TheBlackSword" ],
+			["LionsRoar", "TheBlackSword"],
 			"IronSting"
 		],
-		"artifact": [ [ "Thundersoother", "ThunderingFury" ], "GildedDreams" ],
+		"artifact": [["Thundersoother", "ThunderingFury"], "GildedDreams"],
 		"mainStat": {
-			"sands": [ "atk_", "eleMas" ],
+			"sands": ["atk_", "eleMas"],
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], [ "atk_", "eleMas" ], "atk", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], ["atk_", "eleMas"], "atk", "enerRech_"]
 	},
 	"RaidenShogun": {
 		"key": "RaidenShogun",
 		"role": "DPS",
 		"weapon": [
 			"EngulfingLightning",
-			[ "StaffOfHoma", "PrimordialJadeWingedSpear", "StaffOfTheScarletSands" ],
+			["StaffOfHoma", "PrimordialJadeWingedSpear", "StaffOfTheScarletSands"],
 			"CalamityQueller",
-			[ "TheCatch", "SkywardSpine" ],
+			["TheCatch", "SkywardSpine"],
 			"VortexVanquisher",
 			"Deathmatch",
 			"WavebreakersFin",
@@ -797,13 +791,13 @@
 			"FavoniusLance",
 			"PrototypeStarglitter"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "TenacityOfTheMillelith" ],
+		"artifact": ["EmblemOfSeveredFate", "TenacityOfTheMillelith"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
-			"goblet": [ "electro_dmg_", "atk_" ],
-			"circlet": [ "critRate_", "critDMG_" ]
+			"sands": ["enerRech_", "atk_"],
+			"goblet": ["electro_dmg_", "atk_"],
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"YaeMiko": {
 		"key": "YaeMiko",
@@ -812,61 +806,61 @@
 			"KagurasVerity",
 			"AThousandFloatingDreams",
 			"TomeOfTheEternalFlow",
-			[ "LostPrayerToTheSacredWinds", "SkywardAtlas", "TheWidsith", "TulaytullahsRemembrance" ],
+			["LostPrayerToTheSacredWinds", "SkywardAtlas", "TheWidsith", "TulaytullahsRemembrance"],
 			"SolarPearl",
 			"OathswornEye",
 			"HakushinRing",
 			"MappaMare"
 		],
 		"artifact": [
-			[ "GoldenTroupe", "EmblemOfSeveredFate", "GildedDreams" ],
+			["GoldenTroupe", "EmblemOfSeveredFate", "GildedDreams"],
 			"Thundersoother",
 			"TenacityOfTheMillelith"
 		],
 		"mainStat": {
-			"sands": [ "enerRech_", "eleMas", "atk_" ],
+			"sands": ["enerRech_", "eleMas", "atk_"],
 			"goblet": "electro_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "eleMas", "atk_", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "eleMas", "atk_", "enerRech_", "atk"]
 	},
 	"Cyno": {
 		"key": "Cyno",
 		"role": "Quickbloom DPS",
 		"weapon": [
 			"StaffOfTheScarletSands",
-			[ "BalladOfTheFjords", "DragonsBane" ],
+			["BalladOfTheFjords", "DragonsBane"],
 			"PrimordialJadeWingedSpear",
-			[ "WhiteTassel", "MissiveWindspear", "KitainCrossSpear", "Deathmatch", "StaffOfHoma" ],
+			["WhiteTassel", "MissiveWindspear", "KitainCrossSpear", "Deathmatch", "StaffOfHoma"],
 			"Moonpiercer",
 			"EngulfingLightning",
 			"PrototypeStarglitter",
 			"FavoniusLance"
 		],
-		"artifact": [ "ThunderingFury", "GildedDreams", "GladiatorsFinale", "FlowerOfParadiseLost" ],
+		"artifact": ["ThunderingFury", "GildedDreams", "GladiatorsFinale", "FlowerOfParadiseLost"],
 		"mainStat": {
 			"sands": "eleMas",
-			"goblet": [ "electro_dmg_", "eleMas" ],
-			"circlet": [ "critRate_", "critDMG_", "eleMas" ]
+			"goblet": ["electro_dmg_", "eleMas"],
+			"circlet": ["critRate_", "critDMG_", "eleMas"]
 		},
-		"subStat": [ "enerRech_", "eleMas", [ "critRate_", "critDMG_" ], "atk_" ]
+		"subStat": ["enerRech_", "eleMas", ["critRate_", "critDMG_"], "atk_"]
 	},
 	"Diona": {
 		"key": "Diona",
 		"role": "Support",
-		"weapon": [ [ "FavoniusWarbow", "SacrificialBow" ], "ElegyForTheEnd", "RecurveBow" ],
+		"weapon": [["FavoniusWarbow", "SacrificialBow"], "ElegyForTheEnd", "RecurveBow"],
 		"artifact": [
 			"NoblesseOblige",
-			[ "MaidenBeloved", "OceanHuedClam" ],
+			["MaidenBeloved", "OceanHuedClam"],
 			"Instructor",
 			"TenacityOfTheMillelith"
 		],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_" ],
+			"sands": ["enerRech_", "hp_"],
 			"goblet": "hp_",
-			"circlet": [ "hp_", "heal_" ]
+			"circlet": ["hp_", "heal_"]
 		},
-		"subStat": [ "enerRech_", "hp_", "critRate_", "critDMG_", "hp" ]
+		"subStat": ["enerRech_", "hp_", "critRate_", "critDMG_", "hp"]
 	},
 	"Chongyun": {
 		"key": "Chongyun",
@@ -874,7 +868,7 @@
 		"weapon": [
 			"WolfsGravestone",
 			"SerpentSpine",
-			[ "RedhornStonethresher", "BeaconOfTheReedSea" ],
+			["RedhornStonethresher", "BeaconOfTheReedSea"],
 			"TheUnforged",
 			"SkywardPride",
 			"Akuoumaru",
@@ -885,13 +879,13 @@
 			"PrototypeArchaic",
 			"FavoniusGreatsword"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "GildedDreams", "NoblesseOblige" ],
+		"artifact": ["EmblemOfSeveredFate", "GildedDreams", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_", "eleMas" ],
+			"sands": ["atk_", "enerRech_", "eleMas"],
 			"goblet": "cryo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_", "atk"]
 	},
 	"Kaeya": {
 		"key": "Kaeya",
@@ -899,22 +893,22 @@
 		"weapon": [
 			"PrimordialJadeCutter",
 			"MistsplitterReforged",
-			[ "LightOfFoliarIncision", "FreedomSworn" ],
-			[ "SkywardBlade", "HaranGeppakuFutsu" ],
+			["LightOfFoliarIncision", "FreedomSworn"],
+			["SkywardBlade", "HaranGeppakuFutsu"],
 			"SummitShaper",
 			"AquilaFavonia",
 			"LionsRoar",
 			"KagotsurubeIsshin",
-			[ "TheAlleyFlash", "IronSting" ],
+			["TheAlleyFlash", "IronSting"],
 			"AmenomaKageuchi"
 		],
-		"artifact": [ "EmblemOfSeveredFate", "NoblesseOblige", "Instructor" ],
+		"artifact": ["EmblemOfSeveredFate", "NoblesseOblige", "Instructor"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
 			"goblet": "cryo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "eleMas", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "eleMas", "atk"]
 	},
 	"Rosaria": {
 		"key": "Rosaria",
@@ -932,9 +926,9 @@
 			"TheCatch",
 			"Deathmatch"
 		],
-		"artifact": [ "BlizzardStrayer", "NoblesseOblige" ],
+		"artifact": ["BlizzardStrayer", "NoblesseOblige"],
 		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": "critDMG_" },
-		"subStat": [ "critDMG_", "atk_", "enerRech_", "critRate_", "atk" ]
+		"subStat": ["critDMG_", "atk_", "enerRech_", "critRate_", "atk"]
 	},
 	"Layla": {
 		"key": "Layla",
@@ -954,11 +948,11 @@
 			"EmblemOfSeveredFate"
 		],
 		"mainStat": {
-			"sands": [ "hp_", "enerRech_" ],
-			"goblet": [ "hp_", "cryo_dmg_" ],
-			"circlet": [ "hp_", "critRate_", "critDMG_" ]
+			"sands": ["hp_", "enerRech_"],
+			"goblet": ["hp_", "cryo_dmg_"],
+			"circlet": ["hp_", "critRate_", "critDMG_"]
 		},
-		"subStat": [ "hp_", "enerRech_", [ "critRate_", "critDMG_" ] ]
+		"subStat": ["hp_", "enerRech_", ["critRate_", "critDMG_"]]
 	},
 	"Mika": {
 		"key": "Mika",
@@ -966,34 +960,34 @@
 		"weapon": [
 			"FavoniusLance",
 			"EngulfingLightning",
-			[ "PrototypeStarglitter", "TheCatch", "RightfulReward" ],
+			["PrototypeStarglitter", "TheCatch", "RightfulReward"],
 			"BlackTassel"
 		],
-		"artifact": [ "NoblesseOblige", "OceanHuedClam", "MaidenBeloved", "TheExile" ],
+		"artifact": ["NoblesseOblige", "OceanHuedClam", "MaidenBeloved", "TheExile"],
 		"mainStat": {
-			"sands": [ "enerRech_", "hp_" ],
+			"sands": ["enerRech_", "hp_"],
 			"goblet": "hp_",
-			"circlet": [ "heal_", "critRate_" ]
+			"circlet": ["heal_", "critRate_"]
 		},
-		"subStat": [ "enerRech_", "critRate_", "hp_", "hp" ]
+		"subStat": ["enerRech_", "critRate_", "hp_", "hp"]
 	},
 	"Freminet": {
 		"key": "Freminet",
 		"role": "Physical DPS",
 		"weapon": [
 			"SkywardPride",
-			[ "SongOfBrokenPines", "WolfsGravestone" ],
-			[ "BeaconOfTheReedSea", "RedhornStonethresher" ],
-			[ "SerpentSpine", "TheUnforged" ],
-			[ "PrototypeArchaic", "TidalShadow", "SnowTombedStarsilver" ]
+			["SongOfBrokenPines", "WolfsGravestone"],
+			["BeaconOfTheReedSea", "RedhornStonethresher"],
+			["SerpentSpine", "TheUnforged"],
+			["PrototypeArchaic", "TidalShadow", "SnowTombedStarsilver"]
 		],
-		"artifact": [ "PaleFlame", "GoldenTroupe", "GladiatorsFinale" ],
+		"artifact": ["PaleFlame", "GoldenTroupe", "GladiatorsFinale"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "physical_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", "eleMas", "atk" ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", "eleMas", "atk"]
 	},
 	"Qiqi": {
 		"key": "Qiqi",
@@ -1008,59 +1002,59 @@
 			"AmenomaKageuchi",
 			"SkyriderSword"
 		],
-		"artifact": [ "TenacityOfTheMillelith", "OceanHuedClam", "MaidenBeloved", "NoblesseOblige" ],
+		"artifact": ["TenacityOfTheMillelith", "OceanHuedClam", "MaidenBeloved", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_" ],
+			"sands": ["atk_", "enerRech_"],
 			"goblet": "atk_",
-			"circlet": [ "heal_", "atk_" ]
+			"circlet": ["heal_", "atk_"]
 		},
-		"subStat": [ "atk_", "enerRech_", "atk" ]
+		"subStat": ["atk_", "enerRech_", "atk"]
 	},
 	"Ganyu": {
 		"key": "Ganyu",
 		"role": "Melt DPS",
 		"weapon": [
-			[ "HuntersPath", "TheFirstGreatMagic" ],
-			[ "AmosBow", "AquaSimulacra" ],
-			[ "PolarStar", "SkywardHarp", "ThunderingPulse" ],
-			[ "Hamayumi", "ScionOfTheBlazingSun" ],
+			["HuntersPath", "TheFirstGreatMagic"],
+			["AmosBow", "AquaSimulacra"],
+			["PolarStar", "SkywardHarp", "ThunderingPulse"],
+			["Hamayumi", "ScionOfTheBlazingSun"],
 			"PrototypeCrescent"
 		],
 		"artifact": [
-			[ "WanderersTroupe", "ShimenawasReminiscence" ],
-			[ "Lavawalker", "RetracingBolide" ],
+			["WanderersTroupe", "ShimenawasReminiscence"],
+			["Lavawalker", "RetracingBolide"],
 			"GildedDreams"
 		],
 		"mainStat": {
-			"sands": [ "eleMas", "atk_" ],
+			"sands": ["eleMas", "atk_"],
 			"goblet": "cryo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "eleMas", "atk_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "eleMas", "atk_", "atk"]
 	},
 	"Eula": {
 		"key": "Eula",
 		"role": "DPS",
 		"weapon": [
 			"SongOfBrokenPines",
-			[ "WolfsGravestone", "BeaconOfTheReedSea", "SerpentSpine" ],
+			["WolfsGravestone", "BeaconOfTheReedSea", "SerpentSpine"],
 			"RedhornStonethresher",
 			"TheUnforged",
 			"SkywardPride",
 			"TidalShadow",
-			[ "LuxuriousSeaLord", "Akuoumaru" ],
+			["LuxuriousSeaLord", "Akuoumaru"],
 			"LithicBlade",
 			"PrototypeArchaic",
 			"SnowTombedStarsilver",
 			"SkyriderGreatsword"
 		],
-		"artifact": [ "PaleFlame", "GladiatorsFinale" ],
+		"artifact": ["PaleFlame", "GladiatorsFinale"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "physical_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "enerRech_", "atk_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "enerRech_", "atk_", "atk"]
 	},
 	"KamisatoAyaka": {
 		"key": "KamisatoAyaka",
@@ -1068,15 +1062,15 @@
 		"weapon": [
 			"MistsplitterReforged",
 			"HaranGeppakuFutsu",
-			[ "LightOfFoliarIncision", "PrimordialJadeCutter", "SummitShaper" ],
+			["LightOfFoliarIncision", "PrimordialJadeCutter", "SummitShaper"],
 			"FinaleOfTheDeep",
-			[ "AquilaFavonia", "SkywardBlade" ],
-			[ "AmenomaKageuchi", "TheBlackSword", "KagotsurubeIsshin" ],
+			["AquilaFavonia", "SkywardBlade"],
+			["AmenomaKageuchi", "TheBlackSword", "KagotsurubeIsshin"],
 			"HarbingerOfDawn"
 		],
-		"artifact": [ "BlizzardStrayer" ],
-		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": [ "critDMG_", "atk_" ] },
-		"subStat": [ "critDMG_", "atk_", "enerRech_", "critRate_", "atk" ]
+		"artifact": ["BlizzardStrayer"],
+		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": ["critDMG_", "atk_"] },
+		"subStat": ["critDMG_", "atk_", "enerRech_", "critRate_", "atk"]
 	},
 	"Aloy": {
 		"key": "Aloy",
@@ -1093,13 +1087,13 @@
 			"SacrificialBow",
 			"Slingshot"
 		],
-		"artifact": [ "BlizzardStrayer", "EmblemOfSeveredFate", "NoblesseOblige" ],
+		"artifact": ["BlizzardStrayer", "EmblemOfSeveredFate", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "atk_", "eleMas" ],
+			"sands": ["atk_", "eleMas"],
 			"goblet": "cryo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "eleMas", "enerRech_", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "eleMas", "enerRech_", "atk"]
 	},
 	"Shenhe": {
 		"key": "Shenhe",
@@ -1117,21 +1111,21 @@
 			"MissiveWindspear",
 			"PrototypeStarglitter"
 		],
-		"artifact": [ "NoblesseOblige" ],
-		"mainStat": { "sands": [ "atk_", "enerRech_" ], "goblet": "atk_", "circlet": "atk_" },
-		"subStat": [ "enerRech_", "atk_", [ "critRate_", "critDMG_" ], "atk" ]
+		"artifact": ["NoblesseOblige"],
+		"mainStat": { "sands": ["atk_", "enerRech_"], "goblet": "atk_", "circlet": "atk_" },
+		"subStat": ["enerRech_", "atk_", ["critRate_", "critDMG_"], "atk"]
 	},
 	"Wriothesley": {
 		"key": "Wriothesley",
 		"role": "DPS",
-		"weapon": [ "CashflowSupervision" ],
-		"artifact": [ "MarechausseeHunter" ],
+		"weapon": ["CashflowSupervision"],
+		"artifact": ["MarechausseeHunter"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_" ],
+			"sands": ["atk_", "enerRech_"],
 			"goblet": "cryo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Sucrose": {
 		"key": "Sucrose",
@@ -1144,9 +1138,9 @@
 			"MagicGuide",
 			"FavoniusCodex"
 		],
-		"artifact": [ "ViridescentVenerer", "Instructor" ],
+		"artifact": ["ViridescentVenerer", "Instructor"],
 		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "eleMas", "enerRech_", "atk_", [ "critRate_", "critDMG_" ] ]
+		"subStat": ["eleMas", "enerRech_", "atk_", ["critRate_", "critDMG_"]]
 	},
 	"Sayu": {
 		"key": "Sayu",
@@ -1163,31 +1157,31 @@
 			"Rainslasher",
 			"BloodtaintedGreatsword"
 		],
-		"artifact": [ "ViridescentVenerer", "NoblesseOblige", "OceanHuedClam" ],
+		"artifact": ["ViridescentVenerer", "NoblesseOblige", "OceanHuedClam"],
 		"mainStat": {
-			"sands": [ "enerRech_", "eleMas" ],
-			"goblet": [ "eleMas", "atk_" ],
-			"circlet": [ "heal_", "eleMas" ]
+			"sands": ["enerRech_", "eleMas"],
+			"goblet": ["eleMas", "atk_"],
+			"circlet": ["heal_", "eleMas"]
 		},
-		"subStat": [ "enerRech_", "eleMas", "atk_", "critRate_" ]
+		"subStat": ["enerRech_", "eleMas", "atk_", "critRate_"]
 	},
 	"ShikanoinHeizou": {
 		"key": "ShikanoinHeizou",
 		"role": "Anemo DPS",
 		"weapon": [
-			[ "KagurasVerity", "SkywardAtlas" ],
+			["KagurasVerity", "SkywardAtlas"],
 			"LostPrayerToTheSacredWinds",
 			"MemoryOfDust",
-			[ "SacrificialFragments", "TheWidsith" ],
-			[ "MappaMare", "SolarPearl" ]
+			["SacrificialFragments", "TheWidsith"],
+			["MappaMare", "SolarPearl"]
 		],
-		"artifact": [ "ViridescentVenerer", "GoldenTroupe", "DesertPavilionChronicle" ],
+		"artifact": ["ViridescentVenerer", "GoldenTroupe", "DesertPavilionChronicle"],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "anemo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas"]
 	},
 	"Faruzan": {
 		"key": "Faruzan",
@@ -1196,7 +1190,7 @@
 			"FavoniusWarbow",
 			"ElegyForTheEnd",
 			"EndOfTheLine",
-			[ "FadingTwilight", "SacrificialBow" ]
+			["FadingTwilight", "SacrificialBow"]
 		],
 		"artifact": [
 			"ViridescentVenerer",
@@ -1207,25 +1201,25 @@
 		"mainStat": {
 			"sands": "enerRech_",
 			"goblet": "anemo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", "critRate_", "critDMG_", "atk_", "atk" ]
+		"subStat": ["enerRech_", "critRate_", "critDMG_", "atk_", "atk"]
 	},
 	"Lynette": {
 		"key": "Lynette",
 		"role": "Off-Field DPS",
 		"weapon": [
 			"FavoniusSword",
-			[ "FleuveCendreFerryman", "SacrificialSword", "AmenomaKageuchi", "SkywardBlade" ],
+			["FleuveCendreFerryman", "SacrificialSword", "AmenomaKageuchi", "SkywardBlade"],
 			"FreedomSworn"
 		],
-		"artifact": [ "ViridescentVenerer", "EmblemOfSeveredFate", "NoblesseOblige" ],
+		"artifact": ["ViridescentVenerer", "EmblemOfSeveredFate", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "enerRech_", "atk_" ],
+			"sands": ["enerRech_", "atk_"],
 			"goblet": "anemo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", "critRate_", "critDMG_", "atk_", "atk" ]
+		"subStat": ["enerRech_", "critRate_", "critDMG_", "atk_", "atk"]
 	},
 	"Jean": {
 		"key": "Jean",
@@ -1233,24 +1227,19 @@
 		"weapon": [
 			"PrimordialJadeCutter",
 			"FreedomSworn",
-			[ "MistsplitterReforged", "HaranGeppakuFutsu" ],
-			[ "SkywardBlade", "FesteringDesire", "FavoniusSword", "AmenomaKageuchi" ],
+			["MistsplitterReforged", "HaranGeppakuFutsu"],
+			["SkywardBlade", "FesteringDesire", "FavoniusSword", "AmenomaKageuchi"],
 			"SummitShaper",
 			"AquilaFavonia",
-			[ "TheFlute", "SapwoodBlade", "LionsRoar" ]
+			["TheFlute", "SapwoodBlade", "LionsRoar"]
 		],
-		"artifact": [
-			"ViridescentVenerer",
-			"NoblesseOblige",
-			"OceanHuedClam",
-			"EmblemOfSeveredFate"
-		],
+		"artifact": ["ViridescentVenerer", "NoblesseOblige", "OceanHuedClam", "EmblemOfSeveredFate"],
 		"mainStat": {
-			"sands": [ "atk_", "enerRech_", "eleMas" ],
-			"goblet": [ "anemo_dmg_", "eleMas" ],
-			"circlet": [ "critRate_", "critDMG_", "eleMas" ]
+			"sands": ["atk_", "enerRech_", "eleMas"],
+			"goblet": ["anemo_dmg_", "eleMas"],
+			"circlet": ["critRate_", "critDMG_", "eleMas"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "eleMas", "atk" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "eleMas", "atk"]
 	},
 	"Venti": {
 		"key": "Venti",
@@ -1264,9 +1253,9 @@
 			"RavenBow",
 			"SkywardHarp"
 		],
-		"artifact": [ "ViridescentVenerer", "NoblesseOblige" ],
+		"artifact": ["ViridescentVenerer", "NoblesseOblige"],
 		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "eleMas", "enerRech_", "atk_", [ "critRate_", "critDMG_" ], "atk" ]
+		"subStat": ["eleMas", "enerRech_", "atk_", ["critRate_", "critDMG_"], "atk"]
 	},
 	"Xiao": {
 		"key": "Xiao",
@@ -1274,27 +1263,27 @@
 		"weapon": [
 			"PrimordialJadeWingedSpear",
 			"StaffOfHoma",
-			[ "VortexVanquisher", "CalamityQueller", "StaffOfTheScarletSands" ],
+			["VortexVanquisher", "CalamityQueller", "StaffOfTheScarletSands"],
 			"Deathmatch",
 			"LithicSpear",
 			"MissiveWindspear",
-			[ "BlackcliffPole", "SkywardSpine", "MissiveWindspear" ],
+			["BlackcliffPole", "SkywardSpine", "MissiveWindspear"],
 			"EngulfingLightning",
-			[ "FavoniusLance", "WhiteTassel" ]
+			["FavoniusLance", "WhiteTassel"]
 		],
-		"artifact": [ "VermillionHereafter", [ "DesertPavilionChronicle", "MarechausseeHunter" ] ],
+		"artifact": ["VermillionHereafter", ["DesertPavilionChronicle", "MarechausseeHunter"]],
 		"mainStat": {
 			"sands": "atk_",
-			"goblet": [ "anemo_dmg_", "atk_" ],
-			"circlet": [ "critRate_", "critDMG_" ]
+			"goblet": ["anemo_dmg_", "atk_"],
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ "enerRech_", [ "critRate_", "critDMG_" ], "atk_", [ "eleMas", "atk" ] ]
+		"subStat": ["enerRech_", ["critRate_", "critDMG_"], "atk_", ["eleMas", "atk"]]
 	},
 	"KaedeharaKazuha": {
 		"key": "KaedeharaKazuha",
 		"role": "EM Build",
 		"weapon": [
-			[ "FreedomSworn", "XiphosMoonlight" ],
+			["FreedomSworn", "XiphosMoonlight"],
 			"FavoniusSword",
 			[
 				"IronSting",
@@ -1305,9 +1294,9 @@
 				"SkywardBlade"
 			]
 		],
-		"artifact": [ "ViridescentVenerer", "Instructor", "ThunderingFury" ],
-		"mainStat": { "sands": [ "eleMas", "enerRech_" ], "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": [ "enerRech_", "eleMas", [ "atk_", "critRate_" ] ]
+		"artifact": ["ViridescentVenerer", "Instructor", "ThunderingFury"],
+		"mainStat": { "sands": ["eleMas", "enerRech_"], "goblet": "eleMas", "circlet": "eleMas" },
+		"subStat": ["enerRech_", "eleMas", ["atk_", "critRate_"]]
 	},
 	"Wanderer": {
 		"key": "Wanderer",
@@ -1316,12 +1305,12 @@
 			"TulaytullahsRemembrance",
 			"LostPrayerToTheSacredWinds",
 			"TheWidsith",
-			[ "KagurasVerity", "TomeOfTheEternalFlow", "SkywardAtlas", "MemoryOfDust" ],
-			[ "SolarPearl", "DodocoTales" ],
+			["KagurasVerity", "TomeOfTheEternalFlow", "SkywardAtlas", "MemoryOfDust"],
+			["SolarPearl", "DodocoTales"],
 			"BalladOfTheBoundlessBlue",
 			"BlackcliffAgate",
 			"EyeOfPerception",
-			[ "MappaMare", "Frostbearer" ]
+			["MappaMare", "Frostbearer"]
 		],
 		"artifact": [
 			"DesertPavilionChronicle",
@@ -1334,9 +1323,9 @@
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "anemo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "atk", "eleMas", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], "atk_", "atk", "eleMas", "enerRech_"]
 	},
 	"Ningguang": {
 		"key": "Ningguang",
@@ -1356,12 +1345,12 @@
 			"HakushinRing"
 		],
 		"artifact": [
-			[ "ArchaicPetra", "HuskOfOpulentDreams" ],
-			[ "Thundersoother", "Lavawalker" ],
+			["ArchaicPetra", "HuskOfOpulentDreams"],
+			["Thundersoother", "Lavawalker"],
 			"EmblemOfSeveredFate"
 		],
-		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": [ "critRate_", "critDMG_" ] },
-		"subStat": [ [ "critRate_", "critDMG_" ], "atk_", "enerRech_", "atk" ]
+		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": ["critRate_", "critDMG_"] },
+		"subStat": [["critRate_", "critDMG_"], "atk_", "enerRech_", "atk"]
 	},
 	"Noelle": {
 		"key": "Noelle",
@@ -1373,25 +1362,25 @@
 			"Whiteblind",
 			"FavoniusGreatsword"
 		],
-		"artifact": [ [ "RetracingBolide", "HuskOfOpulentDreams" ], "GladiatorsFinale" ],
+		"artifact": [["RetracingBolide", "HuskOfOpulentDreams"], "GladiatorsFinale"],
 		"mainStat": {
-			"sands": [ "def_", "atk_" ],
+			"sands": ["def_", "atk_"],
 			"goblet": "geo_dmg_",
-			"circlet": [ "critRate_", "critDMG_" ]
+			"circlet": ["critRate_", "critDMG_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "enerRech_", "def_" ]
+		"subStat": [["critRate_", "critDMG_"], "enerRech_", "def_"]
 	},
 	"Gorou": {
 		"key": "Gorou",
 		"role": "Support",
-		"weapon": [ "FavoniusWarbow", "SacrificialBow", "ElegyForTheEnd" ],
-		"artifact": [ "TheExile", "NoblesseOblige" ],
+		"weapon": ["FavoniusWarbow", "SacrificialBow", "ElegyForTheEnd"],
+		"artifact": ["TheExile", "NoblesseOblige"],
 		"mainStat": {
 			"sands": "enerRech_",
-			"goblet": [ "geo_dmg_", "def_" ],
-			"circlet": [ "critRate_", "def_", "heal_" ]
+			"goblet": ["geo_dmg_", "def_"],
+			"circlet": ["critRate_", "def_", "heal_"]
 		},
-		"subStat": [ "enerRech_", "def_", "critRate_" ]
+		"subStat": ["enerRech_", "def_", "critRate_"]
 	},
 	"YunJin": {
 		"key": "YunJin",
@@ -1399,39 +1388,35 @@
 		"weapon": [
 			"FavoniusLance",
 			"EngulfingLightning",
-			[ "TheCatch", "PrototypeStarglitter", "KitainCrossSpear" ]
+			["TheCatch", "PrototypeStarglitter", "KitainCrossSpear"]
 		],
-		"artifact": [ "HuskOfOpulentDreams", "NoblesseOblige" ],
+		"artifact": ["HuskOfOpulentDreams", "NoblesseOblige"],
 		"mainStat": {
-			"sands": [ "def_", "enerRech_" ],
+			"sands": ["def_", "enerRech_"],
 			"goblet": "def_",
-			"circlet": [ "def_", "critRate_" ]
+			"circlet": ["def_", "critRate_"]
 		},
-		"subStat": [ "def_", "enerRech_", "def", "critRate_" ]
+		"subStat": ["def_", "enerRech_", "def", "critRate_"]
 	},
 	"Zhongli": {
 		"key": "Zhongli",
 		"role": "Shield Support",
-		"weapon": [ "BlackTassel", "FavoniusLance" ],
-		"artifact": [
-			"TenacityOfTheMillelith",
-			"ArchaicPetra",
-			[ "DeepwoodMemories", "Instructor" ]
-		],
-		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": [ "hp_", "critRate_" ] },
-		"subStat": [ "hp_", "hp", "enerRech_" ]
+		"weapon": ["BlackTassel", "FavoniusLance"],
+		"artifact": ["TenacityOfTheMillelith", "ArchaicPetra", ["DeepwoodMemories", "Instructor"]],
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": ["hp_", "critRate_"] },
+		"subStat": ["hp_", "hp", "enerRech_"]
 	},
 	"Albedo": {
 		"key": "Albedo",
 		"role": "Off-Field DPS",
 		"weapon": [
 			"CinnabarSpindle",
-			[ "HarbingerOfDawn", "WolfFang", "PrimordialJadeCutter" ],
-			[ "LightOfFoliarIncision", "HaranGeppakuFutsu", "MistsplitterReforged" ],
+			["HarbingerOfDawn", "WolfFang", "PrimordialJadeCutter"],
+			["LightOfFoliarIncision", "HaranGeppakuFutsu", "MistsplitterReforged"],
 			"FreedomSworn"
 		],
 		"artifact": [
-			[ "HuskOfOpulentDreams", "GoldenTroupe" ],
+			["HuskOfOpulentDreams", "GoldenTroupe"],
 			"ArchaicPetra",
 			"TenacityOfTheMillelith",
 			"NoblesseOblige"
@@ -1439,16 +1424,16 @@
 		"mainStat": {
 			"sands": "def_",
 			"goblet": "geo_dmg_",
-			"circlet": [ "critRate_", "critDMG_", "def_" ]
+			"circlet": ["critRate_", "critDMG_", "def_"]
 		},
-		"subStat": [ [ "critRate_", "critDMG_" ], "def_", "atk_", "enerRech_" ]
+		"subStat": [["critRate_", "critDMG_"], "def_", "atk_", "enerRech_"]
 	},
 	"AratakiItto": {
 		"key": "AratakiItto",
 		"role": "DPS",
-		"weapon": [ "RedhornStonethresher", "SerpentSpine", "SkywardPride", "Whiteblind" ],
-		"artifact": [ "HuskOfOpulentDreams", "DesertPavilionChronicle", "RetracingBolide" ],
-		"mainStat": { "sands": "def_", "goblet": "geo_dmg_", "circlet": [ "critRate_", "critDMG_" ] },
-		"subStat": [ [ "critRate_", "critDMG_" ], "def_", "enerRech_", "atk_", "def", "atk" ]
+		"weapon": ["RedhornStonethresher", "SerpentSpine", "SkywardPride", "Whiteblind"],
+		"artifact": ["HuskOfOpulentDreams", "DesertPavilionChronicle", "RetracingBolide"],
+		"mainStat": { "sands": "def_", "goblet": "geo_dmg_", "circlet": ["critRate_", "critDMG_"] },
+		"subStat": [["critRate_", "critDMG_"], "def_", "enerRech_", "atk_", "def", "atk"]
 	}
 }

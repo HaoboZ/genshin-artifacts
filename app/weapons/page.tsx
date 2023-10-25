@@ -5,8 +5,8 @@ import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
-import { DWeapon } from '@/src/types/data';
-import { IWeapon } from '@/src/types/good';
+import type { DWeapon } from '@/src/types/data';
+import type { IWeapon } from '@/src/types/good';
 import { Grid } from '@mui/joy';
 import { compose, sortBy, sortByPath } from 'rambdax';
 import { useMemo } from 'react';
@@ -42,12 +42,7 @@ export default function Weapons() {
 			<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
 			<PageSection
 				title={type || 'All'}
-				actions={[
-					{
-						name: 'Add',
-						onClick: () => showModal(AddWeaponModal),
-					},
-				]}>
+				actions={[{ name: 'Add', onClick: () => showModal(AddWeaponModal) }]}>
 				<Grid container spacing={1}>
 					{weaponsSorted.map((weapon) => (
 						<Grid key={weapon.key}>
