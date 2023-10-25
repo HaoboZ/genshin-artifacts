@@ -3,13 +3,14 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid, Sheet, Typography } from '@mui/joy';
+import Link from 'next/link';
 import { clone, difference, omit } from 'rambdax';
 import { useState } from 'react';
 import { useDidUpdate } from 'rooks';
 import { charactersInfo } from './characterData';
 import CharacterImage from './characterImage';
 
-export default function CharacterPriority() {
+export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 	const priority = useAppSelector(({ main }) => main.priority);
 	const dispatch = useAppDispatch();
 
@@ -35,7 +36,9 @@ export default function CharacterPriority() {
 				</Grid>
 			)}
 			renderItem={(key, containerProps, handleProps) => (
-				<Grid {...containerProps} {...handleProps}>
+				<Grid
+					{...containerProps}
+					{...(editMode ? handleProps : { component: Link, href: `/characters/${key}` })}>
 					<CharacterImage character={charactersInfo[key]} size={50} />
 				</Grid>
 			)}>

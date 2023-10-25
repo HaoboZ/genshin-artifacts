@@ -4,9 +4,9 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useAppSelector } from '@/src/store/hooks';
-import { Grid } from '@mui/joy';
+import { FormControl, FormLabel, Grid, Switch } from '@mui/joy';
 import { sortBy } from 'rambdax';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import CharacterCard from './characterCard';
 import { charactersInfo } from './characterData';
 import CharacterPriority from './characterPriority';
@@ -16,6 +16,7 @@ export default function Characters() {
 	const priority = useAppSelector(({ main }) => main.priority);
 
 	const [element, setElement] = useParamState('element', null);
+	const [checked, setChecked] = useState(false);
 
 	const characters = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
@@ -29,7 +30,19 @@ export default function Characters() {
 		<PageContainer noSsr>
 			<PageTitle>Characters</PageTitle>
 			<ElementFilter element={element} setElement={setElement} />
-			<PageSection title={element || 'All'}>
+			<PageSection
+				title={element || 'All'}
+				actions={
+					<FormControl orientation='horizontal'>
+						<FormLabel>Edit Mode</FormLabel>
+						<Switch
+							size='lg'
+							sx={{ ml: 0 }}
+							checked={checked}
+							onChange={({ target }) => setChecked(target.checked)}
+						/>
+					</FormControl>
+				}>
 				{element ? (
 					<Grid container spacing={1} justifyContent='center'>
 						{characters.map((character) => (
@@ -39,7 +52,7 @@ export default function Characters() {
 						))}
 					</Grid>
 				) : (
-					<CharacterPriority />
+					<CharacterPriority editMode={checked} />
 				)}
 			</PageSection>
 		</PageContainer>

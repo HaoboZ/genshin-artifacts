@@ -3,6 +3,7 @@ import type { DCharacter } from '@/src/types/data';
 import { Card, Grid } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import { weaponsInfo } from '../weapons/weaponData';
 import { charactersTier } from './characterData';
 import CharacterImage from './characterImage';
 import CharactersArtifact from './charactersArtifact';
@@ -33,7 +34,7 @@ export default function CharacterCard({ character }: { character: DCharacter }) 
 					<CharacterImage character={character} />
 				</Grid>
 				<Grid xs={4}>
-					<CharactersWeapon weapon={weapon} tier={characterTier} />
+					<CharactersWeapon weapon={weaponsInfo[weapon?.key]} tier={characterTier} />
 				</Grid>
 				<Grid xs={4}>
 					<CharactersArtifact artifact={flower} slot='flower' tier={characterTier} />

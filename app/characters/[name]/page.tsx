@@ -2,12 +2,15 @@
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
+import PercentBar from '@/components/percentBar';
+import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { indexBy } from 'rambdax';
+import { useMemo } from 'react';
 import ArtifactCard from '../../artifacts/artifactCard';
 import { artifactSlotOrder } from '../../artifacts/artifactData';
 import getArtifactTier from '../../artifacts/getArtifactTier';
@@ -34,7 +37,13 @@ export default function Character({ params }: { params: { name: string } }) {
 		'slotKey',
 		artifacts.filter(({ location }) => location === character.key),
 	);
+
 	const characterTier = charactersTier[character.key];
+	const weaponTier = useMemo(() => {
+		if (!weapon) return 0;
+		const index = arrDeepIndex(characterTier.weapon, weapon.key);
+		return index !== -1 ? 1 - index / characterTier.weapon.length : 0;
+	}, [characterTier, weapon]);
 
 	return (
 		<PageContainer noSsr>
@@ -62,6 +71,7 @@ export default function Character({ params }: { params: { name: string } }) {
 								showModal(CharacterWeaponModal, { props: { tier: characterTier, weapon } })
 							}>
 							<WeaponImage weapon={weaponsInfo[weapon?.key]} type={character.weaponType} />
+							{weapon && <PercentBar p={weaponTier} />}
 						</Card>
 					</Grid>
 					{artifactSlotOrder.map((slot) => {

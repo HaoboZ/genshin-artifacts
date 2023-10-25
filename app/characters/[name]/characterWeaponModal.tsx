@@ -29,7 +29,7 @@ export default function CharacterWeaponModal(
 					.filter(({ key }) => arrDeepIndex(tier.weapon, key) !== -1)
 					.map((weapon) => ({
 						weapon,
-						weaponTier: arrDeepIndex(tier.weapon, weapon.key) / length,
+						weaponTier: arrDeepIndex(tier.weapon, weapon.key) / tier.weapon.length,
 					})),
 			),
 		[weapons, tier],
@@ -51,9 +51,9 @@ export default function CharacterWeaponModal(
 									return;
 								dispatch(goodActions.giveWeapon([tier.key, weapon]));
 								closeModal();
-							}}>
-							<PercentBar p={1 - weaponTier} />
-						</WeaponCharacterImage>
+							}}
+						/>
+						<PercentBar p={1 - weaponTier} />
 					</Grid>
 				))}
 			</Grid>
