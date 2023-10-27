@@ -28,7 +28,9 @@ export default function Characters() {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;
 		}).filter(
-			(character) => character.element === element && character.weaponType === weaponType,
+			(character) =>
+				(!element || character.element === element) &&
+				(!weaponType || character.weaponType === weaponType),
 		);
 	}, [priority, element, weaponType]);
 
