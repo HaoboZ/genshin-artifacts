@@ -1,5 +1,6 @@
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
+import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -15,8 +16,8 @@ import {
 	Switch,
 } from '@mui/joy';
 import { capitalCase } from 'change-case';
-import { compose, sortBy } from 'rambdax';
 import { Fragment, useMemo, useState } from 'react';
+import { map, pipe, reverse, sortBy } from 'remeda';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
 import getArtifactTier from '../../artifacts/getArtifactTier';
@@ -27,7 +28,7 @@ export default function CharacterArtifactModal(
 	{ tier, slot, artifact }: { tier: Tier; slot: SlotKey; artifact: IArtifact },
 	ref,
 ) {
-	const artifacts = useAppSelector(({ good }) => good.artifacts);
+	const artifacts = useAppSelector( pget('good.artifacts'));
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
@@ -38,6 +39,7 @@ export default function CharacterArtifactModal(
 
 		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
 			if (checked) return arrDeepIndex(tier.artifact, setKey) === 0;
+
 			return (
 				slotKey === slot &&
 				(mainStat ? mainStat.includes(mainStatKey) : true) &&
@@ -45,10 +47,13 @@ export default function CharacterArtifactModal(
 			);
 		});
 
-		return compose(
-			sortBy(({ rating }) => -rating),
-			sortBy(({ subStat }) => -subStat),
-		)(artifactsFiltered.map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })));
+		return pipe(
+			artifactsFiltered,
+			map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })),
+			sortBy(pget('subStat')),
+			sortBy(pget('rating')),
+			reverse()
+		);
 	}, [artifacts, checked, slot, tier]);
 
 	return (

@@ -2,11 +2,12 @@
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
+import pget from '@/src/helpers/pget';
 import useParamState from '@/src/hooks/useParamState';
 import { useAppSelector } from '@/src/store/hooks';
 import { FormControl, FormLabel, Grid, Switch } from '@mui/joy';
-import { sortBy } from 'rambdax';
 import { useMemo, useState } from 'react';
+import { sortBy } from 'remeda';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterCard from './characterCard';
 import { charactersInfo } from './characterData';
@@ -14,7 +15,7 @@ import CharacterPriority from './characterPriority';
 import ElementsFilter from './elementsFilter';
 
 export default function Characters() {
-	const priority = useAppSelector(({ main }) => main.priority);
+	const priority = useAppSelector(pget('main.priority'));
 
 	const [element, setElement] = useParamState('element', null);
 	const [weaponType, setWeaponType] = useParamState('weapon', null);
@@ -23,12 +24,12 @@ export default function Characters() {
 	const characters = useMemo(() => {
 		if (!element && !weaponType) return [];
 		const priorityIndex = Object.values(priority).flat();
-		return sortBy(({ key }) => {
+		return sortBy(Object.values(charactersInfo), ({ key }) => {
 			const index = priorityIndex.indexOf(key);
 			return index === -1 ? Infinity : index;
-		}, Object.values(charactersInfo))
-			.filter((character) => !element || character.element === element)
-			.filter((character) => !weaponType || character.weaponType === weaponType);
+		}).filter(
+			(character) => character.element === element && character.weaponType === weaponType,
+		);
 	}, [priority, element, weaponType]);
 
 	return (

@@ -9,9 +9,10 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
-import { map } from 'rambdax';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
+import { mapValues } from 'remeda';
+import pget from '../../helpers/pget';
 import SortableContainer from './sortableContainer';
 import SortableItem from './sortableItem';
 import { moveBetweenContainers } from './utils';
@@ -32,7 +33,7 @@ export default function MultiSortable<Item>({
 	const [setA, setSetA] = useState(false);
 	const [skipB, setSkipB] = useState(true);
 	const [lists, setLists] = useState<Record<string, { id: string; item: Item }[]>>(() =>
-		map((items) => items.map((item) => ({ id: nanoid(), item })), groups),
+		mapValues(groups, (items) => items.map((item) => ({ id: nanoid(), item }))),
 	);
 	const [active, setActive] = useState<Active>(null);
 
@@ -46,12 +47,12 @@ export default function MultiSortable<Item>({
 		if (!setA) return;
 		setSetA(false);
 		setSkipB(true);
-		setGroups(map((list) => list.map(({ item }) => item), lists));
+		setGroups(mapValues(lists, (list) => list.map(pget('item'))));
 	}, [lists]);
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		setLists(map((items) => items.map((item) => ({ id: nanoid(), item })), groups));
+		setLists(mapValues(groups, (items) => items.map((item) => ({ id: nanoid(), item }))));
 	}, [groups]);
 
 	return (
@@ -98,18 +99,15 @@ export default function MultiSortable<Item>({
 			}}
 			onDragCancel={() => setActive(null)}>
 			{children(
-				map(
-					(list, group) => (
-						<SortableContainer
-							key={group}
-							id={group}
-							items={list}
-							renderItems={renderItems}
-							renderItem={renderItem}
-						/>
-					),
-					lists,
-				),
+				mapValues(lists, (list, group) => (
+					<SortableContainer
+						key={group}
+						id={group}
+						items={list}
+						renderItems={renderItems}
+						renderItem={renderItem}
+					/>
+				)),
 			)}
 			<DragOverlay
 				dropAnimation={{

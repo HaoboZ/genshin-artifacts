@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DCharacter } from '@/src/types/data';
 import { Card, Grid } from '@mui/joy';
@@ -10,7 +11,7 @@ import CharactersArtifact from './charactersArtifact';
 import CharactersWeapon from './charactersWeapon';
 
 export default function CharacterCard({ character }: { character: DCharacter }) {
-	const good = useAppSelector(({ good }) => good);
+	const good = useAppSelector(pget('good'));
 
 	const [characterTier, weapon, flower, plume, sands, goblet, circlet] = useMemo(() => {
 		const characterTier = charactersTier[character.key];

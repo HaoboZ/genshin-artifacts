@@ -1,29 +1,30 @@
 import MultiSortable from '@/components/sortable/multi';
+import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid, Sheet, Typography } from '@mui/joy';
 import Link from 'next/link';
-import { clone, difference, omit } from 'rambdax';
 import { useState } from 'react';
+import { difference, omit } from 'remeda';
 import { useDidUpdate } from 'rooks';
 import { charactersInfo } from './characterData';
 import CharacterImage from './characterImage';
 
 export default function CharacterPriority({ editMode }: { editMode: boolean }) {
-	const priority = useAppSelector(({ main }) => main.priority);
+	const priority = useAppSelector(pget('main.priority'));
 	const dispatch = useAppDispatch();
 
 	const [characters, setCharacters] = useState(
 		() =>
 			({
 				unSorted: difference(Object.keys(charactersInfo), Object.values(priority).flat()),
-				...clone(priority),
+				...structuredClone(priority),
 			}) as Record<string, CharacterKey[]>,
 	);
 
 	useDidUpdate(() => {
-		dispatch(mainActions.setPriority(omit('unSorted', characters)));
+		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
 	}, [characters]);
 
 	return (

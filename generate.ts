@@ -1,8 +1,9 @@
+import pget from '@/src/helpers/pget';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
-import { indexBy, pick } from 'rambdax';
+import { indexBy, pick } from 'remeda';
 
 const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png',
@@ -478,56 +479,56 @@ const weaponImages = [
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
-	// 3
-	Adventurer: 1,
-	LuckyDog: 1,
-	TravelingDoctor: 1,
-	// 4
-	ResolutionOfSojourner: 2,
-	TinyMiracle: 2,
-	Berserker: 1,
-	Instructor: 1,
-	TheExile: 1,
-	DefendersWill: 2,
-	BraveHeart: 2,
-	MartialArtist: 2,
-	Gambler: 2,
-	Scholar: 2,
-	PrayersForWisdom: 3,
-	PrayersForDestiny: 3,
-	PrayersForIllumination: 3,
-	PrayersToSpringtime: 3,
 	// 5
-	GladiatorsFinale: 4,
-	WanderersTroupe: 4,
-	NoblesseOblige: 5,
-	BloodstainedChivalry: 5,
-	MaidenBeloved: 6,
-	ViridescentVenerer: 6,
-	ArchaicPetra: 7,
-	RetracingBolide: 7,
-	Thundersoother: 8,
-	ThunderingFury: 8,
-	Lavawalker: 9,
-	CrimsonWitchOfFlames: 9,
-	BlizzardStrayer: 10,
-	HeartOfDepth: 10,
-	TenacityOfTheMillelith: 11,
-	PaleFlame: 11,
-	ShimenawasReminiscence: 12,
-	EmblemOfSeveredFate: 12,
-	HuskOfOpulentDreams: 13,
-	OceanHuedClam: 13,
-	VermillionHereafter: 14,
-	EchoesOfAnOffering: 14,
-	DeepwoodMemories: 15,
-	GildedDreams: 15,
-	DesertPavilionChronicle: 16,
-	FlowerOfParadiseLost: 16,
-	NymphsDream: 17,
-	VourukashasGlow: 17,
-	MarechausseeHunter: 18,
 	GoldenTroupe: 18,
+	MarechausseeHunter: 18,
+	VourukashasGlow: 17,
+	NymphsDream: 17,
+	FlowerOfParadiseLost: 16,
+	DesertPavilionChronicle: 16,
+	GildedDreams: 15,
+	DeepwoodMemories: 15,
+	EchoesOfAnOffering: 14,
+	VermillionHereafter: 14,
+	OceanHuedClam: 13,
+	HuskOfOpulentDreams: 13,
+	EmblemOfSeveredFate: 12,
+	ShimenawasReminiscence: 12,
+	PaleFlame: 11,
+	TenacityOfTheMillelith: 11,
+	HeartOfDepth: 10,
+	BlizzardStrayer: 10,
+	CrimsonWitchOfFlames: 9,
+	Lavawalker: 9,
+	ThunderingFury: 8,
+	Thundersoother: 8,
+	RetracingBolide: 7,
+	ArchaicPetra: 7,
+	ViridescentVenerer: 6,
+	MaidenBeloved: 6,
+	BloodstainedChivalry: 5,
+	NoblesseOblige: 5,
+	WanderersTroupe: 4,
+	GladiatorsFinale: 4,
+	// 4
+	PrayersToSpringtime: 3,
+	PrayersForIllumination: 3,
+	PrayersForDestiny: 3,
+	PrayersForWisdom: 3,
+	Scholar: 2,
+	Gambler: 2,
+	MartialArtist: 2,
+	BraveHeart: 2,
+	DefendersWill: 2,
+	TheExile: 1,
+	Instructor: 1,
+	Berserker: 1,
+	TinyMiracle: 2,
+	ResolutionOfSojourner: 2,
+	// 3
+	TravelingDoctor: 1,
+	LuckyDog: 1,
+	Adventurer: 1,
 };
 const artifactOrder = Object.keys(artifactLocation);
 
@@ -537,8 +538,8 @@ const artifactOrder = Object.keys(artifactLocation);
 		verboseCategories: true,
 	});
 	const elements = indexBy(
-		'key',
 		elementsData.map((element) => ({ key: element.name, image: element.images.base64 })),
+		pget('key'),
 	);
 
 	const charactersData = genshindb.characters('names', {
@@ -546,7 +547,6 @@ const artifactOrder = Object.keys(artifactLocation);
 		verboseCategories: true,
 	});
 	const characters = indexBy(
-		'key',
 		charactersData
 			.map((character) => {
 				if (character.name === 'Aether') character.name = 'Traveler';
@@ -556,13 +556,14 @@ const artifactOrder = Object.keys(artifactLocation);
 
 				return {
 					key: pascalCase(character.name),
-					...pick(['name', 'rarity'], character),
+					...pick(character, ['name', 'rarity']),
 					weaponType: character.weaponText,
 					element: character.elementText,
 					image,
 				};
 			})
-			.filter(({ image }) => image),
+			.filter(pget('image')),
+		pget('key'),
 	);
 
 	const artifactsData = genshindb.artifacts('names', {
@@ -570,7 +571,6 @@ const artifactOrder = Object.keys(artifactLocation);
 		verboseCategories: true,
 	});
 	const artifacts = indexBy(
-		'key',
 		artifactsData.map((artifact) => {
 			const flowerName = artifact.flower?.name.replaceAll(' ', '_').replaceAll("'", '%27');
 			const flower =
@@ -598,7 +598,7 @@ const artifactOrder = Object.keys(artifactLocation);
 			const key = pascalCase(artifact.name.replaceAll("'", ''));
 			return {
 				key,
-				...pick(['name', 'effect2Pc', 'effect4Pc'], artifact),
+				...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
 				rarity: Math.max(...artifact.rarityList),
 				order: artifactOrder.indexOf(key),
 				group: artifactLocation[key],
@@ -609,6 +609,7 @@ const artifactOrder = Object.keys(artifactLocation);
 				circlet,
 			};
 		}),
+		pget('key'),
 	);
 
 	const weaponsData = genshindb.weapons('names', {
@@ -616,7 +617,6 @@ const artifactOrder = Object.keys(artifactLocation);
 		verboseCategories: true,
 	});
 	const weapons = indexBy(
-		'key',
 		weaponsData
 			.filter(({ rarity }) => rarity >= 3)
 			.map((weapon) => {
@@ -629,12 +629,13 @@ const artifactOrder = Object.keys(artifactLocation);
 
 				return {
 					key: pascalCase(weapon.name.replaceAll("'", '')),
-					...pick(['name', 'rarity'], weapon),
+					...pick(weapon, ['name', 'rarity']),
 					weaponType: weapon.weaponText,
 					image,
 				};
 			})
-			.filter(({ image }) => image),
+			.filter(pget('image')),
+		pget('key'),
 	);
 
 	try {

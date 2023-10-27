@@ -1,11 +1,11 @@
 import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
+import pget from '@/src/helpers/pget';
 import strArrMatch from '@/src/helpers/strArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
 import {
 	DialogTitle,
@@ -17,8 +17,8 @@ import {
 	Switch,
 	Typography,
 } from '@mui/joy';
-import { compose, sortBy } from 'rambdax';
 import { useMemo, useState } from 'react';
+import { map, pipe, reverse, sortBy } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactActions from './artifactActions';
@@ -42,14 +42,15 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 				strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),
 		);
 
-		return compose(
-			sortBy<{ tier: Tier; rating: number; subStat: number }>(({ rating }) => -rating),
-			sortBy(({ subStat }) => -subStat),
-		)(
-			characters.map((tier) => {
+		return pipe(
+			characters,
+			map((tier) => {
 				const { rating, subStat } = getArtifactTier(tier, artifact);
 				return { tier, rating, subStat };
 			}),
+			sortBy(pget('subStat')),
+			sortBy(pget('rating')),
+			reverse()
 		);
 	}, [artifact]);
 

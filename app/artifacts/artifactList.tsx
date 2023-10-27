@@ -1,12 +1,13 @@
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
+import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
+import type { ArtifactSetKey } from '@/src/types/good';
 import { Button, FormControl, FormLabel, Grid, Switch } from '@mui/joy';
-import { compose, sortBy } from 'rambdax';
 import { useMemo, useState } from 'react';
+import { filter, pipe, sortBy } from 'remeda';
 import { charactersTier } from '../characters/characterData';
 import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
@@ -14,7 +15,7 @@ import ArtifactModal from './artifactModal';
 import getArtifactTier from './getArtifactTier';
 
 export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSetKey }) {
-	const good = useAppSelector(({ good }) => good);
+	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
@@ -23,10 +24,12 @@ export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSet
 
 	const artifacts = useMemo(
 		() =>
-			compose(
-				sortBy<IArtifact>(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
-				sortBy<IArtifact>(({ level }) => -level),
-			)(good.artifacts.filter(({ setKey }) => setKey === artifactSet)),
+			pipe(
+				good.artifacts,
+				filter(({ setKey }) => setKey === artifactSet),
+				sortBy(({ level }) => -level),
+				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
+			),
 		[good.artifacts, artifactSet],
 	);
 

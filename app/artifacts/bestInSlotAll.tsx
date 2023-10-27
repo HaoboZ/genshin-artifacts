@@ -1,10 +1,12 @@
 import makeArray from '@/src/helpers/makeArray';
+import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
+import { DArtifact, Tier } from '@/src/types/data';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';
-import { sortBy, sortByPath } from 'rambdax';
 import { useMemo } from 'react';
+import { filter, pipe, sortBy } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import { artifactSetsInfo } from './artifactData';
@@ -15,38 +17,41 @@ export default function BestInSlotAll({
 }: {
 	setArtifactSet: (value: ArtifactSetKey) => void;
 }) {
-	const priority = useAppSelector(({ main }) => main.priority);
+	const priority = useAppSelector(pget('main.priority'));
 
-	const priorityIndex = useMemo(() => Object.values(priority).flat(), [priority]);
+	const characterFilter = useMemo(() => {
+		const priorityIndex = Object.values(priority).flat();
 
-	return sortByPath('order', Object.values(artifactSetsInfo))
-		.toReversed()
-		.map((artifactSet) => (
-			<Stack key={artifactSet.key} direction='row'>
-				<ArtifactSetImage
-					artifactSet={artifactSet}
+		return (artifactSet: DArtifact) =>
+			pipe(
+				charactersTier,
+				Object.values<Tier>,
+				filter(({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key),
+				sortBy(({ key }) => {
+					const index = priorityIndex.indexOf(key);
+					return index === -1 ? Infinity : index;
+				}),
+			);
+	}, [priority]);
+
+	return sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => (
+		<Stack key={artifactSet.key} direction='row'>
+			<ArtifactSetImage
+				artifactSet={artifactSet}
+				size={50}
+				sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
+				onClick={() => setArtifactSet(artifactSet.key)}
+			/>
+			{characterFilter(artifactSet).map(({ key }) => (
+				<CharacterImage
+					key={key}
+					character={charactersInfo[key]}
 					size={50}
-					sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-					onClick={() => setArtifactSet(artifactSet.key)}
+					component={Link}
+					// @ts-ignore
+					href={`characters/${key}`}
 				/>
-				{sortBy(
-					({ key }) => {
-						const index = priorityIndex.indexOf(key);
-						return index === -1 ? Infinity : index;
-					},
-					Object.values(charactersTier).filter(
-						({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key,
-					),
-				).map(({ key }) => (
-					<CharacterImage
-						key={key}
-						character={charactersInfo[key]}
-						size={50}
-						component={Link}
-						// @ts-ignore
-						href={`characters/${key}`}
-					/>
-				))}
-			</Stack>
-		));
+			))}
+		</Stack>
+	));
 }

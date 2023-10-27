@@ -11,6 +11,7 @@ import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
+import pget from '../../helpers/pget';
 import SortableItem from './sortableItem';
 
 export default function Sortable<Item>({
@@ -38,7 +39,7 @@ export default function Sortable<Item>({
 		if (!setA) return;
 		setSetA(false);
 		setSkipB(true);
-		setItems(list.map(({ item }) => item));
+		setItems(list.map(pget('item')));
 	}, [list]);
 
 	useEffect(() => {

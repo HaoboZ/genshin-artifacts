@@ -1,10 +1,12 @@
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
+import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
+import { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
-import { sortBy } from 'rambdax';
 import { useMemo } from 'react';
+import { filter, map, pipe, sortBy } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import WeaponActions from './weaponActions';
@@ -13,31 +15,31 @@ import { weaponsInfo } from './weaponData';
 import WeaponImage from './weaponImage';
 
 export default function WeaponModal({ weapon }: { weapon: IWeapon }, ref) {
-	const weapons = useAppSelector(({ good }) => good.weapons);
-	const priority = useAppSelector(({ main }) => main.priority);
+	const weapons = useAppSelector(pget('good.weapons'));
+	const priority = useAppSelector(pget('main.priority'));
 
 	const characters = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
-		return sortBy(
-			({ tier }) => {
+
+		return pipe(
+			charactersTier,
+			Object.values<Tier>,
+			filter(({ key }) => charactersInfo[key].weaponType === weaponsInfo[weapon.key].weaponType),
+			map((tier) => {
+				const oldWeapon = weapons.find(({ location }) => location === tier.key);
+
+				return {
+					tier,
+					tierIndex: arrDeepIndex(tier.weapon, weapon.key),
+					oldWeapon,
+					oldTierIndex: oldWeapon && arrDeepIndex(tier.weapon, oldWeapon.key),
+				};
+			}),
+			filter(({ oldTierIndex }) => oldTierIndex !== -1),
+			sortBy(({ tier }) => {
 				const index = priorityIndex.indexOf(tier.key);
 				return index === -1 ? Infinity : index;
-			},
-			Object.values(charactersTier)
-				.filter(
-					({ key }) => charactersInfo[key].weaponType === weaponsInfo[weapon.key].weaponType,
-				)
-				.map((tier) => {
-					const oldWeapon = weapons.find(({ location }) => location === tier.key);
-
-					return {
-						tier,
-						tierIndex: arrDeepIndex(tier.weapon, weapon.key),
-						oldWeapon,
-						oldTierIndex: oldWeapon && arrDeepIndex(tier.weapon, oldWeapon.key),
-					};
-				})
-				.filter(({ oldTierIndex }) => oldTierIndex !== -1),
+			}),
 		);
 	}, [weapon]);
 

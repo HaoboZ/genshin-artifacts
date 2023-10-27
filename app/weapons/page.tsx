@@ -2,14 +2,13 @@
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
+import pget from '@/src/helpers/pget';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
-import type { DWeapon } from '@/src/types/data';
-import type { IWeapon } from '@/src/types/good';
 import { Grid } from '@mui/joy';
-import { compose, sortBy, sortByPath } from 'rambdax';
 import { useMemo } from 'react';
+import { filter, map, pipe, sortBy } from 'remeda';
 import AddWeaponModal from './addWeaponModal';
 import WeaponCharacterImage from './weaponCharacterImage';
 import type { WeaponType } from './weaponData';
@@ -25,13 +24,12 @@ export default function Weapons() {
 
 	const weaponsSorted = useMemo(
 		() =>
-			compose(
-				sortBy<IWeapon & DWeapon>(({ rarity }) => -rarity),
-				sortByPath('key'),
-			)(
-				weapons
-					.map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] }))
-					.filter(({ weaponType }) => !type || weaponType === type),
+			pipe(
+				weapons,
+				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
+				filter(({ weaponType }) => !type || weaponType === type),
+				sortBy(pget('key')),
+				sortBy(({ rarity }) => -rarity),
 			),
 		[weapons, type],
 	);

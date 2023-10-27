@@ -1,6 +1,7 @@
 import OverflowTypography from '@/components/overflowTypography';
 import PercentBar from '@/components/percentBar';
 import SubStatBar from '@/components/subStatBar';
+import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
@@ -19,7 +20,7 @@ export default function ArtifactCharacterCard({
 	subStat,
 	...props
 }: { artifact: IArtifact; tier: Tier; rating: number; subStat: number } & CardProps) {
-	const artifacts = useAppSelector(({ good }) => good.artifacts);
+	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	const currentArtifact = artifacts.find(
 		({ location, slotKey }) => location === tier.key && slotKey === artifact.slotKey,

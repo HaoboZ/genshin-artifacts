@@ -1,13 +1,14 @@
 'use client';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
+import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { Button, ButtonGroup, Typography } from '@mui/joy';
 import { useSnackbar } from 'notistack';
 
 export default function Main() {
-	const good = useAppSelector(({ good }) => good);
+	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
 

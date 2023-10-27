@@ -4,13 +4,14 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
+import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { indexBy } from 'rambdax';
 import { useMemo } from 'react';
+import { indexBy } from 'remeda';
 import ArtifactCard from '../../artifacts/artifactCard';
 import { artifactSlotOrder } from '../../artifacts/artifactData';
 import getArtifactTier from '../../artifacts/getArtifactTier';
@@ -32,10 +33,11 @@ export default function Character({ params }: { params: { name: string } }) {
 	const weapon = useAppSelector(({ good }) =>
 		good.weapons.find(({ location }) => location === character.key),
 	);
-	const artifacts = useAppSelector(({ good }) => good.artifacts);
+	const artifacts = useAppSelector(pget('good.artifacts'));
+
 	const artifactsKey = indexBy(
-		'slotKey',
 		artifacts.filter(({ location }) => location === character.key),
+		pget('slotKey'),
 	);
 
 	const characterTier = charactersTier[character.key];

@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { difference } from 'rambdax';
+import { difference } from 'remeda';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
