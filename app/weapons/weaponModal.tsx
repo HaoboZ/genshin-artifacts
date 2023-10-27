@@ -2,7 +2,7 @@ import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
-import { Tier } from '@/src/types/data';
+import type { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
 import { useMemo } from 'react';

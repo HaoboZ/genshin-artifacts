@@ -50,7 +50,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 			}),
 			sortBy(pget('subStat')),
 			sortBy(pget('rating')),
-			reverse()
+			reverse(),
 		);
 	}, [artifact]);
 

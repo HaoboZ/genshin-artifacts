@@ -28,7 +28,7 @@ export default function CharacterArtifactModal(
 	{ tier, slot, artifact }: { tier: Tier; slot: SlotKey; artifact: IArtifact },
 	ref,
 ) {
-	const artifacts = useAppSelector( pget('good.artifacts'));
+	const artifacts = useAppSelector(pget('good.artifacts'));
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
@@ -52,7 +52,7 @@ export default function CharacterArtifactModal(
 			map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })),
 			sortBy(pget('subStat')),
 			sortBy(pget('rating')),
-			reverse()
+			reverse(),
 		);
 	}, [artifacts, checked, slot, tier]);
 

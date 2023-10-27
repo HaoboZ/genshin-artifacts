@@ -2,7 +2,7 @@ import ChipArray from '@/components/chipArray';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
-import { Tier } from '@/src/types/data';
+import type { Tier } from '@/src/types/data';
 import type { ArtifactSetKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';

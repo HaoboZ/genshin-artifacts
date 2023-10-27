@@ -1,5 +1,5 @@
 import pget from '@/src/helpers/pget';
-import { DArtifact } from '@/src/types/data';
+import type { DArtifact } from '@/src/types/data';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Button, Grid, IconButton, ToggleButtonGroup } from '@mui/joy';
 import { groupBy, pipe, reverse, sortBy } from 'remeda';

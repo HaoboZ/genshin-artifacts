@@ -1,7 +1,7 @@
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
-import { DArtifact, Tier } from '@/src/types/data';
+import type { DArtifact, Tier } from '@/src/types/data';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';
