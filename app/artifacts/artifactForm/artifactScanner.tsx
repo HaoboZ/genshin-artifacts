@@ -36,9 +36,11 @@ const subStatsScan: Record<string, StatKey[]> = {
 };
 
 export default function ArtifactScanner({
+	cropBox,
 	setArtifact,
 	file,
 }: {
+	cropBox?: boolean;
 	setArtifact: Dispatch<SetStateAction<IArtifact>>;
 	file?: File;
 }) {
@@ -55,8 +57,10 @@ export default function ArtifactScanner({
 			canvas.height = height;
 			ctx.drawImage(image, 0, 0);
 
-			ctx.fillStyle = 'white';
-			ctx.fillRect(width * 0.6, 0, width * 0.4, width * 0.7);
+			if (cropBox) {
+				ctx.fillStyle = 'white';
+				ctx.fillRect(width * 0.6, 0, width * 0.4, width * 0.7);
+			}
 
 			const pixels = ctx.getImageData(0, 0, width, height);
 			for (let y = 0; y < pixels.height; ++y) {

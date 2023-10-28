@@ -49,7 +49,7 @@ export default function BestInSlotAll({
 					size={50}
 					component={Link}
 					// @ts-ignore
-					href={`characters/${key}`}
+					href={`/characters/${key}`}
 				/>
 			))}
 		</Stack>

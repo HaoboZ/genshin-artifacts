@@ -1,7 +1,7 @@
 import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
-import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
+import type { ArtifactSetKey, CharacterKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
 import { Button, Grid, Option } from '@mui/joy';
 import { useFormikContext } from 'formik';
 import { clamp } from 'remeda';
@@ -16,7 +16,13 @@ import {
 import ArtifactImage from '../artifactImage';
 import ArtifactScanner from './artifactScanner';
 
-export default function ArtifactForm({ file }: { file?: File }) {
+export default function ArtifactForm({
+	file,
+	character,
+}: {
+	file?: File;
+	character?: CharacterKey;
+}) {
 	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
@@ -38,7 +44,7 @@ export default function ArtifactForm({ file }: { file?: File }) {
 				/>
 			</Grid>
 			<Grid xs={6}>
-				<ArtifactScanner setArtifact={setValues} file={file} />
+				<ArtifactScanner cropBox={!character} setArtifact={setValues} file={file} />
 			</Grid>
 			<Grid xs={3}>
 				<SelectField

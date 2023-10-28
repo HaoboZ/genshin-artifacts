@@ -3,6 +3,7 @@ import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import type { Tier } from '@/src/types/data';
 import { Avatar, AvatarGroup, Box, Stack, Typography } from '@mui/joy';
+import Link from 'next/link';
 import { artifactSetsInfo } from '../../artifacts/artifactData';
 import ArtifactSetImage from '../../artifacts/artifactSetImage';
 import { weaponsInfo } from '../../weapons/weaponData';
@@ -20,12 +21,9 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 								{makeArray(weaponTier)
 									.toReversed()
 									.map((weapon) => (
-										<WeaponImage
-											key={weapon}
-											component={Avatar}
-											weapon={weaponsInfo[weapon]}
-											size={50}
-										/>
+										<Avatar key={weapon} sx={{ '--Avatar-size': 50, 'borderRadius': 5 }}>
+											<WeaponImage weapon={weaponsInfo[weapon]} size={50} />
+										</Avatar>
 									))}
 							</AvatarGroup>
 						</Box>
@@ -39,12 +37,16 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 								{makeArray(artifactTier)
 									.toReversed()
 									.map((artifact) => (
-										<ArtifactSetImage
+										<Avatar
 											key={artifact}
-											component={Avatar}
-											artifactSet={artifactSetsInfo[artifact]}
-											size={50}
-										/>
+											sx={{ '--Avatar-size': 50, 'borderRadius': 5 }}
+											component={Link}
+											href={`/artifacts?set=${artifact}`}>
+											<ArtifactSetImage
+												artifactSet={artifactSetsInfo[artifact]}
+												size={50}
+											/>
+										</Avatar>
 									))}
 							</AvatarGroup>
 						</Box>

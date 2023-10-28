@@ -4,7 +4,9 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
+import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import useEventListener from '@/src/hooks/useEventListener';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Card, Grid, Stack, Typography } from '@mui/joy';
@@ -14,6 +16,7 @@ import { useMemo } from 'react';
 import { indexBy } from 'remeda';
 import ArtifactCard from '../../artifacts/artifactCard';
 import { artifactSlotOrder } from '../../artifacts/artifactData';
+import AddArtifactModal from '../../artifacts/artifactForm/addArtifactModal';
 import getArtifactTier from '../../artifacts/getArtifactTier';
 import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
@@ -47,6 +50,22 @@ export default function Character({ params }: { params: { name: string } }) {
 		return index !== -1 ? 1 - index / characterTier.weapon.length : 0;
 	}, [characterTier, weapon]);
 
+	useEventListener(
+		typeof window !== 'undefined' ? window : null,
+		'paste',
+		({ clipboardData }: ClipboardEvent) => {
+			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
+			if (!item) return;
+			showModal(AddArtifactModal, {
+				props: {
+					setKey: makeArray(characterTier.artifact[0])[0],
+					file: item.getAsFile(),
+					character,
+				},
+			});
+		},
+	);
+
 	return (
 		<PageContainer noSsr>
 			<PageTitle>
@@ -64,7 +83,17 @@ export default function Character({ params }: { params: { name: string } }) {
 			</PageTitle>
 			<CharacterImage character={character} />
 			<CharacterTier tier={characterTier} />
-			<PageSection title='Equipped'>
+			<PageSection
+				title='Equipped'
+				actions={[
+					{
+						name: 'Paste or Add',
+						onClick: () =>
+							showModal(AddArtifactModal, {
+								props: { setKey: makeArray(characterTier.artifact[0])[0], character },
+							}),
+					},
+				]}>
 				<Grid container spacing={1}>
 					<Grid xs={6} sm={4}>
 						<Card
