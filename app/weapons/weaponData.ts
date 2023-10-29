@@ -1,4 +1,4 @@
-import data from '@/src/resources/data.json';
+import data from '@/public/data.json';
 import type { DWeapon } from '@/src/types/data';
 import type { WeaponKey } from '@/src/types/good';
 

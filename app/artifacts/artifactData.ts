@@ -1,4 +1,4 @@
-import data from '@/src/resources/data.json';
+import data from '@/public/data.json';
 import type { DArtifact } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 
@@ -48,6 +48,7 @@ export const statName: Record<StatKey, string> = {
 	atk_: 'ATK%',
 	critDMG_: 'Crit DMG',
 	critRate_: 'Crit Rate',
+	critRD_: 'Crit Rate/DMG',
 	cryo_dmg_: 'Cryo DMG',
 	def: 'DEF',
 	def_: 'DEF%',
@@ -88,6 +89,7 @@ export const statsMax: Record<StatKey, Record<number, number>> = {
 	enerRech_: { 3: 7.8, 4: 20.7, 5: 38.9 },
 	critRate_: { 3: 4.7, 4: 12.4, 5: 23.3 },
 	critDMG_: { 3: 9.3, 4: 24.9, 5: 46.6 },
+	critRD_: undefined,
 	anemo_dmg_: undefined,
 	cryo_dmg_: undefined,
 	dendro_dmg_: undefined,

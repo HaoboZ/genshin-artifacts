@@ -24,7 +24,7 @@ export default function Actions({ items, max }: { items: ActionProps[]; max?: nu
 	}, [items, max]);
 
 	const buttonElements = buttons.map(({ name, onClick, buttonProps, ...props }, index) => (
-		<AsyncButton key={index} variant='outlined' onClick={onClick} {...buttonProps} {...props}>
+		<AsyncButton key={index} onClick={onClick} {...buttonProps} {...props}>
 			{name}
 		</AsyncButton>
 	));

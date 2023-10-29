@@ -35,11 +35,11 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 
 	const charactersTiered = useMemo(() => {
 		const characters = Object.values(charactersTier).filter(
-			(character) =>
+			(tier) =>
 				(checked
-					? arrDeepIndex(character.artifact, artifact.setKey) !== -1
-					: makeArray(character.artifact[0])[0] === artifact.setKey) &&
-				strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey),
+					? arrDeepIndex(tier.artifact, artifact.setKey) !== -1
+					: makeArray(tier.artifact[0])[0] === artifact.setKey) &&
+				strArrMatch(tier.mainStat[artifact.slotKey], artifact.mainStatKey),
 		);
 
 		return pipe(

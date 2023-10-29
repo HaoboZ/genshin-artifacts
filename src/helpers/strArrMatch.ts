@@ -1,3 +1,9 @@
+import makeArray from './makeArray';
+
 export default function strArrMatch(arr: string | string[], str: string) {
-	return arr === 'string' ? arr === str : arr?.indexOf(str) !== -1;
+	if (arr === undefined) return true;
+	arr = makeArray(arr);
+	const index = arr.indexOf('critRD_');
+	if (index !== -1) arr = arr.toSpliced(index, 1, 'critRate_', 'critDMG_');
+	return arr.indexOf(str) !== -1;
 }

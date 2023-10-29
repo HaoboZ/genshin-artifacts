@@ -4,7 +4,7 @@ import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { ArtifactSetKey } from '@/src/types/good';
+import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import { Button, FormControl, FormLabel, Grid, Switch } from '@mui/joy';
 import { useMemo, useState } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
@@ -14,7 +14,13 @@ import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
 import ArtifactModal from './artifactModal';
 import getArtifactTier from './getArtifactTier';
 
-export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSetKey }) {
+export default function ArtifactList({
+	artifactSet,
+	slot,
+}: {
+	artifactSet: ArtifactSetKey;
+	slot: SlotKey;
+}) {
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
@@ -26,11 +32,11 @@ export default function ArtifactList({ artifactSet }: { artifactSet: ArtifactSet
 		() =>
 			pipe(
 				good.artifacts,
-				filter(({ setKey }) => setKey === artifactSet),
+				filter(({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey)),
 				sortBy(({ level }) => -level),
 				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
 			),
-		[good.artifacts, artifactSet],
+		[good.artifacts, artifactSet, slot],
 	);
 
 	return (

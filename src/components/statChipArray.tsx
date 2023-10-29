@@ -2,14 +2,16 @@ import { statName } from '@/app/artifacts/artifactData';
 import { Breadcrumbs, Chip, Stack, Typography } from '@mui/joy';
 import makeArray from '../helpers/makeArray';
 
-export default function ChipArray({
+export default function StatChipArray({
 	name,
 	arr,
 	breadcrumbs,
+	mapStats,
 }: {
 	name: string;
 	arr: (string | string[])[];
 	breadcrumbs?: boolean;
+	mapStats?: boolean;
 }) {
 	return (
 		<Stack direction='row' alignItems='center' spacing={1}>
@@ -19,7 +21,7 @@ export default function ChipArray({
 					{arr.map((subArr, index) => (
 						<Stack key={index} direction='row' spacing={0.5}>
 							{makeArray(subArr).map((stat, index) => (
-								<Chip key={index}>{statName[stat]}</Chip>
+								<Chip key={index}>{mapStats ? statName[stat] : stat}</Chip>
 							))}
 						</Stack>
 					))}
@@ -27,7 +29,7 @@ export default function ChipArray({
 			) : (
 				<Stack direction='row' spacing={0.5}>
 					{makeArray(arr).map((stat: string) => (
-						<Chip key={stat}>{statName[stat]}</Chip>
+						<Chip key={stat}>{mapStats ? statName[stat] : stat}</Chip>
 					))}
 				</Stack>
 			)}

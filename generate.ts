@@ -640,7 +640,7 @@ const artifactOrder = Object.keys(artifactLocation);
 
 	try {
 		writeFileSync(
-			'./src/resources/data.json',
+			'./public/data.json',
 			JSON.stringify({ elements, characters, artifacts, weapons }, null, 2),
 		);
 		console.log('Data successfully saved to disk');

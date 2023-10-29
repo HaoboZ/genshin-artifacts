@@ -28,7 +28,18 @@ export default function getArtifactTier(
 
 function getWeightedTier(subStatArr, subStat) {
 	if (!subStat) return 0;
-	const statTier = arrDeepIndex(subStatArr, subStat);
 
+	const statTier = arrDeepIndex(
+		subStatArr.map((subStat: string | string[]) => {
+			if (typeof subStat === 'string') {
+				if (subStat === 'critRD_') return ['critRate_', 'critDMG_'];
+			} else {
+				const index = subStat.indexOf('critRD_');
+				if (index !== -1) return subStat.toSpliced(index, 1, 'critRate_', 'critDMG_');
+			}
+			return subStat;
+		}),
+		subStat,
+	);
 	return statTier === -1 ? 0 : 1 - Math.min(4, statTier) * 0.2;
 }

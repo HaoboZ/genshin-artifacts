@@ -1,4 +1,4 @@
-import ChipArray from '@/components/chipArray';
+import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
@@ -7,9 +7,10 @@ import type { ArtifactSetKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { filter, groupBy, map, pipe, reduce, sortBy, uniq } from 'remeda';
+import { filter, groupBy, map, pipe, reduce, sortBy } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
+import { statName } from './artifactData';
 
 export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKey }) {
 	const priority = useAppSelector(pget('main.priority'));
@@ -27,6 +28,23 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 			}),
 		);
 	}, [artifactSet, priority]);
+
+	const mainStats = useMemo(
+		() =>
+			characters.reduce(
+				(acc, tier) => {
+					const sandStat = makeArray(tier.mainStat.sands)[0];
+					acc.sands[sandStat] = (acc.sands[sandStat] ?? 0) + 1;
+					const gobletStat = makeArray(tier.mainStat.goblet)[0];
+					acc.goblet[gobletStat] = (acc.goblet[gobletStat] ?? 0) + 1;
+					const circletStat = makeArray(tier.mainStat.circlet)[0];
+					acc.circlet[circletStat] = (acc.circlet[circletStat] ?? 0) + 1;
+					return acc;
+				},
+				{ sands: {}, goblet: {}, circlet: {} },
+			),
+		[characters],
+	);
 
 	const subStatArr = useMemo(
 		() =>
@@ -65,13 +83,25 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 					/>
 				))}
 			</Stack>
-			<ChipArray name='Sands' arr={uniq(characters.flatMap(pget('mainStat.sands'))).sort()} />
-			<ChipArray name='Goblet' arr={uniq(characters.flatMap(pget('mainStat.goblet'))).sort()} />
-			<ChipArray
-				name='Circlet'
-				arr={uniq(characters.flatMap(pget('mainStat.circlet'))).sort()}
+			<StatChipArray
+				name='Sands'
+				arr={Object.entries(mainStats.sands).map(
+					([stat, count]) => `${statName[stat]} x${count}`,
+				)}
 			/>
-			<ChipArray breadcrumbs name='SubStats' arr={subStatArr} />
+			<StatChipArray
+				name='Goblet'
+				arr={Object.entries(mainStats.goblet).map(
+					([stat, count]) => `${statName[stat]} x${count}`,
+				)}
+			/>
+			<StatChipArray
+				name='Circlet'
+				arr={Object.entries(mainStats.circlet).map(
+					([stat, count]) => `${statName[stat]} x${count}`,
+				)}
+			/>
+			<StatChipArray mapStats breadcrumbs name='SubStats' arr={subStatArr} />
 		</Stack>
 	);
 }

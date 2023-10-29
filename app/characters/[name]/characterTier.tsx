@@ -1,5 +1,5 @@
-import ChipArray from '@/components/chipArray';
 import PageSection from '@/components/page/section';
+import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import type { Tier } from '@/src/types/data';
 import { Avatar, AvatarGroup, Box, Stack, Typography } from '@mui/joy';
@@ -52,10 +52,10 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 						</Box>
 					))}
 				</Stack>
-				<ChipArray name='Sands' arr={makeArray(tier.mainStat.sands)} />
-				<ChipArray name='Goblet' arr={makeArray(tier.mainStat.goblet)} />
-				<ChipArray name='Circlet' arr={makeArray(tier.mainStat.circlet)} />
-				<ChipArray breadcrumbs name='SubStats' arr={tier.subStat} />
+				<StatChipArray mapStats name='Sands' arr={makeArray(tier.mainStat.sands)} />
+				<StatChipArray mapStats name='Goblet' arr={makeArray(tier.mainStat.goblet)} />
+				<StatChipArray mapStats name='Circlet' arr={makeArray(tier.mainStat.circlet)} />
+				<StatChipArray mapStats breadcrumbs name='SubStats' arr={tier.subStat} />
 			</Stack>
 		</PageSection>
 	);

@@ -63,6 +63,7 @@ export type StatKey =
 	| 'heal_' //Healing Bonus
 	| 'critRate_' //CRIT Rate
 	| 'critDMG_' //CRIT DMG
+	| 'critRD_' // CRIT Rate/DMG
 	| 'physical_dmg_' //Physical DMG Bonus
 	| 'anemo_dmg_' //Anemo DMG Bonus
 	| 'geo_dmg_' //Geo DMG Bonus
@@ -217,6 +218,7 @@ export type WeaponKey =
 	| 'BlackcliffWarbow' //Blackcliff Warbow
 	| 'BloodtaintedGreatsword' //Bloodtainted Greatsword
 	| 'CalamityQueller' //Calamity Queller
+	| 'CashflowSupervision' //Cashflow Supervision
 	| 'CinnabarSpindle' //Cinnabar Spindle
 	| 'CompoundBow' //Compound Bow
 	| 'CoolSteel' //Cool Steel
@@ -300,6 +302,7 @@ export type WeaponKey =
 	| 'PrototypeStarglitter' //Prototype Starglitter
 	| 'QuantumCatalyst' //Quantum Cat-alyst
 	| 'Rainslasher' //Rainslasher
+	| 'RangeGuage' //Range Guage
 	| 'RavenBow' //Raven Bow
 	| 'RecurveBow' //Recurve Bow
 	| 'RedhornStonethresher' //Redhorn Stonethresher
