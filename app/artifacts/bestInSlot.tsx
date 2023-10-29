@@ -3,7 +3,7 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { Tier } from '@/src/types/data';
-import type { ArtifactSetKey, StatKey } from '@/src/types/good';
+import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
@@ -12,7 +12,13 @@ import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import { statName } from './artifactData';
 
-export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKey }) {
+export default function BestInSlot({
+	artifactSet,
+	slot,
+}: {
+	artifactSet: ArtifactSetKey;
+	slot: SlotKey;
+}) {
 	const priority = useAppSelector(pget('main.priority'));
 
 	const characters = useMemo(() => {
@@ -83,24 +89,30 @@ export default function BestInSlot({ artifactSet }: { artifactSet: ArtifactSetKe
 					/>
 				))}
 			</Stack>
-			<StatChipArray
-				name='Sands'
-				arr={Object.entries(mainStats.sands).map(
-					([stat, count]) => `${statName[stat]} x${count}`,
-				)}
-			/>
-			<StatChipArray
-				name='Goblet'
-				arr={Object.entries(mainStats.goblet).map(
-					([stat, count]) => `${statName[stat]} x${count}`,
-				)}
-			/>
-			<StatChipArray
-				name='Circlet'
-				arr={Object.entries(mainStats.circlet).map(
-					([stat, count]) => `${statName[stat]} x${count}`,
-				)}
-			/>
+			{(!slot || slot === 'sands') && (
+				<StatChipArray
+					name='Sands'
+					arr={Object.entries(mainStats.sands).map(
+						([stat, count]) => `${statName[stat]} x${count}`,
+					)}
+				/>
+			)}
+			{(!slot || slot === 'goblet') && (
+				<StatChipArray
+					name='Goblet'
+					arr={Object.entries(mainStats.goblet).map(
+						([stat, count]) => `${statName[stat]} x${count}`,
+					)}
+				/>
+			)}
+			{(!slot || slot === 'circlet') && (
+				<StatChipArray
+					name='Circlet'
+					arr={Object.entries(mainStats.circlet).map(
+						([stat, count]) => `${statName[stat]} x${count}`,
+					)}
+				/>
+			)}
 			<StatChipArray mapStats breadcrumbs name='SubStats' arr={subStatArr} />
 		</Stack>
 	);

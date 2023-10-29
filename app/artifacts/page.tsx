@@ -48,7 +48,7 @@ export default function Artifacts() {
 					},
 				]}>
 				{artifactSet ? (
-					<BestInSlot artifactSet={artifactSet} />
+					<BestInSlot artifactSet={artifactSet} slot={slot} />
 				) : (
 					<BestInSlotAll setArtifactSet={setArtifactSet} />
 				)}
