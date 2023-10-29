@@ -3,7 +3,7 @@ import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DArtifact, Tier } from '@/src/types/data';
 import type { ArtifactSetKey } from '@/src/types/good';
-import { Stack } from '@mui/joy';
+import { Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
@@ -18,6 +18,7 @@ export default function BestInSlotAll({
 	setArtifactSet: (value: ArtifactSetKey) => void;
 }) {
 	const priority = useAppSelector(pget('main.priority'));
+	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	const characterFilter = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
@@ -35,7 +36,7 @@ export default function BestInSlotAll({
 	}, [priority]);
 
 	return sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => (
-		<Stack key={artifactSet.key} direction='row'>
+		<Stack key={artifactSet.key} direction='row' alignItems='center'>
 			<ArtifactSetImage
 				artifactSet={artifactSet}
 				size={50}
@@ -43,15 +44,13 @@ export default function BestInSlotAll({
 				onClick={() => setArtifactSet(artifactSet.key)}
 			/>
 			{characterFilter(artifactSet).map(({ key }) => (
-				<CharacterImage
-					key={key}
-					character={charactersInfo[key]}
-					size={50}
-					component={Link}
-					// @ts-ignore
-					href={`/characters/${key}`}
-				/>
+				<Link key={key} href={`/characters/${key}`}>
+					<CharacterImage character={charactersInfo[key]} size={50} />
+				</Link>
 			))}
+			<Typography ml={1}>
+				{artifacts.filter(({ setKey }) => setKey === artifactSet.key).length} Total
+			</Typography>
 		</Stack>
 	));
 }

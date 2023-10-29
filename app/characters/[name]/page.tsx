@@ -28,7 +28,7 @@ import CharacterWeaponModal from './characterWeaponModal';
 import QuadBars from './quadBars';
 
 export default function Character({ params }: { params: { name: string } }) {
-	const { showModal } = useModal();
+	const { modalStates, showModal } = useModal();
 
 	const character = charactersInfo[params.name];
 	if (!character) notFound();
@@ -54,6 +54,7 @@ export default function Character({ params }: { params: { name: string } }) {
 		typeof window !== 'undefined' ? window : null,
 		'paste',
 		({ clipboardData }: ClipboardEvent) => {
+			if (modalStates.length) return;
 			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
 			if (!item) return;
 			showModal(AddArtifactModal, {

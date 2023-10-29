@@ -1,5 +1,5 @@
 import data from '@/public/data.json';
-import type { DArtifact } from '@/src/types/data';
+import type { DArtifact, Tier } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 
 export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data.artifacts as any;
@@ -11,6 +11,33 @@ export const artifactSlotImages = {
 	goblet:
 		'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Icon_Goblet_of_Eonothem.png',
 	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
+};
+
+export const missingArtifactSets: Record<string, Tier> = {
+	VourukashasGlow: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['VourukashasGlow'],
+		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'hp_', 'atk'],
+	},
+	EchoesOfAnOffering: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['EchoesOfAnOffering'],
+		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas', 'atk'],
+	},
+	BloodstainedChivalry: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['BloodstainedChivalry'],
+		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'atk', 'enerRech_'],
+	},
 };
 
 export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];

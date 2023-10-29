@@ -3,6 +3,7 @@ import type { IArtifact, StatKey } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/joy';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useEffect, useState } from 'react';
+import { pickBy } from 'remeda';
 import { createWorker, OEM, PSM } from 'tesseract.js';
 import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
 
@@ -111,19 +112,23 @@ export default function ArtifactScanner({
 					value: +match[2],
 				}));
 
-			const artifactSet = artifactSetsInfo[setKey as any];
-			setArtifact(
-				(artifact) =>
-					({
-						...artifact,
-						setKey,
-						slotKey,
-						mainStatKey,
-						substats,
-						rarity: artifactSet?.rarity,
-						level: artifactSet?.rarity && artifactSet.rarity * 4,
-					}) as any,
-			);
+			setArtifact((artifact) => {
+				const artifactSet = artifactSetsInfo[setKey as any];
+				return {
+					...artifact,
+					...pickBy(
+						{
+							setKey,
+							slotKey,
+							mainStatKey,
+							substats,
+							rarity: artifactSet?.rarity,
+							level: artifactSet?.rarity && artifactSet.rarity * 4,
+						},
+						(val) => val !== undefined,
+					),
+				} as any;
+			});
 		});
 		image.src = URL.createObjectURL(file);
 	}, []);
@@ -133,11 +138,15 @@ export default function ArtifactScanner({
 		scanFile(file);
 	}, [file]);
 
-	useEventListener(window, 'paste', ({ clipboardData }: ClipboardEvent) => {
-		const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
-		if (!item) return;
-		scanFile(item.getAsFile());
-	});
+	useEventListener(
+		typeof window !== 'undefined' ? window : null,
+		'paste',
+		({ clipboardData }: ClipboardEvent) => {
+			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
+			if (!item) return;
+			scanFile(item.getAsFile());
+		},
+	);
 
 	return (
 		<Button

@@ -6,11 +6,11 @@ import type { Tier } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import Link from 'next/link';
-import { useMemo } from 'react';
-import { filter, groupBy, map, pipe, reduce, sortBy } from 'remeda';
+import { Fragment, useMemo } from 'react';
+import { filter, groupBy, map, pipe, reduce, sortBy, uniq } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
-import { statName } from './artifactData';
+import { missingArtifactSets, statName } from './artifactData';
 
 export default function BestInSlot({
 	artifactSet,
@@ -21,10 +21,10 @@ export default function BestInSlot({
 }) {
 	const priority = useAppSelector(pget('main.priority'));
 
-	const characters = useMemo(() => {
+	const [characters, charactersSets] = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
 
-		return pipe(
+		const characters = pipe(
 			charactersTier,
 			Object.values<Tier>,
 			filter(({ artifact }) => makeArray(artifact[0])[0] === artifactSet),
@@ -33,11 +33,12 @@ export default function BestInSlot({
 				return index === -1 ? Infinity : index;
 			}),
 		);
+		return [characters, characters.length ? characters : [missingArtifactSets[artifactSet]]];
 	}, [artifactSet, priority]);
 
 	const mainStats = useMemo(
 		() =>
-			characters.reduce(
+			charactersSets.reduce(
 				(acc, tier) => {
 					const sandStat = makeArray(tier.mainStat.sands)[0];
 					acc.sands[sandStat] = (acc.sands[sandStat] ?? 0) + 1;
@@ -49,13 +50,13 @@ export default function BestInSlot({
 				},
 				{ sands: {}, goblet: {}, circlet: {} },
 			),
-		[characters],
+		[charactersSets],
 	);
 
 	const subStatArr = useMemo(
 		() =>
 			pipe(
-				characters,
+				charactersSets,
 				reduce(
 					(res, { subStat }) => {
 						subStat.forEach((statArr, index) =>
@@ -72,24 +73,38 @@ export default function BestInSlot({
 				Object.values<[string, number][]>,
 				map((stat) => stat.flatMap(pget('0'))),
 			),
-		[characters],
+		[charactersSets],
 	);
 
 	return (
 		<Stack spacing={1}>
 			<Stack direction='row' spacing={1}>
 				{characters.map(({ key }) => (
-					<CharacterImage
-						key={key}
-						character={charactersInfo[key]}
-						size={50}
-						component={Link}
-						// @ts-ignore
-						href={`/characters/${key}`}
-					/>
+					<Link key={key} href={`/characters/${key}`}>
+						<CharacterImage character={charactersInfo[key]} size={50} />
+					</Link>
 				))}
 			</Stack>
-			{(!slot || slot === 'sands') && (
+			{!slot && (
+				<Fragment>
+					<StatChipArray
+						mapStats
+						name='Sands'
+						arr={uniq(characters.flatMap(pget('mainStat.sands'))).sort()}
+					/>
+					<StatChipArray
+						mapStats
+						name='Goblet'
+						arr={uniq(characters.flatMap(pget('mainStat.goblet'))).sort()}
+					/>
+					<StatChipArray
+						mapStats
+						name='Circlet'
+						arr={uniq(characters.flatMap(pget('mainStat.circlet'))).sort()}
+					/>
+				</Fragment>
+			)}
+			{slot === 'sands' && (
 				<StatChipArray
 					name='Sands'
 					arr={Object.entries(mainStats.sands).map(
@@ -97,7 +112,7 @@ export default function BestInSlot({
 					)}
 				/>
 			)}
-			{(!slot || slot === 'goblet') && (
+			{slot === 'goblet' && (
 				<StatChipArray
 					name='Goblet'
 					arr={Object.entries(mainStats.goblet).map(
@@ -105,7 +120,7 @@ export default function BestInSlot({
 					)}
 				/>
 			)}
-			{(!slot || slot === 'circlet') && (
+			{slot === 'circlet' && (
 				<StatChipArray
 					name='Circlet'
 					arr={Object.entries(mainStats.circlet).map(

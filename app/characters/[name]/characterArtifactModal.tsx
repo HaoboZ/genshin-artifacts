@@ -38,7 +38,7 @@ export default function CharacterArtifactModal(
 		const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
 
 		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
-			if (checked) return arrDeepIndex(tier.artifact, setKey) === 0;
+			if (checked) return slotKey === slot && arrDeepIndex(tier.artifact, setKey) === 0;
 
 			return (
 				slotKey === slot &&

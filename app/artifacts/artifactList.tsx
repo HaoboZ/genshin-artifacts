@@ -49,7 +49,10 @@ export default function ArtifactList({
 						size='lg'
 						sx={{ ml: 0 }}
 						checked={deleteMode}
-						onChange={({ target }) => setDeleteMode(target.checked)}
+						onChange={({ target }) => {
+							setDeleteMode(target.checked);
+							setMarked([]);
+						}}
 					/>
 					{marked.length > 0 && (
 						<Button
@@ -57,6 +60,7 @@ export default function ArtifactList({
 							onClick={() => {
 								if (!confirm(`Delete ${marked.length} artifacts?`)) return;
 								dispatch(goodActions.deleteArtifacts(marked));
+								setMarked([]);
 							}}>
 							Delete
 						</Button>
@@ -75,16 +79,24 @@ export default function ArtifactList({
 								artifact={artifact}
 								sx={{
 									':hover': { cursor: 'pointer' },
-									'borderColor': isMarked ? 'red' : undefined,
+									'borderColor': (() => {
+										if (isMarked) return 'red';
+										if (mainStat) {
+											if (subStat > 0.6) return 'green';
+											return 'blue';
+										}
+									})(),
 								}}
 								onClick={() => {
-									if (deleteMode)
+									if (deleteMode) {
 										setMarked((marked) => {
 											return isMarked
 												? marked.filter((item) => item !== artifact)
 												: [...marked, artifact];
 										});
-									else showModal(ArtifactModal, { props: { artifact } });
+									} else {
+										showModal(ArtifactModal, { props: { artifact } });
+									}
 								}}>
 								<Grid container xs={12} spacing={0}>
 									<Grid xs={6}>

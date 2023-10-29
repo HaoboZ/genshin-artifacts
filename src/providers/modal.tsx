@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import type { ComponentType, ReactNode } from 'react';
 import { createContext, forwardRef, Suspense, useContext, useState } from 'react';
 
-type ModalStatus<T> = {
+type ModalState<T> = {
 	id: string;
 	open: boolean;
 	Component: ComponentType<T>;
@@ -15,49 +15,49 @@ type ModalStatus<T> = {
 };
 
 type ModalType = {
+	modalStates: ModalState<any>[];
 	showModal: <T>(
 		Component: ComponentType<T>,
 		args?: { id?: string; modalProps?: ModalProps; props?: T },
 	) => string;
 	closeModal: (id?: string) => void;
-	modalStatus: (id: string) => Promise<ModalStatus<any>>;
 };
 
 const ModalContext = createContext<ModalType>({
+	modalStates: [],
 	showModal: () => null,
 	closeModal: () => null,
-	modalStatus: () => null,
 });
 ModalContext.displayName = 'Modal';
 
 export type ModalControlsType = {
-	modalStatus: ModalStatus<any>;
+	modalState: ModalState<any>;
 	closeModal: (...args) => void;
 	events: EventEmitter;
 };
 
 const ModalControlsContext = createContext<ModalControlsType>({
-	modalStatus: null,
+	modalState: null,
 	closeModal: () => null,
 	events: null,
 });
 ModalControlsContext.displayName = 'ModalControls';
 
 export default function ModalProvider({ children }: { children: ReactNode }) {
-	const [modals, setModals] = useState<ModalStatus<any>[]>([]);
+	const [modalStates, setModalStates] = useState<ModalState<any>[]>([]);
 
 	function controls(id: string): ModalControlsType {
 		return {
-			modalStatus: null,
+			modalState: null,
 			closeModal: (...args) =>
-				setModals((modals) => {
+				setModalStates((modals) => {
 					const index = modals.findIndex((modal) => modal.id === id);
 					if (index === -1) return modals;
 					const newModals = [...modals];
 					newModals[index] = { ...newModals[index], open: false };
 					newModals[index].controls.events.emit('close', ...args);
 					setTimeout(
-						() => setModals((modals) => modals.filter((modal) => modal.id !== id)),
+						() => setModalStates((modals) => modals.filter((modal) => modal.id !== id)),
 						250,
 					);
 					return newModals;
@@ -69,8 +69,9 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 	return (
 		<ModalContext.Provider
 			value={{
+				modalStates,
 				showModal: (Component, { id = nanoid(), modalProps, props } = {}) => {
-					setModals((modals) => {
+					setModalStates((modals) => {
 						const index = modals.findIndex((modal) => modal.id === id);
 						const newModals = [...modals];
 						if (index === -1) {
@@ -89,7 +90,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 						}
 						setTimeout(
 							() =>
-								setModals((modals) => {
+								setModalStates((modals) => {
 									const index = modals.findIndex((modal) => modal.id === id);
 									if (index === -1) return modals;
 									const newModals = [...modals];
@@ -104,29 +105,22 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 					return id;
 				},
 				closeModal: (id) => {
-					if (!id) return modals.forEach((modal) => modal.controls.closeModal());
-					const modal = modals.find((modal) => modal.id === id);
+					if (!id) return modalStates.forEach((modal) => modal.controls.closeModal());
+					const modal = modalStates.find((modal) => modal.id === id);
 					modal?.controls.closeModal();
 				},
-				modalStatus: async (id) =>
-					await new Promise((resolve) =>
-						setModals((modals) => {
-							resolve(modals.find((modal) => modal.id === id));
-							return modals;
-						}),
-					),
 			}}>
 			{children}
-			{modals.map((modal) => (
+			{modalStates.map((modalState) => (
 				<ModalControlsContext.Provider
-					key={modal.id}
-					value={{ ...modal.controls, modalStatus: modal }}>
+					key={modalState.id}
+					value={{ ...modalState.controls, modalState }}>
 					<Suspense fallback={<CircularProgress />}>
 						<Modal
-							open={modal.open}
-							onClose={modal.controls.closeModal}
-							{...modal.modalProps}>
-							<modal.Component {...modal.props} />
+							open={modalState.open}
+							onClose={modalState.controls.closeModal}
+							{...modalState.modalProps}>
+							<modalState.Component {...modalState.props} />
 						</Modal>
 					</Suspense>
 				</ModalControlsContext.Provider>

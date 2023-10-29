@@ -14,7 +14,7 @@ import BestInSlotAll from './bestInSlotAll';
 import SlotFilter from './slotFilter';
 
 export default function Artifacts() {
-	const { showModal } = useModal();
+	const { modalStates, showModal } = useModal();
 
 	const [artifactSet, setArtifactSet] = useParamState<ArtifactSetKey>('set', null);
 	const [slot, setSlot] = useParamState<SlotKey>('slot', null);
@@ -23,6 +23,7 @@ export default function Artifacts() {
 		typeof window !== 'undefined' ? window : null,
 		'paste',
 		({ clipboardData }: ClipboardEvent) => {
+			if (modalStates.length) return;
 			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
 			if (!item) return;
 			showModal(AddArtifactModal, {
