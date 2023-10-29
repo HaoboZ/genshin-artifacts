@@ -64,7 +64,7 @@ export default function CharacterArtifactModal(
 			<ModalClose variant='outlined' />
 			{artifact && (
 				<Fragment>
-					<ArtifactActions artifact={artifact} />
+					<ArtifactActions cropBox artifact={artifact} />
 					<ArtifactCard hideCharacter artifact={artifact}>
 						<QuadBars artifactTier={getArtifactTier(tier, artifact)} />
 					</ArtifactCard>

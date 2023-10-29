@@ -46,7 +46,7 @@ export default function AddArtifactModal(
 					closeModal();
 					showModal(ArtifactModal, { props: { artifact } });
 				}}>
-				<ArtifactForm file={file} />
+				<ArtifactForm cropBox={!character} file={file} />
 			</Formik>
 		</ModalDialog>
 	);

@@ -6,7 +6,13 @@ import { Button, ButtonGroup } from '@mui/joy';
 import { charactersInfo } from '../characters/characterData';
 import EditArtifactModal from './artifactForm/editArtifactModal';
 
-export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
+export default function ArtifactActions({
+	artifact,
+	cropBox,
+}: {
+	artifact: IArtifact;
+	cropBox?: boolean;
+}) {
 	const { showModal } = useModal();
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
@@ -16,7 +22,7 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 			<Button
 				onClick={() => {
 					closeModal();
-					showModal(EditArtifactModal, { props: { artifact } });
+					showModal(EditArtifactModal, { props: { artifact, cropBox } });
 				}}>
 				Edit
 			</Button>
