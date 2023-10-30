@@ -1,6 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
 import { differenceWith } from 'remeda';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
@@ -36,10 +35,7 @@ const goodSlice = createSlice({
 			const artifactA = payload[1];
 			const characterB = artifactA.location;
 			let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifactA.id);
-			if (artifactAIndex === -1) {
-				artifactA.id = nanoid();
-				artifactAIndex = state.artifacts.length;
-			}
+			if (artifactAIndex === -1) artifactAIndex = state.artifacts.length;
 			const artifactBIndex = state.artifacts.findIndex(
 				({ location, slotKey }) => location === characterA && slotKey === artifactA.slotKey,
 			);
@@ -72,10 +68,7 @@ const goodSlice = createSlice({
 			const weaponA = payload[1];
 			const characterB = weaponA.location;
 			let weaponAIndex = state.weapons.findIndex(({ id }) => id === weaponA.id);
-			if (weaponAIndex === -1) {
-				weaponA.id = nanoid();
-				weaponAIndex = state.weapons.length;
-			}
+			if (weaponAIndex === -1) weaponAIndex = state.weapons.length;
 			const weaponBIndex = state.weapons.findIndex(({ location }) => location === characterA);
 
 			state.weapons = [...state.weapons];

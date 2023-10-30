@@ -30,7 +30,7 @@ export default function AddArtifactModal(
 			rarity: artifactSet.rarity,
 			level: artifactSet.rarity * 4,
 			substats: [],
-			location: character?.key ?? '',
+			location: '',
 			lock: false,
 		};
 	}, [setKey]);
@@ -42,7 +42,8 @@ export default function AddArtifactModal(
 			<Formik<IArtifact>
 				initialValues={initialValues}
 				onSubmit={(artifact) => {
-					dispatch(goodActions.addArtifact(artifact));
+					if (character) dispatch(goodActions.giveArtifact([character.key, artifact]));
+					else dispatch(goodActions.addArtifact(artifact));
 					closeModal();
 					showModal(ArtifactModal, { props: { artifact } });
 				}}>
