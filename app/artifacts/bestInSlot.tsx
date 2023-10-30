@@ -5,8 +5,9 @@ import { useAppSelector } from '@/src/store/hooks';
 import type { Tier } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
+import { capitalCase } from 'change-case';
 import Link from 'next/link';
-import { Fragment, useMemo } from 'react';
+import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, reduce, sortBy, uniq } from 'remeda';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
@@ -85,45 +86,19 @@ export default function BestInSlot({
 					</Link>
 				))}
 			</Stack>
-			{!slot && (
-				<Fragment>
+			{!slot &&
+				['sands', 'goblet', 'circlet'].map((slot) => (
 					<StatChipArray
+						key={slot}
 						mapStats
-						name='Sands'
-						arr={uniq(characters.flatMap(pget('mainStat.sands'))).sort()}
+						name={capitalCase(slot)}
+						arr={uniq(characters.flatMap(pget(`mainStat.${slot}`)) as string[]).sort()}
 					/>
-					<StatChipArray
-						mapStats
-						name='Goblet'
-						arr={uniq(characters.flatMap(pget('mainStat.goblet'))).sort()}
-					/>
-					<StatChipArray
-						mapStats
-						name='Circlet'
-						arr={uniq(characters.flatMap(pget('mainStat.circlet'))).sort()}
-					/>
-				</Fragment>
-			)}
-			{slot === 'sands' && (
+				))}
+			{slot && mainStats[slot] && (
 				<StatChipArray
-					name='Sands'
-					arr={Object.entries(mainStats.sands).map(
-						([stat, count]) => `${statName[stat]} x${count}`,
-					)}
-				/>
-			)}
-			{slot === 'goblet' && (
-				<StatChipArray
-					name='Goblet'
-					arr={Object.entries(mainStats.goblet).map(
-						([stat, count]) => `${statName[stat]} x${count}`,
-					)}
-				/>
-			)}
-			{slot === 'circlet' && (
-				<StatChipArray
-					name='Circlet'
-					arr={Object.entries(mainStats.circlet).map(
+					name={capitalCase(slot)}
+					arr={Object.entries(mainStats[slot]).map(
 						([stat, count]) => `${statName[stat]} x${count}`,
 					)}
 				/>

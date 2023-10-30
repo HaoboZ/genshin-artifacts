@@ -52,7 +52,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }, ref
 			sortBy(pget('rating')),
 			reverse(),
 		);
-	}, [artifact]);
+	}, [artifact, checked]);
 
 	return (
 		<ModalDialog ref={ref} minWidth='md'>
