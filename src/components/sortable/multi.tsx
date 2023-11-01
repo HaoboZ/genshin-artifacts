@@ -15,19 +15,20 @@ import { mapValues } from 'remeda';
 import pget from '../../helpers/pget';
 import SortableContainer from './sortableContainer';
 import SortableItem from './sortableItem';
-import { moveBetweenContainers } from './utils';
 
 export default function MultiSortable<Item>({
 	groups,
 	setGroups,
 	renderItems,
 	renderItem,
+	dependencies = [],
 	children = (lists) => Object.values(lists),
 }: {
 	groups: Record<string, Item[]>;
 	setGroups: (groups: Record<string, Item[]>) => void;
 	renderItems: (items: ReactNode, ref, group: string) => ReactNode;
 	renderItem: (item: Item, containerProps, handleProps) => ReactNode;
+	dependencies?: any[];
 	children?: (lists: Record<string, ReactNode>) => ReactNode;
 }) {
 	const [setA, setSetA] = useState(false);
@@ -55,6 +56,22 @@ export default function MultiSortable<Item>({
 		setLists(mapValues(groups, (items) => items.map((item) => ({ id: nanoid(), item }))));
 	}, [groups]);
 
+	const containers = useMemo(
+		() =>
+			children(
+				mapValues(lists, (list, group) => (
+					<SortableContainer
+						key={group}
+						id={group}
+						items={list}
+						renderItems={renderItems}
+						renderItem={renderItem}
+					/>
+				)),
+			),
+		[lists, ...dependencies],
+	);
+
 	return (
 		<DndContext
 			sensors={useSensors(useSensor(PointerSensor))}
@@ -71,13 +88,13 @@ export default function MultiSortable<Item>({
 					const activeId = active.id;
 					const overIndex = over.data.current?.sortable.index ?? 0;
 
-					return moveBetweenContainers(
-						items,
-						activeContainer,
-						activeId,
-						overContainer,
-						overIndex,
-					);
+					const activeIndex = items[activeContainer].findIndex(({ id }) => id === activeId);
+					if (activeIndex === -1) return items;
+					const item = items[activeContainer][activeIndex];
+					const newItems = { ...items };
+					newItems[activeContainer] = newItems[activeContainer].toSpliced(activeIndex, 1);
+					newItems[overContainer] = newItems[overContainer].toSpliced(overIndex, 0, item);
+					return newItems;
 				});
 			}}
 			onDragEnd={({ active, over }) => {
@@ -98,17 +115,7 @@ export default function MultiSortable<Item>({
 				setActive(null);
 			}}
 			onDragCancel={() => setActive(null)}>
-			{children(
-				mapValues(lists, (list, group) => (
-					<SortableContainer
-						key={group}
-						id={group}
-						items={list}
-						renderItems={renderItems}
-						renderItem={renderItem}
-					/>
-				)),
-			)}
+			{containers}
 			<DragOverlay
 				dropAnimation={{
 					sideEffects: defaultDropAnimationSideEffects({

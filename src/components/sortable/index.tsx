@@ -18,10 +18,12 @@ export default function Sortable<Item>({
 	items,
 	setItems,
 	renderItem,
+	dependencies = [],
 }: {
 	items: Item[];
 	setItems: (items: Item[]) => void;
 	renderItem: (item: Item, containerProps, handleProps) => ReactNode;
+	dependencies?: any[];
 }) {
 	const [setA, setSetA] = useState(false);
 	const [skipB, setSkipB] = useState(true);
@@ -47,6 +49,14 @@ export default function Sortable<Item>({
 		setList(items.map((item) => ({ id: nanoid(), item })));
 	}, [items]);
 
+	const container = useMemo(
+		() =>
+			list.map(({ id, item }) => (
+				<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
+			)),
+		[list, ...dependencies],
+	);
+
 	return (
 		<DndContext
 			sensors={useSensors(useSensor(PointerSensor))}
@@ -61,11 +71,7 @@ export default function Sortable<Item>({
 				setActive(null);
 			}}
 			onDragCancel={() => setActive(null)}>
-			<SortableContext items={list}>
-				{list.map(({ id, item }) => (
-					<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
-				))}
-			</SortableContext>
+			<SortableContext items={list}>{container}</SortableContext>
 			<DragOverlay
 				dropAnimation={{
 					sideEffects: defaultDropAnimationSideEffects({

@@ -42,7 +42,8 @@ export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 					{...(editMode ? handleProps : { component: Link, href: `/characters/${key}` })}>
 					<CharacterImage character={charactersInfo[key]} size={50} />
 				</Grid>
-			)}>
+			)}
+			dependencies={[editMode]}>
 			{({ unSorted, ...lists }) => (
 				<Grid container spacing={1}>
 					<Grid xs={5}>

@@ -84,7 +84,6 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 								controls: controls(id),
 							});
 						} else {
-							// found modal with same id
 							newModals[index] = { ...newModals[index], props };
 							if (newModals[index].open) return newModals;
 						}
