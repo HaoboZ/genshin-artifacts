@@ -2,11 +2,11 @@ import type { SelectProps } from '@mui/joy';
 import { FormControl, FormLabel, Select } from '@mui/joy';
 import { useField } from 'formik';
 
-export default function SelectField<DefaultValue>({
+export default function SelectField<OptionValue extends {}, Multiple extends boolean>({
 	name,
 	label,
 	...props
-}: { name: string; label?: string } & SelectProps<DefaultValue>) {
+}: { name: string; label?: string } & SelectProps<OptionValue, Multiple>) {
 	const [field, , helpers] = useField(name);
 
 	return (

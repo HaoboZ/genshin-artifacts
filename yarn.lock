@@ -56,7 +56,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.22.15, @babel/runtime@npm:^7.23.1, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.22.15, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.9.2":
   version: 7.23.2
   resolution: "@babel/runtime@npm:7.23.2"
   dependencies:
@@ -390,28 +390,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/base@npm:5.0.0-beta.20":
-  version: 5.0.0-beta.20
-  resolution: "@mui/base@npm:5.0.0-beta.20"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.1"
-    "@floating-ui/react-dom": "npm:^2.0.2"
-    "@mui/types": "npm:^7.2.6"
-    "@mui/utils": "npm:^5.14.13"
-    "@popperjs/core": "npm:^2.11.8"
-    clsx: "npm:^2.0.0"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    "@types/react": ^17.0.0 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 7f7da177a0b256565a4a5805d282ad1dd108fbb2850a7266dfc9ee9c8f13d2724cc3b8e696553be46892c62f3f93c785287594e52a8317e67b8ba12c48edac04
-  languageName: node
-  linkType: hard
-
 "@mui/base@npm:5.0.0-beta.22":
   version: 5.0.0-beta.22
   resolution: "@mui/base@npm:5.0.0-beta.22"
@@ -434,7 +412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^5.14.14, @mui/core-downloads-tracker@npm:^5.14.16":
+"@mui/core-downloads-tracker@npm:^5.14.16":
   version: 5.14.16
   resolution: "@mui/core-downloads-tracker@npm:5.14.16"
   checksum: 9c31e91f82e88d150a2f733c3649e861881534e40923050de9718b2268afde0a284aa322bff85c9c4babb8cbc6618983d63c8bd518e6dc3aac6e507b7970bbf7
@@ -457,36 +435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/joy@npm:5.0.0-beta.11":
-  version: 5.0.0-beta.11
-  resolution: "@mui/joy@npm:5.0.0-beta.11"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.1"
-    "@mui/base": "npm:5.0.0-beta.20"
-    "@mui/core-downloads-tracker": "npm:^5.14.14"
-    "@mui/system": "npm:^5.14.14"
-    "@mui/types": "npm:^7.2.6"
-    "@mui/utils": "npm:^5.14.13"
-    clsx: "npm:^2.0.0"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    "@emotion/react": ^11.5.0
-    "@emotion/styled": ^11.3.0
-    "@types/react": ^17.0.0 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@emotion/react":
-      optional: true
-    "@emotion/styled":
-      optional: true
-    "@types/react":
-      optional: true
-  checksum: 9b88bdf30e8bd685060244275eb84d48178c9dab117bdaf9f601c1269d86ffe1bd4b906a11dc74e86c8b563b6679b249e6351d71aa6ecfbb13a3e57dbf7e3508
-  languageName: node
-  linkType: hard
-
-"@mui/material@npm:@mui/joy@latest":
+"@mui/joy@npm:5.0.0-beta.13, @mui/material@npm:@mui/joy@latest":
   version: 5.0.0-beta.13
   resolution: "@mui/joy@npm:5.0.0-beta.13"
   dependencies:
@@ -553,7 +502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.14.14, @mui/system@npm:^5.14.16":
+"@mui/system@npm:^5.14.16":
   version: 5.14.16
   resolution: "@mui/system@npm:5.14.16"
   dependencies:
@@ -581,7 +530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/types@npm:^7.2.6, @mui/types@npm:^7.2.8":
+"@mui/types@npm:^7.2.8":
   version: 7.2.8
   resolution: "@mui/types@npm:7.2.8"
   peerDependencies:
@@ -593,7 +542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^5.14.13, @mui/utils@npm:^5.14.16":
+"@mui/utils@npm:^5.14.16":
   version: 5.14.16
   resolution: "@mui/utils@npm:5.14.16"
   dependencies:
@@ -2584,7 +2533,7 @@ __metadata:
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
     "@mui/icons-material": "npm:5.14.16"
-    "@mui/joy": "npm:5.0.0-beta.11"
+    "@mui/joy": "npm:5.0.0-beta.13"
     "@mui/material": "npm:@mui/joy@latest"
     "@next/bundle-analyzer": "npm:14.0.1"
     "@reduxjs/toolkit": "npm:1.9.7"
