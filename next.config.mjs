@@ -22,4 +22,7 @@ const nextConfig = {
 	experimental: { optimizePackageImports: ['@mui/joy'] },
 };
 
-export default pipe(nextConfig, bundleAnalyzer({ enabled: !process.env.VERCEL }));
+export default pipe(
+	nextConfig,
+	bundleAnalyzer({ enabled: !process.env.VERCEL && process.env.NODE_ENV !== 'development' }),
+);

@@ -34,7 +34,10 @@ export default function BestInSlot({
 				return index === -1 ? Infinity : index;
 			}),
 		);
-		return [characters, characters.length ? characters : [missingArtifactSets[artifactSet]]];
+		return [
+			characters,
+			characters.length ? characters : [missingArtifactSets[artifactSet]].filter(Boolean),
+		];
 	}, [artifactSet, priority]);
 
 	const mainStats = useMemo(
