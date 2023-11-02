@@ -3,7 +3,7 @@ import { useNProgress } from '@tanem/react-nprogress';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
-export default function Progress({
+export default function DelayedProgress({
 	isLoading,
 	delay,
 	children = (progress) => (

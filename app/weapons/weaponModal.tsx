@@ -1,6 +1,7 @@
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
@@ -14,7 +15,7 @@ import WeaponCharacterImage from './weaponCharacterImage';
 import { weaponsInfo } from './weaponData';
 import WeaponImage from './weaponImage';
 
-export default function WeaponModal({ weapon }: { weapon: IWeapon }, ref) {
+export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 	const weapons = useAppSelector(pget('good.weapons'));
 	const priority = useAppSelector(pget('main.priority'));
 
@@ -44,38 +45,40 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }, ref) {
 	}, [weapon]);
 
 	return (
-		<ModalDialog ref={ref} minWidth='md'>
-			<DialogTitle>{weaponsInfo[weapon.key].name}</DialogTitle>
-			<ModalClose variant='outlined' />
-			<WeaponActions weapon={weapon} />
-			<WeaponCharacterImage weapon={weapon} />
-			<Grid container spacing={1}>
-				{characters.map(({ tier, tierIndex, oldWeapon, oldTierIndex }, index) => (
-					<Grid key={index}>
-						<CharacterImage character={charactersInfo[tier.key]}>
-							{oldWeapon && (
-								<WeaponImage
-									weapon={weaponsInfo[oldWeapon.key]}
-									size={50}
-									position='absolute'
-									bottom={0}
-									right={0}
-									border={1}
-								/>
-							)}
-						</CharacterImage>
-						<PercentBar p={tierIndex !== -1 ? 1 - tierIndex / tier.weapon.length : 0}>
-							New %p
-						</PercentBar>
-						{oldWeapon && (
-							<PercentBar
-								p={oldTierIndex !== -1 ? 1 - oldTierIndex / tier.weapon.length : 0}>
-								Old %p
+		<ModalWrapper>
+			<ModalDialog minWidth='md'>
+				<DialogTitle>{weaponsInfo[weapon.key].name}</DialogTitle>
+				<ModalClose variant='outlined' />
+				<WeaponActions weapon={weapon} />
+				<WeaponCharacterImage weapon={weapon} />
+				<Grid container spacing={1}>
+					{characters.map(({ tier, tierIndex, oldWeapon, oldTierIndex }, index) => (
+						<Grid key={index}>
+							<CharacterImage character={charactersInfo[tier.key]}>
+								{oldWeapon && (
+									<WeaponImage
+										weapon={weaponsInfo[oldWeapon.key]}
+										size={50}
+										position='absolute'
+										bottom={0}
+										right={0}
+										border={1}
+									/>
+								)}
+							</CharacterImage>
+							<PercentBar p={tierIndex !== -1 ? 1 - tierIndex / tier.weapon.length : 0}>
+								New %p
 							</PercentBar>
-						)}
-					</Grid>
-				))}
-			</Grid>
-		</ModalDialog>
+							{oldWeapon && (
+								<PercentBar
+									p={oldTierIndex !== -1 ? 1 - oldTierIndex / tier.weapon.length : 0}>
+									Old %p
+								</PercentBar>
+							)}
+						</Grid>
+					))}
+				</Grid>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

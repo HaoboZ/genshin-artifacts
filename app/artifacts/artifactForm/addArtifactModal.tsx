@@ -1,4 +1,5 @@
 import { useModal, useModalControls } from '@/src/providers/modal';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { DCharacter } from '@/src/types/data';
@@ -11,10 +12,15 @@ import { artifactSetsInfo } from '../artifactData';
 import ArtifactModal from '../artifactModal';
 import ArtifactForm from './index';
 
-export default function AddArtifactModal(
-	{ setKey, file, character }: { setKey: ArtifactSetKey; file?: File; character?: DCharacter },
-	ref,
-) {
+export default function AddArtifactModal({
+	setKey,
+	file,
+	character,
+}: {
+	setKey: ArtifactSetKey;
+	file?: File;
+	character?: DCharacter;
+}) {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
@@ -36,19 +42,21 @@ export default function AddArtifactModal(
 	}, [setKey]);
 
 	return (
-		<ModalDialog ref={ref} minWidth='md'>
-			<DialogTitle>Add Artifact{character ? ` to ${character.name}` : ''}</DialogTitle>
-			<ModalClose variant='outlined' />
-			<Formik<IArtifact>
-				initialValues={initialValues}
-				onSubmit={(artifact) => {
-					if (character) dispatch(goodActions.giveArtifact([character.key, artifact]));
-					else dispatch(goodActions.addArtifact(artifact));
-					closeModal();
-					showModal(ArtifactModal, { props: { artifact } });
-				}}>
-				<ArtifactForm cropBox={!character} file={file} />
-			</Formik>
-		</ModalDialog>
+		<ModalWrapper>
+			<ModalDialog minWidth='md'>
+				<DialogTitle>Add Artifact{character ? ` to ${character.name}` : ''}</DialogTitle>
+				<ModalClose variant='outlined' />
+				<Formik<IArtifact>
+					initialValues={initialValues}
+					onSubmit={(artifact) => {
+						if (character) dispatch(goodActions.giveArtifact([character.key, artifact]));
+						else dispatch(goodActions.addArtifact(artifact));
+						closeModal();
+						showModal(ArtifactModal, { props: { artifact } });
+					}}>
+					<ArtifactForm cropBox={!character} file={file} />
+				</Formik>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

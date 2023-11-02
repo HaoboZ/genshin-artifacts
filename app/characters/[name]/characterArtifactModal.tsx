@@ -2,6 +2,7 @@ import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
@@ -24,10 +25,15 @@ import getArtifactTier from '../../artifacts/getArtifactTier';
 import { charactersInfo } from '../characterData';
 import QuadBars from './quadBars';
 
-export default function CharacterArtifactModal(
-	{ tier, slot, artifact }: { tier: Tier; slot: SlotKey; artifact: IArtifact },
-	ref,
-) {
+export default function CharacterArtifactModal({
+	tier,
+	slot,
+	artifact,
+}: {
+	tier: Tier;
+	slot: SlotKey;
+	artifact: IArtifact;
+}) {
 	const artifacts = useAppSelector(pget('good.artifacts'));
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
@@ -57,45 +63,47 @@ export default function CharacterArtifactModal(
 	}, [artifacts, checked, slot, tier]);
 
 	return (
-		<ModalDialog ref={ref} minWidth='md'>
-			<DialogTitle>
-				{capitalCase(slot)} for {charactersInfo[tier.key].name}
-			</DialogTitle>
-			<ModalClose variant='outlined' />
-			{artifact && (
-				<Fragment>
-					<ArtifactActions cropBox artifact={artifact} />
-					<ArtifactCard hideCharacter artifact={artifact}>
-						<QuadBars artifactTier={getArtifactTier(tier, artifact)} />
-					</ArtifactCard>
-				</Fragment>
-			)}
-			<FormControl orientation='horizontal'>
-				<FormLabel>All in Best Set</FormLabel>
-				<Switch
-					size='lg'
-					sx={{ ml: 0 }}
-					checked={checked}
-					onChange={({ target }) => setChecked(target.checked)}
-				/>
-			</FormControl>
-			<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
-				{artifactsSorted.map(({ artifact, ...artifactTier }, index) => (
-					<Grid key={index} xs={6} md={4}>
-						<ArtifactCard
-							artifact={artifact}
-							sx={{ ':hover': { cursor: 'pointer' } }}
-							onClick={() => {
-								if (!confirm(`Give this artifact to ${charactersInfo[tier.key].name}?`))
-									return;
-								dispatch(goodActions.giveArtifact([tier.key, artifact]));
-								closeModal();
-							}}>
-							<QuadBars artifactTier={artifactTier as any} />
+		<ModalWrapper>
+			<ModalDialog minWidth='md'>
+				<DialogTitle>
+					{capitalCase(slot)} for {charactersInfo[tier.key].name}
+				</DialogTitle>
+				<ModalClose variant='outlined' />
+				{artifact && (
+					<Fragment>
+						<ArtifactActions cropBox artifact={artifact} />
+						<ArtifactCard hideCharacter artifact={artifact}>
+							<QuadBars artifactTier={getArtifactTier(tier, artifact)} />
 						</ArtifactCard>
-					</Grid>
-				))}
-			</Grid>
-		</ModalDialog>
+					</Fragment>
+				)}
+				<FormControl orientation='horizontal'>
+					<FormLabel>All in Best Set</FormLabel>
+					<Switch
+						size='lg'
+						sx={{ ml: 0 }}
+						checked={checked}
+						onChange={({ target }) => setChecked(target.checked)}
+					/>
+				</FormControl>
+				<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
+					{artifactsSorted.map(({ artifact, ...artifactTier }, index) => (
+						<Grid key={index} xs={6} md={4}>
+							<ArtifactCard
+								artifact={artifact}
+								sx={{ ':hover': { cursor: 'pointer' } }}
+								onClick={() => {
+									if (!confirm(`Give this artifact to ${charactersInfo[tier.key].name}?`))
+										return;
+									dispatch(goodActions.giveArtifact([tier.key, artifact]));
+									closeModal();
+								}}>
+								<QuadBars artifactTier={artifactTier as any} />
+							</ArtifactCard>
+						</Grid>
+					))}
+				</Grid>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

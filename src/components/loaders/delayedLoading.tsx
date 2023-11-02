@@ -2,7 +2,7 @@ import { Box, CircularProgress } from '@mui/joy';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
-export default function Loading({
+export default function DelayedLoading({
 	isLoading,
 	delay,
 	children = (
