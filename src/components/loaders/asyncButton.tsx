@@ -1,6 +1,6 @@
 import type { ButtonProps } from '@mui/joy';
 import { Button } from '@mui/joy';
-import useAsyncLoading from '@/components/loaders/useAsyncLoading';
+import useAsyncLoading from './useAsyncLoading';
 
 export default function AsyncButton({ onClick, ...props }: ButtonProps) {
 	const [loading, onClickLoading] = useAsyncLoading();
