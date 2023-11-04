@@ -86,7 +86,7 @@ export default function CharacterArtifactModal({
 						onChange={({ target }) => setChecked(target.checked)}
 					/>
 				</FormControl>
-				<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
+				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{artifactsSorted.map(({ artifact, ...artifactTier }, index) => (
 						<Grid key={index} xs={6} md={4}>
 							<ArtifactCard

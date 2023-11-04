@@ -19,5 +19,9 @@ export default function DelayedProgress({
 	const isAnimating = useLoading(isLoading, delay);
 	const { isFinished, progress } = useNProgress({ isAnimating });
 
-	return <Box sx={{ opacity: isFinished ? 0 : 1 }}>{children(progress)}</Box>;
+	return (
+		<Box sx={{ opacity: isFinished ? 0 : 1, transition: 'opacity 0.3s' }}>
+			{children(progress)}
+		</Box>
+	);
 }

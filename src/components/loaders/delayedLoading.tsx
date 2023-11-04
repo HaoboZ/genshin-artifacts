@@ -17,5 +17,5 @@ export default function DelayedLoading({
 }) {
 	const loading = useLoading(isLoading, delay);
 
-	return <Box sx={{ opacity: loading ? 0 : 1 }}>{children}</Box>;
+	return <Box sx={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s' }}>{children}</Box>;
 }

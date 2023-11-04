@@ -32,7 +32,7 @@ export default function CharacterWeaponModal({ tier, weapon }: { tier: Tier; wea
 				<DialogTitle>Weapon for {charactersInfo[tier.key].name}</DialogTitle>
 				<ModalClose variant='outlined' />
 				{weapon && <WeaponCharacterImage weapon={weapon} />}
-				<Grid container spacing={1} sx={{ overflowY: 'scroll' }}>
+				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{weaponsSorted.map((weapon, index) => (
 						<Grid key={index}>
 							<WeaponCharacterImage

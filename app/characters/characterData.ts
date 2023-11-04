@@ -20,11 +20,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Support',
 		weapon: ['ElegyForTheEnd', 'FavoniusWarbow', 'SacrificialBow', 'TheViridescentHunt'],
 		artifact: ['NoblesseOblige', 'Instructor', 'TheExile'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Xiangling: {
@@ -48,11 +44,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrototypeStarglitter',
 		],
 		artifact: ['EmblemOfSeveredFate', 'CrimsonWitchOfFlames', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_', 'eleMas'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Bennett: {
@@ -70,11 +62,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FesteringDesire',
 		],
 		artifact: ['NoblesseOblige', 'EmblemOfSeveredFate', 'CrimsonWitchOfFlames'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
 	},
 	Xinyan: {
@@ -92,11 +80,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrototypeArchaic',
 		],
 		artifact: ['PaleFlame'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'physical_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'physical_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'def_'],
 	},
 	Yanfei: {
@@ -119,11 +103,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'ShimenawasReminiscence',
 			'RetracingBolide',
 		],
-		mainStat: {
-			sands: ['atk_', 'eleMas'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],
 	},
 	Thoma: {
@@ -148,11 +128,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrototypeArchaic',
 		],
 		artifact: ['CrimsonWitchOfFlames', 'GildedDreams', 'GladiatorsFinale'],
-		mainStat: {
-			sands: ['eleMas', 'atk_'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Klee: {
@@ -170,11 +146,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'MagicGuide',
 		],
 		artifact: ['Lavawalker', 'CrimsonWitchOfFlames', 'WanderersTroupe'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	HuTao: {
@@ -196,11 +168,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'GildedDreams',
 			'RetracingBolide',
 		],
-		mainStat: {
-			sands: ['hp_', 'eleMas'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['hp_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'hp_', 'atk_', 'enerRech_'],
 	},
 	Yoimiya: {
@@ -221,11 +189,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'EchoesOfAnOffering',
 			'RetracingBolide',
 		],
-		mainStat: {
-			sands: ['atk_', 'eleMas'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	Dehya: {
@@ -265,11 +229,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['RetracingBolide', 'DesertPavilionChronicle'],
 			'WanderersTroupe',
 		],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
 	},
 	// Dendro
@@ -349,11 +309,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrimordialJadeCutter',
 		],
 		artifact: ['Instructor', 'TenacityOfTheMillelith', 'DeepwoodMemories', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['hp_', 'enerRech_'],
-			goblet: 'hp_',
-			circlet: ['hp_', 'critRate_'],
-		},
+		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
 	},
 	Tighnari: {
@@ -370,11 +326,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['PrototypeCrescent', 'IbisPiercer'],
 		],
 		artifact: [['WanderersTroupe', 'GildedDreams'], 'DeepwoodMemories'],
-		mainStat: {
-			sands: ['atk_', 'eleMas'],
-			goblet: 'dendro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'dendro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'atk_', 'enerRech_'],
 	},
 	Nahida: {
@@ -421,11 +373,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'SkywardBlade',
 		],
 		artifact: ['GildedDreams', 'DeepwoodMemories'],
-		mainStat: {
-			sands: ['eleMas', 'atk_'],
-			goblet: 'dendro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'dendro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_', 'atk'],
 	},
 	Baizhu: {
@@ -459,11 +407,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['SapwoodBlade', 'FreedomSworn', 'LionsRoar'],
 		],
 		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige', 'NymphsDream', 'BlizzardStrayer'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: 'hydro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'hydro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],
 	},
 	Barbara: {
@@ -513,11 +457,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Slingshot',
 		],
 		artifact: ['NymphsDream', 'HeartOfDepth', 'ShimenawasReminiscence'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'hydro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	Mona: {
@@ -548,11 +488,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'SacrificialFragments',
 		],
 		artifact: [['OceanHuedClam', 'TenacityOfTheMillelith'], 'MaidenBeloved'],
-		mainStat: {
-			sands: ['enerRech_', 'hp_'],
-			goblet: 'hp_',
-			circlet: ['heal_', 'hp_'],
-		},
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'hp_'] },
 		subStat: ['enerRech_', 'hp_', 'atk_', 'hp', 'atk'],
 	},
 	KamisatoAyato: {
@@ -573,11 +509,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'ThunderingFury',
 			'EchoesOfAnOffering',
 		],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'hydro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas', 'atk'],
 	},
 	Yelan: {
@@ -620,11 +552,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'HeartOfDepth',
 			['RetracingBolide', 'WanderersTroupe', 'NymphsDream'],
 		],
-		mainStat: {
-			sands: 'hp_',
-			goblet: ['hydro_dmg_', 'hp_'],
-			circlet: ['critRD_', 'hp_'],
-		},
+		mainStat: { sands: 'hp_', goblet: ['hydro_dmg_', 'hp_'], circlet: ['critRD_', 'hp_'] },
 		subStat: ['enerRech_', ['critRD_', 'hp_'], 'hp'],
 	},
 	// Electro
@@ -642,11 +570,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrototypeCrescent',
 		],
 		artifact: ['GoldenTroupe', 'Thundersoother', 'TenacityOfTheMillelith'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],
 	},
 	Beidou: {
@@ -662,11 +586,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Rainslasher',
 		],
 		artifact: ['EmblemOfSeveredFate', 'Thundersoother'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Lisa: {
@@ -682,11 +602,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['DodocoTales', 'MagicGuide'],
 		],
 		artifact: ['ThunderingFury', 'GildedDreams', 'Thundersoother'],
-		mainStat: {
-			sands: ['eleMas', 'atk_'],
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', ['atk_', 'eleMas'], 'enerRech_', 'atk'],
 	},
 	Razor: {
@@ -721,11 +637,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Messenger',
 		],
 		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'atk'],
 	},
 	KukiShinobu: {
@@ -774,11 +686,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'IronSting',
 		],
 		artifact: [['Thundersoother', 'ThunderingFury'], 'GildedDreams'],
-		mainStat: {
-			sands: ['atk_', 'eleMas'],
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', ['atk_', 'eleMas'], 'atk', 'enerRech_'],
 	},
 	RaidenShogun: {
@@ -861,11 +769,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Instructor',
 			'TenacityOfTheMillelith',
 		],
-		mainStat: {
-			sands: ['enerRech_', 'hp_'],
-			goblet: 'hp_',
-			circlet: ['hp_', 'heal_'],
-		},
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
 	},
 	Chongyun: {
@@ -886,11 +790,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FavoniusGreatsword',
 		],
 		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_', 'eleMas'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	Kaeya: {
@@ -909,11 +809,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'AmenomaKageuchi',
 		],
 		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige', 'Instructor'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Rosaria: {
@@ -970,11 +866,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'BlackTassel',
 		],
 		artifact: ['NoblesseOblige', 'OceanHuedClam', 'MaidenBeloved', 'TheExile'],
-		mainStat: {
-			sands: ['enerRech_', 'hp_'],
-			goblet: 'hp_',
-			circlet: ['heal_', 'critRate_'],
-		},
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'critRate_'] },
 		subStat: ['enerRech_', 'critRate_', 'hp_', 'hp'],
 	},
 	Freminet: {
@@ -988,11 +880,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['PrototypeArchaic', 'TidalShadow', 'SnowTombedStarsilver'],
 		],
 		artifact: ['PaleFlame', 'GoldenTroupe', 'GladiatorsFinale'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'physical_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Qiqi: {
@@ -1009,11 +897,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'SkyriderSword',
 		],
 		artifact: ['TenacityOfTheMillelith', 'OceanHuedClam', 'MaidenBeloved', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'atk_',
-			circlet: ['heal_', 'atk_'],
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['heal_', 'atk_'] },
 		subStat: ['atk_', 'enerRech_', 'atk'],
 	},
 	Ganyu: {
@@ -1031,11 +915,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['Lavawalker', 'RetracingBolide'],
 			'GildedDreams',
 		],
-		mainStat: {
-			sands: ['eleMas', 'atk_'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
 	},
 	Eula: {
@@ -1055,11 +935,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'SkyriderGreatsword',
 		],
 		artifact: ['PaleFlame', 'GladiatorsFinale'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'physical_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', 'atk_', 'atk'],
 	},
 	KamisatoAyaka: {
@@ -1094,11 +970,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Slingshot',
 		],
 		artifact: ['BlizzardStrayer', 'EmblemOfSeveredFate', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['atk_', 'eleMas'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	Shenhe: {
@@ -1137,11 +1009,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FlowingPurity',
 		],
 		artifact: ['MarechausseeHunter', ['BlizzardStrayer', 'ShimenawasReminiscence']],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'cryo_dmg_',
-			circlet: 'critDMG_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
 		subStat: ['critRD_', 'atk_', 'atk', 'enerRech_'],
 	},
 	// Anemo
@@ -1194,11 +1062,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['MappaMare', 'SolarPearl'],
 		],
 		artifact: ['ViridescentVenerer', 'GoldenTroupe', 'DesertPavilionChronicle'],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'anemo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
 	},
 	Faruzan: {
@@ -1216,11 +1080,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'EmblemOfSeveredFate',
 			'TenacityOfTheMillelith',
 		],
-		mainStat: {
-			sands: 'enerRech_',
-			goblet: 'anemo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'enerRech_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRate_', 'critDMG_', 'atk_', 'atk'],
 	},
 	Lynette: {
@@ -1232,11 +1092,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FreedomSworn',
 		],
 		artifact: ['ViridescentVenerer', 'EmblemOfSeveredFate', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: 'anemo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRate_', 'critDMG_', 'atk_', 'atk'],
 	},
 	Jean: {
@@ -1290,11 +1146,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['FavoniusLance', 'WhiteTassel'],
 		],
 		artifact: ['VermillionHereafter', ['DesertPavilionChronicle', 'MarechausseeHunter']],
-		mainStat: {
-			sands: 'atk_',
-			goblet: ['anemo_dmg_', 'atk_'],
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', ['eleMas', 'atk']],
 	},
 	KaedeharaKazuha: {
@@ -1338,11 +1190,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'Lavawalker',
 			'ViridescentVenerer',
 		],
-		mainStat: {
-			sands: 'atk_',
-			goblet: 'anemo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: 'atk_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'atk', 'eleMas', 'enerRech_'],
 	},
 	// Geo
@@ -1382,11 +1230,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FavoniusGreatsword',
 		],
 		artifact: [['RetracingBolide', 'HuskOfOpulentDreams'], 'GladiatorsFinale'],
-		mainStat: {
-			sands: ['def_', 'atk_'],
-			goblet: 'geo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['def_', 'atk_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', 'def_'],
 	},
 	Gorou: {
@@ -1410,11 +1254,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['TheCatch', 'PrototypeStarglitter', 'KitainCrossSpear'],
 		],
 		artifact: ['HuskOfOpulentDreams', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['def_', 'enerRech_'],
-			goblet: 'def_',
-			circlet: ['def_', 'critRate_'],
-		},
+		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: ['def_', 'critRate_'] },
 		subStat: ['def_', 'enerRech_', 'def', 'critRate_'],
 	},
 	Zhongli: {
@@ -1440,11 +1280,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'TenacityOfTheMillelith',
 			'NoblesseOblige',
 		],
-		mainStat: {
-			sands: 'def_',
-			goblet: 'geo_dmg_',
-			circlet: ['critRD_', 'def_'],
-		},
+		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: ['critRD_', 'def_'] },
 		subStat: ['critRD_', 'def_', 'atk_', 'enerRech_'],
 	},
 	AratakiItto: {

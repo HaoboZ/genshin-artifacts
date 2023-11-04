@@ -44,7 +44,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 	function controls(id: string): ModalControlsType {
 		return {
 			modalState: null,
-			closeModal: (...args) =>
+			closeModal: (...args) => {
 				setModalStates((modals) => {
 					const index = modals.findIndex((modal) => modal.id === id);
 					if (index === -1) return modals;
@@ -56,7 +56,8 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 						250,
 					);
 					return newModals;
-				}),
+				});
+			},
 			events: new EventEmitter(),
 		};
 	}
@@ -75,18 +76,16 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 							newModals[index] = { ...newModals[index], props };
 							if (newModals[index].open) return newModals;
 						}
-						setTimeout(
-							() =>
-								setModalStates((modals) => {
-									const index = modals.findIndex((modal) => modal.id === id);
-									if (index === -1) return modals;
-									const newModals = [...modals];
-									newModals[index].controls.events.emit('open');
-									newModals[index] = { ...newModals[index], open: true };
-									return newModals;
-								}),
-							0,
-						);
+						setTimeout(() => {
+							setModalStates((modals) => {
+								const index = modals.findIndex((modal) => modal.id === id);
+								if (index === -1) return modals;
+								const newModals = [...modals];
+								newModals[index].controls.events.emit('open');
+								newModals[index] = { ...newModals[index], open: true };
+								return newModals;
+							});
+						}, 0);
 						return newModals;
 					});
 					return id;

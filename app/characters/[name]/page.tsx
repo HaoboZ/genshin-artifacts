@@ -89,19 +89,20 @@ export default function Character({ params }: { params: { name: string } }) {
 				actions={[
 					{
 						name: 'Paste or Add',
-						onClick: () =>
+						onClick: () => {
 							showModal(AddArtifactModal, {
 								props: { setKey: makeArray(characterTier.artifact[0])[0], character },
-							}),
+							});
+						},
 					},
 				]}>
 				<Grid container spacing={1}>
 					<Grid xs={6} sm={4}>
 						<Card
 							sx={{ ':hover': { cursor: 'pointer' } }}
-							onClick={() =>
-								showModal(CharacterWeaponModal, { props: { tier: characterTier, weapon } })
-							}>
+							onClick={() => {
+								showModal(CharacterWeaponModal, { props: { tier: characterTier, weapon } });
+							}}>
 							<WeaponImage weapon={weaponsInfo[weapon?.key]} type={character.weaponType} />
 							{weapon && <PercentBar p={weaponTier} />}
 						</Card>
@@ -117,11 +118,11 @@ export default function Character({ params }: { params: { name: string } }) {
 									artifact={artifact}
 									slot={slot}
 									sx={{ ':hover': { cursor: 'pointer' } }}
-									onClick={() =>
+									onClick={() => {
 										showModal(CharacterArtifactModal, {
 											props: { tier: characterTier, slot, artifact },
-										})
-									}>
+										});
+									}}>
 									<QuadBars artifactTier={artifactTier} />
 								</ArtifactCard>
 							</Grid>

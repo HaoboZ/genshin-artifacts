@@ -42,10 +42,11 @@ export default function Artifacts() {
 				actions={[
 					{
 						name: 'Paste or Add',
-						onClick: () =>
+						onClick: () => {
 							showModal(AddArtifactModal, {
 								props: { setKey: artifactSet || 'GladiatorsFinale' },
-							}),
+							});
+						},
 					},
 				]}>
 				{artifactSet ? (

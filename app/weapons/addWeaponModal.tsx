@@ -41,7 +41,7 @@ export default function AddWeaponModal() {
 					<Fragment>
 						<WeaponImage weapon={weaponsInfo[weapon]} />
 						<Button
-							onClick={() =>
+							onClick={() => {
 								dispatch(
 									goodActions.addWeapon({
 										id: nanoid(),
@@ -52,8 +52,8 @@ export default function AddWeaponModal() {
 										location: '',
 										lock: true,
 									}),
-								)
-							}>
+								);
+							}}>
 							Confirm
 						</Button>
 					</Fragment>

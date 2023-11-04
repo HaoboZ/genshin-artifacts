@@ -31,7 +31,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 					label='Set'
 					options={Object.keys(artifactSetsInfo)}
 					getOptionLabel={(set) => artifactSetsInfo[set].name}
-					onChange={(e, value) => {
+					onChange={(_, value) => {
 						const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
 						setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
 					}}
@@ -44,7 +44,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 				<SelectField
 					name='slotKey'
 					label='Type'
-					onChange={(e, value) => {
+					onChange={(_, value) => {
 						setFieldValue('mainStatKey', artifactSlotInfo[value as any as SlotKey].stats[0]);
 					}}>
 					{artifactSlotOrder.map((key) => (
@@ -70,7 +70,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 				<SelectField
 					name='rarity'
 					label='Rarity'
-					onChange={(e, rarity) => {
+					onChange={(_, rarity) => {
 						setFieldValue('level', (rarity as number) * 4);
 					}}>
 					{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
@@ -103,7 +103,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 						name={`substats.${index}.key`}
 						size='sm'
 						placeholder={`SubStat ${index + 1}`}
-						onChange={(e, subStat) => {
+						onChange={(_, subStat) => {
 							const substats = [...values.substats];
 							if (!subStat) substats.splice(index, 1);
 							else substats[index] = { key: subStat as StatKey, value: 0 };
