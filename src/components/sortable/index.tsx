@@ -1,4 +1,3 @@
-'use client';
 import type { Active } from '@dnd-kit/core';
 import {
 	defaultDropAnimationSideEffects,
@@ -47,7 +46,7 @@ export default function Sortable<Item>({
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		setList(items.map((item) => ({ id: nanoid(), item })));
+		setList(items.map((item, index) => ({ id: list[index].id ?? nanoid(), item })));
 	}, [items]);
 
 	const container = useMemo(

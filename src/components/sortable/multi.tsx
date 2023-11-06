@@ -1,4 +1,3 @@
-'use client';
 import type { Active } from '@dnd-kit/core';
 import {
 	defaultDropAnimationSideEffects,
@@ -54,7 +53,11 @@ export default function MultiSortable<Item>({
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		setLists(mapValues(groups, (items) => items.map((item) => ({ id: nanoid(), item }))));
+		setLists(
+			mapValues(groups, (items, group) =>
+				items.map((item, index) => ({ id: lists[group][index].id ?? nanoid(), item })),
+			),
+		);
 	}, [groups]);
 
 	const containers = useMemo(
