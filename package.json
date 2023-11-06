@@ -15,7 +15,7 @@
 		"start": "next start",
 		"export": "next export"
 	},
-	"packageManager": "yarn@4.0.0",
+	"packageManager": "yarn@4.0.1",
 	"dependencies": {
 		"@dnd-kit/core": "6.0.8",
 		"@dnd-kit/sortable": "7.0.2",
