@@ -1,3 +1,4 @@
+'use client';
 import type { DrawerProps } from '@mui/joy';
 import { Drawer } from '@mui/joy';
 import { useModalControls } from './index';

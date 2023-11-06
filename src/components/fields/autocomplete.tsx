@@ -1,3 +1,4 @@
+'use client';
 import type { AutocompleteProps } from '@mui/joy';
 import { Autocomplete, FormControl, FormLabel } from '@mui/joy';
 import { useField } from 'formik';

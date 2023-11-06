@@ -1,4 +1,10 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended", "schedule:weekly", ":automergeBranch", ":automergeMinor"]
+	"extends": [
+		"config:recommended",
+		"schedule:weekly",
+		":automergeBranch",
+		":combinePatchMinorReleases",
+		":automergeMinor"
+	]
 }

@@ -1,3 +1,4 @@
+'use client';
 import type { Active } from '@dnd-kit/core';
 import {
 	defaultDropAnimationSideEffects,

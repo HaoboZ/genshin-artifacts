@@ -1,3 +1,4 @@
+'use client';
 import { Box, CircularProgress } from '@mui/joy';
 import { useNProgress } from '@tanem/react-nprogress';
 import type { ReactNode } from 'react';

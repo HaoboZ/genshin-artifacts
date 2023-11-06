@@ -1,3 +1,4 @@
+'use client';
 import type { MenuItemProps } from '@mui/joy';
 import { MenuItem } from '@mui/joy';
 import useAsyncLoading from './useAsyncLoading';

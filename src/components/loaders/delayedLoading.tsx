@@ -1,3 +1,4 @@
+'use client';
 import { Box, CircularProgress } from '@mui/joy';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';

@@ -1,3 +1,4 @@
+'use client';
 import type { InputProps } from '@mui/joy';
 import { Input } from '@mui/joy';
 import { useEffect, useState } from 'react';

@@ -1,3 +1,4 @@
+'use client';
 import type { TooltipProps, TypographyProps } from '@mui/joy';
 import { Tooltip, Typography } from '@mui/joy';
 import { useRef, useState } from 'react';

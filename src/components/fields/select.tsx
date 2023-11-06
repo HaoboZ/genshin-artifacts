@@ -1,3 +1,4 @@
+'use client';
 import type { SelectProps } from '@mui/joy';
 import { FormControl, FormLabel, Select } from '@mui/joy';
 import { useField } from 'formik';
