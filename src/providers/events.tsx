@@ -1,3 +1,4 @@
+'use client';
 import { EventEmitter } from 'events';
 import type { ComponentType, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';

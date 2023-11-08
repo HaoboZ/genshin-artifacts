@@ -1,10 +1,10 @@
-import Providers from '@/src/providers';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../package.json';
 import Header from './header';
+import Providers from './providers';
 
 const packageJson = _packageJson as PackageJson;
 

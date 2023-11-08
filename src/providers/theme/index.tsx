@@ -1,3 +1,4 @@
+'use client';
 import { CssBaseline, CssVarsProvider, getInitColorSchemeScript } from '@mui/joy';
 import type { ReactNode } from 'react';
 import NextAppDirEmotionCacheProvider from './emotionCache';

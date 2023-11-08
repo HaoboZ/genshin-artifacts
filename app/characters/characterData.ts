@@ -4,7 +4,9 @@ import type { CharacterKey } from '@/src/types/good';
 
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
-// 10/28/23
+// TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
+// 11/06/23
+// Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
 		key: 'Traveler',
@@ -499,6 +501,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'MistsplitterReforged',
 			'TheBlackSword',
 			'SummitShaper',
+			'FinaleOfTheDeep',
 			'KagotsurubeIsshin',
 			'LionsRoar',
 			['AmenomaKageuchi', 'SkywardBlade'],
@@ -1075,10 +1078,9 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['FadingTwilight', 'SacrificialBow'],
 		],
 		artifact: [
-			'ViridescentVenerer',
-			'NoblesseOblige',
+			['ViridescentVenerer', 'NoblesseOblige'],
 			'EmblemOfSeveredFate',
-			'TenacityOfTheMillelith',
+			['GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
 		mainStat: { sands: 'enerRech_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRate_', 'critDMG_', 'atk_', 'atk'],
@@ -1117,17 +1119,17 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Venti: {
 		key: 'Venti',
-		role: 'Off-Field DPS',
+		role: 'Reaction Off-Field DPS',
 		weapon: [
 			'ElegyForTheEnd',
 			'TheStringless',
-			'WindblumeOde',
-			'AlleyHunter',
+			['WindblumeOde', 'PolarStar'],
 			'FavoniusWarbow',
-			'RavenBow',
-			'SkywardHarp',
+			['RavenBow', 'FadingTwilight'],
+			['AlleyHunter', 'MouunsMoon'],
+			'SongOfStillness',
 		],
-		artifact: ['ViridescentVenerer', 'NoblesseOblige'],
+		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'GildedDreams'],
 		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['eleMas', 'enerRech_', 'atk_', 'critRD_', 'atk'],
 	},
@@ -1151,7 +1153,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	KaedeharaKazuha: {
 		key: 'KaedeharaKazuha',
-		role: 'EM Build',
+		role: 'Reaction DPS & Support',
 		weapon: [
 			['FreedomSworn', 'XiphosMoonlight'],
 			'FavoniusSword',

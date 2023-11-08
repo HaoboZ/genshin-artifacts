@@ -1,24 +1,23 @@
 'use client';
+import ComponentComposer, { component } from '@/src/helpers/componentComposer';
+import EventsProvider from '@/src/providers/events';
+import ModalProvider from '@/src/providers/modal';
+import SnackbarAction from '@/src/providers/snackbar/action';
+import ThemeRegistry from '@/src/providers/theme';
+import { store } from '@/src/store';
 import { SnackbarProvider } from 'notistack';
 import type { ReactNode } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
-import ComponentComposer, { component } from '../helpers/componentComposer';
-import { store } from '../store';
-import EventsProvider from './events';
-import ModalProvider from './modal';
-import SnackbarAction from './snackbar/action';
-import ThemeRegistry from './theme';
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
 		<ComponentComposer
 			components={[
 				// data
-				component(StoreProvider, { store }),
 				component(EventsProvider),
-				// styling
 				component(ThemeRegistry),
-				// visual
+				component(StoreProvider, { store }),
+				// components
 				component(SnackbarProvider, { preventDuplicate: true, action: SnackbarAction }),
 				component(ModalProvider),
 			]}>

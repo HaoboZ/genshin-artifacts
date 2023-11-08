@@ -1,3 +1,4 @@
+'use client';
 import { CircularProgress } from '@mui/joy';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
