@@ -28,7 +28,8 @@ export default function Sortable<Item>({
 	const [setA, setSetA] = useState(false);
 	const [skipB, setSkipB] = useState(true);
 	const [list, setList] = useState<{ id: string; item: Item }[]>(() =>
-		items.map((item) => ({ id: nanoid(), item })),
+		// @ts-ignore
+		items.map((item) => ({ id: item.id ?? nanoid(), item })),
 	);
 	const [active, setActive] = useState<Active>(null);
 
@@ -46,7 +47,8 @@ export default function Sortable<Item>({
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		setList(items.map((item, index) => ({ id: list[index].id ?? nanoid(), item })));
+		// @ts-ignore
+		setList(items.map((item, index) => ({ id: item.id ?? list[index]?.id ?? nanoid(), item })));
 	}, [items]);
 
 	const container = useMemo(

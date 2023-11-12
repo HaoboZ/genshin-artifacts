@@ -12,10 +12,8 @@
 		"noEmit": true,
 		"noImplicitAny": false,
 		"paths": {
-			"@/src/*": ["./src/*"],
-			"@/components/*": ["./src/components/*"],
-			"@/app/*": ["./app/*"],
-			"@/public/*": ["./public/*"]
+			"@/*": ["./*"],
+			"@/components/*": ["./src/components/*"]
 		},
 		"plugins": [
 			{

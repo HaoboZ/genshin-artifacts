@@ -133,6 +133,7 @@ export type CharacterKey =
 	| 'Beidou' //Beidou
 	| 'Bennett' //Bennett
 	| 'Candace' //Candace
+	| 'Charlotte' //Charlotte
 	| 'Chongyun' //Chongyun
 	| 'Collei' //Collei
 	| 'Cyno' //Cyno
@@ -144,6 +145,7 @@ export type CharacterKey =
 	| 'Faruzan' //Faruzan
 	| 'Fischl' //Fischl
 	| 'Freminet' //Freminet
+	| 'Furina' //Furina
 	| 'Ganyu' //Ganyu
 	| 'Gorou' //Gorou
 	| 'HuTao' //Hu Tao
@@ -336,6 +338,7 @@ export type WeaponKey =
 	| 'SolarPearl' //Solar Pearl
 	| 'SongOfBrokenPines' //Song of Broken Pines
 	| 'SongOfStillness' //Song of Stillness
+	| 'SplendorOfTranquilWaters' // Splendor of Tranquil Waters
 	| 'StaffOfHoma' //Staff of Homa
 	| 'StaffOfTheScarletSands' //Staff of the Scarlet Sands
 	| 'SummitShaper' //Summit Shaper

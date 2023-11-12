@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 11/06/23
+// 11/09/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -558,6 +558,21 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		mainStat: { sands: 'hp_', goblet: ['hydro_dmg_', 'hp_'], circlet: ['critRD_', 'hp_'] },
 		subStat: ['enerRech_', ['critRD_', 'hp_'], 'hp'],
 	},
+	Furina: {
+		key: 'Furina',
+		role: 'Off-Field DPS & Support',
+		weapon: [
+			'SplendorOfTranquilWaters',
+			'PrimordialJadeCutter',
+			['FesteringDesire', 'KeyOfKhajNisut'],
+			['FleuveCendreFerryman', 'FavoniusSword'],
+			['WolfFang', 'HaranGeppakuFutsu', 'LightOfFoliarIncision', 'MistsplitterReforged'],
+			['SkywardBlade', 'TheDockhandsAssistant', 'HarbingerOfDawn'],
+		],
+		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
+		subStat: ['enerRech_', ['critRD_', 'hp_'], 'hp'],
+	},
 	// Electro
 	Fischl: {
 		key: 'Fischl',
@@ -885,6 +900,29 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		artifact: ['PaleFlame', 'GoldenTroupe', 'GladiatorsFinale'],
 		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
+	},
+	Charlotte: {
+		key: 'Charlotte',
+		role: 'Support',
+		weapon: [
+			['PrototypeAmber', 'FavoniusCodex'],
+			'ThrillingTalesOfDragonSlayers',
+			['OathswornEye', 'WineAndSong'],
+			'FruitOfFulfillment',
+			['BalladOfTheBoundlessBlue', 'HakushinRing'],
+		],
+		artifact: [
+			['NoblesseOblige', 'TenacityOfTheMillelith'],
+			'OceanHuedClam',
+			'MaidenBeloved',
+			'BlizzardStrayer',
+		],
+		mainStat: {
+			sands: ['enerRech_', 'atk_'],
+			goblet: 'atk_',
+			circlet: ['heal_', 'atk_', 'critRate_'],
+		},
+		subStat: ['enerRech_', 'atk_', 'critRate_', 'atk', 'critDMG_'],
 	},
 	Qiqi: {
 		key: 'Qiqi',

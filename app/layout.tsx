@@ -11,7 +11,7 @@ const packageJson = _packageJson as PackageJson;
 export const metadata: Metadata = {
 	title: 'Genshin Artifacts',
 	description: packageJson.description,
-	keywords: packageJson.keywords?.join(', '),
+	keywords: packageJson.keywords,
 	authors: packageJson.author as any,
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html suppressHydrationWarning lang='en'>
 			<body>
-				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
+				{process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
 				<Providers>
 					<Header />
 					{children}
