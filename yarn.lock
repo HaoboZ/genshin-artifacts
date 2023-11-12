@@ -2565,7 +2565,7 @@ __metadata:
     eslint-plugin-prettier: "npm:5.0.1"
     events: "npm:3.3.0"
     formik: "npm:2.4.5"
-    genshin-db: "npm:5.0.0"
+    genshin-db: "npm:5.0.1"
     nanoid: "npm:5.0.2"
     next: "npm:14.0.1"
     notistack: "npm:3.0.1"
@@ -2583,13 +2583,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"genshin-db@npm:5.0.0":
-  version: 5.0.0
-  resolution: "genshin-db@npm:5.0.0"
+"genshin-db@npm:5.0.1":
+  version: 5.0.1
+  resolution: "genshin-db@npm:5.0.1"
   dependencies:
     fuzzysort: "npm:^1.1.4"
     pako: "npm:^2.0.4"
-  checksum: 120ca65691ee450cc09d7c872523bf0f563fa077bffbaa4b362137c3ca68c43bb85991bb5efb6f386efe1114c153f37c83a52652e791cd4c12a5efeefedf78d8
+  checksum: a85798d2ffd902001adafdc39a20714bdc508f818e9e5b47f173c5e0512e995b6b3dcfe9b5385ab4709dde738574e84741e3e42600c10b028c9029db767b7be6
   languageName: node
   linkType: hard
 

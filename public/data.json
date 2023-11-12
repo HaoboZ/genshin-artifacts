@@ -118,6 +118,14 @@
 			"element": "Hydro",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png"
 		},
+		"Charlotte": {
+			"key": "Charlotte",
+			"name": "Charlotte",
+			"rarity": 4,
+			"weaponType": "Catalyst",
+			"element": "Cryo",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png"
+		},
 		"Chongyun": {
 			"key": "Chongyun",
 			"name": "Chongyun",
@@ -205,6 +213,14 @@
 			"weaponType": "Claymore",
 			"element": "Cryo",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png"
+		},
+		"Furina": {
+			"key": "Furina",
+			"name": "Furina",
+			"rarity": 5,
+			"weaponType": "Sword",
+			"element": "Hydro",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png"
 		},
 		"Ganyu": {
 			"key": "Ganyu",
@@ -2155,6 +2171,13 @@
 			"weaponType": "Bow",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png"
 		},
+		"SplendorOfTranquilWaters": {
+			"key": "SplendorOfTranquilWaters",
+			"name": "Splendor of Tranquil Waters",
+			"rarity": 5,
+			"weaponType": "Sword",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png"
+		},
 		"StaffOfHoma": {
 			"key": "StaffOfHoma",
 			"name": "Staff of Homa",
@@ -2182,6 +2205,13 @@
 			"rarity": 4,
 			"weaponType": "Sword",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png"
+		},
+		"SwordOfNarzissenkreuz": {
+			"key": "SwordOfNarzissenkreuz",
+			"name": "Sword of Narzissenkreuz",
+			"rarity": 4,
+			"weaponType": "Sword",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png"
 		},
 		"TalkingStick": {
 			"key": "TalkingStick",

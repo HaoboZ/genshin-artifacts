@@ -57,7 +57,7 @@
 		"eslint-config-next": "14.0.1",
 		"eslint-config-prettier": "9.0.0",
 		"eslint-plugin-prettier": "5.0.1",
-		"genshin-db": "5.0.0",
+		"genshin-db": "5.0.1",
 		"prettier": "3.0.3",
 		"sass": "1.69.5",
 		"type-fest": "4.6.0",

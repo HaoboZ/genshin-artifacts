@@ -16,6 +16,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png',
@@ -27,6 +28,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png',
@@ -476,6 +478,8 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Hunter%27s_Bow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
