@@ -13,6 +13,7 @@
 		"noImplicitAny": false,
 		"paths": {
 			"@/*": ["./*"],
+			"@/api/*": ["./app/api/*"],
 			"@/components/*": ["./src/components/*"]
 		},
 		"plugins": [

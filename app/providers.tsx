@@ -1,13 +1,10 @@
-'use client';
 import ComponentComposer, { component } from '@/src/helpers/componentComposer';
 import EventsProvider from '@/src/providers/events';
 import ModalProvider from '@/src/providers/modal';
-import SnackbarAction from '@/src/providers/snackbar/action';
+import ClientSnackbarProvider from '@/src/providers/snackbar';
 import ThemeRegistry from '@/src/providers/theme';
-import { store } from '@/src/store';
-import { SnackbarProvider } from 'notistack';
+import StoreProvider from '@/src/store/provider';
 import type { ReactNode } from 'react';
-import { Provider as StoreProvider } from 'react-redux';
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
@@ -16,9 +13,9 @@ export default function Providers({ children }: { children: ReactNode }) {
 				// data
 				component(EventsProvider),
 				component(ThemeRegistry),
-				component(StoreProvider, { store }),
+				component(StoreProvider),
 				// components
-				component(SnackbarProvider, { preventDuplicate: true, action: SnackbarAction }),
+				component(ClientSnackbarProvider),
 				component(ModalProvider),
 			]}>
 			{children}
