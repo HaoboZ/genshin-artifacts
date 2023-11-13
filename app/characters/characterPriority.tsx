@@ -24,7 +24,6 @@ export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 	);
 
 	useDidUpdate(() => {
-		console.log('updated');
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
 	}, [characters]);
 
