@@ -15,7 +15,11 @@ export const metadata: Metadata = {
 	authors: packageJson.author as any,
 };
 
-export const viewport: Viewport = { themeColor: '#ffffff' };
+export const viewport: Viewport = {
+	themeColor: '#ffffff',
+	viewportFit: 'cover',
+	userScalable: false,
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (

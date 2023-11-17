@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 11/09/23
+// 11/16/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -387,9 +387,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'FavoniusCodex',
 			'HakushinRing',
 			'ThrillingTalesOfDragonSlayers',
+			'AThousandFloatingDreams',
 		],
 		artifact: ['DeepwoodMemories', 'OceanHuedClam', 'Instructor', 'NoblesseOblige'],
-		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: 'hp_' },
+		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'hp'],
 	},
 	// Hydro
@@ -448,15 +449,18 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		key: 'Tartaglia',
 		role: 'DPS',
 		weapon: [
-			'PolarStar',
-			['ThunderingPulse', 'HuntersPath', 'AquaSimulacra'],
+			['PolarStar', 'AquaSimulacra', 'ThunderingPulse', 'HuntersPath'],
 			'SkywardHarp',
-			'AmosBow',
-			'TheViridescentHunt',
-			'BlackcliffWarbow',
-			['MouunsMoon', 'PrototypeCrescent'],
-			['Rust', 'KingsSquire', 'Hamayumi', 'TheStringless'],
-			'Slingshot',
+			['AmosBow', 'PrototypeCrescent', 'TheViridescentHunt'],
+			['KingsSquire', 'MouunsMoon'],
+			[
+				'Hamayumi',
+				'FadingTwilight',
+				'BlackcliffWarbow',
+				'TheStringless',
+				'ElegyForTheEnd',
+				'Rust',
+			],
 		],
 		artifact: ['NymphsDream', 'HeartOfDepth', 'ShimenawasReminiscence'],
 		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
@@ -1150,10 +1154,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'OceanHuedClam', 'EmblemOfSeveredFate'],
 		mainStat: {
 			sands: ['atk_', 'enerRech_', 'eleMas'],
-			goblet: ['anemo_dmg_', 'eleMas'],
-			circlet: ['critRD_', 'eleMas'],
+			goblet: ['anemo_dmg_', 'eleMas', 'atk_'],
+			circlet: ['critRD_', 'eleMas', 'heal_'],
 		},
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Venti: {
 		key: 'Venti',
