@@ -1,6 +1,12 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended", ":automergeBranch", "schedule:weekly", "group:allNonMajor"],
+	"extends": [
+		"config:recommended",
+		":automergeAll",
+		":automergeBranch",
+		"schedule:weekly",
+		"group:allNonMajor"
+	],
 	"lockFileMaintenance": { "enabled": true, "automerge": true, "automergeType": "branch" },
 	"bumpVersion": "patch"
 }
