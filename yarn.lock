@@ -829,12 +829,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.9.2":
-  version: 20.9.2
-  resolution: "@types/node@npm:20.9.2"
+"@types/node@npm:20.10.0":
+  version: 20.10.0
+  resolution: "@types/node@npm:20.10.0"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 891a035a5b7796001f5daaec03b2d84ebb67d731b67abb34c352af1b5b1f53beb4a92f0f6a66f6e0ed97191c3022cc8c830e048f8a5c53806e8ab248873a7c7b
+  checksum: f379e57d9d28cb5f3d8eab943de0c54a0ca2f95ee356e1fe2a1a4fa718b740103ae522c50ce107cffd52c3642ef3244cfc55bf5369081dd6c48369c8587b21ae
   languageName: node
   linkType: hard
 
@@ -852,19 +852,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-redux@npm:7.1.30":
-  version: 7.1.30
-  resolution: "@types/react-redux@npm:7.1.30"
+"@types/react-redux@npm:7.1.31":
+  version: 7.1.31
+  resolution: "@types/react-redux@npm:7.1.31"
   dependencies:
     "@types/hoist-non-react-statics": "npm:^3.3.0"
     "@types/react": "npm:*"
     hoist-non-react-statics: "npm:^3.3.0"
     redux: "npm:^4.0.0"
-  checksum: 49066b64c4414ba10537a63e6e193a76b1b72d2e133dbcb70ca380ed30e6a94e0d86bc131b2c3054d68b1e56e967337cbcad6c24621aaaae8e093a6fb1f7f935
+  checksum: 74853be2e4d2189356b658fd926b5045211863c209d1a0608a40951e68643821eea0e2538911370ee38a974ba0f07222ee8cf1a389056c2c379dae7eb73cb2e3
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.37":
+"@types/react@npm:*":
   version: 18.2.37
   resolution: "@types/react@npm:18.2.37"
   dependencies:
@@ -872,6 +872,17 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 79dd5d23da05bec54e7423ca17096e345eb8fd80a3bf8dd916bb5cdd60677d27c298523aa5b245d090fcc4ec100cfd58c1af4631fbac709d0a9d8be75f9d78a9
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.2.38":
+  version: 18.2.38
+  resolution: "@types/react@npm:18.2.38"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 56edd4756081b677e38ee23ad6d340658c5e2468785cb20968318cec357e1ea7ccf3ecd9534981741192dd1b894200acfaf0f1551b4795c6077668f6afc19345
   languageName: node
   linkType: hard
 
@@ -2603,9 +2614,9 @@ __metadata:
     "@tanem/react-nprogress": "npm:5.0.51"
     "@types/eslint": "npm:8.44.7"
     "@types/events": "npm:3.0.3"
-    "@types/node": "npm:20.9.2"
-    "@types/react": "npm:18.2.37"
-    "@types/react-redux": "npm:7.1.30"
+    "@types/node": "npm:20.10.0"
+    "@types/react": "npm:18.2.38"
+    "@types/react-redux": "npm:7.1.31"
     "@typescript-eslint/eslint-plugin": "npm:6.12.0"
     "@typescript-eslint/parser": "npm:6.12.0"
     "@vercel/analytics": "npm:1.1.1"
@@ -2617,7 +2628,7 @@ __metadata:
     eslint-plugin-prettier: "npm:5.0.1"
     events: "npm:3.3.0"
     formik: "npm:2.4.5"
-    genshin-db: "npm:5.0.1"
+    genshin-db: "npm:5.0.3"
     nanoid: "npm:5.0.3"
     next: "npm:14.0.3"
     notistack: "npm:3.0.1"
@@ -2630,18 +2641,18 @@ __metadata:
     rooks: "npm:7.14.1"
     sass: "npm:1.69.5"
     tesseract.js: "npm:5.0.3"
-    type-fest: "npm:4.8.1"
+    type-fest: "npm:4.8.2"
     typescript: "npm:5.3.2"
   languageName: unknown
   linkType: soft
 
-"genshin-db@npm:5.0.1":
-  version: 5.0.1
-  resolution: "genshin-db@npm:5.0.1"
+"genshin-db@npm:5.0.3":
+  version: 5.0.3
+  resolution: "genshin-db@npm:5.0.3"
   dependencies:
     fuzzysort: "npm:^1.1.4"
     pako: "npm:^2.0.4"
-  checksum: a85798d2ffd902001adafdc39a20714bdc508f818e9e5b47f173c5e0512e995b6b3dcfe9b5385ab4709dde738574e84741e3e42600c10b028c9029db767b7be6
+  checksum: 3401c90dbde4e77dc553a7a906a211b0830678bf5a27bf33f1488e5c55338b9ad9f3608ded1f949c20205eb8ae4603ebedc2be1f4cde2fc44fff3cae2b683c05
   languageName: node
   linkType: hard
 
@@ -5134,10 +5145,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.8.1":
-  version: 4.8.1
-  resolution: "type-fest@npm:4.8.1"
-  checksum: 0dd59811e6b2ddcab34a52d27b9d346d04d8ccd9f433b1ae59d86cb497fe9b5a9b7b081888be92e8d9b3cf9e757d7eea9876a7c3deca6ae7f5a06c2863058d69
+"type-fest@npm:4.8.2":
+  version: 4.8.2
+  resolution: "type-fest@npm:4.8.2"
+  checksum: a6af9dd3fe54ed02baf192b572d370d8e234b6be40507f5627f6a156c8aa2a689defc3f03a77cab4687e8e27066d157869988485c1a23c7267cb3f6d8d220e9d
   languageName: node
   linkType: hard
 
