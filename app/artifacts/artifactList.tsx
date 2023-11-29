@@ -5,9 +5,9 @@ import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
-import { Button, FormControl, FormLabel, Grid, Switch } from '@mui/joy';
+import { Button, FormControl, FormLabel, Grid, Switch, Typography } from '@mui/joy';
 import { useMemo, useState } from 'react';
-import { filter, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, sortBy } from 'remeda';
 import { charactersTier } from '../characters/characterData';
 import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
@@ -19,7 +19,7 @@ export default function ArtifactList({
 	slot,
 }: {
 	artifactSet: ArtifactSetKey;
-	slot: SlotKey;
+	slot?: SlotKey;
 }) {
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
@@ -35,6 +35,10 @@ export default function ArtifactList({
 				filter(({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey)),
 				sortBy(({ level }) => -level),
 				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
+				map((artifact) => ({
+					...artifact,
+					tier: getArtifactTier(charactersTier[artifact.location], artifact),
+				})),
 			),
 		[good.artifacts, artifactSet, slot],
 	);
@@ -67,10 +71,16 @@ export default function ArtifactList({
 					)}
 				</FormControl>
 			}>
+			<Typography>
+				Great:{' '}
+				{
+					artifacts.filter(({ tier }) => tier.mainStat && tier.rarity && tier.subStat > 0.6)
+						.length
+				}{' '}
+				/ Good: {artifacts.filter(({ tier }) => tier.mainStat).length}
+			</Typography>
 			<Grid container spacing={1}>
-				{artifacts.map((artifact, index) => {
-					const characterTier = charactersTier[artifact.location];
-					const { mainStat, subStat } = getArtifactTier(characterTier, artifact);
+				{artifacts.map(({ tier, ...artifact }, index) => {
 					const isMarked = marked.indexOf(artifact) !== -1;
 
 					return (
@@ -81,8 +91,8 @@ export default function ArtifactList({
 									':hover': { cursor: 'pointer' },
 									'borderColor': (() => {
 										if (isMarked) return 'red';
-										if (mainStat) {
-											if (subStat > 0.6) return 'green';
+										if (tier.mainStat) {
+											if (tier.rarity && tier.subStat > 0.6) return 'green';
 											return 'blue';
 										}
 									})(),
@@ -100,10 +110,10 @@ export default function ArtifactList({
 								}}>
 								<Grid container xs={12} spacing={0}>
 									<Grid xs={6}>
-										<PercentBar p={+mainStat}>MainStat: %p</PercentBar>
+										<PercentBar p={+tier.mainStat}>MainStat: %p</PercentBar>
 									</Grid>
 									<Grid xs={6}>
-										<PercentBar p={subStat}>SubStat: %p</PercentBar>
+										<PercentBar p={tier.subStat}>SubStat: %p</PercentBar>
 									</Grid>
 								</Grid>
 							</ArtifactCard>
