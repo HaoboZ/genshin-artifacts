@@ -21,7 +21,35 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
+			if (!payload.characters) {
+				payload.characters = payload.weapons
+					.filter(({ location }) => location)
+					.map(({ location }) => ({
+						key: location as any,
+						level: 90,
+						constellation: 0,
+						ascension: 6,
+						talent: { auto: 9, skill: 9, burst: 9 },
+					}));
+			}
 			return { ...state, ...payload };
+		},
+		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
+			const index = state.characters.findIndex(({ key }) => key === payload);
+			if (index === -1) {
+				state.characters = [
+					...state.characters,
+					{
+						key: payload,
+						level: 90,
+						constellation: 0,
+						ascension: 6,
+						talent: { auto: 9, skill: 9, burst: 9 },
+					},
+				];
+			} else {
+				state.characters = state.characters.filter(({ key }) => key !== payload);
+			}
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			state.artifacts = [...state.artifacts, payload];
@@ -49,18 +77,19 @@ const goodSlice = createSlice({
 				};
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
 		},
-		optimizeArtifact(
+		optimizeArtifacts(
 			state,
 			{ payload }: PayloadAction<{ artifact: IArtifact; character: Tier }[]>,
 		) {
 			state.artifacts = [...state.artifacts];
 			for (const { artifact, character } of payload) {
-				const characterB = artifact.location;
 				let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifact.id);
+				const artifactA = state.artifacts[artifactAIndex];
+				const characterB = artifactA.location;
 				if (artifactAIndex === -1) artifactAIndex = state.artifacts.length;
 				const artifactBIndex = state.artifacts.findIndex(
 					({ location, slotKey }) =>
-						location === character.key && slotKey === artifact.slotKey,
+						location === character.key && slotKey === artifactA.slotKey,
 				);
 
 				if (artifactBIndex)
@@ -68,7 +97,7 @@ const goodSlice = createSlice({
 						...state.artifacts[artifactBIndex],
 						location: characterB || '',
 					};
-				state.artifacts[artifactAIndex] = { ...artifact, location: character.key };
+				state.artifacts[artifactAIndex] = { ...artifactA, location: character.key };
 			}
 			return state;
 		},
@@ -102,6 +131,25 @@ const goodSlice = createSlice({
 					location: characterB || '',
 				};
 			state.weapons[weaponAIndex] = { ...weaponA, location: characterA };
+		},
+		optimizeWeapons(state, { payload }: PayloadAction<{ weapon: IWeapon; character: Tier }[]>) {
+			state.weapons = [...state.weapons];
+			for (const { weapon, character } of payload) {
+				let weaponAIndex = state.weapons.findIndex(({ id }) => id === weapon.id);
+				const weaponA = state.weapons[weaponAIndex];
+				const characterB = weaponA.location;
+				if (weaponAIndex === -1) weaponAIndex = state.weapons.length;
+				const weaponBIndex = state.weapons.findIndex(
+					({ location }) => location === character.key,
+				);
+
+				if (weaponBIndex)
+					state.weapons[weaponBIndex] = {
+						...state.weapons[weaponBIndex],
+						location: characterB || '',
+					};
+				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
+			}
 		},
 		removeWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);

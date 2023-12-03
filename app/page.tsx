@@ -48,6 +48,7 @@ export default function Main() {
 				</Button>
 				<Button onClick={() => dispatch(goodActions.reset())}>Reset</Button>
 			</ButtonGroup>
+			<Typography>Characters: {good.characters.length}</Typography>
 			<Typography>Artifacts: {good.artifacts.length}</Typography>
 			<Typography>Weapons: {good.weapons.length}</Typography>
 		</PageContainer>

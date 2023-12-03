@@ -1,7 +1,10 @@
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import strArrMatch from '@/src/helpers/strArrMatch';
+import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
 import {
@@ -17,9 +20,6 @@ import {
 } from '@mui/joy';
 import { useMemo } from 'react';
 import { filter, map, pipe, reverse, sortBy } from 'remeda';
-import strArrMatch from '../../src/helpers/strArrMatch';
-import { useModalControls } from '../../src/providers/modal';
-import { goodActions } from '../../src/store/reducers/goodReducer';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import ArtifactCard from './artifactCard';
@@ -100,7 +100,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 				<DialogActions>
 					<Button
 						onClick={() => {
-							dispatch(goodActions.optimizeArtifact(givenArtifacts));
+							dispatch(goodActions.optimizeArtifacts(givenArtifacts));
 							closeModal();
 						}}>
 						Apply All

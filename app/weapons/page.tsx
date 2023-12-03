@@ -10,6 +10,7 @@ import { Grid } from '@mui/joy';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import AddWeaponModal from './addWeaponModal';
+import OptimalWeaponModal from './optimalWeaponModal';
 import WeaponCharacterImage from './weaponCharacterImage';
 import type { WeaponType } from './weaponData';
 import { weaponsInfo } from './weaponData';
@@ -40,7 +41,10 @@ export default function Weapons() {
 			<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
 			<PageSection
 				title={type || 'All'}
-				actions={[{ name: 'Add', onClick: () => showModal(AddWeaponModal) }]}>
+				actions={[
+					{ name: 'Add', onClick: () => showModal(AddWeaponModal) },
+					{ name: 'Optimize', onClick: () => showModal(OptimalWeaponModal) },
+				]}>
 				<Grid container spacing={1}>
 					{weaponsSorted.map((weapon) => (
 						<Grid key={weapon.key}>

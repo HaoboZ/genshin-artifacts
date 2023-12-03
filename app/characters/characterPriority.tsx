@@ -12,6 +12,7 @@ import { charactersInfo } from './characterData';
 import CharacterImage from './characterImage';
 
 export default function CharacterPriority({ editMode }: { editMode: boolean }) {
+	const ownedCharacters = useAppSelector(pget('good.characters'));
 	const priority = useAppSelector(pget('main.priority'));
 	const dispatch = useAppDispatch();
 
@@ -40,7 +41,12 @@ export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 				<Grid
 					{...containerProps}
 					{...(editMode ? handleProps : { component: Link, href: `/characters/${key}` })}>
-					<CharacterImage character={charactersInfo[key]} size={50} />
+					<CharacterImage
+						character={charactersInfo[key]}
+						size={50}
+						border={ownedCharacters.find((c) => key === c.key) ? 0 : 1}
+						borderColor='red'
+					/>
 				</Grid>
 			)}
 			dependencies={[editMode]}>

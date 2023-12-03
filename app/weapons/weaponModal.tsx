@@ -1,8 +1,10 @@
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Tier } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
@@ -16,8 +18,10 @@ import { weaponsInfo } from './weaponData';
 import WeaponImage from './weaponImage';
 
 export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
+	const dispatch = useAppDispatch();
 	const weapons = useAppSelector(pget('good.weapons'));
 	const priority = useAppSelector(pget('main.priority'));
+	const { closeModal } = useModalControls();
 
 	const characters = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
@@ -36,7 +40,7 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 					oldTierIndex: oldWeapon && arrDeepIndex(tier.weapon, oldWeapon.key),
 				};
 			}),
-			filter(({ oldTierIndex }) => oldTierIndex !== -1),
+			filter(({ tierIndex }) => tierIndex !== -1),
 			sortBy(({ tier }) => {
 				const index = priorityIndex.indexOf(tier.key);
 				return index === -1 ? Infinity : index;
@@ -54,7 +58,19 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 				<Grid container spacing={1}>
 					{characters.map(({ tier, tierIndex, oldWeapon, oldTierIndex }, index) => (
 						<Grid key={index}>
-							<CharacterImage character={charactersInfo[tier.key]}>
+							<CharacterImage
+								character={charactersInfo[tier.key]}
+								sx={{ ':hover': { cursor: 'pointer' } }}
+								onClick={() => {
+									if (weapon.location === tier.key) {
+										alert(`Already equipped on ${charactersInfo[tier.key].name}`);
+										return;
+									}
+									if (!confirm(`Give this weapon to ${charactersInfo[tier.key].name}?`))
+										return;
+									dispatch(goodActions.giveWeapon([tier.key, weapon]));
+									closeModal();
+								}}>
 								{oldWeapon && (
 									<WeaponImage
 										weapon={weaponsInfo[oldWeapon.key]}
@@ -66,13 +82,11 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 									/>
 								)}
 							</CharacterImage>
-							<PercentBar p={tierIndex !== -1 ? 1 - tierIndex / tier.weapon.length : 0}>
-								New %p
-							</PercentBar>
+							<PercentBar p={1 - tierIndex / tier.weapon.length}>New %p</PercentBar>
 							{oldWeapon && (
 								<PercentBar
 									p={oldTierIndex !== -1 ? 1 - oldTierIndex / tier.weapon.length : 0}>
-									Old %p
+									Current %p
 								</PercentBar>
 							)}
 						</Grid>

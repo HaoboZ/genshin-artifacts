@@ -8,12 +8,13 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModal } from '@/src/providers/modal';
-import { useAppSelector } from '@/src/store/hooks';
-import { Card, Grid, Stack, Typography } from '@mui/joy';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { Card, Grid, Stack, Switch, Typography } from '@mui/joy';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { useMemo } from 'react';
 import { indexBy } from 'remeda';
+import { goodActions } from '../../../src/store/reducers/goodReducer';
 import ArtifactCard from '../../artifacts/artifactCard';
 import { artifactSlotOrder } from '../../artifacts/artifactData';
 import AddArtifactModal from '../../artifacts/artifactForm/addArtifactModal';
@@ -28,15 +29,18 @@ import CharacterWeaponModal from './characterWeaponModal';
 import QuadBars from './quadBars';
 
 export default function Character({ params }: { params: { name: string } }) {
-	const { modalStates, showModal } = useModal();
-
 	const character = charactersInfo[params.name];
 	if (!character) notFound();
 
+	const dispatch = useAppDispatch();
+	const ownedCharacter = useAppSelector(({ good }) =>
+		good.characters.find(({ key }) => key === character.key),
+	);
 	const weapon = useAppSelector(({ good }) =>
 		good.weapons.find(({ location }) => location === character.key),
 	);
 	const artifacts = useAppSelector(pget('good.artifacts'));
+	const { modalStates, showModal } = useModal();
 
 	const artifactsKey = indexBy(
 		artifacts.filter(({ location }) => location === character.key),
@@ -80,6 +84,12 @@ export default function Character({ params }: { params: { name: string } }) {
 							height={30}
 						/>
 					)}
+					<Switch
+						size='lg'
+						sx={{ ml: 0 }}
+						checked={Boolean(ownedCharacter)}
+						onChange={() => dispatch(goodActions.toggleCharacter(character.key))}
+					/>
 				</Stack>
 			</PageTitle>
 			<CharacterImage character={character} />
