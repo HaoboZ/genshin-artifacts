@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { differenceWith } from 'remeda';
+import type { Tier } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
@@ -47,6 +48,29 @@ const goodSlice = createSlice({
 					location: characterB || '',
 				};
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
+		},
+		optimizeArtifact(
+			state,
+			{ payload }: PayloadAction<{ artifact: IArtifact; character: Tier }[]>,
+		) {
+			state.artifacts = [...state.artifacts];
+			for (const { artifact, character } of payload) {
+				const characterB = artifact.location;
+				let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifact.id);
+				if (artifactAIndex === -1) artifactAIndex = state.artifacts.length;
+				const artifactBIndex = state.artifacts.findIndex(
+					({ location, slotKey }) =>
+						location === character.key && slotKey === artifact.slotKey,
+				);
+
+				if (artifactBIndex)
+					state.artifacts[artifactBIndex] = {
+						...state.artifacts[artifactBIndex],
+						location: characterB || '',
+					};
+				state.artifacts[artifactAIndex] = { ...artifact, location: character.key };
+			}
+			return state;
 		},
 		removeArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);

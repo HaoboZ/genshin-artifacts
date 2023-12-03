@@ -13,6 +13,7 @@ import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
 import ArtifactModal from './artifactModal';
 import getArtifactTier from './getArtifactTier';
+import OptimalArtifactModal from './optimalArtifactModal';
 
 export default function ArtifactList({
 	artifactSet,
@@ -21,7 +22,7 @@ export default function ArtifactList({
 	artifactSet: ArtifactSetKey;
 	slot?: SlotKey;
 }) {
-	const good = useAppSelector(pget('good'));
+	const storedArtifacts = useAppSelector(pget('good.artifacts'));
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
@@ -31,7 +32,7 @@ export default function ArtifactList({
 	const artifacts = useMemo(
 		() =>
 			pipe(
-				good.artifacts,
+				storedArtifacts,
 				filter(({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey)),
 				sortBy(({ level }) => -level),
 				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
@@ -40,7 +41,7 @@ export default function ArtifactList({
 					tier: getArtifactTier(charactersTier[artifact.location], artifact),
 				})),
 			),
-		[good.artifacts, artifactSet, slot],
+		[storedArtifacts, artifactSet, slot],
 	);
 
 	return (
@@ -58,7 +59,7 @@ export default function ArtifactList({
 							setMarked([]);
 						}}
 					/>
-					{marked.length > 0 && (
+					{marked.length > 0 ? (
 						<Button
 							sx={{ ml: 1 }}
 							onClick={() => {
@@ -67,6 +68,12 @@ export default function ArtifactList({
 								setMarked([]);
 							}}>
 							Delete
+						</Button>
+					) : (
+						<Button
+							sx={{ ml: 1 }}
+							onClick={() => showModal(OptimalArtifactModal, { props: { artifactSet } })}>
+							Optimize
 						</Button>
 					)}
 				</FormControl>
@@ -99,11 +106,11 @@ export default function ArtifactList({
 								}}
 								onClick={() => {
 									if (deleteMode) {
-										setMarked((marked) => {
-											return isMarked
+										setMarked((marked) =>
+											isMarked
 												? marked.filter((item) => item !== artifact)
-												: [...marked, artifact];
-										});
+												: [...marked, artifact],
+										);
 									} else {
 										showModal(ArtifactModal, { props: { artifact } });
 									}
