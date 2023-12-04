@@ -26,7 +26,7 @@
 		"@mui/icons-material": "5.14.19",
 		"@mui/joy": "5.0.0-beta.16",
 		"@mui/material": "npm:@mui/joy@latest",
-		"@reduxjs/toolkit": "1.9.7",
+		"@reduxjs/toolkit": "2.0.1",
 		"@tanem/react-nprogress": "5.0.51",
 		"@vercel/analytics": "1.1.1",
 		"axios": "1.6.2",
