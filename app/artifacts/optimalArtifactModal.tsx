@@ -28,6 +28,7 @@ import getArtifactTier from './getArtifactTier';
 
 export default function OptimalArtifactModal({ artifactSet }: { artifactSet: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();
+	const ownedCharacters = useAppSelector(pget('good.characters'));
 	const storedArtifacts = useAppSelector(pget('good.artifacts'));
 	const priority = useAppSelector(pget('main.priority'));
 	const { closeModal } = useModalControls();
@@ -38,7 +39,11 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 		const characters = pipe(
 			charactersTier,
 			Object.values<Tier>,
-			filter(({ artifact }) => makeArray(artifact[0])[0] === artifactSet),
+			filter(
+				({ key, artifact }) =>
+					ownedCharacters.findIndex((c) => key === c.key) !== -1 &&
+					makeArray(artifact[0])[0] === artifactSet,
+			),
 			sortBy(({ key }) => {
 				const index = priorityIndex.indexOf(key);
 				return index === -1 ? Infinity : index;
