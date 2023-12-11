@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 11/16/23
+// 12/11/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -147,7 +147,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'MappaMare',
 			'MagicGuide',
 		],
-		artifact: ['Lavawalker', 'CrimsonWitchOfFlames', 'WanderersTroupe'],
+		artifact: ['Lavawalker', 'CrimsonWitchOfFlames', 'WanderersTroupe', 'MarechausseeHunter'],
 		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
@@ -304,13 +304,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		key: 'Kirara',
 		role: 'Shield Support',
 		weapon: [
-			['FavoniusSword', 'KeyOfKhajNisut'],
+			'KeyOfKhajNisut',
+			'SapwoodBlade',
 			'TheDockhandsAssistant',
+			'FavoniusSword',
+			'FreedomSworn',
 			'SacrificialSword',
-			['SapwoodBlade', 'FesteringDesire', 'FreedomSworn'],
-			'PrimordialJadeCutter',
 		],
-		artifact: ['Instructor', 'TenacityOfTheMillelith', 'DeepwoodMemories', 'NoblesseOblige'],
+		artifact: ['Instructor', 'DeepwoodMemories', ['NoblesseOblige', 'TenacityOfTheMillelith']],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
 	},
@@ -319,16 +320,19 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Quick Swap DPS',
 		weapon: [
 			'HuntersPath',
-			['AquaSimulacra', 'PolarStar', 'TheFirstGreatMagic', 'ElegyForTheEnd'],
-			['SkywardHarp', 'ThunderingPulse'],
-			'AmosBow',
-			['ScionOfTheBlazingSun', 'FadingTwilight'],
+			['AquaSimulacra', 'PolarStar', 'TheFirstGreatMagic'],
+			['SkywardHarp', 'ThunderingPulse', 'ElegyForTheEnd'],
+			['ScionOfTheBlazingSun', 'AmosBow', 'FadingTwilight'],
 			'TheViridescentHunt',
 			['Slingshot', 'RangeGuage', 'WindblumeOde', 'SongOfStillness'],
 			['PrototypeCrescent', 'IbisPiercer'],
 		],
-		artifact: [['WanderersTroupe', 'GildedDreams'], 'DeepwoodMemories'],
-		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'dendro_dmg_', circlet: 'critRD_' },
+		artifact: [['WanderersTroupe', 'GildedDreams'], 'EmblemOfSeveredFate', 'DeepwoodMemories'],
+		mainStat: {
+			sands: ['atk_', 'eleMas', 'enerRech_'],
+			goblet: 'dendro_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['critRD_', 'eleMas', 'atk_', 'enerRech_'],
 	},
 	Nahida: {
@@ -339,7 +343,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'KagurasVerity',
 			'SacrificialFragments',
 			'WanderingEvenstar',
-			'TheWidsith',
+			['TheWidsith', 'SacrificialJade'],
 			['SkywardAtlas', 'LostPrayerToTheSacredWinds', 'MemoryOfDust', 'SolarPearl'],
 			'FavoniusCodex',
 			['MappaMare', 'MagicGuide', 'HakushinRing'],
@@ -503,12 +507,13 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		weapon: [
 			['HaranGeppakuFutsu', 'PrimordialJadeCutter'],
 			'MistsplitterReforged',
+			'LightOfFoliarIncision',
 			'TheBlackSword',
+			['SkywardBlade', 'SplendorOfTranquilWaters'],
 			'SummitShaper',
-			'FinaleOfTheDeep',
-			'KagotsurubeIsshin',
+			['FinaleOfTheDeep', 'KagotsurubeIsshin'],
 			'LionsRoar',
-			['AmenomaKageuchi', 'SkywardBlade'],
+			['HarbingerOfDawn', 'TheFlute', 'SwordOfNarzissenkreuz'],
 		],
 		artifact: [
 			['HeartOfDepth', 'GladiatorsFinale', 'NymphsDream'],
@@ -748,7 +753,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'MappaMare',
 		],
 		artifact: [
-			['GoldenTroupe', 'EmblemOfSeveredFate', 'GildedDreams'],
+			['GildedDreams', 'EmblemOfSeveredFate', 'GoldenTroupe'],
 			'Thundersoother',
 			'TenacityOfTheMillelith',
 		],
@@ -764,15 +769,19 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Quickbloom DPS',
 		weapon: [
 			'StaffOfTheScarletSands',
-			['BalladOfTheFjords', 'DragonsBane'],
+			'BalladOfTheFjords',
 			'PrimordialJadeWingedSpear',
-			['WhiteTassel', 'MissiveWindspear', 'KitainCrossSpear', 'Deathmatch', 'StaffOfHoma'],
-			'Moonpiercer',
-			'EngulfingLightning',
-			'PrototypeStarglitter',
+			'StaffOfHoma',
+			['WhiteTassel', 'MissiveWindspear', 'KitainCrossSpear', 'Deathmatch', 'DragonsBane'],
+			'SkywardSpine',
 			'FavoniusLance',
 		],
-		artifact: ['ThunderingFury', 'GildedDreams', 'GladiatorsFinale', 'FlowerOfParadiseLost'],
+		artifact: [
+			'ThunderingFury',
+			['GildedDreams', 'FlowerOfParadiseLost'],
+			'GladiatorsFinale',
+			'MarechausseeHunter',
+		],
 		mainStat: {
 			sands: 'eleMas',
 			goblet: ['electro_dmg_', 'eleMas'],
@@ -912,8 +921,6 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['PrototypeAmber', 'FavoniusCodex'],
 			'ThrillingTalesOfDragonSlayers',
 			['OathswornEye', 'WineAndSong'],
-			'FruitOfFulfillment',
-			['BalladOfTheBoundlessBlue', 'HakushinRing'],
 		],
 		artifact: [
 			['NoblesseOblige', 'TenacityOfTheMillelith'],
@@ -1153,9 +1160,9 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		],
 		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'OceanHuedClam', 'EmblemOfSeveredFate'],
 		mainStat: {
-			sands: ['atk_', 'enerRech_', 'eleMas'],
-			goblet: ['anemo_dmg_', 'eleMas', 'atk_'],
-			circlet: ['critRD_', 'eleMas', 'heal_'],
+			sands: ['atk_', 'enerRech_'],
+			goblet: ['anemo_dmg_', 'atk_'],
+			circlet: ['critRD_', 'heal_'],
 		},
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
@@ -1266,14 +1273,12 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	Noelle: {
 		key: 'Noelle',
 		role: 'DPS',
-		weapon: [
-			'RedhornStonethresher',
-			'SerpentSpine',
-			'SkywardPride',
-			'Whiteblind',
-			'FavoniusGreatsword',
+		weapon: ['RedhornStonethresher', 'SerpentSpine', 'SkywardPride', 'Whiteblind'],
+		artifact: [
+			'RetracingBolide',
+			'MarechausseeHunter',
+			['HuskOfOpulentDreams', 'GladiatorsFinale'],
 		],
-		artifact: [['RetracingBolide', 'HuskOfOpulentDreams'], 'GladiatorsFinale'],
 		mainStat: { sands: ['def_', 'atk_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', 'def_'],
 	},

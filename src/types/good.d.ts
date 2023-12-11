@@ -343,6 +343,7 @@ export type WeaponKey =
 	| 'StaffOfTheScarletSands' //Staff of the Scarlet Sands
 	| 'SummitShaper' //Summit Shaper
 	| 'SwordOfDescension' //Sword of Descension
+	| 'SwordOfNarzissenkreuz' //Sword of Narzussenkreuz
 	| 'TalkingStick' //Talking Stick
 	| 'TheAlleyFlash' //The Alley Flash
 	| 'TheBell' //The Bell
