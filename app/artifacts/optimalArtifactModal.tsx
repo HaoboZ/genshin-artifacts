@@ -26,7 +26,7 @@ import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
 import getArtifactTier from './getArtifactTier';
 
-export default function OptimalArtifactModal({ artifactSet }: { artifactSet: ArtifactSetKey }) {
+export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();
 	const ownedCharacters = useAppSelector(pget('good.characters'));
 	const storedArtifacts = useAppSelector(pget('good.artifacts'));
@@ -42,7 +42,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 			filter(
 				({ key, artifact }) =>
 					ownedCharacters.findIndex((c) => key === c.key) !== -1 &&
-					makeArray(artifact[0])[0] === artifactSet,
+					(artifactSet ? makeArray(artifact[0])[0] === artifactSet : true),
 			),
 			sortBy(({ key }) => {
 				const index = priorityIndex.indexOf(key);
@@ -51,7 +51,9 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 		);
 
 		const artifacts = structuredClone(
-			storedArtifacts.filter(({ setKey }) => setKey === artifactSet),
+			artifactSet
+				? storedArtifacts.filter(({ setKey }) => setKey === artifactSet)
+				: storedArtifacts,
 		);
 		const result: { artifact: IArtifact; character: Tier }[] = [];
 		for (let i = 0; i < characters.length; i++) {
@@ -59,7 +61,10 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 			for (const slot of artifactSlotOrder) {
 				const tieredArtifacts = pipe(
 					artifacts,
-					filter(({ slotKey }) => slotKey === slot),
+					filter(
+						({ slotKey, setKey }) =>
+							slotKey === slot && setKey === makeArray(character.artifact[0])[0],
+					),
 					map((artifact) => ({ artifact, tier: getArtifactTier(character, artifact) })),
 					filter(({ artifact }) =>
 						strArrMatch(character.mainStat[artifact.slotKey], artifact.mainStatKey, true),
@@ -67,6 +72,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 					sortBy(({ tier }) => +tier.rarity * 0.5 + tier.subStat * 0.5),
 					reverse(),
 				);
+
 				for (const { artifact } of tieredArtifacts) {
 					if (artifact.location === character.key) break;
 					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
@@ -88,7 +94,9 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet: Art
 	return (
 		<ModalWrapper>
 			<ModalDialog minWidth='md'>
-				<DialogTitle>{artifactSetsInfo[artifactSet].name}</DialogTitle>
+				<DialogTitle>
+					{artifactSet ? artifactSetsInfo[artifactSet].name : 'All Artifacts'}
+				</DialogTitle>
 				<ModalClose variant='outlined' />
 				<DialogContent>
 					<List>

@@ -3,14 +3,16 @@ import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DArtifact, Tier } from '@/src/types/data';
 import type { ArtifactSetKey } from '@/src/types/good';
-import { Stack, Typography } from '@mui/joy';
+import { Button, Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
+import { useModal } from '../../src/providers/modal';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import { artifactSetsInfo } from './artifactData';
 import ArtifactSetImage from './artifactSetImage';
+import OptimalArtifactModal from './optimalArtifactModal';
 
 export default function BestInSlotAll({
 	setArtifactSet,
@@ -19,6 +21,7 @@ export default function BestInSlotAll({
 }) {
 	const priority = useAppSelector(pget('main.priority'));
 	const artifacts = useAppSelector(pget('good.artifacts'));
+	const { showModal } = useModal();
 
 	const characterFilter = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
@@ -35,22 +38,29 @@ export default function BestInSlotAll({
 			);
 	}, [priority]);
 
-	return sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => (
-		<Stack key={artifactSet.key} direction='row' alignItems='center'>
-			<ArtifactSetImage
-				artifactSet={artifactSet}
-				size={50}
-				sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-				onClick={() => setArtifactSet(artifactSet.key)}
-			/>
-			{characterFilter(artifactSet).map(({ key }) => (
-				<Link key={key} href={`/characters/${key}`}>
-					<CharacterImage character={charactersInfo[key]} size={50} />
-				</Link>
+	return (
+		<Fragment>
+			<Button sx={{ mb: 1 }} onClick={() => showModal(OptimalArtifactModal)}>
+				Optimize
+			</Button>
+			{sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => (
+				<Stack key={artifactSet.key} direction='row' alignItems='center'>
+					<ArtifactSetImage
+						artifactSet={artifactSet}
+						size={50}
+						sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
+						onClick={() => setArtifactSet(artifactSet.key)}
+					/>
+					{characterFilter(artifactSet).map(({ key }) => (
+						<Link key={key} href={`/characters/${key}`}>
+							<CharacterImage character={charactersInfo[key]} size={50} />
+						</Link>
+					))}
+					<Typography ml={1}>
+						{artifacts.filter(({ setKey }) => setKey === artifactSet.key).length} Total
+					</Typography>
+				</Stack>
 			))}
-			<Typography ml={1}>
-				{artifacts.filter(({ setKey }) => setKey === artifactSet.key).length} Total
-			</Typography>
-		</Stack>
-	));
+		</Fragment>
+	);
 }
