@@ -480,6 +480,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

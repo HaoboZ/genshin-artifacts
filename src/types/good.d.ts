@@ -167,6 +167,7 @@ export type CharacterKey =
 	| 'Mika' //Mika
 	| 'Mona' //Mona
 	| 'Nahida' //Nahida
+	// | 'Navia' //Navia
 	| 'Neuvillette' //Neuvillette
 	| 'Nilou' //Nilou
 	| 'Ningguang' //Ningguang
@@ -364,6 +365,7 @@ export type WeaponKey =
 	| 'TravelersHandySword' //Traveler's Handy Sword
 	| 'TulaytullahsRemembrance' //Tulaytullah's Remembrance
 	| 'TwinNephrite' //Twin Nephrite
+	| 'Verdict' //Verdict
 	| 'VortexVanquisher' //Vortex Vanquisher
 	| 'WanderingEvenstar' //Wandering Evenstar
 	| 'WasterGreatsword' //Waster Greatsword

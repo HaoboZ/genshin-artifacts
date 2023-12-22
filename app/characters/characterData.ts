@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 12/11/23
+// 12/21/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -905,7 +905,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Physical DPS',
 		weapon: [
 			'SkywardPride',
-			['SongOfBrokenPines', 'WolfsGravestone'],
+			['SongOfBrokenPines', 'Verdict', 'WolfsGravestone'],
 			['BeaconOfTheReedSea', 'RedhornStonethresher'],
 			['SerpentSpine', 'TheUnforged'],
 			['PrototypeArchaic', 'TidalShadow', 'SnowTombedStarsilver'],
@@ -1191,10 +1191,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands'],
 			'Deathmatch',
 			'LithicSpear',
-			'MissiveWindspear',
 			['BlackcliffPole', 'SkywardSpine', 'MissiveWindspear'],
 			'EngulfingLightning',
-			['FavoniusLance', 'WhiteTassel'],
+			'FavoniusLance',
+			'WhiteTassel',
 		],
 		artifact: ['VermillionHereafter', ['DesertPavilionChronicle', 'MarechausseeHunter']],
 		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },

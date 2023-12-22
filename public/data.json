@@ -2353,6 +2353,13 @@
 			"weaponType": "Catalyst",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png"
 		},
+		"Verdict": {
+			"key": "Verdict",
+			"name": "Verdict",
+			"rarity": 5,
+			"weaponType": "Claymore",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png"
+		},
 		"VortexVanquisher": {
 			"key": "VortexVanquisher",
 			"name": "Vortex Vanquisher",
