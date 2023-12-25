@@ -50,6 +50,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png',
@@ -302,6 +303,16 @@ const artifactImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Golden_Era%27s_Prelude.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Item_Golden_Night%27s_Bustle.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Golden_Troupe%27s_Reward.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Forgotten_Oath_of_Days_Past.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Recollection_of_Days_Past.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Echoing_Sound_From_Days_Past.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/16/Item_Promised_Dream_of_Days_Past.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/db/Item_Poetry_of_Days_Past.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Selfless_Floral_Accessory.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Honest_Quill.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Item_Faithful_Hourglass.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Item_Magnanimous_Ink_Bottle.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Item_Compassionate_Ladies%27_Hat.png',
 ];
 const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png',
@@ -481,10 +492,13 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
 	// 5
+	NighttimeWhispersInTheEchoingWoods: 19,
+	SongOfDaysPast: 19,
 	GoldenTroupe: 18,
 	MarechausseeHunter: 18,
 	VourukashasGlow: 17,

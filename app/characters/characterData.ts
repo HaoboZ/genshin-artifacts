@@ -1340,6 +1340,25 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'enerRech_', 'atk_', 'def', 'atk'],
 	},
+	Navia: {
+		key: 'Navia',
+		role: 'DPS',
+		weapon: [
+			'Verdict',
+			'SerpentSpine',
+			'BeaconOfTheReedSea',
+			'RedhornStonethresher',
+			['WolfsGravestone', 'TheUnforged'],
+			'SkywardPride',
+			'UltimateOverlordsMegaMagicSword',
+			'TidalShadow',
+			'PrototypeArchaic',
+			'KatsuragikiriNagamasa',
+		],
+		artifact: ['NighttimeWhispersInTheEchoingWoods', 'GoldenTroupe'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'atk'],
+	},
 };
 
 export const elementsInfo: Record<string, DElement> = data.elements;

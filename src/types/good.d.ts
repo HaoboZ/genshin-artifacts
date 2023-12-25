@@ -99,6 +99,7 @@ export type ArtifactSetKey =
 	| 'MaidenBeloved' //Maiden Beloved
 	| 'MarechausseeHunter' //Marechaussee Hunter
 	| 'MartialArtist' //Martial Artist
+	| 'NighttimeWhispersInTheEchoingWoods' //Nighttime Whispers in the Echoing Woods
 	| 'NoblesseOblige' //Noblesse Oblige
 	| 'NymphsDream' //Nymph's Dream
 	| 'OceanHuedClam' //Ocean-Hued Clam
@@ -109,6 +110,7 @@ export type ArtifactSetKey =
 	| 'PrayersToSpringtime' //Prayers to Springtime
 	| 'ResolutionOfSojourner' //Resolution of Sojourner
 	| 'RetracingBolide' //Retracing Bolide
+	| 'SongOfDaysPast' //Song of Days Past
 	| 'Scholar' //Scholar
 	| 'ShimenawasReminiscence' //Shimenawa's Reminiscence
 	| 'TenacityOfTheMillelith' //Tenacity of the Millelith
@@ -167,7 +169,7 @@ export type CharacterKey =
 	| 'Mika' //Mika
 	| 'Mona' //Mona
 	| 'Nahida' //Nahida
-	// | 'Navia' //Navia
+	| 'Navia' //Navia
 	| 'Neuvillette' //Neuvillette
 	| 'Nilou' //Nilou
 	| 'Ningguang' //Ningguang
@@ -365,6 +367,7 @@ export type WeaponKey =
 	| 'TravelersHandySword' //Traveler's Handy Sword
 	| 'TulaytullahsRemembrance' //Tulaytullah's Remembrance
 	| 'TwinNephrite' //Twin Nephrite
+	| 'UltimateOverlordsMegaMagicSword' //Ultimate Overlord's Mega Magic Sword
 	| 'Verdict' //Verdict
 	| 'VortexVanquisher' //Vortex Vanquisher
 	| 'WanderingEvenstar' //Wandering Evenstar
