@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 12/21/23
+// 1/3/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -634,7 +634,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Razor: {
 		key: 'Razor',
-		role: 'Hyperbloom/EM Build',
+		role: 'Reaction DPS',
 		weapon: [
 			['MailedFlower', 'MakhairaAquamarine'],
 			['Rainslasher', 'BloodtaintedGreatsword'],

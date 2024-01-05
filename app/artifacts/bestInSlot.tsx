@@ -95,7 +95,9 @@ export default function BestInSlot({
 						key={slot}
 						mapStats
 						name={capitalCase(slot)}
-						arr={uniq(characters.flatMap(pget(`mainStat.${slot}`)) as string[]).sort()}
+						arr={uniq(
+							characters.flatMap(({ mainStat }) => makeArray(mainStat[slot])[0]),
+						).sort()}
 					/>
 				))}
 			{slot && mainStats[slot] && (
