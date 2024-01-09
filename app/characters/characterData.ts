@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 1/3/23
+// 1/9/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -178,10 +178,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'DPS',
 		weapon: [
 			'ThunderingPulse',
-			['AquaSimulacra', 'PolarStar'],
-			'HuntersPath',
+			'AquaSimulacra',
+			'PolarStar',
+			['HuntersPath', 'SkywardHarp'],
 			'Slingshot',
-			['AmosBow', 'SkywardHarp'],
 			'Rust',
 		],
 		artifact: [
@@ -277,7 +277,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Kaveh: {
 		key: 'Kaveh',
-		role: 'Bloom Driver',
+		role: 'Bloom/Burgeon Driver',
 		weapon: [
 			'FavoniusGreatsword',
 			'SacrificialGreatsword',
@@ -428,7 +428,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		],
 		artifact: [['MaidenBeloved', 'OceanHuedClam'], 'Instructor'],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'heal_' },
-		subStat: ['hp_', 'hp_'],
+		subStat: ['hp_', 'hp'],
 	},
 	Candace: {
 		key: 'Candace',
@@ -975,12 +975,12 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'DPS',
 		weapon: [
 			'SongOfBrokenPines',
-			['WolfsGravestone', 'BeaconOfTheReedSea', 'SerpentSpine'],
-			'RedhornStonethresher',
+			['WolfsGravestone', 'BeaconOfTheReedSea'],
+			['SkywardPride', 'Verdict'],
 			'TheUnforged',
-			'SkywardPride',
-			'TidalShadow',
-			['LuxuriousSeaLord', 'Akuoumaru'],
+			'RedhornStonethresher',
+			['SerpentSpine', 'UltimateOverlordsMegaMagicSword'],
+			['LuxuriousSeaLord', 'Akuoumaru', 'TidalShadow'],
 			'LithicBlade',
 			'PrototypeArchaic',
 			'SnowTombedStarsilver',
