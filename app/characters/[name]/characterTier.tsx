@@ -10,6 +10,8 @@ import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
 
 export default function CharacterTier({ tier }: { tier: Tier }) {
+	if (!tier) return null;
+
 	return (
 		<PageSection title='Tier'>
 			<Stack spacing={1}>

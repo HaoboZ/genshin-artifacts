@@ -32,6 +32,7 @@
 	"characters": {
 		"Traveler": {
 			"key": "Traveler",
+			"link": "Traveler",
 			"name": "Traveler",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -40,6 +41,7 @@
 		},
 		"Albedo": {
 			"key": "Albedo",
+			"link": "Albedo",
 			"name": "Albedo",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -48,6 +50,7 @@
 		},
 		"Alhaitham": {
 			"key": "Alhaitham",
+			"link": "Alhaitham",
 			"name": "Alhaitham",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -56,6 +59,7 @@
 		},
 		"Aloy": {
 			"key": "Aloy",
+			"link": "Aloy",
 			"name": "Aloy",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -64,6 +68,7 @@
 		},
 		"Amber": {
 			"key": "Amber",
+			"link": "Amber",
 			"name": "Amber",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -72,6 +77,7 @@
 		},
 		"AratakiItto": {
 			"key": "AratakiItto",
+			"link": "Arataki_Itto",
 			"name": "Arataki Itto",
 			"rarity": 5,
 			"weaponType": "Claymore",
@@ -80,6 +86,7 @@
 		},
 		"Baizhu": {
 			"key": "Baizhu",
+			"link": "Baizhu",
 			"name": "Baizhu",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -88,6 +95,7 @@
 		},
 		"Barbara": {
 			"key": "Barbara",
+			"link": "Barbara",
 			"name": "Barbara",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -96,6 +104,7 @@
 		},
 		"Beidou": {
 			"key": "Beidou",
+			"link": "Beidou",
 			"name": "Beidou",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -104,6 +113,7 @@
 		},
 		"Bennett": {
 			"key": "Bennett",
+			"link": "Bennett",
 			"name": "Bennett",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -112,6 +122,7 @@
 		},
 		"Candace": {
 			"key": "Candace",
+			"link": "Candace",
 			"name": "Candace",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -120,14 +131,25 @@
 		},
 		"Charlotte": {
 			"key": "Charlotte",
+			"link": "Charlotte",
 			"name": "Charlotte",
 			"rarity": 4,
 			"weaponType": "Catalyst",
 			"element": "Cryo",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png"
 		},
+		"Chevreuse": {
+			"key": "Chevreuse",
+			"link": "Chevreuse",
+			"name": "Chevreuse",
+			"rarity": 4,
+			"weaponType": "Polearm",
+			"element": "Pyro",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png"
+		},
 		"Chongyun": {
 			"key": "Chongyun",
+			"link": "Chongyun",
 			"name": "Chongyun",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -136,6 +158,7 @@
 		},
 		"Collei": {
 			"key": "Collei",
+			"link": "Collei",
 			"name": "Collei",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -144,6 +167,7 @@
 		},
 		"Cyno": {
 			"key": "Cyno",
+			"link": "Cyno",
 			"name": "Cyno",
 			"rarity": 5,
 			"weaponType": "Polearm",
@@ -152,6 +176,7 @@
 		},
 		"Dehya": {
 			"key": "Dehya",
+			"link": "Dehya",
 			"name": "Dehya",
 			"rarity": 5,
 			"weaponType": "Claymore",
@@ -160,6 +185,7 @@
 		},
 		"Diluc": {
 			"key": "Diluc",
+			"link": "Diluc",
 			"name": "Diluc",
 			"rarity": 5,
 			"weaponType": "Claymore",
@@ -168,6 +194,7 @@
 		},
 		"Diona": {
 			"key": "Diona",
+			"link": "Diona",
 			"name": "Diona",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -176,6 +203,7 @@
 		},
 		"Dori": {
 			"key": "Dori",
+			"link": "Dori",
 			"name": "Dori",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -184,6 +212,7 @@
 		},
 		"Eula": {
 			"key": "Eula",
+			"link": "Eula",
 			"name": "Eula",
 			"rarity": 5,
 			"weaponType": "Claymore",
@@ -192,6 +221,7 @@
 		},
 		"Faruzan": {
 			"key": "Faruzan",
+			"link": "Faruzan",
 			"name": "Faruzan",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -200,6 +230,7 @@
 		},
 		"Fischl": {
 			"key": "Fischl",
+			"link": "Fischl",
 			"name": "Fischl",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -208,6 +239,7 @@
 		},
 		"Freminet": {
 			"key": "Freminet",
+			"link": "Freminet",
 			"name": "Freminet",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -216,6 +248,7 @@
 		},
 		"Furina": {
 			"key": "Furina",
+			"link": "Furina",
 			"name": "Furina",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -224,6 +257,7 @@
 		},
 		"Ganyu": {
 			"key": "Ganyu",
+			"link": "Ganyu",
 			"name": "Ganyu",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -232,6 +266,7 @@
 		},
 		"Gorou": {
 			"key": "Gorou",
+			"link": "Gorou",
 			"name": "Gorou",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -240,6 +275,7 @@
 		},
 		"HuTao": {
 			"key": "HuTao",
+			"link": "Hu_Tao",
 			"name": "Hu Tao",
 			"rarity": 5,
 			"weaponType": "Polearm",
@@ -248,6 +284,7 @@
 		},
 		"Jean": {
 			"key": "Jean",
+			"link": "Jean",
 			"name": "Jean",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -256,6 +293,7 @@
 		},
 		"KaedeharaKazuha": {
 			"key": "KaedeharaKazuha",
+			"link": "Kaedehara_Kazuha",
 			"name": "Kaedehara Kazuha",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -264,6 +302,7 @@
 		},
 		"Kaeya": {
 			"key": "Kaeya",
+			"link": "Kaeya",
 			"name": "Kaeya",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -272,6 +311,7 @@
 		},
 		"KamisatoAyaka": {
 			"key": "KamisatoAyaka",
+			"link": "Kamisato_Ayaka",
 			"name": "Kamisato Ayaka",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -280,6 +320,7 @@
 		},
 		"KamisatoAyato": {
 			"key": "KamisatoAyato",
+			"link": "Kamisato_Ayato",
 			"name": "Kamisato Ayato",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -288,6 +329,7 @@
 		},
 		"Kaveh": {
 			"key": "Kaveh",
+			"link": "Kaveh",
 			"name": "Kaveh",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -296,6 +338,7 @@
 		},
 		"Keqing": {
 			"key": "Keqing",
+			"link": "Keqing",
 			"name": "Keqing",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -304,6 +347,7 @@
 		},
 		"Kirara": {
 			"key": "Kirara",
+			"link": "Kirara",
 			"name": "Kirara",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -312,6 +356,7 @@
 		},
 		"Klee": {
 			"key": "Klee",
+			"link": "Klee",
 			"name": "Klee",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -320,6 +365,7 @@
 		},
 		"KujouSara": {
 			"key": "KujouSara",
+			"link": "Kujou_Sara",
 			"name": "Kujou Sara",
 			"rarity": 4,
 			"weaponType": "Bow",
@@ -328,6 +374,7 @@
 		},
 		"KukiShinobu": {
 			"key": "KukiShinobu",
+			"link": "Kuki_Shinobu",
 			"name": "Kuki Shinobu",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -336,6 +383,7 @@
 		},
 		"Layla": {
 			"key": "Layla",
+			"link": "Layla",
 			"name": "Layla",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -344,6 +392,7 @@
 		},
 		"Lisa": {
 			"key": "Lisa",
+			"link": "Lisa",
 			"name": "Lisa",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -352,6 +401,7 @@
 		},
 		"Lynette": {
 			"key": "Lynette",
+			"link": "Lynette",
 			"name": "Lynette",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -360,6 +410,7 @@
 		},
 		"Lyney": {
 			"key": "Lyney",
+			"link": "Lyney",
 			"name": "Lyney",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -368,6 +419,7 @@
 		},
 		"Mika": {
 			"key": "Mika",
+			"link": "Mika",
 			"name": "Mika",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -376,6 +428,7 @@
 		},
 		"Mona": {
 			"key": "Mona",
+			"link": "Mona",
 			"name": "Mona",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -384,6 +437,7 @@
 		},
 		"Nahida": {
 			"key": "Nahida",
+			"link": "Nahida",
 			"name": "Nahida",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -392,6 +446,7 @@
 		},
 		"Navia": {
 			"key": "Navia",
+			"link": "Navia",
 			"name": "Navia",
 			"rarity": 5,
 			"weaponType": "Claymore",
@@ -400,6 +455,7 @@
 		},
 		"Neuvillette": {
 			"key": "Neuvillette",
+			"link": "Neuvillette",
 			"name": "Neuvillette",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -408,6 +464,7 @@
 		},
 		"Nilou": {
 			"key": "Nilou",
+			"link": "Nilou",
 			"name": "Nilou",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -416,6 +473,7 @@
 		},
 		"Ningguang": {
 			"key": "Ningguang",
+			"link": "Ningguang",
 			"name": "Ningguang",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -424,6 +482,7 @@
 		},
 		"Noelle": {
 			"key": "Noelle",
+			"link": "Noelle",
 			"name": "Noelle",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -432,6 +491,7 @@
 		},
 		"Qiqi": {
 			"key": "Qiqi",
+			"link": "Qiqi",
 			"name": "Qiqi",
 			"rarity": 5,
 			"weaponType": "Sword",
@@ -440,6 +500,7 @@
 		},
 		"RaidenShogun": {
 			"key": "RaidenShogun",
+			"link": "Raiden_Shogun",
 			"name": "Raiden Shogun",
 			"rarity": 5,
 			"weaponType": "Polearm",
@@ -448,6 +509,7 @@
 		},
 		"Razor": {
 			"key": "Razor",
+			"link": "Razor",
 			"name": "Razor",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -456,6 +518,7 @@
 		},
 		"Rosaria": {
 			"key": "Rosaria",
+			"link": "Rosaria",
 			"name": "Rosaria",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -464,6 +527,7 @@
 		},
 		"SangonomiyaKokomi": {
 			"key": "SangonomiyaKokomi",
+			"link": "Sangonomiya_Kokomi",
 			"name": "Sangonomiya Kokomi",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -472,6 +536,7 @@
 		},
 		"Sayu": {
 			"key": "Sayu",
+			"link": "Sayu",
 			"name": "Sayu",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -480,6 +545,7 @@
 		},
 		"Shenhe": {
 			"key": "Shenhe",
+			"link": "Shenhe",
 			"name": "Shenhe",
 			"rarity": 5,
 			"weaponType": "Polearm",
@@ -488,6 +554,7 @@
 		},
 		"ShikanoinHeizou": {
 			"key": "ShikanoinHeizou",
+			"link": "Shikanoin_Heizou",
 			"name": "Shikanoin Heizou",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -496,6 +563,7 @@
 		},
 		"Sucrose": {
 			"key": "Sucrose",
+			"link": "Sucrose",
 			"name": "Sucrose",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -504,6 +572,7 @@
 		},
 		"Tartaglia": {
 			"key": "Tartaglia",
+			"link": "Tartaglia",
 			"name": "Tartaglia",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -512,6 +581,7 @@
 		},
 		"Thoma": {
 			"key": "Thoma",
+			"link": "Thoma",
 			"name": "Thoma",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -520,6 +590,7 @@
 		},
 		"Tighnari": {
 			"key": "Tighnari",
+			"link": "Tighnari",
 			"name": "Tighnari",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -528,6 +599,7 @@
 		},
 		"Venti": {
 			"key": "Venti",
+			"link": "Venti",
 			"name": "Venti",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -536,6 +608,7 @@
 		},
 		"Wanderer": {
 			"key": "Wanderer",
+			"link": "Wanderer",
 			"name": "Wanderer",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -544,6 +617,7 @@
 		},
 		"Wriothesley": {
 			"key": "Wriothesley",
+			"link": "Wriothesley",
 			"name": "Wriothesley",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -552,6 +626,7 @@
 		},
 		"Xiangling": {
 			"key": "Xiangling",
+			"link": "Xiangling",
 			"name": "Xiangling",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -560,6 +635,7 @@
 		},
 		"Xiao": {
 			"key": "Xiao",
+			"link": "Xiao",
 			"name": "Xiao",
 			"rarity": 5,
 			"weaponType": "Polearm",
@@ -568,6 +644,7 @@
 		},
 		"Xingqiu": {
 			"key": "Xingqiu",
+			"link": "Xingqiu",
 			"name": "Xingqiu",
 			"rarity": 4,
 			"weaponType": "Sword",
@@ -576,6 +653,7 @@
 		},
 		"Xinyan": {
 			"key": "Xinyan",
+			"link": "Xinyan",
 			"name": "Xinyan",
 			"rarity": 4,
 			"weaponType": "Claymore",
@@ -584,6 +662,7 @@
 		},
 		"YaeMiko": {
 			"key": "YaeMiko",
+			"link": "Yae_Miko",
 			"name": "Yae Miko",
 			"rarity": 5,
 			"weaponType": "Catalyst",
@@ -592,6 +671,7 @@
 		},
 		"Yanfei": {
 			"key": "Yanfei",
+			"link": "Yanfei",
 			"name": "Yanfei",
 			"rarity": 4,
 			"weaponType": "Catalyst",
@@ -600,6 +680,7 @@
 		},
 		"Yaoyao": {
 			"key": "Yaoyao",
+			"link": "Yaoyao",
 			"name": "Yaoyao",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -608,6 +689,7 @@
 		},
 		"Yelan": {
 			"key": "Yelan",
+			"link": "Yelan",
 			"name": "Yelan",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -616,6 +698,7 @@
 		},
 		"Yoimiya": {
 			"key": "Yoimiya",
+			"link": "Yoimiya",
 			"name": "Yoimiya",
 			"rarity": 5,
 			"weaponType": "Bow",
@@ -624,6 +707,7 @@
 		},
 		"YunJin": {
 			"key": "YunJin",
+			"link": "Yun_Jin",
 			"name": "Yun Jin",
 			"rarity": 4,
 			"weaponType": "Polearm",
@@ -632,6 +716,7 @@
 		},
 		"Zhongli": {
 			"key": "Zhongli",
+			"link": "Zhongli",
 			"name": "Zhongli",
 			"rarity": 5,
 			"weaponType": "Polearm",

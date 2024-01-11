@@ -9,7 +9,7 @@ import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { Card, Grid, Stack, Switch, Typography } from '@mui/joy';
+import { Card, Grid, Link, Stack, Switch } from '@mui/joy';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { useMemo } from 'react';
@@ -75,7 +75,13 @@ export default function Character({ params }: { params: { name: string } }) {
 		<PageContainer noSsr>
 			<PageTitle>
 				<Stack direction='row' spacing={1} alignItems='center'>
-					<Typography>{character.name}</Typography>
+					<Link
+						href={`https://genshin-impact.fandom.com/wiki/${character.link}`}
+						target='_blank'
+						variant='plain'
+						color='neutral'>
+						{character.name}
+					</Link>
 					{character.element !== 'None' && (
 						<Image
 							alt={character.element}

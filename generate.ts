@@ -1,6 +1,6 @@
 import pget from '@/src/helpers/pget';
 import type { ArtifactSetKey } from '@/src/types/good';
-import { pascalCase } from 'change-case';
+import { pascalCase, pascalSnakeCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
 import { indexBy, pick } from 'remeda';
@@ -17,6 +17,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png',
@@ -575,6 +576,7 @@ const artifactOrder = Object.keys(artifactLocation);
 
 				return {
 					key: pascalCase(character.name),
+					link: pascalSnakeCase(character.name),
 					...pick(character, ['name', 'rarity']),
 					weaponType: character.weaponText,
 					element: character.elementText,
