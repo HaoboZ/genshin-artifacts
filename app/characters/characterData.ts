@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 1/9/23
+// 1/25/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -116,6 +116,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		mainStat: { sands: ['enerRech_', 'eleMas'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'hp_', 'hp', 'critRate_'],
 	},
+	Chevreuse: {
+		key: 'Chevreuse',
+		role: 'Support',
+		weapon: ['FavoniusLance', ['BlackTassel', 'RightfulReward'], 'PrototypeStarglitter'],
+		artifact: ['NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast', 'MaidenBeloved'],
+		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
+		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp', 'eleMas'],
+	},
 	Diluc: {
 		key: 'Diluc',
 		role: 'DPS',
@@ -169,6 +177,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'ShimenawasReminiscence',
 			'GildedDreams',
 			'RetracingBolide',
+			'MarechausseeHunter',
 		],
 		mainStat: { sands: ['hp_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'hp_', 'atk_', 'enerRech_'],

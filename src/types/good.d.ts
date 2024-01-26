@@ -136,6 +136,7 @@ export type CharacterKey =
 	| 'Bennett' //Bennett
 	| 'Candace' //Candace
 	| 'Charlotte' //Charlotte
+	| 'Chevreuse' //Chevreuse
 	| 'Chongyun' //Chongyun
 	| 'Collei' //Collei
 	| 'Cyno' //Cyno
