@@ -11,7 +11,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
 		key: 'Traveler',
 		role: 'DPS',
-		weapon: ['DullBlade'],
+		weapon: ['SwordOfNarzissenkreuz'],
 		artifact: ['GladiatorsFinale'],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],

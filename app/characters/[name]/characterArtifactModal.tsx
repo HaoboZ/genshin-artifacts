@@ -19,6 +19,7 @@ import {
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
+import strArrMatch from '../../../src/helpers/strArrMatch';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
 import getArtifactTier from '../../artifacts/getArtifactTier';
@@ -48,8 +49,8 @@ export default function CharacterArtifactModal({
 
 			return (
 				slotKey === slot &&
-				(mainStat ? mainStat.includes(mainStatKey) : true) &&
-				arrDeepIndex(tier.artifact, setKey) !== -1
+				arrDeepIndex(tier.artifact, setKey) !== -1 &&
+				strArrMatch(mainStat, mainStatKey)
 			);
 		});
 
