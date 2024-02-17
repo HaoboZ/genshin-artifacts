@@ -57,7 +57,7 @@ export default function OptimalWeaponModal() {
 				filter(({ tier }) => tier !== -1),
 				sortBy(({ tier }) => tier),
 			);
-			console.log(character, tieredWeapons);
+
 			for (const { weapon, tier } of tieredWeapons) {
 				if (weapon.location === character.key) break;
 				const currentLocation = characters.findIndex(({ key }) => key === weapon.location);
