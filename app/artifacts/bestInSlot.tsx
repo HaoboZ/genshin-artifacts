@@ -96,7 +96,7 @@ export default function BestInSlot({
 						mapStats
 						name={capitalCase(slot)}
 						arr={uniq(
-							characters.flatMap(({ mainStat }) => makeArray(mainStat[slot])[0]),
+							charactersSets.flatMap(({ mainStat }) => makeArray(mainStat[slot])[0]),
 						).sort()}
 					/>
 				))}

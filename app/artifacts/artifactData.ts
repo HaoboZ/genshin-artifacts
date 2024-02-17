@@ -14,6 +14,14 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Tier> = {
+	SongOfDaysPast: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['SongOfDaysPast'],
+		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'heal_' },
+		subStat: ['hp_', 'hp', 'atk_', 'atk'],
+	},
 	VourukashasGlow: {
 		key: 'Traveler',
 		role: 'DPS',
