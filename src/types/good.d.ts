@@ -149,6 +149,7 @@ export type CharacterKey =
 	| 'Fischl' //Fischl
 	| 'Freminet' //Freminet
 	| 'Furina' //Furina
+	| 'Gaming' //Gaming
 	| 'Ganyu' //Ganyu
 	| 'Gorou' //Gorou
 	| 'HuTao' //Hu Tao
@@ -192,6 +193,7 @@ export type CharacterKey =
 	| 'Wanderer' //Wanderer
 	| 'Wriothesley' //Wriothesley
 	| 'Xiangling' //Xiangling
+	| 'Xianyun' //Xianyun
 	| 'Xiao' //Xiao
 	| 'Xingqiu' //Xingqiu
 	| 'Xinyan' //Xinyan
@@ -228,6 +230,7 @@ export type WeaponKey =
 	| 'CinnabarSpindle' //Cinnabar Spindle
 	| 'CompoundBow' //Compound Bow
 	| 'CoolSteel' //Cool Steel
+	| 'CranesEchoingCall' //Crane's Echoing Call
 	| 'CrescentPike' //Crescent Pike
 	| 'DarkIronSword' //Dark Iron Sword
 	| 'Deathmatch' //Deathmatch

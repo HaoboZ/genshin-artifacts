@@ -30,6 +30,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Gaming_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png',
@@ -73,6 +74,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png',
@@ -494,6 +496,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

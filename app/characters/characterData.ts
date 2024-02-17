@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 1/25/23
+// 2/17/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -51,13 +51,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Bennett: {
 		key: 'Bennett',
-		role: 'Burst Support',
+		role: 'Support and Damge',
 		weapon: [
 			'MistsplitterReforged',
 			'AquilaFavonia',
 			'SkywardBlade',
 			'FreedomSworn',
 			'TheAlleyFlash',
+			'FinaleOfTheDeep',
 			'SapwoodBlade',
 			'BlackcliffLongsword',
 			'PrototypeRancour',
@@ -123,6 +124,25 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		artifact: ['NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast', 'MaidenBeloved'],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp', 'eleMas'],
+	},
+	Gaming: {
+		key: 'Gaming',
+		role: 'Vaporize DPS',
+		weapon: [
+			'SerpentSpine',
+			['RedhornStonethresher', 'Verdict', 'BeaconOfTheReedSea'],
+			['WolfsGravestone', 'Rainslasher'],
+			['SongOfBrokenPines', 'TheUnforged', 'SkywardPride'],
+			['MailedFlower', 'LithicBlade'],
+			['TidalShadow', 'UltimateOverlordsMegaMagicSword'],
+		],
+		artifact: [
+			['CrimsonWitchOfFlames', 'MarechausseeHunter'],
+			'GildedDreams',
+			'VermillionHereafter',
+		],
+		mainStat: { sands: ['eleMas', 'atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_', 'atk'],
 	},
 	Diluc: {
 		key: 'Diluc',
@@ -656,7 +676,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	KujouSara: {
 		key: 'KujouSara',
-		role: 'Burst Support',
+		role: 'Support and Damage',
 		weapon: [
 			'PolarStar',
 			'SkywardHarp',
@@ -839,16 +859,20 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		weapon: [
 			'PrimordialJadeCutter',
 			'MistsplitterReforged',
-			['LightOfFoliarIncision', 'FreedomSworn'],
-			['SkywardBlade', 'HaranGeppakuFutsu'],
-			'SummitShaper',
-			'AquilaFavonia',
-			'LionsRoar',
-			'KagotsurubeIsshin',
-			['TheAlleyFlash', 'IronSting'],
-			'AmenomaKageuchi',
+			['HaranGeppakuFutsu', 'LightOfFoliarIncision'],
+			['FreedomSworn', 'SkywardBlade'],
+			'ToukabouShigure',
+			['SummitShaper', 'LionsRoar', 'KagotsurubeIsshin', 'AquilaFavonia'],
+			['IronSting', 'TheAlleyFlash'],
+			'FavoniusSword',
 		],
-		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige', 'Instructor'],
+		artifact: [
+			'EmblemOfSeveredFate',
+			'Lavawalker',
+			'GildedDreams',
+			'NoblesseOblige',
+			'Instructor',
+		],
 		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
@@ -1157,7 +1181,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Jean: {
 		key: 'Jean',
-		role: 'Burst Support',
+		role: 'Support and Damage',
 		weapon: [
 			'PrimordialJadeCutter',
 			'FreedomSworn',
@@ -1252,6 +1276,25 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		],
 		mainStat: { sands: 'atk_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'atk', 'eleMas', 'enerRech_'],
+	},
+	Xianyun: {
+		key: 'Xianyun',
+		role: 'Low Energy Requirement Support',
+		weapon: [
+			'CranesEchoingCall',
+			['SkywardAtlas', 'MemoryOfDust'],
+			'CashflowSupervision',
+			'ThrillingTalesOfDragonSlayers',
+			['FavoniusCodex', 'OathswornEye'],
+			'FlowingPurity',
+			'WineAndSong',
+			['BalladOfTheBoundlessBlue', 'HakushinRing'],
+			'Frostbearer',
+			'PrototypeAmber',
+		],
+		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'atk_' },
+		subStat: ['enerRech_', 'atk_', 'atk', 'critRate_'],
 	},
 	// Geo
 	Ningguang: {

@@ -255,6 +255,15 @@
 			"element": "Hydro",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png"
 		},
+		"Gaming": {
+			"key": "Gaming",
+			"link": "Gaming",
+			"name": "Gaming",
+			"rarity": 4,
+			"weaponType": "Claymore",
+			"element": "Pyro",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Gaming_Icon.png"
+		},
 		"Ganyu": {
 			"key": "Ganyu",
 			"link": "Ganyu",
@@ -632,6 +641,15 @@
 			"weaponType": "Polearm",
 			"element": "Pyro",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png"
+		},
+		"Xianyun": {
+			"key": "Xianyun",
+			"link": "Xianyun",
+			"name": "Xianyun",
+			"rarity": 5,
+			"weaponType": "Catalyst",
+			"element": "Anemo",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png"
 		},
 		"Xiao": {
 			"key": "Xiao",
@@ -1542,6 +1560,13 @@
 			"rarity": 3,
 			"weaponType": "Sword",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png"
+		},
+		"CranesEchoingCall": {
+			"key": "CranesEchoingCall",
+			"name": "Crane's Echoing Call",
+			"rarity": 5,
+			"weaponType": "Catalyst",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png"
 		},
 		"CrescentPike": {
 			"key": "CrescentPike",
