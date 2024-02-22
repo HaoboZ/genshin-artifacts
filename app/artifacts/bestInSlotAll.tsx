@@ -21,6 +21,7 @@ export default function BestInSlotAll({
 }) {
 	const priority = useAppSelector(pget('main.priority'));
 	const artifacts = useAppSelector(pget('good.artifacts'));
+	const ownedCharacters = useAppSelector(pget('good.characters'));
 	const { showModal } = useModal();
 
 	const characterFilter = useMemo(() => {
@@ -61,8 +62,15 @@ export default function BestInSlotAll({
 							</Link>
 						))}
 						<Typography ml={1}>
-							{artifactsFiltered.filter(({ location }) => location).length} /{' '}
-							{characters.length * 5} Wanted / {artifactsFiltered.length} Total
+							{
+								artifactsFiltered.filter(({ location }) =>
+									characters.some(({ key }) => location === key),
+								).length
+							}{' '}
+							/{' '}
+							{characters.filter((c) => ownedCharacters.some(({ key }) => c.key === key))
+								.length * 5}{' '}
+							Wanted / {artifactsFiltered.length} Total
 						</Typography>
 					</Stack>
 				);
