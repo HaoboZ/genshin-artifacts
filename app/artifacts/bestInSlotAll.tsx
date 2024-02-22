@@ -43,24 +43,30 @@ export default function BestInSlotAll({
 			<Button sx={{ mb: 1 }} onClick={() => showModal(OptimalArtifactModal)}>
 				Optimize
 			</Button>
-			{sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => (
-				<Stack key={artifactSet.key} direction='row' alignItems='center'>
-					<ArtifactSetImage
-						artifactSet={artifactSet}
-						size={50}
-						sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-						onClick={() => setArtifactSet(artifactSet.key)}
-					/>
-					{characterFilter(artifactSet).map(({ key }) => (
-						<Link key={key} href={`/characters/${key}`}>
-							<CharacterImage character={charactersInfo[key]} size={50} />
-						</Link>
-					))}
-					<Typography ml={1}>
-						{artifacts.filter(({ setKey }) => setKey === artifactSet.key).length} Total
-					</Typography>
-				</Stack>
-			))}
+			{sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => {
+				const characters = characterFilter(artifactSet);
+				const artifactsFiltered = artifacts.filter(({ setKey }) => setKey === artifactSet.key);
+
+				return (
+					<Stack key={artifactSet.key} direction='row' alignItems='center'>
+						<ArtifactSetImage
+							artifactSet={artifactSet}
+							size={50}
+							sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
+							onClick={() => setArtifactSet(artifactSet.key)}
+						/>
+						{characters.map(({ key }) => (
+							<Link key={key} href={`/characters/${key}`}>
+								<CharacterImage character={charactersInfo[key]} size={50} />
+							</Link>
+						))}
+						<Typography ml={1}>
+							{artifactsFiltered.filter(({ location }) => location).length} /{' '}
+							{characters.length * 5} Wanted / {artifactsFiltered.length} Total
+						</Typography>
+					</Stack>
+				);
+			})}
 		</Fragment>
 	);
 }
