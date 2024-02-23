@@ -1,17 +1,17 @@
 import StatChipArray from '@/components/statChipArray';
-import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
-import { useAppSelector } from '@/src/store/hooks';
-import type { Tier } from '@/src/types/data';
-import type { ArtifactSetKey, SlotKey, StatKey } from '@/src/types/good';
 import { Stack } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, reduce, sortBy, uniq } from 'remeda';
-import { charactersInfo, charactersTier } from '../characters/characterData';
-import CharacterImage from '../characters/characterImage';
-import { missingArtifactSets, statName } from './artifactData';
+import makeArray from '../../../src/helpers/makeArray';
+import pget from '../../../src/helpers/pget';
+import { useAppSelector } from '../../../src/store/hooks';
+import type { Tier } from '../../../src/types/data';
+import type { ArtifactSetKey, SlotKey, StatKey } from '../../../src/types/good';
+import { charactersInfo, charactersTier } from '../../characters/characterData';
+import CharacterImage from '../../characters/characterImage';
+import { missingArtifactSets, statName } from '../artifactData';
 
 export default function BestInSlot({
 	artifactSet,

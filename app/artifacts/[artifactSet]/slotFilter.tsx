@@ -1,7 +1,7 @@
-import type { SlotKey } from '@/src/types/good';
 import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
-import { artifactSlotImages, artifactSlotOrder } from './artifactData';
+import type { SlotKey } from '../../../src/types/good';
+import { artifactSlotImages, artifactSlotOrder } from '../artifactData';
 
 export default function SlotFilter({
 	slot,
@@ -11,8 +11,10 @@ export default function SlotFilter({
 	setSlot: (slot: SlotKey) => void;
 }) {
 	return (
-		<ToggleButtonGroup value={slot} onChange={(e, newSlot) => setSlot(newSlot)}>
-			<Button value={null}>All</Button>
+		<ToggleButtonGroup
+			value={slot ?? 'none'}
+			onChange={(e, newSlot) => setSlot(newSlot === 'none' ? null : newSlot)}>
+			<Button value='none'>All</Button>
 			{artifactSlotOrder.map((slot) => (
 				<Button key={slot} value={slot} sx={{ p: 0.5 }}>
 					<Image alt={slot} src={artifactSlotImages[slot]} width={40} height={40} />

@@ -2,7 +2,6 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DArtifact, Tier } from '@/src/types/data';
-import type { ArtifactSetKey } from '@/src/types/good';
 import { Button, Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { Fragment, useMemo } from 'react';
@@ -14,11 +13,7 @@ import { artifactSetsInfo } from './artifactData';
 import ArtifactSetImage from './artifactSetImage';
 import OptimalArtifactModal from './optimalArtifactModal';
 
-export default function BestInSlotAll({
-	setArtifactSet,
-}: {
-	setArtifactSet: (value: ArtifactSetKey) => void;
-}) {
+export default function BestInSlotAll() {
 	const priority = useAppSelector(pget('main.priority'));
 	const artifacts = useAppSelector(pget('good.artifacts'));
 	const ownedCharacters = useAppSelector(pget('good.characters'));
@@ -54,7 +49,9 @@ export default function BestInSlotAll({
 							artifactSet={artifactSet}
 							size={50}
 							sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
-							onClick={() => setArtifactSet(artifactSet.key)}
+							component={Link}
+							// @ts-ignore
+							href={`/artifacts/${artifactSet.key}`}
 						/>
 						{characters.map(({ key }) => (
 							<Link key={key} href={`/characters/${key}`}>

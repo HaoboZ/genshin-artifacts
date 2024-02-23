@@ -10,8 +10,10 @@ export default function ElementsFilter({
 	setElement: (element: string) => void;
 }) {
 	return (
-		<ToggleButtonGroup value={element} onChange={(e, newElement) => setElement(newElement)}>
-			<Button value={null}>All</Button>
+		<ToggleButtonGroup
+			value={element ?? 'none'}
+			onChange={(e, newElement) => setElement(newElement === 'none' ? null : newElement)}>
+			<Button value='none'>All</Button>
 			{Object.values(elementsInfo).map((element) => (
 				<Button key={element.key} value={element.key} sx={{ p: 0.5 }}>
 					<Image alt={element.key} src={element.image} width={40} height={40} />

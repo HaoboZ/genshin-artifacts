@@ -1,19 +1,19 @@
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
-import pget from '@/src/helpers/pget';
-import { useModal } from '@/src/providers/modal';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import { Button, FormControl, FormLabel, Grid, Switch, Typography } from '@mui/joy';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import { charactersTier } from '../characters/characterData';
-import ArtifactCard from './artifactCard';
-import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
-import ArtifactModal from './artifactModal';
-import getArtifactTier from './getArtifactTier';
-import OptimalArtifactModal from './optimalArtifactModal';
+import pget from '../../../src/helpers/pget';
+import { useModal } from '../../../src/providers/modal';
+import { useAppDispatch, useAppSelector } from '../../../src/store/hooks';
+import { goodActions } from '../../../src/store/reducers/goodReducer';
+import type { ArtifactSetKey, SlotKey } from '../../../src/types/good';
+import { charactersTier } from '../../characters/characterData';
+import ArtifactCard from '../artifactCard';
+import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
+import ArtifactModal from '../artifactModal';
+import getArtifactTier from '../getArtifactTier';
+import OptimalArtifactModal from '../optimalArtifactModal';
 
 export default function ArtifactList({
 	artifactSet,
