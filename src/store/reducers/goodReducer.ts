@@ -23,7 +23,7 @@ const goodSlice = createSlice({
 		import(state, { payload }: PayloadAction<IGOOD>) {
 			if (!payload.characters) {
 				payload.characters = payload.weapons
-					.filter(({ location }) => location)
+					?.filter(({ location }) => location)
 					.map(({ location }) => ({
 						key: location as any,
 						level: 90,
