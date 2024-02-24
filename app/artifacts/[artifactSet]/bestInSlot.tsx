@@ -3,7 +3,7 @@ import { Stack } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { filter, groupBy, map, pipe, reduce, sortBy, uniq } from 'remeda';
+import { filter, groupBy, map, pipe, reduce, sortBy, take, uniq } from 'remeda';
 import makeArray from '../../../src/helpers/makeArray';
 import pget from '../../../src/helpers/pget';
 import { useAppSelector } from '../../../src/store/hooks';
@@ -76,6 +76,7 @@ export default function BestInSlot({
 				groupBy(pget('1')),
 				Object.values<[string, number][]>,
 				map((stat) => stat.flatMap(pget('0'))),
+				take(3),
 			),
 		[charactersSets],
 	);

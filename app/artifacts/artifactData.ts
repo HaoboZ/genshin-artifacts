@@ -27,8 +27,8 @@ export const missingArtifactSets: Record<string, Tier> = {
 		role: 'DPS',
 		weapon: ['DullBlade'],
 		artifact: ['VourukashasGlow'],
-		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'hp_', 'atk'],
+		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
+		subStat: ['hp_', 'hp', 'enerRech_', 'atk_', 'critRD_'],
 	},
 	EchoesOfAnOffering: {
 		key: 'Traveler',
