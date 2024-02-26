@@ -1,26 +1,31 @@
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
+import pget from '@/src/helpers/pget';
+import { useModal } from '@/src/providers/modal';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { goodActions } from '@/src/store/reducers/goodReducer';
+import type { Tier } from '@/src/types/data';
+import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import { Button, FormControl, FormLabel, Grid, Switch, Typography } from '@mui/joy';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import pget from '../../../src/helpers/pget';
-import { useModal } from '../../../src/providers/modal';
-import { useAppDispatch, useAppSelector } from '../../../src/store/hooks';
-import { goodActions } from '../../../src/store/reducers/goodReducer';
-import type { ArtifactSetKey, SlotKey } from '../../../src/types/good';
 import { charactersTier } from '../../characters/characterData';
 import ArtifactCard from '../artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
 import ArtifactModal from '../artifactModal';
-import getArtifactTier from '../getArtifactTier';
+import { getPotentialTier } from '../getArtifactTier';
 import OptimalArtifactModal from '../optimalArtifactModal';
 
 export default function ArtifactList({
 	artifactSet,
 	slot,
+	mainStats,
+	subStatArr,
 }: {
 	artifactSet: ArtifactSetKey;
-	slot?: SlotKey;
+	slot: SlotKey;
+	mainStats: { [slot: string]: { [stat: string]: number } };
+	subStatArr: string[][];
 }) {
 	const storedArtifacts = useAppSelector(pget('good.artifacts'));
 	const dispatch = useAppDispatch();
@@ -34,12 +39,25 @@ export default function ArtifactList({
 			pipe(
 				storedArtifacts,
 				filter(({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey)),
-				sortBy(({ level }) => -level),
-				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
 				map((artifact) => ({
 					...artifact,
-					tier: getArtifactTier(charactersTier[artifact.location], artifact),
+					tier: getPotentialTier(
+						artifact.location
+							? charactersTier[artifact.location]
+							: ({
+									artifact: [artifactSet],
+									mainStat: {
+										[artifact.slotKey]: mainStats[artifact.slotKey]
+											? Object.keys(mainStats[artifact.slotKey])
+											: ['hp', 'atk'],
+									},
+									subStat: subStatArr,
+								} as Tier),
+						artifact,
+					),
 				})),
+				sortBy(({ slotKey }) => artifactSlotOrder.indexOf(slotKey)),
+				sortBy(({ tier }) => -tier.potential),
 			),
 		[storedArtifacts, artifactSet, slot],
 	);
@@ -96,13 +114,13 @@ export default function ArtifactList({
 								artifact={artifact}
 								sx={{
 									':hover': { cursor: 'pointer' },
-									'borderColor': (() => {
+									'borderColor': () => {
 										if (isMarked) return 'red';
-										if (tier.mainStat) {
+										if (artifact.location && tier.mainStat) {
 											if (tier.rarity && tier.subStat > 0.6) return 'green';
 											return 'blue';
 										}
-									})(),
+									},
 								}}
 								onClick={() => {
 									if (deleteMode) {
@@ -117,10 +135,12 @@ export default function ArtifactList({
 								}}>
 								<Grid container xs={12} spacing={0}>
 									<Grid xs={6}>
-										<PercentBar p={+tier.mainStat}>MainStat: %p</PercentBar>
+										<PercentBar p={tier.mainStat && tier.subStat}>Stats: %p</PercentBar>
 									</Grid>
 									<Grid xs={6}>
-										<PercentBar p={tier.subStat}>SubStat: %p</PercentBar>
+										<PercentBar p={tier.mainStat && tier.potential}>
+											Potential: %p
+										</PercentBar>
 									</Grid>
 								</Grid>
 							</ArtifactCard>

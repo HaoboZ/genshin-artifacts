@@ -3,17 +3,13 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useEventListener from '@/src/hooks/useEventListener';
-import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
-import type { SlotKey } from '@/src/types/good';
 import AddArtifactModal from './artifactForm/addArtifactModal';
 import ArtifactSetFilter from './artifactSetFilter';
 import BestInSlotAll from './bestInSlotAll';
 
 export default function Artifacts() {
 	const { modalStates, showModal } = useModal();
-
-	const [slot, setSlot] = useParamState<SlotKey>('slot', null);
 
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,

@@ -1,12 +1,12 @@
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DArtifact, Tier } from '@/src/types/data';
 import { Button, Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { Fragment, useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
-import { useModal } from '../../src/providers/modal';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import { artifactSetsInfo } from './artifactData';

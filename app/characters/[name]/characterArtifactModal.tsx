@@ -1,6 +1,7 @@
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import strArrMatch from '@/src/helpers/strArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -19,7 +20,6 @@ import {
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
-import strArrMatch from '../../../src/helpers/strArrMatch';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactCard from '../../artifacts/artifactCard';
 import getArtifactTier from '../../artifacts/getArtifactTier';

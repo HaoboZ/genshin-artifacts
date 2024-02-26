@@ -2,7 +2,7 @@ import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import strArrMatch from '@/src/helpers/strArrMatch';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
-import { artifactSetsInfo, rarityWeight, statsMax } from './artifactData';
+import { artifactSetsInfo, rarityWeight, statsAdd, statsMax } from './artifactData';
 
 export default function getArtifactTier(
 	tier: Tier,
@@ -42,4 +42,25 @@ function getWeightedTier(subStatArr, subStat) {
 		subStat,
 	);
 	return statTier === -1 ? 0 : 1 - Math.min(4, statTier) * 0.2;
+}
+
+export function getPotentialTier(tier: Tier, artifact: IArtifact) {
+	const artifactTier = getArtifactTier(tier, artifact);
+
+	const rolls =
+		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) - (4 - artifact.substats.length);
+
+	return {
+		...artifactTier,
+		potential:
+			artifactTier.mainStat &&
+			artifact.substats.reduce(
+				(current, { key, value }) =>
+					current +
+					(getWeightedTier(tier.subStat, key) *
+						(value + (rolls / 4) * statsAdd[key][artifact.rarity])) /
+						statsMax[key][artifact.rarity],
+				0,
+			) / rarityWeight[artifact.rarity],
+	};
 }

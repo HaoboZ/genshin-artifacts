@@ -1,6 +1,6 @@
+import type { SlotKey } from '@/src/types/good';
 import { Button, ToggleButtonGroup } from '@mui/joy';
 import Image from 'next/image';
-import type { SlotKey } from '../../../src/types/good';
 import { artifactSlotImages, artifactSlotOrder } from '../artifactData';
 
 export default function SlotFilter({

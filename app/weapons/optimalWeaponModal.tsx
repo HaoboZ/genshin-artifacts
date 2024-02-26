@@ -1,4 +1,5 @@
 import PercentBar from '@/components/percentBar';
+import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
@@ -20,7 +21,6 @@ import {
 } from '@mui/joy';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import arrDeepIndex from '../../src/helpers/arrDeepIndex';
 import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import { weaponsInfo } from './weaponData';
