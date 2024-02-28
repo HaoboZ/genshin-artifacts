@@ -28,20 +28,20 @@ export default function BestInSlot({
 					</Link>
 				))}
 			</Stack>
-			{!slot &&
-				['sands', 'goblet', 'circlet'].map((slot) => {
-					const statsArr = Object.keys(mainStats[slot]).sort();
-					if (!statsArr.length) return null;
-					return <StatChipArray key={slot} mapStats name={capitalCase(slot)} arr={statsArr} />;
-				})}
-			{slot && mainStats[slot]?.length && (
-				<StatChipArray
-					name={capitalCase(slot)}
-					arr={Object.entries(mainStats[slot]).map(
-						([stat, count]) => `${statName[stat]} x${count}`,
-					)}
-				/>
-			)}
+			{['sands', 'goblet', 'circlet'].map((slotType) => {
+				if (slot && slot !== slotType) return null;
+				if (!Object.keys(mainStats[slotType]).length) return null;
+
+				return (
+					<StatChipArray
+						key={slotType}
+						name={capitalCase(slotType)}
+						arr={Object.entries(mainStats[slotType]).map(
+							([stat, count]) => `${statName[stat]} x${count}`,
+						)}
+					/>
+				);
+			})}
 			{Boolean(subStatArr.length) && (
 				<StatChipArray mapStats breadcrumbs name='SubStats' arr={subStatArr} />
 			)}

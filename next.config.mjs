@@ -10,6 +10,7 @@ const nextConfig = {
 		{ source: '/api/:path*', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] },
 	],
 	images: {
+		unoptimized: true,
 		remotePatterns: [
 			{
 				protocol: 'https',
