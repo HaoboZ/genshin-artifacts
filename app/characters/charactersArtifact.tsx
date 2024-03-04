@@ -24,12 +24,14 @@ export default function CharactersArtifact({
 		<Box>
 			<ArtifactImage artifact={artifact} slot={slot} size={50} />
 			<PercentBar
-				p={combinePercents(
-					{ weight: 4 / 12, percent: rating },
-					{ weight: 2 / 12, percent: +rarity },
-					{ weight: 2 / 12, percent: +mainStat },
-					{ weight: 4 / 12, percent: subStat },
-				)}
+				p={
+					mainStat &&
+					combinePercents(
+						{ weight: 3 / 10, percent: rating },
+						{ weight: 3 / 10, percent: +rarity },
+						{ weight: 3 / 10, percent: subStat },
+					)
+				}
 			/>
 		</Box>
 	);
