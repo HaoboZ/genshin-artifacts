@@ -23,7 +23,7 @@ export default function PercentBar({ p, children }: { p: number; children?: Reac
 				'--LinearProgress-radius': '5px',
 				'--variant-outlinedColor': `hsl(${p * 120}, 50%, 50%)`,
 			}}>
-			<Typography sx={{ mixBlendMode: 'difference' }} fontSize={11}>
+			<Typography sx={{ zIndex: 1000 }} fontSize={11}>
 				{text ?? `${rounded}%`}
 			</Typography>
 		</LinearProgress>

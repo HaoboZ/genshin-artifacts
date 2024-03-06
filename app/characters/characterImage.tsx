@@ -7,10 +7,11 @@ export default function CharacterImage({
 	character,
 	size = 100,
 	children,
+	tooltip,
 	...props
-}: { character: DCharacter; size?: number } & BoxProps) {
+}: { character: DCharacter; size?: number; tooltip?: string } & BoxProps) {
 	return (
-		<Tooltip followCursor title={character.name}>
+		<Tooltip followCursor title={tooltip ?? character.name}>
 			<Box
 				width={size}
 				height={size}

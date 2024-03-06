@@ -47,20 +47,22 @@ function getWeightedTier(subStatArr, subStat) {
 export function getPotentialTier(tier: Tier, artifact: IArtifact) {
 	const artifactTier = getArtifactTier(tier, artifact);
 
+	if (!tier || !artifact) return { ...artifactTier, potential: 0 };
+
 	const rolls =
 		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) - (4 - artifact.substats.length);
 
 	return {
 		...artifactTier,
-		potential:
-			artifactTier.mainStat &&
-			artifact.substats.reduce(
-				(current, { key, value }) =>
-					current +
-					(getWeightedTier(tier.subStat, key) *
-						(value + (rolls / 4) * statsAdd[key][artifact.rarity])) /
-						statsMax[key][artifact.rarity],
-				0,
-			) / rarityWeight[artifact.rarity],
+		potential: artifactTier.mainStat
+			? artifact.substats.reduce(
+					(current, { key, value }) =>
+						current +
+						(getWeightedTier(tier.subStat, key) *
+							(value + (rolls / 4) * statsAdd[key][artifact.rarity])) /
+							statsMax[key][artifact.rarity],
+					0,
+				) / rarityWeight[artifact.rarity]
+			: 0,
 	};
 }

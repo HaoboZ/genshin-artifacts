@@ -1,4 +1,4 @@
-import useEventListener from '@/src/hooks/useEventListener';
+import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact, StatKey } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/joy';
 import type { Dispatch, SetStateAction } from 'react';
@@ -138,15 +138,9 @@ export default function ArtifactScanner({
 		scanFile(file);
 	}, [file]);
 
-	useEventListener(
-		typeof window !== 'undefined' ? window : null,
-		'paste',
-		({ clipboardData }: ClipboardEvent) => {
-			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
-			if (!item) return;
-			scanFile(item.getAsFile());
-		},
-	);
+	useClipboardImage((items) => {
+		scanFile(items[0].getAsFile());
+	});
 
 	return (
 		<Button

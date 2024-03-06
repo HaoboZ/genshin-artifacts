@@ -29,8 +29,7 @@ export default function Weapons() {
 				weapons,
 				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
 				filter(({ weaponType }) => !type || weaponType === type),
-				sortBy(pget('key')),
-				sortBy(({ rarity }) => -rarity),
+				sortBy(({ rarity }) => -rarity, pget('key')),
 			),
 		[weapons, type],
 	);

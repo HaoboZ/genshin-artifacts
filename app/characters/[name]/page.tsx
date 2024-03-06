@@ -6,7 +6,7 @@ import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import useEventListener from '@/src/hooks/useEventListener';
+import useClipboardImage from '@/src/hooks/useClipboardImage';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -54,22 +54,16 @@ export default function Character({ params }: { params: { name: string } }) {
 		return index !== -1 ? 1 - index / characterTier.weapon.length : 0;
 	}, [characterTier, weapon]);
 
-	useEventListener(
-		typeof window !== 'undefined' ? window : null,
-		'paste',
-		({ clipboardData }: ClipboardEvent) => {
-			if (modalStates.length) return;
-			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
-			if (!item) return;
-			showModal(AddArtifactModal, {
-				props: {
-					setKey: makeArray(characterTier.artifact[0])[0],
-					file: item.getAsFile(),
-					character,
-				},
-			});
-		},
-	);
+	useClipboardImage((items) => {
+		if (modalStates.length) return;
+		showModal(AddArtifactModal, {
+			props: {
+				setKey: makeArray(characterTier.artifact[0])[0],
+				file: items[0].getAsFile(),
+				character,
+			},
+		});
+	});
 
 	return (
 		<PageContainer noSsr>

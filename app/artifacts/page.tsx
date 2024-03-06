@@ -2,7 +2,7 @@
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
-import useEventListener from '@/src/hooks/useEventListener';
+import useClipboardImage from '@/src/hooks/useClipboardImage';
 import { useModal } from '@/src/providers/modal';
 import AddArtifactModal from './artifactForm/addArtifactModal';
 import ArtifactSetFilter from './artifactSetFilter';
@@ -11,18 +11,12 @@ import BestInSlotAll from './bestInSlotAll';
 export default function Artifacts() {
 	const { modalStates, showModal } = useModal();
 
-	useEventListener(
-		typeof window !== 'undefined' ? window : null,
-		'paste',
-		({ clipboardData }: ClipboardEvent) => {
-			if (modalStates.length) return;
-			const item = Array.from(clipboardData.items).find(({ type }) => /^image\//.test(type));
-			if (!item) return;
-			showModal(AddArtifactModal, {
-				props: { setKey: 'GladiatorsFinale', file: item.getAsFile() },
-			});
-		},
-	);
+	useClipboardImage((items) => {
+		if (modalStates.length) return;
+		showModal(AddArtifactModal, {
+			props: { setKey: 'GladiatorsFinale', file: items[0].getAsFile() },
+		});
+	});
 
 	return (
 		<PageContainer noSsr>

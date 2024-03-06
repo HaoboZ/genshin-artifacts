@@ -55,7 +55,7 @@ export default function OptimalWeaponModal() {
 				weapons,
 				map((weapon) => ({ weapon, tier: arrDeepIndex(character.weapon, weapon.key) })),
 				filter(({ tier }) => tier !== -1),
-				sortBy(({ tier }) => tier),
+				sortBy(pget('tier')),
 			);
 
 			for (const { weapon, tier } of tieredWeapons) {

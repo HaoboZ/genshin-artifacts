@@ -57,8 +57,7 @@ export default function CharacterArtifactModal({
 		return pipe(
 			artifactsFiltered,
 			map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })),
-			sortBy(pget('subStat')),
-			sortBy(pget('rating')),
+			sortBy(pget('rating'), pget('subStat')),
 			reverse(),
 		);
 	}, [artifacts, checked, slot, tier]);

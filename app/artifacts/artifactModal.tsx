@@ -49,8 +49,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 				const { rating, subStat } = getArtifactTier(tier, artifact);
 				return { tier, rating, subStat };
 			}),
-			sortBy(pget('subStat')),
-			sortBy(pget('rating')),
+			sortBy(pget('rating'), pget('subStat')),
 			reverse(),
 		);
 	}, [artifact, checked]);
