@@ -27,7 +27,7 @@ export default function ArtifactList({
 			artifacts.filter(
 				({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey),
 			),
-		[artifacts],
+		[artifacts, artifactSet, slot],
 	);
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
@@ -45,7 +45,7 @@ export default function ArtifactList({
 					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
 				),
 			),
-		[artifactSet, slot],
+		[artifactsTiered],
 	);
 
 	return (

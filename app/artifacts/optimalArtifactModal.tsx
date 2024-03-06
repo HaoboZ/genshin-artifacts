@@ -19,13 +19,13 @@ import {
 	ModalDialog,
 } from '@mui/joy';
 import { useMemo, useState } from 'react';
-import { filter, pipe, reverse, sortBy } from 'remeda';
+import { filter, map, pipe, reverse, sortBy } from 'remeda';
 import { charactersInfo } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import useCharactersSorted from '../characters/useCharactersSorted';
 import ArtifactCard from './artifactCard';
 import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
-import useArtifactsTiered from './useArtifactsTiered';
+import { getPotentialTier } from './getArtifactTier';
 
 export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();
@@ -52,15 +52,14 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: Ar
 		[artifactSet, artifacts],
 	);
 
-	const artifactsTiered = useArtifactsTiered(artifactsFiltered);
-
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
 		const result: { artifact: IArtifact; character: Tier; selected: boolean }[] = [];
 		for (let i = 0; i < charactersFiltered.length; i++) {
 			const character = charactersFiltered[i];
 			for (const slot of artifactSlotOrder) {
 				const tieredArtifacts = pipe(
-					artifactsTiered,
+					artifactsFiltered,
+					map((artifact) => ({ ...artifact, tier: getPotentialTier(character, artifact) })),
 					filter(
 						({ slotKey, setKey, mainStatKey }) =>
 							slotKey === slot &&
@@ -78,7 +77,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: Ar
 					);
 					if (currentLocation !== -1 && currentLocation < i) continue;
 
-					const currentArtifact = artifactsTiered.find(
+					const currentArtifact = artifactsFiltered.find(
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
