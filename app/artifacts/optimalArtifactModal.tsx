@@ -81,7 +81,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: Ar
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
-					artifact.location = character.key;
+					artifactsFiltered.find(({ id }) => id === artifact.id).location = character.key;
 					result.push({ artifact, character, selected: true });
 					break;
 				}
