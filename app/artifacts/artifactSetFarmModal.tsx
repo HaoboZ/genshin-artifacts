@@ -40,10 +40,13 @@ export default function ArtifactSetFarmModal() {
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
-				mapValues(({ potential }) => potential.filter((p) => p < 0.3).length),
+				mapValues(({ potential }) => [
+					potential.length,
+					potential.filter((p) => p < 0.3).length,
+				]),
 				toPairs,
-				filter(([, count]) => Boolean(count)),
-				sortBy(([, count]) => -count),
+				filter(([, [, count]]) => Boolean(count)),
+				sortBy(([, [, count]]) => -count),
 			),
 		};
 	}, [artifactsTiered]);
@@ -69,11 +72,11 @@ export default function ArtifactSetFarmModal() {
 					</PageSection>
 					<PageSection title='Low Potential'>
 						<Grid container spacing={1}>
-							{lowPotential.map(([artifactSet, count]) => (
+							{lowPotential.map(([artifactSet, [total, count]]) => (
 								<Grid key={artifactSet}>
 									<ArtifactSetImage artifactSet={artifactSetsInfo[artifactSet]}>
 										<Typography position='absolute' top={0} left={2}>
-											{count}
+											{count} / {total}
 										</Typography>
 									</ArtifactSetImage>
 								</Grid>
