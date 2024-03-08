@@ -10,6 +10,7 @@ import { charactersInfo } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
 import useCharactersSorted from '../characters/useCharactersSorted';
 import { artifactSetsInfo } from './artifactData';
+import ArtifactDeleteModal from './artifactDeleteModal';
 import ArtifactSetFarmModal from './artifactSetFarmModal';
 import ArtifactSetImage from './artifactSetImage';
 import OptimalArtifactModal from './optimalArtifactModal';
@@ -27,6 +28,7 @@ export default function BestInSlotAll() {
 				<Button onClick={() => showModal(OptimalArtifactModal)}>Optimize</Button>
 				<Button onClick={() => showModal(UpgradePriorityModal)}>Upgrade</Button>
 				<Button onClick={() => showModal(ArtifactSetFarmModal)}>Farm</Button>
+				<Button onClick={() => showModal(ArtifactDeleteModal)}>Delete</Button>
 			</ButtonGroup>
 			{sortBy(Object.values(artifactSetsInfo), ({ order }) => order).map((artifactSet) => {
 				const charactersFiltered = characters.filter(

@@ -55,7 +55,7 @@ export default function UpgradePriorityModal() {
 										}}
 									/>
 								</ListItemContent>
-								<Typography>{artifact.tier.potential.toFixed(2)}%</Typography>
+								<Typography>{Math.round(artifact.tier.potential * 100)}%</Typography>
 							</ListItem>
 						))}
 					</List>

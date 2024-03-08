@@ -1,6 +1,7 @@
 import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
+import SwitchField from '@/components/fields/switch';
 import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
 import { Button, Grid, Option } from '@mui/joy';
 import { useFormikContext } from 'formik';
@@ -37,7 +38,10 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 					}}
 				/>
 			</Grid>
-			<Grid xs={6}>
+			<Grid xs={3} display='flex' alignItems='center'>
+				<SwitchField name='lock' endDecorator='Locked' />
+			</Grid>
+			<Grid xs={3} display='flex' flexDirection='column' justifyContent='center'>
 				<ArtifactScanner cropBox={cropBox} setArtifact={setValues} file={file} />
 			</Grid>
 			<Grid xs={3}>

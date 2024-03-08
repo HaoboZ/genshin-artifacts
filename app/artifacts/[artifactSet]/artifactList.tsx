@@ -58,10 +58,7 @@ export default function ArtifactList({
 	const [deleteMode, setDeleteMode] = useState(false);
 	const [marked, setMarked] = useState([]);
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
-	const [filtered, setFiltered] = useState({
-		equipped: 0,
-		locked: 0,
-	});
+	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
 
 	const artifactsTiered = useArtifactsTiered(filteredArtifacts);
 	const artifactsSorted = useMemo(

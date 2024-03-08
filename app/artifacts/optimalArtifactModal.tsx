@@ -28,11 +28,11 @@ import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
 import { getPotentialTier } from './getArtifactTier';
 
 export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
+	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
 	const artifacts = useAppSelector(pget('good.artifacts'));
 	const characters = useCharactersSorted();
 	const ownedCharacters = useAppSelector(pget('good.characters'));
-	const { closeModal } = useModalControls();
 
 	const charactersFiltered = useMemo(
 		() =>
@@ -66,7 +66,7 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: Ar
 							setKey === makeArray(character.artifact[0])[0] &&
 							strArrMatch(character.mainStat[slotKey], mainStatKey, true),
 					),
-					sortBy(({ tier }) => +tier.rarity * 0.5 + tier.subStat * 0.5),
+					sortBy(({ tier }) => +tier.rarity * 0.5 + tier.subStat * 0.5, pget('level')),
 					reverse(),
 				);
 

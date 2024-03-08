@@ -1,6 +1,7 @@
 import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/subStatBar';
 import type { IArtifact, SlotKey } from '@/src/types/good';
+import { Lock } from '@mui/icons-material';
 import type { CardProps } from '@mui/joy';
 import { Box, Card, Grid } from '@mui/joy';
 import { charactersInfo } from '../characters/characterData';
@@ -29,6 +30,9 @@ export default function ArtifactCard({
 								right={0}
 								border={1}
 							/>
+						)}
+						{artifact.lock && (
+							<Lock sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }} />
 						)}
 					</ArtifactImage>
 				</Grid>
