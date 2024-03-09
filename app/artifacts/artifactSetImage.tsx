@@ -2,15 +2,17 @@ import type { DArtifact } from '@/src/types/data';
 import type { BoxProps } from '@mui/joy';
 import { Box, Tooltip } from '@mui/joy';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 
 export default function ArtifactSetImage({
 	artifactSet,
 	size = 100,
+	tooltip,
 	children,
 	...props
-}: { artifactSet: DArtifact; size?: number } & BoxProps) {
+}: { artifactSet: DArtifact; size?: number; tooltip?: ReactNode } & BoxProps) {
 	return (
-		<Tooltip followCursor title={artifactSet?.name}>
+		<Tooltip followCursor title={tooltip ?? artifactSet?.name}>
 			<Box
 				width={size}
 				height={size}

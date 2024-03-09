@@ -1,10 +1,10 @@
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
-import { Stack } from '@mui/joy';
+import { Stack, Typography } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { charactersInfo } from '../../characters/characterData';
 import CharacterImage from '../../characters/characterImage';
 import useCharactersSorted from '../../characters/useCharactersSorted';
@@ -29,12 +29,29 @@ export default function BestInSlot({
 	return (
 		<Stack spacing={1}>
 			<Stack direction='row' spacing={1}>
-				{charactersFiltered.map(({ key, mainStat }) => (
+				{charactersFiltered.map(({ key, mainStat, subStat }) => (
 					<Link key={key} href={`/characters/${key}`}>
 						<CharacterImage
 							character={charactersInfo[key]}
 							size={50}
-							tooltip={`${statName[makeArray(mainStat.sands)[0]]} - ${statName[makeArray(mainStat.goblet)[0]]} - ${statName[makeArray(mainStat.circlet)[0]]}`}
+							tooltip={
+								<Fragment>
+									<Typography>
+										{statName[makeArray(mainStat.sands)[0]]} -{' '}
+										{statName[makeArray(mainStat.goblet)[0]]} -{' '}
+										{statName[makeArray(mainStat.circlet)[0]]}
+									</Typography>
+									<Typography>
+										{subStat
+											.map((statArr) =>
+												makeArray(statArr)
+													.map((stat) => statName[stat])
+													.join('/'),
+											)
+											.join(' - ')}
+									</Typography>
+								</Fragment>
+							}
 						/>
 					</Link>
 				))}

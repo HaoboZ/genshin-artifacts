@@ -2,6 +2,7 @@ import type { DCharacter } from '@/src/types/data';
 import type { BoxProps } from '@mui/joy';
 import { Box, Tooltip } from '@mui/joy';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 
 export default function CharacterImage({
 	character,
@@ -9,7 +10,7 @@ export default function CharacterImage({
 	children,
 	tooltip,
 	...props
-}: { character: DCharacter; size?: number; tooltip?: string } & BoxProps) {
+}: { character: DCharacter; size?: number; tooltip?: ReactNode } & BoxProps) {
 	return (
 		<Tooltip followCursor title={tooltip ?? character.name}>
 			<Box
