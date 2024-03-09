@@ -26,7 +26,7 @@ export default function ArtifactDeleteModal() {
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	const artifactsFiltered = useMemo(
-		() => artifacts.filter(({ lock, location }) => lock && !location),
+		() => artifacts.filter(({ lock, location, level }) => lock && !location && !level),
 		[artifacts],
 	);
 	const artifactsTiered = useArtifactsTiered(artifactsFiltered);
