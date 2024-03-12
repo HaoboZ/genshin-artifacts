@@ -38,6 +38,14 @@ export const missingArtifactSets: Record<string, Tier> = {
 		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas', 'atk'],
 	},
+	ArchaicPetra: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['ArchaicPetra'],
+		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
+	},
 	BloodstainedChivalry: {
 		key: 'Traveler',
 		role: 'DPS',
