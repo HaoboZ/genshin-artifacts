@@ -1,4 +1,5 @@
 import PageSection from '@/components/page/section';
+import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
@@ -7,7 +8,6 @@ import { DialogContent, DialogTitle, Grid, ModalClose, ModalDialog, Typography }
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { filter, groupBy, map, mapValues, pipe, sortBy, toPairs, uniq } from 'remeda';
-import makeArray from '../../src/helpers/makeArray';
 import { charactersTier } from '../characters/characterData';
 import { artifactSetsInfo, statName } from './artifactData';
 import ArtifactSetImage from './artifactSetImage';

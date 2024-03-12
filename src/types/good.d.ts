@@ -304,6 +304,7 @@ export type WeaponKey =
 	| 'Predator' //Predator
 	| 'PrimordialJadeCutter' //Primordial Jade Cutter
 	| 'PrimordialJadeWingedSpear' //Primordial Jade Winged-Spear
+	| 'ProspectorsDrill' //Prospector's Drill
 	| 'PrototypeAmber' //Prototype Amber
 	| 'PrototypeArchaic' //Prototype Archaic
 	| 'PrototypeCrescent' //Prototype Crescent

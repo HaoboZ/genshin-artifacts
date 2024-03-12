@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 2/17/23
+// 3/12/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -1222,14 +1222,19 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'PrimordialJadeWingedSpear',
 			'StaffOfHoma',
 			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands'],
-			'Deathmatch',
-			'LithicSpear',
-			['BlackcliffPole', 'SkywardSpine', 'MissiveWindspear'],
-			'EngulfingLightning',
+			['Deathmatch', 'LithicSpear'],
+			[
+				'SkywardSpine',
+				'EngulfingLightning',
+				'MissiveWindspear',
+				'ProspectorsDrill',
+				'BlackcliffPole',
+			],
+			'WavebreakersFin',
 			'FavoniusLance',
 			'WhiteTassel',
 		],
-		artifact: ['VermillionHereafter', ['DesertPavilionChronicle', 'MarechausseeHunter']],
+		artifact: ['VermillionHereafter', ['MarechausseeHunter', 'DesertPavilionChronicle']],
 		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', ['eleMas', 'atk']],
 	},
@@ -1315,8 +1320,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 			'HakushinRing',
 		],
 		artifact: [
-			['ArchaicPetra', 'HuskOfOpulentDreams'],
+			'NighttimeWhispersInTheEchoingWoods',
+			'HuskOfOpulentDreams',
 			['Thundersoother', 'Lavawalker'],
+			'ArchaicPetra',
 			'EmblemOfSeveredFate',
 		],
 		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
