@@ -55,7 +55,7 @@ export default function MultiSortable<Item>({
 		if (skipB) return setSkipB(false);
 		setLists(
 			mapValues(groups, (items, group) =>
-				items.map((item, index) => ({ id: lists[group][index].id ?? nanoid(), item })),
+				items.map((item, index) => ({ id: lists[group][index]?.id ?? nanoid(), item })),
 			),
 		);
 	}, [groups]);

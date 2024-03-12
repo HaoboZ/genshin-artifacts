@@ -6,8 +6,8 @@ import pget from '@/src/helpers/pget';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
-import { Grid } from '@mui/joy';
-import { useMemo } from 'react';
+import { Grid, Input } from '@mui/joy';
+import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import AddWeaponModal from './addWeaponModal';
 import OptimalWeaponModal from './optimalWeaponModal';
@@ -23,15 +23,22 @@ export default function Weapons() {
 
 	const [type, setType] = useParamState<WeaponType>('type', null);
 
+	const [search, setSearch] = useState('');
+	const searchVal = search.toLowerCase();
+
 	const weaponsSorted = useMemo(
 		() =>
 			pipe(
 				weapons,
 				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
-				filter(({ weaponType }) => !type || weaponType === type),
+				filter(
+					({ weaponType, name }) =>
+						(!type || weaponType === type) &&
+						(search ? name.toLowerCase().includes(searchVal) : true),
+				),
 				sortBy(({ rarity }) => -rarity, pget('key')),
 			),
-		[weapons, type],
+		[weapons, type, search],
 	);
 
 	return (
@@ -45,6 +52,13 @@ export default function Weapons() {
 					{ name: 'Optimize', onClick: () => showModal(OptimalWeaponModal) },
 				]}>
 				<Grid container spacing={1}>
+					<Grid xs={12}>
+						<Input
+							placeholder='Search'
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+						/>
+					</Grid>
 					{weaponsSorted.map((weapon) => (
 						<Grid key={weapon.key}>
 							<WeaponCharacterImage

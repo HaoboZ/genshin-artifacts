@@ -5,7 +5,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { pickBy } from 'remeda';
 import { createWorker, OEM, PSM } from 'tesseract.js';
-import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
+import { artifactSetsInfo, artifactSlotOrder, statsAdd } from '../artifactData';
 
 const mainStatsScan: Record<string, StatKey> = {
 	atk: 'atk_',
@@ -91,7 +91,11 @@ export default function ArtifactScanner({
 			const startLines = lines.slice(0, 5);
 
 			const setKey = Object.keys(artifactSetsInfo).find((set) => {
-				const emptySet = set.toLowerCase().replaceAll(/\s/g, '');
+				const emptySet = set
+					.split(/(?=[A-Z])/)
+					.slice(0, 3)
+					.join('')
+					.toLowerCase();
 				return emptyLines.find((line) => line.includes(emptySet));
 			});
 			const slotKey = artifactSlotOrder.find((slot) =>
@@ -114,17 +118,17 @@ export default function ArtifactScanner({
 
 			setArtifact((artifact) => {
 				const artifactSet = artifactSetsInfo[setKey as any];
+				const level =
+					substats.reduce((sum, substat) => {
+						return sum + substat.value / statsAdd[substat.key][artifactSet?.rarity];
+					}, 0) > 4
+						? 20
+						: 0;
+
 				return {
 					...artifact,
 					...pickBy(
-						{
-							setKey,
-							slotKey,
-							mainStatKey,
-							substats,
-							rarity: artifactSet?.rarity,
-							level: artifactSet?.rarity && artifactSet.rarity * 4,
-						},
+						{ setKey, slotKey, mainStatKey, substats, rarity: artifactSet?.rarity, level },
 						(val) => val !== undefined,
 					),
 				} as any;

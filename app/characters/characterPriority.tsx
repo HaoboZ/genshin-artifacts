@@ -3,10 +3,10 @@ import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
-import { Grid, Sheet, Typography } from '@mui/joy';
+import { Grid, Input, Sheet, Typography } from '@mui/joy';
 import Link from 'next/link';
-import { useState } from 'react';
-import { difference, omit } from 'remeda';
+import { useMemo, useState } from 'react';
+import { difference, mapValues, omit } from 'remeda';
 import { useDidUpdate } from 'rooks';
 import { charactersInfo } from './characterData';
 import CharacterImage from './characterImage';
@@ -24,13 +24,23 @@ export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 			}) as Record<string, CharacterKey[]>,
 	);
 
+	const [search, setSearch] = useState('');
+
+	const filteredCharacters = useMemo(() => {
+		if (editMode || !search) return characters;
+		const searchVal = search.toLowerCase();
+		return mapValues(characters, (characters) =>
+			characters.filter((key) => charactersInfo[key].name.toLowerCase().includes(searchVal)),
+		);
+	}, [characters, editMode, search]);
+
 	useDidUpdate(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
 	}, [characters]);
 
 	return (
 		<MultiSortable<CharacterKey>
-			groups={characters}
+			groups={filteredCharacters}
 			setGroups={setCharacters}
 			renderItems={(list, ref) => (
 				<Grid ref={ref} container spacing={1} minHeight={100}>
@@ -49,9 +59,18 @@ export default function CharacterPriority({ editMode }: { editMode: boolean }) {
 					/>
 				</Grid>
 			)}
-			dependencies={[editMode]}>
+			dependencies={[editMode, search]}>
 			{({ unSorted, ...lists }) => (
 				<Grid container spacing={1}>
+					{!editMode && (
+						<Grid xs={12}>
+							<Input
+								placeholder='Search'
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+							/>
+						</Grid>
+					)}
 					<Grid xs={5}>
 						<Sheet variant='outlined' sx={{ p: 1 }}>
 							{unSorted}
