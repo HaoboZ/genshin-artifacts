@@ -133,7 +133,7 @@ export default function Character({ params }: { params: { name: string } }) {
 											props: { tier: characterTier, slot, artifact },
 										});
 									}}>
-									<QuadBars artifactTier={artifactTier} />
+									{artifact && <QuadBars artifactTier={artifactTier} />}
 								</ArtifactCard>
 							</Grid>
 						);

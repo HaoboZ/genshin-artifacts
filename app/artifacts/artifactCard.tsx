@@ -31,7 +31,7 @@ export default function ArtifactCard({
 								border={1}
 							/>
 						)}
-						{artifact.lock && (
+						{artifact?.lock && (
 							<Lock sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }} />
 						)}
 					</ArtifactImage>
