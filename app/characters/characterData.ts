@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 3/12/23
+// 3/17/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -120,7 +120,12 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	Chevreuse: {
 		key: 'Chevreuse',
 		role: 'Support',
-		weapon: ['FavoniusLance', ['BlackTassel', 'RightfulReward'], 'PrototypeStarglitter'],
+		weapon: [
+			'FavoniusLance',
+			'DialoguesOfTheDesertSages',
+			['BlackTassel', 'RightfulReward'],
+			'PrototypeStarglitter',
+		],
 		artifact: ['NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast', 'MaidenBeloved'],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp', 'eleMas'],
@@ -288,6 +293,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Support',
 		weapon: [
 			'FavoniusLance',
+			'DialoguesOfTheDesertSages',
 			['BlackTassel', 'RightfulReward'],
 			'Moonpiercer',
 			'KitainCrossSpear',
@@ -925,6 +931,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Support',
 		weapon: [
 			'FavoniusLance',
+			'DialoguesOfTheDesertSages',
 			'EngulfingLightning',
 			['PrototypeStarglitter', 'TheCatch', 'RightfulReward'],
 			'BlackTassel',
@@ -1377,9 +1384,10 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		key: 'Albedo',
 		role: 'Off-Field DPS',
 		weapon: [
+			'UrakuMisugiri',
 			'CinnabarSpindle',
-			['HarbingerOfDawn', 'WolfFang', 'PrimordialJadeCutter'],
-			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged'],
+			['HarbingerOfDawn', 'PrimordialJadeCutter'],
+			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged', 'WolfFang'],
 			'FreedomSworn',
 		],
 		artifact: [
@@ -1417,6 +1425,25 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		artifact: ['NighttimeWhispersInTheEchoingWoods', 'GoldenTroupe'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'atk'],
+	},
+	Chiori: {
+		key: 'Chiori',
+		role: 'Off-Field DPS',
+		weapon: [
+			'UrakuMisugiri',
+			'CinnabarSpindle',
+			['HarbingerOfDawn', 'WolfFang', 'PrimordialJadeCutter'],
+			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged'],
+			'FreedomSworn',
+		],
+		artifact: [
+			['GoldenTroupe', 'HuskOfOpulentDreams'],
+			'ArchaicPetra',
+			'TenacityOfTheMillelith',
+			'NoblesseOblige',
+		],
+		mainStat: { sands: ['def_', 'atk_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'def_', 'enerRech_'],
 	},
 };
 

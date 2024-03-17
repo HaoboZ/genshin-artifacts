@@ -18,6 +18,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png',
@@ -497,6 +498,8 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
@@ -665,7 +668,7 @@ const artifactOrder = Object.keys(artifactLocation);
 	try {
 		writeFileSync(
 			'./public/data.json',
-			JSON.stringify({ elements, characters, artifacts, weapons }, null, 2),
+			JSON.stringify({ elements, characters, artifacts, weapons }, null, '\t'),
 		);
 		console.log('Data successfully saved to disk');
 	} catch (error) {

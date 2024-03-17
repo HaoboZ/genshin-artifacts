@@ -147,6 +147,15 @@
 			"element": "Pyro",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png"
 		},
+		"Chiori": {
+			"key": "Chiori",
+			"link": "Chiori",
+			"name": "Chiori",
+			"rarity": 5,
+			"weaponType": "Sword",
+			"element": "Geo",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png"
+		},
 		"Chongyun": {
 			"key": "Chongyun",
 			"link": "Chongyun",
@@ -1596,6 +1605,13 @@
 			"weaponType": "Claymore",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png"
 		},
+		"DialoguesOfTheDesertSages": {
+			"key": "DialoguesOfTheDesertSages",
+			"name": "Dialogues of the Desert Sages",
+			"rarity": 4,
+			"weaponType": "Polearm",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png"
+		},
 		"DodocoTales": {
 			"key": "DodocoTales",
 			"name": "Dodoco Tales",
@@ -2505,6 +2521,13 @@
 			"rarity": 4,
 			"weaponType": "Claymore",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png"
+		},
+		"UrakuMisugiri": {
+			"key": "UrakuMisugiri",
+			"name": "Uraku Misugiri",
+			"rarity": 5,
+			"weaponType": "Sword",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png"
 		},
 		"Verdict": {
 			"key": "Verdict",

@@ -137,6 +137,7 @@ export type CharacterKey =
 	| 'Candace' //Candace
 	| 'Charlotte' //Charlotte
 	| 'Chevreuse' //Chevreuse
+	| 'Chiori' //Chiori
 	| 'Chongyun' //Chongyun
 	| 'Collei' //Collei
 	| 'Cyno' //Cyno
@@ -235,6 +236,7 @@ export type WeaponKey =
 	| 'DarkIronSword' //Dark Iron Sword
 	| 'Deathmatch' //Deathmatch
 	| 'DebateClub' //Debate Club
+	| 'DialoguesOfTheDesertSages' // Dialogues of the Desert Sages
 	| 'DodocoTales' //Dodoco Tales
 	| 'DragonsBane' //Dragon's Bane
 	| 'DragonspineSpear' //Dragonspine Spear
@@ -373,6 +375,7 @@ export type WeaponKey =
 	| 'TulaytullahsRemembrance' //Tulaytullah's Remembrance
 	| 'TwinNephrite' //Twin Nephrite
 	| 'UltimateOverlordsMegaMagicSword' //Ultimate Overlord's Mega Magic Sword
+	| 'UrakuMisugiri' //Uraku Misugiri
 	| 'Verdict' //Verdict
 	| 'VortexVanquisher' //Vortex Vanquisher
 	| 'WanderingEvenstar' //Wandering Evenstar

@@ -25,6 +25,17 @@ export default function ArtifactDeleteModal() {
 	const dispatch = useAppDispatch();
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
+	const artifactCounts = useMemo(
+		() =>
+			artifacts.reduce((counts, { setKey, slotKey }) => {
+				if (!counts[setKey])
+					counts[setKey] = { flower: 0, plume: 0, sands: 0, goblet: 0, circlet: 0 };
+				counts[setKey][slotKey]++;
+				return counts;
+			}, {}),
+		[],
+	);
+
 	const artifactsFiltered = useMemo(
 		() => artifacts.filter(({ lock, location, level }) => lock && !location && !level),
 		[artifacts],
@@ -33,7 +44,10 @@ export default function ArtifactDeleteModal() {
 	const [deleteArtifacts, setDeleteArtifacts] = useState(() =>
 		pipe(
 			artifactsTiered,
-			filter(({ tier }) => tier.potential < 0.5),
+			filter(
+				({ tier, setKey, slotKey }) =>
+					tier.potential < 0.5 && artifactCounts[setKey]?.[slotKey] > 1,
+			),
 			sortBy(({ tier }) => tier.potential),
 			map((artifact) => ({ artifact, selected: true })),
 		),
@@ -42,7 +56,7 @@ export default function ArtifactDeleteModal() {
 	return (
 		<ModalWrapper>
 			<ModalDialog minWidth='md'>
-				<DialogTitle>Upgrade Artifact Priority</DialogTitle>
+				<DialogTitle>Delete Artifact Priority</DialogTitle>
 				<ModalClose variant='outlined' />
 				<DialogContent>
 					<List>
@@ -80,7 +94,13 @@ export default function ArtifactDeleteModal() {
 							);
 							closeModal();
 						}}>
-						Apply
+						Delete
+					</Button>
+					<Button
+						onClick={() => {
+							dispatch(goodActions.deleteUnlockedArtifacts());
+						}}>
+						Delete Unlocked
 					</Button>
 				</DialogActions>
 			</ModalDialog>

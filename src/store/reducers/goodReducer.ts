@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { differenceWith } from 'remeda';
+import pget from '../../helpers/pget';
 import type { Tier } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
@@ -112,6 +113,9 @@ const goodSlice = createSlice({
 		},
 		deleteArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
 			state.artifacts = differenceWith(state.artifacts, payload, (a, b) => a.id === b.id);
+		},
+		deleteUnlockedArtifacts(state) {
+			state.artifacts = state.artifacts.filter(pget('lock'));
 		},
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];
