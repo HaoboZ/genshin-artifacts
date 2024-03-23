@@ -2,6 +2,7 @@ import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import type { Tier } from '@/src/types/data';
 import type { IArtifact } from '@/src/types/good';
+import strArrMatch from '../../src/helpers/strArrMatch';
 import { artifactSetsInfo, rarityWeight, statsAdd, statsMax } from './artifactData';
 
 export default function getArtifactTier(
@@ -15,7 +16,7 @@ export default function getArtifactTier(
 	return {
 		rating: artifactIndex === -1 ? 0 : 1 - artifactIndex / tier.artifact.length,
 		rarity: artifact.rarity === artifactSetsInfo[artifact.setKey].rarity,
-		mainStat: makeArray(tier.mainStat[artifact.slotKey])[0] === artifact.mainStatKey,
+		mainStat: strArrMatch(makeArray(tier.mainStat[artifact.slotKey])[0], artifact.mainStatKey),
 		subStat:
 			artifact.substats.reduce(
 				(current, { key, value }) =>
