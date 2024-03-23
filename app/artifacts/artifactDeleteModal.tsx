@@ -46,7 +46,7 @@ export default function ArtifactDeleteModal() {
 			artifactsTiered,
 			filter(
 				({ tier, setKey, slotKey }) =>
-					tier.potential < 0.5 && artifactCounts[setKey]?.[slotKey] > 1,
+					tier.potential < 0.4 && artifactCounts[setKey]?.[slotKey] > 1,
 			),
 			sortBy(({ tier }) => tier.potential),
 			map((artifact) => ({ artifact, selected: true })),

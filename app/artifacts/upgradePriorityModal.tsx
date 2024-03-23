@@ -31,7 +31,7 @@ export default function UpgradePriorityModal() {
 		() =>
 			pipe(
 				artifactsTiered,
-				filter(({ tier }) => tier.potential > 0.5),
+				filter(({ tier }) => tier.potential > 0.4),
 				sortBy(({ tier }) => -tier.potential),
 			),
 		[artifactsTiered],
