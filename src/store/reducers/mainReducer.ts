@@ -12,6 +12,7 @@ const mainSlice = createSlice({
 	reducers: {
 		setPriority(state, { payload }: PayloadAction<Record<string, CharacterKey[]>>) {
 			state.priority = payload;
+			return state;
 		},
 	},
 });

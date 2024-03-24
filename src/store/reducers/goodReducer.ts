@@ -51,14 +51,17 @@ const goodSlice = createSlice({
 			} else {
 				state.characters = state.characters.filter(({ key }) => key !== payload);
 			}
+			return state;
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			state.artifacts = [...state.artifacts, payload];
+			return state;
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			state.artifacts = [...state.artifacts];
 			if (index !== -1) state.artifacts[index] = payload;
+			return state;
 		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
 			const characterA = payload[0];
@@ -77,6 +80,7 @@ const goodSlice = createSlice({
 					location: characterB || '',
 				};
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
+			return state;
 		},
 		optimizeArtifacts(
 			state,
@@ -106,19 +110,24 @@ const goodSlice = createSlice({
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			state.artifacts = [...state.artifacts];
 			if (index !== -1) state.artifacts[index] = { ...payload, location: '' };
+			return state;
 		},
 		deleteArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			if (index !== -1) state.artifacts = state.artifacts.filter((_, i) => i !== index);
+			return state;
 		},
 		deleteArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
 			state.artifacts = differenceWith(state.artifacts, payload, (a, b) => a.id === b.id);
+			return state;
 		},
 		deleteUnlockedArtifacts(state) {
 			state.artifacts = state.artifacts.filter(pget('lock'));
+			return state;
 		},
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];
+			return state;
 		},
 		giveWeapon(state, { payload }: PayloadAction<[CharacterKey, IWeapon]>) {
 			const characterA = payload[0];
@@ -135,6 +144,7 @@ const goodSlice = createSlice({
 					location: characterB || '',
 				};
 			state.weapons[weaponAIndex] = { ...weaponA, location: characterA };
+			return state;
 		},
 		optimizeWeapons(state, { payload }: PayloadAction<{ weapon: IWeapon; character: Tier }[]>) {
 			state.weapons = [...state.weapons];
@@ -154,15 +164,18 @@ const goodSlice = createSlice({
 					};
 				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
 			}
+			return state;
 		},
 		removeWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);
 			state.weapons = [...state.weapons];
 			if (index !== -1) state.weapons[index] = { ...payload, location: '' };
+			return state;
 		},
 		deleteWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);
 			if (index !== -1) state.weapons = state.weapons.filter((_, i) => i !== index);
+			return state;
 		},
 	},
 });
