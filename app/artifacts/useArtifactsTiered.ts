@@ -24,7 +24,7 @@ export default function useArtifactsTiered(artifacts: IArtifact[]) {
 									mainStat: {
 										[artifact.slotKey]: mainStats[artifact.slotKey]
 											? Object.keys(mainStats[artifact.slotKey])
-											: ['hp', 'atk'],
+											: { flower: 'hp', plume: 'atk' }[artifact.slotKey],
 									},
 									subStat: subStats,
 								} as Tier),
