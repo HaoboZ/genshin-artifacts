@@ -23,7 +23,7 @@ export default function useArtifactsTiered(artifacts: IArtifact[]) {
 									artifact: [artifact.setKey],
 									mainStat: {
 										[artifact.slotKey]: mainStats[artifact.slotKey]
-											? Object.keys(mainStats[artifact.slotKey])
+											? [Object.keys(mainStats[artifact.slotKey])]
 											: { flower: 'hp', plume: 'atk' }[artifact.slotKey],
 									},
 									subStat: subStats,
