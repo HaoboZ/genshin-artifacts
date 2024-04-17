@@ -50,7 +50,7 @@ export default function ArtifactSetFarmModal() {
 				mapValues(({ tier }) => [
 					tier.length,
 					tier.filter(
-						({ rarity, mainStat, potential }) => rarity && mainStat && potential < 0.3,
+						({ rarity, mainStat, potential }) => !rarity || !mainStat || potential < 0.3,
 					).length,
 				]),
 				toPairs,
