@@ -33,7 +33,7 @@ export default function ArtifactSetFarmModal() {
 						missing[slotKey].push(makeArray(charactersTier[location].mainStat[slotKey])[0]);
 						return missing;
 					}, {}),
-				potential: artifacts.map(({ tier }) => tier.potential),
+				tier: artifacts.map(pget('tier')),
 			})),
 		);
 
@@ -42,17 +42,16 @@ export default function ArtifactSetFarmModal() {
 				artifactSetPriority,
 				toPairs,
 				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
-				sortBy(
-					([, { potential }]) => -potential,
-					([, { mainStats }]) => -Object.values(mainStats).flat().length,
-				),
+				sortBy(([, { mainStats }]) => -Object.values(mainStats).flat().length),
 				map(([a, { mainStats }]) => [a, mainStats] as [string, Record<string, StatKey[]>]),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
-				mapValues(({ potential }) => [
-					potential.length,
-					potential.filter((p) => p < 0.3).length,
+				mapValues(({ tier }) => [
+					tier.length,
+					tier.filter(
+						({ rarity, mainStat, potential }) => rarity && mainStat && potential < 0.3,
+					).length,
 				]),
 				toPairs,
 				filter(([, [, count]]) => Boolean(count)),
