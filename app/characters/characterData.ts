@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 3/17/23
+// 4/19/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -51,7 +51,7 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Bennett: {
 		key: 'Bennett',
-		role: 'Support and Damge',
+		role: 'Support and Damage',
 		weapon: [
 			'MistsplitterReforged',
 			'AquilaFavonia',
@@ -112,7 +112,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	Thoma: {
 		key: 'Thoma',
 		role: 'Burgeon',
-		weapon: ['KitainCrossSpear', 'FavoniusLance', 'DragonsBane', 'Moonpiercer', 'BlackTassel'],
+		weapon: [
+			'KitainCrossSpear',
+			'FavoniusLance',
+			'DragonsBane',
+			'Moonpiercer',
+			'BlackTassel',
+			'RightfulReward',
+		],
 		artifact: ['FlowerOfParadiseLost', 'GildedDreams', 'CrimsonWitchOfFlames'],
 		mainStat: { sands: ['enerRech_', 'eleMas'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'hp_', 'hp', 'critRate_'],
@@ -592,7 +599,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		weapon: [
 			'TomeOfTheEternalFlow',
 			'SacrificialJade',
-			['JadefallsSplendor', 'PrototypeAmber', 'KagurasVerity', 'LostPrayerToTheSacredWinds'],
+			[
+				'JadefallsSplendor',
+				'PrototypeAmber',
+				'CashflowSupervision',
+				'TheWidsith',
+				'KagurasVerity',
+				'LostPrayerToTheSacredWinds',
+			],
 		],
 		artifact: [
 			'MarechausseeHunter',
@@ -608,14 +622,14 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		weapon: [
 			'SplendorOfTranquilWaters',
 			'PrimordialJadeCutter',
-			['FesteringDesire', 'KeyOfKhajNisut'],
+			['FesteringDesire', 'KeyOfKhajNisut', 'UrakuMisugiri'],
 			['FleuveCendreFerryman', 'FavoniusSword'],
 			['WolfFang', 'HaranGeppakuFutsu', 'LightOfFoliarIncision', 'MistsplitterReforged'],
 			['SkywardBlade', 'TheDockhandsAssistant', 'HarbingerOfDawn'],
 		],
 		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
-		subStat: ['enerRech_', ['critRD_', 'hp_'], 'hp'],
+		subStat: ['enerRech_', ['hp_', 'critRD_'], 'hp'],
 	},
 	// Electro
 	Fischl: {
@@ -904,27 +918,27 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 	},
 	Layla: {
 		key: 'Layla',
-		role: 'Support',
+		role: 'Support and Damage',
 		weapon: [
-			'KeyOfKhajNisut',
-			'TheDockhandsAssistant',
 			'PrimordialJadeCutter',
-			'FavoniusSword',
-			'FreedomSworn',
 			'HarbingerOfDawn',
+			['UrakuMisugiri', 'SplendorOfTranquilWaters', 'LightOfFoliarIncision'],
+			['MistsplitterReforged', 'WolfFang'],
+			'KeyOfKhajNisut',
+			'FavoniusSword',
 		],
 		artifact: [
 			'TenacityOfTheMillelith',
-			'NoblesseOblige',
 			'BlizzardStrayer',
+			'NoblesseOblige',
 			'EmblemOfSeveredFate',
 		],
 		mainStat: {
 			sands: ['hp_', 'enerRech_'],
-			goblet: ['hp_', 'cryo_dmg_'],
-			circlet: ['hp_', 'critRD_'],
+			goblet: ['cryo_dmg_', 'hp_'],
+			circlet: ['critRD_', 'hp_'],
 		},
-		subStat: ['hp_', 'enerRech_', 'critRD_'],
+		subStat: ['enerRech_', ['critRD_', 'hp_'], 'atk_', 'hp'],
 	},
 	Mika: {
 		key: 'Mika',
@@ -1431,19 +1445,20 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			'UrakuMisugiri',
-			'CinnabarSpindle',
-			['HarbingerOfDawn', 'WolfFang', 'PrimordialJadeCutter'],
-			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged'],
-			'FreedomSworn',
+			'PrimordialJadeCutter',
+			[
+				'HarbingerOfDawn',
+				'CinnabarSpindle',
+				'LightOfFoliarIncision',
+				'HaranGeppakuFutsu',
+				'MistsplitterReforged',
+				'SplendorOfTranquilWaters',
+			],
+			'WolfFang',
 		],
-		artifact: [
-			['GoldenTroupe', 'HuskOfOpulentDreams'],
-			'ArchaicPetra',
-			'TenacityOfTheMillelith',
-			'NoblesseOblige',
-		],
-		mainStat: { sands: ['def_', 'atk_'], goblet: 'geo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'def_', 'enerRech_'],
+		artifact: [['GoldenTroupe', 'HuskOfOpulentDreams']],
+		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'def_', 'atk_', 'def', 'atk', 'enerRech_'],
 	},
 };
 
