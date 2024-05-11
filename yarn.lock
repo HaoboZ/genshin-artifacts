@@ -484,9 +484,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:5.15.16":
-  version: 5.15.16
-  resolution: "@mui/icons-material@npm:5.15.16"
+"@mui/icons-material@npm:5.15.17":
+  version: 5.15.17
+  resolution: "@mui/icons-material@npm:5.15.17"
   dependencies:
     "@babel/runtime": "npm:^7.23.9"
   peerDependencies:
@@ -496,7 +496,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/bc5b627298e4df75eb03f564c7eb6e84a9ed31073b328f52934ff0880c159b088c86693671dc0dd2000e16f0a737ca3d179b9b42f3d785c0ddfee9551e7d2fb9
+  checksum: 10c0/9aac249ab4b55f546e8749c7237b2407ae7f470defb2bc1a18a6f1df6a75cf1a6feb3bf073e3b2e7220ed9847fd21b7bd28f14790899299321acaba169bf8bb1
   languageName: node
   linkType: hard
 
@@ -915,14 +915,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reduxjs/toolkit@npm:2.2.3":
-  version: 2.2.3
-  resolution: "@reduxjs/toolkit@npm:2.2.3"
+"@reduxjs/toolkit@npm:2.2.4":
+  version: 2.2.4
+  resolution: "@reduxjs/toolkit@npm:2.2.4"
   dependencies:
     immer: "npm:^10.0.3"
     redux: "npm:^5.0.1"
     redux-thunk: "npm:^3.1.0"
-    reselect: "npm:^5.0.1"
+    reselect: "npm:^5.1.0"
   peerDependencies:
     react: ^16.9.0 || ^17.0.0 || ^18
     react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
@@ -931,7 +931,7 @@ __metadata:
       optional: true
     react-redux:
       optional: true
-  checksum: 10c0/f10f2c8f4b6c5c7a65d8d60246bdfde86b6cd2f542210ebdda8002223c7f4e99ed32964825e63f37345d9d12532671150fcec2809a40690931ae44afe8aba7f8
+  checksum: 10c0/fdbf510210a5aa4864432397e1a9469367e297cd1d9c09a82e68638df7555672c2f8511fe76f933b00efbbb233c534831591772a44e8c41233e34f3cd0f54569
   languageName: node
   linkType: hard
 
@@ -1020,12 +1020,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.12.8":
-  version: 20.12.8
-  resolution: "@types/node@npm:20.12.8"
+"@types/node@npm:20.12.11":
+  version: 20.12.11
+  resolution: "@types/node@npm:20.12.11"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/840002d20654e38a9af8cdffa215598fdb28ac4f96c5701ed672ec365ed6ccc66da299edddaa409baf13cd71bbf1128901f633b5e44e070fc236e26415805b78
+  checksum: 10c0/efaa7b08c50ba6e6982ac7d531ba08d5935539ba76e954807df1ff9382a319ead7e003ccaca5ad7cf33ecf53f212507f7c1f2794bd2ff52df6365fef21f6e1fb
   languageName: node
   linkType: hard
 
@@ -1073,13 +1073,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.1":
-  version: 18.3.1
-  resolution: "@types/react@npm:18.3.1"
+"@types/react@npm:18.3.2":
+  version: 18.3.2
+  resolution: "@types/react@npm:18.3.2"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/18d856c12a4ec93f3cda2d58ef3d77a9480818afd3af895f812896fb82cfca1f35a692ab1add4ce826a4eb58a071624c7d1c8c6c4ccfb81c100d2916dc607614
+  checksum: 10c0/9fb2f1fcf7e889ee4ea7c3c5978df595c66e770e5fd3a245dbdd2589b9b911524c11dab25a6275d8af4e336e4cb5fa850d447884b84c335a187a338c89df99ba
   languageName: node
   linkType: hard
 
@@ -2756,16 +2756,16 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.4"
     "@emotion/styled": "npm:11.11.5"
-    "@mui/icons-material": "npm:5.15.16"
+    "@mui/icons-material": "npm:5.15.17"
     "@mui/joy": "npm:5.0.0-beta.36"
     "@mui/material": "npm:@mui/joy@latest"
     "@next/bundle-analyzer": "npm:14.2.3"
-    "@reduxjs/toolkit": "npm:2.2.3"
+    "@reduxjs/toolkit": "npm:2.2.4"
     "@tanem/react-nprogress": "npm:5.0.51"
     "@types/eslint": "npm:8.56.10"
     "@types/events": "npm:3.0.3"
-    "@types/node": "npm:20.12.8"
-    "@types/react": "npm:18.3.1"
+    "@types/node": "npm:20.12.11"
+    "@types/react": "npm:18.3.2"
     "@types/react-redux": "npm:7.1.33"
     "@typescript-eslint/eslint-plugin": "npm:7.8.0"
     "@typescript-eslint/parser": "npm:7.8.0"
@@ -2788,9 +2788,9 @@ __metadata:
     react-redux: "npm:9.1.2"
     remeda: "npm:1.61.0"
     rooks: "npm:7.14.1"
-    sass: "npm:1.76.0"
-    tesseract.js: "npm:5.0.5"
-    type-fest: "npm:4.18.1"
+    sass: "npm:1.77.1"
+    tesseract.js: "npm:5.1.0"
+    type-fest: "npm:4.18.2"
     typescript: "npm:5.4.5"
   languageName: unknown
   linkType: soft
@@ -4456,7 +4456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reselect@npm:^5.0.1":
+"reselect@npm:^5.1.0":
   version: 5.1.0
   resolution: "reselect@npm:5.1.0"
   checksum: 10c0/b0ed789f4f6f10dfbd23741823726793384932969aa7ce8f584c882ad87620a02b09b5d1146cd2ea6eaa0953b3fd9f7df22f113893af73f35f28432a8a4294de
@@ -4597,16 +4597,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.76.0":
-  version: 1.76.0
-  resolution: "sass@npm:1.76.0"
+"sass@npm:1.77.1":
+  version: 1.77.1
+  resolution: "sass@npm:1.77.1"
   dependencies:
     chokidar: "npm:>=3.0.0 <4.0.0"
     immutable: "npm:^4.0.0"
     source-map-js: "npm:>=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 10c0/976baf2c378e104f8d4ffca5375c8aa6f3d24f59d5c0a5db8d68a51f89edce45dedc25cfcd304b309fc8568d146de9e2c6cd189395e97bb2840d39feb13932ff
+  checksum: 10c0/edcfc7d038234b1198c3ddcac5963fcd1e17a9c1ee0f9bd09784ab5353b60ff50b189b4c9154b34f5da9ca0eaab8b189fd3e83a4b43a494151ad4735f8e5f364
   languageName: node
   linkType: hard
 
@@ -4973,16 +4973,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tesseract.js-core@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "tesseract.js-core@npm:5.0.0"
-  checksum: 10c0/b5c81c1544e5a0616010659b762c6932a04cdbd51221f210e8b57c1fb648c5a092ebc1c4ffb3e3ede930962cc99e21deb1f18854fd4b94c836c6b6660483e65a
+"tesseract.js-core@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "tesseract.js-core@npm:5.1.0"
+  checksum: 10c0/f8ea4382d11bfd3a8896803d75673aed787b701e97368c7c67133676c95910cd29e1882669c8141879da871e4f091d5c100f305bbfd3e42b0431cff591b14547
   languageName: node
   linkType: hard
 
-"tesseract.js@npm:5.0.5":
-  version: 5.0.5
-  resolution: "tesseract.js@npm:5.0.5"
+"tesseract.js@npm:5.1.0":
+  version: 5.1.0
+  resolution: "tesseract.js@npm:5.1.0"
   dependencies:
     bmp-js: "npm:^0.1.0"
     idb-keyval: "npm:^6.2.0"
@@ -4991,10 +4991,10 @@ __metadata:
     node-fetch: "npm:^2.6.9"
     opencollective-postinstall: "npm:^2.0.3"
     regenerator-runtime: "npm:^0.13.3"
-    tesseract.js-core: "npm:^5.0.0"
+    tesseract.js-core: "npm:^5.1.0"
     wasm-feature-detect: "npm:^1.2.11"
     zlibjs: "npm:^0.3.1"
-  checksum: 10c0/e4c84973e6ac3487bea0a4ff2db1df77080d664fbcf22406c161f873b1bd0be6376acf9bf6d0a9978e82766c6dfb6d813dc153dbca79d945f09f60ccb95b7b6a
+  checksum: 10c0/97a109057bd9ddf0fc6574e863cd68690df421b07974b2f8e2846fbea217c752b4dbe7b8cca0e6c4dbe9a61d94529d67f57715406c20d8651286f4243813e61e
   languageName: node
   linkType: hard
 
@@ -5088,10 +5088,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.18.1":
-  version: 4.18.1
-  resolution: "type-fest@npm:4.18.1"
-  checksum: 10c0/f81c82548a1f8c107fb286661c4d0caf5ed9c9842050dc5d417326a6208ddc67e04fa30faa9f948308a7eb164497f138fe5035e3f305c87a3ba8e7e0ce2e38c6
+"type-fest@npm:4.18.2":
+  version: 4.18.2
+  resolution: "type-fest@npm:4.18.2"
+  checksum: 10c0/5e669128bf7cbc9f9cea4e4862c974517a1d9f77652589c2ac0908a8be5d852d4e52593ed14f4d8a44a604fb5e8a8ec1b658e461acd8bb7592f5e5265a04cbab
   languageName: node
   linkType: hard
 
