@@ -14,6 +14,14 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Tier> = {
+	UnfinishedReverie: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['UnfinishedReverie'],
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
+	},
 	SongOfDaysPast: {
 		key: 'Traveler',
 		role: 'DPS',
