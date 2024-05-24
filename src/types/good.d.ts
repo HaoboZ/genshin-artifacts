@@ -87,6 +87,7 @@ export type ArtifactSetKey =
 	| 'EchoesOfAnOffering' //Echoes of an Offering
 	| 'EmblemOfSeveredFate' //Emblem of Severed Fate
 	| 'FlowerOfParadiseLost' //Flower of Paradise Lost
+	| 'FragmentOfHarmonicWhimsy' //Fragment of Harmonic Whimsy
 	| 'Gambler' //Gambler
 	| 'GildedDreams' //Gilded Dreams
 	| 'GladiatorsFinale' //Gladiator's Finale
@@ -119,6 +120,7 @@ export type ArtifactSetKey =
 	| 'Thundersoother' //Thundersoother
 	| 'TinyMiracle' //Tiny Miracle
 	| 'TravelingDoctor' //Traveling Doctor
+	| 'UnfinishedReverie' //Unfinished Reverie
 	| 'VermillionHereafter' //Vermillion Hereafter
 	| 'ViridescentVenerer' //Viridescent Venerer
 	| 'VourukashasGlow' //Vourukasha's Glow
@@ -130,6 +132,7 @@ export type CharacterKey =
 	| 'Aloy' //Aloy
 	| 'Amber' //Amber
 	| 'AratakiItto' //Arataki Itto
+	| 'Arlecchino' //Arlecchino
 	| 'Baizhu' //Baizhu
 	| 'Barbara' //Barbara
 	| 'Beidou' //Beidou
@@ -233,6 +236,7 @@ export type WeaponKey =
 	| 'CoolSteel' //Cool Steel
 	| 'CranesEchoingCall' //Crane's Echoing Call
 	| 'CrescentPike' //Crescent Pike
+	| 'CrimsonMoonsSemblance' //Crimson Moon's Semblance
 	| 'DarkIronSword' //Dark Iron Sword
 	| 'Deathmatch' //Deathmatch
 	| 'DebateClub' //Debate Club

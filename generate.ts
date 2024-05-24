@@ -11,6 +11,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Aloy_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/75/Amber_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Arlecchino_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Barbara_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png',
@@ -317,6 +318,16 @@ const artifactImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Item_Faithful_Hourglass.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Item_Magnanimous_Ink_Bottle.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Item_Compassionate_Ladies%27_Hat.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Harmonious_Symphony_Prelude.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Item_Ancient_Sea%27s_Nocturnal_Musing.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Item_The_Grand_Jape_of_the_Turning_of_Fate.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Ichor_Shower_Rhapsody.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Whimsical_Dance_of_the_Withered.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Item_Dark_Fruit_of_Bright_Flowers.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Item_Faded_Emerald_Tail.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png',
 ];
 const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png',
@@ -500,6 +511,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

@@ -84,6 +84,15 @@
 			"element": "Geo",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png"
 		},
+		"Arlecchino": {
+			"key": "Arlecchino",
+			"link": "Arlecchino",
+			"name": "Arlecchino",
+			"rarity": 5,
+			"weaponType": "Polearm",
+			"element": "Pyro",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Arlecchino_Icon.png"
+		},
 		"Baizhu": {
 			"key": "Baizhu",
 			"link": "Baizhu",
@@ -934,6 +943,19 @@
 			"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Item_Secret-Keeper%27s_Magic_Bottle.png",
 			"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Amethyst_Crown.png"
 		},
+		"FragmentOfHarmonicWhimsy": {
+			"key": "FragmentOfHarmonicWhimsy",
+			"name": "Fragment of Harmonic Whimsy",
+			"effect2Pc": "ATK +18%.",
+			"effect4Pc": "When the value of a Bond of Life increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.",
+			"rarity": 5,
+			"order": -1,
+			"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Harmonious_Symphony_Prelude.png",
+			"plume": "https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Item_Ancient_Sea%27s_Nocturnal_Musing.png",
+			"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Item_The_Grand_Jape_of_the_Turning_of_Fate.png",
+			"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Ichor_Shower_Rhapsody.png",
+			"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Whimsical_Dance_of_the_Withered.png"
+		},
 		"Gambler": {
 			"key": "Gambler",
 			"name": "Gambler",
@@ -1358,6 +1380,19 @@
 			"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Traveling_Doctor%27s_Medicine_Pot.png",
 			"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Traveling_Doctor%27s_Handkerchief.png"
 		},
+		"UnfinishedReverie": {
+			"key": "UnfinishedReverie",
+			"name": "Unfinished Reverie",
+			"effect2Pc": "ATK +18%.",
+			"effect4Pc": "After leaving combat for 3s, DMG dealt increased by 50%. In combat, if no Burning opponents are nearby for more than 6s, this DMG Bonus will decrease by 10% per second until it reaches 0%. When a Burning opponent exists, it will increase by 10% instead until it reaches 50%. This effect still triggers if the equipping character is off-field.",
+			"rarity": 5,
+			"order": -1,
+			"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Item_Dark_Fruit_of_Bright_Flowers.png",
+			"plume": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Item_Faded_Emerald_Tail.png",
+			"sands": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png",
+			"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png",
+			"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png"
+		},
 		"VermillionHereafter": {
 			"key": "VermillionHereafter",
 			"name": "Vermillion Hereafter",
@@ -1583,6 +1618,13 @@
 			"rarity": 4,
 			"weaponType": "Polearm",
 			"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png"
+		},
+		"CrimsonMoonsSemblance": {
+			"key": "CrimsonMoonsSemblance",
+			"name": "Crimson Moon's Semblance",
+			"rarity": 5,
+			"weaponType": "Polearm",
+			"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png"
 		},
 		"DarkIronSword": {
 			"key": "DarkIronSword",

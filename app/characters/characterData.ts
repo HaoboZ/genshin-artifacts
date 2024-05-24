@@ -5,7 +5,7 @@ import type { CharacterKey } from '@/src/types/good';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
 
 // TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 4/19/23
+// 5/24/23
 // Sorted https://genshinlab.com/tier-list
 export const charactersTier: Record<CharacterKey, Tier> = {
 	Traveler: {
@@ -274,6 +274,22 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		],
 		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
+	},
+	Arlecchino: {
+		key: 'Arlecchino',
+		role: 'DPS',
+		weapon: [
+			'CrimsonMoonsSemblance',
+			['PrimordialJadeWingedSpear', 'StaffOfTheScarletSands'],
+			['StaffOfHoma', 'CalamityQueller'],
+			'VortexVanquisher',
+			'Deathmatch',
+			'WhiteTassel',
+			'BalladOfTheFjords',
+		],
+		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale'],
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
 	},
 	// Dendro
 	Collei: {
