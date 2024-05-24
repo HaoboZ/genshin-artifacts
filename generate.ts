@@ -516,6 +516,8 @@ const weaponImages = [
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
 	// 5
+	UnfinishedReverie: 20,
+	FragmentOfHarmonicWhimsy: 20,
 	NighttimeWhispersInTheEchoingWoods: 19,
 	SongOfDaysPast: 19,
 	GoldenTroupe: 18,
