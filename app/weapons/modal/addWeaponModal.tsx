@@ -1,3 +1,4 @@
+import { weaponsInfo } from '@/api/weapons';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -13,8 +14,7 @@ import {
 } from '@mui/joy';
 import { nanoid } from 'nanoid';
 import { Fragment, useState } from 'react';
-import { weaponsInfo } from './weaponData';
-import WeaponImage from './weaponImage';
+import WeaponImage from '../weaponImage';
 
 export default function AddWeaponModal() {
 	const dispatch = useAppDispatch();

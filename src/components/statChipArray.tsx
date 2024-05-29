@@ -1,4 +1,4 @@
-import { statName } from '@/app/artifacts/artifactData';
+import { statName } from '@/api/stats';
 import { Breadcrumbs, Chip, Stack, Typography } from '@mui/joy';
 import makeArray from '../helpers/makeArray';
 

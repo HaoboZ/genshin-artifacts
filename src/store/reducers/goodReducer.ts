@@ -2,7 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { differenceWith } from 'remeda';
 import pget from '../../helpers/pget';
-import type { Tier } from '../../types/data';
+import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
@@ -45,12 +45,27 @@ const goodSlice = createSlice({
 						level: 90,
 						constellation: 0,
 						ascension: 6,
-						talent: { auto: 9, skill: 9, burst: 9 },
+						talent: { auto: 1, skill: 1, burst: 1 },
 					},
 				];
 			} else {
 				state.characters = state.characters.filter(({ key }) => key !== payload);
 			}
+		},
+		editSkills(
+			state,
+			{
+				payload,
+			}: PayloadAction<{
+				character: CharacterKey;
+				talent: { auto?: number; skill?: number; burst?: number };
+			}>,
+		) {
+			state.characters = state.characters.map((character) =>
+				character.key === payload.character
+					? { ...character, talent: { ...character.talent, ...payload.talent } }
+					: character,
+			);
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			state.artifacts = [...state.artifacts, payload];
@@ -80,7 +95,7 @@ const goodSlice = createSlice({
 		},
 		optimizeArtifacts(
 			state,
-			{ payload }: PayloadAction<{ artifact: IArtifact; character: Tier }[]>,
+			{ payload }: PayloadAction<{ artifact: IArtifact; character: Build }[]>,
 		) {
 			state.artifacts = [...state.artifacts];
 			for (const { artifact, character } of payload) {
@@ -136,7 +151,7 @@ const goodSlice = createSlice({
 				};
 			state.weapons[weaponAIndex] = { ...weaponA, location: characterA };
 		},
-		optimizeWeapons(state, { payload }: PayloadAction<{ weapon: IWeapon; character: Tier }[]>) {
+		optimizeWeapons(state, { payload }: PayloadAction<{ weapon: IWeapon; character: Build }[]>) {
 			state.weapons = [...state.weapons];
 			for (const { weapon, character } of payload) {
 				let weaponAIndex = state.weapons.findIndex(({ id }) => id === weapon.id);

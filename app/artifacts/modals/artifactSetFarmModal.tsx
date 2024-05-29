@@ -1,3 +1,6 @@
+import { artifactSetsInfo } from '@/api/artifacts';
+import { builds } from '@/api/builds';
+import { potentialStatRollPercent, statName } from '@/api/stats';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
@@ -7,33 +10,35 @@ import type { StatKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
-import { filter, groupBy, map, mapValues, pipe, sortBy, toPairs, uniq } from 'remeda';
-import { charactersTier } from '../characters/characterData';
-import { artifactSetsInfo, statName } from './artifactData';
-import ArtifactSetImage from './artifactSetImage';
-import useArtifactsTiered from './useArtifactsTiered';
+import { filter, groupBy, map, mapValues, pipe, sortBy, toPairs, unique } from 'remeda';
+import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
 	const artifacts = useAppSelector(pget('good.artifacts'));
-	const artifactsFiltered = useMemo(
-		() => artifacts.filter(({ location }) => location),
-		[artifacts],
-	);
-	const artifactsTiered = useArtifactsTiered(artifactsFiltered);
 
 	const { missingMainStat, lowPotential } = useMemo(() => {
 		const artifactSetPriority = pipe(
-			artifactsTiered,
-			groupBy(({ setKey }) => setKey),
+			artifacts,
+			filter(pget('location') as any),
+			map((artifact) => ({
+				...artifact,
+				mainStatMatch:
+					artifact.slotKey !== 'flower' &&
+					artifact.slotKey !== 'plume' &&
+					makeArray(builds[artifact.location].mainStat[artifact.slotKey])[0] !==
+						artifact.mainStatKey,
+				potential: potentialStatRollPercent(builds[artifact.location], artifact),
+			})),
+			groupBy(pget('setKey')),
 			mapValues((artifacts) => ({
 				mainStats: artifacts
-					.filter(({ tier }) => !tier.mainStat)
-					.reduce((missing, { slotKey, location }) => {
-						if (!missing[slotKey]) missing[slotKey] = [];
-						missing[slotKey].push(makeArray(charactersTier[location].mainStat[slotKey])[0]);
-						return missing;
+					.filter(pget('mainStatMatch'))
+					.reduce((mismatch, { slotKey, location }) => {
+						if (!mismatch[slotKey]) mismatch[slotKey] = [];
+						mismatch[slotKey].push(makeArray(builds[location].mainStat[slotKey])[0]);
+						return mismatch;
 					}, {}),
-				tier: artifacts.map(pget('tier')),
+				potentials: artifacts.map(pget('potential')),
 			})),
 		);
 
@@ -47,18 +52,16 @@ export default function ArtifactSetFarmModal() {
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
-				mapValues(({ tier }) => [
-					tier.length,
-					tier.filter(
-						({ rarity, mainStat, potential }) => !rarity || !mainStat || potential < 0.3,
-					).length,
+				mapValues(({ potentials }) => [
+					potentials.length,
+					potentials.filter((potential) => potential < 0.3).length,
 				]),
 				toPairs,
 				filter(([, [, count]]) => Boolean(count)),
 				sortBy(([, [, count]]) => -count),
 			),
 		};
-	}, [artifactsTiered]);
+	}, [artifacts]);
 
 	return (
 		<ModalWrapper>
@@ -77,7 +80,7 @@ export default function ArtifactSetFarmModal() {
 												{Object.entries(mainStat).map(([slot, stats]) => (
 													<Typography key={slot}>
 														{capitalCase(slot)}:{' '}
-														{uniq(stats.flat())
+														{unique(stats.flat())
 															.map((stat) => statName[stat])
 															.join(', ')}
 													</Typography>

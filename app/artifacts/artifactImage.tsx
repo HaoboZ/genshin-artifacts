@@ -1,8 +1,8 @@
+import { artifactSetsInfo, artifactSlotImages } from '@/api/artifacts';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import type { BoxProps } from '@mui/joy';
 import { Box, Tooltip, Typography } from '@mui/joy';
 import Image from 'next/image';
-import { artifactSetsInfo, artifactSlotImages } from './artifactData';
 
 export default function ArtifactImage({
 	artifact,

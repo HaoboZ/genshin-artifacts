@@ -1,8 +1,11 @@
+import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
+import { builds } from '@/api/builds';
+import { potentialStatRollPercent, weightedStatRollPercent } from '@/api/stats';
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import {
@@ -30,12 +33,9 @@ import {
 } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import { useMemo, useState } from 'react';
-import { filter, pipe, sortBy } from 'remeda';
-import ArtifactCard from '../artifactCard';
-import { artifactSetsInfo, artifactSlotOrder } from '../artifactData';
-import ArtifactModal from '../artifactModal';
-import OptimalArtifactModal from '../optimalArtifactModal';
-import useArtifactsTiered from '../useArtifactsTiered';
+import { filter, map, pipe, sortBy } from 'remeda';
+import ArtifactStatImage from '../artifactStatImage';
+import ArtifactModal from './artifactModal';
 
 export default function ArtifactList({
 	artifactSet,
@@ -44,14 +44,6 @@ export default function ArtifactList({
 	artifactSet: ArtifactSetKey;
 	slot: SlotKey;
 }) {
-	const artifacts = useAppSelector(pget('good.artifacts'));
-	const filteredArtifacts = useMemo(
-		() =>
-			artifacts.filter(
-				({ setKey, slotKey }) => setKey === artifactSet && (!slot || slot === slotKey),
-			),
-		[artifacts, artifactSet, slot],
-	);
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
@@ -60,11 +52,16 @@ export default function ArtifactList({
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
 	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
 
-	const artifactsTiered = useArtifactsTiered(filteredArtifacts);
+	const artifacts = useArtifacts({ artifactSet, slot });
 	const artifactsSorted = useMemo(
 		() =>
 			pipe(
-				artifactsTiered,
+				artifacts,
+				map((artifact) => ({
+					...artifact,
+					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
+					potential: potentialStatRollPercent(builds[artifact.location], artifact),
+				})),
 				filter(
 					(artifact) =>
 						(filtered.equipped
@@ -76,14 +73,12 @@ export default function ArtifactList({
 					(artifact) =>
 						(pget(
 							artifact,
-							{ potential: 'tier.potential', stats: 'tier.subStat', level: 'level' }[
-								sortType
-							],
+							{ potential: 'potential', stats: 'statRollPercent', level: 'level' }[sortType],
 						) as number) * (sortDir ? 1 : -1),
 					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
 				),
 			),
-		[artifactsTiered, sortDir, sortType, filtered],
+		[artifacts, sortDir, sortType, filtered],
 	);
 
 	return (
@@ -101,7 +96,7 @@ export default function ArtifactList({
 							setMarked([]);
 						}}
 					/>
-					{marked.length > 0 ? (
+					{marked.length > 0 && (
 						<Button
 							sx={{ ml: 1 }}
 							onClick={() => {
@@ -110,12 +105,6 @@ export default function ArtifactList({
 								setMarked([]);
 							}}>
 							Delete
-						</Button>
-					) : (
-						<Button
-							sx={{ ml: 1 }}
-							onClick={() => showModal(OptimalArtifactModal, { props: { artifactSet } })}>
-							Optimize
 						</Button>
 					)}
 				</FormControl>
@@ -166,28 +155,31 @@ export default function ArtifactList({
 			<Typography>
 				Great:{' '}
 				{
-					artifactsTiered.filter(
-						({ location, tier }) =>
-							location && tier.mainStat && tier.rarity && tier.subStat > 0.6,
+					artifactsSorted.filter(
+						({ location, statRollPercent }) => location && statRollPercent > 0.6,
 					).length
 				}{' '}
 				/ Good:{' '}
-				{artifactsTiered.filter(({ location, tier }) => location && tier.mainStat).length}
+				{
+					artifactsSorted.filter(
+						({ location, statRollPercent }) => location && statRollPercent,
+					).length
+				}
 			</Typography>
 			<Grid container spacing={1}>
-				{artifactsSorted.map(({ tier, ...artifact }, index) => {
+				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }, index) => {
 					const isMarked = marked.indexOf(artifact) !== -1;
 
 					return (
 						<Grid key={index} xs={6} sm={4} md={3}>
-							<ArtifactCard
+							<ArtifactStatImage
 								artifact={artifact}
 								sx={{
 									':hover': { cursor: 'pointer' },
 									'borderColor': () => {
 										if (isMarked) return 'red';
-										if (artifact.location && tier.mainStat) {
-											if (tier.rarity && tier.subStat > 0.6) return 'green';
+										if (artifact.location) {
+											if (statRollPercent > 0.6) return 'green';
 											return 'blue';
 										}
 									},
@@ -205,15 +197,13 @@ export default function ArtifactList({
 								}}>
 								<Grid container xs={12} spacing={0}>
 									<Grid xs={6}>
-										<PercentBar p={tier.mainStat && tier.subStat}>Stats: %p</PercentBar>
+										<PercentBar p={statRollPercent}>Stats: %p</PercentBar>
 									</Grid>
 									<Grid xs={6}>
-										<PercentBar p={tier.mainStat && tier.potential}>
-											Potential: %p
-										</PercentBar>
+										<PercentBar p={potential}>Potential: %p</PercentBar>
 									</Grid>
 								</Grid>
-							</ArtifactCard>
+							</ArtifactStatImage>
 						</Grid>
 					);
 				})}

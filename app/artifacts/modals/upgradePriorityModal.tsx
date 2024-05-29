@@ -1,3 +1,5 @@
+import { builds } from '@/api/builds';
+import { potentialStatRollPercent } from '@/api/stats';
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
@@ -13,28 +15,31 @@ import {
 	Typography,
 } from '@mui/joy';
 import { useMemo } from 'react';
-import { filter, pipe, sortBy } from 'remeda';
-import ArtifactCard from './artifactCard';
-import EditArtifactModal from './artifactForm/editArtifactModal';
-import useArtifactsTiered from './useArtifactsTiered';
+import { filter, map, pipe, sortBy } from 'remeda';
+import EditArtifactModal from '../artifactForm/editArtifactModal';
+import ArtifactStatImage from '../artifactStatImage';
+import getArtifactSetBuild from '../getArtifactSetBuild';
 
 export default function UpgradePriorityModal() {
 	const { showModal } = useModal();
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	const artifactsFiltered = useMemo(
-		() => artifacts.filter(({ level, rarity }) => level < rarity * 4),
-		[artifacts],
-	);
-	const artifactsTiered = useArtifactsTiered(artifactsFiltered);
-	const artifactsSorted = useMemo(
 		() =>
 			pipe(
-				artifactsTiered,
-				filter(({ tier }) => tier.potential > 0.4),
-				sortBy(({ tier }) => -tier.potential),
+				artifacts,
+				filter(({ level, rarity }) => level < rarity * 4),
+				map((artifact) => ({
+					...artifact,
+					potential: potentialStatRollPercent(
+						getArtifactSetBuild(Object.values(builds), artifact.setKey),
+						artifact,
+					),
+				})),
+				filter(({ potential }) => potential > 0.4),
+				sortBy(({ potential }) => -potential),
 			),
-		[artifactsTiered],
+		[artifacts],
 	);
 
 	return (
@@ -44,10 +49,10 @@ export default function UpgradePriorityModal() {
 				<ModalClose variant='outlined' />
 				<DialogContent>
 					<List>
-						{artifactsSorted.map((artifact, i) => (
+						{artifactsFiltered.map((artifact, i) => (
 							<ListItem key={i}>
 								<ListItemContent>
-									<ArtifactCard
+									<ArtifactStatImage
 										artifact={artifact}
 										sx={{ ':hover': { cursor: 'pointer' } }}
 										onClick={() => {
@@ -55,7 +60,7 @@ export default function UpgradePriorityModal() {
 										}}
 									/>
 								</ListItemContent>
-								<Typography>{Math.round(artifact.tier.potential * 100)}%</Typography>
+								<Typography>{Math.round(artifact.potential * 100)}%</Typography>
 							</ListItem>
 						))}
 					</List>

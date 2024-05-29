@@ -1,12 +1,15 @@
+import { artifactSlotOrder } from '@/api/artifacts';
+import { charactersInfo, useCharacters } from '@/api/characters';
+import { weightedStatRollPercent } from '@/api/stats';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import strArrMatch from '@/src/helpers/strArrMatch';
+import statArrMatch from '@/src/helpers/statArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Tier } from '@/src/types/data';
-import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
+import type { Build } from '@/src/types/data';
+import type { IArtifact } from '@/src/types/good';
 import {
 	Button,
 	DialogActions,
@@ -18,70 +21,48 @@ import {
 	ModalClose,
 	ModalDialog,
 } from '@mui/joy';
-import { useMemo, useState } from 'react';
-import { filter, map, pipe, reverse, sortBy } from 'remeda';
-import { charactersInfo } from '../characters/characterData';
-import CharacterImage from '../characters/characterImage';
-import useCharactersSorted from '../characters/useCharactersSorted';
-import ArtifactCard from './artifactCard';
-import { artifactSetsInfo, artifactSlotOrder } from './artifactData';
-import { getPotentialTier } from './getArtifactTier';
+import { useState } from 'react';
+import { filter, map, pipe, sortBy } from 'remeda';
+import CharacterImage from '../../characters/characterImage';
+import ArtifactStatImage from '../artifactStatImage';
 
-export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
+export default function OptimizeArtifactModal() {
 	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
 	const artifacts = useAppSelector(pget('good.artifacts'));
-	const characters = useCharactersSorted();
-	const ownedCharacters = useAppSelector(pget('good.characters'));
-
-	const charactersFiltered = useMemo(
-		() =>
-			characters.filter(
-				({ key, artifact }) =>
-					ownedCharacters.findIndex((c) => key === c.key) !== -1 &&
-					(artifactSet ? makeArray(artifact[0])[0] === artifactSet : true),
-			),
-		[characters, artifactSet],
-	);
-
-	const artifactsFiltered = useMemo(
-		() =>
-			structuredClone(
-				artifactSet ? artifacts.filter(({ setKey }) => setKey === artifactSet) : artifacts,
-			),
-		[artifactSet, artifacts],
-	);
+	const characters = useCharacters({});
 
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
-		const result: { artifact: IArtifact; character: Tier; selected: boolean }[] = [];
-		for (let i = 0; i < charactersFiltered.length; i++) {
-			const character = charactersFiltered[i];
+		const result: { artifact: IArtifact; character: Build; selected: boolean }[] = [];
+		for (let i = 0; i < characters.length; i++) {
+			const character = characters[i];
+			if (!character.level) continue;
 			for (const slot of artifactSlotOrder) {
 				const tieredArtifacts = pipe(
-					artifactsFiltered,
-					map((artifact) => ({ ...artifact, tier: getPotentialTier(character, artifact) })),
+					artifacts,
 					filter(
 						({ slotKey, setKey, mainStatKey }) =>
 							slotKey === slot &&
 							setKey === makeArray(character.artifact[0])[0] &&
-							strArrMatch(character.mainStat[slotKey], mainStatKey, true),
+							statArrMatch(character.mainStat[slotKey], mainStatKey, true),
 					),
-					sortBy(({ tier }) => +tier.rarity * 0.5 + tier.subStat * 0.5, pget('level')),
-					reverse(),
+					map((artifact) => ({
+						...artifact,
+						statRollPercent: weightedStatRollPercent(character, artifact),
+					})),
+					sortBy(({ statRollPercent }) => -statRollPercent),
 				);
 
 				for (const artifact of tieredArtifacts) {
 					if (artifact.location === character.key) break;
-					const currentLocation = charactersFiltered.findIndex(
-						({ key }) => key === artifact.location,
-					);
+					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
 					if (currentLocation !== -1 && currentLocation < i) continue;
 
-					const currentArtifact = artifactsFiltered.find(
+					const currentArtifact = artifacts.find(
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
-					artifactsFiltered.find(({ id }) => id === artifact.id).location = character.key;
+					artifacts.find(({ id }) => id === artifact.id).location = character.key;
 					result.push({ artifact, character, selected: true });
 					break;
 				}
@@ -93,16 +74,14 @@ export default function OptimalArtifactModal({ artifactSet }: { artifactSet?: Ar
 	return (
 		<ModalWrapper>
 			<ModalDialog minWidth='md'>
-				<DialogTitle>
-					{artifactSet ? artifactSetsInfo[artifactSet].name : 'All Artifacts'}
-				</DialogTitle>
+				<DialogTitle>{'Optimize Artifacts'}</DialogTitle>
 				<ModalClose variant='outlined' />
 				<DialogContent>
 					<List>
 						{giveArtifacts.map(({ artifact, character, selected }, i) => (
 							<ListItem key={i}>
 								<ListItemContent>
-									<ArtifactCard
+									<ArtifactStatImage
 										hideCharacter
 										artifact={artifact}
 										sx={{

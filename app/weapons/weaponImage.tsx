@@ -1,9 +1,8 @@
+import { weaponImages, WeaponType } from '@/api/weapons';
 import type { DWeapon } from '@/src/types/data';
 import type { BoxProps } from '@mui/joy';
 import { Box, Tooltip } from '@mui/joy';
 import Image from 'next/image';
-import type { WeaponType } from './weaponData';
-import { weaponImages } from './weaponData';
 
 export default function WeaponImage({
 	weapon,

@@ -23,9 +23,9 @@ export default function Main() {
 			if (item?.type !== 'application/json') return;
 			const reader = new FileReader();
 			reader.onload = ({ target }) => {
-				const { priority, ...good } = JSON.parse(target.result as string);
+				const { tier, ...good } = JSON.parse(target.result as string);
 				dispatch(goodActions.import(good));
-				if (priority) dispatch(mainActions.setPriority(priority));
+				if (tier) dispatch(mainActions.setPriority(tier));
 				enqueueSnackbar('Imported');
 			};
 			reader.readAsText(item.getAsFile());

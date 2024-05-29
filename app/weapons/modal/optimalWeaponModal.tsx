@@ -1,3 +1,6 @@
+import { builds } from '@/api/builds';
+import { charactersInfo, useCharacters } from '@/api/characters';
+import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
@@ -5,7 +8,7 @@ import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Tier } from '@/src/types/data';
+import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import {
 	Button,
@@ -21,39 +24,27 @@ import {
 } from '@mui/joy';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import { charactersInfo, charactersTier } from '../characters/characterData';
-import CharacterImage from '../characters/characterImage';
-import { weaponsInfo } from './weaponData';
-import WeaponImage from './weaponImage';
+import CharacterImage from '../../characters/characterImage';
+import WeaponImage from '../weaponImage';
 
 export default function OptimalWeaponModal() {
 	const dispatch = useAppDispatch();
-	const ownedCharacters = useAppSelector(pget('good.characters'));
 	const storedWeapons = useAppSelector(pget('good.weapons'));
-	const priority = useAppSelector(pget('main.priority'));
 	const { closeModal } = useModalControls();
 
+	const characters = useCharacters({ owned: true });
+
 	const givenWeapons = useMemo(() => {
-		const priorityIndex = Object.values(priority).flat();
-
-		const characters = pipe(
-			charactersTier,
-			Object.values<Tier>,
-			filter(({ key }) => ownedCharacters.findIndex((c) => key === c.key) !== -1),
-			sortBy(({ key }) => {
-				const index = priorityIndex.indexOf(key);
-				return index === -1 ? Infinity : index;
-			}),
-		);
-
 		const weapons = structuredClone(storedWeapons);
-		const result: { weapon: IWeapon; tier: number; character: Tier }[] = [];
+		const result: { weapon: IWeapon; tier: number; character: Build }[] = [];
 		for (let i = 0; i < characters.length; i++) {
-			const character = characters[i];
-
+			const character = builds[characters[i].key];
 			const tieredWeapons = pipe(
 				weapons,
-				map((weapon) => ({ weapon, tier: arrDeepIndex(character.weapon, weapon.key) })),
+				map((weapon) => ({
+					weapon,
+					tier: arrDeepIndex(builds[character.key].weapon, weapon.key),
+				})),
 				filter(({ tier }) => tier !== -1),
 				sortBy(pget('tier')),
 			);
@@ -71,7 +62,7 @@ export default function OptimalWeaponModal() {
 			}
 		}
 		return result;
-	}, []);
+	}, [storedWeapons, characters]);
 
 	return (
 		<ModalWrapper>

@@ -1,14 +1,13 @@
+import { artifactSetsInfo } from '@/api/artifacts';
 import pget from '@/src/helpers/pget';
 import type { DArtifact } from '@/src/types/data';
-import type { ArtifactSetKey } from '@/src/types/good';
 import { Button, ButtonGroup, Grid, IconButton } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { groupBy, pipe, reverse, sortBy } from 'remeda';
-import { artifactSetsInfo } from './artifactData';
 import ArtifactSetImage from './artifactSetImage';
 
-export default function ArtifactSetFilter({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
+export default function ArtifactSetFilter() {
 	const artifactGroups = useMemo(
 		() =>
 			pipe(
@@ -18,17 +17,13 @@ export default function ArtifactSetFilter({ artifactSet }: { artifactSet?: Artif
 				Object.values<DArtifact[]>,
 				reverse(),
 			),
-		[artifactSet],
+		[],
 	);
 
 	return (
 		<Grid container columnSpacing={1}>
 			<Grid>
-				<Button
-					variant={artifactSet ? 'outlined' : 'solid'}
-					sx={{ height: 50 }}
-					component={Link}
-					href='/artifacts'>
+				<Button sx={{ height: 50 }} component={Link} href='/artifacts'>
 					All
 				</Button>
 			</Grid>

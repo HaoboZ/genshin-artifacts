@@ -1,45 +1,26 @@
 'use client';
+import { useWeapons, WeaponType } from '@/api/weapons';
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
-import pget from '@/src/helpers/pget';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
-import { useAppSelector } from '@/src/store/hooks';
 import { Grid, Input } from '@mui/joy';
-import { useMemo, useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
-import AddWeaponModal from './addWeaponModal';
-import OptimalWeaponModal from './optimalWeaponModal';
+import { useState } from 'react';
+import AddWeaponModal from './modal/addWeaponModal';
+import OptimalWeaponModal from './modal/optimalWeaponModal';
+import WeaponModal from './modal/weaponModal';
 import WeaponCharacterImage from './weaponCharacterImage';
-import type { WeaponType } from './weaponData';
-import { weaponsInfo } from './weaponData';
-import WeaponModal from './weaponModal';
 import WeaponTypeFilter from './weaponTypeFilter';
 
 export default function Weapons() {
-	const weapons = useAppSelector(({ good }) => good.weapons);
 	const { showModal } = useModal();
 
 	const [type, setType] = useParamState<WeaponType>('type', null);
 
 	const [search, setSearch] = useState('');
-	const searchVal = search.toLowerCase();
 
-	const weaponsSorted = useMemo(
-		() =>
-			pipe(
-				weapons,
-				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
-				filter(
-					({ weaponType, name }) =>
-						(!type || weaponType === type) &&
-						(search ? name.toLowerCase().includes(searchVal) : true),
-				),
-				sortBy(({ rarity }) => -rarity, pget('key')),
-			),
-		[weapons, type, search],
-	);
+	const weapons = useWeapons({ type, search });
 
 	return (
 		<PageContainer noSsr>
@@ -56,10 +37,10 @@ export default function Weapons() {
 						<Input
 							placeholder='Search'
 							value={search}
-							onChange={(e) => setSearch(e.target.value)}
+							onChange={({ target }) => setSearch(target.value)}
 						/>
 					</Grid>
-					{weaponsSorted.map((weapon) => (
+					{weapons.map((weapon) => (
 						<Grid key={weapon.key}>
 							<WeaponCharacterImage
 								weapon={weapon}

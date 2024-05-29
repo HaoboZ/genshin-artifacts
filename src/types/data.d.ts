@@ -38,7 +38,7 @@ export interface DWeapon {
 	image: string;
 }
 
-export interface Tier {
+export interface Build {
 	key: CharacterKey;
 	role: string;
 	weapon: (WeaponKey | WeaponKey[])[];

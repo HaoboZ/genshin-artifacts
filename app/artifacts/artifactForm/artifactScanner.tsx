@@ -1,3 +1,5 @@
+import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
+import { statsAverage } from '@/api/stats';
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact, StatKey } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/joy';
@@ -5,7 +7,6 @@ import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { pickBy } from 'remeda';
 import { createWorker, OEM, PSM } from 'tesseract.js';
-import { artifactSetsInfo, artifactSlotOrder, statsAdd } from '../artifactData';
 
 const mainStatsScan: Record<string, StatKey> = {
 	atk: 'atk_',
@@ -120,7 +121,7 @@ export default function ArtifactScanner({
 				const artifactSet = artifactSetsInfo[setKey as any];
 				const level =
 					substats.reduce((sum, substat) => {
-						return sum + substat.value / statsAdd[substat.key][artifactSet?.rarity];
+						return sum + substat.value / statsAverage[substat.key][artifactSet?.rarity];
 					}, 0) > 4
 						? 20
 						: 0;

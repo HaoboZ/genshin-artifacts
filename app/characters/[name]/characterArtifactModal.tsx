@@ -1,12 +1,15 @@
+import { charactersInfo } from '@/api/characters';
+import { weightedStatRollPercent } from '@/api/stats';
+import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import strArrMatch from '@/src/helpers/strArrMatch';
+import statArrMatch from '@/src/helpers/statArrMatch';
 import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Tier } from '@/src/types/data';
+import type { Build } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import {
 	DialogTitle,
@@ -21,17 +24,14 @@ import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
 import ArtifactActions from '../../artifacts/artifactActions';
-import ArtifactCard from '../../artifacts/artifactCard';
-import getArtifactTier from '../../artifacts/getArtifactTier';
-import { charactersInfo } from '../characterData';
-import QuadBars from './quadBars';
+import ArtifactStatImage from '../../artifacts/artifactStatImage';
 
 export default function CharacterArtifactModal({
-	tier,
+	build,
 	slot,
 	artifact,
 }: {
-	tier: Tier;
+	build: Build;
 	slot: SlotKey;
 	artifact: IArtifact;
 }) {
@@ -42,39 +42,48 @@ export default function CharacterArtifactModal({
 	const [checked, setChecked] = useState(false);
 
 	const artifactsSorted = useMemo(() => {
-		const mainStat = tier.mainStat[slot] && makeArray(tier.mainStat[slot]);
+		const mainStat = build.mainStat[slot] && makeArray(build.mainStat[slot]);
 
 		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
-			if (checked) return slotKey === slot && arrDeepIndex(tier.artifact, setKey) === 0;
+			if (checked) return slotKey === slot && arrDeepIndex(build.artifact, setKey) === 0;
 
 			return (
 				slotKey === slot &&
-				arrDeepIndex(tier.artifact, setKey) !== -1 &&
-				strArrMatch(mainStat, mainStatKey)
+				arrDeepIndex(build.artifact, setKey) !== -1 &&
+				statArrMatch(mainStat, mainStatKey)
 			);
 		});
 
 		return pipe(
 			artifactsFiltered,
-			map((artifact) => ({ artifact, ...getArtifactTier(tier, artifact) })),
-			sortBy(pget('rating'), pget('subStat'), pget('artifact.level')),
+			map((artifact) => ({
+				...artifact,
+				statRollPercent: weightedStatRollPercent(build, artifact),
+			})),
+			sortBy(
+				({ setKey }) => -arrDeepIndex(build.artifact, setKey),
+				pget('statRollPercent'),
+				pget('artifact.level'),
+			),
 			reverse(),
 		);
-	}, [artifacts, checked, slot, tier]);
+	}, [artifacts, checked, slot, build]);
 
 	return (
 		<ModalWrapper>
 			<ModalDialog minWidth='md'>
 				<DialogTitle>
-					{capitalCase(slot)} for {charactersInfo[tier.key].name}
+					{capitalCase(slot)} for {charactersInfo[build.key].name}
 				</DialogTitle>
 				<ModalClose variant='outlined' />
 				{artifact && (
 					<Fragment>
 						<ArtifactActions cropBox artifact={artifact} />
-						<ArtifactCard hideCharacter artifact={artifact}>
-							<QuadBars artifactTier={getArtifactTier(tier, artifact)} />
-						</ArtifactCard>
+						<ArtifactStatImage hideCharacter artifact={artifact}>
+							<Grid xs={12}>
+								<PercentBar p={weightedStatRollPercent(build, artifact)} />
+							</Grid>
+						</ArtifactStatImage>
 					</Fragment>
 				)}
 				<FormControl orientation='horizontal'>
@@ -87,19 +96,21 @@ export default function CharacterArtifactModal({
 					/>
 				</FormControl>
 				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
-					{artifactsSorted.map(({ artifact, ...artifactTier }, index) => (
+					{artifactsSorted.map(({ statRollPercent, ...artifact }, index) => (
 						<Grid key={index} xs={6} md={4}>
-							<ArtifactCard
+							<ArtifactStatImage
 								artifact={artifact}
 								sx={{ ':hover': { cursor: 'pointer' } }}
 								onClick={() => {
-									if (!confirm(`Give this artifact to ${charactersInfo[tier.key].name}?`))
+									if (!confirm(`Give this artifact to ${charactersInfo[build.key].name}?`))
 										return;
-									dispatch(goodActions.giveArtifact([tier.key, artifact]));
+									dispatch(goodActions.giveArtifact([build.key, artifact]));
 									closeModal();
 								}}>
-								<QuadBars artifactTier={artifactTier as any} />
-							</ArtifactCard>
+								<Grid xs={12}>
+									<PercentBar p={statRollPercent} />
+								</Grid>
+							</ArtifactStatImage>
 						</Grid>
 					))}
 				</Grid>

@@ -1,3 +1,6 @@
+import { builds } from '@/api/builds';
+import { charactersInfo } from '@/api/characters';
+import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
@@ -5,17 +8,16 @@ import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Tier } from '@/src/types/data';
+import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
+import { DialogTitle, Grid, Link, ModalClose, ModalDialog } from '@mui/joy';
+import { pascalSnakeCase } from 'change-case';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import { charactersInfo, charactersTier } from '../characters/characterData';
-import CharacterImage from '../characters/characterImage';
+import CharacterImage from '../../characters/characterImage';
+import WeaponCharacterImage from '../weaponCharacterImage';
+import WeaponImage from '../weaponImage';
 import WeaponActions from './weaponActions';
-import WeaponCharacterImage from './weaponCharacterImage';
-import { weaponsInfo } from './weaponData';
-import WeaponImage from './weaponImage';
 
 export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 	const dispatch = useAppDispatch();
@@ -27,22 +29,22 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 		const priorityIndex = Object.values(priority).flat();
 
 		return pipe(
-			charactersTier,
-			Object.values<Tier>,
+			builds,
+			Object.values<Build>,
 			filter(({ key }) => charactersInfo[key].weaponType === weaponsInfo[weapon.key].weaponType),
-			map((tier) => {
-				const oldWeapon = weapons.find(({ location }) => location === tier.key);
+			map((build) => {
+				const oldWeapon = weapons.find(({ location }) => location === build.key);
 
 				return {
-					tier,
-					tierIndex: arrDeepIndex(tier.weapon, weapon.key),
+					build,
+					buildIndex: arrDeepIndex(build.weapon, weapon.key),
 					oldWeapon,
-					oldTierIndex: oldWeapon && arrDeepIndex(tier.weapon, oldWeapon.key),
+					oldTierIndex: oldWeapon && arrDeepIndex(build.weapon, oldWeapon.key),
 				};
 			}),
-			filter(({ tierIndex }) => tierIndex !== -1),
-			sortBy(({ tier }) => {
-				const index = priorityIndex.indexOf(tier.key);
+			filter(({ buildIndex }) => buildIndex !== -1),
+			sortBy(({ build }) => {
+				const index = priorityIndex.indexOf(build.key);
 				return index === -1 ? Infinity : index;
 			}),
 		);
@@ -51,24 +53,32 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 	return (
 		<ModalWrapper>
 			<ModalDialog minWidth='md'>
-				<DialogTitle>{weaponsInfo[weapon.key].name}</DialogTitle>
+				<DialogTitle>
+					<Link
+						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(weapon.key)}`}
+						target='_blank'
+						variant='plain'
+						color='neutral'>
+						{weaponsInfo[weapon.key].name}
+					</Link>
+				</DialogTitle>
 				<ModalClose variant='outlined' />
 				<WeaponActions weapon={weapon} />
 				<WeaponCharacterImage weapon={weapon} />
 				<Grid container spacing={1}>
-					{characters.map(({ tier, tierIndex, oldWeapon, oldTierIndex }, index) => (
+					{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
 						<Grid key={index}>
 							<CharacterImage
-								character={charactersInfo[tier.key]}
+								character={charactersInfo[build.key]}
 								sx={{ ':hover': { cursor: 'pointer' } }}
 								onClick={() => {
-									if (weapon.location === tier.key) {
-										alert(`Already equipped on ${charactersInfo[tier.key].name}`);
+									if (weapon.location === build.key) {
+										alert(`Already equipped on ${charactersInfo[build.key].name}`);
 										return;
 									}
-									if (!confirm(`Give this weapon to ${charactersInfo[tier.key].name}?`))
+									if (!confirm(`Give this weapon to ${charactersInfo[build.key].name}?`))
 										return;
-									dispatch(goodActions.giveWeapon([tier.key, weapon]));
+									dispatch(goodActions.giveWeapon([build.key, weapon]));
 									closeModal();
 								}}>
 								{oldWeapon && (
@@ -82,10 +92,10 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 									/>
 								)}
 							</CharacterImage>
-							<PercentBar p={1 - tierIndex / tier.weapon.length}>New %p</PercentBar>
+							<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
 							{oldWeapon && (
 								<PercentBar
-									p={oldTierIndex !== -1 ? 1 - oldTierIndex / tier.weapon.length : 0}>
+									p={oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0}>
 									Current %p
 								</PercentBar>
 							)}

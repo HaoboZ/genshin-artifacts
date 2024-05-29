@@ -1,3 +1,4 @@
+import { artifactSetsInfo } from '@/api/artifacts';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -8,16 +9,15 @@ import { DialogTitle, ModalClose, ModalDialog } from '@mui/joy';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
-import { artifactSetsInfo } from '../artifactData';
-import ArtifactModal from '../artifactModal';
+import ArtifactModal from '../[artifactSet]/artifactModal';
 import ArtifactForm from './index';
 
 export default function AddArtifactModal({
-	setKey,
+	setKey = 'GladiatorsFinale',
 	file,
 	character,
 }: {
-	setKey: ArtifactSetKey;
+	setKey?: ArtifactSetKey;
 	file?: File;
 	character?: DCharacter;
 }) {

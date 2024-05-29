@@ -1,7 +1,8 @@
+import { WeaponType } from '@/api/weapons';
 import { Button, ToggleButtonGroup } from '@mui/joy';
-import type { WeaponType } from './weaponData';
-import { weaponsTypes } from './weaponData';
 import WeaponImage from './weaponImage';
+
+export const weaponsTypes: WeaponType[] = ['Sword', 'Claymore', 'Polearm', 'Catalyst', 'Bow'];
 
 export default function WeaponTypeFilter({
 	weaponType,

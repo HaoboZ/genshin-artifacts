@@ -1,9 +1,9 @@
 import pget from '@/src/helpers/pget';
 import type { ArtifactSetKey } from '@/src/types/good';
-import { pascalCase, pascalSnakeCase } from 'change-case';
+import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
-import { indexBy, pick } from 'remeda';
+import { indexBy, mapValues, pick } from 'remeda';
 
 const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png',
@@ -577,10 +577,8 @@ const artifactOrder = Object.keys(artifactLocation);
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const elements = indexBy(
-		elementsData.map((element) => ({ key: element.name, image: element.images.base64 })),
-		pget('key'),
-	);
+	const elements = mapValues(indexBy(elementsData, pget('name')), pget('images.base64'));
+	const talents = genshindb.talents('names', { matchCategories: true, verboseCategories: true });
 
 	const charactersData = genshindb.characters('names', {
 		matchCategories: true,
@@ -593,13 +591,14 @@ const artifactOrder = Object.keys(artifactLocation);
 				const characterName = character.name.replaceAll(' ', '_');
 				const image = characterImages.find((url) => url.indexOf(characterName) !== -1);
 				if (!image && character.name !== 'Lumine') console.log(characterName);
-
+				const talent = talents.find(({ name }) => name === character.name);
 				return {
 					key: pascalCase(character.name),
-					link: pascalSnakeCase(character.name),
 					...pick(character, ['name', 'rarity']),
 					weaponType: character.weaponText,
 					element: character.elementText,
+					talent: talent?.costs.lvl2[1].name,
+					weekly: talent?.costs.lvl7[3].name,
 					image,
 				};
 			})
@@ -680,10 +679,10 @@ const artifactOrder = Object.keys(artifactLocation);
 	);
 
 	try {
-		writeFileSync(
-			'./public/data.json',
-			JSON.stringify({ elements, characters, artifacts, weapons }, null, '\t'),
-		);
+		writeFileSync('./app/api/elements.json', JSON.stringify(elements, null, '\t'));
+		writeFileSync('./app/api/characters.json', JSON.stringify(characters, null, '\t'));
+		writeFileSync('./app/api/artifacts.json', JSON.stringify(artifacts, null, '\t'));
+		writeFileSync('./app/api/weapons.json', JSON.stringify(weapons, null, '\t'));
 		console.log('Data successfully saved to disk');
 	} catch (error) {
 		console.log('An error has occurred ', error);

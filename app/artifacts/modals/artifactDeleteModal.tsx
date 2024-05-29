@@ -1,3 +1,5 @@
+import { builds } from '@/api/builds';
+import { potentialStatRollPercent } from '@/api/stats';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
 import ModalWrapper from '@/src/providers/modal/dialog';
@@ -17,8 +19,8 @@ import {
 } from '@mui/joy';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import ArtifactCard from './artifactCard';
-import useArtifactsTiered from './useArtifactsTiered';
+import ArtifactStatImage from '../artifactStatImage';
+import getArtifactSetBuild from '../getArtifactSetBuild';
 
 export default function ArtifactDeleteModal() {
 	const { closeModal } = useModalControls();
@@ -36,19 +38,23 @@ export default function ArtifactDeleteModal() {
 		[],
 	);
 
-	const artifactsFiltered = useMemo(
-		() => artifacts.filter(({ lock, location, level }) => lock && !location && !level),
-		[artifacts],
-	);
-	const artifactsTiered = useArtifactsTiered(artifactsFiltered);
 	const [deleteArtifacts, setDeleteArtifacts] = useState(() =>
 		pipe(
-			artifactsTiered,
+			artifacts,
+			filter(({ lock, location, level }) => lock && !location && !level),
+			map((artifact) => {
+				const build = getArtifactSetBuild(Object.values(builds), artifact.setKey);
+				return {
+					...artifact,
+					potential: potentialStatRollPercent(build, artifact),
+				};
+			}),
 			filter(
-				({ tier, setKey, slotKey }) =>
-					tier.potential < 0.4 && artifactCounts[setKey]?.[slotKey] > 1,
+				({ potential, setKey, slotKey }) =>
+					potential < (slotKey === 'flower' || slotKey === 'plume' ? 0.6 : 0.4) &&
+					artifactCounts[setKey]?.[slotKey] > 1,
 			),
-			sortBy(({ tier }) => tier.potential),
+			sortBy(pget('potential')),
 			map((artifact) => ({ artifact, selected: true })),
 		),
 	);
@@ -63,7 +69,7 @@ export default function ArtifactDeleteModal() {
 						{deleteArtifacts.map(({ artifact, selected }, i) => (
 							<ListItem key={i}>
 								<ListItemContent>
-									<ArtifactCard
+									<ArtifactStatImage
 										artifact={artifact}
 										sx={{
 											':hover': { cursor: 'pointer' },
@@ -77,7 +83,7 @@ export default function ArtifactDeleteModal() {
 										}}
 									/>
 								</ListItemContent>
-								<Typography>{Math.round(artifact.tier.potential * 100)}%</Typography>
+								<Typography>{Math.round(artifact.potential * 100)}%</Typography>
 							</ListItem>
 						))}
 					</List>

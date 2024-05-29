@@ -1,3 +1,5 @@
+import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
+import { artifactSlotStats, statName, statsMax, subStats } from '@/api/stats';
 import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
@@ -6,14 +8,6 @@ import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/go
 import { Button, Grid, Option } from '@mui/joy';
 import { useFormikContext } from 'formik';
 import { clamp } from 'remeda';
-import {
-	artifactSetsInfo,
-	artifactSlotInfo,
-	artifactSlotOrder,
-	statName,
-	statsMax,
-	subStats,
-} from '../artifactData';
 import ArtifactImage from '../artifactImage';
 import ArtifactScanner from './artifactScanner';
 
@@ -49,11 +43,11 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 					name='slotKey'
 					label='Type'
 					onChange={(_, value) => {
-						setFieldValue('mainStatKey', artifactSlotInfo[value as any as SlotKey].stats[0]);
+						setFieldValue('mainStatKey', artifactSlotStats[value as any as SlotKey].stats[0]);
 					}}>
 					{artifactSlotOrder.map((key) => (
 						<Option key={key} value={key}>
-							{artifactSlotInfo[key].name}
+							{artifactSlotStats[key].name}
 						</Option>
 					))}
 				</SelectField>
@@ -63,7 +57,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 					name='mainStatKey'
 					label='Main Stat'
 					disabled={values.slotKey === 'flower' || values.slotKey === 'plume'}>
-					{artifactSlotInfo[values.slotKey].stats.map((key) => (
+					{artifactSlotStats[values.slotKey].stats.map((key) => (
 						<Option key={key} value={key}>
 							{statName[key]}
 						</Option>
@@ -135,7 +129,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 							const { key } = values.substats[index];
 							substats[index] = {
 								key,
-								value: clamp(+target.value, { min: 0, max: statsMax[key][values.rarity] }),
+								value: clamp(+target.value, { min: 0, max: statsMax[key] }),
 							};
 							setFieldValue('substats', substats);
 							return false;

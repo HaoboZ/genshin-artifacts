@@ -1,0 +1,810 @@
+{
+	"Traveler": {
+		"key": "Traveler",
+		"name": "Traveler",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "None",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png"
+	},
+	"Albedo": {
+		"key": "Albedo",
+		"name": "Albedo",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Geo",
+		"talent": "Teachings of Ballad",
+		"weekly": "Tusk of Monoceros Caeli",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png"
+	},
+	"Alhaitham": {
+		"key": "Alhaitham",
+		"name": "Alhaitham",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Dendro",
+		"talent": "Teachings of Ingenuity",
+		"weekly": "Mirror of Mushin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Alhaitham_Icon.png"
+	},
+	"Aloy": {
+		"key": "Aloy",
+		"name": "Aloy",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Cryo",
+		"talent": "Teachings of Freedom",
+		"weekly": "Molten Moment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Aloy_Icon.png"
+	},
+	"Amber": {
+		"key": "Amber",
+		"name": "Amber",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Pyro",
+		"talent": "Teachings of Freedom",
+		"weekly": "Dvalin's Sigh",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/75/Amber_Icon.png"
+	},
+	"AratakiItto": {
+		"key": "AratakiItto",
+		"name": "Arataki Itto",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Geo",
+		"talent": "Teachings of Elegance",
+		"weekly": "Ashen Heart",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png"
+	},
+	"Arlecchino": {
+		"key": "Arlecchino",
+		"name": "Arlecchino",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Pyro",
+		"talent": "Teachings of Order",
+		"weekly": "Fading Candle",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Arlecchino_Icon.png"
+	},
+	"Baizhu": {
+		"key": "Baizhu",
+		"name": "Baizhu",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Dendro",
+		"talent": "Teachings of Gold",
+		"weekly": "Worldspan Fern",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png"
+	},
+	"Barbara": {
+		"key": "Barbara",
+		"name": "Barbara",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"talent": "Teachings of Freedom",
+		"weekly": "Ring of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Barbara_Icon.png"
+	},
+	"Beidou": {
+		"key": "Beidou",
+		"name": "Beidou",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Electro",
+		"talent": "Teachings of Gold",
+		"weekly": "Dvalin's Sigh",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png"
+	},
+	"Bennett": {
+		"key": "Bennett",
+		"name": "Bennett",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Pyro",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dvalin's Plume",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png"
+	},
+	"Candace": {
+		"key": "Candace",
+		"name": "Candace",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Hydro",
+		"talent": "Teachings of Admonition",
+		"weekly": "Tears of the Calamitous God",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png"
+	},
+	"Charlotte": {
+		"key": "Charlotte",
+		"name": "Charlotte",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Cryo",
+		"talent": "Teachings of Justice",
+		"weekly": "Lightless Silk String",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png"
+	},
+	"Chevreuse": {
+		"key": "Chevreuse",
+		"name": "Chevreuse",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Pyro",
+		"talent": "Teachings of Order",
+		"weekly": "Lightless Eye of the Maelstrom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png"
+	},
+	"Chiori": {
+		"key": "Chiori",
+		"name": "Chiori",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Geo",
+		"talent": "Teachings of Light",
+		"weekly": "Lightless Silk String",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png"
+	},
+	"Chongyun": {
+		"key": "Chongyun",
+		"name": "Chongyun",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Cryo",
+		"talent": "Teachings of Diligence",
+		"weekly": "Dvalin's Sigh",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png"
+	},
+	"Collei": {
+		"key": "Collei",
+		"name": "Collei",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Dendro",
+		"talent": "Teachings of Praxis",
+		"weekly": "Tears of the Calamitous God",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png"
+	},
+	"Cyno": {
+		"key": "Cyno",
+		"name": "Cyno",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Electro",
+		"talent": "Teachings of Admonition",
+		"weekly": "Mudra of the Malefic General",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png"
+	},
+	"Dehya": {
+		"key": "Dehya",
+		"name": "Dehya",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Pyro",
+		"talent": "Teachings of Praxis",
+		"weekly": "Puppet Strings",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Dehya_Icon.png"
+	},
+	"Diluc": {
+		"key": "Diluc",
+		"name": "Diluc",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Pyro",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dvalin's Plume",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Diluc_Icon.png"
+	},
+	"Diona": {
+		"key": "Diona",
+		"name": "Diona",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Cryo",
+		"talent": "Teachings of Freedom",
+		"weekly": "Shard of a Foul Legacy",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Diona_Icon.png"
+	},
+	"Dori": {
+		"key": "Dori",
+		"name": "Dori",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Electro",
+		"talent": "Teachings of Ingenuity",
+		"weekly": "Bloodjade Branch",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png"
+	},
+	"Eula": {
+		"key": "Eula",
+		"name": "Eula",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Cryo",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dragon Lord's Crown",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Eula_Icon.png"
+	},
+	"Faruzan": {
+		"key": "Faruzan",
+		"name": "Faruzan",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Anemo",
+		"talent": "Teachings of Admonition",
+		"weekly": "Puppet Strings",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png"
+	},
+	"Fischl": {
+		"key": "Fischl",
+		"name": "Fischl",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Electro",
+		"talent": "Teachings of Ballad",
+		"weekly": "Spirit Locket of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png"
+	},
+	"Freminet": {
+		"key": "Freminet",
+		"name": "Freminet",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Cryo",
+		"talent": "Teachings of Justice",
+		"weekly": "Worldspan Fern",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png"
+	},
+	"Furina": {
+		"key": "Furina",
+		"name": "Furina",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Hydro",
+		"talent": "Teachings of Justice",
+		"weekly": "Lightless Mass",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png"
+	},
+	"Gaming": {
+		"key": "Gaming",
+		"name": "Gaming",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Pyro",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Lightless Mass",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Gaming_Icon.png"
+	},
+	"Ganyu": {
+		"key": "Ganyu",
+		"name": "Ganyu",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Cryo",
+		"talent": "Teachings of Diligence",
+		"weekly": "Shadow of the Warrior",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png"
+	},
+	"Gorou": {
+		"key": "Gorou",
+		"name": "Gorou",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Geo",
+		"talent": "Teachings of Light",
+		"weekly": "Molten Moment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png"
+	},
+	"HuTao": {
+		"key": "HuTao",
+		"name": "Hu Tao",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Pyro",
+		"talent": "Teachings of Diligence",
+		"weekly": "Shard of a Foul Legacy",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png"
+	},
+	"Jean": {
+		"key": "Jean",
+		"name": "Jean",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Anemo",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dvalin's Plume",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png"
+	},
+	"KaedeharaKazuha": {
+		"key": "KaedeharaKazuha",
+		"name": "Kaedehara Kazuha",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Anemo",
+		"talent": "Teachings of Diligence",
+		"weekly": "Gilded Scale",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Kaedehara_Kazuha_Icon.png"
+	},
+	"Kaeya": {
+		"key": "Kaeya",
+		"name": "Kaeya",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"talent": "Teachings of Ballad",
+		"weekly": "Spirit Locket of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kaeya_Icon.png"
+	},
+	"KamisatoAyaka": {
+		"key": "KamisatoAyaka",
+		"name": "Kamisato Ayaka",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"talent": "Teachings of Elegance",
+		"weekly": "Bloodjade Branch",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Kamisato_Ayaka_Icon.png"
+	},
+	"KamisatoAyato": {
+		"key": "KamisatoAyato",
+		"name": "Kamisato Ayato",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Hydro",
+		"talent": "Teachings of Elegance",
+		"weekly": "Mudra of the Malefic General",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Kamisato_Ayato_Icon.png"
+	},
+	"Kaveh": {
+		"key": "Kaveh",
+		"name": "Kaveh",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Dendro",
+		"talent": "Teachings of Ingenuity",
+		"weekly": "Primordial Greenbloom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Kaveh_Icon.png"
+	},
+	"Keqing": {
+		"key": "Keqing",
+		"name": "Keqing",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Electro",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Ring of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png"
+	},
+	"Kirara": {
+		"key": "Kirara",
+		"name": "Kirara",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Dendro",
+		"talent": "Teachings of Transience",
+		"weekly": "Everamber",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png"
+	},
+	"Klee": {
+		"key": "Klee",
+		"name": "Klee",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Pyro",
+		"talent": "Teachings of Freedom",
+		"weekly": "Ring of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png"
+	},
+	"KujouSara": {
+		"key": "KujouSara",
+		"name": "Kujou Sara",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Electro",
+		"talent": "Teachings of Elegance",
+		"weekly": "Ashen Heart",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png"
+	},
+	"KukiShinobu": {
+		"key": "KukiShinobu",
+		"name": "Kuki Shinobu",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Electro",
+		"talent": "Teachings of Elegance",
+		"weekly": "Tears of the Calamitous God",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png"
+	},
+	"Layla": {
+		"key": "Layla",
+		"name": "Layla",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"talent": "Teachings of Ingenuity",
+		"weekly": "Mirror of Mushin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Layla_Icon.png"
+	},
+	"Lisa": {
+		"key": "Lisa",
+		"name": "Lisa",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Electro",
+		"talent": "Teachings of Ballad",
+		"weekly": "Dvalin's Claw",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png"
+	},
+	"Lynette": {
+		"key": "Lynette",
+		"name": "Lynette",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Anemo",
+		"talent": "Teachings of Order",
+		"weekly": "Everamber",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png"
+	},
+	"Lyney": {
+		"key": "Lyney",
+		"name": "Lyney",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Pyro",
+		"talent": "Teachings of Equity",
+		"weekly": "Primordial Greenbloom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png"
+	},
+	"Mika": {
+		"key": "Mika",
+		"name": "Mika",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Cryo",
+		"talent": "Teachings of Ballad",
+		"weekly": "Mirror of Mushin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png"
+	},
+	"Mona": {
+		"key": "Mona",
+		"name": "Mona",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"talent": "Teachings of Resistance",
+		"weekly": "Ring of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png"
+	},
+	"Nahida": {
+		"key": "Nahida",
+		"name": "Nahida",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Dendro",
+		"talent": "Teachings of Ingenuity",
+		"weekly": "Puppet Strings",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png"
+	},
+	"Navia": {
+		"key": "Navia",
+		"name": "Navia",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Geo",
+		"talent": "Teachings of Equity",
+		"weekly": "Lightless Silk String",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png"
+	},
+	"Neuvillette": {
+		"key": "Neuvillette",
+		"name": "Neuvillette",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"talent": "Teachings of Equity",
+		"weekly": "Everamber",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png"
+	},
+	"Nilou": {
+		"key": "Nilou",
+		"name": "Nilou",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Hydro",
+		"talent": "Teachings of Praxis",
+		"weekly": "Tears of the Calamitous God",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png"
+	},
+	"Ningguang": {
+		"key": "Ningguang",
+		"name": "Ningguang",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Geo",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Spirit Locket of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png"
+	},
+	"Noelle": {
+		"key": "Noelle",
+		"name": "Noelle",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Geo",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dvalin's Claw",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png"
+	},
+	"Qiqi": {
+		"key": "Qiqi",
+		"name": "Qiqi",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Tail of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Qiqi_Icon.png"
+	},
+	"RaidenShogun": {
+		"key": "RaidenShogun",
+		"name": "Raiden Shogun",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Electro",
+		"talent": "Teachings of Light",
+		"weekly": "Molten Moment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Raiden_Shogun_Icon.png"
+	},
+	"Razor": {
+		"key": "Razor",
+		"name": "Razor",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Electro",
+		"talent": "Teachings of Resistance",
+		"weekly": "Dvalin's Claw",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Razor_Icon.png"
+	},
+	"Rosaria": {
+		"key": "Rosaria",
+		"name": "Rosaria",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Cryo",
+		"talent": "Teachings of Ballad",
+		"weekly": "Shadow of the Warrior",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Rosaria_Icon.png"
+	},
+	"SangonomiyaKokomi": {
+		"key": "SangonomiyaKokomi",
+		"name": "Sangonomiya Kokomi",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"talent": "Teachings of Transience",
+		"weekly": "Hellfire Butterfly",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Sangonomiya_Kokomi_Icon.png"
+	},
+	"Sayu": {
+		"key": "Sayu",
+		"name": "Sayu",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Anemo",
+		"talent": "Teachings of Light",
+		"weekly": "Gilded Scale",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png"
+	},
+	"Shenhe": {
+		"key": "Shenhe",
+		"name": "Shenhe",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Cryo",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Hellfire Butterfly",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png"
+	},
+	"ShikanoinHeizou": {
+		"key": "ShikanoinHeizou",
+		"name": "Shikanoin Heizou",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talent": "Teachings of Transience",
+		"weekly": "The Meaning of Aeons",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png"
+	},
+	"Sucrose": {
+		"key": "Sucrose",
+		"name": "Sucrose",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talent": "Teachings of Freedom",
+		"weekly": "Spirit Locket of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png"
+	},
+	"Tartaglia": {
+		"key": "Tartaglia",
+		"name": "Tartaglia",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Hydro",
+		"talent": "Teachings of Freedom",
+		"weekly": "Shard of a Foul Legacy",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Tartaglia_Icon.png"
+	},
+	"Thoma": {
+		"key": "Thoma",
+		"name": "Thoma",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Pyro",
+		"talent": "Teachings of Transience",
+		"weekly": "Hellfire Butterfly",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Thoma_Icon.png"
+	},
+	"Tighnari": {
+		"key": "Tighnari",
+		"name": "Tighnari",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Dendro",
+		"talent": "Teachings of Admonition",
+		"weekly": "The Meaning of Aeons",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Tighnari_Icon.png"
+	},
+	"Venti": {
+		"key": "Venti",
+		"name": "Venti",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Anemo",
+		"talent": "Teachings of Ballad",
+		"weekly": "Tail of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Venti_Icon.png"
+	},
+	"Wanderer": {
+		"key": "Wanderer",
+		"name": "Wanderer",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talent": "Teachings of Praxis",
+		"weekly": "Daka's Bell",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png"
+	},
+	"Wriothesley": {
+		"key": "Wriothesley",
+		"name": "Wriothesley",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Cryo",
+		"talent": "Teachings of Order",
+		"weekly": "Primordial Greenbloom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png"
+	},
+	"Xiangling": {
+		"key": "Xiangling",
+		"name": "Xiangling",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Pyro",
+		"talent": "Teachings of Diligence",
+		"weekly": "Dvalin's Claw",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png"
+	},
+	"Xianyun": {
+		"key": "Xianyun",
+		"name": "Xianyun",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talent": "Teachings of Gold",
+		"weekly": "Lightless Eye of the Maelstrom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png"
+	},
+	"Xiao": {
+		"key": "Xiao",
+		"name": "Xiao",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Anemo",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Shadow of the Warrior",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png"
+	},
+	"Xingqiu": {
+		"key": "Xingqiu",
+		"name": "Xingqiu",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Hydro",
+		"talent": "Teachings of Gold",
+		"weekly": "Tail of Boreas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png"
+	},
+	"Xinyan": {
+		"key": "Xinyan",
+		"name": "Xinyan",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Pyro",
+		"talent": "Teachings of Gold",
+		"weekly": "Tusk of Monoceros Caeli",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png"
+	},
+	"YaeMiko": {
+		"key": "YaeMiko",
+		"name": "Yae Miko",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Electro",
+		"talent": "Teachings of Light",
+		"weekly": "The Meaning of Aeons",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Yae_Miko_Icon.png"
+	},
+	"Yanfei": {
+		"key": "Yanfei",
+		"name": "Yanfei",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Pyro",
+		"talent": "Teachings of Gold",
+		"weekly": "Bloodjade Branch",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Yanfei_Icon.png"
+	},
+	"Yaoyao": {
+		"key": "Yaoyao",
+		"name": "Yaoyao",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Dendro",
+		"talent": "Teachings of Diligence",
+		"weekly": "Daka's Bell",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Yaoyao_Icon.png"
+	},
+	"Yelan": {
+		"key": "Yelan",
+		"name": "Yelan",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Hydro",
+		"talent": "Teachings of Prosperity",
+		"weekly": "Gilded Scale",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Yelan_Icon.png"
+	},
+	"Yoimiya": {
+		"key": "Yoimiya",
+		"name": "Yoimiya",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Pyro",
+		"talent": "Teachings of Transience",
+		"weekly": "Dragon Lord's Crown",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png"
+	},
+	"YunJin": {
+		"key": "YunJin",
+		"name": "Yun Jin",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Geo",
+		"talent": "Teachings of Diligence",
+		"weekly": "Ashen Heart",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Yun_Jin_Icon.png"
+	},
+	"Zhongli": {
+		"key": "Zhongli",
+		"name": "Zhongli",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Geo",
+		"talent": "Teachings of Gold",
+		"weekly": "Tusk of Monoceros Caeli",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png"
+	}
+}

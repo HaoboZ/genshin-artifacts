@@ -1,9 +1,9 @@
+import { charactersInfo } from '@/api/characters';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { Button, ButtonGroup } from '@mui/joy';
-import { charactersInfo } from '../characters/characterData';
 import EditArtifactModal from './artifactForm/editArtifactModal';
 
 export default function ArtifactActions({

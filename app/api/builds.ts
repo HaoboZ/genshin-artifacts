@@ -1,13 +1,11 @@
-import data from '@/public/data.json';
-import type { DCharacter, DElement, Tier } from '@/src/types/data';
+import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
-export const charactersInfo: Record<CharacterKey, DCharacter> = data.characters as any;
-
-// TODO: update https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
+// https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
 // 5/24/23
 // Sorted https://genshinlab.com/tier-list
-export const charactersTier: Record<CharacterKey, Tier> = {
+
+export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
 		role: 'DPS',
@@ -1477,5 +1475,3 @@ export const charactersTier: Record<CharacterKey, Tier> = {
 		subStat: ['critRD_', 'def_', 'atk_', 'def', 'atk', 'enerRech_'],
 	},
 };
-
-export const elementsInfo: Record<string, DElement> = data.elements;

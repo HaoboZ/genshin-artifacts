@@ -1,23 +1,23 @@
+import { artifactSetsInfo } from '@/api/artifacts';
+import { weaponsInfo } from '@/api/weapons';
 import PageSection from '@/components/page/section';
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
-import type { Tier } from '@/src/types/data';
+import type { Build } from '@/src/types/data';
 import { Avatar, AvatarGroup, Box, Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
-import { artifactSetsInfo } from '../../artifacts/artifactData';
 import ArtifactSetImage from '../../artifacts/artifactSetImage';
-import { weaponsInfo } from '../../weapons/weaponData';
 import WeaponImage from '../../weapons/weaponImage';
 
-export default function CharacterTier({ tier }: { tier: Tier }) {
-	if (!tier) return null;
+export default function CharacterBuild({ build }: { build: Build }) {
+	if (!build) return null;
 
 	return (
-		<PageSection title='Tier'>
+		<PageSection title='Build'>
 			<Stack spacing={1}>
 				<Stack direction='row' spacing={1} alignItems='center'>
 					<Typography>Weapon</Typography>
-					{tier.weapon.map((weaponTier, index) => (
+					{build.weapon.map((weaponTier, index) => (
 						<Box key={index}>
 							<AvatarGroup sx={{ flexDirection: 'row-reverse' }}>
 								{makeArray(weaponTier)
@@ -33,7 +33,7 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 				</Stack>
 				<Stack direction='row' spacing={1} alignItems='center'>
 					<Typography>Artifacts</Typography>
-					{tier.artifact.map((artifactTier, index) => (
+					{build.artifact.map((artifactTier, index) => (
 						<Box key={index}>
 							<AvatarGroup sx={{ flexDirection: 'row-reverse' }}>
 								{makeArray(artifactTier)
@@ -54,10 +54,10 @@ export default function CharacterTier({ tier }: { tier: Tier }) {
 						</Box>
 					))}
 				</Stack>
-				<StatChipArray mapStats name='Sands' arr={makeArray(tier.mainStat.sands)} />
-				<StatChipArray mapStats name='Goblet' arr={makeArray(tier.mainStat.goblet)} />
-				<StatChipArray mapStats name='Circlet' arr={makeArray(tier.mainStat.circlet)} />
-				<StatChipArray mapStats breadcrumbs name='SubStats' arr={tier.subStat} />
+				<StatChipArray mapStats name='Sands' arr={makeArray(build.mainStat.sands)} />
+				<StatChipArray mapStats name='Goblet' arr={makeArray(build.mainStat.goblet)} />
+				<StatChipArray mapStats name='Circlet' arr={makeArray(build.mainStat.circlet)} />
+				<StatChipArray mapStats breadcrumbs name='SubStats' arr={build.subStat} />
 			</Stack>
 		</PageSection>
 	);

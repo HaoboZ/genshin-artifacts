@@ -1,15 +1,15 @@
+import { charactersInfo } from '@/api/characters';
+import { statName } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/subStatBar';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import { Lock } from '@mui/icons-material';
 import type { CardProps } from '@mui/joy';
 import { Box, Card, Grid } from '@mui/joy';
-import { charactersInfo } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
-import { statName } from './artifactData';
 import ArtifactImage from './artifactImage';
 
-export default function ArtifactCard({
+export default function ArtifactStatImage({
 	artifact,
 	slot,
 	hideCharacter,
@@ -41,7 +41,7 @@ export default function ArtifactCard({
 						<Box>
 							<OverflowTypography>{statName[artifact.mainStatKey]}</OverflowTypography>
 							{artifact.substats.map((substat) => (
-								<SubStatBar key={substat.key} substat={substat} rarity={artifact.rarity} />
+								<SubStatBar key={substat.key} substat={substat} />
 							))}
 						</Box>
 					)}

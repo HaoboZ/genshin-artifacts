@@ -1,12 +1,13 @@
+import { builds } from '@/api/builds';
+import { charactersInfo } from '@/api/characters';
+import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import type { IWeapon } from '@/src/types/good';
 import type { BoxProps } from '@mui/joy';
 import { Box } from '@mui/joy';
 import { useMemo } from 'react';
-import { charactersInfo, charactersTier } from '../characters/characterData';
 import CharacterImage from '../characters/characterImage';
-import { weaponsInfo } from './weaponData';
 import WeaponImage from './weaponImage';
 
 export default function WeaponCharacterImage({
@@ -16,7 +17,7 @@ export default function WeaponCharacterImage({
 	...props
 }: { weapon: IWeapon; size?: number } & BoxProps) {
 	const character = charactersInfo[weapon.location];
-	const characterTier = charactersTier[weapon.location];
+	const characterTier = builds[weapon.location];
 
 	const percent = useMemo(() => {
 		if (!characterTier) return 0;

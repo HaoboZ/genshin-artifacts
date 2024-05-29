@@ -1,7 +1,7 @@
 import arrDeepIndex from './arrDeepIndex';
 import makeArray from './makeArray';
 
-export default function strArrMatch(arr: string | string[], str: string, exact?: boolean) {
+export default function statArrMatch(arr: string | string[], str: string, exact?: boolean) {
 	if (arr === undefined) return true;
 	arr = makeArray(arr);
 	const index = arr.indexOf('critRD_');
