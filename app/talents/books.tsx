@@ -27,9 +27,9 @@ export default function TalentBooks() {
 	const [owned, setOwned] = useState(false);
 	const [farmable, setFarmable] = useState(() => {
 		let day: number = dayjs().day();
-		return (day > 4 ? day - 3 : day) % 4;
+		return (day > 3 ? day - 3 : day) % 4;
 	});
-	const [lvl, setLvl] = useState(0);
+	const [lvl, setLvl] = useState(1);
 
 	return (
 		<PageSection title='Talent Books'>
