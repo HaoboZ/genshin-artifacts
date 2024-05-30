@@ -1,12 +1,12 @@
-import data from '@/public/data.json';
 import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { Build, DArtifact } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import { useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
+import data from './artifacts.json';
 
-export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data.artifacts as any;
+export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data as any;
 
 export const artifactSlotImages = {
 	flower: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Icon_Flower_of_Life.png',

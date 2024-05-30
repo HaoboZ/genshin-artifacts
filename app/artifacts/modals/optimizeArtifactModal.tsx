@@ -57,12 +57,11 @@ export default function OptimizeArtifactModal() {
 					if (artifact.location === character.key) break;
 					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
 					if (currentLocation !== -1 && currentLocation < i) continue;
-
-					const currentArtifact = artifacts.find(
+					const currentArtifact = tieredArtifacts.find(
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
-					artifacts.find(({ id }) => id === artifact.id).location = character.key;
+					tieredArtifacts.find(({ id }) => id === artifact.id).location = character.key;
 					result.push({ artifact, character, selected: true });
 					break;
 				}

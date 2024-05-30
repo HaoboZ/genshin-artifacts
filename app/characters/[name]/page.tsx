@@ -69,7 +69,7 @@ export default function Character({ params }: { params: { name: string } }) {
 					{characterData.element !== 'None' && (
 						<Image
 							alt={characterData.element}
-							src={elementsInfo[characterData.element].image}
+							src={elementsInfo[characterData.element]}
 							width={30}
 							height={30}
 						/>

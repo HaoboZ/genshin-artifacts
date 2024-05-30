@@ -1,4 +1,3 @@
-import data from '@/public/data.json';
-import type { DElement } from '@/src/types/data';
+import data from './elements.json';
 
-export const elementsInfo: Record<string, DElement> = data.elements;
+export const elementsInfo: Record<string, string> = data;

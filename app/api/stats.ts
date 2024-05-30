@@ -3,6 +3,7 @@ import makeArray from '@/src/helpers/makeArray';
 import statArrMatch from '@/src/helpers/statArrMatch';
 import type { Build } from '@/src/types/data';
 import type { IArtifact, SlotKey, StatKey } from '@/src/types/good';
+import { artifactSetsInfo } from './artifacts';
 
 export const artifactSlotStats: Record<SlotKey, { name: string; stats: StatKey[] }> = {
 	flower: { name: 'Flower', stats: ['hp'] },
@@ -113,8 +114,6 @@ export const statsAverage: Record<StatKey, Record<number, number>> = {
 	pyro_dmg_: undefined,
 };
 
-export const rarityWeight = { 3: 1.9, 4: 1.45, 5: 1.3 };
-
 export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 	if (!build || !artifact) return 0;
 	if (
@@ -129,7 +128,9 @@ export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 			(current, { key, value }) =>
 				current + (getWeightedStat(build.subStat, key) * value) / statsMax[key],
 			0,
-		) / 1.3 // 100%/1 + 80%/6 + 60%/6 + 40%/6
+		) /
+		1.3 / // 100%/1 + 80%/6 + 60%/6 + 40%/6
+		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
 
@@ -153,7 +154,9 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 					(value + (rolls / 4) * statsAverage[key][artifact.rarity])) /
 					statsMax[key],
 			0,
-		) / 1.3
+		) /
+		1.3 /
+		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
 
