@@ -82,7 +82,7 @@ export default function TalentBooks() {
 									<Box display='flex' flexWrap='wrap'>
 										{characters
 											.filter(({ level, talentMaterial, talent }) => {
-												if (talentMaterial !== name && (!owned || level)) return false;
+												if (talentMaterial !== name || (owned && !level)) return false;
 												if (lvl) {
 													const minTalent = Math.min(
 														talent?.auto ?? 0,
