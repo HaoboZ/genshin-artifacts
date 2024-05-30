@@ -45,7 +45,7 @@ export default function ArtifactSetFarmModal() {
 		return {
 			missingMainStat: pipe(
 				artifactSetPriority,
-				entries,
+				entries(),
 				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
 				sortBy(([, { mainStats }]) => -Object.values(mainStats).flat().length),
 				map(([a, { mainStats }]) => [a, mainStats] as [string, Record<string, StatKey[]>]),
@@ -56,7 +56,7 @@ export default function ArtifactSetFarmModal() {
 					potentials.length,
 					potentials.filter((potential) => potential < 0.3).length,
 				]),
-				entries,
+				entries(),
 				filter(([, [, count]]) => Boolean(count)),
 				sortBy(([, [, count]]) => -count),
 			),
