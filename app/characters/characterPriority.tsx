@@ -7,7 +7,7 @@ import type { CharacterKey } from '@/src/types/good';
 import { Grid, Sheet, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { difference, mapValues, omit } from 'remeda';
+import { filter, isIncludedIn, isNot, mapValues, omit } from 'remeda';
 import { useDidUpdate } from 'rooks';
 import CharacterTierImage from './characterTierImage';
 
@@ -29,9 +29,9 @@ export default function CharacterPriority({
 	const [characters, setCharacters] = useState(
 		() =>
 			({
-				unSorted: difference.multiset(
+				unSorted: filter(
 					Object.keys(charactersInfo),
-					Object.values(priority).flat(),
+					isNot(isIncludedIn(Object.values(priority).flat())),
 				),
 				...structuredClone(priority),
 			}) as Record<string, CharacterKey[]>,
