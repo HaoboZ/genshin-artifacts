@@ -147,7 +147,7 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) - (4 - artifact.substats.length);
 
 	return (
-		artifact.substats.reduce(
+		(artifact.substats.reduce(
 			(current, { key, value }) =>
 				current +
 				(getWeightedStat(build.subStat, key) *
@@ -155,7 +155,7 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 					statsMax[key],
 			0,
 		) /
-		1.3 /
+			1.3) *
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
