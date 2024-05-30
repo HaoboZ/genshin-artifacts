@@ -2782,7 +2782,7 @@ __metadata:
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-redux: "npm:9.1.2"
-    remeda: "npm:1.61.0"
+    remeda: "npm:2.0.0"
     rooks: "npm:7.14.1"
     sass: "npm:1.77.2"
     tesseract.js: "npm:5.1.0"
@@ -4445,10 +4445,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remeda@npm:1.61.0":
-  version: 1.61.0
-  resolution: "remeda@npm:1.61.0"
-  checksum: 10c0/dc9995e740adc93cddc31f814d9293f3fe327114fdab7fe9e4ac83d5607d63d05645662dec3280a6d9260105a848acfbc763c37ad8b0636f40805aab0cb4bf7e
+"remeda@npm:2.0.0":
+  version: 2.0.0
+  resolution: "remeda@npm:2.0.0"
+  dependencies:
+    type-fest: "npm:^4.18.2"
+  checksum: 10c0/50262471a58e14c0873ddf029b32c633c994d8a8cdc3a15ecd9e4e09a02653226ab0c026ab60c7f4d1899062f89abacd01de0588562da4082996118c55c19695
   languageName: node
   linkType: hard
 
@@ -5084,7 +5086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.18.3":
+"type-fest@npm:4.18.3, type-fest@npm:^4.18.2":
   version: 4.18.3
   resolution: "type-fest@npm:4.18.3"
   checksum: 10c0/5d51a679a86548e8c35008f09dc8f9f8fdb0fcc79c30d116c9e6c5459a450db28a7e6e6887e6a8a6a560d2cde3757347a5984c18b871de6e739a63991ce2d8d9
