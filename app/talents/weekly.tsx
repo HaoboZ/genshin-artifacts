@@ -27,6 +27,7 @@ export default function TalentsWeekly() {
 						</th>
 						<th>Wanted</th>
 						<th>Owned</th>
+						<th>Needs</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -45,7 +46,7 @@ export default function TalentsWeekly() {
 								0,
 							),
 						);
-						const current = items.reduce(
+						const owned = items.reduce(
 							(total, { name }) => total + (currentMaterials[name] ?? 0),
 							0,
 						);
@@ -78,8 +79,8 @@ export default function TalentsWeekly() {
 									</td>
 								))}
 								<td>Wanted: {wanted}</td>
-								<td>Current: {current}</td>
-								<td>Needs: {Math.max(0, wanted - current)}</td>
+								<td>Owned: {owned}</td>
+								<td>Needs: {Math.max(0, wanted - owned)}</td>
 							</tr>
 						);
 					})}
