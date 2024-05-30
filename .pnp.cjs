@@ -67,7 +67,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:18.3.1"],\
           ["react-redux", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.1.2"],\
-          ["remeda", "npm:1.61.0"],\
+          ["remeda", "npm:2.0.0"],\
           ["rooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.14.1"],\
           ["sass", "npm:1.77.2"],\
           ["tesseract.js", "npm:5.1.0"],\
@@ -3753,7 +3753,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:18.3.1"],\
           ["react-redux", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.1.2"],\
-          ["remeda", "npm:1.61.0"],\
+          ["remeda", "npm:2.0.0"],\
           ["rooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.14.1"],\
           ["sass", "npm:1.77.2"],\
           ["tesseract.js", "npm:5.1.0"],\
@@ -5689,10 +5689,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["remeda", [\
-      ["npm:1.61.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-1.61.0-d593ef4ea0-10c0.zip/node_modules/remeda/",\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-2.0.0-d96cc6711b-10c0.zip/node_modules/remeda/",\
         "packageDependencies": [\
-          ["remeda", "npm:1.61.0"]\
+          ["remeda", "npm:2.0.0"],\
+          ["type-fest", "npm:4.18.3"]\
         ],\
         "linkType": "HARD"\
       }]\

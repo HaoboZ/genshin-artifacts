@@ -10,7 +10,7 @@ import type { StatKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, ModalClose, ModalDialog, Typography } from '@mui/joy';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
-import { filter, groupBy, map, mapValues, pipe, sortBy, toPairs, unique } from 'remeda';
+import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
@@ -45,7 +45,7 @@ export default function ArtifactSetFarmModal() {
 		return {
 			missingMainStat: pipe(
 				artifactSetPriority,
-				toPairs,
+				entries,
 				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
 				sortBy(([, { mainStats }]) => -Object.values(mainStats).flat().length),
 				map(([a, { mainStats }]) => [a, mainStats] as [string, Record<string, StatKey[]>]),
@@ -56,7 +56,7 @@ export default function ArtifactSetFarmModal() {
 					potentials.length,
 					potentials.filter((potential) => potential < 0.3).length,
 				]),
-				toPairs,
+				entries,
 				filter(([, [, count]]) => Boolean(count)),
 				sortBy(([, [, count]]) => -count),
 			),
