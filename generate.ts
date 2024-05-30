@@ -597,8 +597,8 @@ const artifactOrder = Object.keys(artifactLocation);
 					...pick(character, ['name', 'rarity']),
 					weaponType: character.weaponText,
 					element: character.elementText,
-					talent: talent?.costs.lvl2[1].name,
-					weekly: talent?.costs.lvl7[3].name,
+					talentMaterial: talent?.costs.lvl2[1].name,
+					weeklyMaterial: talent?.costs.lvl7[3].name,
 					image,
 				};
 			})

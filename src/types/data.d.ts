@@ -12,6 +12,8 @@ export interface DCharacter {
 	element: string;
 	weaponType: WeaponType;
 	rarity: number;
+	talentMaterial?: string;
+	weeklyMaterial?: string;
 	image: string;
 }
 

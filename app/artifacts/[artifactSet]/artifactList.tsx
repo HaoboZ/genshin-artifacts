@@ -21,6 +21,7 @@ import {
 	FormLabel,
 	Grid,
 	IconButton,
+	Link,
 	ListItem,
 	ListItemButton,
 	ListItemDecorator,
@@ -31,7 +32,7 @@ import {
 	Switch,
 	Typography,
 } from '@mui/joy';
-import { capitalCase } from 'change-case';
+import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
@@ -83,7 +84,15 @@ export default function ArtifactList({
 
 	return (
 		<PageSection
-			title={artifactSetsInfo[artifactSet].name}
+			title={
+				<Link
+					href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(artifactSetsInfo[artifactSet].name)}`}
+					target='_blank'
+					variant='plain'
+					color='neutral'>
+					{artifactSetsInfo[artifactSet].name}
+				</Link>
+			}
 			actions={
 				<FormControl orientation='horizontal'>
 					<FormLabel>Delete Mode</FormLabel>

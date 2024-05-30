@@ -1,17 +1,92 @@
-{
-	"Teachings of Freedom": { "location": "Mondstadt", "day": 1 },
-	"Teachings of Resistance": { "location": "Mondstadt", "day": 2 },
-	"Teachings of Ballad": { "location": "Mondstadt", "day": 3 },
-	"Teachings of Prosperity": { "location": "Liyue", "day": 1 },
-	"Teachings of Diligence": { "location": "Liyue", "day": 2 },
-	"Teachings of Gold": { "location": "Liyue", "day": 3 },
-	"Teachings of Transience": { "location": "Inazuma", "day": 1 },
-	"Teachings of Elegance": { "location": "Inazuma", "day": 2 },
-	"Teachings of Light": { "location": "Inazuma", "day": 3 },
-	"Teachings of Admonition": { "location": "Sumeru", "day": 1 },
-	"Teachings of Ingenuity": { "location": "Sumeru", "day": 2 },
-	"Teachings of Praxis": { "location": "Sumeru", "day": 3 },
-	"Teachings of Equity": { "location": "Fontaine", "day": 1 },
-	"Teachings of Justice": { "location": "Fontaine", "day": 2 },
-	"Teachings of Order": { "location": "Fontaine", "day": 3 }
-}
+[
+	{
+		"name": "Teachings of Freedom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Item_Teachings_of_Freedom.png",
+		"location": "Mondstadt",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Resistance",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_Teachings_of_Resistance.png",
+		"location": "Mondstadt",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Ballad",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Item_Teachings_of_Ballad.png",
+		"location": "Mondstadt",
+		"day": 3
+	},
+	{
+		"name": "Teachings of Prosperity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Teachings_of_Prosperity.png",
+		"location": "Liyue",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Diligence",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Teachings_of_Diligence.png",
+		"location": "Liyue",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Gold",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7f/Item_Teachings_of_Gold.png",
+		"location": "Liyue",
+		"day": 3
+	},
+	{
+		"name": "Teachings of Transience",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Teachings_of_Transience.png",
+		"location": "Inazuma",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Elegance",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Item_Teachings_of_Elegance.png",
+		"location": "Inazuma",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Light",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Item_Teachings_of_Light.png",
+		"location": "Inazuma",
+		"day": 3
+	},
+	{
+		"name": "Teachings of Admonition",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Teachings_of_Admonition.png",
+		"location": "Sumeru",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Ingenuity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Item_Teachings_of_Ingenuity.png",
+		"location": "Sumeru",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Praxis",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Teachings_of_Praxis.png",
+		"location": "Sumeru",
+		"day": 3
+	},
+	{
+		"name": "Teachings of Equity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Item_Teachings_of_Equity.png",
+		"location": "Fontaine",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Justice",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Item_Teachings_of_Justice.png",
+		"location": "Fontaine",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Order",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Item_Teachings_of_Order.png",
+		"location": "Fontaine",
+		"day": 3
+	}
+]

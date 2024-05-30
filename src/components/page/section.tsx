@@ -12,11 +12,11 @@ export default function PageSection({
 	max,
 	...props
 }: {
-	title?: string;
+	title?: ReactNode;
 	titleProps?: TypographyProps;
 	actions?: ActionProps[] | ReactNode;
 	max?: number;
-} & BoxProps) {
+} & Omit<BoxProps, 'title'>) {
 	return (
 		<Box {...props}>
 			<Box

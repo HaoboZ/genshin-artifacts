@@ -11,6 +11,9 @@ export default function Header() {
 				<Button component={Link} href='/characters'>
 					Characters
 				</Button>
+				<Button component={Link} href='/talents'>
+					Talents
+				</Button>
 				<Button component={Link} href='/artifacts'>
 					Artifacts
 				</Button>

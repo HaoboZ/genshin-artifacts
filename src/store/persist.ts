@@ -4,7 +4,9 @@ export function loadState() {
 	try {
 		const serializedState = localStorage.getItem(KEY);
 		if (!serializedState) return undefined;
-		return JSON.parse(serializedState);
+		const state = JSON.parse(serializedState);
+		if (!('weekly' in state.main)) state.main.weekly = {};
+		return state;
 	} catch (e) {
 		return undefined;
 	}
