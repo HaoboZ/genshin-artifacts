@@ -124,12 +124,12 @@ export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 		return 0;
 
 	return (
-		artifact.substats.reduce(
+		(artifact.substats.reduce(
 			(current, { key, value }) =>
 				current + (getWeightedStat(build.subStat, key) * value) / statsMax[key],
 			0,
 		) /
-		1.3 / // 100%/1 + 80%/6 + 60%/6 + 40%/6
+			1.3) * // 100%/1 + 80%/6 + 60%/6 + 40%/6
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
