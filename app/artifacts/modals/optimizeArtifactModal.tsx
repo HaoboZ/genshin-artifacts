@@ -22,7 +22,7 @@ import {
 	ModalDialog,
 } from '@mui/joy';
 import { useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatImage from '../artifactStatImage';
 
@@ -34,34 +34,31 @@ export default function OptimizeArtifactModal() {
 
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
 		const result: { artifact: IArtifact; character: Build; selected: boolean }[] = [];
+		const artifactsClone = structuredClone(artifacts);
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
 			if (!character.level) continue;
 			for (const slot of artifactSlotOrder) {
 				const tieredArtifacts = pipe(
-					artifacts,
+					artifactsClone,
 					filter(
 						({ slotKey, setKey, mainStatKey }) =>
 							slotKey === slot &&
 							setKey === makeArray(character.artifact[0])[0] &&
 							statArrMatch(character.mainStat[slotKey], mainStatKey, true),
 					),
-					map((artifact) => ({
-						...artifact,
-						statRollPercent: weightedStatRollPercent(character, artifact),
-					})),
-					sortBy(({ statRollPercent }) => -statRollPercent),
+					sortBy((artifact) => -weightedStatRollPercent(character, artifact)),
 				);
 
 				for (const artifact of tieredArtifacts) {
 					if (artifact.location === character.key) break;
 					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
 					if (currentLocation !== -1 && currentLocation < i) continue;
-					const currentArtifact = tieredArtifacts.find(
+					const currentArtifact = artifactsClone.find(
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
-					tieredArtifacts.find(({ id }) => id === artifact.id).location = character.key;
+					artifactsClone.find(({ id }) => id === artifact.id).location = character.key;
 					result.push({ artifact, character, selected: true });
 					break;
 				}
