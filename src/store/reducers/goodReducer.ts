@@ -22,16 +22,17 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
+			if (payload.weapons) {
+				payload.weapons = payload.weapons.filter(({ level }) => level > 1);
+			}
 			if (!payload.characters && payload.weapons) {
-				payload.characters = payload.weapons
-					.filter(({ location }) => location)
-					.map(({ location }) => ({
-						key: location as any,
-						level: 90,
-						constellation: 0,
-						ascension: 6,
-						talent: { auto: 9, skill: 9, burst: 9 },
-					}));
+				payload.characters = payload.weapons.filter(pget('location')).map(({ location }) => ({
+					key: location as any,
+					level: 90,
+					constellation: 0,
+					ascension: 6,
+					talent: { auto: 9, skill: 9, burst: 9 },
+				}));
 			}
 			return { ...state, ...payload };
 		},
