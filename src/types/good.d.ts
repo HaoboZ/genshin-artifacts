@@ -318,7 +318,7 @@ export type WeaponKey =
 	| 'PrototypeStarglitter' //Prototype Starglitter
 	| 'QuantumCatalyst' //Quantum Cat-alyst
 	| 'Rainslasher' //Rainslasher
-	| 'RangeGuage' //Range Guage
+	| 'RangeGauge' //Range Gauge
 	| 'RavenBow' //Raven Bow
 	| 'RecurveBow' //Recurve Bow
 	| 'RedhornStonethresher' //Redhorn Stonethresher

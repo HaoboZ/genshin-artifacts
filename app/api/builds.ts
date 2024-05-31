@@ -380,7 +380,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['SkywardHarp', 'ThunderingPulse', 'ElegyForTheEnd'],
 			['ScionOfTheBlazingSun', 'AmosBow', 'FadingTwilight'],
 			'TheViridescentHunt',
-			['Slingshot', 'RangeGuage', 'WindblumeOde', 'SongOfStillness'],
+			['Slingshot', 'RangeGauge', 'WindblumeOde', 'SongOfStillness'],
 			['PrototypeCrescent', 'IbisPiercer'],
 		],
 		artifact: [['WanderersTroupe', 'GildedDreams'], 'EmblemOfSeveredFate', 'DeepwoodMemories'],

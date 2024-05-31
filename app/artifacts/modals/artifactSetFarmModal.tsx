@@ -11,6 +11,7 @@ import { DialogContent, DialogTitle, Grid, ModalClose, ModalDialog, Typography }
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
+import statArrMatch from '../../../src/helpers/statArrMatch';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
@@ -19,25 +20,29 @@ export default function ArtifactSetFarmModal() {
 	const { missingMainStat, lowPotential } = useMemo(() => {
 		const artifactSetPriority = pipe(
 			artifacts,
-			filter(pget('location') as any),
+			filter(({ location }) => Boolean(location)),
 			map((artifact) => ({
 				...artifact,
-				mainStatMatch:
+				mainStatMismatch:
 					artifact.slotKey !== 'flower' &&
 					artifact.slotKey !== 'plume' &&
-					makeArray(builds[artifact.location].mainStat[artifact.slotKey])[0] !==
+					!statArrMatch(
+						builds[artifact.location].mainStat[artifact.slotKey],
 						artifact.mainStatKey,
+						true,
+					),
 				potential: potentialStatRollPercent(builds[artifact.location], artifact),
 			})),
 			groupBy(pget('setKey')),
 			mapValues((artifacts) => ({
-				mainStats: artifacts
-					.filter(pget('mainStatMatch'))
-					.reduce((mismatch, { slotKey, location }) => {
+				mainStats: artifacts.filter(pget('mainStatMismatch')).reduce(
+					(mismatch, { slotKey, location }) => {
 						if (!mismatch[slotKey]) mismatch[slotKey] = [];
 						mismatch[slotKey].push(makeArray(builds[location].mainStat[slotKey])[0]);
 						return mismatch;
-					}, {}),
+					},
+					{} as Record<string, StatKey[]>,
+				),
 				potentials: artifacts.map(pget('potential')),
 			})),
 		);
@@ -48,7 +53,6 @@ export default function ArtifactSetFarmModal() {
 				entries(),
 				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
 				sortBy(([, { mainStats }]) => -Object.values(mainStats).flat().length),
-				map(([a, { mainStats }]) => [a, mainStats] as [string, Record<string, StatKey[]>]),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
@@ -71,13 +75,13 @@ export default function ArtifactSetFarmModal() {
 				<DialogContent>
 					<PageSection title='Missing Main Stats'>
 						<Grid container spacing={1}>
-							{missingMainStat.map(([artifactSet, mainStat]) => (
+							{missingMainStat.map(([artifactSet, { mainStats }]) => (
 								<Grid key={artifactSet}>
 									<ArtifactSetImage
 										artifactSet={artifactSetsInfo[artifactSet]}
 										tooltip={
 											<Fragment>
-												{Object.entries(mainStat).map(([slot, stats]) => (
+												{Object.entries(mainStats).map(([slot, stats]) => (
 													<Typography key={slot}>
 														{capitalCase(slot)}:{' '}
 														{unique(stats.flat())
@@ -88,7 +92,7 @@ export default function ArtifactSetFarmModal() {
 											</Fragment>
 										}>
 										<Typography position='absolute' top={0} left={2}>
-											{Object.values(mainStat).flat().length}
+											{Object.values(mainStats).flat().length}
 										</Typography>
 									</ArtifactSetImage>
 								</Grid>
