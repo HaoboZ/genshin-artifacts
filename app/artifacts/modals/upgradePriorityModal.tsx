@@ -32,7 +32,9 @@ export default function UpgradePriorityModal() {
 				map((artifact) => ({
 					...artifact,
 					potential: potentialStatRollPercent(
-						getArtifactSetBuild(Object.values(builds), artifact.setKey),
+						artifact.location
+							? builds[artifact.location]
+							: getArtifactSetBuild(Object.values(builds), artifact.setKey),
 						artifact,
 					),
 				})),
