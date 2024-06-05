@@ -760,6 +760,14 @@ export const builds: Record<CharacterKey, Build> = {
 		},
 		subStat: ['critRate_', 'enerRech_', 'hp_', 'eleMas'],
 	},
+	Sethos: {
+		key: 'Sethos',
+		role: 'DPS',
+		weapon: ['HuntersPath', 'TheFirstGreatMagic', 'Cloudforged', 'Slingshot'],
+		artifact: ['WanderersTroupe', 'GildedDreams', 'ThunderingFury'],
+		mainStat: { sands: 'eleMas', goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'enerRech_', 'eleMas', 'atk_', 'atk'],
+	},
 	Keqing: {
 		key: 'Keqing',
 		role: 'Aggravate DPS',
@@ -851,6 +859,20 @@ export const builds: Record<CharacterKey, Build> = {
 			circlet: ['critRD_', 'eleMas'],
 		},
 		subStat: ['enerRech_', 'eleMas', 'critRD_', 'atk_'],
+	},
+	Clorinde: {
+		key: 'Clorinde',
+		role: 'DPS',
+		weapon: [
+			'Absolution',
+			'MistsplitterReforged',
+			'PrimordialJadeCutter',
+			'TheBlackSword',
+			'FinaleOfTheDeep',
+		],
+		artifact: ['FragmentOfHarmonicWhimsy', 'ThunderingFury'],
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas', 'atk'],
 	},
 	// Cryo
 	Diona: {

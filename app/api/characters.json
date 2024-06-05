@@ -157,6 +157,16 @@
 		"weeklyMaterial": "Dvalin's Sigh",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png"
 	},
+	"Clorinde": {
+		"key": "Clorinde",
+		"name": "Clorinde",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Electro",
+		"talentMaterial": "Teachings of Justice",
+		"weeklyMaterial": "Everamber",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png"
+	},
 	"Collei": {
 		"key": "Collei",
 		"name": "Collei",
@@ -596,6 +606,16 @@
 		"talentMaterial": "Teachings of Light",
 		"weeklyMaterial": "Gilded Scale",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png"
+	},
+	"Sethos": {
+		"key": "Sethos",
+		"name": "Sethos",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Electro",
+		"talentMaterial": "Teachings of Praxis",
+		"weeklyMaterial": "Daka's Bell",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Sethos_Icon.png"
 	},
 	"Shenhe": {
 		"key": "Shenhe",

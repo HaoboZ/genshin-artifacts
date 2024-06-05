@@ -142,6 +142,7 @@ export type CharacterKey =
 	| 'Chevreuse' //Chevreuse
 	| 'Chiori' //Chiori
 	| 'Chongyun' //Chongyun
+	| 'Clorinde' //Clorinde
 	| 'Collei' //Collei
 	| 'Cyno' //Cyno
 	| 'Dehya' //Dehya
@@ -186,6 +187,7 @@ export type CharacterKey =
 	| 'Rosaria' //Rosaria
 	| 'SangonomiyaKokomi' //Sangonomiya Kokomi
 	| 'Sayu' //Sayu
+	| 'Sethos' //Sethos
 	| 'Shenhe' //Shenhe
 	| 'ShikanoinHeizou' //Shikanoin Heizou
 	| 'Sucrose' //Sucrose
@@ -210,6 +212,7 @@ export type CharacterKey =
 	| 'Zhongli'; //Zhongli
 
 export type WeaponKey =
+	| 'Absolution' //Absolution
 	| 'AThousandFloatingDreams' //A Thousand Floating Dreams
 	| 'Akuoumaru' //Akuoumaru
 	| 'AlleyHunter' //Alley Hunter
@@ -232,6 +235,7 @@ export type WeaponKey =
 	| 'CalamityQueller' //Calamity Queller
 	| 'CashflowSupervision' //Cashflow Supervision
 	| 'CinnabarSpindle' //Cinnabar Spindle
+	| 'Cloudforged' //Cloudforged
 	| 'CompoundBow' //Compound Bow
 	| 'CoolSteel' //Cool Steel
 	| 'CranesEchoingCall' //Crane's Echoing Call
@@ -339,6 +343,7 @@ export type WeaponKey =
 	| 'SeasonedHuntersBow' //Seasoned Hunter's Bow
 	| 'SerpentSpine' //Serpent Spine
 	| 'SharpshootersOath' //Sharpshooter's Oath
+	| 'SilvershowerHeartstrings' // Silvershower Heartstrings
 	| 'SilverSword' //Silver Sword
 	| 'SkyriderGreatsword' //Skyrider Greatsword
 	| 'SkyriderSword' //Skyrider Sword

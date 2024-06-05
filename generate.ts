@@ -20,6 +20,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png',
@@ -65,6 +66,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Rosaria_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Sangonomiya_Kokomi_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Sethos_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png',
@@ -512,6 +514,9 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

@@ -1,4 +1,11 @@
 {
+	"Absolution": {
+		"key": "Absolution",
+		"name": "Absolution",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png"
+	},
 	"Akuoumaru": {
 		"key": "Akuoumaru",
 		"name": "Akuoumaru",
@@ -138,6 +145,13 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png"
+	},
+	"Cloudforged": {
+		"key": "Cloudforged",
+		"name": "Cloudforged",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png"
 	},
 	"CompoundBow": {
 		"key": "CompoundBow",
@@ -838,6 +852,13 @@
 		"rarity": 3,
 		"weaponType": "Bow",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png"
+	},
+	"SilvershowerHeartstrings": {
+		"key": "SilvershowerHeartstrings",
+		"name": "Silvershower Heartstrings",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png"
 	},
 	"SkyriderGreatsword": {
 		"key": "SkyriderGreatsword",
