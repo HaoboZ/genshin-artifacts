@@ -2,9 +2,8 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 5/24/23
+// 6/7/23
 // Sorted https://genshinlab.com/tier-list
-
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -763,10 +762,10 @@ export const builds: Record<CharacterKey, Build> = {
 	Sethos: {
 		key: 'Sethos',
 		role: 'DPS',
-		weapon: ['HuntersPath', 'TheFirstGreatMagic', 'Cloudforged', 'Slingshot'],
-		artifact: ['WanderersTroupe', 'GildedDreams', 'ThunderingFury'],
-		mainStat: { sands: 'eleMas', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'enerRech_', 'eleMas', 'atk_', 'atk'],
+		weapon: ['HuntersPath', 'Slingshot'],
+		artifact: ['WanderersTroupe', 'GildedDreams', 'DesertPavilionChronicle'],
+		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
 	},
 	Keqing: {
 		key: 'Keqing',
@@ -1261,7 +1260,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Reaction Off-Field DPS',
 		weapon: [
 			'ElegyForTheEnd',
-			'TheStringless',
+			['TheStringless', 'Cloudforged'],
 			['WindblumeOde', 'PolarStar'],
 			'FavoniusWarbow',
 			['RavenBow', 'FadingTwilight'],
@@ -1278,7 +1277,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'PrimordialJadeWingedSpear',
 			'StaffOfHoma',
-			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands'],
+			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands', 'CrimsonMoonsSemblance'],
 			['Deathmatch', 'LithicSpear'],
 			[
 				'SkywardSpine',
