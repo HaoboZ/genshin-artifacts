@@ -592,10 +592,12 @@ const artifactOrder = Object.keys(artifactLocation);
 	const characters = indexBy(
 		charactersData
 			.map((character) => {
-				if (character.name === 'Aether') character.name = 'Traveler';
+				if (character.name === 'Aether' || character.name === 'Lumine')
+					character.name = 'Traveler';
 				const characterName = character.name.replaceAll(' ', '_');
 				const image = characterImages.find((url) => url.indexOf(characterName) !== -1);
-				if (!image && character.name !== 'Lumine') console.log(characterName);
+				if (!image && character.name !== 'Aether' && character.name !== 'Lumine')
+					console.log(characterName);
 				const talent = talents.find(({ name }) => name === character.name);
 				return {
 					key: pascalCase(character.name),

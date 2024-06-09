@@ -15,11 +15,13 @@ export default function CharacterPriority({
 	editMode,
 	element,
 	weaponType,
+	owned,
 	search,
 }: {
 	editMode: boolean;
 	element: string;
 	weaponType: string;
+	owned: boolean;
 	search: string;
 }) {
 	const good = useAppSelector(pget('good'));
@@ -46,11 +48,12 @@ export default function CharacterPriority({
 				return (
 					(!element || character.element === element) &&
 					(!weaponType || character.weaponType === weaponType) &&
+					(!owned || good.characters.find((c) => c.key === key)) &&
 					(!searchVal || character.name.toLowerCase().includes(searchVal))
 				);
 			}),
 		);
-	}, [characters, editMode, element, weaponType, search]);
+	}, [characters, editMode, element, weaponType, owned, search]);
 
 	useDidUpdate(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));

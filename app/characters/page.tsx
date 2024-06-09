@@ -3,7 +3,7 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
-import { FormControl, FormLabel, Input, Switch } from '@mui/joy';
+import { Checkbox, FormControl, FormLabel, Input, Switch } from '@mui/joy';
 import { useState } from 'react';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterPriority from './characterPriority';
@@ -15,12 +15,19 @@ export default function Characters() {
 
 	const [search, setSearch] = useState('');
 	const [editMode, setEditMode] = useState(false);
+	const [owned, setOwned] = useState(false);
 
 	return (
 		<PageContainer noSsr>
 			<PageTitle>Characters</PageTitle>
 			<ElementFilter element={element} setElement={setElement} />
 			<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
+			<Checkbox
+				label='Owned'
+				checked={owned}
+				onChange={({ target }) => setOwned(target.checked)}
+				sx={{ mt: 1 }}
+			/>
 			<Input
 				sx={{ my: 1 }}
 				placeholder='Search'
@@ -43,6 +50,7 @@ export default function Characters() {
 					editMode={editMode}
 					element={element}
 					weaponType={weaponType}
+					owned={owned}
 					search={search.toLowerCase()}
 				/>
 			</PageSection>
