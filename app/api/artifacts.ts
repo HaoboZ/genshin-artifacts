@@ -31,7 +31,7 @@ export const missingArtifactSets: Record<string, Build> = {
 		role: 'DPS',
 		weapon: ['DullBlade'],
 		artifact: ['SongOfDaysPast'],
-		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'heal_' },
+		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
 		subStat: ['hp_', 'atk_', 'hp', 'atk'],
 	},
 	VourukashasGlow: {

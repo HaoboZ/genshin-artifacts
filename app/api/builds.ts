@@ -1376,10 +1376,10 @@ export const builds: Record<CharacterKey, Build> = {
 			'HakushinRing',
 		],
 		artifact: [
+			'ArchaicPetra',
 			'NighttimeWhispersInTheEchoingWoods',
 			'HuskOfOpulentDreams',
 			['Thundersoother', 'Lavawalker'],
-			'ArchaicPetra',
 			'EmblemOfSeveredFate',
 		],
 		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
