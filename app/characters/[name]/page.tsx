@@ -41,11 +41,14 @@ export default function Character({ params }: { params: { name: string } }) {
 	const weapon = useAppSelector(({ good }) =>
 		good.weapons.find(({ location }) => location === characterData.key),
 	);
-	const artifacts = useAppSelector(({ good }) =>
-		indexBy(
-			good.artifacts.filter(({ location }) => location === characterData.key),
-			pget('slotKey'),
-		),
+	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifactsIndexed = useMemo(
+		() =>
+			indexBy(
+				artifacts.filter(({ location }) => location === characterData.key),
+				pget('slotKey'),
+			),
+		[artifacts],
 	);
 
 	const build = builds[characterData.key];
@@ -141,7 +144,7 @@ export default function Character({ params }: { params: { name: string } }) {
 								</Card>
 							</Grid>
 							{artifactSlotOrder.map((slot) => {
-								const artifact = artifacts[slot];
+								const artifact = artifactsIndexed[slot];
 								const statRollPercent = weightedStatRollPercent(build, artifact);
 
 								return (

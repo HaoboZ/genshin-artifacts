@@ -129,7 +129,7 @@ export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 				current + (getWeightedStat(build.subStat, key) * value) / statsMax[key],
 			0,
 		) /
-			1.3) * // 100%/1 + 80%/6 + 60%/6 + 40%/6
+			getMaxStat(build, artifact)) *
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
@@ -155,7 +155,7 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 					statsMax[key],
 			0,
 		) /
-			1.3) *
+			getMaxStat(build, artifact)) *
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
@@ -163,17 +163,33 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 function getWeightedStat(subStatArr, subStat) {
 	if (!subStat) return 0;
 
-	const statTier = arrDeepIndex(
-		subStatArr.map((subStat: string | string[]) => {
-			if (typeof subStat === 'string') {
-				if (subStat === 'critRD_') return ['critRate_', 'critDMG_'];
-			} else {
-				const index = subStat.indexOf('critRD_');
-				if (index !== -1) return subStat.toSpliced(index, 1, 'critRate_', 'critDMG_');
-			}
-			return subStat;
-		}),
-		subStat,
-	);
+	const statTier = arrDeepIndex(convertCD(subStatArr), subStat);
 	return statTier === -1 ? 0 : 1 - Math.min(4, statTier) * 0.2;
+}
+
+function getMaxStat(build: Build, { mainStatKey }: IArtifact) {
+	let count = 0;
+	let max = 0;
+	const subStats = convertCD(build.subStat);
+	for (let tier = 0; tier < subStats.length; tier++) {
+		const statArr = makeArray(subStats[tier]).filter((stat) => stat !== mainStatKey);
+		for (let i = 0; i < statArr.length; i++) {
+			if (count >= 4) break;
+			max += (1 - Math.min(4, tier) * 0.2) / (count ? 6 : 1);
+			++count;
+		}
+	}
+	return max;
+}
+
+function convertCD(subStat: (StatKey | StatKey[])[]) {
+	return subStat.map((subStat) => {
+		if (typeof subStat === 'string') {
+			if (subStat === 'critRD_') return ['critRate_', 'critDMG_'] as StatKey[];
+		} else {
+			const index = subStat.indexOf('critRD_');
+			if (index !== -1) return subStat.toSpliced(index, 1, 'critRate_', 'critDMG_');
+		}
+		return subStat;
+	});
 }
