@@ -101,9 +101,7 @@ export default function OptimizeArtifactModal() {
 					<Button
 						onClick={() => {
 							dispatch(
-								goodActions.optimizeArtifacts(
-									giveArtifacts.filter(({ selected }) => selected),
-								),
+								goodActions.optimizeArtifacts(giveArtifacts.filter(pget('selected'))),
 							);
 							closeModal();
 						}}>

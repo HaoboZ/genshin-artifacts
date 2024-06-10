@@ -22,7 +22,7 @@ import {
 	ModalClose,
 	ModalDialog,
 } from '@mui/joy';
-import { useMemo } from 'react';
+import { useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
@@ -34,9 +34,9 @@ export default function OptimalWeaponModal() {
 
 	const characters = useCharacters({ owned: true });
 
-	const givenWeapons = useMemo(() => {
+	const [giveWeapons, setGiveWeapons] = useState(() => {
 		const weapons = structuredClone(storedWeapons);
-		const result: { weapon: IWeapon; tier: number; character: Build }[] = [];
+		const result: { weapon: IWeapon; tier: number; character: Build; selected: boolean }[] = [];
 		for (let i = 0; i < characters.length; i++) {
 			const character = builds[characters[i].key];
 			const tieredWeapons = pipe(
@@ -55,14 +55,17 @@ export default function OptimalWeaponModal() {
 				if (currentLocation !== -1 && currentLocation < i) continue;
 
 				const currentWeapon = weapons.find(({ location }) => location === character.key);
-				if (currentWeapon) currentWeapon.location = '';
+				if (currentWeapon) {
+					if (tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)) continue;
+					currentWeapon.location = '';
+				}
 				weapon.location = character.key;
-				result.push({ weapon, tier, character });
+				result.push({ weapon, tier, character, selected: true });
 				break;
 			}
 		}
 		return result;
-	}, [storedWeapons, characters]);
+	});
 
 	return (
 		<ModalWrapper>
@@ -71,8 +74,20 @@ export default function OptimalWeaponModal() {
 				<ModalClose variant='outlined' />
 				<DialogContent>
 					<List>
-						{givenWeapons.map(({ weapon, tier, character }, i) => (
-							<ListItem key={i}>
+						{giveWeapons.map(({ weapon, tier, character, selected }, i) => (
+							<ListItem
+								key={i}
+								sx={{
+									':hover': { cursor: 'pointer' },
+									'border': selected ? '1px solid blue' : '1px solid rgba(127,127,127,.3)',
+									'borderRadius': 8,
+								}}
+								onClick={() =>
+									setGiveWeapons((giveWeapons) => {
+										giveWeapons[i].selected = !selected;
+										return [...giveWeapons];
+									})
+								}>
 								<ListItemContent>
 									<Grid container spacing={1}>
 										<Grid xs='auto'>
@@ -93,7 +108,7 @@ export default function OptimalWeaponModal() {
 				<DialogActions>
 					<Button
 						onClick={() => {
-							dispatch(goodActions.optimizeWeapons(givenWeapons));
+							dispatch(goodActions.optimizeWeapons(giveWeapons.filter(pget('selected'))));
 							closeModal();
 						}}>
 						Apply All

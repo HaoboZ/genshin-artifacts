@@ -154,11 +154,12 @@ const goodSlice = createSlice({
 					({ location }) => location === character.key,
 				);
 
-				if (weaponBIndex)
+				if (weaponBIndex) {
 					state.weapons[weaponBIndex] = {
 						...state.weapons[weaponBIndex],
 						location: characterB || '',
 					};
+				}
 				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
 			}
 		},

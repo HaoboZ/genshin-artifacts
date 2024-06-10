@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 6/7/23
+// 6/10/23
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -284,7 +284,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'WhiteTassel',
 			'BalladOfTheFjords',
 		],
-		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale'],
+		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'DesertPavilionChronicle'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
 	},
@@ -864,14 +864,13 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'Absolution',
-			'MistsplitterReforged',
-			'PrimordialJadeCutter',
-			'TheBlackSword',
-			'FinaleOfTheDeep',
+			['LightOfFoliarIncision', 'HaranGeppakuFutsu'],
+			['MistsplitterReforged', 'PrimordialJadeCutter', 'UrakuMisugiri', 'FreedomSworn'],
+			['FinaleOfTheDeep', 'TheBlackSword'],
 		],
-		artifact: ['FragmentOfHarmonicWhimsy', 'ThunderingFury'],
+		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'ThunderingFury'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas', 'atk'],
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	// Cryo
 	Diona: {
