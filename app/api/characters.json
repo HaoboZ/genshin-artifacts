@@ -637,6 +637,16 @@
 		"weeklyMaterial": "The Meaning of Aeons",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png"
 	},
+	"Sigewinne": {
+		"key": "Sigewinne",
+		"name": "Sigewinne",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Hydro",
+		"talentMaterial": "Teachings of Equity",
+		"weeklyMaterial": "Lightless Eye of the Maelstrom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Sigewinne_Icon.png"
+	},
 	"Sucrose": {
 		"key": "Sucrose",
 		"name": "Sucrose",

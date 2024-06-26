@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 6/10/23
+// 6/25/23
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -644,6 +644,14 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', ['hp_', 'critRD_'], 'hp'],
 	},
+	Sigewinne: {
+		key: 'Sigewinne',
+		role: 'Healer',
+		weapon: ['SilvershowerHeartstrings', 'RecurveBow', 'FavoniusWarbow'],
+		artifact: ['SongOfDaysPast'],
+		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
+		subStat: ['hp_', 'enerRech_', 'hp', 'critRD_'],
+	},
 	// Electro
 	Fischl: {
 		key: 'Fischl',
@@ -841,8 +849,9 @@ export const builds: Record<CharacterKey, Build> = {
 			'StaffOfTheScarletSands',
 			'BalladOfTheFjords',
 			'PrimordialJadeWingedSpear',
-			'StaffOfHoma',
-			['WhiteTassel', 'MissiveWindspear', 'KitainCrossSpear', 'Deathmatch', 'DragonsBane'],
+			'Deathmatch',
+			['StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
+			['KitainCrossSpear', 'DragonsBane'],
 			'SkywardSpine',
 			'FavoniusLance',
 		],
@@ -876,7 +885,12 @@ export const builds: Record<CharacterKey, Build> = {
 	Diona: {
 		key: 'Diona',
 		role: 'Support',
-		weapon: [['FavoniusWarbow', 'SacrificialBow'], 'ElegyForTheEnd', 'RecurveBow'],
+		weapon: [
+			['FavoniusWarbow', 'SacrificialBow'],
+			'ElegyForTheEnd',
+			'SilvershowerHeartstrings',
+			'RecurveBow',
+		],
 		artifact: [
 			'NoblesseOblige',
 			['MaidenBeloved', 'OceanHuedClam'],

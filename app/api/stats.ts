@@ -129,7 +129,7 @@ export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 				current + (getWeightedStat(build.subStat, key) * value) / statsMax[key],
 			0,
 		) /
-			getMaxStat(build, artifact)) *
+			getMaxStat(build.subStat, artifact.mainStatKey)) *
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
@@ -155,24 +155,24 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 					statsMax[key],
 			0,
 		) /
-			getMaxStat(build, artifact)) *
+			getMaxStat(build.subStat, artifact.mainStatKey)) *
 		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
 	);
 }
 
-function getWeightedStat(subStatArr, subStat) {
+function getWeightedStat(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {
 	if (!subStat) return 0;
 
 	const statTier = arrDeepIndex(convertCD(subStatArr), subStat);
 	return statTier === -1 ? 0 : 1 - Math.min(4, statTier) * 0.2;
 }
 
-function getMaxStat(build: Build, { mainStatKey }: IArtifact) {
+function getMaxStat(subStatArr: (StatKey | StatKey[])[], mainStat: StatKey) {
 	let count = 0;
 	let max = 0;
-	const subStats = convertCD(build.subStat);
+	const subStats = convertCD(subStatArr);
 	for (let tier = 0; tier < subStats.length; tier++) {
-		const statArr = makeArray(subStats[tier]).filter((stat) => stat !== mainStatKey);
+		const statArr = makeArray(subStats[tier]).filter((stat) => stat !== mainStat);
 		for (let i = 0; i < statArr.length; i++) {
 			if (count >= 4) break;
 			max += (1 - Math.min(4, tier) * 0.2) / (count ? 6 : 1);
@@ -182,8 +182,8 @@ function getMaxStat(build: Build, { mainStatKey }: IArtifact) {
 	return max;
 }
 
-function convertCD(subStat: (StatKey | StatKey[])[]) {
-	return subStat.map((subStat) => {
+function convertCD(subStatArr: (StatKey | StatKey[])[]) {
+	return subStatArr.map((subStat) => {
 		if (typeof subStat === 'string') {
 			if (subStat === 'critRD_') return ['critRate_', 'critDMG_'] as StatKey[];
 		} else {

@@ -190,6 +190,7 @@ export type CharacterKey =
 	| 'Sethos' //Sethos
 	| 'Shenhe' //Shenhe
 	| 'ShikanoinHeizou' //Shikanoin Heizou
+	| 'Sigewinne' //Sigewinne
 	| 'Sucrose' //Sucrose
 	| 'Tartaglia' //Tartaglia
 	| 'Thoma' //Thoma

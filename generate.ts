@@ -69,6 +69,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Sethos_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Sigewinne_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/85/Tartaglia_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Thoma_Icon.png',
