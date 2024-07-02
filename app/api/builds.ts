@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 6/25/23
+// 7/2/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -582,7 +582,13 @@ export const builds: Record<CharacterKey, Build> = {
 	Yelan: {
 		key: 'Yelan',
 		role: 'Off-Field DPS',
-		weapon: ['ElegyForTheEnd', 'FavoniusWarbow', 'AquaSimulacra', 'SacrificialBow'],
+		weapon: [
+			'AquaSimulacra',
+			['MouunsMoon', 'TheStringless', 'Slingshot', 'SilvershowerHeartstrings'],
+			['HuntersPath', 'PolarStar', 'ThunderingPulse', 'SkywardHarp'],
+			'FadingTwilight',
+			'RecurveBow',
+		],
 		artifact: ['EmblemOfSeveredFate'],
 		mainStat: {
 			sands: ['enerRech_', 'hp_'],
