@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "1.0.28",
+	"version": "1.0.29",
 	"private": true,
 	"scripts": {
 		"generate": "npx tsx ./generate.ts",
@@ -23,8 +23,8 @@
 		"@emotion/cache": "11.11.0",
 		"@emotion/react": "11.11.4",
 		"@emotion/styled": "11.11.5",
-		"@mui/icons-material": "5.15.21",
-		"@mui/joy": "5.0.0-beta.36",
+		"@mui/icons-material": "5.16.0",
+		"@mui/joy": "5.0.0-beta.47",
 		"@mui/material": "npm:@mui/joy@latest",
 		"@reduxjs/toolkit": "2.2.6",
 		"@tanem/react-nprogress": "5.0.51",
@@ -40,7 +40,7 @@
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"react-redux": "9.1.2",
-		"remeda": "2.2.1",
+		"remeda": "2.3.0",
 		"rooks": "7.14.1",
 		"tesseract.js": "5.1.0"
 	},
@@ -48,11 +48,11 @@
 		"@next/bundle-analyzer": "14.2.4",
 		"@types/eslint": "8.56.10",
 		"@types/events": "3.0.3",
-		"@types/node": "20.14.9",
+		"@types/node": "20.14.10",
 		"@types/react": "18.3.3",
 		"@types/react-redux": "7.1.33",
-		"@typescript-eslint/eslint-plugin": "7.14.1",
-		"@typescript-eslint/parser": "7.14.1",
+		"@typescript-eslint/eslint-plugin": "7.15.0",
+		"@typescript-eslint/parser": "7.15.0",
 		"eslint": "9.6.0",
 		"eslint-config-next": "14.2.4",
 		"eslint-config-prettier": "9.1.0",
@@ -60,8 +60,8 @@
 		"genshin-db": "5.1.5",
 		"prettier": "3.3.2",
 		"sass": "1.77.6",
-		"type-fest": "4.20.1",
-		"typescript": "5.5.2"
+		"type-fest": "4.21.0",
+		"typescript": "5.5.3"
 	},
 	"resolutions": {
 		"@mui/material": "npm:@mui/joy@latest"
