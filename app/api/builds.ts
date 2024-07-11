@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 7/2/24
+// 7/11/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -653,10 +653,10 @@ export const builds: Record<CharacterKey, Build> = {
 	Sigewinne: {
 		key: 'Sigewinne',
 		role: 'Healer',
-		weapon: ['SilvershowerHeartstrings', 'RecurveBow', 'FavoniusWarbow'],
-		artifact: ['SongOfDaysPast'],
-		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
-		subStat: ['hp_', 'enerRech_', 'hp', 'critRD_'],
+		weapon: ['SilvershowerHeartstrings', 'RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd'],
+		artifact: ['SongOfDaysPast', 'OceanHuedClam'],
+		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
+		subStat: ['hp_', 'hp', 'critRate_'],
 	},
 	// Electro
 	Fischl: {
