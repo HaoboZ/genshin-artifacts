@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 7/11/24
+// 7/19/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -460,7 +460,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'PrimordialJadeCutter',
 			'MistsplitterReforged',
 			'HaranGeppakuFutsu',
-			'LightOfFoliarIncision',
+			['LightOfFoliarIncision','Absolution'],
 			['SkywardBlade', 'WolfFang'],
 			'SummitShaper',
 			['FavoniusSword', 'FleuveCendreFerryman'],
@@ -584,7 +584,8 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			'AquaSimulacra',
-			['MouunsMoon', 'TheStringless', 'Slingshot', 'SilvershowerHeartstrings'],
+			'SilvershowerHeartstrings',
+			['MouunsMoon', 'TheStringless', 'Slingshot'],
 			['HuntersPath', 'PolarStar', 'ThunderingPulse', 'SkywardHarp'],
 			'FadingTwilight',
 			'RecurveBow',
