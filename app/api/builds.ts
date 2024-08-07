@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
-// 7/19/24
+// 8/7/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -454,11 +454,21 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Emilie: {
 		key: 'Emilie',
-		role: 'Burn Support',
-		weapon: ['LumidouceElegy'],
-		artifact: ['UnfinishedReverie'],
+		role: 'Off-Field DPS',
+		weapon: [
+			'LumidouceElegy',
+			'CalamityQueller',
+			'StaffOfHoma',
+			['EngulfingLightning', 'StaffOfTheScarletSands'],
+			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance'],
+			'Deathmatch',
+			'SkywardSpine',
+			['MissiveWindspear', 'FavoniusLance'],
+			'KitainCrossSpear',
+		],
+		artifact: ['UnfinishedReverie', 'DeepwoodMemories', 'GoldenTroupe'],
 		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_', 'atk'],
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
 	},
 	// Hydro
 	Xingqiu: {
