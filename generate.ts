@@ -28,6 +28,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Diluc_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/40/Diona_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/aa/Emilie_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Eula_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png',
@@ -518,6 +519,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

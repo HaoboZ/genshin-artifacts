@@ -452,6 +452,14 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'hp'],
 	},
+	Emilie: {
+		key: 'Emilie',
+		role: 'Burn Support',
+		weapon: ['LumidouceElegy'],
+		artifact: ['UnfinishedReverie'],
+		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_', 'atk'],
+	},
 	// Hydro
 	Xingqiu: {
 		key: 'Xingqiu',

@@ -149,6 +149,7 @@ export type CharacterKey =
 	| 'Diluc' //Diluc
 	| 'Diona' //Diona
 	| 'Dori' //Dori
+	| 'Emilie' //Emilie
 	| 'Eula' //Eula
 	| 'Faruzan' //Faruzan
 	| 'Fischl' //Fischl
@@ -294,6 +295,7 @@ export type WeaponKey =
 	| 'LithicBlade' //Lithic Blade
 	| 'LithicSpear' //Lithic Spear
 	| 'LostPrayerToTheSacredWinds' //Lost Prayer to the Sacred Winds
+	| 'LumidouceElegy' //Lumidouce Elegy
 	| 'LuxuriousSeaLord' //Luxurious Sea-Lord
 	| 'MagicGuide' //Magic Guide
 	| 'MailedFlower' //Mailed Flower

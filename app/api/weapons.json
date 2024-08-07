@@ -531,6 +531,13 @@
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png"
 	},
+	"LumidouceElegy": {
+		"key": "LumidouceElegy",
+		"name": "Lumidouce Elegy",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png"
+	},
 	"LuxuriousSeaLord": {
 		"key": "LuxuriousSeaLord",
 		"name": "Luxurious Sea-Lord",

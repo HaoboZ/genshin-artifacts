@@ -227,6 +227,16 @@
 		"weeklyMaterial": "Bloodjade Branch",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png"
 	},
+	"Emilie": {
+		"key": "Emilie",
+		"name": "Emilie",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Dendro",
+		"talentMaterial": "Teachings of Order",
+		"weeklyMaterial": "Silken Feather",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/aa/Emilie_Icon.png"
+	},
 	"Eula": {
 		"key": "Eula",
 		"name": "Eula",
