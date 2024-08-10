@@ -1,7 +1,7 @@
 import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
-// https://docs.google.com/spreadsheets/d/e/2PACX-1vRq-sQxkvdbvaJtQAGG6iVz2q2UN9FCKZ8Mkyis87QHFptcOU3ViLh0_PJyMxFSgwJZrd10kbYpQFl1/pubhtml
+// https://tinyurl.com/genshinbuilds
 // 8/7/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
@@ -1314,7 +1314,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'PrimordialJadeWingedSpear',
-			'StaffOfHoma',
+			['StaffOfHoma', 'LumidouceElegy'],
 			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands', 'CrimsonMoonsSemblance'],
 			['Deathmatch', 'LithicSpear'],
 			[
@@ -1414,10 +1414,10 @@ export const builds: Record<CharacterKey, Build> = {
 			'HakushinRing',
 		],
 		artifact: [
-			'ArchaicPetra',
 			'NighttimeWhispersInTheEchoingWoods',
 			'HuskOfOpulentDreams',
 			['Thundersoother', 'Lavawalker'],
+			'ArchaicPetra',
 			'EmblemOfSeveredFate',
 		],
 		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
@@ -1463,7 +1463,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Zhongli',
 		role: 'Shield Support',
 		weapon: ['BlackTassel', 'FavoniusLance'],
-		artifact: ['TenacityOfTheMillelith', 'ArchaicPetra', ['DeepwoodMemories', 'Instructor']],
+		artifact: ['ArchaicPetra', ['DeepwoodMemories', 'Instructor'], 'TenacityOfTheMillelith'],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['hp_', 'hp', 'enerRech_'],
 	},
