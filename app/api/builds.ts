@@ -1090,7 +1090,8 @@ export const builds: Record<CharacterKey, Build> = {
 			'PrototypeCrescent',
 		],
 		artifact: [
-			['WanderersTroupe', 'ShimenawasReminiscence'],
+			'UnfinishedReverie',
+			['ShimenawasReminiscence', 'WanderersTroupe'],
 			['Lavawalker', 'RetracingBolide'],
 			'GildedDreams',
 		],
