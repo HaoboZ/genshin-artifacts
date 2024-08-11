@@ -4,6 +4,7 @@ import { potentialStatRollPercent, statName } from '@/api/stats';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import statArrMatch from '@/src/helpers/statArrMatch';
 import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { StatKey } from '@/src/types/good';
@@ -11,7 +12,6 @@ import { DialogContent, DialogTitle, Grid, ModalClose, ModalDialog, Typography }
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
-import statArrMatch from '../../../src/helpers/statArrMatch';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {

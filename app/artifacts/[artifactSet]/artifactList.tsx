@@ -36,6 +36,7 @@ import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
+import getArtifactSetBuild from '../getArtifactSetBuild';
 import ArtifactModal from './artifactModal';
 
 export default function ArtifactList({
@@ -53,6 +54,10 @@ export default function ArtifactList({
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
 	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
 
+	const artifactSetBuild = useMemo(
+		() => getArtifactSetBuild(Object.values(builds), artifactSet),
+		[artifactSet],
+	);
 	const artifacts = useArtifacts({ artifactSet, slot });
 	const artifactsSorted = useMemo(
 		() =>
@@ -61,7 +66,10 @@ export default function ArtifactList({
 				map((artifact) => ({
 					...artifact,
 					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
-					potential: potentialStatRollPercent(builds[artifact.location], artifact),
+					potential: potentialStatRollPercent(
+						builds[artifact.location] ?? artifactSetBuild,
+						artifact,
+					),
 				})),
 				filter(
 					(artifact) =>
