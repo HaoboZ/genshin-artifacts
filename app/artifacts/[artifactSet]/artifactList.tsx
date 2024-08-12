@@ -1,4 +1,9 @@
-import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
+import {
+	artifactSetsInfo,
+	artifactSlotOrder,
+	missingArtifactSets,
+	useArtifacts,
+} from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { potentialStatRollPercent, weightedStatRollPercent } from '@/api/stats';
 import PageSection from '@/components/page/section';
@@ -55,7 +60,11 @@ export default function ArtifactList({
 	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
 
 	const artifactSetBuild = useMemo(
-		() => getArtifactSetBuild(Object.values(builds), artifactSet),
+		() =>
+			getArtifactSetBuild(
+				[...Object.values(builds), ...Object.values(missingArtifactSets)],
+				artifactSet,
+			),
 		[artifactSet],
 	);
 	const artifacts = useArtifacts({ artifactSet, slot });

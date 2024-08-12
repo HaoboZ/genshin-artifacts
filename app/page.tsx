@@ -10,7 +10,7 @@ import { Button, ButtonGroup, Typography } from '@mui/joy';
 import { useSnackbar } from 'notistack';
 
 export default function Main() {
-	const priority = useAppSelector(pget('main.priority'));
+	const main = useAppSelector(pget('main'));
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
@@ -23,9 +23,9 @@ export default function Main() {
 			if (item?.type !== 'application/json') return;
 			const reader = new FileReader();
 			reader.onload = ({ target }) => {
-				const { priority, ...good } = JSON.parse(target.result as string);
+				const { main, good } = JSON.parse(target.result as string);
+				dispatch(mainActions.setMain(main));
 				dispatch(goodActions.import(good));
-				if (priority) dispatch(mainActions.setPriority(priority));
 				enqueueSnackbar('Imported');
 			};
 			reader.readAsText(item.getAsFile());
@@ -46,9 +46,9 @@ export default function Main() {
 							if (!target.files) return;
 							const reader = new FileReader();
 							reader.onload = ({ target }) => {
-								const { priority, ...good } = JSON.parse(target.result as string);
+								const { main, good } = JSON.parse(target.result as string);
+								dispatch(mainActions.setMain(main));
 								dispatch(goodActions.import(good));
-								if (priority) dispatch(mainActions.setPriority(priority));
 								enqueueSnackbar('Imported');
 							};
 							reader.readAsText(target.files[0]);
@@ -59,7 +59,7 @@ export default function Main() {
 					onClick={() => {
 						const a = document.createElement('a');
 						a.href = URL.createObjectURL(
-							new Blob([JSON.stringify({ priority, ...good }, null, 2)], {
+							new Blob([JSON.stringify({ main, good }, null, 2)], {
 								type: 'text/plain',
 							}),
 						);

@@ -1,3 +1,4 @@
+import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { potentialStatRollPercent } from '@/api/stats';
 import pget from '@/src/helpers/pget';
@@ -34,7 +35,10 @@ export default function UpgradePriorityModal() {
 					potential: potentialStatRollPercent(
 						artifact.location
 							? builds[artifact.location]
-							: getArtifactSetBuild(Object.values(builds), artifact.setKey),
+							: getArtifactSetBuild(
+									[...Object.values(builds), ...Object.values(missingArtifactSets)],
+									artifact.setKey,
+								),
 						artifact,
 					),
 				})),

@@ -18,22 +18,6 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Build> = {
-	UnfinishedReverie: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: ['DullBlade'],
-		artifact: ['UnfinishedReverie'],
-		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
-	},
-	SongOfDaysPast: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: ['DullBlade'],
-		artifact: ['SongOfDaysPast'],
-		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
-		subStat: ['hp_', 'atk_', 'hp', 'atk'],
-	},
 	VourukashasGlow: {
 		key: 'Traveler',
 		role: 'DPS',

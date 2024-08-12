@@ -1,3 +1,4 @@
+import { missingArtifactSets } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
 import StatChipArray from '@/components/statChipArray';
@@ -20,7 +21,8 @@ export default function BestInSlot({
 	const characters = useCharacters({ artifactSet });
 
 	const { mainStat, subStat } = useMemo(
-		() => getArtifactSetBuild(characters, artifactSet),
+		() =>
+			getArtifactSetBuild([...characters, ...Object.values(missingArtifactSets)], artifactSet),
 		[characters],
 	);
 

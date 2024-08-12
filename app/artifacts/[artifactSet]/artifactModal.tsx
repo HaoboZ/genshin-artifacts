@@ -1,4 +1,4 @@
-import { artifactSetsInfo, useArtifacts } from '@/api/artifacts';
+import { artifactSetsInfo, missingArtifactSets, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { statName, weightedStatRollPercent } from '@/api/stats';
@@ -42,7 +42,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 	const charactersTiered = useMemo(
 		() =>
 			pipe(
-				Object.values(builds),
+				[...Object.values(builds), ...Object.values(missingArtifactSets)],
 				filter(
 					(build) =>
 						(checked

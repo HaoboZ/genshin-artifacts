@@ -13,6 +13,10 @@ const mainSlice = createSlice({
 	name: 'main',
 	initialState,
 	reducers: {
+		setMain(state, { payload }: PayloadAction<State>) {
+			state.priority = payload.priority;
+			state.weekly = payload.weekly;
+		},
 		setPriority(state, { payload }: PayloadAction<Record<string, CharacterKey[]>>) {
 			state.priority = payload;
 		},

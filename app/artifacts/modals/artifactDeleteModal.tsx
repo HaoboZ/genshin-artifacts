@@ -1,3 +1,4 @@
+import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { potentialStatRollPercent } from '@/api/stats';
 import pget from '@/src/helpers/pget';
@@ -43,7 +44,10 @@ export default function ArtifactDeleteModal() {
 			artifacts,
 			filter(({ lock, location, level }) => lock && !location && !level),
 			map((artifact) => {
-				const build = getArtifactSetBuild(Object.values(builds), artifact.setKey);
+				const build = getArtifactSetBuild(
+					[...Object.values(builds), ...Object.values(missingArtifactSets)],
+					artifact.setKey,
+				);
 				return {
 					...artifact,
 					potential: potentialStatRollPercent(build, artifact),
