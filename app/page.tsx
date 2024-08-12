@@ -23,8 +23,8 @@ export default function Main() {
 			if (item?.type !== 'application/json') return;
 			const reader = new FileReader();
 			reader.onload = ({ target }) => {
-				const { main, good } = JSON.parse(target.result as string);
-				dispatch(mainActions.setMain(main));
+				const { main, ...good } = JSON.parse(target.result as string);
+				if (main) dispatch(mainActions.setMain(main));
 				dispatch(goodActions.import(good));
 				enqueueSnackbar('Imported');
 			};
@@ -46,8 +46,8 @@ export default function Main() {
 							if (!target.files) return;
 							const reader = new FileReader();
 							reader.onload = ({ target }) => {
-								const { main, good } = JSON.parse(target.result as string);
-								dispatch(mainActions.setMain(main));
+								const { main, ...good } = JSON.parse(target.result as string);
+								if (main) dispatch(mainActions.setMain(main));
 								dispatch(goodActions.import(good));
 								enqueueSnackbar('Imported');
 							};
@@ -59,7 +59,7 @@ export default function Main() {
 					onClick={() => {
 						const a = document.createElement('a');
 						a.href = URL.createObjectURL(
-							new Blob([JSON.stringify({ main, good }, null, 2)], {
+							new Blob([JSON.stringify({ main, ...good }, null, 2)], {
 								type: 'text/plain',
 							}),
 						);
