@@ -1,7 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { differenceWith } from 'remeda';
-import pget from '../../helpers/pget';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
@@ -27,6 +26,12 @@ const goodSlice = createSlice({
 			}
 			return { ...state, ...payload };
 		},
+		// importArtifactSet(state, { payload }: PayloadAction<IArtifact[]>) {
+		// 	state.artifacts = [
+		// 		...state.artifacts.filter(({ setKey }) => setKey !== payload[0].setKey),
+		// 		...payload,
+		// 	];
+		// },
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);
 			if (index === -1) {
@@ -122,7 +127,7 @@ const goodSlice = createSlice({
 			state.artifacts = differenceWith(state.artifacts, payload, (a, b) => a.id === b.id);
 		},
 		deleteUnlockedArtifacts(state) {
-			state.artifacts = state.artifacts.filter(pget('lock'));
+			state.artifacts = state.artifacts.filter(({ lock, location }) => lock || location);
 		},
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];

@@ -70,6 +70,24 @@ export default function Main() {
 					}}>
 					Export
 				</Button>
+				{/*<Button component='label'>*/}
+				{/*	Replace Set*/}
+				{/*	<input*/}
+				{/*		hidden*/}
+				{/*		type='file'*/}
+				{/*		accept='application/json'*/}
+				{/*		onChange={({ target }) => {*/}
+				{/*			if (!target.files) return;*/}
+				{/*			const reader = new FileReader();*/}
+				{/*			reader.onload = ({ target }) => {*/}
+				{/*				const good = JSON.parse(target.result as string);*/}
+				{/*				dispatch(goodActions.importArtifactSet(good));*/}
+				{/*				enqueueSnackbar('Imported');*/}
+				{/*			};*/}
+				{/*			reader.readAsText(target.files[0]);*/}
+				{/*		}}*/}
+				{/*	/>*/}
+				{/*</Button>*/}
 				<Button onClick={() => dispatch(goodActions.reset())}>Reset</Button>
 			</ButtonGroup>
 			<Typography>Characters: {good.characters.length}</Typography>

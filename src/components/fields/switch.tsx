@@ -14,6 +14,7 @@ export default function SwitchField({
 			<FormLabel>{label}</FormLabel>
 			<Switch
 				{...field}
+				checked={field.value}
 				{...props}
 				onChange={(e) => {
 					// @ts-ignore
