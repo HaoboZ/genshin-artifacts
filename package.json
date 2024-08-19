@@ -45,23 +45,24 @@
 		"tesseract.js": "5.1.0"
 	},
 	"devDependencies": {
+		"@eslint/js": "9.9.0",
 		"@next/bundle-analyzer": "14.2.5",
 		"@types/eslint": "9.6.0",
+		"@types/eslint__js": "8.42.3",
 		"@types/events": "3.0.3",
 		"@types/node": "22.4.1",
 		"@types/react": "18.3.3",
 		"@types/react-redux": "7.1.33",
-		"@typescript-eslint/eslint-plugin": "8.1.0",
-		"@typescript-eslint/parser": "8.1.0",
 		"eslint": "9.9.0",
-		"eslint-config-next": "14.2.5",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-prettier": "5.2.1",
+		"eslint-plugin-react": "7.35.0",
 		"genshin-db": "5.1.7",
 		"prettier": "3.3.3",
 		"sass": "1.77.8",
 		"type-fest": "4.25.0",
-		"typescript": "5.5.4"
+		"typescript": "5.5.4",
+		"typescript-eslint": "8.1.0"
 	},
 	"resolutions": {
 		"@mui/material": "npm:@mui/joy@latest"
