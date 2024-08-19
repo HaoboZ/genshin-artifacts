@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 8/7/24
+// 8/19/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -27,7 +27,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			'StaffOfTheScarletSands',
-			['StaffOfHoma', 'EngulfingLightning', 'TheCatch'],
+			['StaffOfHoma', 'LumidouceElegy', 'EngulfingLightning', 'TheCatch'],
 			[
 				'PrimordialJadeWingedSpear',
 				'SkywardSpine',
@@ -194,7 +194,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'StaffOfHoma',
 			'StaffOfTheScarletSands',
-			'BalladOfTheFjords',
+			['BalladOfTheFjords', 'LumidouceElegy'],
 			['DragonsBane', 'Deathmatch'],
 			'PrimordialJadeWingedSpear',
 			'LithicSpear',
@@ -278,7 +278,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'CrimsonMoonsSemblance',
 			['PrimordialJadeWingedSpear', 'StaffOfTheScarletSands'],
-			['StaffOfHoma', 'CalamityQueller'],
+			['StaffOfHoma', 'LumidouceElegy', 'CalamityQueller'],
 			'VortexVanquisher',
 			'Deathmatch',
 			'WhiteTassel',
@@ -824,7 +824,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'EngulfingLightning',
-			['StaffOfHoma', 'PrimordialJadeWingedSpear', 'StaffOfTheScarletSands'],
+			['StaffOfHoma', 'LumidouceElegy', 'PrimordialJadeWingedSpear', 'StaffOfTheScarletSands'],
 			'CalamityQueller',
 			['TheCatch', 'SkywardSpine'],
 			'VortexVanquisher',
@@ -875,7 +875,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'BalladOfTheFjords',
 			'PrimordialJadeWingedSpear',
 			'Deathmatch',
-			['StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
+			['LumidouceElegy', 'StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
 			['KitainCrossSpear', 'DragonsBane'],
 			'SkywardSpine',
 			'FavoniusLance',
@@ -976,7 +976,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'StaffOfHoma',
 			'WavebreakersFin',
 			'VortexVanquisher',
-			'PrimordialJadeWingedSpear',
+			['PrimordialJadeWingedSpear', 'LumidouceElegy'],
 			'BlackcliffPole',
 			'SkywardSpine',
 			'EngulfingLightning',
