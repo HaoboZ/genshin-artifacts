@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 8/19/24
+// 8/30/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -463,7 +463,8 @@ export const builds: Record<CharacterKey, Build> = {
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance'],
 			'Deathmatch',
 			'SkywardSpine',
-			['MissiveWindspear', 'FavoniusLance'],
+			['MissiveWindspear', 'LithicSpear', 'ProspectorsDrill'],
+			'FavoniusLance',
 			'KitainCrossSpear',
 		],
 		artifact: ['UnfinishedReverie', 'DeepwoodMemories', 'GoldenTroupe'],
@@ -676,6 +677,19 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['SongOfDaysPast', 'OceanHuedClam'],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['hp_', 'hp', 'critRate_'],
+	},
+	Mualani: {
+		key: 'Mualani',
+		role: 'Vaporize DPS',
+		weapon: [
+			'SurfsUp',
+			['SacrificialJade', 'AThousandFloatingDreams'],
+			'TomeOfTheEternalFlow',
+			'RingOfYaxche',
+		],
+		artifact: ['ObsidianCodex', 'HeartOfDepth', 'MarechausseeHunter'],
+		mainStat: { sands: ['hp_', 'eleMas'], goblet: 'hydro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'eleMas', 'hp_', 'hp'],
 	},
 	// Electro
 	Fischl: {
@@ -942,7 +956,12 @@ export const builds: Record<CharacterKey, Build> = {
 			'PrototypeArchaic',
 			'FavoniusGreatsword',
 		],
-		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige'],
+		artifact: [
+			'NoblesseOblige',
+			['EmblemOfSeveredFate', 'ScrollOfTheHeroOfCinderCity'],
+			'GildedDreams',
+			'NoblesseOblige',
+		],
 		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
@@ -1255,7 +1274,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['FadingTwilight', 'SacrificialBow'],
 		],
 		artifact: [
-			['ViridescentVenerer', 'NoblesseOblige'],
+			['ViridescentVenerer', 'NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
 			'EmblemOfSeveredFate',
 			['GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
@@ -1392,7 +1411,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'Frostbearer',
 			'PrototypeAmber',
 		],
-		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast'],
+		artifact: [
+			'ViridescentVenerer',
+			'NoblesseOblige',
+			['OceanHuedClam', 'SongOfDaysPast', 'ScrollOfTheHeroOfCinderCity'],
+		],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'atk_' },
 		subStat: ['enerRech_', 'atk_', 'atk', 'critRate_'],
 	},
@@ -1460,11 +1483,32 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: ['def_', 'critRate_'] },
 		subStat: ['def_', 'enerRech_', 'def', 'critRate_'],
 	},
+	Kachina: {
+		key: 'Kachina',
+		role: 'Support and Off-Field DPS',
+		weapon: [
+			'FavoniusLance',
+			'FootprintOfTheRainbow',
+			'EngulfingLightning',
+			'PrototypeStarglitter',
+		],
+		artifact: ['ScrollOfTheHeroOfCinderCity'],
+		mainStat: {
+			sands: ['def_', 'enerRech_'],
+			goblet: ['geo_dmg_', 'def_'],
+			circlet: ['critRD_'],
+		},
+		subStat: ['enerRech_', 'critRD_', 'def_'],
+	},
 	Zhongli: {
 		key: 'Zhongli',
 		role: 'Shield Support',
 		weapon: ['BlackTassel', 'FavoniusLance'],
-		artifact: ['ArchaicPetra', ['DeepwoodMemories', 'Instructor'], 'TenacityOfTheMillelith'],
+		artifact: [
+			['ArchaicPetra', 'ScrollOfTheHeroOfCinderCity'],
+			['DeepwoodMemories', 'Instructor'],
+			'TenacityOfTheMillelith',
+		],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['hp_', 'hp', 'enerRech_'],
 	},

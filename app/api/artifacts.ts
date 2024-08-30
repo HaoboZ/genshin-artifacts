@@ -18,6 +18,14 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Build> = {
+	ObsidianCodex: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['DullBlade'],
+		artifact: ['ObsidianCodex'],
+		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
+	},
 	VourukashasGlow: {
 		key: 'Traveler',
 		role: 'DPS',

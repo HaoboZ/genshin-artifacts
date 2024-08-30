@@ -337,6 +337,16 @@
 		"weeklyMaterial": "Dvalin's Plume",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png"
 	},
+	"Kachina": {
+		"key": "Kachina",
+		"name": "Kachina",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Geo",
+		"talentMaterial": "Teachings of Conflict",
+		"weeklyMaterial": "Fading Candle",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Kachina_Icon.png"
+	},
 	"KaedeharaKazuha": {
 		"key": "KaedeharaKazuha",
 		"name": "Kaedehara Kazuha",
@@ -496,6 +506,16 @@
 		"talentMaterial": "Teachings of Resistance",
 		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png"
+	},
+	"Mualani": {
+		"key": "Mualani",
+		"name": "Mualani",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"talentMaterial": "Teachings of Contention",
+		"weeklyMaterial": "Lightless Mass",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Mualani_Icon.png"
 	},
 	"Nahida": {
 		"key": "Nahida",

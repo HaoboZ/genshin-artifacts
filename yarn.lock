@@ -2711,7 +2711,7 @@ __metadata:
     eslint-plugin-react: "npm:7.35.0"
     events: "npm:3.3.0"
     formik: "npm:2.4.6"
-    genshin-db: "npm:5.1.7"
+    genshin-db: "npm:5.1.8"
     nanoid: "npm:5.0.7"
     next: "npm:14.2.6"
     notistack: "npm:3.0.1"
@@ -2729,13 +2729,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"genshin-db@npm:5.1.7":
-  version: 5.1.7
-  resolution: "genshin-db@npm:5.1.7"
+"genshin-db@npm:5.1.8":
+  version: 5.1.8
+  resolution: "genshin-db@npm:5.1.8"
   dependencies:
     fuzzysort: "npm:^1.1.4"
     pako: "npm:^2.0.4"
-  checksum: 10c0/2994415d712779c6bb36b94f795b5e9039951f146f3c8becfb21a48ea848fd4934ea3252c83f5d5fbad349ca6e988235eeed060d6b5bad234d99217bfbad28db
+  checksum: 10c0/c4f36628d9bd561e23b5e66c79e2df158cc11b03e093e5837db935b4404783d304ba947353aa60137b50444d960311c8667b85ca5717b9d7f14f5b2764eeb97d
   languageName: node
   linkType: hard
 

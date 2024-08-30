@@ -39,6 +39,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Kachina_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Kaedehara_Kazuha_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kaeya_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Kamisato_Ayaka_Icon.png',
@@ -55,6 +56,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Mualani_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png',
@@ -332,6 +334,16 @@ const artifactImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Reckoning_of_the_Xenogenic.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Item_Root_of_the_Spirit-Marrow.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Myths_of_the_Night_Realm.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Pre-Banquet_of_the_Contenders.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Crown_of_the_Saints.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/91/Item_Beast_Tamer%27s_Talisman.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Mountain_Ranger%27s_Marker.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/3/3e/Item_Mystic%27s_Gold_Dial.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Wandering_Scholar%27s_Claw_Cup.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Demon-Warrior%27s_Feather_Mask.png',
 ];
 const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png',
@@ -520,10 +532,20 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
 	// 5
+	ObsidianCodex: 21,
+	ScrollOfTheHeroOfCinderCity: 21,
 	UnfinishedReverie: 20,
 	FragmentOfHarmonicWhimsy: 20,
 	NighttimeWhispersInTheEchoingWoods: 19,

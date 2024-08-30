@@ -103,6 +103,7 @@ export type ArtifactSetKey =
 	| 'NighttimeWhispersInTheEchoingWoods' //Nighttime Whispers in the Echoing Woods
 	| 'NoblesseOblige' //Noblesse Oblige
 	| 'NymphsDream' //Nymph's Dream
+	| 'ObsidianCodex' //Obsidian Codex
 	| 'OceanHuedClam' //Ocean-Hued Clam
 	| 'PaleFlame' //Pale Flame
 	| 'PrayersForDestiny' //Prayers for Destiny
@@ -113,6 +114,7 @@ export type ArtifactSetKey =
 	| 'RetracingBolide' //Retracing Bolide
 	| 'SongOfDaysPast' //Song of Days Past
 	| 'Scholar' //Scholar
+	| 'ScrollOfTheHeroOfCinderCity' //Scroll of the Hero of Cinder City
 	| 'ShimenawasReminiscence' //Shimenawa's Reminiscence
 	| 'TenacityOfTheMillelith' //Tenacity of the Millelith
 	| 'TheExile' //The Exile
@@ -160,6 +162,7 @@ export type CharacterKey =
 	| 'Gorou' //Gorou
 	| 'HuTao' //Hu Tao
 	| 'Jean' //Jean
+	| 'Kachina' //Kachina
 	| 'KaedeharaKazuha' //Kaedehara Kazuha
 	| 'Kaeya' //Kaeya
 	| 'KamisatoAyaka' //Kamisato Ayaka
@@ -176,6 +179,7 @@ export type CharacterKey =
 	| 'Lyney' //Lyney
 	| 'Mika' //Mika
 	| 'Mona' //Mona
+	| 'Mualani' //Mualani
 	| 'Nahida' //Nahida
 	| 'Navia' //Navia
 	| 'Neuvillette' //Neuvillette
@@ -223,6 +227,7 @@ export type WeaponKey =
 	| 'ApprenticesNotes' //Apprentice's Notes
 	| 'AquaSimulacra' //Aqua Simulacra
 	| 'AquilaFavonia' //Aquila Favonia
+	| 'AshGravenDrinkingHorn' //Ash-Graven Drinking Horn
 	| 'BalladOfTheBoundlessBlue' //Ballad of the Boundless Blue
 	| 'BalladOfTheFjords' //Ballad of the Fjords
 	| 'BeaconOfTheReedSea' //Beacon of the Reed Sea
@@ -236,6 +241,7 @@ export type WeaponKey =
 	| 'BloodtaintedGreatsword' //Bloodtainted Greatsword
 	| 'CalamityQueller' //Calamity Queller
 	| 'CashflowSupervision' //Cashflow Supervision
+	| 'ChainBreaker' //Chain Breaker
 	| 'CinnabarSpindle' //Cinnabar Spindle
 	| 'Cloudforged' //Cloudforged
 	| 'CompoundBow' //Compound Bow
@@ -251,6 +257,7 @@ export type WeaponKey =
 	| 'DragonsBane' //Dragon's Bane
 	| 'DragonspineSpear' //Dragonspine Spear
 	| 'DullBlade' //Dull Blade
+	| 'EarthShaker' //Earth Shaker
 	| 'ElegyForTheEnd' //Elegy for the End
 	| 'EmeraldOrb' //Emerald Orb
 	| 'EndOfTheLine' //End of the Line
@@ -258,6 +265,7 @@ export type WeaponKey =
 	| 'EverlastingMoonglow' //Everlasting Moonglow
 	| 'EyeOfPerception' //Eye of Perception
 	| 'FadingTwilight' //Fading Twilight
+	| 'FangOfTheMountainKing' //Fang of the Mountain King
 	| 'FavoniusCodex' //Favonius Codex
 	| 'FavoniusGreatsword' //Favonius Greatsword
 	| 'FavoniusLance' //Favonius Lance
@@ -269,6 +277,8 @@ export type WeaponKey =
 	| 'FinaleOfTheDeep' //Finale of the Deep
 	| 'FleuveCendreFerryman' //Fleuve Cendre Ferryman
 	| 'FlowingPurity' //Flowing Purity
+	| 'FluteOfEzpitzal' //Flute of Ezpitzal
+	| 'FootprintOfTheRainbow' //Footprint of the Rainbow
 	| 'ForestRegalia' //Forest Regalia
 	| 'FreedomSworn' //Freedom-Sworn
 	| 'Frostbearer' //Frostbearer
@@ -330,6 +340,7 @@ export type WeaponKey =
 	| 'RecurveBow' //Recurve Bow
 	| 'RedhornStonethresher' //Redhorn Stonethresher
 	| 'RightfulReward' //Rightful Reward
+	| 'RingOfYaxche' //Ring of Yaxche
 	| 'RoyalBow' //Royal Bow
 	| 'RoyalGreatsword' //Royal Greatsword
 	| 'RoyalGrimoire' //Royal Grimoire
@@ -364,6 +375,7 @@ export type WeaponKey =
 	| 'StaffOfHoma' //Staff of Homa
 	| 'StaffOfTheScarletSands' //Staff of the Scarlet Sands
 	| 'SummitShaper' //Summit Shaper
+	| 'SurfsUp' //Surf's Up
 	| 'SwordOfDescension' //Sword of Descension
 	| 'SwordOfNarzissenkreuz' //Sword of Narzussenkreuz
 	| 'TalkingStick' //Talking Stick

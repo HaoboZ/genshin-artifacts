@@ -48,6 +48,13 @@
 		"weaponType": "Sword",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png"
 	},
+	"AshGravenDrinkingHorn": {
+		"key": "AshGravenDrinkingHorn",
+		"name": "Ash-Graven Drinking Horn",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png"
+	},
 	"AThousandFloatingDreams": {
 		"key": "AThousandFloatingDreams",
 		"name": "A Thousand Floating Dreams",
@@ -138,6 +145,13 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png"
+	},
+	"ChainBreaker": {
+		"key": "ChainBreaker",
+		"name": "Chain Breaker",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png"
 	},
 	"CinnabarSpindle": {
 		"key": "CinnabarSpindle",
@@ -237,6 +251,13 @@
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png"
 	},
+	"EarthShaker": {
+		"key": "EarthShaker",
+		"name": "Earth Shaker",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png"
+	},
 	"ElegyForTheEnd": {
 		"key": "ElegyForTheEnd",
 		"name": "Elegy for the End",
@@ -285,6 +306,13 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png"
+	},
+	"FangOfTheMountainKing": {
+		"key": "FangOfTheMountainKing",
+		"name": "Fang of the Mountain King",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png"
 	},
 	"FavoniusCodex": {
 		"key": "FavoniusCodex",
@@ -362,6 +390,20 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png"
+	},
+	"FluteOfEzpitzal": {
+		"key": "FluteOfEzpitzal",
+		"name": "Flute of Ezpitzal",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png"
+	},
+	"FootprintOfTheRainbow": {
+		"key": "FootprintOfTheRainbow",
+		"name": "Footprint of the Rainbow",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png"
 	},
 	"ForestRegalia": {
 		"key": "ForestRegalia",
@@ -755,6 +797,13 @@
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png"
 	},
+	"RingOfYaxche": {
+		"key": "RingOfYaxche",
+		"name": "Ring of Yaxche",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png"
+	},
 	"RoyalBow": {
 		"key": "RoyalBow",
 		"name": "Royal Bow",
@@ -978,6 +1027,13 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png"
+	},
+	"SurfsUp": {
+		"key": "SurfsUp",
+		"name": "Surf's Up",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png"
 	},
 	"SwordOfDescension": {
 		"key": "SwordOfDescension",
