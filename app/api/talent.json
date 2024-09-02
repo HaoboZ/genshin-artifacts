@@ -88,5 +88,23 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Item_Teachings_of_Order.png",
 		"location": "Fontaine",
 		"day": 3
+	},
+	{
+		"name": "Teachings of Contention",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Teachings_of_Contention.png",
+		"location": "Natlan",
+		"day": 1
+	},
+	{
+		"name": "Teachings of Kindling",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Item_Teachings_of_Kindling.png",
+		"location": "Natlan",
+		"day": 2
+	},
+	{
+		"name": "Teachings of Conflict",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/95/Item_Teachings_of_Conflict.png",
+		"location": "Natlan",
+		"day": 3
 	}
 ]
