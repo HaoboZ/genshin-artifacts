@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 8/30/24
+// 9/10/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -685,11 +685,15 @@ export const builds: Record<CharacterKey, Build> = {
 			'SurfsUp',
 			['SacrificialJade', 'AThousandFloatingDreams'],
 			'TomeOfTheEternalFlow',
-			'RingOfYaxche',
+			['RingOfYaxche', 'TheWidsith'],
 		],
 		artifact: ['ObsidianCodex', 'HeartOfDepth', 'MarechausseeHunter'],
-		mainStat: { sands: ['hp_', 'eleMas'], goblet: 'hydro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'eleMas', 'hp_', 'hp'],
+		mainStat: {
+			sands: ['hp_', 'eleMas'],
+			goblet: 'hydro_dmg_',
+			circlet: ['critRD_', 'hp_', 'eleMas'],
+		},
+		subStat: ['critRD_', ['eleMas', 'hp_'], 'hp'],
 	},
 	// Electro
 	Fischl: {
