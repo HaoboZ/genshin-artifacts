@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "1.0.37",
+	"version": "1.0.38",
 	"private": true,
 	"scripts": {
 		"generate": "npx tsx ./generate.ts",
@@ -15,7 +15,7 @@
 		"start": "next start",
 		"export": "next export"
 	},
-	"packageManager": "yarn@4.4.1",
+	"packageManager": "yarn@4.5.0",
 	"dependencies": {
 		"@dnd-kit/core": "6.1.0",
 		"@dnd-kit/sortable": "8.0.0",
@@ -35,34 +35,34 @@
 		"events": "3.3.0",
 		"formik": "2.4.6",
 		"nanoid": "5.0.7",
-		"next": "14.2.8",
+		"next": "14.2.11",
 		"notistack": "3.0.1",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"react-redux": "9.1.2",
-		"remeda": "2.12.0",
+		"remeda": "2.12.1",
 		"rooks": "7.14.1",
 		"tesseract.js": "5.1.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.10.0",
-		"@next/bundle-analyzer": "14.2.8",
+		"@next/bundle-analyzer": "14.2.11",
 		"@types/eslint": "9.6.1",
 		"@types/eslint__js": "8.42.3",
 		"@types/events": "3.0.3",
-		"@types/node": "22.5.4",
+		"@types/node": "22.5.5",
 		"@types/react": "18.3.5",
 		"@types/react-redux": "7.1.33",
 		"eslint": "9.10.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-prettier": "5.2.1",
-		"eslint-plugin-react": "7.35.2",
+		"eslint-plugin-react": "7.36.1",
 		"genshin-db": "5.1.8",
 		"prettier": "3.3.3",
 		"sass": "1.78.0",
 		"type-fest": "4.26.1",
-		"typescript": "5.5.4",
-		"typescript-eslint": "8.4.0"
+		"typescript": "5.6.2",
+		"typescript-eslint": "8.5.0"
 	},
 	"resolutions": {
 		"@mui/material": "npm:@mui/joy@latest"
