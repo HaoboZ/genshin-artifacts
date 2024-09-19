@@ -471,6 +471,14 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
 	},
+	Kinich: {
+		key: 'Kinich',
+		role: 'DPS',
+		weapon: ['FangOfTheMountainKing', 'EarthShaker'],
+		artifact: ['ObsidianCodex'],
+		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
+	},
 	// Hydro
 	Xingqiu: {
 		key: 'Xingqiu',

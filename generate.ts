@@ -46,6 +46,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/27/Kamisato_Ayato_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Kaveh_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Kinich_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png',

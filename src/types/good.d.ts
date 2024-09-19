@@ -169,6 +169,7 @@ export type CharacterKey =
 	| 'KamisatoAyato' //Kamisato Ayato
 	| 'Kaveh' //Kaveh
 	| 'Keqing' //Keqing
+	| 'Kinich' //Kinich
 	| 'Kirara' //Kirara
 	| 'Klee' //Klee
 	| 'KujouSara' //Kujou Sara

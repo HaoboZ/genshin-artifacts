@@ -407,6 +407,16 @@
 		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png"
 	},
+	"Kinich": {
+		"key": "Kinich",
+		"name": "Kinich",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Dendro",
+		"talentMaterial": "Teachings of Kindling",
+		"weeklyMaterial": "Denial and Judgment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Kinich_Icon.png"
+	},
 	"Kirara": {
 		"key": "Kirara",
 		"name": "Kirara",
