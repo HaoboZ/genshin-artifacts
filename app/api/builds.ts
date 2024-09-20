@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/10/24
+// 9/19/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -474,10 +474,22 @@ export const builds: Record<CharacterKey, Build> = {
 	Kinich: {
 		key: 'Kinich',
 		role: 'DPS',
-		weapon: ['FangOfTheMountainKing', 'EarthShaker'],
-		artifact: ['ObsidianCodex'],
+		weapon: [
+			'FangOfTheMountainKing',
+			'BeaconOfTheReedSea',
+			'SerpentSpine',
+			'Verdict',
+			['EarthShaker', 'WolfsGravestone', 'RedhornStonethresher'],
+		],
+		artifact: [
+			'ObsidianCodex',
+			'UnfinishedReverie',
+			'GoldenTroupe',
+			'DeepwoodMemories',
+			'MarechausseeHunter',
+		],
 		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
+		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
 	// Hydro
 	Xingqiu: {
