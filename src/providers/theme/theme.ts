@@ -1,6 +1,5 @@
 'use client';
 import { createTheme } from '@mui/material';
-import './style.scss';
 
 export default createTheme({
 	cssVariables: true,

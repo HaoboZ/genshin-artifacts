@@ -1,4 +1,3 @@
-import { CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import { Roboto } from 'next/font/google';
@@ -37,7 +36,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				{process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
 				<Providers>
 					<Header />
-					<CssBaseline />
 					{children}
 				</Providers>
 			</body>
