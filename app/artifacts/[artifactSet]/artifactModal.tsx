@@ -10,21 +10,19 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import statArrMatch from '@/src/helpers/statArrMatch';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import {
 	Box,
+	DialogContent,
 	DialogTitle,
-	FormControl,
-	FormLabel,
-	Grid,
-	ModalClose,
-	ModalDialog,
+	FormControlLabel,
+	Grid2,
 	Switch,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, reverse, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
@@ -58,50 +56,49 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 	);
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>{artifactSetsInfo[artifact.setKey].name}</DialogTitle>
-				<ModalClose variant='outlined' />
+		<DialogWrapper>
+			<DialogTitle>{artifactSetsInfo[artifact.setKey].name}</DialogTitle>
+			<Box sx={{ px: 3 }}>
 				<ArtifactActions artifact={artifact} />
-				<Grid container spacing={1}>
-					<Grid xs='auto'>
+				<Grid2 container spacing={1}>
+					<Grid2 size='auto'>
 						<ArtifactImage artifact={artifact}>
 							{artifact.location && (
 								<CharacterImage
 									character={charactersInfo[artifact.location]}
 									size={50}
-									position='absolute'
-									bottom={0}
-									right={0}
-									border={1}
+									sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
 								/>
 							)}
 						</ArtifactImage>
-					</Grid>
-					<Grid xs>
+					</Grid2>
+					<Grid2 size='grow'>
 						<Typography>{statName[artifact.mainStatKey]}</Typography>
 						{artifact.substats.map((substat) => (
 							<SubStatBar key={substat.key} substat={substat} />
 						))}
-					</Grid>
-				</Grid>
-				<FormControl orientation='horizontal'>
-					<FormLabel>All Tiered Sets</FormLabel>
-					<Switch
-						size='lg'
-						sx={{ ml: 0 }}
-						checked={checked}
-						onChange={({ target }) => setChecked(target.checked)}
-					/>
-				</FormControl>
-				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
+					</Grid2>
+				</Grid2>
+				<FormControlLabel
+					control={
+						<Switch
+							sx={{ ml: 0 }}
+							checked={checked}
+							onChange={({ target }) => setChecked(target.checked)}
+						/>
+					}
+					label='All Tiered Sets'
+				/>
+			</Box>
+			<DialogContent>
+				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
 					{charactersTiered.map(({ build, statRollPercent }) => {
 						const currentArtifact = artifacts.find(
 							(artifact) => artifact.location === build.key,
 						);
 						return (
-							<Grid key={build.key} container xs={6} md={4}>
-								<Grid xs='auto'>
+							<Grid2 key={build.key} container size={{ xs: 6, md: 4 }}>
+								<Grid2 size='auto'>
 									<CharacterImage
 										character={charactersInfo[build.key]}
 										sx={{ ':hover': { cursor: 'pointer' } }}
@@ -123,15 +120,12 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 											<ArtifactImage
 												artifact={currentArtifact}
 												size={50}
-												position='absolute'
-												bottom={0}
-												right={0}
-												border={1}
+												sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
 											/>
 										)}
 									</CharacterImage>
-								</Grid>
-								<Grid xs>
+								</Grid2>
+								<Grid2 size='grow'>
 									{currentArtifact && (
 										<Box>
 											<OverflowTypography>
@@ -142,24 +136,24 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 											))}
 										</Box>
 									)}
-								</Grid>
-								<Grid container xs={12} spacing={0}>
-									<Grid xs={6}>
+								</Grid2>
+								<Grid2 container size={12} spacing={0}>
+									<Grid2 size={6}>
 										{currentArtifact && (
 											<PercentBar p={weightedStatRollPercent(build, currentArtifact)}>
 												Current: %p
 											</PercentBar>
 										)}
-									</Grid>
-									<Grid xs={6}>
+									</Grid2>
+									<Grid2 size={6}>
 										<PercentBar p={statRollPercent}>New: %p</PercentBar>
-									</Grid>
-								</Grid>
-							</Grid>
+									</Grid2>
+								</Grid2>
+							</Grid2>
 						);
 					})}
-				</Grid>
-			</ModalDialog>
-		</ModalWrapper>
+				</Grid2>
+			</DialogContent>
+		</DialogWrapper>
 	);
 }

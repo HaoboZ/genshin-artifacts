@@ -1,6 +1,6 @@
 import type { DCharacter } from '@/src/types/data';
-import type { BoxProps } from '@mui/joy';
-import { Box, Tooltip } from '@mui/joy';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
@@ -10,16 +10,19 @@ export default function CharacterImage({
 	children,
 	tooltip,
 	...props
-}: { character: DCharacter; size?: number; tooltip?: ReactNode } & BoxProps) {
+}: { character: DCharacter; size?: number; tooltip?: ReactNode } & AvatarProps) {
 	return (
 		<Tooltip followCursor title={tooltip ?? character.name}>
-			<Box
-				width={size}
-				height={size}
-				overflow='hidden'
-				borderRadius={size / 10}
-				position='relative'
-				{...props}>
+			<Avatar
+				variant='rounded'
+				{...props}
+				sx={{
+					width: size,
+					height: size,
+					overflow: 'hidden',
+					position: 'relative',
+					...props.sx,
+				}}>
 				<Image
 					alt={character.name}
 					src={character.image}
@@ -28,7 +31,7 @@ export default function CharacterImage({
 					className={`rarity${character.rarity}`}
 				/>
 				{children}
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

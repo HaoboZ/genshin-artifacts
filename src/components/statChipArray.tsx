@@ -1,5 +1,5 @@
 import { statName } from '@/api/stats';
-import { Breadcrumbs, Chip, Stack, Typography } from '@mui/joy';
+import { Breadcrumbs, Chip, Stack, Typography } from '@mui/material';
 import makeArray from '../helpers/makeArray';
 
 export default function StatChipArray({
@@ -14,14 +14,14 @@ export default function StatChipArray({
 	mapStats?: boolean;
 }) {
 	return (
-		<Stack direction='row' alignItems='center' spacing={1}>
+		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 			<Typography>{name}:</Typography>
 			{breadcrumbs ? (
 				<Breadcrumbs sx={{ p: 0 }}>
 					{arr.map((subArr, index) => (
 						<Stack key={index} direction='row' spacing={0.5}>
 							{makeArray(subArr).map((stat, index) => (
-								<Chip key={index}>{mapStats ? statName[stat] : stat}</Chip>
+								<Chip key={index} label={mapStats ? statName[stat] : stat} />
 							))}
 						</Stack>
 					))}
@@ -29,7 +29,7 @@ export default function StatChipArray({
 			) : (
 				<Stack direction='row' spacing={0.5}>
 					{makeArray(arr).map((stat: string) => (
-						<Chip key={stat}>{mapStats ? statName[stat] : stat}</Chip>
+						<Chip key={stat} label={mapStats ? statName[stat] : stat} />
 					))}
 				</Stack>
 			)}

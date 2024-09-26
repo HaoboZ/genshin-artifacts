@@ -1,11 +1,12 @@
 'use client';
-import { useWeapons, WeaponType } from '@/api/weapons';
+import type { WeaponType } from '@/api/weapons';
+import { useWeapons } from '@/api/weapons';
 import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
-import { Grid, Input } from '@mui/joy';
+import { Grid2, TextField } from '@mui/material';
 import { useState } from 'react';
 import AddWeaponModal from './modal/addWeaponModal';
 import OptimalWeaponModal from './modal/optimalWeaponModal';
@@ -23,7 +24,7 @@ export default function Weapons() {
 	const weapons = useWeapons({ type, search });
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Weapons</PageTitle>
 			<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
 			<PageSection
@@ -32,24 +33,24 @@ export default function Weapons() {
 					{ name: 'Add', onClick: () => showModal(AddWeaponModal) },
 					{ name: 'Optimize', onClick: () => showModal(OptimalWeaponModal) },
 				]}>
-				<Grid container spacing={1}>
-					<Grid xs={12}>
-						<Input
+				<Grid2 container spacing={1}>
+					<Grid2 size={12}>
+						<TextField
 							placeholder='Search'
 							value={search}
 							onChange={({ target }) => setSearch(target.value)}
 						/>
-					</Grid>
+					</Grid2>
 					{weapons.map((weapon) => (
-						<Grid key={weapon.key}>
+						<Grid2 key={weapon.key}>
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
 								onClick={() => showModal(WeaponModal, { props: { weapon } })}
 							/>
-						</Grid>
+						</Grid2>
 					))}
-				</Grid>
+				</Grid2>
 			</PageSection>
 		</PageContainer>
 	);

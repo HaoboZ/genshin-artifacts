@@ -1,5 +1,5 @@
 'use client';
-import { CircularProgress } from '@mui/joy';
+import { CircularProgress } from '@mui/material';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
 import type { ComponentType, ReactNode } from 'react';

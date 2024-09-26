@@ -1,16 +1,17 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
+import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogTitle, Grid, Link, ModalClose, ModalDialog } from '@mui/joy';
+import { DialogContent, DialogTitle, Grid2 } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
@@ -51,23 +52,22 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 	}, [weapon]);
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>
-					<Link
-						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(weapon.key)}`}
-						target='_blank'
-						variant='plain'
-						color='neutral'>
-						{weaponsInfo[weapon.key].name}
-					</Link>
-				</DialogTitle>
-				<ModalClose variant='outlined' />
+		<DialogWrapper>
+			<DialogTitle>
+				<PageLink
+					href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(weapon.key)}`}
+					target='_blank'
+					underline='none'
+					color='textPrimary'>
+					{weaponsInfo[weapon.key].name}
+				</PageLink>
+			</DialogTitle>
+			<DialogContent>
 				<WeaponActions weapon={weapon} />
 				<WeaponCharacterImage weapon={weapon} />
-				<Grid container spacing={1}>
+				<Grid2 container spacing={1}>
 					{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
-						<Grid key={index}>
+						<Grid2 key={index}>
 							<CharacterImage
 								character={charactersInfo[build.key]}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -85,10 +85,7 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 									<WeaponImage
 										weapon={weaponsInfo[oldWeapon.key]}
 										size={50}
-										position='absolute'
-										bottom={0}
-										right={0}
-										border={1}
+										sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
 									/>
 								)}
 							</CharacterImage>
@@ -99,10 +96,10 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 									Current %p
 								</PercentBar>
 							)}
-						</Grid>
+						</Grid2>
 					))}
-				</Grid>
-			</ModalDialog>
-		</ModalWrapper>
+				</Grid2>
+			</DialogContent>
+		</DialogWrapper>
 	);
 }

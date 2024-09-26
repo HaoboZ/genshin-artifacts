@@ -1,4 +1,4 @@
-import { LinearProgress, Typography } from '@mui/joy';
+import { Box, LinearProgress, linearProgressClasses, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
 
 export function combinePercents(...vals: { percent: number; weight: number }[]) {
@@ -14,18 +14,26 @@ export default function PercentBar({ p, children }: { p: number; children?: Reac
 	const text = typeof children === 'string' ? children.replaceAll('%p', `${rounded}%`) : children;
 
 	return (
-		<LinearProgress
-			determinate
-			value={rounded}
-			thickness={20}
-			variant='outlined'
-			sx={{
-				'--LinearProgress-radius': '5px',
-				'--variant-outlinedColor': `hsl(${p * 120}, 50%, 50%)`,
-			}}>
-			<Typography sx={{ zIndex: 1000 }} fontSize={11}>
+		<Box sx={{ position: 'relative' }}>
+			<Typography
+				sx={{ zIndex: 1000, position: 'absolute', color: 'text.primary', ml: 1, fontSize: 11 }}>
 				{text ?? `${rounded}%`}
 			</Typography>
-		</LinearProgress>
+			<LinearProgress
+				variant='determinate'
+				value={rounded}
+				sx={{
+					height: 18,
+					borderRadius: 1,
+					[`& .${linearProgressClasses.bar}`]: {
+						borderRadius: 1,
+						backgroundColor: `hsl(${p * 120}, 50%, 50%)`,
+					},
+					backgroundColor: 'initial',
+					border: 1,
+					borderColor: 'divider',
+				}}
+			/>
+		</Box>
 	);
 }

@@ -1,20 +1,20 @@
 'use client';
-import type { InputProps } from '@mui/joy';
-import { FormControl, FormLabel } from '@mui/joy';
+import type { TextFieldProps } from '@mui/material';
+import { FormControl, FormLabel } from '@mui/material';
 import { useField } from 'formik';
-import FormattedInput from '../formattedInput';
+import FormattedTextField from '../formattedTextField';
 
 export default function InputField({
 	name,
 	label,
 	...props
-}: { name: string; label?: string } & InputProps) {
+}: { name: string; label?: string } & TextFieldProps) {
 	const [field] = useField(name);
 
 	return (
 		<FormControl>
 			<FormLabel>{label}</FormLabel>
-			<FormattedInput {...field} {...props} />
+			<FormattedTextField {...field} {...props} />
 		</FormControl>
 	);
 }

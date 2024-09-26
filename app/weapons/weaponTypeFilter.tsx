@@ -1,6 +1,7 @@
-import { WeaponType } from '@/api/weapons';
-import { Button, ToggleButtonGroup } from '@mui/joy';
-import WeaponImage from './weaponImage';
+import type { WeaponType } from '@/api/weapons';
+import { weaponImages } from '@/api/weapons';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import Image from 'next/image';
 
 export const weaponsTypes: WeaponType[] = ['Sword', 'Claymore', 'Polearm', 'Catalyst', 'Bow'];
 
@@ -13,15 +14,16 @@ export default function WeaponTypeFilter({
 }) {
 	return (
 		<ToggleButtonGroup
+			exclusive
 			value={weaponType ?? 'none'}
 			onChange={(e, newWeaponType) =>
 				setWeaponType(newWeaponType === 'none' ? null : newWeaponType)
 			}>
-			<Button value='none'>All</Button>
+			<ToggleButton value='none'>All</ToggleButton>
 			{weaponsTypes.map((weaponType) => (
-				<Button key={weaponType} value={weaponType} sx={{ p: 0 }}>
-					<WeaponImage type={weaponType} size={50} />
-				</Button>
+				<ToggleButton key={weaponType} value={weaponType} sx={{ p: 0 }}>
+					<Image alt={weaponType} src={weaponImages[weaponType]} width={50} height={50} />
+				</ToggleButton>
 			))}
 		</ToggleButtonGroup>
 	);

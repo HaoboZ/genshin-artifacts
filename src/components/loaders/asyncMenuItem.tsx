@@ -1,6 +1,6 @@
 'use client';
-import type { MenuItemProps } from '@mui/joy';
-import { MenuItem } from '@mui/joy';
+import type { MenuItemProps } from '@mui/material';
+import { MenuItem } from '@mui/material';
 import useAsyncLoading from './useAsyncLoading';
 
 export default function AsyncMenuItem({ onClick, ...props }: MenuItemProps) {

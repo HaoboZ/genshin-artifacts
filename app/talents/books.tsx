@@ -1,17 +1,20 @@
 import { useCharacters } from '@/api/characters';
 import { talentsInfo } from '@/api/talents';
+import Dropdown from '@/components/dropdown';
 import PageSection from '@/components/page/section';
 import {
 	Box,
 	Checkbox,
-	Dropdown,
-	Menu,
-	MenuButton,
+	FormControlLabel,
 	MenuItem,
 	Stack,
 	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableRow,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -26,59 +29,59 @@ export default function TalentBooks() {
 
 	const [owned, setOwned] = useState(false);
 	const [farmable, setFarmable] = useState(() => {
-		let day: number = dayjs().day();
+		const day: number = dayjs().day();
 		return (day > 3 ? day - 3 : day) % 4;
 	});
 	const [lvl, setLvl] = useState(1);
 
 	return (
 		<PageSection title='Talent Books'>
-			<Stack direction='row' alignItems='center' spacing={1}>
-				<Checkbox
+			<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
+				<FormControlLabel
+					control={
+						<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
+					}
 					label='Owned'
-					checked={owned}
-					onChange={({ target }) => setOwned(target.checked)}
 				/>
-				<Dropdown>
-					<MenuButton>Farmable ({farmableDays[farmable]})</MenuButton>
-					<Menu>
-						{farmableDays.map((day, index) => (
-							<MenuItem key={day} onClick={() => setFarmable(index)}>
-								{day}
-							</MenuItem>
-						))}
-					</Menu>
+				<Dropdown button={`Farmable (${farmableDays[farmable]})`}>
+					{farmableDays.map((day, index) => (
+						<MenuItem key={day} onClick={() => setFarmable(index)}>
+							{day}
+						</MenuItem>
+					))}
 				</Dropdown>
-				<Dropdown>
-					<MenuButton>Levels ({levelFilters[lvl]})</MenuButton>
-					<Menu>
-						{levelFilters.map((lvl, index) => (
-							<MenuItem key={lvl} onClick={() => setLvl(index)}>
-								{lvl}
-							</MenuItem>
-						))}
-					</Menu>
+				<Dropdown button={`Levels (${levelFilters[lvl]})`}>
+					{levelFilters.map((lvl, index) => (
+						<MenuItem key={lvl} onClick={() => setLvl(index)}>
+							{lvl}
+						</MenuItem>
+					))}
 				</Dropdown>
 			</Stack>
 			<Table>
-				<thead>
-					<tr>
-						<th style={{ width: 200 }}>Talent</th>
-						<th>Characters</th>
-					</tr>
-				</thead>
-				<tbody>
+				<TableHead>
+					<TableRow>
+						<TableCell sx={{ width: 200 }}>Talent</TableCell>
+						<TableCell>Characters</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
 					{talentsInfo
 						.filter(({ day }) => (farmable ? day === farmable : true))
 						.map(({ name, image }) => (
-							<tr key={name}>
-								<td>
-									<Box display='flex' flexDirection='column' alignItems='center'>
+							<TableRow key={name}>
+								<TableCell>
+									<Box
+										sx={{
+											display: 'flex',
+											flexDirection: 'column',
+											alignItems: 'center',
+										}}>
 										<Image alt={name} src={image} width={50} height={50} />
 										{name}
 									</Box>
-								</td>
-								<td>
+								</TableCell>
+								<TableCell>
 									<Box display='flex' flexWrap='wrap'>
 										{characters
 											.filter(({ level, talentMaterial, talent }) => {
@@ -113,8 +116,10 @@ export default function TalentBooks() {
 													<CharacterImage
 														character={character}
 														size={75}
-														border={character.level ? 0 : 2}
-														borderColor='red'
+														sx={{
+															border: character.level ? 0 : 2,
+															borderColor: 'red',
+														}}
 													/>
 													<Box display='flex' justifyContent='space-evenly'>
 														<Typography>{character.talent?.auto ?? 0}</Typography>
@@ -124,10 +129,10 @@ export default function TalentBooks() {
 												</Box>
 											))}
 									</Box>
-								</td>
-							</tr>
+								</TableCell>
+							</TableRow>
 						))}
-				</tbody>
+				</TableBody>
 			</Table>
 		</PageSection>
 	);

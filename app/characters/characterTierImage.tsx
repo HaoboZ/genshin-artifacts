@@ -3,7 +3,7 @@ import { charactersInfo } from '@/api/characters';
 import { weightedStatRollPercent } from '@/api/stats';
 import PercentBar, { combinePercents } from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import { CharacterKey, IGOOD } from '@/src/types/good';
+import type { CharacterKey, IGOOD } from '@/src/types/good';
 import { Fragment, useMemo } from 'react';
 import CharacterImage from './characterImage';
 
@@ -38,8 +38,10 @@ export default function CharacterTierImage({
 			<CharacterImage
 				character={charactersInfo[characterKey]}
 				size={50}
-				border={good.characters.find(({ key }) => characterKey === key) ? 0 : 1}
-				borderColor='red'
+				sx={{
+					border: good.characters.find(({ key }) => characterKey === key) ? 0 : 1,
+					borderColor: 'red',
+				}}
 			/>
 			<PercentBar p={percent} />
 		</Fragment>

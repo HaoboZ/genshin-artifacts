@@ -2,12 +2,12 @@ import { charactersInfo } from '@/api/characters';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
+import { DialogContent, DialogTitle, Grid2 } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
 import WeaponCharacterImage from '../../weapons/weaponCharacterImage';
@@ -27,14 +27,13 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 		[weapons, build],
 	);
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>Weapon for {charactersInfo[build.key].name}</DialogTitle>
-				<ModalClose variant='outlined' />
+		<DialogWrapper>
+			<DialogTitle>Weapon for {charactersInfo[build.key].name}</DialogTitle>
+			<DialogContent>
 				{weapon && <WeaponCharacterImage weapon={weapon} />}
-				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
+				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
 					{tierWeapons.map((weapon, index) => (
-						<Grid key={index}>
+						<Grid2 key={index}>
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -45,10 +44,10 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 									closeModal();
 								}}
 							/>
-						</Grid>
+						</Grid2>
 					))}
-				</Grid>
-			</ModalDialog>
-		</ModalWrapper>
+				</Grid2>
+			</DialogContent>
+		</DialogWrapper>
 	);
 }

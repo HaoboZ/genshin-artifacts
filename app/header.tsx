@@ -1,10 +1,10 @@
-import { Button, ButtonGroup } from '@mui/joy';
+import { Button, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
 
 export default function Header() {
 	return (
 		<header>
-			<ButtonGroup variant='solid' color='primary'>
+			<ButtonGroup variant='contained' color='primary'>
 				<Button component={Link} href='/'>
 					Home
 				</Button>

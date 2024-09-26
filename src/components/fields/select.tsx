@@ -1,24 +1,24 @@
 'use client';
-import type { SelectProps } from '@mui/joy';
-import { FormControl, FormLabel, Select } from '@mui/joy';
+import type { SelectProps } from '@mui/material';
+import { FormControl, FormLabel, Select } from '@mui/material';
 import { useField } from 'formik';
 
-export default function SelectField<OptionValue extends {}, Multiple extends boolean>({
+export default function SelectField<Value = unknown>({
 	name,
 	label,
 	...props
-}: { name: string; label?: string } & SelectProps<OptionValue, Multiple>) {
+}: { name: string; label?: string } & SelectProps<Value>) {
 	const [field, , helpers] = useField(name);
 
 	return (
-		<FormControl>
+		<FormControl size='small'>
 			<FormLabel>{label}</FormLabel>
 			<Select
 				{...field}
 				{...props}
-				onChange={(e, value) => {
+				onChange={(e) => {
 					// @ts-ignore
-					if (props.onChange?.(e, value) !== false) helpers.setValue(value);
+					if (props.onChange?.(e) !== false) helpers.setValue(e.target.value);
 				}}
 			/>
 		</FormControl>

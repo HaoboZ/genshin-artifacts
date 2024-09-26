@@ -1,12 +1,12 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
+import PageLink from '@/components/page/link';
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
-import { Stack, Typography } from '@mui/joy';
+import { Stack, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
-import Link from 'next/link';
 import { Fragment, useMemo } from 'react';
 import CharacterImage from '../../characters/characterImage';
 import getArtifactSetBuild from '../getArtifactSetBuild';
@@ -30,7 +30,7 @@ export default function BestInSlot({
 		<Stack spacing={1}>
 			<Stack direction='row' spacing={1}>
 				{characters.map(({ key, mainStat, subStat }) => (
-					<Link key={key} href={`/characters/${key}`}>
+					<PageLink key={key} href={`/characters/${key}`}>
 						<CharacterImage
 							character={charactersInfo[key]}
 							size={50}
@@ -53,7 +53,7 @@ export default function BestInSlot({
 								</Fragment>
 							}
 						/>
-					</Link>
+					</PageLink>
 				))}
 			</Stack>
 			{['sands', 'goblet', 'circlet'].map((slotType) => {

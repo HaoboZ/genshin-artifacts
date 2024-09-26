@@ -1,11 +1,11 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import { useModal, useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { DCharacter } from '@/src/types/data';
 import type { ArtifactSetKey, IArtifact } from '@/src/types/good';
-import { DialogTitle, ModalClose, ModalDialog } from '@mui/joy';
+import { DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
@@ -42,21 +42,18 @@ export default function AddArtifactModal({
 	}, [setKey]);
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>Add Artifact{character ? ` to ${character.name}` : ''}</DialogTitle>
-				<ModalClose variant='outlined' />
-				<Formik<IArtifact>
-					initialValues={initialValues}
-					onSubmit={(artifact) => {
-						if (character) dispatch(goodActions.giveArtifact([character.key, artifact]));
-						else dispatch(goodActions.addArtifact(artifact));
-						closeModal();
-						showModal(ArtifactModal, { props: { artifact } });
-					}}>
-					<ArtifactForm cropBox={!character} file={file} />
-				</Formik>
-			</ModalDialog>
-		</ModalWrapper>
+		<DialogWrapper>
+			<DialogTitle>Add Artifact{character ? ` to ${character.name}` : ''}</DialogTitle>
+			<Formik<IArtifact>
+				initialValues={initialValues}
+				onSubmit={(artifact) => {
+					if (character) dispatch(goodActions.giveArtifact([character.key, artifact]));
+					else dispatch(goodActions.addArtifact(artifact));
+					closeModal();
+					showModal(ArtifactModal, { props: { artifact } });
+				}}>
+				<ArtifactForm cropBox={!character} file={file} />
+			</Formik>
+		</DialogWrapper>
 	);
 }

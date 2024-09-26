@@ -4,7 +4,7 @@ import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
-import { Grid, Sheet, Typography } from '@mui/joy';
+import { Grid2, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { filter, isIncludedIn, isNot, mapValues, omit } from 'remeda';
@@ -64,37 +64,37 @@ export default function CharacterPriority({
 			groups={filteredCharacters}
 			setGroups={setCharacters}
 			renderItems={(list, ref) => (
-				<Grid ref={ref} container spacing={1} minHeight={100}>
+				<Grid2 ref={ref} container spacing={1} sx={{ minHeight: 100 }}>
 					{list}
-				</Grid>
+				</Grid2>
 			)}
 			renderItem={(key, containerProps, handleProps) => (
-				<Grid
+				<Grid2
 					sx={{ textDecoration: 'none' }}
 					{...containerProps}
 					{...(editMode ? handleProps : { component: Link, href: `/characters/${key}` })}>
 					<CharacterTierImage good={good} characterKey={key} />
-				</Grid>
+				</Grid2>
 			)}
 			dependencies={[editMode]}>
 			{({ unSorted, ...lists }) => (
-				<Grid container spacing={1}>
-					<Grid xs={5}>
-						<Sheet variant='outlined' sx={{ p: 1 }}>
+				<Grid2 container spacing={1}>
+					<Grid2 size={5}>
+						<Paper variant='outlined' sx={{ p: 1 }}>
 							{unSorted}
-						</Sheet>
-					</Grid>
-					<Grid container xs={7} alignContent='flex-start'>
+						</Paper>
+					</Grid2>
+					<Grid2 container size={7} sx={{ alignContent: 'flex-start' }}>
 						{Object.values(lists).map((list, index) => (
-							<Grid key={index} xs={12}>
-								<Sheet variant='outlined' sx={{ p: 1 }}>
+							<Grid2 key={index} size={12}>
+								<Paper variant='outlined' sx={{ p: 1 }}>
 									<Typography>Priority {index}</Typography>
 									{list}
-								</Sheet>
-							</Grid>
+								</Paper>
+							</Grid2>
 						))}
-					</Grid>
-				</Grid>
+					</Grid2>
+				</Grid2>
 			)}
 		</MultiSortable>
 	);

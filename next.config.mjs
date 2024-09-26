@@ -20,7 +20,6 @@ const nextConfig = {
 			},
 		],
 	},
-	experimental: { optimizePackageImports: ['@mui/joy'] },
 };
 
 export default pipe(

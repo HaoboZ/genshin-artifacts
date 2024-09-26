@@ -1,6 +1,6 @@
 import type { DArtifact } from '@/src/types/data';
-import type { BoxProps } from '@mui/joy';
-import { Box, Tooltip } from '@mui/joy';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
@@ -10,16 +10,19 @@ export default function ArtifactSetImage({
 	tooltip,
 	children,
 	...props
-}: { artifactSet: DArtifact; size?: number; tooltip?: ReactNode } & BoxProps) {
+}: { artifactSet: DArtifact; size?: number; tooltip?: ReactNode } & AvatarProps) {
 	return (
 		<Tooltip followCursor title={tooltip ?? artifactSet?.name}>
-			<Box
-				width={size}
-				height={size}
-				overflow='hidden'
-				borderRadius={size / 10}
-				position='relative'
-				{...props}>
+			<Avatar
+				variant='rounded'
+				{...props}
+				sx={{
+					width: size,
+					height: size,
+					overflow: 'hidden',
+					position: 'relative',
+					...props.sx,
+				}}>
 				<Image
 					alt={artifactSet.name}
 					src={artifactSet.flower ?? artifactSet.circlet}
@@ -28,7 +31,7 @@ export default function ArtifactSetImage({
 					className={`rarity${artifactSet.rarity}`}
 				/>
 				{children}
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

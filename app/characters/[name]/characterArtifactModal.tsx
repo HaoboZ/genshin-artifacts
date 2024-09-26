@@ -6,20 +6,12 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import statArrMatch from '@/src/helpers/statArrMatch';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import {
-	DialogTitle,
-	FormControl,
-	FormLabel,
-	Grid,
-	ModalClose,
-	ModalDialog,
-	Switch,
-} from '@mui/joy';
+import { Box, DialogContent, DialogTitle, FormControlLabel, Grid2, Switch } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
@@ -39,7 +31,7 @@ export default function CharacterArtifactModal({
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const [checked, setChecked] = useState(false);
+	const [checked, setChecked] = useState(true);
 
 	const artifactsSorted = useMemo(() => {
 		const mainStat = build.mainStat[slot] && makeArray(build.mainStat[slot]);
@@ -70,34 +62,36 @@ export default function CharacterArtifactModal({
 	}, [artifacts, checked, slot, build]);
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>
-					{capitalCase(slot)} for {charactersInfo[build.key].name}
-				</DialogTitle>
-				<ModalClose variant='outlined' />
+		<DialogWrapper>
+			<DialogTitle>
+				{capitalCase(slot)} for {charactersInfo[build.key].name}
+			</DialogTitle>
+			<Box sx={{ px: 3 }}>
 				{artifact && (
 					<Fragment>
 						<ArtifactActions cropBox artifact={artifact} />
 						<ArtifactStatImage hideCharacter artifact={artifact}>
-							<Grid xs={12}>
+							<Grid2 size={12}>
 								<PercentBar p={weightedStatRollPercent(build, artifact)} />
-							</Grid>
+							</Grid2>
 						</ArtifactStatImage>
 					</Fragment>
 				)}
-				<FormControl orientation='horizontal'>
-					<FormLabel>All in Best Set</FormLabel>
-					<Switch
-						size='lg'
-						sx={{ ml: 0 }}
-						checked={checked}
-						onChange={({ target }) => setChecked(target.checked)}
-					/>
-				</FormControl>
-				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
+			</Box>
+			<DialogContent>
+				<FormControlLabel
+					control={
+						<Switch
+							sx={{ ml: 0 }}
+							checked={checked}
+							onChange={({ target }) => setChecked(target.checked)}
+						/>
+					}
+					label='All in Best Set'
+				/>
+				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
 					{artifactsSorted.map(({ statRollPercent, ...artifact }, index) => (
-						<Grid key={index} xs={6} md={4}>
+						<Grid2 key={index} size={{ xs: 6, md: 4 }}>
 							<ArtifactStatImage
 								artifact={artifact}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -107,14 +101,14 @@ export default function CharacterArtifactModal({
 									dispatch(goodActions.giveArtifact([build.key, artifact]));
 									closeModal();
 								}}>
-								<Grid xs={12}>
+								<Grid2 size={12}>
 									<PercentBar p={statRollPercent} />
-								</Grid>
+								</Grid2>
 							</ArtifactStatImage>
-						</Grid>
+						</Grid2>
 					))}
-				</Grid>
-			</ModalDialog>
-		</ModalWrapper>
+				</Grid2>
+			</DialogContent>
+		</DialogWrapper>
 	);
 }

@@ -2,7 +2,8 @@ import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import { statsAverage } from '@/api/stats';
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact, StatKey } from '@/src/types/good';
-import { Button, CircularProgress } from '@mui/joy';
+import { LoadingButton } from '@mui/lab';
+import { CircularProgress } from '@mui/material';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { pickBy } from 'remeda';
@@ -148,10 +149,11 @@ export default function ArtifactScanner({
 	});
 
 	return (
-		<Button
+		<LoadingButton
 			component='label'
 			loading={Boolean(progress)}
-			loadingIndicator={<CircularProgress determinate value={progress * 100} />}>
+			variant='contained'
+			loadingIndicator={<CircularProgress variant='determinate' value={progress * 100} />}>
 			Paste or Upload File
 			<input
 				hidden
@@ -162,6 +164,6 @@ export default function ArtifactScanner({
 					scanFile(target.files[0]);
 				}}
 			/>
-		</Button>
+		</LoadingButton>
 	);
 }

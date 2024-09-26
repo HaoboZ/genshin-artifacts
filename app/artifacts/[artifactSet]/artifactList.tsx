@@ -6,6 +6,8 @@ import {
 } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { potentialStatRollPercent, weightedStatRollPercent } from '@/api/stats';
+import Dropdown from '@/components/dropdown';
+import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
@@ -19,24 +21,20 @@ import {
 } from '@mui/icons-material';
 import {
 	Badge,
+	Box,
 	Button,
 	Checkbox,
-	Dropdown,
-	FormControl,
-	FormLabel,
-	Grid,
+	FormControlLabel,
+	Grid2,
 	IconButton,
-	Link,
 	ListItem,
 	ListItemButton,
-	ListItemDecorator,
-	Menu,
-	MenuButton,
+	ListItemIcon,
 	MenuItem,
 	Stack,
 	Switch,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
@@ -102,29 +100,32 @@ export default function ArtifactList({
 	return (
 		<PageSection
 			title={
-				<Link
+				<PageLink
 					href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(artifactSetsInfo[artifactSet].name)}`}
 					target='_blank'
-					variant='plain'
-					color='neutral'>
+					underline='none'
+					color='textPrimary'>
 					{artifactSetsInfo[artifactSet].name}
-				</Link>
+				</PageLink>
 			}
 			actions={
-				<FormControl orientation='horizontal'>
-					<FormLabel>Delete Mode</FormLabel>
-					<Switch
-						size='lg'
-						sx={{ ml: 0 }}
-						checked={deleteMode}
-						onChange={({ target }) => {
-							setDeleteMode(target.checked);
-							setMarked([]);
-						}}
+				<Box>
+					<FormControlLabel
+						control={
+							<Switch
+								checked={deleteMode}
+								onChange={({ target }) => {
+									setDeleteMode(target.checked);
+									setMarked([]);
+								}}
+							/>
+						}
+						label='Delete Mode'
 					/>
 					{marked.length > 0 && (
 						<Button
-							sx={{ ml: 1 }}
+							color='error'
+							variant='contained'
 							onClick={() => {
 								if (!confirm(`Delete ${marked.length} artifacts?`)) return;
 								dispatch(goodActions.deleteArtifacts(marked));
@@ -133,48 +134,40 @@ export default function ArtifactList({
 							Delete
 						</Button>
 					)}
-				</FormControl>
+				</Box>
 			}>
 			<Stack spacing={1} direction='row'>
 				<Stack spacing={0.25} direction='row'>
-					<IconButton
-						variant='outlined'
-						onClick={() => setSort({ sortDir: !sortDir, sortType })}>
+					<IconButton onClick={() => setSort({ sortDir: !sortDir, sortType })}>
 						{sortDir ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
 					</IconButton>
-					<Dropdown>
-						<MenuButton>{capitalCase(sortType)}</MenuButton>
-						<Menu>
-							{['potential', 'stats', 'level'].map((sortType) => (
-								<MenuItem key={sortType} onClick={() => setSort({ sortDir, sortType })}>
-									{capitalCase(sortType)}
-								</MenuItem>
-							))}
-						</Menu>
+					<Dropdown button={capitalCase(sortType)}>
+						{['potential', 'stats', 'level'].map((sortType) => (
+							<MenuItem key={sortType} onClick={() => setSort({ sortDir, sortType })}>
+								{capitalCase(sortType)}
+							</MenuItem>
+						))}
 					</Dropdown>
 				</Stack>
 				<Badge badgeContent={Object.values(filtered).filter(Boolean).length}>
-					<Dropdown>
-						<MenuButton>Filter</MenuButton>
-						<Menu>
-							{['equipped', 'locked'].map((filterType) => (
-								<ListItem key={filterType}>
-									<ListItemButton
-										onClick={() => {
-											filtered[filterType] = (filtered[filterType] + 1) % 3;
-											setFiltered({ ...filtered });
-										}}>
-										<ListItemDecorator>
-											<Checkbox
-												checked={filtered[filterType] === 1}
-												indeterminate={filtered[filterType] === 2}
-											/>
-										</ListItemDecorator>
-										{capitalCase(filterType)}
-									</ListItemButton>
-								</ListItem>
-							))}
-						</Menu>
+					<Dropdown button='Filter'>
+						{['equipped', 'locked'].map((filterType) => (
+							<ListItem key={filterType}>
+								<ListItemButton
+									onClick={() => {
+										filtered[filterType] = (filtered[filterType] + 1) % 3;
+										setFiltered({ ...filtered });
+									}}>
+									<ListItemIcon>
+										<Checkbox
+											checked={filtered[filterType] === 1}
+											indeterminate={filtered[filterType] === 2}
+										/>
+									</ListItemIcon>
+									{capitalCase(filterType)}
+								</ListItemButton>
+							</ListItem>
+						))}
 					</Dropdown>
 				</Badge>
 			</Stack>
@@ -192,48 +185,48 @@ export default function ArtifactList({
 					).length
 				}
 			</Typography>
-			<Grid container spacing={1}>
+			<Grid2 container spacing={1}>
 				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }, index) => {
-					const isMarked = marked.indexOf(artifact) !== -1;
+					const isMarked = marked.find(({ id }) => artifact.id === id);
 
 					return (
-						<Grid key={index} xs={6} sm={4} md={3}>
+						<Grid2 key={index} size={{ xs: 6, sm: 4, md: 3 }}>
 							<ArtifactStatImage
 								artifact={artifact}
 								sx={{
 									':hover': { cursor: 'pointer' },
-									'borderColor': () => {
-										if (isMarked) return 'red';
-										if (artifact.location) {
-											if (statRollPercent > 0.6) return 'green';
-											return 'blue';
-										}
-									},
+									'border': isMarked
+										? '1px solid red'
+										: artifact.location
+											? statRollPercent > 0.6
+												? '1px solid green'
+												: '1px solid blue'
+											: '1px solid transparent',
 								}}
 								onClick={() => {
 									if (deleteMode) {
 										setMarked((marked) =>
 											isMarked
-												? marked.filter((item) => item !== artifact)
+												? marked.filter(({ id }) => id !== artifact.id)
 												: [...marked, artifact],
 										);
 									} else {
 										showModal(ArtifactModal, { props: { artifact } });
 									}
 								}}>
-								<Grid container xs={12} spacing={0}>
-									<Grid xs={6}>
+								<Grid2 container size={12} spacing={0}>
+									<Grid2 size={6}>
 										<PercentBar p={statRollPercent}>Stats: %p</PercentBar>
-									</Grid>
-									<Grid xs={6}>
+									</Grid2>
+									<Grid2 size={6}>
 										<PercentBar p={potential}>Potential: %p</PercentBar>
-									</Grid>
-								</Grid>
+									</Grid2>
+								</Grid2>
 							</ArtifactStatImage>
-						</Grid>
+						</Grid2>
 					);
 				})}
-			</Grid>
+			</Grid2>
 		</PageSection>
 	);
 }

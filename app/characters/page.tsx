@@ -3,7 +3,7 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
-import { Checkbox, FormControl, FormLabel, Input, Switch } from '@mui/joy';
+import { Checkbox, FormControlLabel, Stack, Switch, TextField } from '@mui/material';
 import { useState } from 'react';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterPriority from './characterPriority';
@@ -18,33 +18,35 @@ export default function Characters() {
 	const [owned, setOwned] = useState(false);
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Characters</PageTitle>
-			<ElementFilter element={element} setElement={setElement} />
-			<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
-			<Checkbox
-				label='Owned'
-				checked={owned}
-				onChange={({ target }) => setOwned(target.checked)}
-				sx={{ mt: 1 }}
-			/>
-			<Input
-				sx={{ my: 1 }}
-				placeholder='Search'
-				value={search}
-				onChange={({ target }) => setSearch(target.value)}
-			/>
+			<Stack>
+				<ElementFilter element={element} setElement={setElement} />
+				<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
+				<FormControlLabel
+					control={
+						<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
+					}
+					label='Owned'
+				/>
+				<TextField
+					label='Search'
+					value={search}
+					onChange={({ target }) => setSearch(target.value)}
+				/>
+			</Stack>
 			<PageSection
 				actions={
-					<FormControl orientation='horizontal'>
-						<FormLabel>Edit Mode</FormLabel>
-						<Switch
-							size='lg'
-							sx={{ ml: 0 }}
-							checked={editMode}
-							onChange={({ target }) => setEditMode(target.checked)}
-						/>
-					</FormControl>
+					<FormControlLabel
+						control={
+							<Switch
+								checked={editMode}
+								onChange={({ target }) => setEditMode(target.checked)}
+							/>
+						}
+						label='Edit Mode'
+						sx={{ ml: 0 }}
+					/>
 				}>
 				<CharacterPriority
 					editMode={editMode}

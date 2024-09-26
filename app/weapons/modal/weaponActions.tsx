@@ -3,7 +3,7 @@ import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IWeapon } from '@/src/types/good';
-import { Button, ButtonGroup } from '@mui/joy';
+import { Button, ButtonGroup } from '@mui/material';
 
 export default function WeaponActions({ weapon }: { weapon: IWeapon }) {
 	const dispatch = useAppDispatch();

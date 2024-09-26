@@ -5,8 +5,9 @@ import { charactersInfo } from '@/api/characters';
 import { elementsInfo } from '@/api/elements';
 import { weightedStatRollPercent } from '@/api/stats';
 import { weaponsInfo } from '@/api/weapons';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import PageContainer from '@/components/page/container';
+import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
@@ -15,7 +16,7 @@ import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import { Card, FormLabel, Grid, Link, Stack, Switch, Typography } from '@mui/joy';
+import { Card, CardContent, Grid2, Stack, Switch, Typography } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -59,16 +60,16 @@ export default function Character({ params }: { params: { name: string } }) {
 	}, [build, weapon]);
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>
-				<Stack direction='row' spacing={1} alignItems='center'>
-					<Link
+				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
+					<PageLink
 						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(characterData.name)}`}
 						target='_blank'
-						variant='plain'
-						color='neutral'>
+						underline='none'
+						color='textPrimary'>
 						{characterData.name}
-					</Link>
+					</PageLink>
 					{characterData.element !== 'None' && (
 						<Image
 							alt={characterData.element}
@@ -78,7 +79,6 @@ export default function Character({ params }: { params: { name: string } }) {
 						/>
 					)}
 					<Switch
-						size='lg'
 						sx={{ ml: 0 }}
 						checked={Boolean(character)}
 						onChange={() => dispatch(goodActions.toggleCharacter(characterData.key))}
@@ -90,15 +90,15 @@ export default function Character({ params }: { params: { name: string } }) {
 			{character && (
 				<Fragment>
 					<PageSection title='Talents'>
-						<Grid container spacing={1}>
+						<Grid2 container spacing={1}>
 							{[
 								['auto', 'Auto Attack'],
 								['skill', 'Elemental Skill'],
 								['burst', 'Elemental Burst'],
 							].map(([type, name]) => (
-								<Grid key={type} xs={4}>
-									<FormLabel>{name}</FormLabel>
-									<FormattedInput
+								<Grid2 key={type} size={4}>
+									<FormattedTextField
+										label={name}
 										value={character.talent[type]}
 										onChange={({ target }) =>
 											dispatch(
@@ -111,44 +111,46 @@ export default function Character({ params }: { params: { name: string } }) {
 											)
 										}
 									/>
-								</Grid>
+								</Grid2>
 							))}
-						</Grid>
+						</Grid2>
 					</PageSection>
 					<PageSection title='Equipped'>
-						<Grid container spacing={1}>
-							<Grid xs={6} sm={4}>
+						<Grid2 container spacing={1}>
+							<Grid2 size={{ xs: 6, sm: 4 }}>
 								<Card
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() => {
 										showModal(CharacterWeaponModal, { props: { build, weapon } });
 									}}>
-									<Grid container spacing={1}>
-										<Grid xs='auto'>
-											<WeaponImage
-												weapon={weaponsInfo[weapon?.key]}
-												type={characterData.weaponType}
-											/>
-										</Grid>
-										{weapon && (
-											<Fragment>
-												<Grid xs>
-													<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
-												</Grid>
-												<Grid xs={12}>
-													<PercentBar p={weaponTier} />
-												</Grid>
-											</Fragment>
-										)}
-									</Grid>
+									<CardContent>
+										<Grid2 container spacing={1}>
+											<Grid2 size='auto'>
+												<WeaponImage
+													weapon={weaponsInfo[weapon?.key]}
+													type={characterData.weaponType}
+												/>
+											</Grid2>
+											{weapon && (
+												<Fragment>
+													<Grid2 size='grow'>
+														<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
+													</Grid2>
+													<Grid2 size={12}>
+														<PercentBar p={weaponTier} />
+													</Grid2>
+												</Fragment>
+											)}
+										</Grid2>
+									</CardContent>
 								</Card>
-							</Grid>
+							</Grid2>
 							{artifactSlotOrder.map((slot) => {
 								const artifact = artifactsIndexed[slot];
 								const statRollPercent = weightedStatRollPercent(build, artifact);
 
 								return (
-									<Grid key={slot} xs={6} sm={4}>
+									<Grid2 key={slot} size={{ xs: 6, sm: 4 }}>
 										<ArtifactStatImage
 											hideCharacter
 											artifact={artifact}
@@ -160,15 +162,15 @@ export default function Character({ params }: { params: { name: string } }) {
 												});
 											}}>
 											{artifact && (
-												<Grid xs={12}>
+												<Grid2 size={12}>
 													<PercentBar p={statRollPercent} />
-												</Grid>
+												</Grid2>
 											)}
 										</ArtifactStatImage>
-									</Grid>
+									</Grid2>
 								);
 							})}
-						</Grid>
+						</Grid2>
 					</PageSection>
 				</Fragment>
 			)}

@@ -1,6 +1,6 @@
 'use client';
-import type { DrawerProps } from '@mui/joy';
-import { Drawer } from '@mui/joy';
+import type { DrawerProps } from '@mui/material';
+import { Drawer } from '@mui/material';
 import { useModalControls } from './index';
 
 export default function DrawerWrapper(props: Omit<DrawerProps, 'open'>) {

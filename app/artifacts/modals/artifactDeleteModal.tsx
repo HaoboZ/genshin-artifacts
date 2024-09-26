@@ -3,7 +3,7 @@ import { builds } from '@/api/builds';
 import { potentialStatRollPercent } from '@/api/stats';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import {
@@ -13,11 +13,9 @@ import {
 	DialogTitle,
 	List,
 	ListItem,
-	ListItemContent,
-	ModalClose,
-	ModalDialog,
+	ListItemText,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
@@ -64,56 +62,58 @@ export default function ArtifactDeleteModal() {
 	);
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>Delete Artifact Priority</DialogTitle>
-				<ModalClose variant='outlined' />
-				<DialogContent>
-					<List>
-						{deleteArtifacts.map(({ artifact, selected }, i) => (
-							<ListItem key={i}>
-								<ListItemContent>
-									<ArtifactStatImage
-										artifact={artifact}
-										sx={{
-											':hover': { cursor: 'pointer' },
-											'border': selected ? '1px solid red' : undefined,
-										}}
-										onClick={() => {
-											setDeleteArtifacts((deleteArtifacts) => {
-												deleteArtifacts[i].selected = !selected;
-												return [...deleteArtifacts];
-											});
-										}}
-									/>
-								</ListItemContent>
-								<Typography>{Math.round(artifact.potential * 100)}%</Typography>
-							</ListItem>
-						))}
-					</List>
-				</DialogContent>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							dispatch(
-								goodActions.deleteArtifacts(
-									deleteArtifacts
-										.filter(({ selected }) => selected)
-										.map(({ artifact }) => artifact),
-								),
-							);
-							closeModal();
-						}}>
-						Delete
-					</Button>
-					<Button
-						onClick={() => {
-							dispatch(goodActions.deleteUnlockedArtifacts());
-						}}>
-						Delete Unlocked
-					</Button>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+		<DialogWrapper>
+			<DialogTitle>Delete Artifact Priority</DialogTitle>
+			<DialogContent>
+				<List>
+					{deleteArtifacts.map(({ artifact, selected }, i) => (
+						<ListItem key={i}>
+							<ListItemText>
+								<ArtifactStatImage
+									artifact={artifact}
+									sx={{
+										':hover': { cursor: 'pointer' },
+										'border': 1,
+										'borderColor': selected ? 'red' : 'transparent',
+									}}
+									onClick={() => {
+										setDeleteArtifacts((deleteArtifacts) => {
+											deleteArtifacts[i].selected = !selected;
+											return [...deleteArtifacts];
+										});
+									}}
+								/>
+							</ListItemText>
+							<Typography sx={{ pl: 2 }}>{Math.round(artifact.potential * 100)}%</Typography>
+						</ListItem>
+					))}
+				</List>
+			</DialogContent>
+			<DialogActions>
+				<Button
+					color='error'
+					variant='contained'
+					onClick={() => {
+						dispatch(
+							goodActions.deleteArtifacts(
+								deleteArtifacts
+									.filter(({ selected }) => selected)
+									.map(({ artifact }) => artifact),
+							),
+						);
+						closeModal();
+					}}>
+					Delete
+				</Button>
+				<Button
+					color='error'
+					variant='contained'
+					onClick={() => {
+						dispatch(goodActions.deleteUnlockedArtifacts());
+					}}>
+					Delete Unlocked
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

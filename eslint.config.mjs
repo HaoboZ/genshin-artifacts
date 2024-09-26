@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
@@ -16,6 +17,7 @@ export default tseslint.config(
 				ecmaFeatures: { jsx: true },
 				sourceType: 'module',
 			},
+			globals: { ...globals.browser, ...globals.node },
 		},
 		rules: {
 			// suggestions

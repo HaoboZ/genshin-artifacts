@@ -1,31 +1,35 @@
 'use client';
-import type { AutocompleteProps } from '@mui/joy';
-import { Autocomplete, FormControl, FormLabel } from '@mui/joy';
+import type { AutocompleteProps, ChipTypeMap } from '@mui/material';
+import { Autocomplete } from '@mui/material';
 import { useField } from 'formik';
+import type { ElementType } from 'react';
 
 export default function AutocompleteField<
-	T,
-	Multiple extends boolean | undefined = undefined,
-	DisableClearable extends boolean | undefined = undefined,
-	FreeSolo extends boolean | undefined = undefined,
+	Value,
+	Multiple extends boolean | undefined,
+	DisableClearable extends boolean | undefined,
+	FreeSolo extends boolean | undefined,
+	ChipComponent extends ElementType = ChipTypeMap['defaultComponent'],
 >({
 	name,
-	label,
 	...props
-}: { name: string; label?: string } & AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>) {
+}: { name: string; label?: string } & AutocompleteProps<
+	Value,
+	Multiple,
+	DisableClearable,
+	FreeSolo,
+	ChipComponent
+>) {
 	const [field, , helpers] = useField(name);
 
 	return (
-		<FormControl>
-			<FormLabel>{label}</FormLabel>
-			<Autocomplete
-				{...field}
-				{...props}
-				onChange={(e, value, reason, details) => {
-					// @ts-ignore
-					if (props.onChange?.(e, value, reason, details) !== false) helpers.setValue(value);
-				}}
-			/>
-		</FormControl>
+		<Autocomplete
+			{...field}
+			{...props}
+			onChange={(e, value, reason, details) => {
+				// @ts-ignore
+				if (props.onChange?.(e, value, reason, details) !== false) helpers.setValue(value);
+			}}
+		/>
 	);
 }

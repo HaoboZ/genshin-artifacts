@@ -1,9 +1,9 @@
 'use client';
-import type { InputProps } from '@mui/joy';
-import { Input } from '@mui/joy';
+import type { TextFieldProps } from '@mui/material';
+import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-export default function FormattedInput(props: InputProps) {
+export default function FormattedTextField(props: TextFieldProps) {
 	const [text, setText] = useState(props.value);
 	const [focused, setFocused] = useState(false);
 
@@ -12,7 +12,7 @@ export default function FormattedInput(props: InputProps) {
 	}, [focused, props.value]);
 
 	return (
-		<Input
+		<TextField
 			{...props}
 			value={text}
 			onFocus={(e) => {

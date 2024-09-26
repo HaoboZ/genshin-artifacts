@@ -4,9 +4,18 @@ import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
 import SwitchField from '@/components/fields/switch';
-import type { ArtifactSetKey, IArtifact, SlotKey, StatKey } from '@/src/types/good';
-import { Button, Grid, Option } from '@mui/joy';
+import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
+import {
+	Button,
+	DialogActions,
+	DialogContent,
+	FormControlLabel,
+	Grid2,
+	MenuItem,
+	TextField,
+} from '@mui/material';
 import { useFormikContext } from 'formik';
+import { Fragment } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
 import ArtifactScanner from './artifactScanner';
@@ -17,129 +26,138 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 	const artifactSet = artifactSetsInfo[values.setKey];
 
 	return (
-		<Grid container spacing={1} my={1}>
-			<Grid xs={6}>
-				<AutocompleteField
-					autoHighlight
-					disableClearable
-					name='setKey'
-					label='Set'
-					options={Object.keys(artifactSetsInfo)}
-					getOptionLabel={(set) => artifactSetsInfo[set].name}
-					onChange={(_, value) => {
-						const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
-						setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
-					}}
-				/>
-			</Grid>
-			<Grid xs={3} display='flex' alignItems='center'>
-				<SwitchField name='lock' endDecorator='Locked' />
-			</Grid>
-			<Grid xs={3} display='flex' flexDirection='column' justifyContent='center'>
-				<ArtifactScanner cropBox={cropBox} setArtifact={setValues} file={file} />
-			</Grid>
-			<Grid xs={3}>
-				<SelectField
-					name='slotKey'
-					label='Type'
-					onChange={(_, value) => {
-						setFieldValue('mainStatKey', artifactSlotStats[value as any as SlotKey].stats[0]);
-					}}>
-					{artifactSlotOrder.map((key) => (
-						<Option key={key} value={key}>
-							{artifactSlotStats[key].name}
-						</Option>
-					))}
-				</SelectField>
-			</Grid>
-			<Grid xs={3}>
-				<SelectField
-					name='mainStatKey'
-					label='Main Stat'
-					disabled={values.slotKey === 'flower' || values.slotKey === 'plume'}>
-					{artifactSlotStats[values.slotKey].stats.map((key) => (
-						<Option key={key} value={key}>
-							{statName[key]}
-						</Option>
-					))}
-				</SelectField>
-			</Grid>
-			<Grid xs={3}>
-				<SelectField
-					name='rarity'
-					label='Rarity'
-					onChange={(_, rarity) => {
-						setFieldValue('level', (rarity as number) * 4);
-					}}>
-					{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
-						<Option key={rarity} value={rarity}>
-							{rarity}*
-						</Option>
-					))}
-				</SelectField>
-			</Grid>
-			<Grid xs={3}>
-				<InputField
-					name='level'
-					label='Level'
-					type='number'
-					onChange={({ target }) => {
-						setFieldValue(
-							'level',
-							clamp(+target.value, { min: 0, max: artifactSet.rarity * 4 }),
-						);
-					}}
-				/>
-			</Grid>
-			<Grid xs='auto' display='flex' alignItems='center'>
-				<ArtifactImage artifact={values} />
-			</Grid>
-			<Grid xs>
-				{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
-					<SelectField
-						key={index}
-						name={`substats.${index}.key`}
-						size='sm'
-						placeholder={`SubStat ${index + 1}`}
-						onChange={(_, subStat) => {
-							const substats = [...values.substats];
-							if (!subStat) substats.splice(index, 1);
-							else substats[index] = { key: subStat as StatKey, value: 0 };
-							setFieldValue('substats', substats);
-							return false;
-						}}>
-						<Option value=''>None</Option>
-						{subStats.map((subStat) => (
-							<Option key={subStat} value={subStat}>
-								{statName[subStat]}
-							</Option>
+		<Fragment>
+			<DialogContent sx={{ pb: 0 }}>
+				<Grid2 container spacing={1} sx={{ my: 1 }}>
+					<Grid2 size={6}>
+						<AutocompleteField
+							autoHighlight
+							disableClearable
+							name='setKey'
+							renderInput={(params) => <TextField {...params} label='Set' />}
+							options={Object.keys(artifactSetsInfo)}
+							getOptionLabel={(set) => artifactSetsInfo[set].name}
+							onChange={(_, value) => {
+								const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
+								setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
+							}}
+						/>
+					</Grid2>
+					<Grid2 size={3} sx={{ display: 'flex', alignItems: 'center' }}>
+						<FormControlLabel control={<SwitchField name='lock' />} label='Locked' />
+					</Grid2>
+					<Grid2
+						size={3}
+						sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+						<ArtifactScanner cropBox={cropBox} setArtifact={setValues} file={file} />
+					</Grid2>
+					<Grid2 size={3}>
+						<SelectField
+							name='slotKey'
+							label='Type'
+							onChange={(e) => {
+								setFieldValue(
+									'mainStatKey',
+									artifactSlotStats[e.target.value as any].stats[0],
+								);
+							}}>
+							{artifactSlotOrder.map((key) => (
+								<MenuItem key={key} value={key}>
+									{artifactSlotStats[key].name}
+								</MenuItem>
+							))}
+						</SelectField>
+					</Grid2>
+					<Grid2 size={3}>
+						<SelectField
+							name='mainStatKey'
+							label='Main Stat'
+							disabled={values.slotKey === 'flower' || values.slotKey === 'plume'}>
+							{artifactSlotStats[values.slotKey].stats.map((key) => (
+								<MenuItem key={key} value={key}>
+									{statName[key]}
+								</MenuItem>
+							))}
+						</SelectField>
+					</Grid2>
+					<Grid2 size={3}>
+						<SelectField
+							name='rarity'
+							label='Rarity'
+							onChange={(_, rarity) => {
+								setFieldValue('level', (rarity as number) * 4);
+							}}>
+							{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
+								<MenuItem key={rarity} value={rarity}>
+									{rarity}*
+								</MenuItem>
+							))}
+						</SelectField>
+					</Grid2>
+					<Grid2 size={3}>
+						<InputField
+							name='level'
+							label='Level'
+							type='number'
+							onChange={({ target }) => {
+								setFieldValue(
+									'level',
+									clamp(+target.value, { min: 0, max: artifactSet.rarity * 4 }),
+								);
+							}}
+						/>
+					</Grid2>
+					<Grid2 size='auto' sx={{ display: 'flex', alignItems: 'center' }}>
+						<ArtifactImage artifact={values} />
+					</Grid2>
+					<Grid2 size='grow'>
+						{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
+							<SelectField
+								key={index}
+								name={`substats.${index}.key`}
+								placeholder={`SubStat ${index + 1}`}
+								onChange={(_, subStat) => {
+									const substats = [...values.substats];
+									if (!subStat) substats.splice(index, 1);
+									else substats[index] = { key: subStat as StatKey, value: 0 };
+									setFieldValue('substats', substats);
+									return false;
+								}}>
+								<MenuItem value=''>None</MenuItem>
+								{subStats.map((subStat) => (
+									<MenuItem key={subStat} value={subStat}>
+										{statName[subStat]}
+									</MenuItem>
+								))}
+							</SelectField>
 						))}
-					</SelectField>
-				))}
-			</Grid>
-			<Grid xs>
-				{[...Array(values.substats.length)].map((_, index) => (
-					<InputField
-						key={index}
-						name={`substats.${index}.value`}
-						size='sm'
-						type='number'
-						onChange={({ target }) => {
-							const substats = [...values.substats];
-							const { key } = values.substats[index];
-							substats[index] = {
-								key,
-								value: clamp(+target.value, { min: 0, max: statsMax[key] }),
-							};
-							setFieldValue('substats', substats);
-							return false;
-						}}
-					/>
-				))}
-			</Grid>
-			<Grid xs={12}>
-				<Button onClick={(e) => handleSubmit(e as any)}>Save</Button>
-			</Grid>
-		</Grid>
+					</Grid2>
+					<Grid2 size='grow'>
+						{[...Array(values.substats.length)].map((_, index) => (
+							<InputField
+								key={index}
+								name={`substats.${index}.value`}
+								type='number'
+								onChange={({ target }) => {
+									const substats = [...values.substats];
+									const { key } = values.substats[index];
+									substats[index] = {
+										key,
+										value: clamp(+target.value, { min: 0, max: statsMax[key] }),
+									};
+									setFieldValue('substats', substats);
+									return false;
+								}}
+							/>
+						))}
+					</Grid2>
+				</Grid2>
+			</DialogContent>
+			<DialogActions>
+				<Button variant='contained' onClick={(e) => handleSubmit(e as any)}>
+					Save
+				</Button>
+			</DialogActions>
+		</Fragment>
 	);
 }

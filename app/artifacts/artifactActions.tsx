@@ -3,7 +3,7 @@ import { useModal, useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
-import { Button, ButtonGroup } from '@mui/joy';
+import { Button, ButtonGroup } from '@mui/material';
 import EditArtifactModal from './artifactForm/editArtifactModal';
 
 export default function ArtifactActions({
@@ -18,7 +18,7 @@ export default function ArtifactActions({
 	const { closeModal } = useModalControls();
 
 	return (
-		<ButtonGroup>
+		<ButtonGroup sx={{ pb: 1 }}>
 			<Button
 				onClick={() => {
 					closeModal();

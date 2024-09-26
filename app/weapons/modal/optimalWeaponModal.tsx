@@ -5,7 +5,7 @@ import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
@@ -15,13 +15,11 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	Grid,
+	Grid2,
 	List,
 	ListItem,
-	ListItemContent,
-	ModalClose,
-	ModalDialog,
-} from '@mui/joy';
+	ListItemText,
+} from '@mui/material';
 import { useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
@@ -68,53 +66,50 @@ export default function OptimalWeaponModal() {
 	});
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>Weapons</DialogTitle>
-				<ModalClose variant='outlined' />
-				<DialogContent>
-					<List>
-						{giveWeapons.map(({ weapon, tier, character, selected }, i) => (
-							<ListItem
-								key={i}
-								sx={{
-									':hover': { cursor: 'pointer' },
-									'border': selected ? '1px solid blue' : '1px solid rgba(127,127,127,.3)',
-									'borderRadius': 8,
-								}}
-								onClick={() =>
-									setGiveWeapons((giveWeapons) => {
-										giveWeapons[i].selected = !selected;
-										return [...giveWeapons];
-									})
-								}>
-								<ListItemContent>
-									<Grid container spacing={1}>
-										<Grid xs='auto'>
-											<WeaponImage weapon={weaponsInfo[weapon.key]} />
-										</Grid>
-										<Grid xs>
-											<PercentBar p={1 - tier / character.weapon.length}>
-												New %p
-											</PercentBar>
-										</Grid>
-									</Grid>
-								</ListItemContent>
-								<CharacterImage character={charactersInfo[character.key]} />
-							</ListItem>
-						))}
-					</List>
-				</DialogContent>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							dispatch(goodActions.optimizeWeapons(giveWeapons.filter(pget('selected'))));
-							closeModal();
-						}}>
-						Apply All
-					</Button>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+		<DialogWrapper>
+			<DialogTitle>Weapons</DialogTitle>
+			<DialogContent>
+				<List>
+					{giveWeapons.map(({ weapon, tier, character, selected }, i) => (
+						<ListItem
+							key={i}
+							sx={{
+								':hover': { cursor: 'pointer' },
+								'border': 1,
+								'borderColor': selected ? 'blue' : 'rgba(127,127,127,.3)',
+								'borderRadius': 3,
+							}}
+							onClick={() =>
+								setGiveWeapons((giveWeapons) => {
+									giveWeapons[i].selected = !selected;
+									return [...giveWeapons];
+								})
+							}>
+							<ListItemText>
+								<Grid2 container spacing={1}>
+									<Grid2 size='auto'>
+										<WeaponImage weapon={weaponsInfo[weapon.key]} />
+									</Grid2>
+									<Grid2 size='grow'>
+										<PercentBar p={1 - tier / character.weapon.length} />
+									</Grid2>
+								</Grid2>
+							</ListItemText>
+							<CharacterImage character={charactersInfo[character.key]} />
+						</ListItem>
+					))}
+				</List>
+			</DialogContent>
+			<DialogActions>
+				<Button
+					variant='contained'
+					onClick={() => {
+						dispatch(goodActions.optimizeWeapons(giveWeapons.filter(pget('selected'))));
+						closeModal();
+					}}>
+					Apply All
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

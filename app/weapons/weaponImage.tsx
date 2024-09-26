@@ -1,7 +1,8 @@
-import { weaponImages, WeaponType } from '@/api/weapons';
+import type { WeaponType } from '@/api/weapons';
+import { weaponImages } from '@/api/weapons';
 import type { DWeapon } from '@/src/types/data';
-import type { BoxProps } from '@mui/joy';
-import { Box, Tooltip } from '@mui/joy';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 import Image from 'next/image';
 
 export default function WeaponImage({
@@ -10,16 +11,19 @@ export default function WeaponImage({
 	size = 100,
 	children,
 	...props
-}: { weapon?: DWeapon; type?: WeaponType; size?: number } & BoxProps) {
+}: { weapon?: DWeapon; type?: WeaponType; size?: number } & AvatarProps) {
 	return (
 		<Tooltip followCursor title={weapon?.name}>
-			<Box
-				width={size}
-				height={size}
-				overflow='hidden'
-				borderRadius={size / 10}
-				position='relative'
-				{...props}>
+			<Avatar
+				variant='rounded'
+				{...props}
+				sx={{
+					width: size,
+					height: size,
+					overflow: 'hidden',
+					position: 'relative',
+					...props.sx,
+				}}>
 				<Image
 					alt={weapon?.name ?? type ?? 'weapon'}
 					src={weapon?.image ?? weaponImages[type]}
@@ -28,7 +32,7 @@ export default function WeaponImage({
 					className={`rarity${weapon?.rarity}`}
 				/>
 				{children}
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

@@ -1,13 +1,14 @@
 'use client';
 import { artifactSetsInfo } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
+import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
-import { Button, ButtonGroup, Stack, Typography } from '@mui/joy';
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
@@ -37,7 +38,7 @@ export default function Artifacts() {
 					onClick: () => showModal(AddArtifactModal),
 				},
 			]}>
-			<ButtonGroup spacing={1} sx={{ mb: 1 }}>
+			<ButtonGroup sx={{ mb: 1 }}>
 				<Button onClick={() => showModal(OptimizeArtifactModal)}>Optimize</Button>
 				<Button onClick={() => showModal(UpgradePriorityModal)}>Upgrade</Button>
 				<Button onClick={() => showModal(ArtifactSetFarmModal)}>Farm</Button>
@@ -53,7 +54,7 @@ export default function Artifacts() {
 				).length;
 
 				return (
-					<Stack key={artifactSet.key} direction='row' alignItems='center'>
+					<Stack key={artifactSet.key} direction='row' sx={{ alignItems: 'center' }}>
 						<ArtifactSetImage
 							artifactSet={artifactSet}
 							size={50}
@@ -63,11 +64,11 @@ export default function Artifacts() {
 							href={`/artifacts/${artifactSet.key}`}
 						/>
 						{charactersFiltered.map(({ key }) => (
-							<Link key={key} href={`/characters/${key}`}>
+							<PageLink key={key} href={`/characters/${key}`}>
 								<CharacterImage character={charactersInfo[key]} size={50} />
-							</Link>
+							</PageLink>
 						))}
-						<Typography ml={1}>
+						<Typography sx={{ ml: 1 }}>
 							{artifactsEquipped} / {charactersFiltered.length * 5} Wanted /{' '}
 							{artifactsFiltered.length} Total
 						</Typography>

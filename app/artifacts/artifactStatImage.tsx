@@ -4,8 +4,8 @@ import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/subStatBar';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import { Lock } from '@mui/icons-material';
-import type { CardProps } from '@mui/joy';
-import { Box, Card, Grid } from '@mui/joy';
+import type { CardProps } from '@mui/material';
+import { Box, Card, CardContent, Grid2 } from '@mui/material';
 import CharacterImage from '../characters/characterImage';
 import ArtifactImage from './artifactImage';
 
@@ -18,36 +18,35 @@ export default function ArtifactStatImage({
 }: { artifact: IArtifact; slot?: SlotKey; hideCharacter?: boolean } & CardProps) {
 	return (
 		<Card {...props}>
-			<Grid container spacing={1}>
-				<Grid xs='auto'>
-					<ArtifactImage artifact={artifact} slot={slot}>
-						{!hideCharacter && artifact.location && (
-							<CharacterImage
-								character={charactersInfo[artifact.location]}
-								size={50}
-								position='absolute'
-								bottom={0}
-								right={0}
-								border={1}
-							/>
+			<CardContent>
+				<Grid2 container spacing={1}>
+					<Grid2 size='auto'>
+						<ArtifactImage artifact={artifact} slot={slot}>
+							{!hideCharacter && artifact.location && (
+								<CharacterImage
+									character={charactersInfo[artifact.location]}
+									size={50}
+									sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
+								/>
+							)}
+							{artifact?.lock && (
+								<Lock sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }} />
+							)}
+						</ArtifactImage>
+					</Grid2>
+					<Grid2 size='grow'>
+						{artifact && (
+							<Box>
+								<OverflowTypography>{statName[artifact.mainStatKey]}</OverflowTypography>
+								{artifact.substats.map((substat) => (
+									<SubStatBar key={substat.key} substat={substat} />
+								))}
+							</Box>
 						)}
-						{artifact?.lock && (
-							<Lock sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }} />
-						)}
-					</ArtifactImage>
-				</Grid>
-				<Grid xs>
-					{artifact && (
-						<Box>
-							<OverflowTypography>{statName[artifact.mainStatKey]}</OverflowTypography>
-							{artifact.substats.map((substat) => (
-								<SubStatBar key={substat.key} substat={substat} />
-							))}
-						</Box>
-					)}
-				</Grid>
-				{children}
-			</Grid>
+					</Grid2>
+					{children}
+				</Grid2>
+			</CardContent>
 		</Card>
 	);
 }

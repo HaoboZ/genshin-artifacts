@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/19/24
+// 9/25/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -42,7 +42,12 @@ export const builds: Record<CharacterKey, Build> = {
 			'FavoniusLance',
 			'PrototypeStarglitter',
 		],
-		artifact: ['EmblemOfSeveredFate', 'CrimsonWitchOfFlames', 'NoblesseOblige'],
+		artifact: [
+			'EmblemOfSeveredFate',
+			'CrimsonWitchOfFlames',
+			'NoblesseOblige',
+			'DeepwoodMemories',
+		],
 		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},

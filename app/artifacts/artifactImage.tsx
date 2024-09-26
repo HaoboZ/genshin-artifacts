@@ -1,7 +1,7 @@
 import { artifactSetsInfo, artifactSlotImages } from '@/api/artifacts';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import type { BoxProps } from '@mui/joy';
-import { Box, Tooltip, Typography } from '@mui/joy';
+import type { AvatarProps } from '@mui/material';
+import { Avatar, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
 
 export default function ArtifactImage({
@@ -10,18 +10,21 @@ export default function ArtifactImage({
 	size = 100,
 	children,
 	...props
-}: { artifact: IArtifact; slot?: SlotKey; size?: number } & BoxProps) {
+}: { artifact: IArtifact; slot?: SlotKey; size?: number } & AvatarProps) {
 	const artifactSet = artifactSetsInfo[artifact?.setKey];
 
 	return (
 		<Tooltip followCursor title={artifactSet?.name}>
-			<Box
-				width={size}
-				height={size}
-				overflow='hidden'
-				borderRadius={size / 10}
-				position='relative'
-				{...props}>
+			<Avatar
+				variant='rounded'
+				{...props}
+				sx={{
+					width: size,
+					height: size,
+					overflow: 'hidden',
+					position: 'relative',
+					...props.sx,
+				}}>
 				<Image
 					alt={artifactSet?.name ?? slot ?? 'artifact'}
 					src={artifactSet?.[artifact?.slotKey ?? slot] ?? artifactSlotImages[slot]}
@@ -35,7 +38,7 @@ export default function ArtifactImage({
 					</Typography>
 				)}
 				{children}
-			</Box>
+			</Avatar>
 		</Tooltip>
 	);
 }

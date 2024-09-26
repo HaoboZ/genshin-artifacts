@@ -1,11 +1,11 @@
 import { useCharacters } from '@/api/characters';
 import { weeklyInfo, weeklyRequirement } from '@/api/talents';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import { Box, Table } from '@mui/joy';
+import { Box, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import Image from 'next/image';
 import { filter, flat, groupBy, map, pipe, reduce } from 'remeda';
 
@@ -19,18 +19,18 @@ export default function TalentsWeekly() {
 	return (
 		<PageSection title='Weekly Boss Materials'>
 			<Table>
-				<thead>
-					<tr>
-						<th style={{ width: 200 }}>Boss</th>
-						<th colSpan={3} style={{ width: 300 }}>
+				<TableHead>
+					<TableRow>
+						<TableCell sx={{ width: 200 }}>Boss</TableCell>
+						<TableCell colSpan={3} sx={{ width: 300 }}>
 							Materials
-						</th>
-						<th>Wanted</th>
-						<th>Owned</th>
-						<th>Needs</th>
-					</tr>
-				</thead>
-				<tbody>
+						</TableCell>
+						<TableCell sx={{ width: 200 }}>Wanted</TableCell>
+						<TableCell sx={{ width: 200 }}>Owned</TableCell>
+						<TableCell sx={{ width: 200 }}>Needs</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
 					{weeklyInfo.map(({ name, items }) => {
 						const wanted = pipe(
 							items,
@@ -52,10 +52,10 @@ export default function TalentsWeekly() {
 						);
 
 						return (
-							<tr key={name}>
-								<td>{name}</td>
+							<TableRow key={name}>
+								<TableCell>{name}</TableCell>
 								{items.map(({ name, image }) => (
-									<td key={name}>
+									<TableCell key={name}>
 										<Box display='flex' flexDirection='column'>
 											<Image
 												alt={name}
@@ -64,7 +64,7 @@ export default function TalentsWeekly() {
 												height={50}
 												style={{ alignSelf: 'center' }}
 											/>
-											<FormattedInput
+											<FormattedTextField
 												value={currentMaterials[name] ?? 0}
 												onChange={({ target }) => {
 													dispatch(
@@ -76,15 +76,15 @@ export default function TalentsWeekly() {
 												}}
 											/>
 										</Box>
-									</td>
+									</TableCell>
 								))}
-								<td>Wanted: {wanted}</td>
-								<td>Owned: {owned}</td>
-								<td>Needs: {Math.max(0, wanted - owned)}</td>
-							</tr>
+								<TableCell>Wanted: {wanted}</TableCell>
+								<TableCell>Owned: {owned}</TableCell>
+								<TableCell>Needs: {Math.max(0, wanted - owned)}</TableCell>
+							</TableRow>
 						);
 					})}
-				</tbody>
+				</TableBody>
 			</Table>
 		</PageSection>
 	);

@@ -5,7 +5,7 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import statArrMatch from '@/src/helpers/statArrMatch';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
@@ -17,10 +17,9 @@ import {
 	DialogTitle,
 	List,
 	ListItem,
-	ListItemContent,
-	ModalClose,
-	ModalDialog,
-} from '@mui/joy';
+	ListItemAvatar,
+	ListItemText,
+} from '@mui/material';
 import { useState } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
@@ -68,47 +67,46 @@ export default function OptimizeArtifactModal() {
 	});
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='md'>
-				<DialogTitle>{'Optimize Artifacts'}</DialogTitle>
-				<ModalClose variant='outlined' />
-				<DialogContent>
-					<List>
-						{giveArtifacts.map(({ artifact, character, selected }, i) => (
-							<ListItem key={i}>
-								<ListItemContent>
-									<ArtifactStatImage
-										hideCharacter
-										artifact={artifact}
-										sx={{
-											':hover': { cursor: 'pointer' },
-											'border': selected ? '1px solid blue' : undefined,
-										}}
-										onClick={() =>
-											setGiveArtifacts((giveArtifacts) => {
-												giveArtifacts[i].selected = !selected;
-												return [...giveArtifacts];
-											})
-										}
-									/>
-								</ListItemContent>
+		<DialogWrapper>
+			<DialogTitle>Optimize Artifacts</DialogTitle>
+			<DialogContent>
+				<List>
+					{giveArtifacts.map(({ artifact, character, selected }, i) => (
+						<ListItem key={i} sx={{ pt: 0 }}>
+							<ListItemText>
+								<ArtifactStatImage
+									hideCharacter
+									artifact={artifact}
+									sx={{
+										':hover': { cursor: 'pointer' },
+										'border': 1,
+										'borderColor': selected ? 'blue' : 'transparent',
+									}}
+									onClick={() =>
+										setGiveArtifacts((giveArtifacts) => {
+											giveArtifacts[i].selected = !selected;
+											return [...giveArtifacts];
+										})
+									}
+								/>
+							</ListItemText>
+							<ListItemAvatar sx={{ pl: 2 }}>
 								<CharacterImage character={charactersInfo[character.key]} />
-							</ListItem>
-						))}
-					</List>
-				</DialogContent>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							dispatch(
-								goodActions.optimizeArtifacts(giveArtifacts.filter(pget('selected'))),
-							);
-							closeModal();
-						}}>
-						Apply
-					</Button>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+							</ListItemAvatar>
+						</ListItem>
+					))}
+				</List>
+			</DialogContent>
+			<DialogActions>
+				<Button
+					variant='contained'
+					onClick={() => {
+						dispatch(goodActions.optimizeArtifacts(giveArtifacts.filter(pget('selected'))));
+						closeModal();
+					}}>
+					Apply
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

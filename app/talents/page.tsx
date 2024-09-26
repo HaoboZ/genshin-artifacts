@@ -6,7 +6,7 @@ import TalentsWeekly from './weekly';
 
 export default function Talents() {
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Talents</PageTitle>
 			<TalentBooks />
 			<TalentsWeekly />

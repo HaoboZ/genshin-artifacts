@@ -1,5 +1,7 @@
+import { CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
+import { Roboto } from 'next/font/google';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../package.json';
@@ -21,13 +23,21 @@ export const viewport: Viewport = {
 	userScalable: false,
 };
 
+const roboto = Roboto({
+	weight: ['300', '400', '500', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-roboto',
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html suppressHydrationWarning lang='en'>
-			<body>
+			<body className={roboto.variable}>
 				{process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
 				<Providers>
 					<Header />
+					<CssBaseline />
 					{children}
 				</Providers>
 			</body>

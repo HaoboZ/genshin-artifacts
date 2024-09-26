@@ -6,7 +6,7 @@ import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import { Button, ButtonGroup, Typography } from '@mui/joy';
+import { Button, ButtonGroup, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
 export default function Main() {
@@ -33,9 +33,9 @@ export default function Main() {
 	);
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Genshin Artifacts</PageTitle>
-			<ButtonGroup variant='solid' color='primary'>
+			<ButtonGroup variant='contained' color='primary'>
 				<Button component='label'>
 					Import
 					<input
