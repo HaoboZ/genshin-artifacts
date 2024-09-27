@@ -1,18 +1,23 @@
 'use client';
-import { createTheme } from '@mui/material';
+import { colors, createTheme } from '@mui/material';
 
 export default createTheme({
-	cssVariables: true,
+	cssVariables: { colorSchemeSelector: 'class' },
 	colorSchemes: {
-		dark: true,
+		light: {
+			palette: { primary: { main: colors.blue[500] }, background: { paper: colors.grey[100] } },
+		},
+		dark: {
+			palette: { primary: { main: colors.blue[500] }, background: { paper: colors.grey[900] } },
+		},
 	},
 	typography: {
-		h1: { fontSize: 34, fontWeight: 'bold' },
-		h2: { fontSize: 31 },
-		h3: { fontSize: 28 },
-		h4: { fontSize: 25 },
-		h5: { fontSize: 22 },
-		h6: { fontSize: 19 },
+		h1: { fontSize: 32, fontWeight: 'bold' },
+		h2: { fontSize: 29 },
+		h3: { fontSize: 26 },
+		h4: { fontSize: 23 },
+		h5: { fontSize: 20 },
+		h6: { fontSize: 17 },
 		fontFamily: 'var(--font-roboto)',
 	},
 	components: {
