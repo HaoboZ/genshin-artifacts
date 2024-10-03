@@ -9,7 +9,7 @@ export default function Error({
 	reset?: () => void;
 }) {
 	return (
-		<Box textAlign='center' pt={10}>
+		<Box sx={{ textAlign: 'center', pt: 10 }}>
 			<Typography variant='h2'>{error.message}</Typography>
 			{error.digest && <Typography variant='h4'>digest: {error.digest}</Typography>}
 			<Button onClick={reset}>Retry</Button>

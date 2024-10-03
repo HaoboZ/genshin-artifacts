@@ -34,11 +34,20 @@ export default function Actions({ items, max }: { items: ActionProps[]; max?: nu
 	if (menu.length)
 		buttonElements.push(
 			<Dropdown key={-1} button={<MoreHorizIcon />}>
-				{menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
-					<AsyncMenuItem key={index} onClick={onClick} {...menuItemProps} {...props}>
-						{name}
-					</AsyncMenuItem>
-				))}
+				{(closeMenu) =>
+					menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
+						<AsyncMenuItem
+							key={index}
+							onClick={(event) => {
+								onClick(event);
+								closeMenu();
+							}}
+							{...menuItemProps}
+							{...props}>
+							{name}
+						</AsyncMenuItem>
+					))
+				}
 			</Dropdown>,
 		);
 

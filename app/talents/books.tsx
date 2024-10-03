@@ -11,6 +11,7 @@ import {
 	Table,
 	TableBody,
 	TableCell,
+	TableContainer,
 	TableHead,
 	TableRow,
 	Typography,
@@ -58,82 +59,87 @@ export default function TalentBooks() {
 					))}
 				</Dropdown>
 			</Stack>
-			<Table>
-				<TableHead>
-					<TableRow>
-						<TableCell sx={{ width: 200 }}>Talent</TableCell>
-						<TableCell>Characters</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{talentsInfo
-						.filter(({ day }) => (farmable ? day === farmable : true))
-						.map(({ name, image }) => (
-							<TableRow key={name}>
-								<TableCell>
-									<Box
-										sx={{
-											display: 'flex',
-											flexDirection: 'column',
-											alignItems: 'center',
-										}}>
-										<Image alt={name} src={image} width={50} height={50} />
-										{name}
-									</Box>
-								</TableCell>
-								<TableCell>
-									<Box display='flex' flexWrap='wrap'>
-										{characters
-											.filter(({ level, talentMaterial, talent }) => {
-												if (talentMaterial !== name || (owned && !level)) return false;
-												if (lvl) {
-													const minTalent = Math.min(
-														talent?.auto ?? 0,
-														talent?.skill ?? 0,
-														talent?.burst ?? 0,
-													);
-													switch (lvl) {
-														case 1:
-															if (minTalent >= 9) return false;
-															break;
-														case 2:
-															if (minTalent !== 9) return false;
-															break;
-														case 3:
-															if (minTalent !== 10) return false;
+			<TableContainer>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell sx={{ width: 200 }}>Talent</TableCell>
+							<TableCell>Characters</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{talentsInfo
+							.filter(({ day }) => (farmable ? day === farmable : true))
+							.map(({ name, image }) => (
+								<TableRow key={name}>
+									<TableCell>
+										<Box
+											sx={{
+												display: 'flex',
+												flexDirection: 'column',
+												alignItems: 'center',
+											}}>
+											<Image alt={name} src={image} width={50} height={50} />
+											{name}
+										</Box>
+									</TableCell>
+									<TableCell>
+										<Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+											{characters
+												.filter(({ level, talentMaterial, talent }) => {
+													if (talentMaterial !== name || (owned && !level))
+														return false;
+													if (lvl) {
+														const minTalent = Math.min(
+															talent?.auto ?? 0,
+															talent?.skill ?? 0,
+															talent?.burst ?? 0,
+														);
+														switch (lvl) {
+															case 1:
+																if (minTalent >= 9) return false;
+																break;
+															case 2:
+																if (minTalent !== 9) return false;
+																break;
+															case 3:
+																if (minTalent !== 10) return false;
+														}
 													}
-												}
-												return true;
-											})
-											.map((character) => (
-												<Box
-													key={character.key}
-													component={Link}
-													href={`/characters/${character.key}`}
-													color='inherit'
-													sx={{ textDecoration: 'none' }}
-													mr={1}>
-													<CharacterImage
-														character={character}
-														size={75}
-														sx={{
-															border: character.level ? 0 : 2,
-															borderColor: 'red',
-														}}
-													/>
-													<Box display='flex' justifyContent='space-evenly'>
-														<Typography>{character.talent?.auto ?? 0}</Typography>
-														<Typography>{character.talent?.skill ?? 0}</Typography>
-														<Typography>{character.talent?.burst ?? 0}</Typography>
+													return true;
+												})
+												.map((character) => (
+													<Box
+														key={character.key}
+														component={Link}
+														href={`/characters/${character.key}`}
+														sx={{ color: 'inherit', textDecoration: 'none', mr: 1 }}>
+														<CharacterImage
+															character={character}
+															size={75}
+															sx={{
+																border: character.level ? 0 : 2,
+																borderColor: 'red',
+															}}
+														/>
+														<Box
+															sx={{
+																display: 'flex',
+																justifyContent: 'space-evenly',
+															}}>
+															<Typography>{character.talent?.auto ?? 0}</Typography>
+															<Typography>{character.talent?.skill ?? 0}</Typography>
+															<Typography>{character.talent?.burst ?? 0}</Typography>
+														</Box>
 													</Box>
-												</Box>
-											))}
-									</Box>
-								</TableCell>
-							</TableRow>
-						))}
-				</TableBody>
-			</Table>
+												))}
+										</Box>
+									</TableCell>
+								</TableRow>
+							))}
+					</TableBody>
+				</Table>
+			</TableContainer>
 		</PageSection>
 	);
 }

@@ -28,7 +28,7 @@ export default function WeaponCharacterImage({
 	}, []);
 
 	return (
-		<Box width={size}>
+		<Box sx={{ width: size }}>
 			<WeaponImage weapon={weaponsInfo[weapon.key]} {...props}>
 				{character && (
 					<CharacterImage

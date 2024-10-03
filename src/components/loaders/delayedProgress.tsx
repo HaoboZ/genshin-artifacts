@@ -18,7 +18,7 @@ export default function DelayedProgress({
 	return (
 		<Box sx={{ opacity: isFinished ? 0 : 1, transition: 'opacity 0.3s' }}>
 			{children(progress) ?? (
-				<Box display='flex' justifyContent='center' pt={5}>
+				<Box sx={{ display: 'flex', justifyContent: 'center', pt: 5 }}>
 					<CircularProgress value={progress} />
 				</Box>
 			)}

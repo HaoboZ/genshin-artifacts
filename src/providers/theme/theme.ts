@@ -5,19 +5,19 @@ export default createTheme({
 	cssVariables: { colorSchemeSelector: 'class' },
 	colorSchemes: {
 		light: {
-			palette: { primary: { main: colors.blue[500] }, background: { paper: colors.grey[100] } },
+			palette: { primary: { main: colors.blue[700] }, background: { paper: colors.grey[100] } },
 		},
 		dark: {
-			palette: { primary: { main: colors.blue[500] }, background: { paper: colors.grey[900] } },
+			palette: { primary: { main: colors.blue[700] }, background: { paper: colors.grey[900] } },
 		},
 	},
 	typography: {
-		h1: { fontSize: 32, fontWeight: 'bold' },
-		h2: { fontSize: 29 },
-		h3: { fontSize: 26 },
-		h4: { fontSize: 23 },
+		h1: { fontSize: 28, fontWeight: 'bold' },
+		h2: { fontSize: 26 },
+		h3: { fontSize: 24 },
+		h4: { fontSize: 22 },
 		h5: { fontSize: 20 },
-		h6: { fontSize: 17 },
+		h6: { fontSize: 18 },
 		fontFamily: 'var(--font-roboto)',
 	},
 	components: {
