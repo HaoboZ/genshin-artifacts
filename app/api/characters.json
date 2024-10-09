@@ -787,6 +787,16 @@
 		"weeklyMaterial": "Shadow of the Warrior",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png"
 	},
+	"Xilonen": {
+		"key": "Xilonen",
+		"name": "Xilonen",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Geo",
+		"talentMaterial": "Teachings of Kindling",
+		"weeklyMaterial": "Mirror of Mushin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Xilonen_Icon.png"
+	},
 	"Xingqiu": {
 		"key": "Xingqiu",
 		"name": "Xingqiu",

@@ -85,6 +85,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Xilonen_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Yae_Miko_Icon.png',
@@ -541,6 +542,7 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

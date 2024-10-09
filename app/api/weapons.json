@@ -678,6 +678,13 @@
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png"
 	},
+	"PeakPatrolSong": {
+		"key": "PeakPatrolSong",
+		"name": "Peak Patrol Song",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png"
+	},
 	"PolarStar": {
 		"key": "PolarStar",
 		"name": "Polar Star",

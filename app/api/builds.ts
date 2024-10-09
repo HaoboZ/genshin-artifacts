@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/25/24
+// 10/08/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -787,19 +787,21 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'KujouSara',
 		role: 'Support and Damage',
 		weapon: [
-			'PolarStar',
 			'SkywardHarp',
-			['HuntersPath', 'AquaSimulacra'],
+			['PolarStar', 'ElegyForTheEnd'],
+			'TheFirstGreatMagic',
+			['AquaSimulacra', 'HuntersPath'],
 			'ThunderingPulse',
-			['AmosBow', 'MouunsMoon'],
-			'ElegyForTheEnd',
-			['AlleyHunter', 'FadingTwilight'],
-			'TheViridescentHunt',
-			'BlackcliffWarbow',
-			'SacrificialBow',
-			'PrototypeCrescent',
+			'AmosBow',
+			[
+				'FadingTwilight',
+				'MouunsMoon',
+				'AlleyHunter',
+				'TheViridescentHunt',
+				'ScionOfTheBlazingSun',
+			],
+			['SacrificialBow', 'ChainBreaker'],
 			'FavoniusWarbow',
-			'Messenger',
 		],
 		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige'],
 		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
@@ -1603,8 +1605,16 @@ export const builds: Record<CharacterKey, Build> = {
 			],
 			'WolfFang',
 		],
-		artifact: [['GoldenTroupe', 'HuskOfOpulentDreams']],
+		artifact: ['GoldenTroupe', 'HuskOfOpulentDreams'],
 		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'atk_', 'def', 'atk', 'enerRech_'],
+	},
+	Xilonen: {
+		key: 'Xilonen',
+		role: 'Support',
+		weapon: ['PeakPatrolSong', 'FavoniusSword'],
+		artifact: ['ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: 'enerRech_', goblet: 'def_', circlet: 'def_' },
+		subStat: ['critRD_', 'def_', 'enerRech_', 'def'],
 	},
 };

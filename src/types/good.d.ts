@@ -208,6 +208,7 @@ export type CharacterKey =
 	| 'Xiangling' //Xiangling
 	| 'Xianyun' //Xianyun
 	| 'Xiao' //Xiao
+	| 'Xilonen' //Xilonen
 	| 'Xingqiu' //Xingqiu
 	| 'Xinyan' //Xinyan
 	| 'YaeMiko' //Yae Miko
@@ -322,6 +323,7 @@ export type WeaponKey =
 	| 'OathswornEye' //Oathsworn Eye
 	| 'OldMercsPal' //Old Merc's Pal
 	| 'OtherworldlyStory' //Otherworldly Story
+	| 'PeakPatrolSong' //Peak Patrol Song
 	| 'PocketGrimoire' //Pocket Grimoire
 	| 'PolarStar' //Polar Star
 	| 'PortablePowerSaw' //Portable Power Saw
