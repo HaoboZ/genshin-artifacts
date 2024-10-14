@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 10/08/24
+// 10/11/24
 // Sorted https://genshinlab.com/tier-list
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
@@ -1547,19 +1547,13 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Albedo',
 		role: 'Off-Field DPS',
 		weapon: [
-			'UrakuMisugiri',
+			['PeakPatrolSong', 'UrakuMisugiri'],
 			'CinnabarSpindle',
 			['HarbingerOfDawn', 'PrimordialJadeCutter'],
 			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged', 'WolfFang'],
-			'FreedomSworn',
 		],
-		artifact: [
-			['HuskOfOpulentDreams', 'GoldenTroupe'],
-			'ArchaicPetra',
-			'TenacityOfTheMillelith',
-			'NoblesseOblige',
-		],
-		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: ['critRD_', 'def_'] },
+		artifact: [['HuskOfOpulentDreams', 'GoldenTroupe'], 'ArchaicPetra', 'TenacityOfTheMillelith'],
+		mainStat: { sands: 'def_', goblet: ['geo_dmg_', 'def_'], circlet: ['critRD_', 'def_'] },
 		subStat: ['critRD_', 'def_', 'atk_', 'enerRech_'],
 	},
 	AratakiItto: {
@@ -1612,9 +1606,19 @@ export const builds: Record<CharacterKey, Build> = {
 	Xilonen: {
 		key: 'Xilonen',
 		role: 'Support',
-		weapon: ['PeakPatrolSong', 'FavoniusSword'],
-		artifact: ['ScrollOfTheHeroOfCinderCity'],
-		mainStat: { sands: 'enerRech_', goblet: 'def_', circlet: 'def_' },
-		subStat: ['critRD_', 'def_', 'enerRech_', 'def'],
+		weapon: [
+			'PeakPatrolSong',
+			'FreedomSworn',
+			'FavoniusSword',
+			'FluteOfEzpitzal',
+			'SkyriderSword',
+		],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'ArchaicPetra', 'NoblesseOblige'],
+		mainStat: {
+			sands: ['def_', 'enerRech_'],
+			goblet: 'def_',
+			circlet: ['def_', 'heal_', 'critRate_'],
+		},
+		subStat: ['enerRech_', 'def_', 'def', 'critRate_'],
 	},
 };

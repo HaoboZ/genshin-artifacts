@@ -1,7 +1,8 @@
 import { useCharacters } from '@/api/characters';
-import { talentsInfo } from '@/api/talents';
+import { talentsInfo, weeklyInfo } from '@/api/talents';
 import Dropdown from '@/components/dropdown';
 import PageSection from '@/components/page/section';
+import pget from '@/src/helpers/pget';
 import {
 	Box,
 	Checkbox,
@@ -19,7 +20,8 @@ import {
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { indexBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 
 const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];
@@ -35,6 +37,8 @@ export default function TalentBooks() {
 	});
 	const [lvl, setLvl] = useState(1);
 
+	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('name')), []);
+	console.log(weeklyItems);
 	return (
 		<PageSection title='Talent Books'>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
@@ -120,8 +124,21 @@ export default function TalentBooks() {
 															sx={{
 																border: character.level ? 0 : 2,
 																borderColor: 'red',
-															}}
-														/>
+															}}>
+															<Image
+																alt={character.weeklyMaterial}
+																src={weeklyItems[character.weeklyMaterial]?.image}
+																width={30}
+																height={30}
+																style={{
+																	position: 'absolute',
+																	bottom: 0,
+																	right: 0,
+																	border: 1,
+																}}
+																className='rarity5'
+															/>
+														</CharacterImage>
 														<Box
 															sx={{
 																display: 'flex',
