@@ -57,8 +57,12 @@ export default function OptimizeArtifactModal() {
 						({ slotKey, location }) => slotKey === slot && location === character.key,
 					);
 					if (currentArtifact) currentArtifact.location = '';
-					artifactsClone.find(({ id }) => id === artifact.id).location = character.key;
-					result.push({ artifact, character, selected: true });
+					artifact.location = character.key;
+					result.push({
+						artifact: artifacts.find(({ id }) => id === artifact.id),
+						character,
+						selected: true,
+					});
 					break;
 				}
 			}
@@ -75,7 +79,6 @@ export default function OptimizeArtifactModal() {
 						<ListItem key={i} sx={{ pt: 0 }}>
 							<ListItemText>
 								<ArtifactStatImage
-									hideCharacter
 									artifact={artifact}
 									sx={{
 										':hover': { cursor: 'pointer' },

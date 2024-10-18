@@ -543,6 +543,9 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

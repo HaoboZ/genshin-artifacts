@@ -57,7 +57,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.37.1"],\
           ["events", "npm:3.3.0"],\
           ["formik", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:2.4.6"],\
-          ["genshin-db", "npm:5.1.8"],\
+          ["genshin-db", "npm:5.1.9"],\
           ["globals", "npm:15.11.0"],\
           ["nanoid", "npm:5.0.7"],\
           ["next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:14.2.15"],\
@@ -3690,7 +3690,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.37.1"],\
           ["events", "npm:3.3.0"],\
           ["formik", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:2.4.6"],\
-          ["genshin-db", "npm:5.1.8"],\
+          ["genshin-db", "npm:5.1.9"],\
           ["globals", "npm:15.11.0"],\
           ["nanoid", "npm:5.0.7"],\
           ["next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:14.2.15"],\
@@ -3711,10 +3711,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["genshin-db", [\
-      ["npm:5.1.8", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/genshin-db-npm-5.1.8-3da167097e-10c0.zip/node_modules/genshin-db/",\
+      ["npm:5.1.9", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/genshin-db-npm-5.1.9-809bce62cf-10c0.zip/node_modules/genshin-db/",\
         "packageDependencies": [\
-          ["genshin-db", "npm:5.1.8"],\
+          ["genshin-db", "npm:5.1.9"],\
           ["fuzzysort", "npm:1.9.0"],\
           ["pako", "npm:2.1.0"]\
         ],\

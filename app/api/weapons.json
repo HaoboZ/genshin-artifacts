@@ -426,6 +426,13 @@
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png"
 	},
+	"FruitfulHook": {
+		"key": "FruitfulHook",
+		"name": "Fruitful Hook",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png"
+	},
 	"FruitOfFulfillment": {
 		"key": "FruitOfFulfillment",
 		"name": "Fruit of Fulfillment",
@@ -656,6 +663,13 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png"
+	},
+	"MountainBracingBolt": {
+		"key": "MountainBracingBolt",
+		"name": "Mountain-Bracing Bolt",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png"
 	},
 	"MouunsMoon": {
 		"key": "MouunsMoon",
@@ -1027,6 +1041,13 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png"
+	},
+	"SturdyBone": {
+		"key": "SturdyBone",
+		"name": "Sturdy Bone",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png"
 	},
 	"SummitShaper": {
 		"key": "SummitShaper",
