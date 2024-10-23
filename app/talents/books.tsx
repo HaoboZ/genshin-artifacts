@@ -38,7 +38,7 @@ export default function TalentBooks() {
 	const [lvl, setLvl] = useState(1);
 
 	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('name')), []);
-	console.log(weeklyItems);
+
 	return (
 		<PageSection title='Talent Books'>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>

@@ -3,9 +3,9 @@ const KEY = 'genshinArtifactsPersist';
 export function loadState() {
 	try {
 		const serializedState = localStorage.getItem(KEY);
-		if ( !serializedState ) return undefined;
+		if (!serializedState) return undefined;
 		const state = JSON.parse(serializedState);
-		if ( !( 'weekly' in state.main ) ) state.main.weekly = {};
+		if (!('weekly' in state.main)) state.main.weekly = {};
 		return state;
 	} catch {
 		return undefined;
