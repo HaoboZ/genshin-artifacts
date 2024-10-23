@@ -36,7 +36,7 @@
 		"events": "3.3.0",
 		"formik": "2.4.6",
 		"nanoid": "5.0.7",
-		"next": "14.2.15",
+		"next": "15.0.1",
 		"notistack": "3.0.1",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
@@ -47,7 +47,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "9.13.0",
-		"@next/bundle-analyzer": "14.2.15",
+		"@next/bundle-analyzer": "15.0.1",
 		"@types/eslint": "9.6.1",
 		"@types/eslint__js": "8.42.3",
 		"@types/events": "3.0.3",
