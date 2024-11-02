@@ -44,10 +44,10 @@ const RAW_RUNTIME_STATE =
           ["@types/eslint", "npm:9.6.1"],\
           ["@types/eslint__js", "npm:8.42.3"],\
           ["@types/events", "npm:3.0.3"],\
-          ["@types/node", "npm:22.7.9"],\
+          ["@types/node", "npm:22.8.1"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-redux", "npm:7.1.34"],\
-          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.1"],\
+          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.2"],\
           ["axios", "npm:1.7.7"],\
           ["change-case", "npm:5.4.4"],\
           ["dayjs", "npm:1.11.13"],\
@@ -68,7 +68,7 @@ const RAW_RUNTIME_STATE =
           ["react-redux", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.1.2"],\
           ["remeda", "npm:2.16.0"],\
           ["rooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.14.1"],\
-          ["sass", "npm:1.80.3"],\
+          ["sass", "npm:1.80.4"],\
           ["tesseract.js", "npm:5.1.1"],\
           ["type-fest", "npm:4.26.1"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"],\
@@ -1852,11 +1852,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
-      ["npm:22.7.9", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-node-npm-22.7.9-03392d8185-10c0.zip/node_modules/@types/node/",\
+      ["npm:22.8.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-node-npm-22.8.1-68cd07c817-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:22.7.9"],\
-          ["undici-types", "npm:6.19.6"]\
+          ["@types/node", "npm:22.8.1"],\
+          ["undici-types", "npm:6.19.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2153,17 +2153,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@vercel/analytics", [\
-      ["npm:1.3.1", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@vercel-analytics-npm-1.3.1-fdf1f71ba5-10c0.zip/node_modules/@vercel/analytics/",\
+      ["npm:1.3.2", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@vercel-analytics-npm-1.3.2-0d6d05984b-10c0.zip/node_modules/@vercel/analytics/",\
         "packageDependencies": [\
-          ["@vercel/analytics", "npm:1.3.1"]\
+          ["@vercel/analytics", "npm:1.3.2"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.1", {\
-        "packageLocation": "./.yarn/__virtual__/@vercel-analytics-virtual-5a191c844f/3/AppData/Local/Yarn/Berry/cache/@vercel-analytics-npm-1.3.1-fdf1f71ba5-10c0.zip/node_modules/@vercel/analytics/",\
+      ["virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.2", {\
+        "packageLocation": "./.yarn/__virtual__/@vercel-analytics-virtual-b3b7579bd4/3/AppData/Local/Yarn/Berry/cache/@vercel-analytics-npm-1.3.2-0d6d05984b-10c0.zip/node_modules/@vercel/analytics/",\
         "packageDependencies": [\
-          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.1"],\
+          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.2"],\
           ["@types/next", null],\
           ["@types/react", "npm:18.3.12"],\
           ["next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:15.0.1"],\
@@ -3843,10 +3843,10 @@ const RAW_RUNTIME_STATE =
           ["@types/eslint", "npm:9.6.1"],\
           ["@types/eslint__js", "npm:8.42.3"],\
           ["@types/events", "npm:3.0.3"],\
-          ["@types/node", "npm:22.7.9"],\
+          ["@types/node", "npm:22.8.1"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-redux", "npm:7.1.34"],\
-          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.1"],\
+          ["@vercel/analytics", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:1.3.2"],\
           ["axios", "npm:1.7.7"],\
           ["change-case", "npm:5.4.4"],\
           ["dayjs", "npm:1.11.13"],\
@@ -3867,7 +3867,7 @@ const RAW_RUNTIME_STATE =
           ["react-redux", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:9.1.2"],\
           ["remeda", "npm:2.16.0"],\
           ["rooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:7.14.1"],\
-          ["sass", "npm:1.80.3"],\
+          ["sass", "npm:1.80.4"],\
           ["tesseract.js", "npm:5.1.1"],\
           ["type-fest", "npm:4.26.1"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"],\
@@ -5112,7 +5112,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.31"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:18.3.1"],\
-          ["sass", "npm:1.80.3"],\
+          ["sass", "npm:1.80.4"],\
           ["sharp", "npm:0.33.5"],\
           ["styled-jsx", "virtual:f310e25938c427f9aae15f07b3eb100c8b1cde307b16db86f8e637e6adfd75ee4ea372478de0ad887bfc7f7887e8489a2c592b1d1e51bddf790a41330661e63e#npm:5.1.6"]\
         ],\
@@ -5970,10 +5970,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["sass", [\
-      ["npm:1.80.3", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/sass-npm-1.80.3-4465a3ce7e-10c0.zip/node_modules/sass/",\
+      ["npm:1.80.4", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/sass-npm-1.80.4-604cd1b502-10c0.zip/node_modules/sass/",\
         "packageDependencies": [\
-          ["sass", "npm:1.80.3"],\
+          ["sass", "npm:1.80.4"],\
           ["@parcel/watcher", "npm:2.4.1"],\
           ["chokidar", "npm:4.0.0"],\
           ["immutable", "npm:4.3.5"],\
@@ -6751,10 +6751,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["undici-types", [\
-      ["npm:6.19.6", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/undici-types-npm-6.19.6-9d9ccfb00d-10c0.zip/node_modules/undici-types/",\
+      ["npm:6.19.8", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/undici-types-npm-6.19.8-9f12285b7a-10c0.zip/node_modules/undici-types/",\
         "packageDependencies": [\
-          ["undici-types", "npm:6.19.6"]\
+          ["undici-types", "npm:6.19.8"]\
         ],\
         "linkType": "HARD"\
       }]\

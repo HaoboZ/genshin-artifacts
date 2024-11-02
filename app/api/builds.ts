@@ -2,8 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 10/11/24
-// Sorted https://genshinlab.com/tier-list
+// 11/2/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -48,7 +47,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'NoblesseOblige',
 			'DeepwoodMemories',
 		],
-		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['enerRech_', 'atk_', 'eleMas'],
+			goblet: 'pyro_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	Bennett: {
@@ -145,7 +148,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'SerpentSpine',
 			['RedhornStonethresher', 'Verdict', 'BeaconOfTheReedSea'],
-			['WolfsGravestone', 'Rainslasher'],
+			['FruitfulHook', 'WolfsGravestone', 'Rainslasher'],
 			['SongOfBrokenPines', 'TheUnforged', 'SkywardPride'],
 			['MailedFlower', 'LithicBlade'],
 			['TidalShadow', 'UltimateOverlordsMegaMagicSword'],
@@ -155,7 +158,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'GildedDreams',
 			'VermillionHereafter',
 		],
-		mainStat: { sands: ['eleMas', 'atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['eleMas', 'atk_', 'enerRech_'],
+			goblet: 'pyro_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_', 'atk'],
 	},
 	Diluc: {
@@ -692,7 +699,11 @@ export const builds: Record<CharacterKey, Build> = {
 			['SkywardBlade', 'TheDockhandsAssistant', 'HarbingerOfDawn'],
 		],
 		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
-		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
+		mainStat: {
+			sands: ['enerRech_', 'hp_'],
+			goblet: ['hp_', 'hydro_dmg_'],
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', ['hp_', 'critRD_'], 'hp'],
 	},
 	Sigewinne: {
@@ -766,7 +777,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'MappaMare',
 			['DodocoTales', 'MagicGuide'],
 		],
-		artifact: ['ThunderingFury', 'GildedDreams', 'Thundersoother'],
+		artifact: ['Thundersoother', 'ThunderingFury', 'GildedDreams'],
 		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', ['atk_', 'eleMas'], 'enerRech_', 'atk'],
 	},
@@ -860,7 +871,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['LionsRoar', 'TheBlackSword'],
 			'IronSting',
 		],
-		artifact: [['Thundersoother', 'ThunderingFury'], 'GildedDreams'],
+		artifact: [['ThunderingFury', 'Thundersoother'], 'GildedDreams'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', ['atk_', 'eleMas'], 'atk', 'enerRech_'],
 	},
@@ -993,7 +1004,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'GildedDreams',
 			'NoblesseOblige',
 		],
-		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['atk_', 'enerRech_', 'eleMas'],
+			goblet: 'cryo_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_', 'atk'],
 	},
 	Kaeya: {
@@ -1511,7 +1526,11 @@ export const builds: Record<CharacterKey, Build> = {
 			['TheCatch', 'PrototypeStarglitter', 'KitainCrossSpear'],
 		],
 		artifact: ['HuskOfOpulentDreams', 'NoblesseOblige'],
-		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: ['def_', 'critRate_'] },
+		mainStat: {
+			sands: ['def_', 'enerRech_'],
+			goblet: 'def_',
+			circlet: ['def_', 'critRate_'],
+		},
 		subStat: ['def_', 'enerRech_', 'def', 'critRate_'],
 	},
 	Kachina: {

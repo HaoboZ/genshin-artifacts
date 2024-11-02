@@ -112,10 +112,10 @@ export type ArtifactSetKey =
 	| 'PrayersToSpringtime' //Prayers to Springtime
 	| 'ResolutionOfSojourner' //Resolution of Sojourner
 	| 'RetracingBolide' //Retracing Bolide
-	| 'SongOfDaysPast' //Song of Days Past
 	| 'Scholar' //Scholar
 	| 'ScrollOfTheHeroOfCinderCity' //Scroll of the Hero of Cinder City
 	| 'ShimenawasReminiscence' //Shimenawa's Reminiscence
+	| 'SongOfDaysPast' //Song of Days Past
 	| 'TenacityOfTheMillelith' //Tenacity of the Millelith
 	| 'TheExile' //The Exile
 	| 'ThunderingFury' //Thundering Fury
@@ -220,8 +220,8 @@ export type CharacterKey =
 	| 'Zhongli'; //Zhongli
 
 export type WeaponKey =
-	| 'Absolution' //Absolution
 	| 'AThousandFloatingDreams' //A Thousand Floating Dreams
+	| 'Absolution' //Absolution
 	| 'Akuoumaru' //Akuoumaru
 	| 'AlleyHunter' //Alley Hunter
 	| 'AmenomaKageuchi' //Amenoma Kageuchi
@@ -254,7 +254,7 @@ export type WeaponKey =
 	| 'DarkIronSword' //Dark Iron Sword
 	| 'Deathmatch' //Deathmatch
 	| 'DebateClub' //Debate Club
-	| 'DialoguesOfTheDesertSages' // Dialogues of the Desert Sages
+	| 'DialoguesOfTheDesertSages' //Dialogues of the Desert Sages
 	| 'DodocoTales' //Dodoco Tales
 	| 'DragonsBane' //Dragon's Bane
 	| 'DragonspineSpear' //Dragonspine Spear
@@ -285,6 +285,7 @@ export type WeaponKey =
 	| 'FreedomSworn' //Freedom-Sworn
 	| 'Frostbearer' //Frostbearer
 	| 'FruitOfFulfillment' //Fruit of Fulfillment
+	| 'FruitfulHook' //Fruitful Hook
 	| 'HakushinRing' //Hakushin Ring
 	| 'Halberd' //Halberd
 	| 'Hamayumi' //Hamayumi
@@ -319,6 +320,7 @@ export type WeaponKey =
 	| 'MistsplitterReforged' //Mistsplitter Reforged
 	| 'MitternachtsWaltz' //Mitternachts Waltz
 	| 'Moonpiercer' //Moonpiercer
+	| 'MountainBracingBolt' //Mountain-Bracing Bolt
 	| 'MouunsMoon' //Mouun's Moon
 	| 'OathswornEye' //Oathsworn Eye
 	| 'OldMercsPal' //Old Merc's Pal
@@ -360,8 +362,8 @@ export type WeaponKey =
 	| 'SeasonedHuntersBow' //Seasoned Hunter's Bow
 	| 'SerpentSpine' //Serpent Spine
 	| 'SharpshootersOath' //Sharpshooter's Oath
-	| 'SilvershowerHeartstrings' // Silvershower Heartstrings
 	| 'SilverSword' //Silver Sword
+	| 'SilvershowerHeartstrings' //Silvershower Heartstrings
 	| 'SkyriderGreatsword' //Skyrider Greatsword
 	| 'SkyriderSword' //Skyrider Sword
 	| 'SkywardAtlas' //Skyward Atlas
@@ -374,13 +376,14 @@ export type WeaponKey =
 	| 'SolarPearl' //Solar Pearl
 	| 'SongOfBrokenPines' //Song of Broken Pines
 	| 'SongOfStillness' //Song of Stillness
-	| 'SplendorOfTranquilWaters' // Splendor of Tranquil Waters
+	| 'SplendorOfTranquilWaters' //Splendor of Tranquil Waters
 	| 'StaffOfHoma' //Staff of Homa
 	| 'StaffOfTheScarletSands' //Staff of the Scarlet Sands
+	| 'SturdyBone' //Sturdy Bone
 	| 'SummitShaper' //Summit Shaper
 	| 'SurfsUp' //Surf's Up
 	| 'SwordOfDescension' //Sword of Descension
-	| 'SwordOfNarzissenkreuz' //Sword of Narzussenkreuz
+	| 'SwordOfNarzissenkreuz' //Sword of Narzissenkreuz
 	| 'TalkingStick' //Talking Stick
 	| 'TheAlleyFlash' //The Alley Flash
 	| 'TheBell' //The Bell
@@ -401,7 +404,7 @@ export type WeaponKey =
 	| 'TravelersHandySword' //Traveler's Handy Sword
 	| 'TulaytullahsRemembrance' //Tulaytullah's Remembrance
 	| 'TwinNephrite' //Twin Nephrite
-	| 'UltimateOverlordsMegaMagicSword' //Ultimate Overlord's Mega Magic Sword
+	| 'UltimateOverlordsMegaMagicSword' //"Ultimate Overlord's Mega Magic Sword"
 	| 'UrakuMisugiri' //Uraku Misugiri
 	| 'Verdict' //Verdict
 	| 'VortexVanquisher' //Vortex Vanquisher
