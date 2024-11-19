@@ -15,12 +15,12 @@ import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
+import type { DCharacter } from '@/src/types/data';
 import { Card, CardContent, Grid2, Stack, Switch, Typography } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { clamp, indexBy } from 'remeda';
-import type { DCharacter } from '../../../src/types/data';
 import ArtifactStatImage from '../../artifacts/artifactStatImage';
 import WeaponImage from '../../weapons/weaponImage';
 import CharacterImage from '../characterImage';
@@ -28,7 +28,7 @@ import CharacterArtifactModal from './characterArtifactModal';
 import CharacterBuild from './characterBuild';
 import CharacterWeaponModal from './characterWeaponModal';
 
-export default async function Character({ characterData }: { characterData: DCharacter }) {
+export default function Character({ characterData }: { characterData: DCharacter }) {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 

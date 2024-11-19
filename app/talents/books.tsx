@@ -1,8 +1,7 @@
 import { useCharacters } from '@/api/characters';
-import { talentsInfo, weeklyInfo } from '@/api/talents';
+import { talentsInfo } from '@/api/talents';
 import Dropdown from '@/components/dropdown';
 import PageSection from '@/components/page/section';
-import pget from '@/src/helpers/pget';
 import {
 	Box,
 	Checkbox,
@@ -15,14 +14,11 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
-	Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useMemo, useState } from 'react';
-import { indexBy } from 'remeda';
-import CharacterImage from '../characters/characterImage';
+import { useState } from 'react';
+import BooksCharacter from './character';
 
 const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];
 const levelFilters = ['All', '<9', '9-10', '10'];
@@ -36,8 +32,6 @@ export default function TalentBooks() {
 		return (day > 3 ? day - 3 : day) % 4;
 	});
 	const [lvl, setLvl] = useState(1);
-
-	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('name')), []);
 
 	return (
 		<PageSection title='Talent Books'>
@@ -108,47 +102,13 @@ export default function TalentBooks() {
 																break;
 															case 3:
 																if (minTalent !== 10) return false;
+																break;
 														}
 													}
 													return true;
 												})
 												.map((character) => (
-													<Box
-														key={character.key}
-														component={Link}
-														href={`/characters/${character.key}`}
-														sx={{ color: 'inherit', textDecoration: 'none', mr: 1 }}>
-														<CharacterImage
-															character={character}
-															size={75}
-															sx={{
-																border: character.level ? 0 : 2,
-																borderColor: 'red',
-															}}>
-															<Image
-																alt={character.weeklyMaterial}
-																src={weeklyItems[character.weeklyMaterial]?.image}
-																width={30}
-																height={30}
-																style={{
-																	position: 'absolute',
-																	bottom: 0,
-																	right: 0,
-																	border: 1,
-																}}
-																className='rarity5'
-															/>
-														</CharacterImage>
-														<Box
-															sx={{
-																display: 'flex',
-																justifyContent: 'space-evenly',
-															}}>
-															<Typography>{character.talent?.auto ?? 0}</Typography>
-															<Typography>{character.talent?.skill ?? 0}</Typography>
-															<Typography>{character.talent?.burst ?? 0}</Typography>
-														</Box>
-													</Box>
+													<BooksCharacter key={character.key} character={character} />
 												))}
 										</Box>
 									</TableCell>

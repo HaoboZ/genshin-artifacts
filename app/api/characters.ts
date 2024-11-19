@@ -45,5 +45,5 @@ export function useCharacters({
 				return index === -1 ? Infinity : index;
 			}),
 		);
-	}, [priority, element, weaponType]);
+	}, [priority, characters, element, weaponType]);
 }

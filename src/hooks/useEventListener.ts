@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useFreshTick } from 'rooks';
+import { useEffect, useRef } from 'react';
 
 export default function useEventListener(
 	event:
@@ -10,7 +9,11 @@ export default function useEventListener(
 	listener: (...args: any[]) => void,
 	callOnce?: boolean,
 ) {
-	const tick = useFreshTick(listener);
+	const ref = useRef(listener);
+
+	useEffect(() => {
+		ref.current = listener;
+	}, [listener]);
 
 	useEffect(() => {
 		if (!event) return;
@@ -19,8 +22,8 @@ export default function useEventListener(
 		// @ts-ignore
 		const remove = event.removeEventListener || event.removeListener || event.off;
 
-		if (callOnce) tick();
-		add.bind(event)(name, tick);
-		return () => remove.bind(event)(name, tick);
+		if (callOnce) ref.current();
+		add.bind(event)(name, ref);
+		return () => remove.bind(event)(name, ref);
 	}, [Boolean(event), name]);
 }

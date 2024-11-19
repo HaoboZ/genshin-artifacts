@@ -6,9 +6,8 @@ import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid2, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { filter, isIncludedIn, isNot, mapValues, omit } from 'remeda';
-import { useDidUpdate } from 'rooks';
 import CharacterTierImage from './characterTierImage';
 
 export default function CharacterPriority({
@@ -55,7 +54,7 @@ export default function CharacterPriority({
 		);
 	}, [characters, editMode, element, weaponType, owned, search]);
 
-	useDidUpdate(() => {
+	useEffect(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
 	}, [characters]);
 
