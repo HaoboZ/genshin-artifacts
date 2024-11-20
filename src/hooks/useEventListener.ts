@@ -23,7 +23,7 @@ export default function useEventListener(
 		const remove = event.removeEventListener || event.removeListener || event.off;
 
 		if (callOnce) ref.current();
-		add.bind(event)(name, ref);
-		return () => remove.bind(event)(name, ref);
+		add.bind(event)(name, ref.current);
+		return () => remove.bind(event)(name, ref.current);
 	}, [Boolean(event), name]);
 }
