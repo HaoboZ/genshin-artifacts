@@ -8,6 +8,7 @@ import { groupBy, map, pipe, reduce, take } from 'remeda';
 export default function getArtifactSetBuild(
 	characterBuilds: Build[],
 	artifactSet: ArtifactSetKey,
+	group?: number,
 ): Build {
 	const filteredBuilds = characterBuilds.filter(
 		({ artifact }) => makeArray(artifact[0])[0] === artifactSet,
@@ -15,12 +16,15 @@ export default function getArtifactSetBuild(
 
 	const builds = filteredBuilds.length
 		? filteredBuilds
-		: [missingArtifactSets[artifactSet]].filter(Boolean);
+		: group
+			? []
+			: [missingArtifactSets[artifactSet]].filter(Boolean);
 
 	return {
 		key: 'Traveler',
 		role: 'DPS',
 		weapon: ['DullBlade'],
+		group: 0,
 		artifact: [artifactSet],
 		mainStat: builds.reduce(
 			(acc, { mainStat }) => {

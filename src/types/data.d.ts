@@ -44,6 +44,7 @@ export interface Build {
 	key: CharacterKey;
 	role: string;
 	weapon: (WeaponKey | WeaponKey[])[];
+	group: number;
 	artifact: (ArtifactSetKey | ArtifactSetKey[])[];
 	mainStat: {
 		sands: StatKey | StatKey[];

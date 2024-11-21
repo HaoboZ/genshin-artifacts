@@ -1,4 +1,3 @@
-import { missingArtifactSets } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
 import PageLink from '@/components/page/link';
@@ -12,19 +11,22 @@ import CharacterImage from '../../characters/characterImage';
 import getArtifactSetBuild from '../getArtifactSetBuild';
 
 export default function BestInSlot({
+	group,
 	artifactSet,
 	slot,
 }: {
+	group: number;
 	artifactSet: ArtifactSetKey;
 	slot: SlotKey;
 }) {
-	const characters = useCharacters({ artifactSet });
+	const characters = useCharacters({ artifactSet }).filter((x) => x.group === group);
 
 	const { mainStat, subStat } = useMemo(
-		() =>
-			getArtifactSetBuild([...characters, ...Object.values(missingArtifactSets)], artifactSet),
+		() => getArtifactSetBuild(characters, artifactSet, group),
 		[characters],
 	);
+
+	if (!mainStat.sands[0].length) return null;
 
 	return (
 		<Stack spacing={1}>
