@@ -128,8 +128,8 @@ export type ArtifactSetKey =
 	| 'VourukashasGlow' //Vourukasha's Glow
 	| 'WanderersTroupe'; //Wanderer's Troupe
 
-type CharacterKey
-	= 'Albedo' //Albedo
+type CharacterKey =
+	| 'Albedo' //Albedo
 	| 'Alhaitham' //Alhaitham
 	| 'Aloy' //Aloy
 	| 'Amber' //Amber
@@ -219,10 +219,10 @@ type CharacterKey
 	| 'Yelan' //Yelan
 	| 'Yoimiya' //Yoimiya
 	| 'YunJin' //Yun Jin
-	| 'Zhongli' //Zhongli
+	| 'Zhongli'; //Zhongli
 
-type WeaponKey
-	= 'AThousandFloatingDreams' //A Thousand Floating Dreams
+type WeaponKey =
+	| 'AThousandFloatingDreams' //A Thousand Floating Dreams
 	| 'Absolution' //Absolution
 	| 'Akuoumaru' //Akuoumaru
 	| 'AlleyHunter' //Alley Hunter
@@ -424,4 +424,4 @@ type WeaponKey
 	| 'WineAndSong' //Wine and Song
 	| 'WolfFang' //Wolf-Fang
 	| 'WolfsGravestone' //Wolf's Gravestone
-	| 'XiphosMoonlight' //Xiphos' Moonlight
+	| 'XiphosMoonlight'; //Xiphos' Moonlight

@@ -1,5 +1,6 @@
 import { Box, Menu } from '@mui/material';
-import { ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useState } from 'react';
 
 export default function ContextMenu({
 	menuContent,
@@ -30,13 +31,13 @@ export default function ContextMenu({
 			<Menu
 				autoFocus={false}
 				open={contextMenu !== null}
-				onClose={handleClose}
 				anchorReference='anchorPosition'
 				anchorPosition={
 					contextMenu !== null
 						? { top: contextMenu.mouseY, left: contextMenu.mouseX }
 						: undefined
-				}>
+				}
+				onClose={handleClose}>
 				{typeof menuContent === 'function'
 					? menuContent(() => setContextMenu(null))
 					: menuContent}
