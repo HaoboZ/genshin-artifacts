@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/2/24
+// 11/21/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -267,7 +267,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Lyney',
 		role: 'DPS',
 		weapon: [
-			'TheFirstGreatMagic',
+			['TheFirstGreatMagic', 'AstralVulturesCrimsonPlumage'],
 			'AquaSimulacra',
 			'ThunderingPulse',
 			'SkywardHarp',
@@ -387,7 +387,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Quick Swap DPS',
 		weapon: [
 			'HuntersPath',
-			['AquaSimulacra', 'PolarStar', 'TheFirstGreatMagic'],
+			['AstralVulturesCrimsonPlumage', 'AquaSimulacra', 'PolarStar', 'TheFirstGreatMagic'],
 			['SkywardHarp', 'ThunderingPulse'],
 			['ElegyForTheEnd', 'AmosBow', 'FadingTwilight'],
 			['ScionOfTheBlazingSun', 'TheViridescentHunt'],
@@ -855,6 +855,14 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['WanderersTroupe', 'GildedDreams', 'DesertPavilionChronicle'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
+	},
+	Ororon: {
+		key: 'Ororon',
+		role: 'Support',
+		weapon: ['ElegyForTheEnd', 'AquaSimulacra', 'AmosBow', 'TheStringless', 'MouunsMoon'],
+		artifact: ['ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['atk_', 'critRD_', 'enerRech_'],
 	},
 	Keqing: {
 		key: 'Keqing',
@@ -1464,6 +1472,26 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'atk_' },
 		subStat: ['enerRech_', 'atk_', 'atk', 'critRate_'],
+	},
+	Chasca: {
+		key: 'Chasca',
+		role: 'DPS',
+		weapon: [
+			'AstralVulturesCrimsonPlumage',
+			['AquaSimulacra', 'TheFirstGreatMagic'],
+			'ThunderingPulse',
+			'SkywardHarp',
+			['AmosBow', 'PolarStar', 'FlowerWreathedFeathers'],
+			['ChainBreaker', 'IbisPiercer', 'SongOfStillness', 'ScionOfTheBlazingSun'],
+		],
+		artifact: [
+			'ObsidianCodex',
+			'WanderersTroupe',
+			'ShimenawasReminiscence',
+			'MarechausseeHunter',
+		],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	// Geo
 	Ningguang: {

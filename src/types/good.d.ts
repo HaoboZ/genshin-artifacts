@@ -128,8 +128,8 @@ export type ArtifactSetKey =
 	| 'VourukashasGlow' //Vourukasha's Glow
 	| 'WanderersTroupe'; //Wanderer's Troupe
 
-export type CharacterKey =
-	| 'Albedo' //Albedo
+type CharacterKey
+	= 'Albedo' //Albedo
 	| 'Alhaitham' //Alhaitham
 	| 'Aloy' //Aloy
 	| 'Amber' //Amber
@@ -141,6 +141,7 @@ export type CharacterKey =
 	| 'Bennett' //Bennett
 	| 'Candace' //Candace
 	| 'Charlotte' //Charlotte
+	| 'Chasca' //Chasca
 	| 'Chevreuse' //Chevreuse
 	| 'Chiori' //Chiori
 	| 'Chongyun' //Chongyun
@@ -187,6 +188,7 @@ export type CharacterKey =
 	| 'Nilou' //Nilou
 	| 'Ningguang' //Ningguang
 	| 'Noelle' //Noelle
+	| 'Ororon' //Ororon
 	| 'Qiqi' //Qiqi
 	| 'RaidenShogun' //Raiden Shogun
 	| 'Razor' //Razor
@@ -217,10 +219,10 @@ export type CharacterKey =
 	| 'Yelan' //Yelan
 	| 'Yoimiya' //Yoimiya
 	| 'YunJin' //Yun Jin
-	| 'Zhongli'; //Zhongli
+	| 'Zhongli' //Zhongli
 
-export type WeaponKey =
-	| 'AThousandFloatingDreams' //A Thousand Floating Dreams
+type WeaponKey
+	= 'AThousandFloatingDreams' //A Thousand Floating Dreams
 	| 'Absolution' //Absolution
 	| 'Akuoumaru' //Akuoumaru
 	| 'AlleyHunter' //Alley Hunter
@@ -230,6 +232,7 @@ export type WeaponKey =
 	| 'AquaSimulacra' //Aqua Simulacra
 	| 'AquilaFavonia' //Aquila Favonia
 	| 'AshGravenDrinkingHorn' //Ash-Graven Drinking Horn
+	| 'AstralVulturesCrimsonPlumage' //Astral Vulture's Crimson Plumage
 	| 'BalladOfTheBoundlessBlue' //Ballad of the Boundless Blue
 	| 'BalladOfTheFjords' //Ballad of the Fjords
 	| 'BeaconOfTheReedSea' //Beacon of the Reed Sea
@@ -241,6 +244,7 @@ export type WeaponKey =
 	| 'BlackcliffSlasher' //Blackcliff Slasher
 	| 'BlackcliffWarbow' //Blackcliff Warbow
 	| 'BloodtaintedGreatsword' //Bloodtainted Greatsword
+	| 'CalamityOfEshu' //Calamity of Eshu
 	| 'CalamityQueller' //Calamity Queller
 	| 'CashflowSupervision' //Cashflow Supervision
 	| 'ChainBreaker' //Chain Breaker
@@ -278,6 +282,7 @@ export type WeaponKey =
 	| 'FilletBlade' //Fillet Blade
 	| 'FinaleOfTheDeep' //Finale of the Deep
 	| 'FleuveCendreFerryman' //Fleuve Cendre Ferryman
+	| 'FlowerWreathedFeathers' //Flower-Wreathed Feathers
 	| 'FlowingPurity' //Flowing Purity
 	| 'FluteOfEzpitzal' //Flute of Ezpitzal
 	| 'FootprintOfTheRainbow' //Footprint of the Rainbow
@@ -411,6 +416,7 @@ export type WeaponKey =
 	| 'WanderingEvenstar' //Wandering Evenstar
 	| 'WasterGreatsword' //Waster Greatsword
 	| 'WavebreakersFin' //Wavebreaker's Fin
+	| 'WaveridingWhirl' //Waveriding Whirl
 	| 'WhiteIronGreatsword' //White Iron Greatsword
 	| 'WhiteTassel' //White Tassel
 	| 'Whiteblind' //Whiteblind
@@ -418,4 +424,4 @@ export type WeaponKey =
 	| 'WineAndSong' //Wine and Song
 	| 'WolfFang' //Wolf-Fang
 	| 'WolfsGravestone' //Wolf's Gravestone
-	| 'XiphosMoonlight'; //Xiphos' Moonlight
+	| 'XiphosMoonlight' //Xiphos' Moonlight

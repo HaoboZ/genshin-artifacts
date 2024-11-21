@@ -127,6 +127,16 @@
 		"weeklyMaterial": "Lightless Silk String",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png"
 	},
+	"Chasca": {
+		"key": "Chasca",
+		"name": "Chasca",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Anemo",
+		"talentMaterial": "Teachings of Conflict",
+		"weeklyMaterial": "Silken Feather",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Chasca_Icon.png"
+	},
 	"Chevreuse": {
 		"key": "Chevreuse",
 		"name": "Chevreuse",
@@ -586,6 +596,16 @@
 		"talentMaterial": "Teachings of Resistance",
 		"weeklyMaterial": "Dvalin's Claw",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png"
+	},
+	"Ororon": {
+		"key": "Ororon",
+		"name": "Ororon",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Electro",
+		"talentMaterial": "Teachings of Kindling",
+		"weeklyMaterial": "Lightless Silk String",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Ororon_Icon.png"
 	},
 	"Qiqi": {
 		"key": "Qiqi",

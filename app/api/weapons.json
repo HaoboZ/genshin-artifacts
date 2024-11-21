@@ -55,6 +55,13 @@
 		"weaponType": "Catalyst",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png"
 	},
+	"AstralVulturesCrimsonPlumage": {
+		"key": "AstralVulturesCrimsonPlumage",
+		"name": "Astral Vulture's Crimson Plumage",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png"
+	},
 	"AThousandFloatingDreams": {
 		"key": "AThousandFloatingDreams",
 		"name": "A Thousand Floating Dreams",
@@ -131,6 +138,13 @@
 		"rarity": 3,
 		"weaponType": "Claymore",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png"
+	},
+	"CalamityOfEshu": {
+		"key": "CalamityOfEshu",
+		"name": "Calamity of Eshu",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png"
 	},
 	"CalamityQueller": {
 		"key": "CalamityQueller",
@@ -383,6 +397,13 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png"
+	},
+	"FlowerWreathedFeathers": {
+		"key": "FlowerWreathedFeathers",
+		"name": "Flower-Wreathed Feathers",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png"
 	},
 	"FlowingPurity": {
 		"key": "FlowingPurity",
@@ -1258,6 +1279,13 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png"
+	},
+	"WaveridingWhirl": {
+		"key": "WaveridingWhirl",
+		"name": "Waveriding Whirl",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png"
 	},
 	"Whiteblind": {
 		"key": "Whiteblind",

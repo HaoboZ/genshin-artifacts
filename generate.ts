@@ -18,6 +18,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Chasca_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png',
@@ -64,6 +65,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Ororon_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Qiqi_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Raiden_Shogun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Razor_Icon.png',
@@ -546,6 +548,10 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
