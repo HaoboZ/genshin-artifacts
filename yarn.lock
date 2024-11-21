@@ -199,7 +199,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/utilities@npm:^3.2.2":
+"@dnd-kit/utilities@npm:3.2.2, @dnd-kit/utilities@npm:^3.2.2":
   version: 3.2.2
   resolution: "@dnd-kit/utilities@npm:3.2.2"
   dependencies:
@@ -1624,7 +1624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uidotdev/usehooks@npm:^2.4.1":
+"@uidotdev/usehooks@npm:2.4.1":
   version: 2.4.1
   resolution: "@uidotdev/usehooks@npm:2.4.1"
   peerDependencies:
@@ -3075,7 +3075,7 @@ __metadata:
   dependencies:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/sortable": "npm:8.0.0"
-    "@dnd-kit/utilities": "npm:^3.2.2"
+    "@dnd-kit/utilities": "npm:3.2.2"
     "@emotion/cache": "npm:11.13.1"
     "@emotion/react": "npm:11.13.3"
     "@emotion/styled": "npm:11.13.0"
@@ -3093,7 +3093,7 @@ __metadata:
     "@types/node": "npm:22.9.0"
     "@types/react": "npm:18.3.12"
     "@types/react-redux": "npm:7.1.34"
-    "@uidotdev/usehooks": "npm:^2.4.1"
+    "@uidotdev/usehooks": "npm:2.4.1"
     "@vercel/analytics": "npm:1.4.0"
     axios: "npm:1.7.7"
     change-case: "npm:5.4.4"
