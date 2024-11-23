@@ -22,8 +22,9 @@ export default function useEventListener(
 		// @ts-ignore
 		const remove = event.removeEventListener || event.removeListener || event.off;
 
-		if (callOnce) ref.current();
-		add.bind(event)(name, ref.current);
-		return () => remove.bind(event)(name, ref.current);
+		const func = (...args) => ref.current(...args);
+		if (callOnce) func();
+		add.bind(event)(name, func);
+		return () => remove.bind(event)(name, func);
 	}, [Boolean(event), name]);
 }

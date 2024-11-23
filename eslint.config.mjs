@@ -1,14 +1,15 @@
 import eslint from '@eslint/js';
-import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import prettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import typescript from 'typescript-eslint';
 
-export default tseslint.config(
+export default typescript.config(
 	eslint.configs.recommended,
-	...tseslint.configs.recommended,
+	react.configs.flat.recommended,
 	react.configs.flat['jsx-runtime'],
-	prettierRecommended,
+	typescript.configs.recommended,
+	prettier,
 	{
 		languageOptions: {
 			parserOptions: {
