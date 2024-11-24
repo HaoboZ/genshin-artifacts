@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/21/24
+// 11/23/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -905,12 +905,20 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Ororon: {
 		key: 'Ororon',
-		role: 'Support',
-		weapon: ['ElegyForTheEnd', 'AquaSimulacra', 'AmosBow', 'TheStringless', 'MouunsMoon'],
+		role: 'Off-Field DPS',
+		weapon: [
+			['PolarStar', 'TheFirstGreatMagic'],
+			['ThunderingPulse', 'AquaSimulacra', 'HuntersPath', 'SkywardHarp'],
+			'AstralVulturesCrimsonPlumage',
+			['ChainBreaker', 'AlleyHunter'],
+			['RangeGauge', 'SongOfStillness'],
+			['ElegyForTheEnd', 'FadingTwilight'],
+			'FavoniusWarbow',
+		],
 		group: 1,
 		artifact: ['ScrollOfTheHeroOfCinderCity'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['atk_', 'critRD_', 'enerRech_'],
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
 	Keqing: {
 		key: 'Keqing',
@@ -1561,7 +1569,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'ThunderingPulse',
 			'SkywardHarp',
 			['AmosBow', 'PolarStar', 'FlowerWreathedFeathers'],
-			['ChainBreaker', 'IbisPiercer', 'SongOfStillness', 'ScionOfTheBlazingSun'],
+			['ChainBreaker', 'RangeGauge', 'IbisPiercer', 'SongOfStillness', 'ScionOfTheBlazingSun'],
 		],
 		group: 0,
 		artifact: [
