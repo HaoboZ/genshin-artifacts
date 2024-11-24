@@ -22,7 +22,7 @@ export default function Weapons() {
 	const [search, setSearch] = useState('');
 
 	const weapons = useWeapons({ type, search });
-
+	console.log(weapons.length);
 	return (
 		<PageContainer>
 			<PageTitle>Weapons</PageTitle>
@@ -42,7 +42,7 @@ export default function Weapons() {
 						/>
 					</Grid2>
 					{weapons.map((weapon) => (
-						<Grid2 key={weapon.key}>
+						<Grid2 key={weapon.id}>
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
