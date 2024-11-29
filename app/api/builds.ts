@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/23/24
+// 11/29/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -947,8 +947,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'EngulfingLightning',
 			['StaffOfHoma', 'LumidouceElegy', 'PrimordialJadeWingedSpear', 'StaffOfTheScarletSands'],
 			'CalamityQueller',
-			['TheCatch', 'SkywardSpine'],
-			'VortexVanquisher',
+			['TheCatch', 'SkywardSpine', 'VortexVanquisher'],
 			'Deathmatch',
 			'WavebreakersFin',
 			'LithicSpear',
@@ -1024,6 +1023,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'Absolution',
 			['LightOfFoliarIncision', 'HaranGeppakuFutsu'],
 			['MistsplitterReforged', 'PrimordialJadeCutter', 'UrakuMisugiri', 'FreedomSworn'],
+			'CalamityOfEshu',
 			['FinaleOfTheDeep', 'TheBlackSword'],
 		],
 		group: 0,
