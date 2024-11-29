@@ -115,7 +115,6 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 							<SelectField
 								key={index}
 								name={`substats.${index}.key`}
-								placeholder={`SubStat ${index + 1}`}
 								onChange={(_, subStat) => {
 									const substats = [...values.substats];
 									if (!subStat) substats.splice(index, 1);
