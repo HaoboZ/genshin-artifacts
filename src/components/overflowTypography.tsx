@@ -8,20 +8,20 @@ export default function OverflowTypography({
 	tooltipProps,
 	...props
 }: { tooltipProps?: TooltipProps } & TypographyProps) {
-	const contentRef = useRef<HTMLElement>();
-
-	const [overFlowed, setOverFlowed] = useState(false);
-
+	const contentRef = useRef<HTMLElement>(undefined);
+	
+	const [ overFlowed, setOverFlowed ] = useState(false);
+	
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,
 		'resize',
 		() => {
-			if (!contentRef.current) return;
+			if ( !contentRef.current ) return;
 			setOverFlowed(contentRef.current.scrollWidth > contentRef.current.clientWidth);
 		},
 		true,
 	);
-
+	
 	return (
 		<Tooltip title={props.children ?? ''} disableHoverListener={!overFlowed} {...tooltipProps}>
 			<Typography ref={contentRef} noWrap {...props} />
