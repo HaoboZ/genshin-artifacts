@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/29/24
+// 12/8/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -704,7 +704,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'TomeOfTheEternalFlow',
-			'SacrificialJade',
+			['SacrificialJade', 'SurfsUp'],
 			[
 				'JadefallsSplendor',
 				'PrototypeAmber',
@@ -916,7 +916,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'FavoniusWarbow',
 		],
 		group: 1,
-		artifact: ['ScrollOfTheHeroOfCinderCity'],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige', 'EmblemOfSeveredFate'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
@@ -1568,8 +1568,8 @@ export const builds: Record<CharacterKey, Build> = {
 			['AquaSimulacra', 'TheFirstGreatMagic'],
 			'ThunderingPulse',
 			'SkywardHarp',
-			['AmosBow', 'PolarStar', 'FlowerWreathedFeathers'],
-			['ChainBreaker', 'RangeGauge', 'IbisPiercer', 'SongOfStillness', 'ScionOfTheBlazingSun'],
+			['ChainBreaker', 'SongOfStillness', 'AmosBow', 'PolarStar', 'FlowerWreathedFeathers'],
+			['ScionOfTheBlazingSun', 'RangeGauge'],
 		],
 		group: 0,
 		artifact: [
