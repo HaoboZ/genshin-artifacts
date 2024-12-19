@@ -17,14 +17,12 @@ export default function WeaponCharacterImage({
 	...props
 }: { weapon: IWeapon; size?: number } & AvatarProps) {
 	const character = charactersInfo[weapon.location];
-	const characterTier = builds[weapon.location];
+	const build = builds[weapon.location];
 
 	const percent = useMemo(() => {
-		if (!characterTier) return 0;
-		const index = arrDeepIndex(characterTier.weapon, weapon.key);
-		return index === -1
-			? 0
-			: 1 - arrDeepIndex(characterTier.weapon, weapon.key) / characterTier.weapon.length;
+		if (!build) return 0;
+		const index = arrDeepIndex(build.weapon, weapon.key);
+		return index === -1 ? 0 : 1 - arrDeepIndex(build.weapon, weapon.key) / build.weapon.length;
 	}, []);
 
 	return (

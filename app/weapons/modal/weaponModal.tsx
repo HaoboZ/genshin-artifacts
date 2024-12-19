@@ -11,12 +11,12 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogContent, DialogTitle, Grid2 } from '@mui/material';
+import { DialogContent, DialogTitle, Grid2, Stack } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
-import WeaponCharacterImage from '../weaponCharacterImage';
 import WeaponImage from '../weaponImage';
 import WeaponActions from './weaponActions';
 
@@ -63,42 +63,51 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 				</PageLink>
 			</DialogTitle>
 			<DialogContent>
-				<WeaponActions weapon={weapon} />
-				<WeaponCharacterImage weapon={weapon} />
-				<Grid2 container spacing={1}>
-					{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
-						<Grid2 key={index}>
-							<CharacterImage
-								character={charactersInfo[build.key]}
-								sx={{ ':hover': { cursor: 'pointer' } }}
-								onClick={() => {
-									if (weapon.location === build.key) {
-										alert(`Already equipped on ${charactersInfo[build.key].name}`);
-										return;
-									}
-									if (!confirm(`Give this weapon to ${charactersInfo[build.key].name}?`))
-										return;
-									dispatch(goodActions.giveWeapon([build.key, weapon]));
-									closeModal();
-								}}>
+				<Stack spacing={1}>
+					<WeaponActions weapon={weapon} />
+					{weapon.location && (
+						<Stack direction='row' spacing={1}>
+							<CharacterImage character={charactersInfo[weapon.location]} />
+							<CharacterWeaponTier build={builds[weapon.location]} />
+						</Stack>
+					)}
+					<Grid2 container spacing={1}>
+						{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
+							<Grid2 key={index}>
+								<CharacterImage
+									character={charactersInfo[build.key]}
+									sx={{ ':hover': { cursor: 'pointer' } }}
+									onClick={() => {
+										if (weapon.location === build.key) {
+											alert(`Already equipped on ${charactersInfo[build.key].name}`);
+											return;
+										}
+										if (
+											!confirm(`Give this weapon to ${charactersInfo[build.key].name}?`)
+										)
+											return;
+										dispatch(goodActions.giveWeapon([build.key, weapon]));
+										closeModal();
+									}}>
+									{oldWeapon && (
+										<WeaponImage
+											weapon={weaponsInfo[oldWeapon.key]}
+											size={50}
+											sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
+										/>
+									)}
+								</CharacterImage>
+								<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
 								{oldWeapon && (
-									<WeaponImage
-										weapon={weaponsInfo[oldWeapon.key]}
-										size={50}
-										sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
-									/>
+									<PercentBar
+										p={oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0}>
+										Current %p
+									</PercentBar>
 								)}
-							</CharacterImage>
-							<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
-							{oldWeapon && (
-								<PercentBar
-									p={oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0}>
-									Current %p
-								</PercentBar>
-							)}
-						</Grid2>
-					))}
-				</Grid2>
+							</Grid2>
+						))}
+					</Grid2>
+				</Stack>
 			</DialogContent>
 		</DialogWrapper>
 	);

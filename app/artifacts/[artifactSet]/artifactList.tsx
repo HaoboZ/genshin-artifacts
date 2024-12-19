@@ -1,11 +1,10 @@
-import {
-	artifactSetsInfo,
-	artifactSlotOrder,
-	missingArtifactSets,
-	useArtifacts,
-} from '@/api/artifacts';
+import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialStatRollPercent, weightedStatRollPercent } from '@/api/stats';
+import {
+	potentialStatRollPercent,
+	potentialStatRollPercents,
+	weightedStatRollPercent,
+} from '@/api/stats';
 import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
@@ -39,7 +38,6 @@ import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
-import getArtifactSetBuild from '../getArtifactSetBuild';
 import ArtifactModal from './artifactModal';
 
 export default function ArtifactList({
@@ -57,14 +55,6 @@ export default function ArtifactList({
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
 	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
 
-	const artifactSetBuild = useMemo(
-		() =>
-			getArtifactSetBuild(
-				[...Object.values(builds), ...Object.values(missingArtifactSets)],
-				artifactSet,
-			),
-		[artifactSet],
-	);
 	const artifacts = useArtifacts({ artifactSet, slot });
 	const artifactsSorted = useMemo(
 		() =>
@@ -73,10 +63,9 @@ export default function ArtifactList({
 				map((artifact) => ({
 					...artifact,
 					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
-					potential: potentialStatRollPercent(
-						builds[artifact.location] ?? artifactSetBuild,
-						artifact,
-					),
+					potential: artifact.location
+						? potentialStatRollPercent(builds[artifact.location], artifact)
+						: Math.max(...potentialStatRollPercents(Object.values(builds), artifact)),
 				})),
 				filter(
 					(artifact) =>
@@ -89,7 +78,11 @@ export default function ArtifactList({
 					(artifact) =>
 						(pget(
 							artifact,
-							{ potential: 'potential', stats: 'statRollPercent', level: 'level' }[sortType],
+							{
+								potential: 'potential',
+								stats: 'statRollPercent',
+								level: 'level',
+							}[sortType],
 						) as number) * (sortDir ? 1 : -1),
 					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
 				),

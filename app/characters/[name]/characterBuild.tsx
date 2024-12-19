@@ -1,13 +1,12 @@
 import { artifactSetsInfo } from '@/api/artifacts';
-import { weaponsInfo } from '@/api/weapons';
 import PageSection from '@/components/page/section';
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import type { Build } from '@/src/types/data';
-import { AvatarGroup, Box, Stack, Typography } from '@mui/material';
+import { AvatarGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import ArtifactSetImage from '../../artifacts/artifactSetImage';
-import WeaponImage from '../../weapons/weaponImage';
+import CharacterWeaponTier from './characterWeaponTier';
 
 export default function CharacterBuild({ build }: { build: Build }) {
 	if (!build) return null;
@@ -17,37 +16,25 @@ export default function CharacterBuild({ build }: { build: Build }) {
 			<Stack spacing={1}>
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<Typography>Weapon</Typography>
-					{build.weapon.map((weaponTier, index) => (
-						<Box key={index}>
-							<AvatarGroup sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
-								{makeArray(weaponTier)
-									.toReversed()
-									.map((weapon) => (
-										<WeaponImage key={weapon} weapon={weaponsInfo[weapon]} size={50} />
-									))}
-							</AvatarGroup>
-						</Box>
-					))}
+					<CharacterWeaponTier build={build} />
 				</Stack>
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<Typography>Artifacts</Typography>
 					{build.artifact.map((artifactTier, index) => (
-						<Box key={index}>
-							<AvatarGroup sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
-								{makeArray(artifactTier)
-									.toReversed()
-									.map((artifact) => (
-										<ArtifactSetImage
-											key={artifact}
-											artifactSet={artifactSetsInfo[artifact]}
-											size={50}
-											component={Link}
-											// @ts-ignore
-											href={`/artifacts?set=${artifact}`}
-										/>
-									))}
-							</AvatarGroup>
-						</Box>
+						<AvatarGroup key={index} sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
+							{makeArray(artifactTier)
+								.toReversed()
+								.map((artifact) => (
+									<ArtifactSetImage
+										key={artifact}
+										artifactSet={artifactSetsInfo[artifact]}
+										size={50}
+										component={Link}
+										// @ts-ignore
+										href={`/artifacts?set=${artifact}`}
+									/>
+								))}
+						</AvatarGroup>
 					))}
 				</Stack>
 				<StatChipArray mapStats name='Sands' arr={makeArray(build.mainStat.sands)} />

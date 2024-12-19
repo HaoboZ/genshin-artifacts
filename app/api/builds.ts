@@ -572,7 +572,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'EngulfingLightning',
 			['StaffOfHoma', 'Deathmatch', 'TheCatch'],
 			'PrototypeStarglitter',
-			'SerpentSpine',
+			'SkywardSpine',
 			'BlackTassel',
 		],
 		group: 1,

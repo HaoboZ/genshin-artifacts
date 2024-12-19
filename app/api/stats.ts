@@ -160,6 +160,13 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 	);
 }
 
+export function potentialStatRollPercents(builds: Build[], artifact: IArtifact) {
+	const setKey = artifact.setKey;
+	return builds
+		.filter(({ artifact }) => makeArray(artifact[0])[0] === setKey)
+		.map((build) => potentialStatRollPercent(build, artifact));
+}
+
 function getWeightedStat(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {
 	if (!subStat) return 0;
 

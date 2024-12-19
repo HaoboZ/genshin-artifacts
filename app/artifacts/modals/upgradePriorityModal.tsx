@@ -1,6 +1,5 @@
-import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialStatRollPercent } from '@/api/stats';
+import { potentialStatRollPercent, potentialStatRollPercents } from '@/api/stats';
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -17,7 +16,6 @@ import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import EditArtifactModal from '../artifactForm/editArtifactModal';
 import ArtifactStatImage from '../artifactStatImage';
-import getArtifactSetBuild from '../getArtifactSetBuild';
 
 export default function UpgradePriorityModal() {
 	const { showModal } = useModal();
@@ -30,15 +28,9 @@ export default function UpgradePriorityModal() {
 				filter(({ level, rarity }) => level < rarity * 4),
 				map((artifact) => ({
 					...artifact,
-					potential: potentialStatRollPercent(
-						artifact.location
-							? builds[artifact.location]
-							: getArtifactSetBuild(
-									[...Object.values(builds), ...Object.values(missingArtifactSets)],
-									artifact.setKey,
-								),
-						artifact,
-					),
+					potential: artifact.location
+						? potentialStatRollPercent(builds[artifact.location], artifact)
+						: Math.max(...potentialStatRollPercents(Object.values(builds), artifact)),
 				})),
 				filter(({ potential }) => potential > 0.4),
 				sortBy(({ potential }) => -potential),

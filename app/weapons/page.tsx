@@ -22,7 +22,7 @@ export default function Weapons() {
 	const [search, setSearch] = useState('');
 
 	const weapons = useWeapons({ type, search });
-	console.log(weapons.length);
+
 	return (
 		<PageContainer>
 			<PageTitle>Weapons</PageTitle>
