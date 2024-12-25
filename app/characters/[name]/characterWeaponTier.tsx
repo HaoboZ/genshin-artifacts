@@ -9,11 +9,9 @@ export default function CharacterWeaponTier({ build }: { build: Build }) {
 		<Stack direction='row' spacing={1} sx={{ flexWrap: 'wrap' }}>
 			{build.weapon.map((weaponTier, index) => (
 				<AvatarGroup key={index} sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
-					{makeArray(weaponTier)
-						.toReversed()
-						.map((weapon) => (
-							<WeaponImage key={weapon} weapon={weaponsInfo[weapon]} size={50} />
-						))}
+					{makeArray(weaponTier).map((weapon) => (
+						<WeaponImage key={weapon} weapon={weaponsInfo[weapon]} size={50} />
+					))}
 				</AvatarGroup>
 			))}
 		</Stack>

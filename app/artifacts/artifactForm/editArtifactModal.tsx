@@ -8,13 +8,7 @@ import { Formik } from 'formik';
 import { useMemo } from 'react';
 import ArtifactForm from './index';
 
-export default function EditArtifactModal({
-	artifact,
-	cropBox,
-}: {
-	artifact: IArtifact;
-	cropBox?: boolean;
-}) {
+export default function EditArtifactModal({ artifact }: { artifact: IArtifact }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
@@ -29,7 +23,7 @@ export default function EditArtifactModal({
 					dispatch(goodActions.editArtifact(artifact));
 					closeModal();
 				}}>
-				<ArtifactForm cropBox={cropBox} />
+				<ArtifactForm />
 			</Formik>
 		</DialogWrapper>
 	);

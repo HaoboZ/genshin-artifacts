@@ -69,7 +69,7 @@ export default function CharacterArtifactModal({
 			<Box sx={{ px: 3 }}>
 				{artifact && (
 					<Fragment>
-						<ArtifactActions cropBox artifact={artifact} />
+						<ArtifactActions artifact={artifact} />
 						<ArtifactStatImage hideCharacter artifact={artifact}>
 							<Grid2 size={12}>
 								<PercentBar p={weightedStatRollPercent(build, artifact)} />

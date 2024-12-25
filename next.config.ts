@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
+	serverExternalPackages: ['canvas'],
 };
 
 export default pipe(

@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import hash from 'object-hash';
 import { differenceWith } from 'remeda';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
@@ -26,12 +27,6 @@ const goodSlice = createSlice({
 			}
 			return { ...state, ...payload };
 		},
-		// importArtifactSet(state, { payload }: PayloadAction<IArtifact[]>) {
-		// 	state.artifacts = [
-		// 		...state.artifacts.filter(({ setKey }) => setKey !== payload[0].setKey),
-		// 		...payload,
-		// 	];
-		// },
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);
 			if (index === -1) {
@@ -66,6 +61,14 @@ const goodSlice = createSlice({
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			state.artifacts = [...state.artifacts, payload];
+		},
+		addArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
+			const map = new Map();
+			[...state.artifacts, ...payload].forEach((obj) => {
+				const key = hash(obj);
+				if (!map.has(key)) map.set(key, obj);
+			});
+			state.artifacts = Array.from(map.values());
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);

@@ -5,7 +5,6 @@ import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import useClipboardImage from '@/src/hooks/useClipboardImage';
 import { useModal } from '@/src/providers/modal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
@@ -13,6 +12,7 @@ import Link from 'next/link';
 import { sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 import AddArtifactModal from './artifactForm/addArtifactModal';
+import BatchAddArtifactModal from './artifactForm/batchAddArtifactModal';
 import ArtifactSetImage from './artifactSetImage';
 import ArtifactDeleteModal from './modals/artifactDeleteModal';
 import ArtifactSetFarmModal from './modals/artifactSetFarmModal';
@@ -20,22 +20,21 @@ import OptimizeArtifactModal from './modals/optimizeArtifactModal';
 import UpgradePriorityModal from './modals/upgradePriorityModal';
 
 export default function Artifacts() {
-	const { modalStates, showModal } = useModal();
+	const { showModal } = useModal();
 	const characters = useCharacters({});
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
-	useClipboardImage((items) => {
-		if (modalStates.length) return;
-		showModal(AddArtifactModal, { props: { file: items[0].getAsFile() } });
-	});
-
 	return (
 		<PageSection
-			title='Best in Slot'
+			title='Best Artifact Set'
 			actions={[
 				{
-					name: 'Paste or Add',
+					name: 'Add',
 					onClick: () => showModal(AddArtifactModal),
+				},
+				{
+					name: 'Batch Add',
+					onClick: () => showModal(BatchAddArtifactModal),
 				},
 			]}>
 			<ButtonGroup sx={{ mb: 1 }}>

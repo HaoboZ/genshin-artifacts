@@ -21,19 +21,17 @@ export default function CharacterBuild({ build }: { build: Build }) {
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<Typography>Artifacts</Typography>
 					{build.artifact.map((artifactTier, index) => (
-						<AvatarGroup key={index} sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
-							{makeArray(artifactTier)
-								.toReversed()
-								.map((artifact) => (
-									<ArtifactSetImage
-										key={artifact}
-										artifactSet={artifactSetsInfo[artifact]}
-										size={50}
-										component={Link}
-										// @ts-ignore
-										href={`/artifacts?set=${artifact}`}
-									/>
-								))}
+						<AvatarGroup key={index} variant='rounded'>
+							{makeArray(artifactTier).map((artifact) => (
+								<ArtifactSetImage
+									key={artifact}
+									artifactSet={artifactSetsInfo[artifact]}
+									size={50}
+									component={Link}
+									// @ts-ignore
+									href={`/artifacts?set=${artifact}`}
+								/>
+							))}
 						</AvatarGroup>
 					))}
 				</Stack>

@@ -6,13 +6,7 @@ import type { IArtifact } from '@/src/types/good';
 import { Button, ButtonGroup } from '@mui/material';
 import EditArtifactModal from './artifactForm/editArtifactModal';
 
-export default function ArtifactActions({
-	artifact,
-	cropBox,
-}: {
-	artifact: IArtifact;
-	cropBox?: boolean;
-}) {
+export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 	const { showModal } = useModal();
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
@@ -22,7 +16,7 @@ export default function ArtifactActions({
 			<Button
 				onClick={() => {
 					closeModal();
-					showModal(EditArtifactModal, { props: { artifact, cropBox } });
+					showModal(EditArtifactModal, { props: { artifact } });
 				}}>
 				Edit
 			</Button>

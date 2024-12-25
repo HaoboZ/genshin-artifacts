@@ -18,9 +18,9 @@ import { useFormikContext } from 'formik';
 import { Fragment } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
-import ArtifactScanner from './artifactScanner';
+import Scanner from './scanner';
 
-export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?: boolean }) {
+export default function ArtifactForm() {
 	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
@@ -49,7 +49,7 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 					<Grid2
 						size={3}
 						sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-						<ArtifactScanner cropBox={cropBox} setArtifact={setValues} file={file} />
+						<Scanner setArtifact={setValues} />
 					</Grid2>
 					<Grid2 size={3}>
 						<SelectField
@@ -84,8 +84,15 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 						<SelectField
 							name='rarity'
 							label='Rarity'
-							onChange={(_, rarity) => {
-								setFieldValue('level', (rarity as number) * 4);
+							onChange={({ target }) => {
+								setFieldValue('rarity', +target.value);
+								setFieldValue(
+									'level',
+									clamp(values.level, {
+										min: 0,
+										max: +target.value * 4,
+									}),
+								);
 							}}>
 							{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
 								<MenuItem key={rarity} value={rarity}>
@@ -115,10 +122,11 @@ export default function ArtifactForm({ file, cropBox }: { file?: File; cropBox?:
 							<SelectField
 								key={index}
 								name={`substats.${index}.key`}
-								onChange={(_, subStat) => {
+								value={values.substats[index]?.key ?? ''}
+								onChange={({ target }) => {
 									const substats = [...values.substats];
-									if (!subStat) substats.splice(index, 1);
-									else substats[index] = { key: subStat as StatKey, value: 0 };
+									if (!target.value) substats.splice(index, 1);
+									else substats[index] = { key: target.value as StatKey, value: 0 };
 									setFieldValue('substats', substats);
 									return false;
 								}}>

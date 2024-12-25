@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/8/24
+// 12/25/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -414,7 +414,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['Slingshot', 'RangeGauge', 'WindblumeOde', 'SongOfStillness'],
 			'PrototypeCrescent',
 		],
-		group: 0,
+		group: 1,
 		artifact: [['WanderersTroupe', 'GildedDreams'], 'EmblemOfSeveredFate', 'DeepwoodMemories'],
 		mainStat: {
 			sands: ['atk_', 'eleMas', 'enerRech_'],
@@ -898,7 +898,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Sethos',
 		role: 'DPS',
 		weapon: ['HuntersPath', 'Slingshot'],
-		group: 1,
+		group: 0,
 		artifact: ['WanderersTroupe', 'GildedDreams', 'DesertPavilionChronicle'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
@@ -1209,18 +1209,21 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Support',
 		weapon: [
 			'SacrificialSword',
-			'SkywardBlade',
-			'KagotsurubeIsshin',
-			'TheFlute',
 			'FavoniusSword',
-			'FesteringDesire',
+			'PeakPatrolSong',
+			'SkywardBlade',
+			'SapwoodBlade',
+			'FleuveCendreFerryman',
 			'AmenomaKageuchi',
-			'SkyriderSword',
 		],
 		group: 1,
-		artifact: ['TenacityOfTheMillelith', 'OceanHuedClam', 'MaidenBeloved', 'NoblesseOblige'],
+		artifact: [
+			'TenacityOfTheMillelith',
+			'ScrollOfTheHeroOfCinderCity',
+			['OceanHuedClam', 'SongOfDaysPast'],
+		],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['heal_', 'atk_'] },
-		subStat: ['atk_', 'enerRech_', 'atk'],
+		subStat: ['atk_', 'enerRech_', 'atk', 'critRate_', 'def_'],
 	},
 	Ganyu: {
 		key: 'Ganyu',
@@ -1234,8 +1237,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: [
-			'UnfinishedReverie',
-			['ShimenawasReminiscence', 'WanderersTroupe'],
+			['WanderersTroupe', 'ShimenawasReminiscence'],
 			['Lavawalker', 'RetracingBolide'],
 			'GildedDreams',
 		],
@@ -1470,25 +1472,25 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Xiao',
 		role: 'DPS',
 		weapon: [
-			'PrimordialJadeWingedSpear',
-			['StaffOfHoma', 'LumidouceElegy'],
-			['VortexVanquisher', 'CalamityQueller', 'StaffOfTheScarletSands', 'CrimsonMoonsSemblance'],
-			['Deathmatch', 'LithicSpear'],
+			['StaffOfHoma', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
+			'StaffOfTheScarletSands',
 			[
+				'CalamityQueller',
+				'Deathmatch',
+				'CrimsonMoonsSemblance',
+				'VortexVanquisher',
 				'SkywardSpine',
-				'EngulfingLightning',
-				'MissiveWindspear',
-				'ProspectorsDrill',
-				'BlackcliffPole',
 			],
-			'WavebreakersFin',
+			'BlackcliffPole',
+			'LithicSpear',
+			['MissiveWindspear', 'ProspectorsDrill', 'WavebreakersFin'],
 			'FavoniusLance',
 			'WhiteTassel',
 		],
 		group: 0,
-		artifact: ['VermillionHereafter', ['MarechausseeHunter', 'DesertPavilionChronicle']],
+		artifact: ['VermillionHereafter', 'MarechausseeHunter', 'DesertPavilionChronicle'],
 		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', ['eleMas', 'atk']],
+		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},
 	KaedeharaKazuha: {
 		key: 'KaedeharaKazuha',
