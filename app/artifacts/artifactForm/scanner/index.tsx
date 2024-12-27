@@ -36,9 +36,11 @@ export default function Scanner({
 
 					const artifact = await text(canvas, setProgress);
 					artifact.rarity = rarity(canvas);
-					setArtifact(artifact);
+					// TODO: implement lock
+					// artifact.lock = false;
+					setArtifact((prevArtifact) => ({ ...prevArtifact, ...artifact }));
 				} catch (e) {
-					console.log(e);
+					console.error(e);
 				}
 				setProgress(0);
 			};

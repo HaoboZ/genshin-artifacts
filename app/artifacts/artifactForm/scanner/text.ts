@@ -1,6 +1,5 @@
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
-import { nanoid } from 'nanoid';
 import { createWorker, OEM, PSM } from 'tesseract.js';
 
 const mainStatsScan: Record<string, StatKey> = {
@@ -51,15 +50,13 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 	const worker = await createWorker('eng', OEM.DEFAULT);
 	await worker.setParameters({ tessedit_pageseg_mode: PSM.SINGLE_LINE });
 
+	// @ts-ignore
 	const artifact: IArtifact = {
-		id: nanoid(),
 		setKey: 'GladiatorsFinale',
 		slotKey: 'flower',
 		level: 0,
 		rarity: 5,
 		mainStatKey: 'hp',
-		location: '',
-		lock: false,
 		substats: [],
 	};
 

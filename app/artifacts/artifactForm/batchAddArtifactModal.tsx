@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid2 } from '@mui/material';
+import { nanoid } from 'nanoid';
 import Script from 'next/script';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
@@ -77,7 +78,11 @@ export default function BatchAddArtifactModal() {
 											ctx.drawImage(newCanvas, 0, 0);
 
 											const artifact = await text(canvasRef.current);
+											artifact.id = nanoid();
 											artifact.rarity = rarity(canvas);
+											// TODO: implement these 2
+											artifact.location = '';
+											artifact.lock = false;
 											prevCanvas = canvas;
 											setArtifacts((artifacts) => ({
 												...artifacts,
@@ -85,7 +90,7 @@ export default function BatchAddArtifactModal() {
 													artifact,
 											}));
 										} catch (e) {
-											console.log(e);
+											console.error(e);
 										}
 										detecting = false;
 									}, 1000);
