@@ -1,7 +1,8 @@
-import type { Mat } from 'mirada';
+import type { CV } from 'mirada';
 
 export default async function crop(canvas: HTMLCanvasElement) {
-	const image: Mat = cv.imread(canvas);
+	const cv: CV = await window.cv;
+	const image = cv.imread(canvas);
 	const gray = new cv.Mat();
 	cv.cvtColor(image, gray, cv.COLOR_RGBA2GRAY);
 	const edges = new cv.Mat();

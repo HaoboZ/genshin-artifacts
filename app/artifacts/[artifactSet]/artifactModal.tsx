@@ -48,7 +48,10 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 							: makeArray(build.artifact[0])[0] === artifact.setKey) &&
 						statArrMatch(build.mainStat[artifact.slotKey], artifact.mainStatKey),
 				),
-				map((build) => ({ build, statRollPercent: weightedStatRollPercent(build, artifact) })),
+				map((build) => ({
+					build,
+					statRollPercent: weightedStatRollPercent(build, artifact),
+				})),
 				sortBy(pget('statRollPercent')),
 				reverse(),
 			),

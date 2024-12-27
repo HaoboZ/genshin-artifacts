@@ -86,8 +86,11 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 				artifact.slotKey = artifactSlotOrder.find((slot) => text.includes(slot));
 				break;
 			case 'mainStat':
-				artifact.mainStatKey =
-					mainStatsScan[Object.keys(mainStatsScan).find((stat) => text.includes(stat))];
+				if (artifact.slotKey === 'flower') artifact.mainStatKey = 'hp';
+				else if (artifact.slotKey === 'plume') artifact.mainStatKey = 'atk';
+				else
+					artifact.mainStatKey =
+						mainStatsScan[Object.keys(mainStatsScan).find((stat) => text.includes(stat))];
 				break;
 			case 'level':
 				artifact.level = +text.match(/\d+/)?.[0] || 0;
