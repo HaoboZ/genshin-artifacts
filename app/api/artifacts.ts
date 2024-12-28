@@ -18,15 +18,6 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Build> = {
-	VourukashasGlow: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: ['DullBlade'],
-		group: 0,
-		artifact: ['VourukashasGlow'],
-		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
-		subStat: ['hp_', 'enerRech_', 'atk_', 'hp', 'critRD_'],
-	},
 	EchoesOfAnOffering: {
 		key: 'Traveler',
 		role: 'DPS',
@@ -35,15 +26,6 @@ export const missingArtifactSets: Record<string, Build> = {
 		artifact: ['EchoesOfAnOffering'],
 		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas', 'atk'],
-	},
-	ArchaicPetra: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: ['DullBlade'],
-		group: 0,
-		artifact: ['ArchaicPetra'],
-		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'atk'],
 	},
 	BloodstainedChivalry: {
 		key: 'Traveler',
