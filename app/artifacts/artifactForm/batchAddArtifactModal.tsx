@@ -10,6 +10,7 @@ import hash from 'object-hash';
 import { useRef, useState } from 'react';
 import ArtifactStatImage from '../artifactStatImage';
 import crop from './scanner/crop';
+import lock from './scanner/lock';
 import match from './scanner/match';
 import rarity from './scanner/rarity';
 import text from './scanner/text';
@@ -78,16 +79,15 @@ export default function BatchAddArtifactModal() {
 											ctx.drawImage(newCanvas, 0, 0);
 
 											const artifact = await text(canvasRef.current);
-											artifact.id = nanoid();
-											artifact.rarity = rarity(canvas);
-											// TODO: implement these 2
-											artifact.location = '';
-											artifact.lock = false;
 											prevCanvas = canvas;
 											setArtifacts((artifacts) => ({
 												...artifacts,
-												[hash(artifact, { excludeKeys: (key) => key === 'id' })]:
-													artifact,
+												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {
+													id: nanoid(),
+													...artifact,
+													rarity: rarity(canvas),
+													lock: lock(canvas),
+												},
 											}));
 										} catch (e) {
 											console.error(e);

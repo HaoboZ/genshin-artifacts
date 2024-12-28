@@ -1,5 +1,7 @@
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
-import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
+import { charactersInfo } from '@/api/characters';
+import type { ArtifactSetKey, CharacterKey, IArtifact, StatKey } from '@/src/types/good';
+import { capitalCase } from 'change-case';
 import { createWorker, OEM, PSM } from 'tesseract.js';
 
 const mainStatsScan: Record<string, StatKey> = {
@@ -40,6 +42,7 @@ const textAreas = {
 	subStat3: [0.04, 0.877, 0.9, 0.079],
 	subStat4: [0.04, 0.956, 0.9, 0.079],
 	subStat5: [0.04, 1.035, 0.9, 0.079],
+	character: [0.158, -0.109, 0.842, 0.1],
 };
 
 const artifactNames = Object.values(artifactSetsInfo).map<[string, ArtifactSetKey]>(
@@ -57,6 +60,7 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 		level: 0,
 		rarity: 5,
 		mainStatKey: 'hp',
+		location: '',
 		substats: [],
 	};
 
@@ -66,16 +70,21 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 		const { data } = await worker.recognize(canvas, {
 			rectangle: {
 				left: rect[0] * scale,
-				top: rect[1] * scale,
+				top: rect[1] >= 0 ? rect[1] * scale : canvas.height + rect[1] * scale,
 				width: rect[2] * scale,
 				height: rect[3] * scale,
 			},
 		});
 
-		// const ctx = canvas.getContext('2d');
-		// ctx.strokeStyle = 'blue';
-		// ctx.lineWidth = 1;
-		// ctx.strokeRect(rect[0] * scale, rect[1] * scale, rect[2] * scale, rect[3] * scale);
+		const ctx = canvas.getContext('2d');
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = 1;
+		ctx.strokeRect(
+			rect[0] * scale,
+			rect[1] >= 0 ? rect[1] * scale : canvas.height + rect[1] * scale,
+			rect[2] * scale,
+			rect[3] * scale,
+		);
 
 		const text = data.lines[0].text.toLowerCase();
 		switch (key) {
@@ -92,6 +101,14 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 			case 'level':
 				artifact.level = +text.match(/\d+/)?.[0] || 0;
 				break;
+			case 'character': {
+				const match = text.match(/equipped: (\w+( \w+)*)/);
+				if (match) {
+					artifact.location = capitalCase(match[1]) as CharacterKey;
+					if (!charactersInfo[artifact.location]) artifact.location = 'Traveler';
+				}
+				break;
+			}
 			default: {
 				const match = text.match(/([a-z]+? ?[a-z]+)\+([0-9.]+)(%?)/);
 				if (match) {

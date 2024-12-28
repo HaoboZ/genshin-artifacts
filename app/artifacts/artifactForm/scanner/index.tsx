@@ -6,6 +6,7 @@ import Script from 'next/script';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
 import crop from './crop';
+import lock from './lock';
 import match from './match';
 import rarity from './rarity';
 import text from './text';
@@ -35,10 +36,12 @@ export default function Scanner({
 					if (misMatch > 20000) throw 'No matches';
 
 					const artifact = await text(canvas, setProgress);
-					artifact.rarity = rarity(canvas);
-					// TODO: implement lock
-					// artifact.lock = false;
-					setArtifact((prevArtifact) => ({ ...prevArtifact, ...artifact }));
+					setArtifact((prevArtifact) => ({
+						...prevArtifact,
+						...artifact,
+						rarity: rarity(canvas),
+						lock: lock(canvas),
+					}));
 				} catch (e) {
 					console.error(e);
 				}

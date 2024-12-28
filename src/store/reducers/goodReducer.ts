@@ -60,20 +60,36 @@ const goodSlice = createSlice({
 			);
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
+			const oldArtifact = state.artifacts.find(
+				({ location, slotKey }) => location === payload.location && slotKey === payload.slotKey,
+			);
+			if (oldArtifact) oldArtifact.location = '';
 			state.artifacts = [...state.artifacts, payload];
 		},
 		addArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
 			const map = new Map();
-			[...state.artifacts, ...payload].forEach((obj) => {
-				const key = hash(obj);
-				if (!map.has(key)) map.set(key, obj);
+			[...state.artifacts, ...payload].forEach((artifact) => {
+				const key = hash(artifact);
+				const oldArtifact = state.artifacts.find(
+					({ location, slotKey }) =>
+						location === artifact.location && slotKey === artifact.slotKey,
+				);
+				if (oldArtifact) oldArtifact.location = '';
+				if (!map.has(key)) map.set(key, artifact);
 			});
 			state.artifacts = Array.from(map.values());
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
 			state.artifacts = [...state.artifacts];
-			if (index !== -1) state.artifacts[index] = payload;
+			if (index !== -1) {
+				const oldArtifact = state.artifacts.find(
+					({ location, slotKey }) =>
+						location === payload.location && slotKey === payload.slotKey,
+				);
+				if (oldArtifact) oldArtifact.location = '';
+				state.artifacts[index] = payload;
+			}
 		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
 			const characterA = payload[0];
