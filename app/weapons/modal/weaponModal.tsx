@@ -11,9 +11,9 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogContent, DialogTitle, Grid2, Stack } from '@mui/material';
+import { DialogContent, DialogTitle, FormControlLabel, Grid2, Stack, Switch } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
@@ -26,6 +26,8 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 	const priority = useAppSelector(pget('main.priority'));
 	const { closeModal } = useModalControls();
 
+	const [checked, setChecked] = useState(false);
+
 	const characters = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
 
@@ -35,21 +37,28 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 			filter(({ key }) => charactersInfo[key].weaponType === weaponsInfo[weapon.key].weaponType),
 			map((build) => {
 				const oldWeapon = weapons.find(({ location }) => location === build.key);
-
+				const buildIndex = arrDeepIndex(build.weapon, weapon.key);
 				return {
 					build,
-					buildIndex: arrDeepIndex(build.weapon, weapon.key),
+					buildIndex: buildIndex === -1 ? build.weapon.length : buildIndex,
 					oldWeapon,
 					oldTierIndex: oldWeapon && arrDeepIndex(build.weapon, oldWeapon.key),
 				};
 			}),
-			filter(({ buildIndex }) => buildIndex !== -1),
-			sortBy(({ build }) => {
-				const index = priorityIndex.indexOf(build.key);
-				return index === -1 ? Infinity : index;
+			filter(({ build, buildIndex }) => {
+				if (weapon.location === build.key) return false;
+				if (checked) return true;
+				return buildIndex !== build.weapon.length;
 			}),
+			sortBy(
+				({ build, buildIndex }) => (buildIndex === build.weapon.length ? 1 : 0),
+				({ build }) => {
+					const index = priorityIndex.indexOf(build.key);
+					return index === -1 ? Infinity : index;
+				},
+			),
 		);
-	}, [weapon]);
+	}, [weapon, checked]);
 
 	return (
 		<DialogWrapper>
@@ -71,6 +80,16 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 							<CharacterWeaponTier build={builds[weapon.location]} />
 						</Stack>
 					)}
+					<FormControlLabel
+						control={
+							<Switch
+								sx={{ ml: 0 }}
+								checked={checked}
+								onChange={({ target }) => setChecked(target.checked)}
+							/>
+						}
+						label='All Characters'
+					/>
 					<Grid2 container spacing={1}>
 						{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
 							<Grid2 key={index}>
@@ -78,10 +97,6 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 									character={charactersInfo[build.key]}
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() => {
-										if (weapon.location === build.key) {
-											alert(`Already equipped on ${charactersInfo[build.key].name}`);
-											return;
-										}
 										if (
 											!confirm(`Give this weapon to ${charactersInfo[build.key].name}?`)
 										)
