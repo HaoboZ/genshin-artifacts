@@ -6,6 +6,7 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
+import { Lock as LockIcon } from '@mui/icons-material';
 import { Grid2, TextField } from '@mui/material';
 import { useState } from 'react';
 import AddWeaponModal from './modal/addWeaponModal';
@@ -46,8 +47,18 @@ export default function Weapons() {
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
-								onClick={() => showModal(WeaponModal, { props: { weapon } })}
-							/>
+								onClick={() => showModal(WeaponModal, { props: { weapon } })}>
+								{weapon?.lock && (
+									<LockIcon
+										sx={{
+											position: 'absolute',
+											top: 0,
+											left: 0,
+											color: 'white',
+										}}
+									/>
+								)}
+							</WeaponCharacterImage>
 						</Grid2>
 					))}
 				</Grid2>

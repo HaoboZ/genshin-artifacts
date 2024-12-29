@@ -3,33 +3,50 @@ import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IWeapon } from '@/src/types/good';
-import { Button, ButtonGroup } from '@mui/material';
+import { Box, Button, ButtonGroup, FormControlLabel, Switch } from '@mui/material';
 
 export default function WeaponActions({ weapon }: { weapon: IWeapon }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
 	return (
-		<ButtonGroup>
-			{weapon.location ? (
+		<Box>
+			<ButtonGroup>
+				{weapon.location ? (
+					<Button
+						onClick={() => {
+							if (
+								!confirm(`Remove this weapon from ${charactersInfo[weapon.location].name}?`)
+							)
+								return;
+							dispatch(goodActions.removeWeapon(weapon));
+							closeModal();
+						}}>
+						Remove
+					</Button>
+				) : null}
 				<Button
 					onClick={() => {
-						if (!confirm(`Remove this weapon from ${charactersInfo[weapon.location].name}?`))
-							return;
-						dispatch(goodActions.removeWeapon(weapon));
+						if (!confirm('Delete this weapon?')) return;
+						dispatch(goodActions.deleteWeapon(weapon));
 						closeModal();
 					}}>
-					Remove
+					Delete
 				</Button>
-			) : null}
-			<Button
-				onClick={() => {
-					if (!confirm('Delete this weapon?')) return;
-					dispatch(goodActions.deleteWeapon(weapon));
-					closeModal();
-				}}>
-				Delete
-			</Button>
-		</ButtonGroup>
+			</ButtonGroup>
+			<FormControlLabel
+				control={
+					<Switch
+						checked={weapon.lock}
+						onChange={({ target }) => {
+							weapon.lock = target.checked;
+							dispatch(goodActions.editWeapon(weapon));
+						}}
+					/>
+				}
+				label='Locked'
+				sx={{ ml: 1 }}
+			/>
+		</Box>
 	);
 }

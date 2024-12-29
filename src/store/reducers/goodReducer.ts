@@ -151,6 +151,11 @@ const goodSlice = createSlice({
 		addWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			state.weapons = [...state.weapons, payload];
 		},
+		editWeapon(state, { payload }: PayloadAction<IWeapon>) {
+			const index = state.weapons.findIndex(({ id }) => id === payload.id);
+			state.weapons = [...state.weapons];
+			if (index !== -1) state.weapons[index] = payload;
+		},
 		giveWeapon(state, { payload }: PayloadAction<[CharacterKey, IWeapon]>) {
 			const characterA = payload[0];
 			const weaponA = payload[1];

@@ -23,7 +23,7 @@ export default function WeaponCharacterImage({
 		if (!build) return 0;
 		const index = arrDeepIndex(build.weapon, weapon.key);
 		return index === -1 ? 0 : 1 - arrDeepIndex(build.weapon, weapon.key) / build.weapon.length;
-	}, []);
+	}, [weapon]);
 
 	return (
 		<Box sx={{ width: size }}>
@@ -35,6 +35,7 @@ export default function WeaponCharacterImage({
 						sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
 					/>
 				)}
+				{children}
 			</WeaponImage>
 			{character && <PercentBar p={percent} />}
 		</Box>

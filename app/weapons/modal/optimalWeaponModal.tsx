@@ -48,12 +48,14 @@ export default function OptimalWeaponModal() {
 			);
 
 			for (const { weapon, tier } of tieredWeapons) {
+				if (weapon.lock) continue;
 				if (weapon.location === character.key) break;
 				const currentLocation = characters.findIndex(({ key }) => key === weapon.location);
 				if (currentLocation !== -1 && currentLocation < i) continue;
 
 				const currentWeapon = weapons.find(({ location }) => location === character.key);
 				if (currentWeapon) {
+					if (currentWeapon.lock) break;
 					if (tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)) continue;
 					currentWeapon.location = '';
 				}
