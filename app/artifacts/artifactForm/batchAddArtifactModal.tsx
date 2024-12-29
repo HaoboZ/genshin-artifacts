@@ -75,7 +75,7 @@ export default function BatchAddArtifactModal() {
 											const ctx = canvasRef.current.getContext('2d');
 											ctx.drawImage(newCanvas, 0, 0);
 
-											const artifact = await text(canvasRef.current);
+											const artifact = await text(canvas);
 											prevCanvas = canvas;
 											setArtifacts((artifacts) => ({
 												...artifacts,
