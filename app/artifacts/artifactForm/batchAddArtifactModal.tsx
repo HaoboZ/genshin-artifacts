@@ -67,12 +67,9 @@ export default function BatchAddArtifactModal() {
 										detecting = true;
 										try {
 											const newCanvas = await crop(canvas);
-											const misMatch = await match(canvas);
-											if (misMatch > 30000) throw 'No matches';
-											if (prevCanvas) {
-												const misMatch = await match(canvas, prevCanvas);
-												if (misMatch < 1000) throw 'Identical detected';
-											}
+											if ((await match(canvas)) > 30000) throw 'No matches';
+											if (prevCanvas && (await match(canvas, prevCanvas)) < 1000)
+												throw 'Identical detected';
 											canvasRef.current.width = newCanvas.width;
 											canvasRef.current.height = newCanvas.height;
 											const ctx = canvasRef.current.getContext('2d');
