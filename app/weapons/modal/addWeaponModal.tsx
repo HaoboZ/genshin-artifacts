@@ -90,7 +90,7 @@ export default function AddWeaponModal() {
 									ascension: 6,
 									refinement: 5,
 									location: '',
-									lock: true,
+									lock: false,
 								}),
 							);
 						}}>
