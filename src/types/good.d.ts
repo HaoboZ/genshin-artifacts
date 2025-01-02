@@ -145,6 +145,7 @@ type CharacterKey =
 	| 'Chevreuse' //Chevreuse
 	| 'Chiori' //Chiori
 	| 'Chongyun' //Chongyun
+	| 'Citlali' //Citlali
 	| 'Clorinde' //Clorinde
 	| 'Collei' //Collei
 	| 'Cyno' //Cyno
@@ -179,6 +180,7 @@ type CharacterKey =
 	| 'Lisa' //Lisa
 	| 'Lynette' //Lynette
 	| 'Lyney' //Lyney
+	| 'Mavuika' //Mavuika
 	| 'Mika' //Mika
 	| 'Mona' //Mona
 	| 'Mualani' //Mualani
@@ -222,6 +224,7 @@ type CharacterKey =
 	| 'Zhongli'; //Zhongli
 
 type WeaponKey =
+	| 'AThousandBlazingSuns' //A Thousand Blazing Suns
 	| 'AThousandFloatingDreams' //A Thousand Floating Dreams
 	| 'Absolution' //Absolution
 	| 'Akuoumaru' //Akuoumaru
@@ -384,6 +387,7 @@ type WeaponKey =
 	| 'SplendorOfTranquilWaters' //Splendor of Tranquil Waters
 	| 'StaffOfHoma' //Staff of Homa
 	| 'StaffOfTheScarletSands' //Staff of the Scarlet Sands
+	| 'StarcallersWatch' //Starcaller's Watch
 	| 'SturdyBone' //Sturdy Bone
 	| 'SummitShaper' //Summit Shaper
 	| 'SurfsUp' //Surf's Up

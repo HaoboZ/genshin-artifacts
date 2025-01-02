@@ -168,5 +168,22 @@
 				"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Denial_and_Judgment.png"
 			}
 		]
+	},
+	{
+		"name": "Lord of Eroded Primal Fire",
+		"items": [
+			{
+				"name": "Eroded Horn",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Item_Eroded_Horn.png"
+			},
+			{
+				"name": "Eroded Sunfire",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Eroded_Sunfire.png"
+			},
+			{
+				"name": "Eroded Scale-Feather",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Eroded_Scale-Feather.png"
+			}
+		]
 	}
 ]

@@ -316,6 +316,23 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas', 'atk_', 'atk'],
 	},
+	Mavuika: {
+		key: 'Mavuika',
+		role: 'DPS',
+		weapon: [
+			'AThousandBlazingSuns',
+			'BeaconOfTheReedSea',
+			'WolfsGravestone',
+			'SerpentSpine',
+			'MailedFlower',
+			'BlackcliffSlasher',
+			'EarthShaker',
+		],
+		group: 0,
+		artifact: ['ObsidianCodex'],
+		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_'],
+	},
 	// Dendro
 	Collei: {
 		key: 'Collei',
@@ -1343,6 +1360,22 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
 		subStat: ['critRD_', 'atk_', 'atk', 'enerRech_'],
 	},
+	Citlali: {
+		key: 'Citlali',
+		role: 'Support',
+		weapon: [
+			'StarcallersWatch',
+			['ThrillingTalesOfDragonSlayers', 'FavoniusCodex', 'WanderingEvenstar'],
+		],
+		group: 0,
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'TenacityOfTheMillelith', 'Instructor'],
+		mainStat: {
+			sands: ['eleMas', 'enerRech_'],
+			goblet: 'eleMas',
+			circlet: ['eleMas', 'critRate_'],
+		},
+		subStat: ['enerRech_', 'eleMas', 'critRate_'],
+	},
 	// Anemo
 	Sucrose: {
 		key: 'Sucrose',
@@ -1574,12 +1607,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['ScionOfTheBlazingSun', 'RangeGauge'],
 		],
 		group: 0,
-		artifact: [
-			'ObsidianCodex',
-			'WanderersTroupe',
-			'ShimenawasReminiscence',
-			'MarechausseeHunter',
-		],
+		artifact: ['ObsidianCodex', 'MarechausseeHunter'],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
@@ -1664,7 +1692,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'EngulfingLightning',
 			'PrototypeStarglitter',
 		],
-		group: 0,
+		group: 1,
 		artifact: ['ScrollOfTheHeroOfCinderCity'],
 		mainStat: {
 			sands: ['def_', 'enerRech_'],

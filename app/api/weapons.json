@@ -1,4 +1,18 @@
 {
+	"AThousandBlazingSuns": {
+		"key": "AThousandBlazingSuns",
+		"name": "A Thousand Blazing Suns",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png"
+	},
+	"StarcallersWatch": {
+		"key": "StarcallersWatch",
+		"name": "Starcaller's Watch",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png"
+	},
 	"Absolution": {
 		"key": "Absolution",
 		"name": "Absolution",

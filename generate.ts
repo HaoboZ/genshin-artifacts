@@ -21,6 +21,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Chasca_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
@@ -56,6 +57,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/d/da/Mavuika_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Mualani_Icon.png',
@@ -552,6 +554,8 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
