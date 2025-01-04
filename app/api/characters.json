@@ -1,24 +1,4 @@
 {
-	"Mavuika": {
-		"key": "Mavuika",
-		"name": "Mavuika",
-		"rarity": 5,
-		"weaponType": "Claymore",
-		"element": "Pyro",
-		"talentMaterial": "Teachings of Contention",
-		"weeklyMaterial": "Eroded Horn",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Mavuika_Icon.png"
-	},
-	"Citlali": {
-		"key": "Citlali",
-		"name": "Citlali",
-		"rarity": 5,
-		"weaponType": "Catalyst",
-		"element": "Cryo",
-		"talentMaterial": "Teachings of Kindling",
-		"weeklyMaterial": "Denial and Judgement",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png"
-	},
 	"Traveler": {
 		"key": "Traveler",
 		"name": "Traveler",
@@ -186,6 +166,16 @@
 		"talentMaterial": "Teachings of Diligence",
 		"weeklyMaterial": "Dvalin's Sigh",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png"
+	},
+	"Citlali": {
+		"key": "Citlali",
+		"name": "Citlali",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Cryo",
+		"talentMaterial": "Teachings of Kindling",
+		"weeklyMaterial": "Denial and Judgment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png"
 	},
 	"Clorinde": {
 		"key": "Clorinde",
@@ -526,6 +516,16 @@
 		"talentMaterial": "Teachings of Equity",
 		"weeklyMaterial": "Primordial Greenbloom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png"
+	},
+	"Mavuika": {
+		"key": "Mavuika",
+		"name": "Mavuika",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Pyro",
+		"talentMaterial": "Teachings of Contention",
+		"weeklyMaterial": "Eroded Horn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Mavuika_Icon.png"
 	},
 	"Mika": {
 		"key": "Mika",

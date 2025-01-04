@@ -1,18 +1,4 @@
 {
-	"AThousandBlazingSuns": {
-		"key": "AThousandBlazingSuns",
-		"name": "A Thousand Blazing Suns",
-		"rarity": 5,
-		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png"
-	},
-	"StarcallersWatch": {
-		"key": "StarcallersWatch",
-		"name": "Starcaller's Watch",
-		"rarity": 5,
-		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png"
-	},
 	"Absolution": {
 		"key": "Absolution",
 		"name": "Absolution",
@@ -75,6 +61,13 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png"
+	},
+	"AThousandBlazingSuns": {
+		"key": "AThousandBlazingSuns",
+		"name": "A Thousand Blazing Suns",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png"
 	},
 	"AThousandFloatingDreams": {
 		"key": "AThousandFloatingDreams",
@@ -1076,6 +1069,13 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png"
+	},
+	"StarcallersWatch": {
+		"key": "StarcallersWatch",
+		"name": "Starcaller's Watch",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png"
 	},
 	"SturdyBone": {
 		"key": "SturdyBone",

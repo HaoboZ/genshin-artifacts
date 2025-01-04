@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/25/24
+// 1/3/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -321,17 +321,19 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'AThousandBlazingSuns',
-			'BeaconOfTheReedSea',
+			['BeaconOfTheReedSea', 'Verdict'],
+			'RedhornStonethresher',
+			['FangOfTheMountainKing', 'TheUnforged'],
 			'WolfsGravestone',
-			'SerpentSpine',
 			'MailedFlower',
-			'BlackcliffSlasher',
-			'EarthShaker',
+			'TidalShadow',
+			'SerpentSpine',
+			'TalkingStick',
 		],
 		group: 0,
-		artifact: ['ObsidianCodex'],
-		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
+		artifact: ['ObsidianCodex', 'MarechausseeHunter', 'ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'eleMas', 'atk'],
 	},
 	// Dendro
 	Collei: {
