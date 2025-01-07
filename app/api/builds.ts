@@ -154,7 +154,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Gaming',
 		role: 'Vaporize DPS',
 		weapon: [
-			'SerpentSpine',
+			['AThousandBlazingSuns', 'SerpentSpine'],
 			['RedhornStonethresher', 'Verdict', 'BeaconOfTheReedSea'],
 			['FruitfulHook', 'WolfsGravestone', 'Rainslasher'],
 			['SongOfBrokenPines', 'TheUnforged', 'SkywardPride'],

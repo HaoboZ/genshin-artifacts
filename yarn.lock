@@ -3369,7 +3369,7 @@ __metadata:
     react-redux: "npm:9.2.0"
     remeda: "npm:2.19.0"
     sass: "npm:1.83.1"
-    tesseract.js: "npm:5.1.1"
+    tesseract.js: "npm:6.0.0"
     type-fest: "npm:4.31.0"
     typescript: "npm:5.7.2"
     typescript-eslint: "npm:8.19.0"
@@ -3925,13 +3925,6 @@ __metadata:
     call-bound: "npm:^1.0.2"
     has-tostringtag: "npm:^1.0.2"
   checksum: 10c0/1a4d199c8e9e9cac5128d32e6626fa7805175af9df015620ac0d5d45854ccf348ba494679d872d37301032e35a54fc7978fba1687e8721b2139aea7870cafa2f
-  languageName: node
-  linkType: hard
-
-"is-electron@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "is-electron@npm:2.2.2"
-  checksum: 10c0/327bb373f7be01b16cdff3998b5ddaa87d28f576092affaa7fe0659571b3306fdd458afbf0683a66841e7999af13f46ad0e1b51647b469526cd05a4dd736438a
   languageName: node
   linkType: hard
 
@@ -6052,28 +6045,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tesseract.js-core@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "tesseract.js-core@npm:5.1.1"
-  checksum: 10c0/9324277aa1598e0707ddbc175d4312fb7b4569e3fc42adbb42a5a3a747b5711a83c810c597b375585ec3261df31270730a146ab61c63fd16472a21867472eb31
+"tesseract.js-core@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "tesseract.js-core@npm:6.0.0"
+  checksum: 10c0/c04be8bbaa296be658664496754f21e857bdffff84113f08adf02f03a1f84596d68b3542ed2fda4a6dc138abb84b09b30ab07c04ee5950879e780876d343955f
   languageName: node
   linkType: hard
 
-"tesseract.js@npm:5.1.1":
-  version: 5.1.1
-  resolution: "tesseract.js@npm:5.1.1"
+"tesseract.js@npm:6.0.0":
+  version: 6.0.0
+  resolution: "tesseract.js@npm:6.0.0"
   dependencies:
     bmp-js: "npm:^0.1.0"
     idb-keyval: "npm:^6.2.0"
-    is-electron: "npm:^2.2.2"
     is-url: "npm:^1.2.4"
     node-fetch: "npm:^2.6.9"
     opencollective-postinstall: "npm:^2.0.3"
     regenerator-runtime: "npm:^0.13.3"
-    tesseract.js-core: "npm:^5.1.1"
+    tesseract.js-core: "npm:^6.0.0"
     wasm-feature-detect: "npm:^1.2.11"
     zlibjs: "npm:^0.3.1"
-  checksum: 10c0/46dd9c22c7c86d065c6fab07cdcc10e455c928e9d218e9e2a475eca4fc865bf60b052b3dc3503996fd195763184fb7deb2793083c84c869a6681e53d0329af36
+  checksum: 10c0/f65b816eabc16266bfa74ea61db73afa2d21ce0f57041b87b96abdff8954e042ee16637edea20aaf752227bc075052ca12021f4f68d5d25d52f062ebc4c644e1
   languageName: node
   linkType: hard
 

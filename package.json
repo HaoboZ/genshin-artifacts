@@ -45,7 +45,7 @@
 		"react-dom": "19.0.0",
 		"react-redux": "9.2.0",
 		"remeda": "2.19.0",
-		"tesseract.js": "5.1.1"
+		"tesseract.js": "6.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.17.0",

@@ -86,7 +86,7 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 			rect[3] * scale,
 		);
 
-		const text = data.lines[0].text.toLowerCase();
+		const text = data.text.toLowerCase();
 		switch (key) {
 			case 'slot':
 				artifact.slotKey = artifactSlotOrder.find((slot) => text.includes(slot));
