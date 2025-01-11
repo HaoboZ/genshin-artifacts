@@ -1,8 +1,9 @@
-import { weeklyInfo } from '@/api/talents';
+import { weeklyCount, weeklyInfo } from '@/api/talents';
 import ContextMenu from '@/components/contextMenu';
 import pget from '@/src/helpers/pget';
-import { useAppDispatch } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
+import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { DCharacter } from '@/src/types/data';
 import type { ICharacter } from '@/src/types/good';
 import { Box, MenuItem, Typography } from '@mui/material';
@@ -13,11 +14,12 @@ import { clamp, indexBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 
 export default function BooksCharacter({ character }: { character: DCharacter & ICharacter }) {
+	const currentMaterials = useAppSelector(pget('main.weekly'));
 	const dispatch = useAppDispatch();
 
 	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('name')), []);
 
-	const increaseSkill = (type) =>
+	const increaseSkill = (type) => {
 		dispatch(
 			goodActions.editSkills({
 				character: character.key,
@@ -26,35 +28,57 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 				},
 			}),
 		);
+		const count = weeklyCount[character.talent?.[type] ?? 0];
+		if (count) {
+			dispatch(
+				mainActions.setWeeklyMaterial({
+					name: character.weeklyMaterial,
+					amount:
+						currentMaterials[character.weeklyMaterial] -
+						weeklyCount[character.talent?.[type] ?? 0],
+				}),
+			);
+		}
+	};
+
+	console.log(character);
 
 	return (
 		<ContextMenu
-			menuContent={(closeMenu) => [
-				<MenuItem
-					key='auto'
-					onClick={() => {
-						increaseSkill('auto');
-						closeMenu();
-					}}>
-					Increase Auto
-				</MenuItem>,
-				<MenuItem
-					key='skill'
-					onClick={() => {
-						increaseSkill('skill');
-						closeMenu();
-					}}>
-					Increase Skill
-				</MenuItem>,
-				<MenuItem
-					key='burst'
-					onClick={() => {
-						increaseSkill('burst');
-						closeMenu();
-					}}>
-					Increase Burst
-				</MenuItem>,
-			]}>
+			menuContent={(closeMenu) =>
+				[
+					character.talent?.auto < 10 && (
+						<MenuItem
+							key='auto'
+							onClick={() => {
+								increaseSkill('auto');
+								closeMenu();
+							}}>
+							Increase Auto
+						</MenuItem>
+					),
+					character.talent?.skill < 10 && (
+						<MenuItem
+							key='skill'
+							onClick={() => {
+								increaseSkill('skill');
+								closeMenu();
+							}}>
+							Increase Skill
+						</MenuItem>
+					),
+					character.talent?.burst < 10 && (
+						<MenuItem
+							key='burst'
+							onClick={() => {
+								increaseSkill('burst');
+								closeMenu();
+							}}>
+							Increase Burst
+						</MenuItem>
+					),
+				].filter(Boolean)
+			}>
 			<Box
 				component={Link}
 				href={`/characters/${character.key}`}

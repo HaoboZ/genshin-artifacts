@@ -17,3 +17,17 @@ export const weeklyRequirement = {
 	9: 2,
 	10: 0,
 };
+
+export const weeklyCount = {
+	undefined: 0,
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0,
+	6: 1,
+	7: 1,
+	8: 2,
+	9: 2,
+	10: 0,
+};
