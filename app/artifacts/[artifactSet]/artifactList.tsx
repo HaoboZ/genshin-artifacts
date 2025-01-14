@@ -1,4 +1,9 @@
-import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
+import {
+	artifactSetsInfo,
+	artifactSlotOrder,
+	missingArtifactSets,
+	useArtifacts,
+} from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import {
 	potentialStatRollPercent,
@@ -65,7 +70,12 @@ export default function ArtifactList({
 					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
 					potential: artifact.location
 						? potentialStatRollPercent(builds[artifact.location], artifact)
-						: Math.max(...potentialStatRollPercents(Object.values(builds), artifact)),
+						: Math.max(
+								...potentialStatRollPercents(
+									[...Object.values(builds), ...Object.values(missingArtifactSets)],
+									artifact,
+								),
+							),
 				})),
 				filter(
 					(artifact) =>
