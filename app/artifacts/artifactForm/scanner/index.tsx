@@ -1,7 +1,6 @@
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact } from '@/src/types/good';
-import { LoadingButton } from '@mui/lab';
-import { CircularProgress } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import Script from 'next/script';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
@@ -56,7 +55,7 @@ export default function Scanner({
 	});
 
 	return (
-		<LoadingButton
+		<Button
 			component='label'
 			loading={Boolean(progress)}
 			variant='contained'
@@ -72,6 +71,6 @@ export default function Scanner({
 					scanFile(target.files[0]);
 				}}
 			/>
-		</LoadingButton>
+		</Button>
 	);
 }
