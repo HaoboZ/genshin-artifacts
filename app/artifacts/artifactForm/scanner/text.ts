@@ -60,7 +60,6 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 		level: 0,
 		rarity: 5,
 		mainStatKey: 'hp',
-		location: '',
 		substats: [],
 	};
 

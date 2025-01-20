@@ -1,7 +1,6 @@
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/material';
-import Script from 'next/script';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
 import crop from './crop';
@@ -61,7 +60,6 @@ export default function Scanner({
 			variant='contained'
 			loadingIndicator={<CircularProgress variant='determinate' value={progress * 11} />}>
 			Paste or Upload File
-			<Script src='https://docs.opencv.org/4.x/opencv.js' />
 			<input
 				hidden
 				type='file'

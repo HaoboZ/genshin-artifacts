@@ -81,6 +81,7 @@ export default function BatchAddArtifactModal() {
 												...artifacts,
 												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {
 													id: nanoid(),
+													location: '',
 													...artifact,
 													rarity: rarity(canvas),
 													lock: lock(canvas),
