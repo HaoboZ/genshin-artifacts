@@ -5,7 +5,6 @@ import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid2 } from '@mui/material';
 import { nanoid } from 'nanoid';
-import Script from 'next/script';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
 import ArtifactStatImage from '../artifactStatImage';
@@ -27,7 +26,6 @@ export default function BatchAddArtifactModal() {
 
 	return (
 		<DialogWrapper>
-			<Script src='https://docs.opencv.org/4.x/opencv.js' />
 			<DialogTitle>Add Artifacts</DialogTitle>
 			<DialogContent>
 				<Grid2 container spacing={1}>

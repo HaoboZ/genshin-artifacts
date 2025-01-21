@@ -6,7 +6,7 @@ export default async function crop(canvas: HTMLCanvasElement) {
 	const gray = new cv.Mat();
 	cv.cvtColor(image, gray, cv.COLOR_RGBA2GRAY);
 	const edges = new cv.Mat();
-	cv.Canny(gray, edges, 50, 100, 3);
+	cv.Canny(gray, edges, 100, 200, 3);
 	const contours = new cv.MatVector();
 	const hierarchy = new cv.Mat();
 	cv.findContours(edges, contours, hierarchy, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE);
