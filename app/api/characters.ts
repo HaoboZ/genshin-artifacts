@@ -11,16 +11,12 @@ import data from './characters.json';
 export const charactersInfo: Record<CharacterKey, DCharacter> = data as any;
 
 export function useCharacters({
-	element,
-	weaponType,
 	artifactSet,
 	owned,
 }: {
-	element?: string;
-	weaponType?: string;
 	artifactSet?: ArtifactSetKey;
 	owned?: boolean;
-}) {
+} = {}) {
 	const priority = useAppSelector(pget('main.priority'));
 	const characters = useAppSelector(pget('good.characters'));
 
@@ -36,14 +32,12 @@ export function useCharacters({
 			filter(
 				(character) =>
 					(owned ? character.level : true) &&
-					(!element || character.element === element) &&
-					(!weaponType || character.weaponType === weaponType) &&
 					(!artifactSet || makeArray(character.artifact[0])[0] === artifactSet),
 			),
-			sortBy(({ key }) => {
+			sortBy([({ level }) => Boolean(level), 'desc'], ({ key }) => {
 				const index = priorityIndex.indexOf(key);
 				return index === -1 ? Infinity : index;
 			}),
 		);
-	}, [priority, characters, element, weaponType]);
+	}, [priority, characters, owned]);
 }

@@ -33,7 +33,7 @@ export default function UpgradePriorityModal() {
 						: Math.max(...potentialStatRollPercents(Object.values(builds), artifact)),
 				})),
 				filter(({ potential }) => potential > 0.4),
-				sortBy(({ potential }) => -potential),
+				sortBy([pget('potential'), 'desc']),
 			),
 		[artifacts],
 	);

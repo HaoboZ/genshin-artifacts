@@ -41,8 +41,6 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 		}
 	};
 
-	console.log(character);
-
 	return (
 		<ContextMenu
 			menuContent={(closeMenu) =>

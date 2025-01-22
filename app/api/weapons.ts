@@ -33,7 +33,7 @@ export function useWeapons({ type, search }: { type?: string; search?: string })
 						(!type || weaponType === type) &&
 						(search ? name.toLowerCase().includes(searchVal) : true),
 				),
-				sortBy(({ rarity }) => -rarity, pget('key')),
+				sortBy([pget('rarity'), 'desc'], pget('key')),
 			),
 		[weapons, type, search],
 	);

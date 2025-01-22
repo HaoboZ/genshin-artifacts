@@ -58,8 +58,8 @@ export function useArtifacts({
 						(!artifactSet || artifactSet === setKey) && (!slot || slot === slotKey),
 				),
 				sortBy(
-					({ setKey }) => -artifactSetsInfo[setKey].group,
-					({ level }) => -level,
+					[({ setKey }) => artifactSetsInfo[setKey].group, 'desc'],
+					[pget('level'), 'desc'],
 				),
 			),
 		[artifacts, artifactSet, slot],

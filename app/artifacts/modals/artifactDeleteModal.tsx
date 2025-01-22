@@ -67,8 +67,8 @@ export default function ArtifactDeleteModal() {
 									artifact={artifact}
 									sx={{
 										':hover': { cursor: 'pointer' },
-										'border': 1,
-										'borderColor': selected ? 'red' : 'transparent',
+										'border': selected ? 1 : 0,
+										'borderColor': 'red',
 									}}
 									onClick={() => {
 										setDeleteArtifacts((deleteArtifacts) => {

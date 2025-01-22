@@ -24,14 +24,14 @@ const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];
 const levelFilters = ['All', '<9', '9-10', '10'];
 
 export default function TalentBooks() {
-	const characters = useCharacters({});
-
 	const [owned, setOwned] = useState(false);
 	const [farmable, setFarmable] = useState(() => {
 		const day: number = dayjs().day();
 		return (day > 3 ? day - 3 : day) % 4;
 	});
 	const [lvl, setLvl] = useState(1);
+
+	const characters = useCharacters({ owned });
 
 	return (
 		<PageSection title='Talent Books'>
@@ -84,9 +84,8 @@ export default function TalentBooks() {
 									<TableCell>
 										<Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
 											{characters
-												.filter(({ level, talentMaterial, talent }) => {
-													if (talentMaterial !== name || (owned && !level))
-														return false;
+												.filter(({ talentMaterial, talent }) => {
+													if (talentMaterial !== name) return false;
 													if (lvl) {
 														const minTalent = Math.min(
 															talent?.auto ?? 0,

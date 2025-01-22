@@ -20,7 +20,7 @@ import { filter, flat, groupBy, map, pipe, reduce } from 'remeda';
 export default function TalentsWeekly() {
 	const dispatch = useAppDispatch();
 	const currentMaterials = useAppSelector(pget('main.weekly'));
-	const characters = useCharacters({});
+	const characters = useCharacters();
 
 	const charactersWeekly = groupBy(characters, pget('weeklyMaterial'));
 

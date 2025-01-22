@@ -84,92 +84,92 @@ export default function Character({ characterData }: { characterData: DCharacter
 			<CharacterImage character={characterData} />
 			<CharacterBuild build={build} />
 			{character && (
-				<Fragment>
-					<PageSection title='Talents'>
-						<Grid2 container spacing={1}>
-							{[
-								['auto', 'Auto Attack'],
-								['skill', 'Elemental Skill'],
-								['burst', 'Elemental Burst'],
-							].map(([type, name]) => (
-								<Grid2 key={type} size={4}>
-									<FormattedTextField
-										label={name}
-										value={character.talent[type]}
-										onChange={({ target }) =>
-											dispatch(
-												goodActions.editSkills({
-													character: character.key,
-													talent: {
-														[type]: clamp(+target.value, { min: 1, max: 10 }),
-													},
-												}),
-											)
-										}
-									/>
-								</Grid2>
-							))}
-						</Grid2>
-					</PageSection>
-					<PageSection title='Equipped'>
-						<Grid2 container spacing={1}>
-							<Grid2 size={{ xs: 6, sm: 4 }}>
-								<Card
+				<PageSection title='Talents'>
+					<Grid2 container spacing={1}>
+						{[
+							['auto', 'Auto Attack'],
+							['skill', 'Elemental Skill'],
+							['burst', 'Elemental Burst'],
+						].map(([type, name]) => (
+							<Grid2 key={type} size={4}>
+								<FormattedTextField
+									label={name}
+									value={character.talent[type]}
+									onChange={({ target }) =>
+										dispatch(
+											goodActions.editSkills({
+												character: character.key,
+												talent: {
+													[type]: clamp(+target.value, { min: 1, max: 10 }),
+												},
+											}),
+										)
+									}
+								/>
+							</Grid2>
+						))}
+					</Grid2>
+				</PageSection>
+			)}
+			<PageSection title='Equipped'>
+				<Grid2 container spacing={1}>
+					<Grid2 size={{ xs: 6, sm: 4 }}>
+						{character && (
+							<Card
+								sx={{ ':hover': { cursor: 'pointer' } }}
+								onClick={() => {
+									showModal(CharacterWeaponModal, { props: { build, weapon } });
+								}}>
+								<CardContent>
+									<Grid2 container spacing={1}>
+										<Grid2 size='auto'>
+											<WeaponImage
+												weapon={weaponsInfo[weapon?.key]}
+												type={characterData.weaponType}
+											/>
+										</Grid2>
+										{weapon && (
+											<Fragment>
+												<Grid2 size='grow'>
+													<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
+												</Grid2>
+												<Grid2 size={12}>
+													<PercentBar p={weaponTier} />
+												</Grid2>
+											</Fragment>
+										)}
+									</Grid2>
+								</CardContent>
+							</Card>
+						)}
+					</Grid2>
+					{artifactSlotOrder.map((slot) => {
+						const artifact = artifactsIndexed[slot];
+						const statRollPercent = weightedStatRollPercent(build, artifact);
+
+						return (
+							<Grid2 key={slot} size={{ xs: 6, sm: 4 }}>
+								<ArtifactStatImage
+									hideCharacter
+									artifact={artifact}
+									slot={slot}
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() => {
-										showModal(CharacterWeaponModal, { props: { build, weapon } });
+										showModal(CharacterArtifactModal, {
+											props: { build, slot, artifact },
+										});
 									}}>
-									<CardContent>
-										<Grid2 container spacing={1}>
-											<Grid2 size='auto'>
-												<WeaponImage
-													weapon={weaponsInfo[weapon?.key]}
-													type={characterData.weaponType}
-												/>
-											</Grid2>
-											{weapon && (
-												<Fragment>
-													<Grid2 size='grow'>
-														<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
-													</Grid2>
-													<Grid2 size={12}>
-														<PercentBar p={weaponTier} />
-													</Grid2>
-												</Fragment>
-											)}
+									{artifact && (
+										<Grid2 size={12}>
+											<PercentBar p={statRollPercent} />
 										</Grid2>
-									</CardContent>
-								</Card>
+									)}
+								</ArtifactStatImage>
 							</Grid2>
-							{artifactSlotOrder.map((slot) => {
-								const artifact = artifactsIndexed[slot];
-								const statRollPercent = weightedStatRollPercent(build, artifact);
-
-								return (
-									<Grid2 key={slot} size={{ xs: 6, sm: 4 }}>
-										<ArtifactStatImage
-											hideCharacter
-											artifact={artifact}
-											slot={slot}
-											sx={{ ':hover': { cursor: 'pointer' } }}
-											onClick={() => {
-												showModal(CharacterArtifactModal, {
-													props: { build, slot, artifact },
-												});
-											}}>
-											{artifact && (
-												<Grid2 size={12}>
-													<PercentBar p={statRollPercent} />
-												</Grid2>
-											)}
-										</ArtifactStatImage>
-									</Grid2>
-								);
-							})}
-						</Grid2>
-					</PageSection>
-				</Fragment>
-			)}
+						);
+					})}
+				</Grid2>
+			</PageSection>
 		</PageContainer>
 	);
 }

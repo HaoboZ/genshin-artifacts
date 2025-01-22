@@ -9,7 +9,7 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
-import type { IArtifact } from '@/src/types/good';
+import type { IArtifact, ICharacter } from '@/src/types/good';
 import {
 	Button,
 	DialogActions,
@@ -29,14 +29,17 @@ export default function OptimizeArtifactModal() {
 	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
 	const artifacts = useAppSelector(pget('good.artifacts'));
-	const characters = useCharacters({});
+	const characters = useCharacters();
 
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
-		const result: { artifact: IArtifact; character: Build; selected: boolean }[] = [];
+		const result: {
+			artifact: IArtifact;
+			character: Build & ICharacter;
+			selected: boolean;
+		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
-			if (!character.level) continue;
 			for (const slot of artifactSlotOrder) {
 				const tieredArtifacts = pipe(
 					artifactsClone,
@@ -46,7 +49,7 @@ export default function OptimizeArtifactModal() {
 							setKey === makeArray(character.artifact[0])[0] &&
 							statArrMatch(character.mainStat[slotKey], mainStatKey, true),
 					),
-					sortBy((artifact) => -weightedStatRollPercent(character, artifact)),
+					sortBy([(artifact) => weightedStatRollPercent(character, artifact), 'desc']),
 				);
 
 				for (const artifact of tieredArtifacts) {
@@ -94,7 +97,10 @@ export default function OptimizeArtifactModal() {
 								/>
 							</ListItemText>
 							<ListItemAvatar sx={{ pl: 2 }}>
-								<CharacterImage character={charactersInfo[character.key]} />
+								<CharacterImage
+									character={charactersInfo[character.key]}
+									sx={{ border: character.level ? 0 : 2, borderColor: 'red' }}
+								/>
 							</ListItemAvatar>
 						</ListItem>
 					))}

@@ -31,11 +31,12 @@ export default function BestInSlot({
 	return (
 		<Stack spacing={1}>
 			<Stack direction='row' spacing={1}>
-				{characters.map(({ key, mainStat, subStat }) => (
+				{characters.map(({ key, level, mainStat, subStat }) => (
 					<PageLink key={key} href={`/characters/${key}`}>
 						<CharacterImage
 							character={charactersInfo[key]}
 							size={50}
+							sx={{ border: level ? 0 : 1, borderColor: 'red' }}
 							tooltip={
 								<Fragment>
 									<Typography>

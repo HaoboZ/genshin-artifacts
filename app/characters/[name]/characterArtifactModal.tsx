@@ -53,7 +53,7 @@ export default function CharacterArtifactModal({
 				statRollPercent: weightedStatRollPercent(build, artifact),
 			})),
 			sortBy(
-				({ setKey }) => -arrDeepIndex(build.artifact, setKey),
+				[({ setKey }) => arrDeepIndex(build.artifact, setKey), 'desc'],
 				pget('statRollPercent'),
 				pget('artifact.level'),
 			),

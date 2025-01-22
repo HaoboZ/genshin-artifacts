@@ -85,15 +85,18 @@ export default function ArtifactList({
 						(filtered.locked ? Boolean(+Boolean(artifact.lock) - filtered.locked + 1) : true),
 				),
 				sortBy(
-					(artifact) =>
-						(pget(
-							artifact,
-							{
-								potential: 'potential',
-								stats: 'statRollPercent',
-								level: 'level',
-							}[sortType],
-						) as number) * (sortDir ? 1 : -1),
+					[
+						(artifact) =>
+							pget(
+								artifact,
+								{
+									potential: 'potential',
+									stats: 'statRollPercent',
+									level: 'level',
+								}[sortType],
+							),
+						sortDir ? 'asc' : 'desc',
+					],
 					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
 				),
 			),

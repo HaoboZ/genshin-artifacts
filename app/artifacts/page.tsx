@@ -21,7 +21,7 @@ import UpgradePriorityModal from './modals/upgradePriorityModal';
 
 export default function Artifacts() {
 	const { showModal } = useModal();
-	const characters = useCharacters({});
+	const characters = useCharacters();
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	return (
@@ -62,9 +62,13 @@ export default function Artifacts() {
 							// @ts-ignore
 							href={`/artifacts/${artifactSet.key}`}
 						/>
-						{charactersFiltered.map(({ key }) => (
+						{charactersFiltered.map(({ key, level }) => (
 							<PageLink key={key} href={`/characters/${key}`}>
-								<CharacterImage character={charactersInfo[key]} size={50} />
+								<CharacterImage
+									character={charactersInfo[key]}
+									size={50}
+									sx={{ border: level ? 0 : 1, borderColor: 'red' }}
+								/>
 							</PageLink>
 						))}
 						<Typography sx={{ ml: 1 }}>

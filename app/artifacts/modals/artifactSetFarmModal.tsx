@@ -52,7 +52,7 @@ export default function ArtifactSetFarmModal() {
 				artifactSetPriority,
 				entries(),
 				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
-				sortBy(([, { mainStats }]) => -Object.values(mainStats).flat().length),
+				sortBy([([, { mainStats }]) => Object.values(mainStats).flat().length, 'desc']),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
@@ -62,7 +62,7 @@ export default function ArtifactSetFarmModal() {
 				]),
 				entries(),
 				filter(([, [, count]]) => Boolean(count)),
-				sortBy(([, [, count]]) => -count),
+				sortBy([([, [, count]]) => count, 'desc']),
 			),
 		};
 	}, [artifacts]);
