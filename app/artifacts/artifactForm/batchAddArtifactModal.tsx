@@ -53,7 +53,7 @@ export default function BatchAddArtifactModal() {
 										await navigator.mediaDevices.getDisplayMedia();
 
 									let detecting = false;
-									let prevCanvas;
+									let prevCanvas: HTMLCanvasElement;
 									const interval = setInterval(async () => {
 										if (detecting) return;
 										const canvas = document.createElement('canvas');
@@ -66,15 +66,15 @@ export default function BatchAddArtifactModal() {
 										try {
 											const newCanvas = await crop(canvas);
 											if ((await match(canvas)) > 30000) throw 'No matches';
-											if (prevCanvas && (await match(canvas, prevCanvas)) < 1000)
-												throw 'Identical detected';
 											canvasRef.current.width = newCanvas.width;
 											canvasRef.current.height = newCanvas.height;
 											const ctx = canvasRef.current.getContext('2d');
 											ctx.drawImage(newCanvas, 0, 0);
+											if (prevCanvas && (await match(canvas, prevCanvas)) < 1000)
+												throw 'Identical detected';
+											prevCanvas = canvas;
 
 											const artifact = await text(canvas);
-											prevCanvas = canvas;
 											setArtifacts((artifacts) => ({
 												...artifacts,
 												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {
