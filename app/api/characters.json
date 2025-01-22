@@ -477,6 +477,16 @@
 		"weeklyMaterial": "Tears of the Calamitous God",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png"
 	},
+	"LanYan": {
+		"key": "LanYan",
+		"name": "Lan Yan",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talentMaterial": "Teachings of Diligence",
+		"weeklyMaterial": "Eroded Sunfire",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Lan_Yan_Icon.png"
+	},
 	"Layla": {
 		"key": "Layla",
 		"name": "Layla",

@@ -5,10 +5,12 @@ export default async function crop(canvas: HTMLCanvasElement) {
 	const image = cv.imread(canvas);
 	const gray = new cv.Mat();
 	cv.cvtColor(image, gray, cv.COLOR_RGBA2GRAY);
+
 	const blurred = new cv.Mat();
 	cv.GaussianBlur(gray, blurred, new cv.Size(5, 5), 0, 0, cv.BORDER_DEFAULT);
 	const edges = new cv.Mat();
 	cv.Canny(blurred, edges, 75, 150, 3);
+
 	const contours = new cv.MatVector();
 	const hierarchy = new cv.Mat();
 	cv.findContours(edges, contours, hierarchy, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE);

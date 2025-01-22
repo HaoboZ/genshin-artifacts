@@ -1463,6 +1463,21 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'anemo_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRate_', 'critDMG_', 'atk_', 'atk'],
 	},
+	LanYan: {
+		key: 'LanYan',
+		role: 'Support',
+		weapon: [
+			'MemoryOfDust',
+			'SkywardAtlas',
+			'OathswornEye',
+			'FavoniusCodex',
+			'ThrillingTalesOfDragonSlayers',
+		],
+		group: 1,
+		artifact: ['ViridescentVenerer'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'atk_' },
+		subStat: ['atk_', 'enerRech_', 'eleMas', 'atk'],
+	},
 	Jean: {
 		key: 'Jean',
 		role: 'Support and Damage',

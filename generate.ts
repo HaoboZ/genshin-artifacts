@@ -53,6 +53,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Lan_Yan_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Layla_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png',

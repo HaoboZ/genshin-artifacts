@@ -176,6 +176,7 @@ type CharacterKey =
 	| 'Klee' //Klee
 	| 'KujouSara' //Kujou Sara
 	| 'KukiShinobu' //Kuki Shinobu
+	| 'LanYan' //Lan Yan
 	| 'Layla' //Layla
 	| 'Lisa' //Lisa
 	| 'Lynette' //Lynette
