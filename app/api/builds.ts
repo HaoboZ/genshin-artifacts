@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 1/19/24
+// 1/26/24
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -1467,16 +1467,17 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'LanYan',
 		role: 'Support',
 		weapon: [
-			'MemoryOfDust',
-			'SkywardAtlas',
-			'OathswornEye',
-			'FavoniusCodex',
+			'StarcallersWatch',
 			'ThrillingTalesOfDragonSlayers',
+			'FavoniusCodex',
+			'CranesEchoingCall',
+			'HakushinRing',
+			'PrototypeAmber',
 		],
-		group: 1,
+		group: 0,
 		artifact: ['ViridescentVenerer'],
-		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'atk_' },
-		subStat: ['atk_', 'enerRech_', 'eleMas', 'atk'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
+		subStat: ['enerRech_', 'atk_', 'eleMas', 'critRate_'],
 	},
 	Jean: {
 		key: 'Jean',

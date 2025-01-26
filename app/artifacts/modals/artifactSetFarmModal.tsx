@@ -62,7 +62,7 @@ export default function ArtifactSetFarmModal() {
 				]),
 				entries(),
 				filter(([, [, count]]) => Boolean(count)),
-				sortBy([([, [, count]]) => count, 'desc']),
+				sortBy([pget('1.1'), 'desc']),
 			),
 		};
 	}, [artifacts]);

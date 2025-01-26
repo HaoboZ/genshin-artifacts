@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import hash from 'object-hash';
-import { differenceWith } from 'remeda';
+import { differenceWith, uniqueBy } from 'remeda';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
 
@@ -67,17 +67,16 @@ const goodSlice = createSlice({
 			state.artifacts = [...state.artifacts, payload];
 		},
 		addArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
-			const map = new Map();
-			[...state.artifacts, ...payload].forEach((artifact) => {
-				const key = hash(artifact);
+			state.artifacts = uniqueBy([...state.artifacts, ...payload], (artifact) =>
+				hash(artifact, { excludeKeys: (key) => key === 'location' }),
+			);
+			state.artifacts.forEach((artifact) => {
 				const oldArtifact = state.artifacts.find(
 					({ location, slotKey }) =>
 						location === artifact.location && slotKey === artifact.slotKey,
 				);
-				if (oldArtifact) oldArtifact.location = '';
-				if (!map.has(key)) map.set(key, artifact);
+				if (oldArtifact.id !== artifact.id) oldArtifact.location = '';
 			});
-			state.artifacts = Array.from(map.values());
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
