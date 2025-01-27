@@ -15,6 +15,7 @@ import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
+import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -31,8 +32,6 @@ import {
 	FormControlLabel,
 	Grid2,
 	IconButton,
-	ListItem,
-	ListItemButton,
 	ListItemIcon,
 	MenuItem,
 	Stack,
@@ -42,6 +41,7 @@ import {
 import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatImage from '../artifactStatImage';
 import ArtifactModal from './artifactModal';
 
@@ -49,7 +49,7 @@ export default function ArtifactList({
 	artifactSet,
 	slot,
 }: {
-	artifactSet: ArtifactSetKey;
+	artifactSet?: ArtifactSetKey;
 	slot: SlotKey;
 }) {
 	const dispatch = useAppDispatch();
@@ -58,32 +58,41 @@ export default function ArtifactList({
 	const [deleteMode, setDeleteMode] = useState(false);
 	const [marked, setMarked] = useState([]);
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
-	const [filtered, setFiltered] = useState({ equipped: 0, locked: 0 });
+	const [filtered, setFiltered] = useState({
+		equipped: artifactSet ? 0 : 2,
+		locked: 0,
+		maxLevel: 0,
+	});
+	const [rarity, setRarity] = useParamState('rarity', null);
 
-	const artifacts = useArtifacts({ artifactSet, slot });
+	const artifacts = useArtifacts({ artifactSet, rarity: +rarity, slot });
 	const artifactsSorted = useMemo(
 		() =>
 			pipe(
 				artifacts,
+				filter(
+					(artifact) =>
+						(filtered.equipped
+							? Boolean(+Boolean(artifact.location) - filtered.equipped + 1)
+							: true) &&
+						(filtered.locked ? Boolean(+artifact.lock - filtered.locked + 1) : true) &&
+						(filtered.maxLevel
+							? Boolean(+(artifact.level === 20) - filtered.maxLevel + 1)
+							: true),
+				),
 				map((artifact) => ({
 					...artifact,
 					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
 					potential: artifact.location
 						? potentialStatRollPercent(builds[artifact.location], artifact)
 						: Math.max(
+								0,
 								...potentialStatRollPercents(
 									[...Object.values(builds), ...Object.values(missingArtifactSets)],
 									artifact,
 								),
 							),
 				})),
-				filter(
-					(artifact) =>
-						(filtered.equipped
-							? Boolean(+Boolean(artifact.location) - filtered.equipped + 1)
-							: true) &&
-						(filtered.locked ? Boolean(+Boolean(artifact.lock) - filtered.locked + 1) : true),
-				),
 				sortBy(
 					[
 						(artifact) =>
@@ -106,13 +115,15 @@ export default function ArtifactList({
 	return (
 		<PageSection
 			title={
-				<PageLink
-					href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(artifactSetsInfo[artifactSet].name)}`}
-					target='_blank'
-					underline='none'
-					color='textPrimary'>
-					{artifactSetsInfo[artifactSet].name}
-				</PageLink>
+				artifactSet && (
+					<PageLink
+						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(artifactSetsInfo[artifactSet].name)}`}
+						target='_blank'
+						underline='none'
+						color='textPrimary'>
+						{artifactSetsInfo[artifactSet].name}
+					</PageLink>
+				)
 			}
 			actions={
 				<Box>
@@ -157,25 +168,25 @@ export default function ArtifactList({
 				</Stack>
 				<Badge badgeContent={Object.values(filtered).filter(Boolean).length}>
 					<Dropdown button='Filter'>
-						{['equipped', 'locked'].map((filterType) => (
-							<ListItem key={filterType}>
-								<ListItemButton
-									onClick={() => {
-										filtered[filterType] = (filtered[filterType] + 1) % 3;
-										setFiltered({ ...filtered });
-									}}>
-									<ListItemIcon>
-										<Checkbox
-											checked={filtered[filterType] === 1}
-											indeterminate={filtered[filterType] === 2}
-										/>
-									</ListItemIcon>
-									{capitalCase(filterType)}
-								</ListItemButton>
-							</ListItem>
+						{['equipped', 'locked', 'maxLevel'].map((filterType) => (
+							<MenuItem
+								key={filterType}
+								onClick={() => {
+									filtered[filterType] = (filtered[filterType] + 1) % 3;
+									setFiltered({ ...filtered });
+								}}>
+								<ListItemIcon>
+									<Checkbox
+										checked={filtered[filterType] === 1}
+										indeterminate={filtered[filterType] === 2}
+									/>
+								</ListItemIcon>
+								{capitalCase(filterType)}
+							</MenuItem>
 						))}
 					</Dropdown>
 				</Badge>
+				<RarityFilter rarity={rarity} setRarity={setRarity} />
 			</Stack>
 			<Typography>
 				Great:{' '}

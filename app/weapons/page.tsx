@@ -7,8 +7,9 @@ import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { Lock as LockIcon } from '@mui/icons-material';
-import { Grid2, TextField } from '@mui/material';
+import { Grid2, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
+import RarityFilter from '../characters/rarityFilter';
 import AddWeaponModal from './modal/addWeaponModal';
 import OptimalWeaponModal from './modal/optimalWeaponModal';
 import WeaponModal from './modal/weaponModal';
@@ -19,15 +20,19 @@ export default function Weapons() {
 	const { showModal } = useModal();
 
 	const [type, setType] = useParamState<WeaponType>('type', null);
+	const [rarity, setRarity] = useParamState('rarity', null);
 
 	const [search, setSearch] = useState('');
 
-	const weapons = useWeapons({ type, search });
+	const weapons = useWeapons({ type, rarity: +rarity, search });
 
 	return (
 		<PageContainer>
 			<PageTitle>Weapons</PageTitle>
-			<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
+			<Stack direction='row' spacing={2}>
+				<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
+				<RarityFilter rarity={rarity} setRarity={setRarity} />
+			</Stack>
 			<PageSection
 				title={type || 'All'}
 				actions={[

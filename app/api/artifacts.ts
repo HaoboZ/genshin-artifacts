@@ -42,9 +42,11 @@ export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet
 
 export function useArtifacts({
 	artifactSet,
+	rarity: rarityType,
 	slot,
 }: {
 	artifactSet?: ArtifactSetKey;
+	rarity?: number;
 	slot?: SlotKey;
 }) {
 	const artifacts = useAppSelector(pget('good.artifacts'));
@@ -54,14 +56,16 @@ export function useArtifacts({
 			pipe(
 				artifacts,
 				filter(
-					({ setKey, slotKey }) =>
-						(!artifactSet || artifactSet === setKey) && (!slot || slot === slotKey),
+					({ setKey, rarity, slotKey }) =>
+						(!artifactSet || artifactSet === setKey) &&
+						(!rarityType || rarity === rarityType) &&
+						(!slot || slot === slotKey),
 				),
 				sortBy(
 					[({ setKey }) => artifactSetsInfo[setKey].group, 'desc'],
 					[pget('level'), 'desc'],
 				),
 			),
-		[artifacts, artifactSet, slot],
+		[artifacts, artifactSet, rarityType, slot],
 	);
 }

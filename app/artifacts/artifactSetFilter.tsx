@@ -23,9 +23,14 @@ export default function ArtifactSetFilter() {
 	return (
 		<Grid2 container columnSpacing={1}>
 			<Grid2>
-				<Button variant='contained' sx={{ height: 50 }} component={Link} href='/artifacts'>
-					All
-				</Button>
+				<ButtonGroup>
+					<Button sx={{ height: 50 }} component={Link} href='/artifacts'>
+						All
+					</Button>
+					<Button sx={{ height: 50 }} component={Link} href='/artifacts/all?rarity=5'>
+						Unused
+					</Button>
+				</ButtonGroup>
 			</Grid2>
 			{artifactGroups.map((artifactGroup, index) => (
 				<Grid2 key={index}>

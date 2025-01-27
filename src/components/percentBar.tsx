@@ -27,9 +27,9 @@ export default function PercentBar({ p, children }: { p: number; children?: Reac
 					borderRadius: 1,
 					[`& .${linearProgressClasses.bar}`]: {
 						borderRadius: 1,
-						backgroundColor: `hsl(${p * 120}, 50%, 50%)`,
+						bgcolor: `hsl(${p * 120}, 50%, 50%)`,
 					},
-					backgroundColor: 'initial',
+					bgcolor: 'initial',
 					border: 1,
 					borderColor: 'divider',
 				}}

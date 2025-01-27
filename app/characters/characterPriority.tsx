@@ -14,12 +14,14 @@ export default function CharacterPriority({
 	editMode,
 	element,
 	weaponType,
+	rarity,
 	owned,
 	search,
 }: {
 	editMode: boolean;
 	element: string;
 	weaponType: string;
+	rarity: number;
 	owned: boolean;
 	search: string;
 }) {
@@ -47,12 +49,13 @@ export default function CharacterPriority({
 				return (
 					(!element || character.element === element) &&
 					(!weaponType || character.weaponType === weaponType) &&
+					(!rarity || character.rarity === rarity) &&
 					(!owned || good.characters.find((c) => c.key === key)) &&
 					(!searchVal || character.name.toLowerCase().includes(searchVal))
 				);
 			}),
 		);
-	}, [characters, editMode, element, weaponType, owned, search]);
+	}, [characters, editMode, element, weaponType, rarity, owned, search]);
 
 	useEffect(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));

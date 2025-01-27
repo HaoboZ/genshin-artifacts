@@ -8,10 +8,12 @@ import { useState } from 'react';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterPriority from './characterPriority';
 import ElementFilter from './elementFilter';
+import RarityFilter from './rarityFilter';
 
 export default function Characters() {
 	const [element, setElement] = useParamState('element', null);
 	const [weaponType, setWeaponType] = useParamState('weapon', null);
+	const [rarity, setRarity] = useParamState('rarity', null);
 
 	const [search, setSearch] = useState('');
 	const [editMode, setEditMode] = useState(false);
@@ -20,21 +22,22 @@ export default function Characters() {
 	return (
 		<PageContainer>
 			<PageTitle>Characters</PageTitle>
-			<Stack>
+			<Stack direction='row' spacing={2}>
 				<ElementFilter element={element} setElement={setElement} />
 				<WeaponTypeFilter weaponType={weaponType} setWeaponType={setWeaponType} />
-				<FormControlLabel
-					control={
-						<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
-					}
-					label='Owned'
-				/>
-				<TextField
-					label='Search'
-					value={search}
-					onChange={({ target }) => setSearch(target.value)}
-				/>
+				<RarityFilter hide3 rarity={rarity} setRarity={setRarity} />
 			</Stack>
+			<FormControlLabel
+				control={
+					<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
+				}
+				label='Owned'
+			/>
+			<TextField
+				label='Search'
+				value={search}
+				onChange={({ target }) => setSearch(target.value)}
+			/>
 			<PageSection
 				actions={
 					<FormControlLabel
@@ -52,6 +55,7 @@ export default function Characters() {
 					editMode={editMode}
 					element={element}
 					weaponType={weaponType}
+					rarity={+rarity}
 					owned={owned}
 					search={search.toLowerCase()}
 				/>

@@ -18,7 +18,15 @@ export const weaponImages: Record<WeaponType, string> = {
 
 export const weaponsInfo: Record<WeaponKey, DWeapon> = data as any;
 
-export function useWeapons({ type, search }: { type?: string; search?: string }) {
+export function useWeapons({
+	type,
+	rarity: rarityType,
+	search,
+}: {
+	type?: string;
+	rarity?: number;
+	search?: string;
+}) {
 	const weapons = useAppSelector(pget('good.weapons'));
 
 	const searchVal = search.toLowerCase();
@@ -29,12 +37,13 @@ export function useWeapons({ type, search }: { type?: string; search?: string })
 				weapons,
 				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
 				filter(
-					({ weaponType, name }) =>
+					({ weaponType, rarity, name }) =>
 						(!type || weaponType === type) &&
+						(!rarityType || rarityType === rarity) &&
 						(search ? name.toLowerCase().includes(searchVal) : true),
 				),
 				sortBy([pget('rarity'), 'desc'], pget('key')),
 			),
-		[weapons, type, search],
+		[weapons, type, rarityType, search],
 	);
 }
