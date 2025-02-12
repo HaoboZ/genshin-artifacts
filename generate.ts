@@ -634,107 +634,131 @@ const artifactOrder = Object.keys(artifactLocation);
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const characters = indexBy(
-		charactersData
-			.map((character) => {
-				if (character.name === 'Aether' || character.name === 'Lumine')
-					character.name = 'Traveler';
-				const characterName = character.name.replaceAll(' ', '_');
-				const image = characterImages.find((url) => url.indexOf(characterName) !== -1);
-				if (!image && character.name !== 'Aether' && character.name !== 'Lumine')
-					console.log(characterName);
-				const talent = talents.find(({ name }) => name === character.name);
-				return {
-					key: pascalCase(character.name),
-					...pick(character, ['name', 'rarity']),
-					weaponType: character.weaponText,
-					element: character.elementText,
-					talentMaterial: talent?.costs.lvl2[1].name,
-					weeklyMaterial: talent?.costs.lvl7[3].name,
-					image,
-				};
-			})
-			.filter(pget('image')),
-		pget('key'),
-	);
+	const characters = charactersData
+		.filter(({ name }) => name !== 'Lumine')
+		.map((character) => {
+			if (character.name === 'Aether') character.name = 'Traveler';
+			const characterName = character.name.replaceAll(' ', '_');
+			const image = characterImages.find((url) => url.indexOf(characterName) !== -1);
+			if (!image) console.log(characterName);
+			const talent = talents.find(({ name }) => name === character.name);
+			return {
+				key: pascalCase(character.name),
+				...pick(character, ['name', 'rarity']),
+				weaponType: character.weaponText,
+				element: character.elementText,
+				talentMaterial: talent?.costs.lvl2[1].name,
+				weeklyMaterial: talent?.costs.lvl7[3].name,
+				image,
+			};
+		})
+		.filter(pget('image'));
 
 	const artifactsData = genshindb.artifacts('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const artifacts = indexBy(
-		artifactsData.map((artifact) => {
-			const flowerName = artifact.flower?.name.replaceAll(' ', '_').replaceAll("'", '%27');
-			const flower =
-				artifact.flower && artifactImages.find((url) => url.indexOf(flowerName) !== -1);
-			if (artifact.flower && !flower) console.log(flowerName);
-			let plumeName = artifact.plume?.name.replaceAll(' ', '_').replaceAll("'", '%27');
-			if (plumeName === 'Maiden%27s_Heart-stricken_Infatuation')
-				plumeName = 'Maiden%27s_Heart-Stricken_Infatuation';
-			const plume =
-				artifact.plume && artifactImages.find((url) => url.indexOf(plumeName) !== -1);
-			if (artifact.plume && !plume) console.log(plumeName);
-			const sandsName = artifact.sands?.name.replaceAll(' ', '_').replaceAll("'", '%27');
-			const sands =
-				artifact.sands && artifactImages.find((url) => url.indexOf(sandsName) !== -1);
-			if (artifact.sands && !sands) console.log(sandsName);
-			const gobletName = artifact.goblet?.name.replaceAll(' ', '_').replaceAll("'", '%27');
-			const goblet =
-				artifact.goblet && artifactImages.find((url) => url.indexOf(gobletName) !== -1);
-			if (artifact.goblet && !goblet) console.log(gobletName);
-			const circletName = artifact.circlet?.name.replaceAll(' ', '_').replaceAll("'", '%27');
-			const circlet =
-				artifact.circlet && artifactImages.find((url) => url.indexOf(circletName) !== -1);
-			if (artifact.circlet && !circlet) console.log(circletName);
+	const artifacts = artifactsData.map((artifact) => {
+		const flowerName = artifact.flower?.name.replaceAll(' ', '_').replaceAll("'", '%27');
+		const flower =
+			artifact.flower && artifactImages.find((url) => url.indexOf(flowerName) !== -1);
+		if (artifact.flower && !flower) console.log(flowerName);
+		let plumeName = artifact.plume?.name.replaceAll(' ', '_').replaceAll("'", '%27');
+		if (plumeName === 'Maiden%27s_Heart-stricken_Infatuation')
+			plumeName = 'Maiden%27s_Heart-Stricken_Infatuation';
+		const plume = artifact.plume && artifactImages.find((url) => url.indexOf(plumeName) !== -1);
+		if (artifact.plume && !plume) console.log(plumeName);
+		const sandsName = artifact.sands?.name.replaceAll(' ', '_').replaceAll("'", '%27');
+		const sands = artifact.sands && artifactImages.find((url) => url.indexOf(sandsName) !== -1);
+		if (artifact.sands && !sands) console.log(sandsName);
+		const gobletName = artifact.goblet?.name.replaceAll(' ', '_').replaceAll("'", '%27');
+		const goblet =
+			artifact.goblet && artifactImages.find((url) => url.indexOf(gobletName) !== -1);
+		if (artifact.goblet && !goblet) console.log(gobletName);
+		const circletName = artifact.circlet?.name.replaceAll(' ', '_').replaceAll("'", '%27');
+		const circlet =
+			artifact.circlet && artifactImages.find((url) => url.indexOf(circletName) !== -1);
+		if (artifact.circlet && !circlet) console.log(circletName);
 
-			const key = pascalCase(artifact.name.replaceAll("'", ''));
-			return {
-				key,
-				...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
-				rarity: Math.max(...artifact.rarityList),
-				order: artifactOrder.indexOf(key),
-				group: artifactLocation[key],
-				flower,
-				plume,
-				sands,
-				goblet,
-				circlet,
-			};
-		}),
-		pget('key'),
-	);
+		const key = pascalCase(artifact.name.replaceAll("'", ''));
+		return {
+			key,
+			...pick(artifact, ['name', 'effect2Pc', 'effect4Pc']),
+			rarity: Math.max(...artifact.rarityList),
+			order: artifactOrder.indexOf(key),
+			group: artifactLocation[key],
+			flower,
+			plume,
+			sands,
+			goblet,
+			circlet,
+		};
+	});
 
 	const weaponsData = genshindb.weapons('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const weapons = indexBy(
-		weaponsData
-			.filter(({ rarity }) => rarity >= 3)
-			.map((weapon) => {
-				const weaponName = weapon.name
-					.replaceAll(' ', '_')
-					.replaceAll("'", '%27')
-					.replaceAll('"', '');
-				const image = weaponImages.find((url) => url.indexOf(weaponName) !== -1);
-				if (!image && weaponName !== 'Prized_Isshin_Blade') console.log(weaponName);
+	const weapons = weaponsData
+		.filter(({ rarity }) => rarity >= 3)
+		.map((weapon) => {
+			const weaponName = weapon.name
+				.replaceAll(' ', '_')
+				.replaceAll("'", '%27')
+				.replaceAll('"', '');
+			const image = weaponImages.find((url) => url.indexOf(weaponName) !== -1);
+			if (!image && weaponName !== 'Prized_Isshin_Blade') console.log(weaponName);
 
-				return {
-					key: pascalCase(weapon.name.replaceAll("'", '')),
-					...pick(weapon, ['name', 'rarity']),
-					weaponType: weapon.weaponText,
-					image,
-				};
-			})
-			.filter(pget('image')),
-		pget('key'),
-	);
+			return {
+				key: pascalCase(weapon.name.replaceAll("'", '')),
+				...pick(weapon, ['name', 'rarity']),
+				weaponType: weapon.weaponText,
+				image,
+			};
+		})
+		.filter(pget('image'));
 
 	try {
-		writeFileSync('./app/api/elements.json', JSON.stringify(elements, null, '\t'));
-		writeFileSync('./app/api/characters.json', JSON.stringify(characters, null, '\t'));
-		writeFileSync('./app/api/artifacts.json', JSON.stringify(artifacts, null, '\t'));
-		writeFileSync('./app/api/weapons.json', JSON.stringify(weapons, null, '\t'));
+		writeFileSync('./app/api/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
+		writeFileSync(
+			'./app/api/characters.json',
+			`${JSON.stringify(indexBy(characters, pget('key')), null, '\t')}\n`,
+		);
+		writeFileSync(
+			'./src/types/character.d.ts',
+			`export type CharacterKey =${characters
+				.map(
+					({ key, name }, index) =>
+						`\n\t| '${key}'${characters.length - 1 === index ? ';' : ''} // ${name}`,
+				)
+				.join('')}\n`,
+		);
+		writeFileSync(
+			'./app/api/artifacts.json',
+			`${JSON.stringify(indexBy(artifacts, pget('key')), null, '\t')}\n`,
+		);
+		writeFileSync(
+			'./src/types/artifactSet.d.ts',
+			`export type ArtifactSetKey =${artifacts
+				.map(
+					({ key, name }, index) =>
+						`\n\t| '${key}'${artifacts.length - 1 === index ? ';' : ''} // ${name}`,
+				)
+				.join('')}\n`,
+		);
+		writeFileSync(
+			'./app/api/weapons.json',
+			`${JSON.stringify(indexBy(weapons, pget('key')), null, '\t')}\n`,
+		);
+		writeFileSync(
+			'./src/types/weapon.d.ts',
+			`export type WeaponKey =${weapons
+				.map(
+					({ key, name }, index) =>
+						`\n\t| '${key}'${weapons.length - 1 === index ? ';' : ''} // ${name}`,
+				)
+				.join('')}\n`,
+		);
 		console.log('Data successfully saved to disk');
 	} catch (error) {
 		console.log('An error has occurred ', error);
