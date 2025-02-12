@@ -23,7 +23,7 @@ export default function getArtifactSetBuild(
 	return {
 		key: 'Traveler',
 		role: 'DPS',
-		weapon: ['DullBlade'],
+		weapon: [],
 		group: 0,
 		artifact: [artifactSet],
 		mainStat: builds.reduce(
