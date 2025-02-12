@@ -98,6 +98,7 @@ const characterImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Yaoyao_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Yelan_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Yumemizuki_Mizuki_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Yun_Jin_Icon.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png',
 ];
@@ -557,6 +558,8 @@ const weaponImages = [
 	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png',
 	'https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png',
+	'https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png',
 ];
 
 const artifactLocation: Record<ArtifactSetKey, number> = {

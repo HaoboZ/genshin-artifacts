@@ -1091,6 +1091,13 @@
 		"weaponType": "Sword",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png"
 	},
+	"SunnyMorningSleepIn": {
+		"key": "SunnyMorningSleepIn",
+		"name": "Sunny Morning Sleep-In",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png"
+	},
 	"SurfsUp": {
 		"key": "SurfsUp",
 		"name": "Surf's Up",
@@ -1118,6 +1125,13 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png"
+	},
+	"TamayurateiNoOhanashi": {
+		"key": "TamayurateiNoOhanashi",
+		"name": "Tamayuratei no Ohanashi",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png"
 	},
 	"TheAlleyFlash": {
 		"key": "TheAlleyFlash",

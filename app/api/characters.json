@@ -917,6 +917,16 @@
 		"weeklyMaterial": "Dragon Lord's Crown",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png"
 	},
+	"YumemizukiMizuki": {
+		"key": "YumemizukiMizuki",
+		"name": "Yumemizuki Mizuki",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"talentMaterial": "Teachings of Transience",
+		"weeklyMaterial": "Fading Candle",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Yumemizuki_Mizuki_Icon.png"
+	},
 	"YunJin": {
 		"key": "YunJin",
 		"name": "Yun Jin",

@@ -221,6 +221,7 @@ type CharacterKey =
 	| 'Yaoyao' //Yaoyao
 	| 'Yelan' //Yelan
 	| 'Yoimiya' //Yoimiya
+	| 'YumemizukiMizuki' //Yumemizuki Mizuki
 	| 'YunJin' //Yun Jin
 	| 'Zhongli'; //Zhongli
 
@@ -391,10 +392,12 @@ type WeaponKey =
 	| 'StarcallersWatch' //Starcaller's Watch
 	| 'SturdyBone' //Sturdy Bone
 	| 'SummitShaper' //Summit Shaper
+	| 'SunnyMorningSleepIn' // Sunny Morning Sleep-In
 	| 'SurfsUp' //Surf's Up
 	| 'SwordOfDescension' //Sword of Descension
 	| 'SwordOfNarzissenkreuz' //Sword of Narzissenkreuz
 	| 'TalkingStick' //Talking Stick
+	| 'TamayurateiNoOhanashi' //Tamayuratei no Ohanashi
 	| 'TheAlleyFlash' //The Alley Flash
 	| 'TheBell' //The Bell
 	| 'TheBlackSword' //The Black Sword

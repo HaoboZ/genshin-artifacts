@@ -1623,6 +1623,23 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
+	YumemizukiMizuki: {
+		key: 'YumemizukiMizuki',
+		role: 'DPS',
+		weapon: [
+			'SunnyMorningSleepIn',
+			'AThousandFloatingDreams',
+			'WanderingEvenstar',
+			['SacrificialFragments', 'ThrillingTalesOfDragonSlayers'],
+			'HakushinRing',
+			'MagicGuide',
+			'FavoniusCodex',
+		],
+		group: 1,
+		artifact: ['ViridescentVenerer'],
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['eleMas', 'enerRech_'],
+	},
 	// Geo
 	Ningguang: {
 		key: 'Ningguang',
