@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 2/5/25
+// 2/12/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -442,7 +442,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Nahida',
 		role: 'DPS & Support',
 		weapon: [
-			'AThousandFloatingDreams',
+			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'KagurasVerity',
 			'SacrificialFragments',
 			'WanderingEvenstar',
@@ -981,7 +981,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field Aggravate DPS',
 		weapon: [
 			'KagurasVerity',
-			'AThousandFloatingDreams',
+			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'TomeOfTheEternalFlow',
 			['LostPrayerToTheSacredWinds', 'SkywardAtlas', 'TheWidsith', 'TulaytullahsRemembrance'],
 			'SolarPearl',
@@ -1379,7 +1379,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Sucrose',
 		role: 'EM Build',
 		weapon: [
-			'AThousandFloatingDreams',
+			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'WanderingEvenstar',
 			['SacrificialFragments', 'ThrillingTalesOfDragonSlayers'],
 			'HakushinRing',
@@ -1625,20 +1625,18 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	YumemizukiMizuki: {
 		key: 'YumemizukiMizuki',
-		role: 'DPS',
+		role: 'Reaction DPS',
 		weapon: [
 			'SunnyMorningSleepIn',
+			'StarcallersWatch',
 			'AThousandFloatingDreams',
-			'WanderingEvenstar',
-			['SacrificialFragments', 'ThrillingTalesOfDragonSlayers'],
-			'HakushinRing',
-			'MagicGuide',
-			'FavoniusCodex',
+			['SacrificialFragments', 'FavoniusCodex', 'FruitOfFulfillment'],
+			['HakushinRing', 'WanderingEvenstar', 'MagicGuide'],
 		],
 		group: 1,
 		artifact: ['ViridescentVenerer'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_'],
+		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['enerRech_', 'eleMas', 'critRate_'],
 	},
 	// Geo
 	Ningguang: {
@@ -1814,7 +1812,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'SkyriderSword',
 		],
 		group: 0,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'ArchaicPetra', 'NoblesseOblige'],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'ArchaicPetra', 'NoblesseOblige', 'Instructor'],
 		mainStat: {
 			sands: ['def_', 'enerRech_'],
 			goblet: 'def_',
