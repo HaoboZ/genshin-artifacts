@@ -21,7 +21,7 @@ export const missingArtifactSets: Record<string, Build> = {
 	EchoesOfAnOffering: {
 		key: 'Traveler',
 		role: 'DPS',
-		weapon: ['DullBlade'],
+		weapon: [],
 		group: 0,
 		artifact: ['EchoesOfAnOffering'],
 		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
@@ -30,7 +30,7 @@ export const missingArtifactSets: Record<string, Build> = {
 	BloodstainedChivalry: {
 		key: 'Traveler',
 		role: 'DPS',
-		weapon: ['DullBlade'],
+		weapon: [],
 		group: 0,
 		artifact: ['BloodstainedChivalry'],
 		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
