@@ -62,7 +62,7 @@
 		"eslint-plugin-prettier": "5.2.3",
 		"eslint-plugin-react": "7.37.4",
 		"genshin-db": "5.1.12",
-		"globals": "15.15.0",
+		"globals": "16.0.0",
 		"mirada": "0.0.15",
 		"prettier": "3.5.1",
 		"sass": "1.85.0",
