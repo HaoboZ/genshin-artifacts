@@ -3249,7 +3249,7 @@ __metadata:
     next: "npm:15.1.7"
     notistack: "npm:3.0.2"
     object-hash: "npm:3.0.0"
-    pixelmatch: "npm:6.0.0"
+    pixelmatch: "npm:7.1.0"
     prettier: "npm:3.5.1"
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
@@ -4915,14 +4915,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pixelmatch@npm:6.0.0":
-  version: 6.0.0
-  resolution: "pixelmatch@npm:6.0.0"
+"pixelmatch@npm:7.1.0":
+  version: 7.1.0
+  resolution: "pixelmatch@npm:7.1.0"
   dependencies:
     pngjs: "npm:^7.0.0"
   bin:
     pixelmatch: bin/pixelmatch
-  checksum: 10c0/036b2ce0e5a2824d8da1a7f726d36f53fa7619d3e5bca662c955182f8dedafd69b8c7deb986f8d01143518bacef7d599f9154a9163f1e7af882fea5cf7182359
+  checksum: 10c0/ff069f92edaa841ac9b58b0ab74e1afa1f3b5e770eea0218c96bac1da4e752f5f6b79a0f9c4ba6b02afb955d39b8c78bcc3cc884f8122b67a1f2efbbccbe1a73
   languageName: node
   linkType: hard
 

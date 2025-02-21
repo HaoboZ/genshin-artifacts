@@ -39,7 +39,7 @@
 		"next": "15.1.7",
 		"notistack": "3.0.2",
 		"object-hash": "3.0.0",
-		"pixelmatch": "6.0.0",
+		"pixelmatch": "7.1.0",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
 		"react-redux": "9.2.0",
