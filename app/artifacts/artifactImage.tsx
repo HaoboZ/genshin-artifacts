@@ -33,8 +33,16 @@ export default function ArtifactImage({
 					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}
 				/>
 				{artifact && (
-					<Typography sx={{ position: 'absolute', top: 0, left: 0 }}>
-						&nbsp;{artifact.level}
+					<Typography
+						sx={{
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							bgcolor: 'white',
+							borderRadius: 1,
+							opacity: 0.75,
+						}}>
+						&nbsp;{artifact.level}&nbsp;
 					</Typography>
 				)}
 				{children}

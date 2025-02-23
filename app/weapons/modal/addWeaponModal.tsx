@@ -4,30 +4,24 @@ import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
-import type { WeaponKey } from '@/src/types/good';
-import {
-	Autocomplete,
-	Button,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	Grid2,
-	Stack,
-	TextField,
-} from '@mui/material';
+import type { IWeapon, WeaponKey } from '@/src/types/good';
+import { Autocomplete, DialogTitle, Grid2, TextField } from '@mui/material';
+import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
-import WeaponImage from '../weaponImage';
+import WeaponForm from './weaponForm';
 
 export default function AddWeaponModal() {
 	const dispatch = useAppDispatch();
 	const priority = useAppSelector(pget('main.priority'));
+	const { closeModal } = useModalControls();
 
 	const [weapon, setWeapon] = useState<WeaponKey>(null);
 
@@ -54,50 +48,46 @@ export default function AddWeaponModal() {
 	return (
 		<DialogWrapper>
 			<DialogTitle>Add Weapon</DialogTitle>
-			<DialogContent>
-				<Stack spacing={1}>
-					<Autocomplete
-						fullWidth
-						autoHighlight
-						sx={{ pt: 1 }}
-						renderInput={(params) => <TextField {...params} label='Select Weapon' />}
-						options={Object.keys(weaponsInfo)}
-						getOptionLabel={(key) => weaponsInfo[key].name}
-						value={weapon as any}
-						onChange={(e, value) => setWeapon(value as any as WeaponKey)}
-					/>
-					{weapon && <WeaponImage weapon={weaponsInfo[weapon]} />}
-					<Grid2 container spacing={1}>
-						{characters.map(({ build, buildIndex }, index) => (
-							<Grid2 key={index}>
-								<CharacterImage character={charactersInfo[build.key]} />
-								<PercentBar p={1 - buildIndex / build.weapon.length} />
-							</Grid2>
-						))}
-					</Grid2>
-				</Stack>
-			</DialogContent>
-			{weapon && (
-				<DialogActions>
-					<Button
-						variant='contained'
-						onClick={() => {
-							dispatch(
-								goodActions.addWeapon({
-									id: nanoid(),
-									key: weapon,
-									level: 90,
-									ascension: 6,
-									refinement: 5,
-									location: '',
-									lock: false,
-								}),
-							);
-						}}>
-						Confirm
-					</Button>
-				</DialogActions>
-			)}
+			<Formik<IWeapon>
+				initialValues={{
+					id: nanoid(),
+					key: '',
+					level: 1,
+					ascension: 0,
+					refinement: 1,
+					location: '',
+					lock: false,
+				}}
+				onSubmit={(weapon) => {
+					dispatch(goodActions.addWeapon(weapon));
+					closeModal();
+				}}>
+				{({ values, setFieldValue }) => (
+					<WeaponForm>
+						<Autocomplete
+							fullWidth
+							autoHighlight
+							sx={{ pt: 1 }}
+							renderInput={(params) => <TextField {...params} label='Select Weapon' />}
+							options={Object.keys(weaponsInfo)}
+							getOptionLabel={(key) => weaponsInfo[key].name}
+							value={weapon as any}
+							onChange={(e, value) => {
+								setWeapon(value);
+								setFieldValue('key', value);
+							}}
+						/>
+						<Grid2 container spacing={1}>
+							{characters.map(({ build, buildIndex }, index) => (
+								<Grid2 key={index}>
+									<CharacterImage character={charactersInfo[build.key]} />
+									<PercentBar p={1 - buildIndex / build.weapon.length} />
+								</Grid2>
+							))}
+						</Grid2>
+					</WeaponForm>
+				)}
+			</Formik>
 		</DialogWrapper>
 	);
 }

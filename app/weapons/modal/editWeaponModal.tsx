@@ -11,16 +11,17 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogContent, DialogTitle, FormControlLabel, Grid2, Stack, Switch } from '@mui/material';
+import { Box, Button, DialogTitle, FormControlLabel, Grid2, Stack, Switch } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
-import { useMemo, useState } from 'react';
+import { Formik } from 'formik';
+import { Fragment, useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
-import WeaponActions from './weaponActions';
+import WeaponForm from './weaponForm';
 
-export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
+export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 	const dispatch = useAppDispatch();
 	const weapons = useAppSelector(pget('good.weapons'));
 	const priority = useAppSelector(pget('main.priority'));
@@ -46,7 +47,6 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 				};
 			}),
 			filter(({ build, buildIndex }) => {
-				if (weapon.location === build.key) return false;
 				if (checked) return true;
 				return buildIndex !== build.weapon.length;
 			}),
@@ -71,59 +71,72 @@ export default function WeaponModal({ weapon }: { weapon: IWeapon }) {
 					{weaponsInfo[weapon.key].name}
 				</PageLink>
 			</DialogTitle>
-			<DialogContent>
-				<Stack spacing={1}>
-					<WeaponActions weapon={weapon} />
-					{weapon.location && (
-						<Stack direction='row' spacing={1}>
-							<CharacterImage character={charactersInfo[weapon.location]} />
-							<CharacterWeaponTier build={builds[weapon.location]} />
-						</Stack>
-					)}
-					<FormControlLabel
-						control={
-							<Switch
-								sx={{ ml: 0 }}
-								checked={checked}
-								onChange={({ target }) => setChecked(target.checked)}
-							/>
-						}
-						label='All Characters'
-					/>
-					<Grid2 container spacing={1}>
-						{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
-							<Grid2 key={index}>
-								<CharacterImage
-									character={charactersInfo[build.key]}
-									sx={{ ':hover': { cursor: 'pointer' } }}
-									onClick={() => {
-										if (
-											!confirm(`Give this weapon to ${charactersInfo[build.key].name}?`)
-										)
-											return;
-										dispatch(goodActions.giveWeapon([build.key, weapon]));
-										closeModal();
-									}}>
+			<Formik<IWeapon>
+				initialValues={weapon}
+				onSubmit={(weapon) => {
+					dispatch(goodActions.editWeapon(weapon));
+					closeModal();
+				}}>
+				{({ values, setFieldValue }) => (
+					<WeaponForm deleteButton>
+						{values.location && (
+							<Fragment>
+								<Box>
+									<Button variant='outlined' onClick={() => setFieldValue('location', '')}>
+										Remove
+									</Button>
+								</Box>
+								<Stack direction='row' spacing={1}>
+									<CharacterImage character={charactersInfo[values.location]} />
+									<CharacterWeaponTier build={builds[values.location]} />
+								</Stack>
+							</Fragment>
+						)}
+						<FormControlLabel
+							control={
+								<Switch
+									sx={{ ml: 0 }}
+									checked={checked}
+									onChange={({ target }) => setChecked(target.checked)}
+								/>
+							}
+							label='All Characters'
+						/>
+						<Grid2 container spacing={1}>
+							{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
+								<Grid2 key={index}>
+									<CharacterImage
+										character={charactersInfo[build.key]}
+										sx={{
+											':hover': { cursor: 'pointer' },
+											'border': build.key === values.location ? 2 : 0,
+											'borderColor': 'red',
+										}}
+										onClick={() => setFieldValue('location', build.key)}>
+										{oldWeapon && (
+											<WeaponImage
+												hideStats
+												weapon={oldWeapon}
+												size={50}
+												sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
+											/>
+										)}
+									</CharacterImage>
+									<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
 									{oldWeapon && (
-										<WeaponImage
-											weapon={weaponsInfo[oldWeapon.key]}
-											size={50}
-											sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
-										/>
+										<PercentBar
+											p={
+												oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0
+											}>
+											Current %p
+										</PercentBar>
 									)}
-								</CharacterImage>
-								<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
-								{oldWeapon && (
-									<PercentBar
-										p={oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0}>
-										Current %p
-									</PercentBar>
-								)}
-							</Grid2>
-						))}
-					</Grid2>
-				</Stack>
-			</DialogContent>
+								</Grid2>
+							))}
+						</Grid2>
+					</WeaponForm>
+				)}
+			</Formik>
 		</DialogWrapper>
 	);
 }

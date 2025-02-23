@@ -1,6 +1,5 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import type { IWeapon } from '@/src/types/good';
@@ -27,7 +26,7 @@ export default function WeaponCharacterImage({
 
 	return (
 		<Box sx={{ width: size }}>
-			<WeaponImage weapon={weaponsInfo[weapon.key]} {...props}>
+			<WeaponImage weapon={weapon} {...props}>
 				{character && (
 					<CharacterImage
 						character={character}

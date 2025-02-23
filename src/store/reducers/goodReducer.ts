@@ -191,11 +191,6 @@ const goodSlice = createSlice({
 				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
 			}
 		},
-		removeWeapon(state, { payload }: PayloadAction<IWeapon>) {
-			const index = state.weapons.findIndex(({ id }) => id === payload.id);
-			state.weapons = [...state.weapons];
-			if (index !== -1) state.weapons[index] = { ...payload, location: '' };
-		},
 		deleteWeapon(state, { payload }: PayloadAction<IWeapon>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload.id);
 			if (index !== -1) state.weapons = state.weapons.filter((_, i) => i !== index);

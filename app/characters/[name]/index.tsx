@@ -123,10 +123,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 								<CardContent>
 									<Grid2 container spacing={1}>
 										<Grid2 size='auto'>
-											<WeaponImage
-												weapon={weaponsInfo[weapon?.key]}
-												type={characterData.weaponType}
-											/>
+											<WeaponImage weapon={weapon} type={characterData.weaponType} />
 										</Grid2>
 										{weapon && (
 											<Fragment>

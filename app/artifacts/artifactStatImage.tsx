@@ -30,7 +30,16 @@ export default function ArtifactStatImage({
 								/>
 							)}
 							{artifact?.lock && (
-								<LockIcon sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }} />
+								<LockIcon
+									sx={{
+										position: 'absolute',
+										top: 0,
+										right: 0,
+										bgcolor: 'white',
+										borderRadius: 1,
+										opacity: 0.75,
+									}}
+								/>
 							)}
 						</ArtifactImage>
 					</Grid2>

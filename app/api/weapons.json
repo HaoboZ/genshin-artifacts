@@ -4,1371 +4,1567 @@
 		"name": "Absolution",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Absolution_2nd.png"
 	},
 	"Akuoumaru": {
 		"key": "Akuoumaru",
 		"name": "Akuoumaru",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Akuoumaru_2nd.png"
 	},
 	"AlleyHunter": {
 		"key": "AlleyHunter",
 		"name": "Alley Hunter",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Alley_Hunter_2nd.png"
 	},
 	"AmenomaKageuchi": {
 		"key": "AmenomaKageuchi",
 		"name": "Amenoma Kageuchi",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Weapon_Amenoma_Kageuchi_2nd.png"
 	},
 	"AmosBow": {
 		"key": "AmosBow",
 		"name": "Amos' Bow",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0d/Weapon_Amos%27_Bow_2nd.png"
 	},
 	"AquaSimulacra": {
 		"key": "AquaSimulacra",
 		"name": "Aqua Simulacra",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Aqua_Simulacra_2nd.png"
 	},
 	"AquilaFavonia": {
 		"key": "AquilaFavonia",
 		"name": "Aquila Favonia",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Aquila_Favonia_2nd.png"
 	},
 	"AshGravenDrinkingHorn": {
 		"key": "AshGravenDrinkingHorn",
 		"name": "Ash-Graven Drinking Horn",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Weapon_Ash-Graven_Drinking_Horn_2nd.png"
 	},
 	"AstralVulturesCrimsonPlumage": {
 		"key": "AstralVulturesCrimsonPlumage",
 		"name": "Astral Vulture's Crimson Plumage",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Astral_Vulture%27s_Crimson_Plumage_2nd.png"
 	},
 	"AThousandBlazingSuns": {
 		"key": "AThousandBlazingSuns",
 		"name": "A Thousand Blazing Suns",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_A_Thousand_Blazing_Suns_2nd.png"
 	},
 	"AThousandFloatingDreams": {
 		"key": "AThousandFloatingDreams",
 		"name": "A Thousand Floating Dreams",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Weapon_A_Thousand_Floating_Dreams_2nd.png"
 	},
 	"BalladOfTheBoundlessBlue": {
 		"key": "BalladOfTheBoundlessBlue",
 		"name": "Ballad of the Boundless Blue",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Ballad_of_the_Boundless_Blue.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Ballad_of_the_Boundless_Blue.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Ballad_of_the_Boundless_Blue_2nd.png"
 	},
 	"BalladOfTheFjords": {
 		"key": "BalladOfTheFjords",
 		"name": "Ballad of the Fjords",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Ballad_of_the_Fjords.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Ballad_of_the_Fjords.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_Ballad_of_the_Fjords_2nd.png"
 	},
 	"BeaconOfTheReedSea": {
 		"key": "BeaconOfTheReedSea",
 		"name": "Beacon of the Reed Sea",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Beacon_of_the_Reed_Sea_2nd.png"
 	},
 	"BlackcliffAgate": {
 		"key": "BlackcliffAgate",
 		"name": "Blackcliff Agate",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Blackcliff_Agate.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Blackcliff_Agate.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Weapon_Blackcliff_Agate_2nd.png"
 	},
 	"BlackcliffLongsword": {
 		"key": "BlackcliffLongsword",
 		"name": "Blackcliff Longsword",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Blackcliff_Longsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Blackcliff_Longsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/15/Weapon_Blackcliff_Longsword_2nd.png"
 	},
 	"BlackcliffPole": {
 		"key": "BlackcliffPole",
 		"name": "Blackcliff Pole",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Weapon_Blackcliff_Pole.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Weapon_Blackcliff_Pole.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Blackcliff_Pole_2nd.png"
 	},
 	"BlackcliffSlasher": {
 		"key": "BlackcliffSlasher",
 		"name": "Blackcliff Slasher",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Blackcliff_Slasher.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Blackcliff_Slasher.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Blackcliff_Slasher_2nd.png"
 	},
 	"BlackcliffWarbow": {
 		"key": "BlackcliffWarbow",
 		"name": "Blackcliff Warbow",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Blackcliff_Warbow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Blackcliff_Warbow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Blackcliff_Warbow_2nd.png"
 	},
 	"BlackTassel": {
 		"key": "BlackTassel",
 		"name": "Black Tassel",
 		"rarity": 3,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Weapon_Black_Tassel_2nd.png"
 	},
 	"BloodtaintedGreatsword": {
 		"key": "BloodtaintedGreatsword",
 		"name": "Bloodtainted Greatsword",
 		"rarity": 3,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Bloodtainted_Greatsword_2nd.png"
 	},
 	"CalamityOfEshu": {
 		"key": "CalamityOfEshu",
 		"name": "Calamity of Eshu",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Calamity_of_Eshu_2nd.png"
 	},
 	"CalamityQueller": {
 		"key": "CalamityQueller",
 		"name": "Calamity Queller",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Weapon_Calamity_Queller_2nd.png"
 	},
 	"CashflowSupervision": {
 		"key": "CashflowSupervision",
 		"name": "Cashflow Supervision",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Cashflow_Supervision_2nd.png"
 	},
 	"ChainBreaker": {
 		"key": "ChainBreaker",
 		"name": "Chain Breaker",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/72/Weapon_Chain_Breaker_2nd.png"
 	},
 	"CinnabarSpindle": {
 		"key": "CinnabarSpindle",
 		"name": "Cinnabar Spindle",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Cinnabar_Spindle_2nd.png"
 	},
 	"Cloudforged": {
 		"key": "Cloudforged",
 		"name": "Cloudforged",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Cloudforged_2nd.png"
 	},
 	"CompoundBow": {
 		"key": "CompoundBow",
 		"name": "Compound Bow",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Compound_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Compound_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Weapon_Compound_Bow_2nd.png"
 	},
 	"CoolSteel": {
 		"key": "CoolSteel",
 		"name": "Cool Steel",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Weapon_Cool_Steel_2nd.png"
 	},
 	"CranesEchoingCall": {
 		"key": "CranesEchoingCall",
 		"name": "Crane's Echoing Call",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Crane%27s_Echoing_Call_2nd.png"
 	},
 	"CrescentPike": {
 		"key": "CrescentPike",
 		"name": "Crescent Pike",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Crescent_Pike_2nd.png"
 	},
 	"CrimsonMoonsSemblance": {
 		"key": "CrimsonMoonsSemblance",
 		"name": "Crimson Moon's Semblance",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Crimson_Moon%27s_Semblance_2nd.png"
 	},
 	"DarkIronSword": {
 		"key": "DarkIronSword",
 		"name": "Dark Iron Sword",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Dark_Iron_Sword_2nd.png"
 	},
 	"Deathmatch": {
 		"key": "Deathmatch",
 		"name": "Deathmatch",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Deathmatch.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Deathmatch.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Deathmatch_2nd.png"
 	},
 	"DebateClub": {
 		"key": "DebateClub",
 		"name": "Debate Club",
 		"rarity": 3,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Weapon_Debate_Club_2nd.png"
 	},
 	"DialoguesOfTheDesertSages": {
 		"key": "DialoguesOfTheDesertSages",
 		"name": "Dialogues of the Desert Sages",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Dialogues_of_the_Desert_Sages_2nd.png"
 	},
 	"DodocoTales": {
 		"key": "DodocoTales",
 		"name": "Dodoco Tales",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Dodoco_Tales.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Dodoco_Tales.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Dodoco_Tales_2nd.png"
 	},
 	"DragonsBane": {
 		"key": "DragonsBane",
 		"name": "Dragon's Bane",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Dragon%27s_Bane.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Dragon%27s_Bane.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Dragon%27s_Bane_2nd.png"
 	},
 	"DragonspineSpear": {
 		"key": "DragonspineSpear",
 		"name": "Dragonspine Spear",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/fb/Weapon_Dragonspine_Spear_2nd.png"
 	},
 	"EarthShaker": {
 		"key": "EarthShaker",
 		"name": "Earth Shaker",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Earth_Shaker_2nd.png"
 	},
 	"ElegyForTheEnd": {
 		"key": "ElegyForTheEnd",
 		"name": "Elegy for the End",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Elegy_for_the_End_2nd.png"
 	},
 	"EmeraldOrb": {
 		"key": "EmeraldOrb",
 		"name": "Emerald Orb",
 		"rarity": 3,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Emerald_Orb.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Emerald_Orb.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Weapon_Emerald_Orb_2nd.png"
 	},
 	"EndOfTheLine": {
 		"key": "EndOfTheLine",
 		"name": "End of the Line",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_End_of_the_Line.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_End_of_the_Line.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_End_of_the_Line_2nd.png"
 	},
 	"EngulfingLightning": {
 		"key": "EngulfingLightning",
 		"name": "Engulfing Lightning",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Engulfing_Lightning_2nd.png"
 	},
 	"EverlastingMoonglow": {
 		"key": "EverlastingMoonglow",
 		"name": "Everlasting Moonglow",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Everlasting_Moonglow_2nd.png"
 	},
 	"EyeOfPerception": {
 		"key": "EyeOfPerception",
 		"name": "Eye of Perception",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Eye_of_Perception.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Eye_of_Perception.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Weapon_Eye_of_Perception_2nd.png"
 	},
 	"FadingTwilight": {
 		"key": "FadingTwilight",
 		"name": "Fading Twilight",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Weapon_Fading_Twilight_2nd.png"
 	},
 	"FangOfTheMountainKing": {
 		"key": "FangOfTheMountainKing",
 		"name": "Fang of the Mountain King",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Fang_of_the_Mountain_King_2nd.png"
 	},
 	"FavoniusCodex": {
 		"key": "FavoniusCodex",
 		"name": "Favonius Codex",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/36/Weapon_Favonius_Codex.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/36/Weapon_Favonius_Codex.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Favonius_Codex_2nd.png"
 	},
 	"FavoniusGreatsword": {
 		"key": "FavoniusGreatsword",
 		"name": "Favonius Greatsword",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Favonius_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Favonius_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Favonius_Greatsword_2nd.png"
 	},
 	"FavoniusLance": {
 		"key": "FavoniusLance",
 		"name": "Favonius Lance",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Favonius_Lance.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Favonius_Lance.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Favonius_Lance_2nd.png"
 	},
 	"FavoniusSword": {
 		"key": "FavoniusSword",
 		"name": "Favonius Sword",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Favonius_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Favonius_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Favonius_Sword_2nd.png"
 	},
 	"FavoniusWarbow": {
 		"key": "FavoniusWarbow",
 		"name": "Favonius Warbow",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Favonius_Warbow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Favonius_Warbow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Weapon_Favonius_Warbow_2nd.png"
 	},
 	"FerrousShadow": {
 		"key": "FerrousShadow",
 		"name": "Ferrous Shadow",
 		"rarity": 3,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Ferrous_Shadow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Ferrous_Shadow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Ferrous_Shadow_2nd.png"
 	},
 	"FesteringDesire": {
 		"key": "FesteringDesire",
 		"name": "Festering Desire",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/70/Weapon_Festering_Desire.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/70/Weapon_Festering_Desire.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Weapon_Festering_Desire_2nd.png"
 	},
 	"FilletBlade": {
 		"key": "FilletBlade",
 		"name": "Fillet Blade",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Fillet_Blade.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Fillet_Blade.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Weapon_Fillet_Blade_2nd.png"
 	},
 	"FinaleOfTheDeep": {
 		"key": "FinaleOfTheDeep",
 		"name": "Finale of the Deep",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Weapon_Finale_of_the_Deep.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Weapon_Finale_of_the_Deep.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Weapon_Finale_of_the_Deep_2nd.png"
 	},
 	"FleuveCendreFerryman": {
 		"key": "FleuveCendreFerryman",
 		"name": "Fleuve Cendre Ferryman",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Fleuve_Cendre_Ferryman_2nd.png"
 	},
 	"FlowerWreathedFeathers": {
 		"key": "FlowerWreathedFeathers",
 		"name": "Flower-Wreathed Feathers",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Flower-Wreathed_Feathers_2nd.png"
 	},
 	"FlowingPurity": {
 		"key": "FlowingPurity",
 		"name": "Flowing Purity",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_Flowing_Purity_2nd.png"
 	},
 	"FluteOfEzpitzal": {
 		"key": "FluteOfEzpitzal",
 		"name": "Flute of Ezpitzal",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/47/Weapon_Flute_of_Ezpitzal_2nd.png"
 	},
 	"FootprintOfTheRainbow": {
 		"key": "FootprintOfTheRainbow",
 		"name": "Footprint of the Rainbow",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Weapon_Footprint_of_the_Rainbow_2nd.png"
 	},
 	"ForestRegalia": {
 		"key": "ForestRegalia",
 		"name": "Forest Regalia",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Forest_Regalia.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Forest_Regalia.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Forest_Regalia_2nd.png"
 	},
 	"FreedomSworn": {
 		"key": "FreedomSworn",
 		"name": "Freedom-Sworn",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Freedom-Sworn.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Freedom-Sworn.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Freedom-Sworn_2nd.png"
 	},
 	"Frostbearer": {
 		"key": "Frostbearer",
 		"name": "Frostbearer",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Frostbearer_2nd.png"
 	},
 	"FruitfulHook": {
 		"key": "FruitfulHook",
 		"name": "Fruitful Hook",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Weapon_Fruitful_Hook_2nd.png"
 	},
 	"FruitOfFulfillment": {
 		"key": "FruitOfFulfillment",
 		"name": "Fruit of Fulfillment",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Fruit_of_Fulfillment.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Fruit_of_Fulfillment.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Fruit_of_Fulfillment_2nd.png"
 	},
 	"HakushinRing": {
 		"key": "HakushinRing",
 		"name": "Hakushin Ring",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Hakushin_Ring.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Hakushin_Ring.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Hakushin_Ring_2nd.png"
 	},
 	"Halberd": {
 		"key": "Halberd",
 		"name": "Halberd",
 		"rarity": 3,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Halberd.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Halberd.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Halberd_2nd.png"
 	},
 	"Hamayumi": {
 		"key": "Hamayumi",
 		"name": "Hamayumi",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Weapon_Hamayumi.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Weapon_Hamayumi.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Weapon_Hamayumi_2nd.png"
 	},
 	"HaranGeppakuFutsu": {
 		"key": "HaranGeppakuFutsu",
 		"name": "Haran Geppaku Futsu",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Haran_Geppaku_Futsu.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Haran_Geppaku_Futsu.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Haran_Geppaku_Futsu_2nd.png"
 	},
 	"HarbingerOfDawn": {
 		"key": "HarbingerOfDawn",
 		"name": "Harbinger of Dawn",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Harbinger_of_Dawn_2nd.png"
 	},
 	"HuntersPath": {
 		"key": "HuntersPath",
 		"name": "Hunter's Path",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Hunter%27s_Path.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Hunter%27s_Path.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Hunter%27s_Path_2nd.png"
 	},
 	"IbisPiercer": {
 		"key": "IbisPiercer",
 		"name": "Ibis Piercer",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Weapon_Ibis_Piercer_2nd.png"
 	},
 	"IronSting": {
 		"key": "IronSting",
 		"name": "Iron Sting",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Iron_Sting.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Iron_Sting.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_Iron_Sting_2nd.png"
 	},
 	"JadefallsSplendor": {
 		"key": "JadefallsSplendor",
 		"name": "Jadefall's Splendor",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Jadefall%27s_Splendor.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Jadefall%27s_Splendor.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Jadefall%27s_Splendor_2nd.png"
 	},
 	"KagotsurubeIsshin": {
 		"key": "KagotsurubeIsshin",
 		"name": "Kagotsurube Isshin",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Weapon_Kagotsurube_Isshin.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Weapon_Kagotsurube_Isshin.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/07/Weapon_Kagotsurube_Isshin_2nd.png"
 	},
 	"KagurasVerity": {
 		"key": "KagurasVerity",
 		"name": "Kagura's Verity",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Weapon_Kagura%27s_Verity.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Weapon_Kagura%27s_Verity.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Kagura%27s_Verity_2nd.png"
 	},
 	"KatsuragikiriNagamasa": {
 		"key": "KatsuragikiriNagamasa",
 		"name": "Katsuragikiri Nagamasa",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Katsuragikiri_Nagamasa.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Katsuragikiri_Nagamasa.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Weapon_Katsuragikiri_Nagamasa_2nd.png"
 	},
 	"KeyOfKhajNisut": {
 		"key": "KeyOfKhajNisut",
 		"name": "Key of Khaj-Nisut",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Key_of_Khaj-Nisut.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Key_of_Khaj-Nisut.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Key_of_Khaj-Nisut_2nd.png"
 	},
 	"KingsSquire": {
 		"key": "KingsSquire",
 		"name": "King's Squire",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_King%27s_Squire.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_King%27s_Squire.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_King%27s_Squire_2nd.png"
 	},
 	"KitainCrossSpear": {
 		"key": "KitainCrossSpear",
 		"name": "Kitain Cross Spear",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/13/Weapon_Kitain_Cross_Spear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/13/Weapon_Kitain_Cross_Spear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Kitain_Cross_Spear_2nd.png"
 	},
 	"LightOfFoliarIncision": {
 		"key": "LightOfFoliarIncision",
 		"name": "Light of Foliar Incision",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Light_of_Foliar_Incision.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Light_of_Foliar_Incision.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Weapon_Light_of_Foliar_Incision_2nd.png"
 	},
 	"LionsRoar": {
 		"key": "LionsRoar",
 		"name": "Lion's Roar",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Lion%27s_Roar.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Lion%27s_Roar.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Lion%27s_Roar_2nd.png"
 	},
 	"LithicBlade": {
 		"key": "LithicBlade",
 		"name": "Lithic Blade",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Lithic_Blade.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Lithic_Blade.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Lithic_Blade_2nd.png"
 	},
 	"LithicSpear": {
 		"key": "LithicSpear",
 		"name": "Lithic Spear",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Lithic_Spear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Lithic_Spear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Lithic_Spear_2nd.png"
 	},
 	"LostPrayerToTheSacredWinds": {
 		"key": "LostPrayerToTheSacredWinds",
 		"name": "Lost Prayer to the Sacred Winds",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Weapon_Lost_Prayer_to_the_Sacred_Winds_2nd.png"
 	},
 	"LumidouceElegy": {
 		"key": "LumidouceElegy",
 		"name": "Lumidouce Elegy",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Lumidouce_Elegy_2nd.png"
 	},
 	"LuxuriousSeaLord": {
 		"key": "LuxuriousSeaLord",
 		"name": "Luxurious Sea-Lord",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Luxurious_Sea-Lord.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Luxurious_Sea-Lord.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Weapon_Luxurious_Sea-Lord_2nd.png"
 	},
 	"MagicGuide": {
 		"key": "MagicGuide",
 		"name": "Magic Guide",
 		"rarity": 3,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Magic_Guide.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Magic_Guide.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Magic_Guide_2nd.png"
 	},
 	"MailedFlower": {
 		"key": "MailedFlower",
 		"name": "Mailed Flower",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Mailed_Flower.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Mailed_Flower.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Mailed_Flower_2nd.png"
 	},
 	"MakhairaAquamarine": {
 		"key": "MakhairaAquamarine",
 		"name": "Makhaira Aquamarine",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Makhaira_Aquamarine.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Makhaira_Aquamarine.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Weapon_Makhaira_Aquamarine_2nd.png"
 	},
 	"MappaMare": {
 		"key": "MappaMare",
 		"name": "Mappa Mare",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Mappa_Mare.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Mappa_Mare.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Mappa_Mare_2nd.png"
 	},
 	"MemoryOfDust": {
 		"key": "MemoryOfDust",
 		"name": "Memory of Dust",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Memory_of_Dust.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Memory_of_Dust.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Memory_of_Dust_2nd.png"
 	},
 	"Messenger": {
 		"key": "Messenger",
 		"name": "Messenger",
 		"rarity": 3,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Messenger.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Messenger.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/db/Weapon_Messenger_2nd.png"
 	},
 	"MissiveWindspear": {
 		"key": "MissiveWindspear",
 		"name": "Missive Windspear",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Weapon_Missive_Windspear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Weapon_Missive_Windspear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Missive_Windspear_2nd.png"
 	},
 	"MistsplitterReforged": {
 		"key": "MistsplitterReforged",
 		"name": "Mistsplitter Reforged",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Mistsplitter_Reforged.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Mistsplitter_Reforged.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Mistsplitter_Reforged_2nd.png"
 	},
 	"MitternachtsWaltz": {
 		"key": "MitternachtsWaltz",
 		"name": "Mitternachts Waltz",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Mitternachts_Waltz.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Mitternachts_Waltz.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_Mitternachts_Waltz_2nd.png"
 	},
 	"Moonpiercer": {
 		"key": "Moonpiercer",
 		"name": "Moonpiercer",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Moonpiercer_2nd.png"
 	},
 	"MountainBracingBolt": {
 		"key": "MountainBracingBolt",
 		"name": "Mountain-Bracing Bolt",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Mountain-Bracing_Bolt_2nd.png"
 	},
 	"MouunsMoon": {
 		"key": "MouunsMoon",
 		"name": "Mouun's Moon",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/42/Weapon_Mouun%27s_Moon.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/42/Weapon_Mouun%27s_Moon.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Mouun%27s_Moon_2nd.png"
 	},
 	"OathswornEye": {
 		"key": "OathswornEye",
 		"name": "Oathsworn Eye",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Weapon_Oathsworn_Eye_2nd.png"
 	},
 	"OtherworldlyStory": {
 		"key": "OtherworldlyStory",
 		"name": "Otherworldly Story",
 		"rarity": 3,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Weapon_Otherworldly_Story_2nd.png"
 	},
 	"PeakPatrolSong": {
 		"key": "PeakPatrolSong",
 		"name": "Peak Patrol Song",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Weapon_Peak_Patrol_Song_2nd.png"
 	},
 	"PolarStar": {
 		"key": "PolarStar",
 		"name": "Polar Star",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Polar_Star.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Polar_Star.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Polar_Star_2nd.png"
 	},
 	"PortablePowerSaw": {
 		"key": "PortablePowerSaw",
 		"name": "Portable Power Saw",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Portable_Power_Saw.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Portable_Power_Saw.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Portable_Power_Saw_2nd.png"
 	},
 	"Predator": {
 		"key": "Predator",
 		"name": "Predator",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Predator.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Predator.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/48/Weapon_Predator_2nd.png"
 	},
 	"PrimordialJadeCutter": {
 		"key": "PrimordialJadeCutter",
 		"name": "Primordial Jade Cutter",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Primordial_Jade_Cutter.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Primordial_Jade_Cutter.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Weapon_Primordial_Jade_Cutter_2nd.png"
 	},
 	"PrimordialJadeWingedSpear": {
 		"key": "PrimordialJadeWingedSpear",
 		"name": "Primordial Jade Winged-Spear",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/80/Weapon_Primordial_Jade_Winged-Spear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/80/Weapon_Primordial_Jade_Winged-Spear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Weapon_Primordial_Jade_Winged-Spear_2nd.png"
 	},
 	"ProspectorsDrill": {
 		"key": "ProspectorsDrill",
 		"name": "Prospector's Drill",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a9/Weapon_Prospector%27s_Drill_2nd.png"
 	},
 	"PrototypeAmber": {
 		"key": "PrototypeAmber",
 		"name": "Prototype Amber",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Prototype_Amber.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Prototype_Amber.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Weapon_Prototype_Amber_2nd.png"
 	},
 	"PrototypeArchaic": {
 		"key": "PrototypeArchaic",
 		"name": "Prototype Archaic",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Prototype_Archaic.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Prototype_Archaic.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Prototype_Archaic_2nd.png"
 	},
 	"PrototypeCrescent": {
 		"key": "PrototypeCrescent",
 		"name": "Prototype Crescent",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Prototype_Crescent.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Prototype_Crescent.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/7d/Weapon_Prototype_Crescent_2nd.png"
 	},
 	"PrototypeRancour": {
 		"key": "PrototypeRancour",
 		"name": "Prototype Rancour",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Weapon_Prototype_Rancour_2nd.png"
 	},
 	"PrototypeStarglitter": {
 		"key": "PrototypeStarglitter",
 		"name": "Prototype Starglitter",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Prototype_Starglitter_2nd.png"
 	},
 	"Rainslasher": {
 		"key": "Rainslasher",
 		"name": "Rainslasher",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Weapon_Rainslasher_2nd.png"
 	},
 	"RangeGauge": {
 		"key": "RangeGauge",
 		"name": "Range Gauge",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_Range_Gauge_2nd.png"
 	},
 	"RavenBow": {
 		"key": "RavenBow",
 		"name": "Raven Bow",
 		"rarity": 3,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d0/Weapon_Raven_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d0/Weapon_Raven_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/15/Weapon_Raven_Bow_2nd.png"
 	},
 	"RecurveBow": {
 		"key": "RecurveBow",
 		"name": "Recurve Bow",
 		"rarity": 3,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Recurve_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Recurve_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Recurve_Bow_2nd.png"
 	},
 	"RedhornStonethresher": {
 		"key": "RedhornStonethresher",
 		"name": "Redhorn Stonethresher",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Redhorn_Stonethresher.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Redhorn_Stonethresher.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Weapon_Redhorn_Stonethresher_2nd.png"
 	},
 	"RightfulReward": {
 		"key": "RightfulReward",
 		"name": "Rightful Reward",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Rightful_Reward_2nd.png"
 	},
 	"RingOfYaxche": {
 		"key": "RingOfYaxche",
 		"name": "Ring of Yaxche",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/07/Weapon_Ring_of_Yaxche_2nd.png"
 	},
 	"RoyalBow": {
 		"key": "RoyalBow",
 		"name": "Royal Bow",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Weapon_Royal_Bow_2nd.png"
 	},
 	"RoyalGreatsword": {
 		"key": "RoyalGreatsword",
 		"name": "Royal Greatsword",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Royal_Greatsword_2nd.png"
 	},
 	"RoyalGrimoire": {
 		"key": "RoyalGrimoire",
 		"name": "Royal Grimoire",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Grimoire.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Grimoire.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Royal_Grimoire_2nd.png"
 	},
 	"RoyalLongsword": {
 		"key": "RoyalLongsword",
 		"name": "Royal Longsword",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Royal_Longsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Royal_Longsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/84/Weapon_Royal_Longsword_2nd.png"
 	},
 	"RoyalSpear": {
 		"key": "RoyalSpear",
 		"name": "Royal Spear",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Royal_Spear.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Royal_Spear.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Weapon_Royal_Spear_2nd.png"
 	},
 	"Rust": {
 		"key": "Rust",
 		"name": "Rust",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Rust.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Rust.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Rust_2nd.png"
 	},
 	"SacrificialBow": {
 		"key": "SacrificialBow",
 		"name": "Sacrificial Bow",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Sacrificial_Bow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Sacrificial_Bow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Sacrificial_Bow_2nd.png"
 	},
 	"SacrificialFragments": {
 		"key": "SacrificialFragments",
 		"name": "Sacrificial Fragments",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Sacrificial_Fragments.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Sacrificial_Fragments.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Weapon_Sacrificial_Fragments_2nd.png"
 	},
 	"SacrificialGreatsword": {
 		"key": "SacrificialGreatsword",
 		"name": "Sacrificial Greatsword",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sacrificial_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sacrificial_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Weapon_Sacrificial_Greatsword_2nd.png"
 	},
 	"SacrificialJade": {
 		"key": "SacrificialJade",
 		"name": "Sacrificial Jade",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Sacrificial_Jade.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Sacrificial_Jade.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Weapon_Sacrificial_Jade_2nd.png"
 	},
 	"SacrificialSword": {
 		"key": "SacrificialSword",
 		"name": "Sacrificial Sword",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Sacrificial_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Sacrificial_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Sacrificial_Sword_2nd.png"
 	},
 	"SapwoodBlade": {
 		"key": "SapwoodBlade",
 		"name": "Sapwood Blade",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Sapwood_Blade.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Sapwood_Blade.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/29/Weapon_Sapwood_Blade_2nd.png"
 	},
 	"ScionOfTheBlazingSun": {
 		"key": "ScionOfTheBlazingSun",
 		"name": "Scion of the Blazing Sun",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Weapon_Scion_of_the_Blazing_Sun_2nd.png"
 	},
 	"SerpentSpine": {
 		"key": "SerpentSpine",
 		"name": "Serpent Spine",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Serpent_Spine.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Serpent_Spine.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Serpent_Spine_2nd.png"
 	},
 	"SharpshootersOath": {
 		"key": "SharpshootersOath",
 		"name": "Sharpshooter's Oath",
 		"rarity": 3,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Sharpshooter%27s_Oath_2nd.png"
 	},
 	"SilvershowerHeartstrings": {
 		"key": "SilvershowerHeartstrings",
 		"name": "Silvershower Heartstrings",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_Silvershower_Heartstrings_2nd.png"
 	},
 	"SkyriderGreatsword": {
 		"key": "SkyriderGreatsword",
 		"name": "Skyrider Greatsword",
 		"rarity": 3,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Skyrider_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Skyrider_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Weapon_Skyrider_Greatsword_2nd.png"
 	},
 	"SkyriderSword": {
 		"key": "SkyriderSword",
 		"name": "Skyrider Sword",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Skyrider_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Skyrider_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Skyrider_Sword_2nd.png"
 	},
 	"SkywardAtlas": {
 		"key": "SkywardAtlas",
 		"name": "Skyward Atlas",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Skyward_Atlas.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Skyward_Atlas.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Skyward_Atlas_2nd.png"
 	},
 	"SkywardBlade": {
 		"key": "SkywardBlade",
 		"name": "Skyward Blade",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Skyward_Blade_2nd.png"
 	},
 	"SkywardHarp": {
 		"key": "SkywardHarp",
 		"name": "Skyward Harp",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Skyward_Harp.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Skyward_Harp.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/60/Weapon_Skyward_Harp_2nd.png"
 	},
 	"SkywardPride": {
 		"key": "SkywardPride",
 		"name": "Skyward Pride",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Skyward_Pride.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Skyward_Pride.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Skyward_Pride_2nd.png"
 	},
 	"SkywardSpine": {
 		"key": "SkywardSpine",
 		"name": "Skyward Spine",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Skyward_Spine.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Skyward_Spine.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Skyward_Spine_2nd.png"
 	},
 	"Slingshot": {
 		"key": "Slingshot",
 		"name": "Slingshot",
 		"rarity": 3,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Slingshot.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Slingshot.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/60/Weapon_Slingshot_2nd.png"
 	},
 	"SnowTombedStarsilver": {
 		"key": "SnowTombedStarsilver",
 		"name": "Snow-Tombed Starsilver",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Snow-Tombed_Starsilver.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Snow-Tombed_Starsilver.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a1/Weapon_Snow-Tombed_Starsilver_2nd.png"
 	},
 	"SolarPearl": {
 		"key": "SolarPearl",
 		"name": "Solar Pearl",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Solar_Pearl.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Solar_Pearl.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_Solar_Pearl_2nd.png"
 	},
 	"SongOfBrokenPines": {
 		"key": "SongOfBrokenPines",
 		"name": "Song of Broken Pines",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Song_of_Broken_Pines.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Song_of_Broken_Pines.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/55/Weapon_Song_of_Broken_Pines_2nd.png"
 	},
 	"SongOfStillness": {
 		"key": "SongOfStillness",
 		"name": "Song of Stillness",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Song_of_Stillness_2nd.png"
 	},
 	"SplendorOfTranquilWaters": {
 		"key": "SplendorOfTranquilWaters",
 		"name": "Splendor of Tranquil Waters",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Splendor_of_Tranquil_Waters_2nd.png"
 	},
 	"StaffOfHoma": {
 		"key": "StaffOfHoma",
 		"name": "Staff of Homa",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Staff_of_Homa.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Staff_of_Homa.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Staff_of_Homa_2nd.png"
 	},
 	"StaffOfTheScarletSands": {
 		"key": "StaffOfTheScarletSands",
 		"name": "Staff of the Scarlet Sands",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Staff_of_the_Scarlet_Sands_2nd.png"
 	},
 	"StarcallersWatch": {
 		"key": "StarcallersWatch",
 		"name": "Starcaller's Watch",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b0/Weapon_Starcaller%27s_Watch_2nd.png"
 	},
 	"SturdyBone": {
 		"key": "SturdyBone",
 		"name": "Sturdy Bone",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Sturdy_Bone_2nd.png"
 	},
 	"SummitShaper": {
 		"key": "SummitShaper",
 		"name": "Summit Shaper",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Summit_Shaper_2nd.png"
 	},
 	"SunnyMorningSleepIn": {
 		"key": "SunnyMorningSleepIn",
 		"name": "Sunny Morning Sleep-In",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_Sunny_Morning_Sleep-In_2nd.png"
 	},
 	"SurfsUp": {
 		"key": "SurfsUp",
 		"name": "Surf's Up",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Surf%27s_Up_2nd.png"
 	},
 	"SwordOfDescension": {
 		"key": "SwordOfDescension",
 		"name": "Sword of Descension",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Weapon_Sword_of_Descension_2nd.png"
 	},
 	"SwordOfNarzissenkreuz": {
 		"key": "SwordOfNarzissenkreuz",
 		"name": "Sword of Narzissenkreuz",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Weapon_Sword_of_Narzissenkreuz_Ousia.png"
 	},
 	"TalkingStick": {
 		"key": "TalkingStick",
 		"name": "Talking Stick",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Weapon_Talking_Stick_2nd.png"
 	},
 	"TamayurateiNoOhanashi": {
 		"key": "TamayurateiNoOhanashi",
 		"name": "Tamayuratei no Ohanashi",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Weapon_Tamayuratei_no_Ohanashi_2nd.png"
 	},
 	"TheAlleyFlash": {
 		"key": "TheAlleyFlash",
 		"name": "The Alley Flash",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_The_Alley_Flash.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_The_Alley_Flash.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_The_Alley_Flash_2nd.png"
 	},
 	"TheBell": {
 		"key": "TheBell",
 		"name": "The Bell",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_The_Bell.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_The_Bell.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Weapon_The_Bell_2nd.png"
 	},
 	"TheBlackSword": {
 		"key": "TheBlackSword",
 		"name": "The Black Sword",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_The_Black_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_The_Black_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/47/Weapon_The_Black_Sword_2nd.png"
 	},
 	"TheCatch": {
 		"key": "TheCatch",
 		"name": "\"The Catch\"",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_The_Catch_2nd.png"
 	},
 	"TheDockhandsAssistant": {
 		"key": "TheDockhandsAssistant",
 		"name": "The Dockhand's Assistant",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_The_Dockhand%27s_Assistant.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_The_Dockhand%27s_Assistant.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_The_Dockhand%27s_Assistant_2nd.png"
 	},
 	"TheFirstGreatMagic": {
 		"key": "TheFirstGreatMagic",
 		"name": "The First Great Magic",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_The_First_Great_Magic.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_The_First_Great_Magic.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/cc/Weapon_The_First_Great_Magic_2nd.png"
 	},
 	"TheFlute": {
 		"key": "TheFlute",
 		"name": "The Flute",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_The_Flute.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_The_Flute.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Weapon_The_Flute_2nd.png"
 	},
 	"TheStringless": {
 		"key": "TheStringless",
 		"name": "The Stringless",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_The_Stringless.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_The_Stringless.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Stringless_2nd.png"
 	},
 	"TheUnforged": {
 		"key": "TheUnforged",
 		"name": "The Unforged",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_The_Unforged.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_The_Unforged.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_The_Unforged_2nd.png"
 	},
 	"TheViridescentHunt": {
 		"key": "TheViridescentHunt",
 		"name": "The Viridescent Hunt",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_The_Viridescent_Hunt.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_The_Viridescent_Hunt.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_The_Viridescent_Hunt_2nd.png"
 	},
 	"TheWidsith": {
 		"key": "TheWidsith",
 		"name": "The Widsith",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Widsith.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Widsith.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/d1/Weapon_The_Widsith_2nd.png"
 	},
 	"ThrillingTalesOfDragonSlayers": {
 		"key": "ThrillingTalesOfDragonSlayers",
 		"name": "Thrilling Tales of Dragon Slayers",
 		"rarity": 3,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Thrilling_Tales_of_Dragon_Slayers.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Thrilling_Tales_of_Dragon_Slayers.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Weapon_Thrilling_Tales_of_Dragon_Slayers_2nd.png"
 	},
 	"ThunderingPulse": {
 		"key": "ThunderingPulse",
 		"name": "Thundering Pulse",
 		"rarity": 5,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Thundering_Pulse.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Thundering_Pulse.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Thundering_Pulse_2nd.png"
 	},
 	"TidalShadow": {
 		"key": "TidalShadow",
 		"name": "Tidal Shadow",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Tidal_Shadow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Tidal_Shadow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Tidal_Shadow_2nd.png"
 	},
 	"TomeOfTheEternalFlow": {
 		"key": "TomeOfTheEternalFlow",
 		"name": "Tome of the Eternal Flow",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Tome_of_the_Eternal_Flow.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Tome_of_the_Eternal_Flow.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Tome_of_the_Eternal_Flow_2nd.png"
 	},
 	"ToukabouShigure": {
 		"key": "ToukabouShigure",
 		"name": "Toukabou Shigure",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Toukabou_Shigure.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Toukabou_Shigure.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Toukabou_Shigure_2nd.png"
 	},
 	"TravelersHandySword": {
 		"key": "TravelersHandySword",
 		"name": "Traveler's Handy Sword",
 		"rarity": 3,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Weapon_Traveler%27s_Handy_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Weapon_Traveler%27s_Handy_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Traveler%27s_Handy_Sword_2nd.png"
 	},
 	"TulaytullahsRemembrance": {
 		"key": "TulaytullahsRemembrance",
 		"name": "Tulaytullah's Remembrance",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Tulaytullah%27s_Remembrance.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Tulaytullah%27s_Remembrance.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Tulaytullah%27s_Remembrance_2nd.png"
 	},
 	"TwinNephrite": {
 		"key": "TwinNephrite",
 		"name": "Twin Nephrite",
 		"rarity": 3,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Weapon_Twin_Nephrite_2nd.png"
 	},
 	"UltimateOverlordsMegaMagicSword": {
 		"key": "UltimateOverlordsMegaMagicSword",
 		"name": "\"Ultimate Overlord's Mega Magic Sword\"",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/48/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword_2nd.png"
 	},
 	"UrakuMisugiri": {
 		"key": "UrakuMisugiri",
 		"name": "Uraku Misugiri",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Uraku_Misugiri_2nd.png"
 	},
 	"Verdict": {
 		"key": "Verdict",
 		"name": "Verdict",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Verdict_2nd.png"
 	},
 	"VortexVanquisher": {
 		"key": "VortexVanquisher",
 		"name": "Vortex Vanquisher",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Vortex_Vanquisher_2nd.png"
 	},
 	"WanderingEvenstar": {
 		"key": "WanderingEvenstar",
 		"name": "Wandering Evenstar",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Weapon_Wandering_Evenstar_2nd.png"
 	},
 	"WavebreakersFin": {
 		"key": "WavebreakersFin",
 		"name": "Wavebreaker's Fin",
 		"rarity": 4,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Weapon_Wavebreaker%27s_Fin_2nd.png"
 	},
 	"WaveridingWhirl": {
 		"key": "WaveridingWhirl",
 		"name": "Waveriding Whirl",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Waveriding_Whirl_2nd.png"
 	},
 	"Whiteblind": {
 		"key": "Whiteblind",
 		"name": "Whiteblind",
 		"rarity": 4,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Whiteblind.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Whiteblind.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Whiteblind_2nd.png"
 	},
 	"WhiteIronGreatsword": {
 		"key": "WhiteIronGreatsword",
 		"name": "White Iron Greatsword",
 		"rarity": 3,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_White_Iron_Greatsword_2nd.png"
 	},
 	"WhiteTassel": {
 		"key": "WhiteTassel",
 		"name": "White Tassel",
 		"rarity": 3,
 		"weaponType": "Polearm",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Weapon_White_Tassel_2nd.png"
 	},
 	"WindblumeOde": {
 		"key": "WindblumeOde",
 		"name": "Windblume Ode",
 		"rarity": 4,
 		"weaponType": "Bow",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Windblume_Ode.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Windblume_Ode.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Windblume_Ode_2nd.png"
 	},
 	"WineAndSong": {
 		"key": "WineAndSong",
 		"name": "Wine and Song",
 		"rarity": 4,
 		"weaponType": "Catalyst",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Wine_and_Song.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Wine_and_Song.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Wine_and_Song_2nd.png"
 	},
 	"WolfFang": {
 		"key": "WolfFang",
 		"name": "Wolf-Fang",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Wolf-Fang_2nd.png"
 	},
 	"WolfsGravestone": {
 		"key": "WolfsGravestone",
 		"name": "Wolf's Gravestone",
 		"rarity": 5,
 		"weaponType": "Claymore",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Weapon_Wolf%27s_Gravestone_2nd.png"
 	},
 	"XiphosMoonlight": {
 		"key": "XiphosMoonlight",
 		"name": "Xiphos' Moonlight",
 		"rarity": 4,
 		"weaponType": "Sword",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png",
+		"image2": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Xiphos%27_Moonlight_2nd.png"
 	}
 }

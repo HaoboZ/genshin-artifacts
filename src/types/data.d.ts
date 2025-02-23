@@ -38,6 +38,7 @@ export interface DWeapon {
 	weaponType: string;
 	rarity: number;
 	image: string;
+	image2: string;
 }
 
 export interface Build {

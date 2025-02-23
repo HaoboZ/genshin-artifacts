@@ -1,4 +1,3 @@
-import { weaponsInfo } from '@/api/weapons';
 import makeArray from '@/src/helpers/makeArray';
 import type { Build } from '@/src/types/data';
 import { AvatarGroup, Stack } from '@mui/material';
@@ -10,7 +9,7 @@ export default function CharacterWeaponTier({ build }: { build: Build }) {
 			{build.weapon.map((weaponTier, index) => (
 				<AvatarGroup key={index} sx={{ flexDirection: 'row-reverse' }} variant='rounded'>
 					{makeArray(weaponTier).map((weapon) => (
-						<WeaponImage key={weapon} weapon={weaponsInfo[weapon]} size={50} />
+						<WeaponImage key={weapon} weapon={weapon} size={50} />
 					))}
 				</AvatarGroup>
 			))}

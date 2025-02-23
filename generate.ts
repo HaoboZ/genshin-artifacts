@@ -1,566 +1,10 @@
 import pget from '@/src/helpers/pget';
 import type { ArtifactSetKey } from '@/src/types/good';
+import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import genshindb from 'genshin-db';
-import { indexBy, mapValues, pick } from 'remeda';
-
-const characterImages = [
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Alhaitham_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Aloy_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/75/Amber_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Arlecchino_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Barbara_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Chasca_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Dehya_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Diluc_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/40/Diona_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/aa/Emilie_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Eula_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Gaming_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Kachina_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Kaedehara_Kazuha_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kaeya_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Kamisato_Ayaka_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/27/Kamisato_Ayato_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Kaveh_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Kinich_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Lan_Yan_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Layla_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/da/Mavuika_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Mualani_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Ororon_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Qiqi_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Raiden_Shogun_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Razor_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Rosaria_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Sangonomiya_Kokomi_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Sethos_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Sigewinne_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/85/Tartaglia_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Thoma_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/87/Tighnari_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Venti_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Xilonen_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Yae_Miko_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/54/Yanfei_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Yaoyao_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Yelan_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Yumemizuki_Mizuki_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Yun_Jin_Icon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png',
-];
-const artifactImages = [
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Item_Adventurer%27s_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/30/Item_Adventurer%27s_Tail_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Adventurer%27s_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Adventurer%27s_Golden_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Adventurer%27s_Bandana.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Item_Lucky_Dog%27s_Clover.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Item_Lucky_Dog%27s_Eagle_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Lucky_Dog%27s_Hourglass.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Lucky_Dog%27s_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Lucky_Dog%27s_Silver_Circlet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Traveling_Doctor%27s_Silver_Lotus.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Traveling_Doctor%27s_Owl_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Traveling_Doctor%27s_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Traveling_Doctor%27s_Medicine_Pot.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Traveling_Doctor%27s_Handkerchief.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Heart_of_Comradeship.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Item_Feather_of_Homecoming.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Sundial_of_the_Sojourner.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Goblet_of_the_Sojourner.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Crown_of_Parting.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/68/Item_Tiny_Miracle%27s_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/89/Item_Tiny_Miracle%27s_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiny_Miracle%27s_Hourglass.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Tiny_Miracle%27s_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/73/Item_Tiny_Miracle%27s_Earrings.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Berserker%27s_Rose.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Berserker%27s_Indigo_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Berserker%27s_Timepiece.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Berserker%27s_Bone_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Item_Berserker%27s_Battle_Mask.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Item_Instructor%27s_Brooch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Item_Instructor%27s_Feather_Accessory.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Instructor%27s_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Instructor%27s_Tea_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Instructor%27s_Cap.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Item_Exile%27s_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Exile%27s_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Exile%27s_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Exile%27s_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Exile%27s_Circlet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Guardian%27s_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Guardian%27s_Sigil.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Guardian%27s_Clock.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Guardian%27s_Vessel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Guardian%27s_Band.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Medal_of_the_Brave.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Item_Prospect_of_the_Brave.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Fortitude_of_the_Brave.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/49/Item_Outset_of_the_Brave.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Crown_of_the_Brave.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Martial_Artist%27s_Red_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Item_Martial_Artist%27s_Feather_Accessory.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Martial_Artist%27s_Water_Hourglass.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Item_Martial_Artist%27s_Wine_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Item_Martial_Artist%27s_Bandana.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Item_Gambler%27s_Brooch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Item_Gambler%27s_Feather_Accessory.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Item_Gambler%27s_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Gambler%27s_Dice_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Gambler%27s_Earrings.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Scholar%27s_Bookmark.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Scholar%27s_Quill_Pen.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Scholar%27s_Clock.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Scholar%27s_Ink_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Scholar%27s_Lens.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Item_Gladiator%27s_Nostalgia.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Gladiator%27s_Destiny.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Gladiator%27s_Longing.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Item_Gladiator%27s_Intoxication.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Item_Gladiator%27s_Triumphus.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Troupe%27s_Dawnlight.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Bard%27s_Arrow_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Concert%27s_Final_Hour.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Wanderer%27s_String-Kettle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/81/Item_Conductor%27s_Top_Hat.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/71/Item_Royal_Flora.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Item_Royal_Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Item_Royal_Pocket_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Royal_Silver_Urn.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Item_Royal_Masque.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Item_Bloodstained_Flower_of_Iron.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Bloodstained_Black_Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8c/Item_Bloodstained_Final_Hour.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Bloodstained_Chevalier%27s_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Bloodstained_Iron_Mask.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Item_Maiden%27s_Distant_Love.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Item_Maiden%27s_Heart-Stricken_Infatuation.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Maiden%27s_Passing_Youth.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Maiden%27s_Fleeting_Leisure.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Maiden%27s_Fading_Beauty.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Item_In_Remembrance_of_Viridescent_Fields.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Viridescent_Arrow_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Viridescent_Venerer%27s_Determination.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Viridescent_Venerer%27s_Vessel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Item_Viridescent_Venerer%27s_Diadem.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Flower_of_Creviced_Cliff.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Feather_of_Jagged_Peaks.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Sundial_of_Enduring_Jade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Goblet_of_Chiseled_Crag.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Mask_of_Solitude_Basalt.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Summer_Night%27s_Bloom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Item_Summer_Night%27s_Finale.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/34/Item_Summer_Night%27s_Moment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Summer_Night%27s_Waterballoon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_Summer_Night%27s_Mask.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Item_Thundersoother%27s_Heart.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Thundersoother%27s_Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Hour_of_Soothing_Thunder.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Thundersoother%27s_Goblet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Thundersoother%27s_Diadem.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Thunderbird%27s_Mercy.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Item_Survivor_of_Catastrophe.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Hourglass_of_Thunder.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Omen_of_Thunderstorm.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Thunder_Summoner%27s_Crown.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Item_Lavawalker%27s_Resolution.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Lavawalker%27s_Salvation.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Item_Lavawalker%27s_Torment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Lavawalker%27s_Epiphany.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Lavawalker%27s_Wisdom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Item_Witch%27s_Flower_of_Blaze.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Witch%27s_Ever-Burning_Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Witch%27s_End_Time.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Witch%27s_Heart_Flames.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Witch%27s_Scorching_Hat.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/69/Item_Snowswept_Memory.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Item_Icebreaker%27s_Resolve.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/58/Item_Frozen_Homeland%27s_Demise.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Frost-Weaved_Dignity.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/df/Item_Broken_Rime%27s_Echo.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/40/Item_Gilded_Corsage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Gust_of_Nostalgia.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Item_Copper_Compass.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Goblet_of_Thundering_Deep.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Wine-Stained_Tricorne.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Flower_of_Accolades.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Ceremonial_War-Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Orichalceous_Time-Dial.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Noble%27s_Pledging_Vessel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Item_General%27s_Ancient_Helm.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Stainless_Bloom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Item_Wise_Doctor%27s_Pinion.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/85/Item_Moment_of_Cessation.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Surpassing_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Mocking_Mask.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c2/Item_Entangling_Bloom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Shaft_of_Remembrance.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Morning_Dew%27s_Moment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Hopeful_Heart.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Capricious_Visage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Magnificent_Tsuba.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Item_Sundered_Feather.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Storm_Cage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/00/Item_Scarlet_Vessel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Ornate_Kabuto.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Bloom_Times.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Item_Plume_of_Luxury.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Song_of_Life.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Calabash_of_Awakening.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/84/Item_Skeletal_Hat.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/58/Item_Sea-Dyed_Blossom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_Deep_Palace%27s_Plume.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Cowry_of_Parting.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Pearl_Cage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/60/Item_Crown_of_Watatsumi.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Item_Flowering_Life.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Feather_of_Nascent_Light.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/12/Item_Solar_Relic.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Item_Moment_of_the_Pact.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Item_Thundering_Poise.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Item_Soulscent_Bloom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/97/Item_Jade_Leaf.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Item_Symbol_of_Felicitation.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/89/Item_Chalice_of_the_Font.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Flowing_Rings.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Item_Labyrinth_Wayfarer.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Item_Scholar_of_Vines.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Item_A_Time_of_Insight.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Lamp_of_the_Lost.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Laurel_Coronet.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Dreaming_Steelbloom.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Feather_of_Judgment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_The_Sunken_Years.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Honeyed_Final_Feast.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Shadow_of_the_Sand_King.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_The_First_Days_of_the_City_of_Kings.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/49/Item_End_of_the_Golden_Realm.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/45/Item_Timepiece_of_the_Lost_Path.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Defender_of_the_Enchanting_Dream.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Legacy_of_the_Desert_High-Born.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Ay-Khanoum%27s_Myriad.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Item_Wilting_Feast.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_A_Moment_Congealed.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Item_Secret-Keeper%27s_Magic_Bottle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Amethyst_Crown.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Item_Odyssean_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Wicked_Mage%27s_Plumule.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Nymph%27s_Constancy.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Heroes%27_Tea_Party.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Fell_Dragon%27s_Monocle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Item_Stamen_of_Khvarena%27s_Origin.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Vibrant_Pinion.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Item_Ancient_Abscission.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Feast_of_Boundless_Joy.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Heart_of_Khvarena%27s_Brilliance.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Item_Hunter%27s_Brooch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Masterpiece%27s_Overture.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Moment_of_Judgment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Item_Forgotten_Vessel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Item_Veteran%27s_Visage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Golden_Song%27s_Variation.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Item_Golden_Bird%27s_Shedding.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Golden_Era%27s_Prelude.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Item_Golden_Night%27s_Bustle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Golden_Troupe%27s_Reward.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Forgotten_Oath_of_Days_Past.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Recollection_of_Days_Past.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Echoing_Sound_From_Days_Past.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/16/Item_Promised_Dream_of_Days_Past.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/db/Item_Poetry_of_Days_Past.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Selfless_Floral_Accessory.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Honest_Quill.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Item_Faithful_Hourglass.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Item_Magnanimous_Ink_Bottle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Item_Compassionate_Ladies%27_Hat.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Harmonious_Symphony_Prelude.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Item_Ancient_Sea%27s_Nocturnal_Musing.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Item_The_Grand_Jape_of_the_Turning_of_Fate.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Ichor_Shower_Rhapsody.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Whimsical_Dance_of_the_Withered.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Item_Dark_Fruit_of_Bright_Flowers.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Item_Faded_Emerald_Tail.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Reckoning_of_the_Xenogenic.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Item_Root_of_the_Spirit-Marrow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Myths_of_the_Night_Realm.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Pre-Banquet_of_the_Contenders.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Crown_of_the_Saints.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/91/Item_Beast_Tamer%27s_Talisman.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Mountain_Ranger%27s_Marker.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3e/Item_Mystic%27s_Gold_Dial.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Wandering_Scholar%27s_Claw_Cup.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Demon-Warrior%27s_Feather_Mask.png',
-];
-const weaponImages = [
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Freedom-Sworn.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Haran_Geppaku_Futsu.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Hunter%27s_Path.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Jadefall%27s_Splendor.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Weapon_Kagura%27s_Verity.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Key_of_Khaj-Nisut.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Light_of_Foliar_Incision.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Memory_of_Dust.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Mistsplitter_Reforged.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Polar_Star.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Primordial_Jade_Cutter.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/80/Weapon_Primordial_Jade_Winged-Spear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Redhorn_Stonethresher.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Skyward_Atlas.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Skyward_Harp.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Skyward_Pride.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Skyward_Spine.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Song_of_Broken_Pines.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Staff_of_Homa.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_The_First_Great_Magic.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_The_Unforged.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Thundering_Pulse.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Tome_of_the_Eternal_Flow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Tulaytullah%27s_Remembrance.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Ballad_of_the_Boundless_Blue.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Ballad_of_the_Fjords.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Blackcliff_Agate.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Blackcliff_Longsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Weapon_Blackcliff_Pole.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Blackcliff_Slasher.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Blackcliff_Warbow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Compound_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Deathmatch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Dodoco_Tales.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Dragon%27s_Bane.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_End_of_the_Line.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Eye_of_Perception.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/36/Weapon_Favonius_Codex.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Favonius_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Favonius_Lance.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Favonius_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Favonius_Warbow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/70/Weapon_Festering_Desire.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Weapon_Finale_of_the_Deep.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Forest_Regalia.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Fruit_of_Fulfillment.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Hakushin_Ring.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Weapon_Hamayumi.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Iron_Sting.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/96/Weapon_Kagotsurube_Isshin.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Katsuragikiri_Nagamasa.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_King%27s_Squire.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/13/Weapon_Kitain_Cross_Spear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Lion%27s_Roar.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Lithic_Blade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Lithic_Spear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Luxurious_Sea-Lord.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Mailed_Flower.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Makhaira_Aquamarine.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Mappa_Mare.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Weapon_Missive_Windspear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Mitternachts_Waltz.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/42/Weapon_Mouun%27s_Moon.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Portable_Power_Saw.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Predator.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Prototype_Amber.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Prototype_Archaic.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Prototype_Crescent.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Grimoire.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Royal_Longsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Royal_Spear.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Rust.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Sacrificial_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Sacrificial_Fragments.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sacrificial_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Sacrificial_Jade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Sacrificial_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Sapwood_Blade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Serpent_Spine.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Snow-Tombed_Starsilver.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Solar_Pearl.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_The_Alley_Flash.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_The_Bell.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_The_Black_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_The_Dockhand%27s_Assistant.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_The_Flute.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_The_Stringless.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_The_Viridescent_Hunt.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Widsith.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Tidal_Shadow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Toukabou_Shigure.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Whiteblind.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Windblume_Ode.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Wine_and_Song.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Emerald_Orb.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Ferrous_Shadow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Fillet_Blade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Halberd.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Magic_Guide.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Messenger.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d0/Weapon_Raven_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Recurve_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Skyrider_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Skyrider_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Slingshot.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Thrilling_Tales_of_Dragon_Slayers.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Weapon_Traveler%27s_Handy_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Iron_Point.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Old_Merc%27s_Pal.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Pocket_Grimoire.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Silver_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_Apprentice%27s_Notes.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Beginner%27s_Protector.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Weapon_Dull_Blade.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Hunter%27s_Bow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png',
-	'https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png',
-];
+import { indexBy, mapValues, pick, unique } from 'remeda';
 
 const artifactLocation: Record<ArtifactSetKey, number> = {
 	// 5
@@ -623,13 +67,43 @@ const artifactLocation: Record<ArtifactSetKey, number> = {
 const artifactOrder = Object.keys(artifactLocation);
 
 (async () => {
+	try {
+		console.log('Writing elements');
+		await writeElements();
+		console.log('Writing characters');
+		await writeCharacters();
+		console.log('Writing artifacts');
+		await writeArtifacts();
+		console.log('Writing weapons');
+		await writeWeapons();
+		console.log('Completed');
+	} catch (error) {
+		console.log('An error has occurred ', error);
+	}
+})();
+
+async function writeElements() {
 	const elementsData = genshindb.elements('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
 	const elements = mapValues(indexBy(elementsData, pget('name')), pget('images.base64'));
-	const talents = genshindb.talents('names', { matchCategories: true, verboseCategories: true });
 
+	writeFileSync('./app/api/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
+}
+
+async function writeCharacters() {
+	const talents = genshindb.talents('names', { matchCategories: true, verboseCategories: true });
+	const { data: characterUrl } = await axios.get(
+		'https://genshin-impact.fandom.com/wiki/Character/Ascension',
+	);
+	const characterImages = unique(
+		[
+			...characterUrl.matchAll(
+				/data-src="(https:\/\/static.wikia.nocookie.net\/gensin-impact\/images\/.\/..\/[^"]*_Icon\.png)\/revision/g,
+			),
+		].map(pget('1')),
+	);
 	const charactersData = genshindb.characters('names', {
 		matchCategories: true,
 		verboseCategories: true,
@@ -654,6 +128,32 @@ const artifactOrder = Object.keys(artifactLocation);
 		})
 		.filter(pget('image'));
 
+	writeFileSync(
+		'./app/api/characters.json',
+		`${JSON.stringify(indexBy(characters, pget('key')), null, '\t')}\n`,
+	);
+	writeFileSync(
+		'./src/types/character.d.ts',
+		`export type CharacterKey =${characters
+			.map(
+				({ key, name }, index) =>
+					`\n\t| '${key}'${characters.length - 1 === index ? ';' : ''} // ${name}`,
+			)
+			.join('')}\n`,
+	);
+}
+
+async function writeArtifacts() {
+	const { data: artifactUrl } = await axios.get(
+		'https://genshin-impact.fandom.com/wiki/Artifact/Sets',
+	);
+	const artifactImages = unique(
+		[
+			...artifactUrl.matchAll(
+				/data-src="(https:\/\/static.wikia.nocookie.net\/gensin-impact\/images\/.\/..\/Item_[^"]*)\/revision/g,
+			),
+		].map(pget('1')),
+	);
 	const artifactsData = genshindb.artifacts('names', {
 		matchCategories: true,
 		verboseCategories: true,
@@ -695,72 +195,65 @@ const artifactOrder = Object.keys(artifactLocation);
 		};
 	});
 
+	writeFileSync(
+		'./app/api/artifacts.json',
+		`${JSON.stringify(indexBy(artifacts, pget('key')), null, '\t')}\n`,
+	);
+	writeFileSync(
+		'./src/types/artifactSet.d.ts',
+		`export type ArtifactSetKey =${artifacts
+			.map(
+				({ key, name }, index) =>
+					`\n\t| '${key}'${artifacts.length - 1 === index ? ';' : ''} // ${name}`,
+			)
+			.join('')}\n`,
+	);
+}
+
+async function writeWeapons() {
 	const weaponsData = genshindb.weapons('names', {
 		matchCategories: true,
 		verboseCategories: true,
 	});
-	const weapons = weaponsData
-		.filter(({ rarity }) => rarity >= 3)
-		.map((weapon) => {
-			const weaponName = weapon.name
-				.replaceAll(' ', '_')
-				.replaceAll("'", '%27')
-				.replaceAll('"', '');
-			const image = weaponImages.find((url) => url.indexOf(weaponName) !== -1);
-			if (!image && weaponName !== 'Prized_Isshin_Blade') console.log(weaponName);
+	const weapons = await Promise.all(
+		weaponsData
+			.filter(({ name, rarity }) => name !== 'Prized Isshin Blade' && rarity >= 3)
+			.map(async (weapon) => {
+				const weaponName = weapon.name
+					.replaceAll(' ', '_')
+					.replaceAll("'", '%27')
+					.replaceAll('"', '');
+				const { data } = await axios.get(
+					`https://genshin-impact.fandom.com/wiki/${weaponName}`,
+				);
+				const images = [
+					...data.matchAll(
+						/<img src="(https:\/\/static.wikia.nocookie.net\/gensin-impact\/images\/.\/..\/Weapon_[^"]*)\/revision/g,
+					),
+				].map(pget('1'));
+				if (images.length !== 2) throw 'Image not found';
 
-			return {
-				key: pascalCase(weapon.name.replaceAll("'", '')),
-				...pick(weapon, ['name', 'rarity']),
-				weaponType: weapon.weaponText,
-				image,
-			};
-		})
-		.filter(pget('image'));
+				return {
+					key: pascalCase(weapon.name.replaceAll("'", '')),
+					...pick(weapon, ['name', 'rarity']),
+					weaponType: weapon.weaponText,
+					image: images[0],
+					image2: images[1],
+				};
+			}),
+	);
 
-	try {
-		writeFileSync('./app/api/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
-		writeFileSync(
-			'./app/api/characters.json',
-			`${JSON.stringify(indexBy(characters, pget('key')), null, '\t')}\n`,
-		);
-		writeFileSync(
-			'./src/types/character.d.ts',
-			`export type CharacterKey =${characters
-				.map(
-					({ key, name }, index) =>
-						`\n\t| '${key}'${characters.length - 1 === index ? ';' : ''} // ${name}`,
-				)
-				.join('')}\n`,
-		);
-		writeFileSync(
-			'./app/api/artifacts.json',
-			`${JSON.stringify(indexBy(artifacts, pget('key')), null, '\t')}\n`,
-		);
-		writeFileSync(
-			'./src/types/artifactSet.d.ts',
-			`export type ArtifactSetKey =${artifacts
-				.map(
-					({ key, name }, index) =>
-						`\n\t| '${key}'${artifacts.length - 1 === index ? ';' : ''} // ${name}`,
-				)
-				.join('')}\n`,
-		);
-		writeFileSync(
-			'./app/api/weapons.json',
-			`${JSON.stringify(indexBy(weapons, pget('key')), null, '\t')}\n`,
-		);
-		writeFileSync(
-			'./src/types/weapon.d.ts',
-			`export type WeaponKey =${weapons
-				.map(
-					({ key, name }, index) =>
-						`\n\t| '${key}'${weapons.length - 1 === index ? ';' : ''} // ${name}`,
-				)
-				.join('')}\n`,
-		);
-		console.log('Data successfully saved to disk');
-	} catch (error) {
-		console.log('An error has occurred ', error);
-	}
-})();
+	writeFileSync(
+		'./app/api/weapons.json',
+		`${JSON.stringify(indexBy(weapons, pget('key')), null, '\t')}\n`,
+	);
+	writeFileSync(
+		'./src/types/weapon.d.ts',
+		`export type WeaponKey =${weapons
+			.map(
+				({ key, name }, index) =>
+					`\n\t| '${key}'${weapons.length - 1 === index ? ';' : ''} // ${name}`,
+			)
+			.join('')}\n`,
+	);
+}

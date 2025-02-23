@@ -11,8 +11,8 @@ import { Grid2, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import RarityFilter from '../characters/rarityFilter';
 import AddWeaponModal from './modal/addWeaponModal';
+import EditWeaponModal from './modal/editWeaponModal';
 import OptimalWeaponModal from './modal/optimalWeaponModal';
-import WeaponModal from './modal/weaponModal';
 import WeaponCharacterImage from './weaponCharacterImage';
 import WeaponTypeFilter from './weaponTypeFilter';
 
@@ -52,14 +52,16 @@ export default function Weapons() {
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
-								onClick={() => showModal(WeaponModal, { props: { weapon } })}>
+								onClick={() => showModal(EditWeaponModal, { props: { weapon } })}>
 								{weapon?.lock && (
 									<LockIcon
 										sx={{
 											position: 'absolute',
-											top: 0,
-											left: 0,
-											color: 'white',
+											bottom: 0,
+											right: 0,
+											bgcolor: 'white',
+											borderRadius: 1,
+											opacity: 0.75,
 										}}
 									/>
 								)}

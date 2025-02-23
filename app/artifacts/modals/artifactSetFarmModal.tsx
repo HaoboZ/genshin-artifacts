@@ -89,8 +89,16 @@ export default function ArtifactSetFarmModal() {
 											))}
 										</Fragment>
 									}>
-									<Typography sx={{ position: 'absolute', top: 0, left: 2 }}>
-										{Object.values(mainStats).flat().length}
+									<Typography
+										sx={{
+											position: 'absolute',
+											top: 0,
+											left: 0,
+											bgcolor: 'white',
+											borderRadius: 1,
+											opacity: 0.75,
+										}}>
+										&nbsp;{Object.values(mainStats).flat().length}&nbsp;
 									</Typography>
 								</ArtifactSetImage>
 							</Grid2>
@@ -102,8 +110,16 @@ export default function ArtifactSetFarmModal() {
 						{lowPotential.map(([artifactSet, [total, count]]) => (
 							<Grid2 key={artifactSet}>
 								<ArtifactSetImage artifactSet={artifactSetsInfo[artifactSet]}>
-									<Typography sx={{ position: 'absolute', top: 0, left: 2 }}>
-										{count} / {total}
+									<Typography
+										sx={{
+											position: 'absolute',
+											top: 0,
+											left: 0,
+											bgcolor: 'white',
+											borderRadius: 1,
+											opacity: 0.75,
+										}}>
+										&nbsp;{count} / {total}&nbsp;
 									</Typography>
 								</ArtifactSetImage>
 							</Grid2>

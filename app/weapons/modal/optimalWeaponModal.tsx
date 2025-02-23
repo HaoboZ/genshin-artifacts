@@ -1,6 +1,5 @@
 import { builds } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
-import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
@@ -90,7 +89,7 @@ export default function OptimalWeaponModal() {
 							<ListItemText>
 								<Grid2 container spacing={1}>
 									<Grid2 size='auto'>
-										<WeaponImage weapon={weaponsInfo[weapon.key]} />
+										<WeaponImage weapon={weapon} />
 									</Grid2>
 									<Grid2 size='grow'>
 										<PercentBar p={1 - tier / character.weapon.length} />
