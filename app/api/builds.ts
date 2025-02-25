@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 2/22/25
+// 2/24/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -516,7 +516,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['EngulfingLightning', 'StaffOfTheScarletSands'],
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance'],
 			'Deathmatch',
-			'SkywardSpine',
+			['SkywardSpine', 'TamayurateiNoOhanashi'],
 			['MissiveWindspear', 'LithicSpear', 'ProspectorsDrill'],
 			'FavoniusLance',
 			'KitainCrossSpear',
@@ -912,10 +912,10 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Sethos: {
 		key: 'Sethos',
-		role: 'DPS',
-		weapon: ['HuntersPath', 'Slingshot'],
+		role: 'Charged Attack DPS',
+		weapon: ['HuntersPath', 'AstralVulturesCrimsonPlumage', 'Slingshot'],
 		group: 0,
-		artifact: ['WanderersTroupe', 'GildedDreams', 'DesertPavilionChronicle'],
+		artifact: ['WanderersTroupe', 'GildedDreams'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
 	},
