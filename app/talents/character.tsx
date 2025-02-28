@@ -21,21 +21,18 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 
 	const increaseSkill = (type) => {
 		dispatch(
-			goodActions.editSkills({
-				character: character.key,
-				talent: {
-					[type]: clamp((character.talent?.[type] ?? 0) + 1, { min: 1, max: 10 }),
-				},
+			goodActions.editCharacter({
+				key: character.key,
+				talent: { [type]: clamp(character.talent[type] + 1, { min: 1, max: 10 }) },
 			}),
 		);
-		const count = weeklyCount[character.talent?.[type] ?? 0];
+		const count = weeklyCount[character.talent[type]];
 		if (count) {
 			dispatch(
 				mainActions.setWeeklyMaterial({
 					name: character.weeklyMaterial,
 					amount:
-						currentMaterials[character.weeklyMaterial] -
-						weeklyCount[character.talent?.[type] ?? 0],
+						currentMaterials[character.weeklyMaterial] - weeklyCount[character.talent[type]],
 				}),
 			);
 		}
