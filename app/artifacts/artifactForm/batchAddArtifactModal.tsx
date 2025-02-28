@@ -32,7 +32,7 @@ export default function BatchAddArtifactModal() {
 					<Grid2 size={4}>
 						<Box
 							sx={{
-								border: '1px solid',
+								border: 1,
 								width: '100%',
 								aspectRatio: '10/17',
 								display: 'flex',

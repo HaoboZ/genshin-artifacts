@@ -81,7 +81,24 @@ export default function Character({ characterData }: { characterData: DCharacter
 					/>
 				</Stack>
 			</PageTitle>
-			<CharacterImage character={characterData} />
+			<Stack direction='row' spacing={1}>
+				<CharacterImage character={characterData} />
+				{character && (
+					<FormattedTextField
+						fullWidth={false}
+						label='Level'
+						value={character.level}
+						onChange={({ target }) =>
+							dispatch(
+								goodActions.editCharacter({
+									key: character.key,
+									level: clamp(+target.value, { min: 1, max: 90 }),
+								}),
+							)
+						}
+					/>
+				)}
+			</Stack>
 			<CharacterBuild build={build} />
 			{character && (
 				<PageSection title='Talents'>
@@ -97,11 +114,9 @@ export default function Character({ characterData }: { characterData: DCharacter
 									value={character.talent[type]}
 									onChange={({ target }) =>
 										dispatch(
-											goodActions.editSkills({
-												character: character.key,
-												talent: {
-													[type]: clamp(+target.value, { min: 1, max: 10 }),
-												},
+											goodActions.editCharacter({
+												key: character.key,
+												talent: { [type]: clamp(+target.value, { min: 1, max: 10 }) },
 											}),
 										)
 									}

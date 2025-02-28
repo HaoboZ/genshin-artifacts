@@ -2,8 +2,9 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import hash from 'object-hash';
 import { differenceWith, uniqueBy } from 'remeda';
+import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
-import type { CharacterKey, IArtifact, IGOOD, IWeapon } from '../../types/good';
+import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',
@@ -34,9 +35,9 @@ const goodSlice = createSlice({
 					...state.characters,
 					{
 						key: payload,
-						level: 90,
+						level: 1,
 						constellation: 0,
-						ascension: 6,
+						ascension: 0,
 						talent: { auto: 1, skill: 1, burst: 1 },
 					},
 				];
@@ -44,18 +45,10 @@ const goodSlice = createSlice({
 				state.characters = state.characters.filter(({ key }) => key !== payload);
 			}
 		},
-		editSkills(
-			state,
-			{
-				payload,
-			}: PayloadAction<{
-				character: CharacterKey;
-				talent: { auto?: number; skill?: number; burst?: number };
-			}>,
-		) {
+		editCharacter(state, { payload }: PayloadAction<PartialDeep<ICharacter>>) {
 			state.characters = state.characters.map((character) =>
-				character.key === payload.character
-					? { ...character, talent: { ...character.talent, ...payload.talent } }
+				character.key === payload.key
+					? { ...character, ...payload, talent: { ...character.talent, ...payload.talent } }
 					: character,
 			);
 		},
@@ -79,16 +72,13 @@ const goodSlice = createSlice({
 			});
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
-			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
-			state.artifacts = [...state.artifacts];
-			if (index !== -1) {
-				const oldArtifact = state.artifacts.find(
-					({ location, slotKey }) =>
-						location === payload.location && slotKey === payload.slotKey,
-				);
-				if (oldArtifact) oldArtifact.location = '';
-				state.artifacts[index] = payload;
-			}
+			state.artifacts = state.artifacts.map((artifact) =>
+				artifact.id === payload.id ? payload : artifact,
+			);
+			const oldArtifact = state.artifacts.find(
+				({ location, slotKey }) => location === payload.location && slotKey === payload.slotKey,
+			);
+			if (oldArtifact) oldArtifact.location = '';
 		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
 			const characterA = payload[0];
@@ -151,9 +141,9 @@ const goodSlice = createSlice({
 			state.weapons = [...state.weapons, payload];
 		},
 		editWeapon(state, { payload }: PayloadAction<IWeapon>) {
-			const index = state.weapons.findIndex(({ id }) => id === payload.id);
-			state.weapons = [...state.weapons];
-			if (index !== -1) state.weapons[index] = payload;
+			state.weapons = state.weapons.map((weapon) =>
+				weapon.id === payload.id ? payload : weapon,
+			);
 		},
 		giveWeapon(state, { payload }: PayloadAction<[CharacterKey, IWeapon]>) {
 			const characterA = payload[0];

@@ -1,9 +1,10 @@
 import type { WeaponType } from '@/api/weapons';
 import { weaponImages, weaponsInfo } from '@/api/weapons';
+import OverlayText from '@/components/overlayText';
 import type { DWeapon } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
 import type { AvatarProps } from '@mui/material';
-import { Avatar, Tooltip, Typography } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
@@ -48,28 +49,8 @@ export default function WeaponImage({
 				/>
 				{!hideStats && typeof weapon === 'object' && (
 					<Fragment>
-						<Typography
-							sx={{
-								position: 'absolute',
-								top: 0,
-								left: 0,
-								bgcolor: 'white',
-								borderRadius: 1,
-								opacity: 0.75,
-							}}>
-							&nbsp;{weapon.level}&nbsp;
-						</Typography>
-						<Typography
-							sx={{
-								position: 'absolute',
-								top: 0,
-								right: 0,
-								bgcolor: 'white',
-								borderRadius: 1,
-								opacity: 0.75,
-							}}>
-							&nbsp;r{weapon.refinement}&nbsp;
-						</Typography>
+						<OverlayText>{weapon.level}</OverlayText>
+						<OverlayText right>r{weapon.refinement}</OverlayText>
 					</Fragment>
 				)}
 				{children}

@@ -1,11 +1,13 @@
 import { Box, Menu } from '@mui/material';
 import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 export default function ContextMenu({
+	disabled,
 	menuContent,
 	children,
 }: {
+	disabled?: boolean;
 	menuContent: ReactNode[] | ((closeMenu: () => void) => ReactNode[]);
 	children: ReactNode;
 }) {
@@ -17,6 +19,8 @@ export default function ContextMenu({
 	const handleClose = () => {
 		setContextMenu(null);
 	};
+
+	if (disabled) return <Fragment>{children}</Fragment>;
 
 	return (
 		<Box

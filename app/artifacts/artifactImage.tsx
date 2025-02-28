@@ -1,7 +1,8 @@
 import { artifactSetsInfo, artifactSlotImages } from '@/api/artifacts';
+import OverlayText from '@/components/overlayText';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import type { AvatarProps } from '@mui/material';
-import { Avatar, Tooltip, Typography } from '@mui/material';
+import { Avatar, Tooltip } from '@mui/material';
 import Image from 'next/image';
 
 export default function ArtifactImage({
@@ -32,19 +33,7 @@ export default function ArtifactImage({
 					height={size}
 					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}
 				/>
-				{artifact && (
-					<Typography
-						sx={{
-							position: 'absolute',
-							top: 0,
-							left: 0,
-							bgcolor: 'white',
-							borderRadius: 1,
-							opacity: 0.75,
-						}}>
-						&nbsp;{artifact.level}&nbsp;
-					</Typography>
-				)}
+				{artifact && <OverlayText>{artifact.level}</OverlayText>}
 				{children}
 			</Avatar>
 		</Tooltip>

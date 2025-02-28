@@ -62,7 +62,7 @@ export default function AddWeaponModal() {
 					dispatch(goodActions.addWeapon(weapon));
 					closeModal();
 				}}>
-				{({ values, setFieldValue }) => (
+				{({ setFieldValue }) => (
 					<WeaponForm>
 						<Autocomplete
 							fullWidth

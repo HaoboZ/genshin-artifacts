@@ -43,9 +43,10 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 
 	return (
 		<ContextMenu
+			disabled={!character.level}
 			menuContent={(closeMenu) =>
 				[
-					character.talent?.auto < 10 && (
+					character.talent.auto < 10 && (
 						<MenuItem
 							key='auto'
 							onClick={() => {
@@ -55,7 +56,7 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 							Increase Auto
 						</MenuItem>
 					),
-					character.talent?.skill < 10 && (
+					character.talent.skill < 10 && (
 						<MenuItem
 							key='skill'
 							onClick={() => {
@@ -65,7 +66,7 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 							Increase Skill
 						</MenuItem>
 					),
-					character.talent?.burst < 10 && (
+					character.talent.burst < 10 && (
 						<MenuItem
 							key='burst'
 							onClick={() => {
@@ -80,7 +81,7 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 			<Box
 				component={Link}
 				href={`/characters/${character.key}`}
-				sx={{ color: 'inherit', textDecoration: 'none', mr: 1 }}>
+				sx={{ color: 'inherit', textDecoration: 'none' }}>
 				<CharacterImage
 					character={character}
 					size={75}
@@ -95,9 +96,9 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 					/>
 				</CharacterImage>
 				<Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-					<Typography>{character.talent?.auto ?? 0}</Typography>
-					<Typography>{character.talent?.skill ?? 0}</Typography>
-					<Typography>{character.talent?.burst ?? 0}</Typography>
+					<Typography>{(character.level && character.talent?.auto) ?? 0}</Typography>
+					<Typography>{(character.level && character.talent?.skill) ?? 0}</Typography>
+					<Typography>{(character.level && character.talent?.burst) ?? 0}</Typography>
 				</Box>
 			</Box>
 		</ContextMenu>

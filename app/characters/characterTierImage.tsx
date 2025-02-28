@@ -1,6 +1,7 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { weightedStatRollPercent } from '@/api/stats';
+import OverlayText from '@/components/overlayText';
 import PercentBar, { combinePercents } from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import type { CharacterKey, IGOOD } from '@/src/types/good';
@@ -15,6 +16,7 @@ export default function CharacterTierImage({
 	characterKey: CharacterKey;
 }) {
 	const build = builds[characterKey];
+	const character = good.characters.find(({ key }) => key === characterKey);
 
 	const percent = useMemo(() => {
 		const weapon = good.weapons.find(({ location }) => location === characterKey);
@@ -37,12 +39,14 @@ export default function CharacterTierImage({
 		<Fragment>
 			<CharacterImage
 				character={charactersInfo[characterKey]}
-				size={50}
-				sx={{
-					border: good.characters.find(({ key }) => characterKey === key) ? 0 : 1,
-					borderColor: 'red',
-				}}
-			/>
+				size={65}
+				sx={{ border: character ? 0 : 1, borderColor: 'red' }}>
+				{character && (
+					<OverlayText right size={12}>
+						{character.level}
+					</OverlayText>
+				)}
+			</CharacterImage>
 			<PercentBar p={percent} />
 		</Fragment>
 	);
