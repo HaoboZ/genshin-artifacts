@@ -35,10 +35,6 @@ yarn-error.log*
 # firebase
 .firebase
 
-# SEO
-/public/sw.js*
-/public/workbox-*.js*
-
 .vscode
 .idea
 .fleet
