@@ -714,7 +714,6 @@ const RAW_RUNTIME_STATE =
           ["@genshin-artifacts/server", "workspace:packages/server"],\
           ["@types/body-parser", "npm:1.19.5"],\
           ["@types/cors", "npm:2.8.17"],\
-          ["@types/eslint", "npm:9.6.1"],\
           ["@types/express", "npm:4.17.21"],\
           ["@types/node", "npm:22.13.5"],\
           ["@types/web-push", "npm:3.6.4"],\
