@@ -110,7 +110,7 @@ export default function Main() {
 				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
 					{main.artifactRespawn && +new Date() < main.artifactRespawn && (
 						<Typography>
-							Respawn Time: {new Date(main.artifactRespawn).toDateString()}
+							Respawn Time: {new Date(main.artifactRespawn).toLocaleString()}
 						</Typography>
 					)}
 				</Grid2>
@@ -129,7 +129,7 @@ export default function Main() {
 				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
 					{main.materialRespawn && +new Date() < main.materialRespawn && (
 						<Typography>
-							Respawn Time: {new Date(main.materialRespawn).toDateString()}
+							Respawn Time: {new Date(main.materialRespawn).toLocaleString()}
 						</Typography>
 					)}
 				</Grid2>
@@ -148,7 +148,7 @@ export default function Main() {
 				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
 					{main.crystalRespawn && +new Date() < main.crystalRespawn && (
 						<Typography>
-							Respawn Time: {new Date(main.crystalRespawn).toDateString()}
+							Respawn Time: {new Date(main.crystalRespawn).toLocaleString()}
 						</Typography>
 					)}
 				</Grid2>

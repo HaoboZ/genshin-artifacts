@@ -1,4 +1,3 @@
-// This code will be in a separate file: public/notification-worker.js
 self.addEventListener('install', () => {
 	self.skipWaiting();
 });
@@ -16,11 +15,7 @@ self.addEventListener('message', (event) => {
 
 	clearTimeout(timeoutId);
 	timeoutId = setTimeout(() => {
-		self.registration.showNotification(title, {
-			badge,
-			body,
-			icon,
-		});
+		self.registration.showNotification(title, { badge, body, icon, requireInteraction: true });
 	}, delay);
 });
 
