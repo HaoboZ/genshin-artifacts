@@ -28,7 +28,7 @@ export default function RespawnNotification({
 				icon={icon}
 				delay={delay * 60 * 1000}
 				onComplete={async (id, delay) => {
-					if (respawn.id) await cancelNotification(subscription.toJSON(), respawn.id);
+					if (respawn?.id) await cancelNotification(subscription.toJSON(), respawn.id);
 					setRespawn({ id, time: +new Date() + delay });
 				}}>
 				{item} Farming Notification
