@@ -1,6 +1,8 @@
+import AsyncButton from '@/components/loaders/asyncButton';
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import AsyncButton from './loaders/asyncButton';
+import { sendNotification } from './actions';
+import { useNotifications } from './index';
 
 export default function NotificationButton({
 	children,
@@ -15,25 +17,18 @@ export default function NotificationButton({
 	icon: string;
 	body?: string;
 	delay: number;
-	onComplete?: (delay: number) => void;
+	onComplete?: (id: string, delay: number) => void;
 }) {
+	const { subscription, subscribe } = useNotifications();
+
 	const [isSupported, setIsSupported] = useState(false);
-	const [permission, setPermission] = useState<NotificationPermission | 'loading'>('loading');
+	const [permission, setPermission] = useState<NotificationPermission>(null);
 
 	useEffect(() => {
 		if (!('serviceWorker' in navigator && 'Notification' in window)) return;
 		setIsSupported(true);
 		setPermission(Notification.permission);
 	}, []);
-
-	const requestPermission = async () => {
-		try {
-			const result = await Notification.requestPermission();
-			setPermission(result);
-		} catch (error) {
-			console.error('Error requesting notification permission:', error);
-		}
-	};
 
 	if (!isSupported) return null;
 
@@ -42,18 +37,16 @@ export default function NotificationButton({
 			variant='contained'
 			disabled={!isSupported}
 			onClick={async () => {
-				if (permission !== 'granted') await requestPermission();
+				await subscribe();
+				if (permission !== 'granted') {
+					const result = await Notification.requestPermission();
+					setPermission(result);
+				}
 
-				navigator.serviceWorker.controller?.postMessage({
-					type: 'SCHEDULE_NOTIFICATION',
-					title,
-					icon,
-					body,
-					delay,
-				});
+				const id = await sendNotification(subscription, { title, icon, body, delay });
 
 				await new Promise((resolve) => setTimeout(resolve, 500));
-				onComplete?.(delay);
+				onComplete?.(id, delay);
 			}}>
 			{isSupported ? children : 'Not Supported'}
 		</AsyncButton>

@@ -7,6 +7,7 @@ import StoreProvider from '@/src/store/provider';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { ReactNode } from 'react';
 import { Suspense } from 'react';
+import NotificationProvider from '../src/providers/notification';
 import Loading from './loading';
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -16,6 +17,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				// data
 				component(EventsProvider),
 				component(StoreProvider),
+				component(NotificationProvider),
 				// theme
 				component(AppRouterCacheProvider),
 				component(ThemeProvider),

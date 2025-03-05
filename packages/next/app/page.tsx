@@ -1,35 +1,27 @@
 'use client';
-import NotificationButton from '@/components/notificationButton';
+import AsyncButton from '@/components/loaders/asyncButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
-import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
+import { useNotifications } from '@/src/providers/notification';
+import { cancelNotification } from '@/src/providers/notification/actions';
+import NotificationButton from '@/src/providers/notification/button';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { Button, ButtonGroup, Grid2, Typography } from '@mui/material';
+import { useLocalStorage } from '@uidotdev/usehooks';
 import { useSnackbar } from 'notistack';
-import { useEffect } from 'react';
 
 export default function Main() {
-	const main = useAppSelector(pget('main'));
-	const good = useAppSelector(pget('good'));
+	const { subscription } = useNotifications();
+	const { main, good } = useAppSelector((state) => state);
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
 
-	useEffect(() => {
-		if (!('serviceWorker' in navigator && 'Notification' in window)) return;
-
-		// Register service worker
-		navigator.serviceWorker
-			.register('/sw.js')
-			.then((registration) => {
-				console.log('Service Worker registered with scope:', registration.scope);
-			})
-			.catch((error) => {
-				console.error('Service Worker registration failed:', error);
-			});
-	}, []);
+	const [artifactRespawn, setArtifactRespawn] = useLocalStorage<{ id: string; delay: number }>(
+		'artifact-respawn',
+	);
 
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,
@@ -100,58 +92,63 @@ export default function Main() {
 					<NotificationButton
 						title='Artifacts Respawned'
 						icon='/essence.png'
-						delay={(24 * 60 + 3) * 60 * 1000}
-						onComplete={(delay) =>
-							dispatch(mainActions.setArtifactRespawn(+new Date() + delay))
-						}>
+						delay={/*(24 * 60 + 3) * 6*/ 10 * 1000}
+						onComplete={(id, delay) => setArtifactRespawn({ id, delay })}>
 						Artifact Farming Notification
 					</NotificationButton>
 				</Grid2>
-				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
-					{main.artifactRespawn && +new Date() < main.artifactRespawn && (
+				{artifactRespawn && +new Date() < artifactRespawn.delay && (
+					<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
+						<AsyncButton
+							onClick={async () => {
+								await cancelNotification(subscription, artifactRespawn.id);
+								setArtifactRespawn(null);
+							}}>
+							Cancel
+						</AsyncButton>
 						<Typography>
-							Respawn Time: {new Date(main.artifactRespawn).toLocaleString()}
+							Respawn Time: {new Date(artifactRespawn.delay).toLocaleString()}
 						</Typography>
-					)}
-				</Grid2>
-				<Grid2 size={12} />
-				<Grid2>
-					<NotificationButton
-						title='Specialties Respawned'
-						icon='/materials.png'
-						delay={(2 * 24 * 60 + 3) * 60 * 1000}
-						onComplete={(delay) => {
-							dispatch(mainActions.setMaterialRespawn(+new Date() + delay));
-						}}>
-						Specialty Farming Notification
-					</NotificationButton>
-				</Grid2>
-				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
-					{main.materialRespawn && +new Date() < main.materialRespawn && (
-						<Typography>
-							Respawn Time: {new Date(main.materialRespawn).toLocaleString()}
-						</Typography>
-					)}
-				</Grid2>
-				<Grid2 size={12} />
-				<Grid2>
-					<NotificationButton
-						title='Crystals Respawned'
-						icon='/crystal.png'
-						delay={(3 * 24 * 60 + 3) * 60 * 1000}
-						onComplete={(delay) =>
-							dispatch(mainActions.setCrystalRespawn(+new Date() + delay))
-						}>
-						Crystal Farming Notification
-					</NotificationButton>
-				</Grid2>
-				<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
-					{main.crystalRespawn && +new Date() < main.crystalRespawn && (
-						<Typography>
-							Respawn Time: {new Date(main.crystalRespawn).toLocaleString()}
-						</Typography>
-					)}
-				</Grid2>
+					</Grid2>
+				)}
+				{/*<Grid2 size={12} />*/}
+				{/*<Grid2>*/}
+				{/*	<NotificationButton*/}
+				{/*		title='Specialties Respawned'*/}
+				{/*		icon='/materials.png'*/}
+				{/*		delay={(2 * 24 * 60 + 3) * 60 * 1000}*/}
+				{/*		onComplete={(id, delay) => {*/}
+				{/*			dispatch(mainActions.setMaterialRespawn(+new Date() + delay));*/}
+				{/*		}}>*/}
+				{/*		Specialty Farming Notification*/}
+				{/*	</NotificationButton>*/}
+				{/*</Grid2>*/}
+				{/*<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>*/}
+				{/*	{main.materialRespawn && +new Date() < main.materialRespawn && (*/}
+				{/*		<Typography>*/}
+				{/*			Respawn Time: {new Date(main.materialRespawn).toLocaleString()}*/}
+				{/*		</Typography>*/}
+				{/*	)}*/}
+				{/*</Grid2>*/}
+				{/*<Grid2 size={12} />*/}
+				{/*<Grid2>*/}
+				{/*	<NotificationButton*/}
+				{/*		title='Crystals Respawned'*/}
+				{/*		icon='/crystal.png'*/}
+				{/*		delay={(3 * 24 * 60 + 3) * 60 * 1000}*/}
+				{/*		onComplete={(id, delay) =>*/}
+				{/*			dispatch(mainActions.setCrystalRespawn(+new Date() + delay))*/}
+				{/*		}>*/}
+				{/*		Crystal Farming Notification*/}
+				{/*	</NotificationButton>*/}
+				{/*</Grid2>*/}
+				{/*<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>*/}
+				{/*	{main.crystalRespawn && +new Date() < main.crystalRespawn && (*/}
+				{/*		<Typography>*/}
+				{/*			Respawn Time: {new Date(main.crystalRespawn).toLocaleString()}*/}
+				{/*		</Typography>*/}
+				{/*	)}*/}
+				{/*</Grid2>*/}
 			</Grid2>
 		</PageContainer>
 	);

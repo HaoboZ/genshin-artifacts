@@ -6,17 +6,17 @@ self.addEventListener('activate', (event) => {
 	event.waitUntil(self.clients.claim());
 });
 
-let timeoutId;
+self.addEventListener('push', (event) => {
+	if (!event.data) return;
 
-// Listen for messages from the main thread
-self.addEventListener('message', (event) => {
-	if (event.data?.type !== 'SCHEDULE_NOTIFICATION') return;
-	const { title, badge, body, icon, delay } = event.data;
-
-	clearTimeout(timeoutId);
-	timeoutId = setTimeout(() => {
-		self.registration.showNotification(title, { badge, body, icon, requireInteraction: true });
-	}, delay);
+	const data = event.data.json();
+	event.waitUntil(
+		self.registration.showNotification(data.title, {
+			body: data.body,
+			icon: data.icon,
+			requireInteraction: true,
+		}),
+	);
 });
 
 // Handle notification clicks
