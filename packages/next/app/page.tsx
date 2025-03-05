@@ -81,46 +81,25 @@ export default function Main() {
 					<Typography>Weapons: {good.weapons.length}</Typography>
 				</Box>
 				<ClientOnly>
-					<RespawnNotification />
+					<RespawnNotification
+						key='artifact-respawn'
+						item='Artifacts'
+						icon='/essence.png'
+						delay={24 * 60 + 2}
+					/>
+					<RespawnNotification
+						key='specialties-respawn'
+						item='Specialties'
+						icon='/material.png'
+						delay={2 * 24 * 60 + 2}
+					/>
+					<RespawnNotification
+						key='crystals-respawn'
+						item='Crystals'
+						icon='/crystal.png'
+						delay={3 * 24 * 60 + 2}
+					/>
 				</ClientOnly>
-				{/*<Grid2 size={12} />*/}
-				{/*<Grid2>*/}
-				{/*	<NotificationButton*/}
-				{/*		title='Specialties Respawned'*/}
-				{/*		icon='/materials.png'*/}
-				{/*		delay={(2 * 24 * 60 + 3) * 60 * 1000}*/}
-				{/*		onComplete={(id, delay) => {*/}
-				{/*			dispatch(mainActions.setMaterialRespawn(+new Date() + delay));*/}
-				{/*		}}>*/}
-				{/*		Specialty Farming Notification*/}
-				{/*	</NotificationButton>*/}
-				{/*</Grid2>*/}
-				{/*<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>*/}
-				{/*	{main.materialRespawn && +new Date() < main.materialRespawn && (*/}
-				{/*		<Typography>*/}
-				{/*			Respawn Time: {new Date(main.materialRespawn).toLocaleString()}*/}
-				{/*		</Typography>*/}
-				{/*	)}*/}
-				{/*</Grid2>*/}
-				{/*<Grid2 size={12} />*/}
-				{/*<Grid2>*/}
-				{/*	<NotificationButton*/}
-				{/*		title='Crystals Respawned'*/}
-				{/*		icon='/crystal.png'*/}
-				{/*		delay={(3 * 24 * 60 + 3) * 60 * 1000}*/}
-				{/*		onComplete={(id, delay) =>*/}
-				{/*			dispatch(mainActions.setCrystalRespawn(+new Date() + delay))*/}
-				{/*		}>*/}
-				{/*		Crystal Farming Notification*/}
-				{/*	</NotificationButton>*/}
-				{/*</Grid2>*/}
-				{/*<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>*/}
-				{/*	{main.crystalRespawn && +new Date() < main.crystalRespawn && (*/}
-				{/*		<Typography>*/}
-				{/*			Respawn Time: {new Date(main.crystalRespawn).toLocaleString()}*/}
-				{/*		</Typography>*/}
-				{/*	)}*/}
-				{/*</Grid2>*/}
 			</Stack>
 		</PageContainer>
 	);

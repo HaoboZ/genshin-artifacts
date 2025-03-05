@@ -6,34 +6,45 @@ import { Stack, Typography } from '@mui/material';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { Fragment } from 'react';
 
-export default function RespawnNotification() {
+export default function RespawnNotification({
+	key,
+	item,
+	icon,
+	delay,
+}: {
+	key: string;
+	item: string;
+	icon: string;
+	delay: number;
+}) {
 	const { subscription } = useNotifications();
 
-	const [artifactRespawn, setArtifactRespawn] = useLocalStorage<{ id: string; delay: number }>(
-		'artifact-respawn',
-	);
+	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(key);
 
 	return (
-		<Stack direction='row' spacing={1}>
+		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 			<NotificationButton
-				title='Artifacts Respawned'
-				icon='/essence.png'
-				delay={/*(24 * 60 + 3) * 6*/ 10 * 1000}
-				onComplete={(id, delay) => setArtifactRespawn({ id, delay })}>
-				Artifact Farming Notification
+				title={`${item} Respawned`}
+				icon={icon}
+				delay={delay * 60 * 1000}
+				onComplete={async (id, delay) => {
+					if (respawn.id) await cancelNotification(subscription.toJSON(), respawn.id);
+					setRespawn({ id, time: +new Date() + delay });
+				}}>
+				{item} Farming Notification
 			</NotificationButton>
-			{artifactRespawn && +new Date() < artifactRespawn.delay && (
+			{respawn && +new Date() < respawn.time && (
 				<Fragment>
 					<AsyncButton
+						variant='contained'
+						color='error'
 						onClick={async () => {
-							await cancelNotification(subscription.toJSON(), artifactRespawn.id);
-							setArtifactRespawn(null);
+							await cancelNotification(subscription.toJSON(), respawn.id);
+							setRespawn(null);
 						}}>
 						Cancel
 					</AsyncButton>
-					<Typography>
-						Respawn Time: {new Date(artifactRespawn.delay).toLocaleString()}
-					</Typography>
+					<Typography>Respawn Time: {new Date(respawn.time).toLocaleString()}</Typography>
 				</Fragment>
 			)}
 		</Stack>

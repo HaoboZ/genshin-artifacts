@@ -17,7 +17,7 @@ export default function NotificationButton({
 	icon: string;
 	body?: string;
 	delay: number;
-	onComplete?: (id: string, delay: number) => void;
+	onComplete?: (id: string, delay: number) => Promise<void>;
 }) {
 	const { subscription, subscribe } = useNotifications();
 
@@ -45,8 +45,8 @@ export default function NotificationButton({
 
 				const id = await sendNotification(subscription.toJSON(), { title, icon, body, delay });
 
+				await onComplete?.(id, delay);
 				await new Promise((resolve) => setTimeout(resolve, 500));
-				onComplete?.(id, delay);
 			}}>
 			{isSupported ? children : 'Not Supported'}
 		</AsyncButton>
