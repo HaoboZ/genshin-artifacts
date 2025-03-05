@@ -1,5 +1,4 @@
 'use server';
-
 import axios from 'axios';
 
 export async function subscribeUser(sub: PushSubscription) {
