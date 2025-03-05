@@ -22,13 +22,16 @@ const scheduledNotifications = new Map();
 // Endpoint to save subscription
 app.post('/subscribe', (req, res) => {
 	const { subscription } = req.body;
-	subscriptions.set(nanoid(), subscription);
+	const id = nanoid();
+	console.log('subscribe', id);
+	subscriptions.set(id, subscription);
 	res.status(201).json({ success: true });
 });
 
 // Endpoint to schedule a notification
 app.post('/send', (req, res) => {
 	const { subscription, data } = req.body;
+	console.log('send', data.title, data.delay);
 	if (!subscription || !data) {
 		res.status(400).json({ error: 'Missing required parameters' });
 		return;
@@ -54,6 +57,7 @@ app.post('/send', (req, res) => {
 // Endpoint to cancel a notification
 app.post('/cancel', (req, res) => {
 	const { id } = req.body;
+	console.log('cancel', id);
 	if (!id || !scheduledNotifications.has(id)) {
 		res.status(400).json({ error: 'Missing required parameters' });
 		return;
