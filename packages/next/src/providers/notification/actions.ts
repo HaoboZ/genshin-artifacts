@@ -1,7 +1,7 @@
 'use server';
 import axios from 'axios';
 
-export async function subscribeUser(sub: PushSubscription) {
+export async function subscribeUser(sub: PushSubscriptionJSON) {
 	await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, sub);
 	return { success: true };
 }
@@ -12,7 +12,7 @@ export async function unsubscribeUser() {
 }
 
 export async function sendNotification(
-	subscription: PushSubscription,
+	subscription: PushSubscriptionJSON,
 	data: {
 		title: string;
 		body?: string;
@@ -29,7 +29,7 @@ export async function sendNotification(
 	return res.data.id as string;
 }
 
-export async function cancelNotification(subscription: PushSubscription, id: string) {
+export async function cancelNotification(subscription: PushSubscriptionJSON, id: string) {
 	if (!subscription) throw new Error('No subscription available');
 
 	await axios.post(`${process.env.NOTIFICATION_SERVER}/cancel`, { subscription, id });

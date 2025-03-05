@@ -43,7 +43,7 @@ export default function NotificationButton({
 					setPermission(result);
 				}
 
-				const id = await sendNotification(subscription, { title, icon, body, delay });
+				const id = await sendNotification(subscription.toJSON(), { title, icon, body, delay });
 
 				await new Promise((resolve) => setTimeout(resolve, 500));
 				onComplete?.(id, delay);

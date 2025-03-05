@@ -1,27 +1,21 @@
 'use client';
-import AsyncButton from '@/components/loaders/asyncButton';
+import ClientOnly from '@/components/clientOnly';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import useEventListener from '@/src/hooks/useEventListener';
-import { useNotifications } from '@/src/providers/notification';
-import { cancelNotification } from '@/src/providers/notification/actions';
-import NotificationButton from '@/src/providers/notification/button';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import { Button, ButtonGroup, Grid2, Typography } from '@mui/material';
-import { useLocalStorage } from '@uidotdev/usehooks';
+import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import pget from '../src/helpers/pget';
+import RespawnNotification from './respawnNotification';
 
 export default function Main() {
-	const { subscription } = useNotifications();
-	const { main, good } = useAppSelector((state) => state);
+	const main = useAppSelector(pget('main'));
+	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
-
-	const [artifactRespawn, setArtifactRespawn] = useLocalStorage<{ id: string; delay: number }>(
-		'artifact-respawn',
-	);
 
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,
@@ -43,74 +37,52 @@ export default function Main() {
 	return (
 		<PageContainer>
 			<PageTitle>Genshin Artifacts</PageTitle>
-			<Grid2 container spacing={1}>
-				<Grid2 size={12}>
-					<ButtonGroup variant='contained' color='primary'>
-						<Button component='label'>
-							Import
-							<input
-								hidden
-								type='file'
-								accept='application/json'
-								onChange={({ target }) => {
-									if (!target.files) return;
-									const reader = new FileReader();
-									reader.onload = ({ target }) => {
-										const { main, ...good } = JSON.parse(target.result as string);
-										if (main) dispatch(mainActions.setMain(main));
-										dispatch(goodActions.import(good));
-										enqueueSnackbar('Imported');
-									};
-									reader.readAsText(target.files[0]);
-								}}
-							/>
-						</Button>
-						<Button
-							onClick={() => {
-								const a = document.createElement('a');
-								a.href = URL.createObjectURL(
-									new Blob([JSON.stringify({ main, ...good }, null, 2)], {
-										type: 'text/plain',
-									}),
-								);
-								a.setAttribute('download', 'genshinArtifacts.json');
-								document.body.appendChild(a);
-								a.click();
-								document.body.removeChild(a);
-							}}>
-							Export
-						</Button>
-						<Button onClick={() => dispatch(goodActions.reset())}>Reset</Button>
-					</ButtonGroup>
-				</Grid2>
-				<Grid2 size={12}>
+			<Stack spacing={1}>
+				<ButtonGroup variant='contained' color='primary'>
+					<Button component='label'>
+						Import
+						<input
+							hidden
+							type='file'
+							accept='application/json'
+							onChange={({ target }) => {
+								if (!target.files) return;
+								const reader = new FileReader();
+								reader.onload = ({ target }) => {
+									const { main, ...good } = JSON.parse(target.result as string);
+									if (main) dispatch(mainActions.setMain(main));
+									dispatch(goodActions.import(good));
+									enqueueSnackbar('Imported');
+								};
+								reader.readAsText(target.files[0]);
+							}}
+						/>
+					</Button>
+					<Button
+						onClick={() => {
+							const a = document.createElement('a');
+							a.href = URL.createObjectURL(
+								new Blob([JSON.stringify({ main, ...good }, null, 2)], {
+									type: 'text/plain',
+								}),
+							);
+							a.setAttribute('download', 'genshinArtifacts.json');
+							document.body.appendChild(a);
+							a.click();
+							document.body.removeChild(a);
+						}}>
+						Export
+					</Button>
+					<Button onClick={() => dispatch(goodActions.reset())}>Reset</Button>
+				</ButtonGroup>
+				<Box>
 					<Typography>Characters: {good.characters.length}</Typography>
 					<Typography>Artifacts: {good.artifacts.length}</Typography>
 					<Typography>Weapons: {good.weapons.length}</Typography>
-				</Grid2>
-				<Grid2>
-					<NotificationButton
-						title='Artifacts Respawned'
-						icon='/essence.png'
-						delay={/*(24 * 60 + 3) * 6*/ 10 * 1000}
-						onComplete={(id, delay) => setArtifactRespawn({ id, delay })}>
-						Artifact Farming Notification
-					</NotificationButton>
-				</Grid2>
-				{artifactRespawn && +new Date() < artifactRespawn.delay && (
-					<Grid2 sx={{ display: 'flex', alignItems: 'center' }}>
-						<AsyncButton
-							onClick={async () => {
-								await cancelNotification(subscription, artifactRespawn.id);
-								setArtifactRespawn(null);
-							}}>
-							Cancel
-						</AsyncButton>
-						<Typography>
-							Respawn Time: {new Date(artifactRespawn.delay).toLocaleString()}
-						</Typography>
-					</Grid2>
-				)}
+				</Box>
+				<ClientOnly>
+					<RespawnNotification />
+				</ClientOnly>
 				{/*<Grid2 size={12} />*/}
 				{/*<Grid2>*/}
 				{/*	<NotificationButton*/}
@@ -149,7 +121,7 @@ export default function Main() {
 				{/*		</Typography>*/}
 				{/*	)}*/}
 				{/*</Grid2>*/}
-			</Grid2>
+			</Stack>
 		</PageContainer>
 	);
 }
