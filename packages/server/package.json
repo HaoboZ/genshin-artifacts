@@ -2,7 +2,7 @@
 	"name": "@genshin-artifacts/server",
 	"version": "1.0.0",
 	"scripts": {
-		"run": "npx tsx ./server.ts"
+		"start": "npx tsx ./server.ts"
 	},
 	"packageManager": "yarn@4.6.0",
 	"dependencies": {

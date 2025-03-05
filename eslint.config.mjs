@@ -11,6 +11,7 @@ export default typescript.config(
 	typescript.configs.recommended,
 	prettier,
 	{
+		settings: { react: { version: 'detect' } },
 		languageOptions: {
 			parserOptions: {
 				ecmaVersion: 'latest',

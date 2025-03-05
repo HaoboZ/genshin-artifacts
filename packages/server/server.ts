@@ -6,7 +6,7 @@ import webpush from 'web-push';
 import 'dotenv/config';
 
 webpush.setVapidDetails(
-	'mailto:haobozhang9081@gmail.com',
+	'mailto:test@gmail.com',
 	process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
 	process.env.VAPID_PRIVATE_KEY,
 );
@@ -27,11 +27,12 @@ app.post('/subscribe', (req, res) => {
 });
 
 // Endpoint to schedule a notification
-// @ts-ignore
 app.post('/send', (req, res) => {
 	const { subscription, data } = req.body;
-	if (!subscription || !data)
-		return res.status(400).json({ error: 'Missing required parameters' });
+	if (!subscription || !data) {
+		res.status(400).json({ error: 'Missing required parameters' });
+		return;
+	}
 
 	const notificationId = nanoid();
 
@@ -53,8 +54,10 @@ app.post('/send', (req, res) => {
 // Endpoint to cancel a notification
 app.post('/cancel', (req, res) => {
 	const { id } = req.body;
-	if (!id || !scheduledNotifications.has(id))
-		return res.status(400).json({ error: 'Missing required parameters' });
+	if (!id || !scheduledNotifications.has(id)) {
+		res.status(400).json({ error: 'Missing required parameters' });
+		return;
+	}
 
 	// Cancel specific notification
 	clearTimeout(scheduledNotifications.get(id).timeoutId);
@@ -63,5 +66,5 @@ app.post('/cancel', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
