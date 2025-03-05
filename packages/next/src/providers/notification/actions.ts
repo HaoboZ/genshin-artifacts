@@ -1,14 +1,12 @@
 'use server';
 import axios from 'axios';
 
-export async function subscribeUser(sub: PushSubscriptionJSON) {
-	await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, sub);
-	return { success: true };
+export async function subscribeUser(subscription: PushSubscriptionJSON) {
+	await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, { subscription });
 }
 
 export async function unsubscribeUser() {
 	await axios.post(`${process.env.NOTIFICATION_SERVER}/unsubscribe`);
-	return { success: true };
 }
 
 export async function sendNotification(

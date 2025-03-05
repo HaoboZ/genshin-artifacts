@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 const subscriptions = new Map();
 const scheduledNotifications = new Map();
 
+app.all('/ping', (req, res) => {
+	res.status(200).json({ pong: true });
+});
+
 // Endpoint to save subscription
 app.post('/subscribe', (req, res) => {
 	const { subscription } = req.body;
