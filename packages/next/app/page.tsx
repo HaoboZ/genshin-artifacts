@@ -82,19 +82,19 @@ export default function Main() {
 				</Box>
 				<ClientOnly>
 					<RespawnNotification
-						key='artifact-respawn'
+						storageKey='artifact-respawn'
 						item='Artifacts'
 						icon='/essence.png'
 						delay={24 * 60 + 2}
 					/>
 					<RespawnNotification
-						key='specialties-respawn'
+						storageKey='specialties-respawn'
 						item='Specialties'
 						icon='/material.png'
 						delay={2 * 24 * 60 + 2}
 					/>
 					<RespawnNotification
-						key='crystals-respawn'
+						storageKey='crystals-respawn'
 						item='Crystals'
 						icon='/crystal.png'
 						delay={3 * 24 * 60 + 2}

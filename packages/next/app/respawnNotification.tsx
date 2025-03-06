@@ -7,19 +7,19 @@ import { useLocalStorage } from '@uidotdev/usehooks';
 import { Fragment } from 'react';
 
 export default function RespawnNotification({
-	key,
+	storageKey,
 	item,
 	icon,
 	delay,
 }: {
-	key: string;
+	storageKey: string;
 	item: string;
 	icon: string;
 	delay: number;
 }) {
 	const { subscription } = useNotifications();
 
-	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(key);
+	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(storageKey);
 
 	return (
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
