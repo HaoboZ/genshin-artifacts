@@ -35,18 +35,19 @@ app.post('/subscribe', (req, res) => {
 // Endpoint to schedule a notification
 app.post('/send', (req, res) => {
 	const { subscription, data } = req.body;
-	console.log('send', data.title, data.delay);
 	if (!subscription || !data) {
 		res.status(400).json({ error: 'Missing required parameters' });
 		return;
 	}
 
 	const notificationId = nanoid();
+	console.log('send', notificationId, data.title, data.delay);
 
 	// Schedule the notification
 	const timeoutId = setTimeout(async () => {
 		try {
 			await webpush.sendNotification(subscription, JSON.stringify(data));
+			console.log('sent', notificationId);
 			scheduledNotifications.delete(notificationId);
 		} catch (error) {
 			console.error('Error sending push notification:', error);
@@ -61,11 +62,11 @@ app.post('/send', (req, res) => {
 // Endpoint to cancel a notification
 app.post('/cancel', (req, res) => {
 	const { id } = req.body;
-	console.log('cancel', id);
 	if (!id || !scheduledNotifications.has(id)) {
 		res.status(400).json({ error: 'Missing required parameters' });
 		return;
 	}
+	console.log('cancel', id);
 
 	// Cancel specific notification
 	clearTimeout(scheduledNotifications.get(id).timeoutId);
