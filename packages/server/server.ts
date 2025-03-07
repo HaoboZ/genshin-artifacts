@@ -62,15 +62,17 @@ app.post('/send', (req, res) => {
 // Endpoint to cancel a notification
 app.post('/cancel', (req, res) => {
 	const { id } = req.body;
-	if (!id || !scheduledNotifications.has(id)) {
+	if (!id) {
 		res.status(400).json({ error: 'Missing required parameters' });
 		return;
 	}
-	console.log('cancel', id);
 
-	// Cancel specific notification
-	clearTimeout(scheduledNotifications.get(id).timeoutId);
-	scheduledNotifications.delete(id);
+	if (scheduledNotifications.has(id)) {
+		console.log('cancel', id);
+		// Cancel specific notification
+		clearTimeout(scheduledNotifications.get(id).timeoutId);
+		scheduledNotifications.delete(id);
+	}
 	res.status(200).json({ success: true });
 });
 
