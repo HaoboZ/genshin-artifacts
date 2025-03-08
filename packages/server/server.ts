@@ -46,8 +46,8 @@ app.post('/send', (req, res) => {
 	// Schedule the notification
 	const timeoutId = setTimeout(async () => {
 		try {
-			await webpush.sendNotification(subscription, JSON.stringify(data));
-			console.log('sent', notificationId);
+			const sendResult = await webpush.sendNotification(subscription, JSON.stringify(data));
+			console.log('sent', notificationId, sendResult);
 			scheduledNotifications.delete(notificationId);
 		} catch (error) {
 			console.error('Error sending push notification:', error);

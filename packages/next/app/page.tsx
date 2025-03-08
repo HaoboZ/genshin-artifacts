@@ -83,21 +83,28 @@ export default function Main() {
 				<ClientOnly>
 					<RespawnNotification
 						storageKey='artifact-respawn'
-						item='Artifacts'
+						item='Artifacts Farming'
 						icon='/essence.png'
-						delay={24 * 60 + 2}
+						delay={(24 * 60 + 2) * 60 * 1000}
 					/>
 					<RespawnNotification
 						storageKey='specialties-respawn'
-						item='Specialties'
+						item='Specialties Farming'
 						icon='/material.png'
-						delay={2 * 24 * 60 + 2}
+						delay={(2 * 24 * 60 + 2) * 60 * 1000}
 					/>
 					<RespawnNotification
 						storageKey='crystals-respawn'
-						item='Crystals'
+						item='Crystals Farming'
 						icon='/crystal.png'
-						delay={3 * 24 * 60 + 2}
+						delay={(3 * 24 * 60 + 2) * 60 * 1000}
+					/>
+					<RespawnNotification storageKey='test-respawn-1' item='Test' delay={1000} />
+					<RespawnNotification storageKey='test-respawn-2' item='Test 2' delay={30 * 1000} />
+					<RespawnNotification
+						storageKey='test-respawn-3'
+						item='Test 3'
+						delay={5 * 60 * 1000}
 					/>
 				</ClientOnly>
 			</Stack>

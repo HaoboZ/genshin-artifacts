@@ -14,7 +14,7 @@ export default function RespawnNotification({
 }: {
 	storageKey: string;
 	item: string;
-	icon: string;
+	icon?: string;
 	delay: number;
 }) {
 	const { subscription } = useNotifications();
@@ -26,12 +26,12 @@ export default function RespawnNotification({
 			<NotificationButton
 				title={`${item} Respawned`}
 				icon={icon}
-				delay={delay * 60 * 1000}
+				delay={delay}
 				onComplete={async (id, delay) => {
 					if (respawn?.id) await cancelNotification(subscription.toJSON(), respawn.id);
 					setRespawn({ id, time: +new Date() + delay });
 				}}>
-				{item} Farming Notification
+				{item} Notification
 			</NotificationButton>
 			{respawn && +new Date() < respawn.time && (
 				<Fragment>
