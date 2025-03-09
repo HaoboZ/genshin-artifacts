@@ -99,13 +99,6 @@ export default function Main() {
 						icon='/crystal.png'
 						delay={(3 * 24 * 60 + 2) * 60 * 1000}
 					/>
-					<RespawnNotification storageKey='test-respawn-1' item='Test' delay={1000} />
-					<RespawnNotification storageKey='test-respawn-2' item='Test 2' delay={30 * 1000} />
-					<RespawnNotification
-						storageKey='test-respawn-3'
-						item='Test 3'
-						delay={5 * 60 * 1000}
-					/>
 				</ClientOnly>
 			</Stack>
 		</PageContainer>

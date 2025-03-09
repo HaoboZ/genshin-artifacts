@@ -4,7 +4,7 @@ import { cancelNotification } from '@/src/providers/notification/actions';
 import NotificationButton from '@/src/providers/notification/button';
 import { Stack, Typography } from '@mui/material';
 import { useLocalStorage } from '@uidotdev/usehooks';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 export default function RespawnNotification({
 	storageKey,
@@ -18,8 +18,17 @@ export default function RespawnNotification({
 	delay: number;
 }) {
 	const { subscription } = useNotifications();
+	const [time, setTime] = useState(() => new Date());
 
 	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(storageKey);
+
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			setTime(new Date());
+		}, 1000);
+
+		return () => clearInterval(intervalId);
+	}, []);
 
 	return (
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
@@ -33,7 +42,7 @@ export default function RespawnNotification({
 				}}>
 				{item} Notification
 			</NotificationButton>
-			{respawn && +new Date() < respawn.time && (
+			{respawn && +time < respawn.time && (
 				<Fragment>
 					<AsyncButton
 						variant='contained'
