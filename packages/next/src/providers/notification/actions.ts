@@ -19,7 +19,6 @@ export async function sendNotification(
 	},
 ) {
 	if (!subscription) throw new Error('No subscription available');
-
 	const res = await axios.post(`${process.env.NOTIFICATION_SERVER}/send`, {
 		subscription,
 		data,
@@ -29,6 +28,5 @@ export async function sendNotification(
 
 export async function cancelNotification(subscription: PushSubscriptionJSON, id: string) {
 	if (!subscription) throw new Error('No subscription available');
-
 	await axios.post(`${process.env.NOTIFICATION_SERVER}/cancel`, { subscription, id });
 }

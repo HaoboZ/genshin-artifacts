@@ -23,7 +23,6 @@ app.all('/ping', (req, res) => {
 	res.status(200).json({ pong: true });
 });
 
-// Endpoint to save subscription
 app.post('/subscribe', (req, res) => {
 	const { subscription } = req.body;
 	const id = nanoid();
@@ -32,7 +31,11 @@ app.post('/subscribe', (req, res) => {
 	res.status(201).json({ success: true });
 });
 
-// Endpoint to schedule a notification
+app.post('/unsubscribe', (req, res) => {
+	// unknown how to implement
+	res.status(201).json({ success: true });
+});
+
 app.post('/send', (req, res) => {
 	const { subscription, data } = req.body;
 	if (!subscription || !data) {
@@ -59,7 +62,6 @@ app.post('/send', (req, res) => {
 	res.status(200).json({ success: true, id: notificationId });
 });
 
-// Endpoint to cancel a notification
 app.post('/cancel', (req, res) => {
 	const { id } = req.body;
 	if (!id) {
@@ -68,8 +70,8 @@ app.post('/cancel', (req, res) => {
 	}
 
 	if (scheduledNotifications.has(id)) {
-		console.log('cancel', id);
 		// Cancel specific notification
+		console.log('cancel', id);
 		clearTimeout(scheduledNotifications.get(id).timeoutId);
 		scheduledNotifications.delete(id);
 	}
@@ -77,5 +79,5 @@ app.post('/cancel', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
