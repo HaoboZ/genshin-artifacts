@@ -689,7 +689,6 @@ const RAW_RUNTIME_STATE =
           ["@types/pixelmatch", "npm:5.2.6"],\
           ["@types/react", "npm:19.0.10"],\
           ["@types/react-redux", "npm:7.1.34"],\
-          ["@types/web-push", "npm:3.6.4"],\
           ["@uidotdev/usehooks", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:2.4.1"],\
           ["@vercel/analytics", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:1.5.0"],\
           ["axios", "npm:1.8.2"],\
@@ -712,8 +711,7 @@ const RAW_RUNTIME_STATE =
           ["sass", "npm:1.85.1"],\
           ["tesseract.js", "npm:6.0.0"],\
           ["type-fest", "npm:4.37.0"],\
-          ["typescript", "patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"],\
-          ["web-push", "npm:3.6.7"]\
+          ["typescript", "patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
       }]\

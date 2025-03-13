@@ -16,24 +16,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const subscriptions = new Map();
 const scheduledNotifications = new Map();
 
 app.all('/ping', (req, res) => {
 	res.status(200).json({ pong: true });
-});
-
-app.post('/subscribe', (req, res) => {
-	const { subscription } = req.body;
-	const id = nanoid();
-	console.log('subscribe', id);
-	subscriptions.set(id, subscription);
-	res.status(201).json({ success: true });
-});
-
-app.post('/unsubscribe', (req, res) => {
-	// unknown how to implement
-	res.status(201).json({ success: true });
 });
 
 app.post('/send', (req, res) => {
