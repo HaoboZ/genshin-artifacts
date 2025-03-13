@@ -484,6 +484,7 @@ __metadata:
     "@types/pixelmatch": "npm:5.2.6"
     "@types/react": "npm:19.0.10"
     "@types/react-redux": "npm:7.1.34"
+    "@types/web-push": "npm:3.6.4"
     "@uidotdev/usehooks": "npm:2.4.1"
     "@vercel/analytics": "npm:1.5.0"
     axios: "npm:1.8.2"
@@ -507,6 +508,7 @@ __metadata:
     tesseract.js: "npm:6.0.0"
     type-fest: "npm:4.37.0"
     typescript: "npm:5.8.2"
+    web-push: "npm:^3.6.7"
   languageName: unknown
   linkType: soft
 
@@ -7058,7 +7060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"web-push@npm:3.6.7":
+"web-push@npm:3.6.7, web-push@npm:^3.6.7":
   version: 3.6.7
   resolution: "web-push@npm:3.6.7"
   dependencies:

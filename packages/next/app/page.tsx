@@ -2,13 +2,13 @@
 import ClientOnly from '@/components/clientOnly';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
+import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import pget from '../src/helpers/pget';
 import RespawnNotification from './respawnNotification';
 
 export default function Main() {
@@ -99,6 +99,8 @@ export default function Main() {
 						icon='/crystal.png'
 						delay={(3 * 24 * 60 + 2) * 60 * 1000}
 					/>
+					<RespawnNotification storageKey='test-respawn' item='Test 1' delay={1000} />
+					<RespawnNotification storageKey='test-respawn-1' item='Test 2' delay={10 * 1000} />
 				</ClientOnly>
 			</Stack>
 		</PageContainer>

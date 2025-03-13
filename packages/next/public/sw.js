@@ -7,6 +7,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('push', (event) => {
+	console.log('received');
 	if (!event.data) return;
 	const data = event.data.json();
 	event.waitUntil(
@@ -26,13 +27,13 @@ self.addEventListener('notificationclick', (event) => {
 		self.clients.matchAll({ type: 'window' }).then((clientList) => {
 			// If a window is already open, focus it
 			for (const client of clientList) {
-				if (client.url === '/' && 'focus' in client) {
+				if (client.url === 'https://genshin-artifacts.vercel.app' && 'focus' in client) {
 					return client.focus();
 				}
 			}
 			// Otherwise open a new window
 			if (self.clients.openWindow) {
-				return self.clients.openWindow('/');
+				return self.clients.openWindow('https://genshin-artifacts.vercel.app');
 			}
 		}),
 	);

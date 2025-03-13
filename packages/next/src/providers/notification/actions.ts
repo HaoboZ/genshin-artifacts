@@ -1,12 +1,25 @@
 'use server';
-import axios from 'axios';
+import { nanoid } from 'nanoid';
+import webpush from 'web-push';
+
+webpush.setVapidDetails(
+	'mailto:haobozhang9081@gmail.com',
+	process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+	process.env.VAPID_PRIVATE_KEY,
+);
+
+const subscriptions = new Map();
+const scheduledNotifications = new Map();
 
 export async function subscribeUser(subscription: PushSubscriptionJSON) {
-	await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, { subscription });
+	const id = nanoid();
+	console.log('subscribe', id);
+	subscriptions.set(id, subscription);
+	// await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, { subscription });
 }
 
 export async function unsubscribeUser() {
-	await axios.post(`${process.env.NOTIFICATION_SERVER}/unsubscribe`);
+	// await axios.post(`${process.env.NOTIFICATION_SERVER}/unsubscribe`);
 }
 
 export async function sendNotification(
@@ -19,14 +32,40 @@ export async function sendNotification(
 	},
 ) {
 	if (!subscription) throw new Error('No subscription available');
-	const res = await axios.post(`${process.env.NOTIFICATION_SERVER}/send`, {
-		subscription,
-		data,
-	});
-	return res.data.id as string;
+
+	const notificationId = nanoid();
+	console.log('send', notificationId, data.title, data.delay);
+
+	// Schedule the notification
+	const timeoutId = setTimeout(async () => {
+		try {
+			const sendResult = await webpush.sendNotification(
+				subscription as any,
+				JSON.stringify(data),
+			);
+			console.log('sent', notificationId, sendResult.statusCode);
+			scheduledNotifications.delete(notificationId);
+		} catch (error) {
+			console.error('Error sending push notification:', error);
+		}
+	}, data.delay);
+
+	scheduledNotifications.set(notificationId, { timeoutId, subscription });
+	return notificationId;
+	// const res = await axios.post(`${process.env.NOTIFICATION_SERVER}/send`, {
+	// 	subscription,
+	// 	data,
+	// });
+	// return res.data.id as string;
 }
 
 export async function cancelNotification(subscription: PushSubscriptionJSON, id: string) {
 	if (!subscription) throw new Error('No subscription available');
-	await axios.post(`${process.env.NOTIFICATION_SERVER}/cancel`, { subscription, id });
+	if (scheduledNotifications.has(id)) {
+		// Cancel specific notification
+		console.log('cancel', id);
+		clearTimeout(scheduledNotifications.get(id).timeoutId);
+		scheduledNotifications.delete(id);
+	}
+	// await axios.post(`${process.env.NOTIFICATION_SERVER}/cancel`, { subscription, id });
 }
