@@ -1,7 +1,6 @@
 'use client';
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { subscribeUser, unsubscribeUser } from './actions';
 
 const NotificationContext = createContext<{
 	subscription: PushSubscription;
@@ -39,13 +38,11 @@ export default function NotificationProvider({ children }: { children: ReactNode
 						userVisibleOnly: true,
 						applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
 					});
-					await subscribeUser(sub.toJSON());
 					setSubscription(sub);
 				},
 				unsubscribe: async () => {
 					await subscription?.unsubscribe();
 					setSubscription(null);
-					await unsubscribeUser();
 				},
 			}}>
 			{children}

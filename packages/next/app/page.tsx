@@ -1,5 +1,6 @@
 'use client';
 import ClientOnly from '@/components/clientOnly';
+import AsyncButton from '@/components/loaders/asyncButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import pget from '@/src/helpers/pget';
@@ -9,9 +10,12 @@ import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useNotifications } from '../src/providers/notification';
 import RespawnNotification from './respawnNotification';
 
 export default function Main() {
+	const { unsubscribe } = useNotifications();
+
 	const main = useAppSelector(pget('main'));
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
@@ -81,6 +85,19 @@ export default function Main() {
 					<Typography>Weapons: {good.weapons.length}</Typography>
 				</Box>
 				<ClientOnly>
+					<Box>
+						<AsyncButton
+							color='error'
+							variant='contained'
+							onClick={async () => {
+								await unsubscribe();
+								localStorage.removeItem('artifact-respawn');
+								localStorage.removeItem('specialties-respawn');
+								localStorage.removeItem('crystals-respawn');
+							}}>
+							Reset
+						</AsyncButton>
+					</Box>
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'

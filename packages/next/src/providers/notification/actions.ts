@@ -8,19 +8,7 @@ webpush.setVapidDetails(
 	process.env.VAPID_PRIVATE_KEY,
 );
 
-const subscriptions = new Map();
 const scheduledNotifications = new Map();
-
-export async function subscribeUser(subscription: PushSubscriptionJSON) {
-	const id = nanoid();
-	console.log('subscribe', id);
-	subscriptions.set(id, subscription);
-	// await axios.post(`${process.env.NOTIFICATION_SERVER}/subscribe`, { subscription });
-}
-
-export async function unsubscribeUser() {
-	// await axios.post(`${process.env.NOTIFICATION_SERVER}/unsubscribe`);
-}
 
 export async function sendNotification(
 	subscription: PushSubscriptionJSON,
