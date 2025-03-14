@@ -5,12 +5,12 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
+import { useNotifications } from '@/src/providers/notification';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useNotifications } from '../src/providers/notification';
 import RespawnNotification from './respawnNotification';
 
 export default function Main() {
