@@ -1,6 +1,6 @@
 {
 	"name": "@genshin-artifacts/server",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"scripts": {
 		"start": "npx tsx ./server.ts"
 	},
@@ -10,7 +10,7 @@
 		"cors": "2.8.5",
 		"dotenv": "16.4.7",
 		"express": "5.0.1",
-		"nanoid": "5.1.3",
+		"nanoid": "5.1.4",
 		"web-push": "3.6.7"
 	},
 	"devDependencies": {
