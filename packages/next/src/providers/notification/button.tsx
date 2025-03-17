@@ -19,7 +19,7 @@ export default function NotificationButton({
 	delay: number;
 	onComplete?: (id: string, delay: number) => Promise<void>;
 }) {
-	const { subscription, subscribe } = useNotifications();
+	const { subscribe } = useNotifications();
 
 	const [isSupported, setIsSupported] = useState(false);
 	const [permission, setPermission] = useState<NotificationPermission>(null);
@@ -37,7 +37,7 @@ export default function NotificationButton({
 			variant='contained'
 			disabled={!isSupported}
 			onClick={async () => {
-				await subscribe();
+				const subscription = await subscribe();
 				if (permission !== 'granted') {
 					const result = await Notification.requestPermission();
 					setPermission(result);

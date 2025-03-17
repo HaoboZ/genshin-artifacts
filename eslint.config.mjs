@@ -1,25 +1,29 @@
-import eslint from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
 import prettier from 'eslint-plugin-prettier/recommended';
-import react from 'eslint-plugin-react';
-import globals from 'globals';
+import { dirname } from 'path';
 import typescript from 'typescript-eslint';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+});
 
 export default typescript.config(
-	eslint.configs.recommended,
-	react.configs.flat.recommended,
-	react.configs.flat['jsx-runtime'],
-	typescript.configs.recommended,
+	...compat.extends('next/core-web-vitals', 'next/typescript'),
 	prettier,
 	{
-		plugins: { react },
+		// plugins: { react },
 		languageOptions: {
 			parserOptions: {
-				ecmaVersion: 'latest',
+				// ecmaVersion: 'latest',
 				projectService: true,
-				ecmaFeatures: { jsx: true },
-				sourceType: 'module',
+				// ecmaFeatures: { jsx: true },
+				// sourceType: 'module',
 			},
-			globals: { ...globals.browser, ...globals.node },
+			// globals: { ...globals.browser, ...globals.node },
 		},
 		rules: {
 			// suggestions
@@ -27,7 +31,6 @@ export default typescript.config(
 			'eqeqeq': 'warn',
 			'no-empty': ['warn', { allowEmptyCatch: true }],
 			'no-useless-computed-key': ['warn', { enforceForClassMembers: true }],
-			'no-var': 'warn',
 			// react
 			'react/display-name': 'off',
 			'react/function-component-definition': [
@@ -35,7 +38,6 @@ export default typescript.config(
 				{ namedComponents: 'function-declaration', unnamedComponents: 'arrow-function' },
 			],
 			'react/no-unescaped-entities': 'off',
-			'react/prop-types': 'off',
 			'react/jsx-boolean-value': 'warn',
 			'react/jsx-curly-brace-presence': 'warn',
 			'react/jsx-fragments': ['warn', 'element'],

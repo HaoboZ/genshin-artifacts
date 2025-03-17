@@ -40,7 +40,7 @@ export default function PageBack({
 			if (name) arr.push({ name: capitalCase(name), href: href || '/' });
 			return arr;
 		}, []);
-	}, [pathname]);
+	}, [pathMap, pathname]);
 
 	const clickListener = async (e) => {
 		if (confirmBack && !confirm('Are you sure you want to leave?')) throw 'cancel';

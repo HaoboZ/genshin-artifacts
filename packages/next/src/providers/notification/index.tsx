@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const NotificationContext = createContext<{
 	subscription: PushSubscription;
-	subscribe: () => Promise<void>;
+	subscribe: () => Promise<PushSubscription>;
 	unsubscribe: () => Promise<void>;
 }>({
 	subscription: null,
@@ -31,7 +31,7 @@ export default function NotificationProvider({ children }: { children: ReactNode
 			value={{
 				subscription,
 				subscribe: async () => {
-					if (subscription) return;
+					if (subscription) return subscription;
 
 					const registration = await navigator.serviceWorker.ready;
 					const sub = await registration.pushManager.subscribe({
@@ -39,6 +39,7 @@ export default function NotificationProvider({ children }: { children: ReactNode
 						applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
 					});
 					setSubscription(sub);
+					return sub;
 				},
 				unsubscribe: async () => {
 					await subscription?.unsubscribe();

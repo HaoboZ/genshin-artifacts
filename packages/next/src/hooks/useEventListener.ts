@@ -26,5 +26,5 @@ export default function useEventListener(
 		if (callOnce) func();
 		add.bind(event)(name, func);
 		return () => remove.bind(event)(name, func);
-	}, [Boolean(event), name]);
+	}, [event, name, callOnce]);
 }
