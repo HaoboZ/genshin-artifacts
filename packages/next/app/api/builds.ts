@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/14/25
+// 3/22/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -97,27 +97,20 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Yanfei: {
 		key: 'Yanfei',
-		role: 'DPS',
+		role: 'Vaporize DPS',
 		weapon: [
-			['SkywardAtlas', 'MemoryOfDust'],
-			'LostPrayerToTheSacredWinds',
-			'KagurasVerity',
-			'TheWidsith',
-			'DodocoTales',
-			'SolarPearl',
-			'BlackcliffAgate',
-			'MappaMare',
+			['SurfsUp', 'AThousandFloatingDreams'],
+			['TomeOfTheEternalFlow', 'CashflowSupervision'],
+			['FlowingPurity', 'TheWidsith'],
+			['SunnyMorningSleepIn', 'StarcallersWatch'],
+			['SkywardAtlas', 'TulaytullahsRemembrance', 'LostPrayerToTheSacredWinds'],
+			['KagurasVerity', 'MemoryOfDust'],
+			['DodocoTales', 'MappaMare'],
 		],
 		group: 0,
-		artifact: [
-			'CrimsonWitchOfFlames',
-			'GildedDreams',
-			'WanderersTroupe',
-			'ShimenawasReminiscence',
-			'RetracingBolide',
-		],
+		artifact: ['CrimsonWitchOfFlames', 'GildedDreams', 'WanderersTroupe', 'RetracingBolide'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Thoma: {
 		key: 'Thoma',
