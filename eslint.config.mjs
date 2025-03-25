@@ -51,6 +51,7 @@ export default typescript.config(
 					reservedFirst: true,
 				},
 			],
+			'react-hooks/exhaustive-deps': 'off',
 			// typescript types
 			'@typescript-eslint/ban-ts-comment': 'off',
 			'@typescript-eslint/ban-types': 'off',
