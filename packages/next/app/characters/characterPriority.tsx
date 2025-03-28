@@ -4,7 +4,7 @@ import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
-import { Grid2, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { filter, isIncludedIn, isNot, mapValues, omit } from 'remeda';
@@ -66,37 +66,37 @@ export default function CharacterPriority({
 			groups={filteredCharacters}
 			setGroups={setCharacters}
 			renderItems={(list, ref) => (
-				<Grid2 ref={ref} container spacing={1} sx={{ minHeight: 100 }}>
+				<Grid ref={ref} container spacing={1} sx={{ minHeight: 100 }}>
 					{list}
-				</Grid2>
+				</Grid>
 			)}
 			renderItem={(key, containerProps, handleProps) => (
-				<Grid2
+				<Grid
 					sx={{ textDecoration: 'none' }}
 					{...containerProps}
 					{...(editMode ? handleProps : { component: Link, href: `/characters/${key}` })}>
 					<CharacterTierImage good={good} characterKey={key} />
-				</Grid2>
+				</Grid>
 			)}
 			dependencies={[editMode]}>
 			{({ unSorted, ...lists }) => (
-				<Grid2 container spacing={1}>
-					<Grid2 size={5}>
+				<Grid container spacing={1}>
+					<Grid size={5}>
 						<Paper variant='outlined' sx={{ p: 1 }}>
 							{unSorted}
 						</Paper>
-					</Grid2>
-					<Grid2 container size={7} sx={{ alignContent: 'flex-start' }}>
+					</Grid>
+					<Grid container size={7} sx={{ alignContent: 'flex-start' }}>
 						{Object.values(lists).map((list, index) => (
-							<Grid2 key={index} size={12}>
+							<Grid key={index} size={12}>
 								<Paper variant='outlined' sx={{ p: 1 }}>
 									<Typography>Priority {index}</Typography>
 									{list}
 								</Paper>
-							</Grid2>
+							</Grid>
 						))}
-					</Grid2>
-				</Grid2>
+					</Grid>
+				</Grid>
 			)}
 		</MultiSortable>
 	);

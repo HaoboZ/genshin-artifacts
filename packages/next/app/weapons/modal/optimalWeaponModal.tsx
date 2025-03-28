@@ -14,7 +14,7 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	Grid2,
+	Grid,
 	List,
 	ListItem,
 	ListItemText,
@@ -87,14 +87,14 @@ export default function OptimalWeaponModal() {
 								})
 							}>
 							<ListItemText>
-								<Grid2 container spacing={1}>
-									<Grid2 size='auto'>
+								<Grid container spacing={1}>
+									<Grid size='auto'>
 										<WeaponImage weapon={weapon} />
-									</Grid2>
-									<Grid2 size='grow'>
+									</Grid>
+									<Grid size='grow'>
 										<PercentBar p={1 - tier / character.weapon.length} />
-									</Grid2>
-								</Grid2>
+									</Grid>
+								</Grid>
 							</ListItemText>
 							<CharacterImage character={charactersInfo[character.key]} />
 						</ListItem>

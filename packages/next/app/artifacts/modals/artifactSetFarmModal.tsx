@@ -9,7 +9,7 @@ import statArrMatch from '@/src/helpers/statArrMatch';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { StatKey } from '@/src/types/good';
-import { DialogContent, DialogTitle, Grid2, Typography } from '@mui/material';
+import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
@@ -73,9 +73,9 @@ export default function ArtifactSetFarmModal() {
 			<DialogTitle>Artifact Set Farm Priority</DialogTitle>
 			<DialogContent>
 				<PageSection title='Missing Main Stats'>
-					<Grid2 container spacing={1}>
+					<Grid container spacing={1}>
 						{missingMainStat.map(([artifactSet, { mainStats }]) => (
-							<Grid2 key={artifactSet}>
+							<Grid key={artifactSet}>
 								<ArtifactSetImage
 									artifactSet={artifactSetsInfo[artifactSet]}
 									tooltip={
@@ -92,22 +92,22 @@ export default function ArtifactSetFarmModal() {
 									}>
 									<OverlayText>{Object.values(mainStats).flat().length}</OverlayText>
 								</ArtifactSetImage>
-							</Grid2>
+							</Grid>
 						))}
-					</Grid2>
+					</Grid>
 				</PageSection>
 				<PageSection title='Low Potential'>
-					<Grid2 container spacing={1}>
+					<Grid container spacing={1}>
 						{lowPotential.map(([artifactSet, [total, count]]) => (
-							<Grid2 key={artifactSet}>
+							<Grid key={artifactSet}>
 								<ArtifactSetImage artifactSet={artifactSetsInfo[artifactSet]}>
 									<OverlayText>
 										{count} / {total}
 									</OverlayText>
 								</ArtifactSetImage>
-							</Grid2>
+							</Grid>
 						))}
-					</Grid2>
+					</Grid>
 				</PageSection>
 			</DialogContent>
 		</DialogWrapper>

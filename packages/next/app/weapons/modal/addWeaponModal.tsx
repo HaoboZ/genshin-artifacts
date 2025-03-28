@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon, WeaponKey } from '@/src/types/good';
-import { Autocomplete, DialogTitle, Grid2, TextField } from '@mui/material';
+import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
@@ -77,14 +77,14 @@ export default function AddWeaponModal() {
 								setFieldValue('key', value);
 							}}
 						/>
-						<Grid2 container spacing={1}>
+						<Grid container spacing={1}>
 							{characters.map(({ build, buildIndex }, index) => (
-								<Grid2 key={index}>
+								<Grid key={index}>
 									<CharacterImage character={charactersInfo[build.key]} />
 									<PercentBar p={1 - buildIndex / build.weapon.length} />
-								</Grid2>
+								</Grid>
 							))}
-						</Grid2>
+						</Grid>
 					</WeaponForm>
 				)}
 			</Formik>

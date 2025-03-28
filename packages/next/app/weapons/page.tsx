@@ -7,7 +7,7 @@ import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { Lock as LockIcon } from '@mui/icons-material';
-import { Grid2, Stack, TextField } from '@mui/material';
+import { Grid, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import RarityFilter from '../characters/rarityFilter';
 import AddWeaponModal from './modal/addWeaponModal';
@@ -39,16 +39,16 @@ export default function Weapons() {
 					{ name: 'Add', onClick: () => showModal(AddWeaponModal) },
 					{ name: 'Optimize', onClick: () => showModal(OptimalWeaponModal) },
 				]}>
-				<Grid2 container spacing={1}>
-					<Grid2 size={12}>
+				<Grid container spacing={1}>
+					<Grid size={12}>
 						<TextField
 							placeholder='Search'
 							value={search}
 							onChange={({ target }) => setSearch(target.value)}
 						/>
-					</Grid2>
+					</Grid>
 					{weapons.map((weapon) => (
-						<Grid2 key={weapon.id}>
+						<Grid key={weapon.id}>
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -66,9 +66,9 @@ export default function Weapons() {
 									/>
 								)}
 							</WeaponCharacterImage>
-						</Grid2>
+						</Grid>
 					))}
-				</Grid2>
+				</Grid>
 			</PageSection>
 		</PageContainer>
 	);

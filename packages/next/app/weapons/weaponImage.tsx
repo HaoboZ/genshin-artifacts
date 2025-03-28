@@ -39,7 +39,7 @@ export default function WeaponImage({
 					src={
 						typeof weapon === 'object'
 							? weapon.level > 40
-								? weaponInfo.image2
+								? (weaponInfo.image2 ?? weaponInfo.image)
 								: weaponInfo.image
 							: (weaponInfo?.image ?? weaponImages[type])
 					}

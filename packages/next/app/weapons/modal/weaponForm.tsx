@@ -1,10 +1,19 @@
+import { weaponsInfo } from '@/api/weapons';
 import InputField from '@/components/fields/input';
 import SwitchField from '@/components/fields/switch';
 import { useModalControls } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IWeapon } from '@/src/types/good';
-import { Box, Button, DialogActions, DialogContent, FormControlLabel, Stack } from '@mui/material';
+import {
+	Box,
+	Button,
+	DialogActions,
+	DialogContent,
+	FormControlLabel,
+	Stack,
+	Typography,
+} from '@mui/material';
 import { useFormikContext } from 'formik';
 import type { ReactNode } from 'react';
 import { Fragment } from 'react';
@@ -20,6 +29,8 @@ export default function WeaponForm({
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 	const { handleSubmit, values } = useFormikContext<IWeapon>();
+
+	const weapon = weaponsInfo[values.key];
 
 	return (
 		<Fragment>
@@ -37,7 +48,19 @@ export default function WeaponForm({
 							</Box>
 						</Stack>
 					)}
-
+					{weapon && (
+						<Fragment>
+							<Typography>
+								<b>ATK:</b> {weapon.atk}
+							</Typography>
+							<Typography>
+								<b>Ascension:</b> {weapon.stat}
+							</Typography>
+							<Typography>
+								<b>Ability:</b> {weapon.ability}
+							</Typography>
+						</Fragment>
+					)}
 					{children}
 				</Stack>
 			</DialogContent>

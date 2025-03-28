@@ -11,11 +11,7 @@ export default function DialogWrapper({ children, ...props }: Omit<DialogProps, 
 		<Dialog fullWidth open={modalState.open} maxWidth='md' onClose={closeModal} {...props}>
 			<IconButton
 				aria-label='close'
-				sx={{
-					position: 'absolute',
-					right: 8,
-					top: 8,
-				}}
+				sx={{ position: 'absolute', right: 8, top: 8 }}
 				onClick={closeModal}>
 				<CloseIcon />
 			</IconButton>

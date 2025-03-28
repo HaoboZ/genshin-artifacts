@@ -1,5 +1,4 @@
 export type CharacterKey =
-	| 'Traveler' // Traveler
 	| 'Albedo' // Albedo
 	| 'Alhaitham' // Alhaitham
 	| 'Aloy' // Aloy
@@ -34,6 +33,7 @@ export type CharacterKey =
 	| 'Ganyu' // Ganyu
 	| 'Gorou' // Gorou
 	| 'HuTao' // Hu Tao
+	| 'Iansan' // Iansan
 	| 'Jean' // Jean
 	| 'Kachina' // Kachina
 	| 'KaedeharaKazuha' // Kaedehara Kazuha
@@ -77,6 +77,8 @@ export type CharacterKey =
 	| 'Tartaglia' // Tartaglia
 	| 'Thoma' // Thoma
 	| 'Tighnari' // Tighnari
+	| 'Traveler' // Traveler
+	| 'Varesa' // Varesa
 	| 'Venti' // Venti
 	| 'Wanderer' // Wanderer
 	| 'Wriothesley' // Wriothesley

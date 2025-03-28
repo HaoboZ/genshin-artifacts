@@ -19,7 +19,7 @@ import {
 	DialogContent,
 	DialogTitle,
 	FormControlLabel,
-	Grid2,
+	Grid,
 	Switch,
 	Typography,
 } from '@mui/material';
@@ -62,8 +62,8 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 			<DialogTitle>{artifactSetsInfo[artifact.setKey].name}</DialogTitle>
 			<Box sx={{ px: 3 }}>
 				<ArtifactActions artifact={artifact} />
-				<Grid2 container spacing={1}>
-					<Grid2 size='auto'>
+				<Grid container spacing={1}>
+					<Grid size='auto'>
 						<ArtifactImage artifact={artifact}>
 							{artifact.location && (
 								<CharacterImage
@@ -73,14 +73,14 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 								/>
 							)}
 						</ArtifactImage>
-					</Grid2>
-					<Grid2 size='grow'>
+					</Grid>
+					<Grid size='grow'>
 						<Typography>{statName[artifact.mainStatKey]}</Typography>
 						{artifact.substats.map((substat) => (
 							<SubStatBar key={substat.key} substat={substat} />
 						))}
-					</Grid2>
-				</Grid2>
+					</Grid>
+				</Grid>
 				<FormControlLabel
 					control={
 						<Switch
@@ -93,14 +93,14 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 				/>
 			</Box>
 			<DialogContent>
-				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
+				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{charactersTiered.map(({ build, statRollPercent }) => {
 						const currentArtifact = artifacts.find(
 							(artifact) => artifact.location === build.key,
 						);
 						return (
-							<Grid2 key={build.key} container size={{ xs: 6, md: 4 }}>
-								<Grid2 size='auto'>
+							<Grid key={build.key} container size={{ xs: 6, md: 4 }}>
+								<Grid size='auto'>
 									<CharacterImage
 										character={charactersInfo[build.key]}
 										sx={{ ':hover': { cursor: 'pointer' } }}
@@ -126,8 +126,8 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 											/>
 										)}
 									</CharacterImage>
-								</Grid2>
-								<Grid2 size='grow'>
+								</Grid>
+								<Grid size='grow'>
 									{currentArtifact && (
 										<Box>
 											<OverflowTypography>
@@ -138,23 +138,23 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 											))}
 										</Box>
 									)}
-								</Grid2>
-								<Grid2 container size={12} spacing={0}>
-									<Grid2 size={6}>
+								</Grid>
+								<Grid container size={12} spacing={0}>
+									<Grid size={6}>
 										{currentArtifact && (
 											<PercentBar p={weightedStatRollPercent(build, currentArtifact)}>
 												Current: %p
 											</PercentBar>
 										)}
-									</Grid2>
-									<Grid2 size={6}>
+									</Grid>
+									<Grid size={6}>
 										<PercentBar p={statRollPercent}>New: %p</PercentBar>
-									</Grid2>
-								</Grid2>
-							</Grid2>
+									</Grid>
+								</Grid>
+							</Grid>
 						);
 					})}
-				</Grid2>
+				</Grid>
 			</DialogContent>
 		</DialogWrapper>
 	);

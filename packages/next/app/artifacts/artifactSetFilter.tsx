@@ -1,7 +1,7 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import pget from '@/src/helpers/pget';
 import type { DArtifact } from '@/src/types/data';
-import { Button, ButtonGroup, Grid2 } from '@mui/material';
+import { Button, ButtonGroup, Grid } from '@mui/material';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { groupBy, pipe, reverse, sortBy } from 'remeda';
@@ -21,8 +21,8 @@ export default function ArtifactSetFilter() {
 	);
 
 	return (
-		<Grid2 container columnSpacing={1}>
-			<Grid2>
+		<Grid container columnSpacing={1}>
+			<Grid>
 				<ButtonGroup>
 					<Button sx={{ height: 50 }} component={Link} href='/artifacts'>
 						All
@@ -31,9 +31,9 @@ export default function ArtifactSetFilter() {
 						Unused
 					</Button>
 				</ButtonGroup>
-			</Grid2>
+			</Grid>
 			{artifactGroups.map((artifactGroup, index) => (
-				<Grid2 key={index}>
+				<Grid key={index}>
 					<ButtonGroup>
 						{sortBy(artifactGroup, pget('order')).map((artifactSet) => (
 							<Button
@@ -45,8 +45,8 @@ export default function ArtifactSetFilter() {
 							</Button>
 						))}
 					</ButtonGroup>
-				</Grid2>
+				</Grid>
 			))}
-		</Grid2>
+		</Grid>
 	);
 }

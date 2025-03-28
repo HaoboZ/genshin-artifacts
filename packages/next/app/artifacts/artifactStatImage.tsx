@@ -5,7 +5,7 @@ import SubStatBar from '@/components/subStatBar';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import { Lock as LockIcon } from '@mui/icons-material';
 import type { CardProps } from '@mui/material';
-import { Box, Card, CardContent, Grid2 } from '@mui/material';
+import { Box, Card, CardContent, Grid } from '@mui/material';
 import CharacterImage from '../characters/characterImage';
 import ArtifactImage from './artifactImage';
 
@@ -19,8 +19,8 @@ export default function ArtifactStatImage({
 	return (
 		<Card {...props}>
 			<CardContent>
-				<Grid2 container spacing={1}>
-					<Grid2 size='auto'>
+				<Grid container spacing={1}>
+					<Grid size='auto'>
 						<ArtifactImage artifact={artifact} slot={slot}>
 							{!hideCharacter && artifact.location && (
 								<CharacterImage
@@ -42,8 +42,8 @@ export default function ArtifactStatImage({
 								/>
 							)}
 						</ArtifactImage>
-					</Grid2>
-					<Grid2 size='grow'>
+					</Grid>
+					<Grid size='grow'>
 						{artifact && (
 							<Box>
 								<OverflowTypography>{statName[artifact.mainStatKey]}</OverflowTypography>
@@ -52,9 +52,9 @@ export default function ArtifactStatImage({
 								))}
 							</Box>
 						)}
-					</Grid2>
+					</Grid>
 					{children}
-				</Grid2>
+				</Grid>
 			</CardContent>
 		</Card>
 	);

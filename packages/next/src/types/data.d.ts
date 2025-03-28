@@ -35,10 +35,13 @@ export interface DArtifact {
 export interface DWeapon {
 	key: WeaponKey;
 	name: string;
-	weaponType: string;
-	rarity: number;
 	image: string;
 	image2: string;
+	weaponType: string;
+	rarity: number;
+	atk: number;
+	stat: string;
+	ability: string;
 }
 
 export interface Build {

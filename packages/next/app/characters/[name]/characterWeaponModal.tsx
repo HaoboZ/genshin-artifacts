@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { DialogContent, DialogTitle, Grid2 } from '@mui/material';
+import { DialogContent, DialogTitle, Grid } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
 import WeaponCharacterImage from '../../weapons/weaponCharacterImage';
@@ -31,9 +31,9 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 			<DialogTitle>Weapon for {charactersInfo[build.key].name}</DialogTitle>
 			<DialogContent>
 				{weapon && <WeaponCharacterImage weapon={weapon} />}
-				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
+				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{tierWeapons.map((weapon, index) => (
-						<Grid2 key={index}>
+						<Grid key={index}>
 							<WeaponCharacterImage
 								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -44,9 +44,9 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 									closeModal();
 								}}
 							/>
-						</Grid2>
+						</Grid>
 					))}
-				</Grid2>
+				</Grid>
 			</DialogContent>
 		</DialogWrapper>
 	);

@@ -16,7 +16,7 @@ import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { DCharacter } from '@/src/types/data';
-import { Card, CardContent, Grid2, Stack, Switch, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Stack, Switch, Typography } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
@@ -102,13 +102,13 @@ export default function Character({ characterData }: { characterData: DCharacter
 			<CharacterBuild build={build} />
 			{character && (
 				<PageSection title='Talents'>
-					<Grid2 container spacing={1}>
+					<Grid container spacing={1}>
 						{[
 							['auto', 'Auto Attack'],
 							['skill', 'Elemental Skill'],
 							['burst', 'Elemental Burst'],
 						].map(([type, name]) => (
-							<Grid2 key={type} size={4}>
+							<Grid key={type} size={4}>
 								<FormattedTextField
 									label={name}
 									value={character.talent[type]}
@@ -121,14 +121,14 @@ export default function Character({ characterData }: { characterData: DCharacter
 										)
 									}
 								/>
-							</Grid2>
+							</Grid>
 						))}
-					</Grid2>
+					</Grid>
 				</PageSection>
 			)}
 			<PageSection title='Equipped'>
-				<Grid2 container spacing={1}>
-					<Grid2 size={{ xs: 6, sm: 4 }}>
+				<Grid container spacing={1}>
+					<Grid size={{ xs: 6, sm: 4 }}>
 						{character && (
 							<Card
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -136,31 +136,31 @@ export default function Character({ characterData }: { characterData: DCharacter
 									showModal(CharacterWeaponModal, { props: { build, weapon } });
 								}}>
 								<CardContent>
-									<Grid2 container spacing={1}>
-										<Grid2 size='auto'>
+									<Grid container spacing={1}>
+										<Grid size='auto'>
 											<WeaponImage weapon={weapon} type={characterData.weaponType} />
-										</Grid2>
+										</Grid>
 										{weapon && (
 											<Fragment>
-												<Grid2 size='grow'>
+												<Grid size='grow'>
 													<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
-												</Grid2>
-												<Grid2 size={12}>
+												</Grid>
+												<Grid size={12}>
 													<PercentBar p={weaponTier} />
-												</Grid2>
+												</Grid>
 											</Fragment>
 										)}
-									</Grid2>
+									</Grid>
 								</CardContent>
 							</Card>
 						)}
-					</Grid2>
+					</Grid>
 					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsIndexed[slot];
 						const statRollPercent = weightedStatRollPercent(build, artifact);
 
 						return (
-							<Grid2 key={slot} size={{ xs: 6, sm: 4 }}>
+							<Grid key={slot} size={{ xs: 6, sm: 4 }}>
 								<ArtifactStatImage
 									hideCharacter
 									artifact={artifact}
@@ -172,15 +172,15 @@ export default function Character({ characterData }: { characterData: DCharacter
 										});
 									}}>
 									{artifact && (
-										<Grid2 size={12}>
+										<Grid size={12}>
 											<PercentBar p={statRollPercent} />
-										</Grid2>
+										</Grid>
 									)}
 								</ArtifactStatImage>
-							</Grid2>
+							</Grid>
 						);
 					})}
-				</Grid2>
+				</Grid>
 			</PageSection>
 		</PageContainer>
 	);

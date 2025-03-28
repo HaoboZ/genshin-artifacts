@@ -10,7 +10,7 @@ import {
 	DialogActions,
 	DialogContent,
 	FormControlLabel,
-	Grid2,
+	Grid,
 	MenuItem,
 	TextField,
 } from '@mui/material';
@@ -28,8 +28,8 @@ export default function ArtifactForm() {
 	return (
 		<Fragment>
 			<DialogContent sx={{ pb: 0 }}>
-				<Grid2 container spacing={1} sx={{ my: 1 }}>
-					<Grid2 size={6}>
+				<Grid container spacing={1} sx={{ my: 1 }}>
+					<Grid size={6}>
 						<AutocompleteField
 							autoHighlight
 							disableClearable
@@ -42,16 +42,16 @@ export default function ArtifactForm() {
 								setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
 							}}
 						/>
-					</Grid2>
-					<Grid2 size={3} sx={{ display: 'flex', alignItems: 'center' }}>
+					</Grid>
+					<Grid size={3} sx={{ display: 'flex', alignItems: 'center' }}>
 						<FormControlLabel control={<SwitchField name='lock' />} label='Locked' />
-					</Grid2>
-					<Grid2
+					</Grid>
+					<Grid
 						size={3}
 						sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 						<Scanner setArtifact={setValues} />
-					</Grid2>
-					<Grid2 size={3}>
+					</Grid>
+					<Grid size={3}>
 						<SelectField
 							name='slotKey'
 							label='Type'
@@ -67,8 +67,8 @@ export default function ArtifactForm() {
 								</MenuItem>
 							))}
 						</SelectField>
-					</Grid2>
-					<Grid2 size={3}>
+					</Grid>
+					<Grid size={3}>
 						<SelectField
 							name='mainStatKey'
 							label='Main Stat'
@@ -79,8 +79,8 @@ export default function ArtifactForm() {
 								</MenuItem>
 							))}
 						</SelectField>
-					</Grid2>
-					<Grid2 size={3}>
+					</Grid>
+					<Grid size={3}>
 						<SelectField
 							name='rarity'
 							label='Rarity'
@@ -100,8 +100,8 @@ export default function ArtifactForm() {
 								</MenuItem>
 							))}
 						</SelectField>
-					</Grid2>
-					<Grid2 size={3}>
+					</Grid>
+					<Grid size={3}>
 						<InputField
 							name='level'
 							label='Level'
@@ -113,11 +113,11 @@ export default function ArtifactForm() {
 								);
 							}}
 						/>
-					</Grid2>
-					<Grid2 size='auto' sx={{ display: 'flex', alignItems: 'center' }}>
+					</Grid>
+					<Grid size='auto' sx={{ display: 'flex', alignItems: 'center' }}>
 						<ArtifactImage artifact={values} />
-					</Grid2>
-					<Grid2 size='grow'>
+					</Grid>
+					<Grid size='grow'>
 						{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
 							<SelectField
 								key={index}
@@ -138,8 +138,8 @@ export default function ArtifactForm() {
 								))}
 							</SelectField>
 						))}
-					</Grid2>
-					<Grid2 size='grow'>
+					</Grid>
+					<Grid size='grow'>
 						{[...Array(values.substats.length)].map((_, index) => (
 							<InputField
 								key={index}
@@ -157,8 +157,8 @@ export default function ArtifactForm() {
 								}}
 							/>
 						))}
-					</Grid2>
-				</Grid2>
+					</Grid>
+				</Grid>
 			</DialogContent>
 			<DialogActions>
 				<Button variant='contained' onClick={(e) => handleSubmit(e as any)}>

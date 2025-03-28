@@ -1,54 +1,56 @@
 export type ArtifactSetKey =
-	| 'Adventurer' // Adventurer
-	| 'ArchaicPetra' // Archaic Petra
-	| 'Berserker' // Berserker
-	| 'BlizzardStrayer' // Blizzard Strayer
-	| 'BloodstainedChivalry' // Bloodstained Chivalry
-	| 'BraveHeart' // Brave Heart
-	| 'CrimsonWitchOfFlames' // Crimson Witch of Flames
-	| 'DeepwoodMemories' // Deepwood Memories
-	| 'DefendersWill' // Defender's Will
-	| 'DesertPavilionChronicle' // Desert Pavilion Chronicle
-	| 'EchoesOfAnOffering' // Echoes of an Offering
-	| 'EmblemOfSeveredFate' // Emblem of Severed Fate
-	| 'FlowerOfParadiseLost' // Flower of Paradise Lost
-	| 'FragmentOfHarmonicWhimsy' // Fragment of Harmonic Whimsy
-	| 'Gambler' // Gambler
-	| 'GildedDreams' // Gilded Dreams
-	| 'GladiatorsFinale' // Gladiator's Finale
-	| 'GoldenTroupe' // Golden Troupe
-	| 'HeartOfDepth' // Heart of Depth
-	| 'HuskOfOpulentDreams' // Husk of Opulent Dreams
-	| 'Instructor' // Instructor
-	| 'Lavawalker' // Lavawalker
-	| 'LuckyDog' // Lucky Dog
-	| 'MaidenBeloved' // Maiden Beloved
-	| 'MarechausseeHunter' // Marechaussee Hunter
-	| 'MartialArtist' // Martial Artist
-	| 'NighttimeWhispersInTheEchoingWoods' // Nighttime Whispers in the Echoing Woods
-	| 'NoblesseOblige' // Noblesse Oblige
-	| 'NymphsDream' // Nymph's Dream
+	| 'LongNightsOath' // Long Night's Oath
+	| 'FinaleOfTheDeepGalleries' // Finale of the Deep Galleries
 	| 'ObsidianCodex' // Obsidian Codex
-	| 'OceanHuedClam' // Ocean-Hued Clam
-	| 'PaleFlame' // Pale Flame
-	| 'PrayersForDestiny' // Prayers for Destiny
-	| 'PrayersForIllumination' // Prayers for Illumination
-	| 'PrayersForWisdom' // Prayers for Wisdom
-	| 'PrayersToSpringtime' // Prayers to Springtime
-	| 'ResolutionOfSojourner' // Resolution of Sojourner
-	| 'RetracingBolide' // Retracing Bolide
-	| 'Scholar' // Scholar
 	| 'ScrollOfTheHeroOfCinderCity' // Scroll of the Hero of Cinder City
-	| 'ShimenawasReminiscence' // Shimenawa's Reminiscence
+	| 'UnfinishedReverie' // Unfinished Reverie
+	| 'FragmentOfHarmonicWhimsy' // Fragment of Harmonic Whimsy
+	| 'NighttimeWhispersInTheEchoingWoods' // Nighttime Whispers in the Echoing Woods
 	| 'SongOfDaysPast' // Song of Days Past
+	| 'GoldenTroupe' // Golden Troupe
+	| 'MarechausseeHunter' // Marechaussee Hunter
+	| 'VourukashasGlow' // Vourukasha's Glow
+	| 'NymphsDream' // Nymph's Dream
+	| 'FlowerOfParadiseLost' // Flower of Paradise Lost
+	| 'DesertPavilionChronicle' // Desert Pavilion Chronicle
+	| 'GildedDreams' // Gilded Dreams
+	| 'DeepwoodMemories' // Deepwood Memories
+	| 'EchoesOfAnOffering' // Echoes of an Offering
+	| 'VermillionHereafter' // Vermillion Hereafter
+	| 'OceanHuedClam' // Ocean-Hued Clam
+	| 'HuskOfOpulentDreams' // Husk of Opulent Dreams
+	| 'EmblemOfSeveredFate' // Emblem of Severed Fate
+	| 'ShimenawasReminiscence' // Shimenawa's Reminiscence
+	| 'PaleFlame' // Pale Flame
 	| 'TenacityOfTheMillelith' // Tenacity of the Millelith
-	| 'TheExile' // The Exile
+	| 'HeartOfDepth' // Heart of Depth
+	| 'BlizzardStrayer' // Blizzard Strayer
+	| 'CrimsonWitchOfFlames' // Crimson Witch of Flames
+	| 'Lavawalker' // Lavawalker
 	| 'ThunderingFury' // Thundering Fury
 	| 'Thundersoother' // Thundersoother
-	| 'TinyMiracle' // Tiny Miracle
-	| 'TravelingDoctor' // Traveling Doctor
-	| 'UnfinishedReverie' // Unfinished Reverie
-	| 'VermillionHereafter' // Vermillion Hereafter
+	| 'RetracingBolide' // Retracing Bolide
+	| 'ArchaicPetra' // Archaic Petra
 	| 'ViridescentVenerer' // Viridescent Venerer
-	| 'VourukashasGlow' // Vourukasha's Glow
-	| 'WanderersTroupe'; // Wanderer's Troupe
+	| 'MaidenBeloved' // Maiden Beloved
+	| 'BloodstainedChivalry' // Bloodstained Chivalry
+	| 'NoblesseOblige' // Noblesse Oblige
+	| 'WanderersTroupe' // Wanderer's Troupe
+	| 'GladiatorsFinale' // Gladiator's Finale
+	| 'PrayersToSpringtime' // Prayers to Springtime
+	| 'PrayersForIllumination' // Prayers for Illumination
+	| 'PrayersForDestiny' // Prayers for Destiny
+	| 'PrayersForWisdom' // Prayers for Wisdom
+	| 'Scholar' // Scholar
+	| 'Gambler' // Gambler
+	| 'MartialArtist' // Martial Artist
+	| 'BraveHeart' // Brave Heart
+	| 'DefendersWill' // Defender's Will
+	| 'TheExile' // The Exile
+	| 'Instructor' // Instructor
+	| 'Berserker' // Berserker
+	| 'TinyMiracle' // Tiny Miracle
+	| 'ResolutionOfSojourner' // Resolution of Sojourner
+	| 'TravelingDoctor' // Traveling Doctor
+	| 'LuckyDog' // Lucky Dog
+	| 'Adventurer'; // Adventurer

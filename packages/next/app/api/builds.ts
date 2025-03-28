@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/24/25
+// 3/28/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -99,7 +99,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Yanfei',
 		role: 'Vaporize DPS',
 		weapon: [
-			['SurfsUp', 'AThousandFloatingDreams'],
+			['SurfsUp', 'VividNotions', 'AThousandFloatingDreams'],
 			['TomeOfTheEternalFlow', 'CashflowSupervision'],
 			['FlowingPurity', 'TheWidsith'],
 			['SunnyMorningSleepIn', 'StarcallersWatch'],
@@ -138,7 +138,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'PrototypeStarglitter',
 		],
 		group: 1,
-		artifact: ['NoblesseOblige', 'OceanHuedClam', 'SongOfDaysPast', 'MaidenBeloved'],
+		artifact: [
+			'NoblesseOblige',
+			['ScrollOfTheHeroOfCinderCity', 'OceanHuedClam', 'SongOfDaysPast'],
+			'MaidenBeloved',
+		],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp', 'eleMas'],
 	},
@@ -932,6 +936,26 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
+	Iansan: {
+		key: 'Iansan',
+		role: 'Support',
+		weapon: [
+			'CalamityQueller',
+			'EngulfingLightning',
+			'FavoniusLance',
+			'VortexVanquisher',
+			'SkywardSpine',
+			['LumidouceElegy', 'StaffOfHoma'],
+			'MissiveWindspear',
+			'TamayurateiNoOhanashi',
+			['ProspectorsDrill', 'WavebreakersFin', 'LithicSpear'],
+			['TheCatch', 'PrototypeStarglitter'],
+		],
+		group: 0,
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
+		subStat: ['enerRech_', 'atk_', 'critRate_'],
+	},
 	Keqing: {
 		key: 'Keqing',
 		role: 'Aggravate DPS',
@@ -1040,6 +1064,24 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'ThunderingFury'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
+	},
+	Varesa: {
+		key: 'Varesa',
+		role: 'DPS',
+		weapon: [
+			'VividNotions',
+			['TomeOfTheEternalFlow', 'SurfsUp'],
+			'KagurasVerity',
+			['LostPrayerToTheSacredWinds', 'CashflowSupervision'],
+			'CranesEchoingCall',
+			'TulaytullahsRemembrance',
+			'TheWidsith',
+			'FlowingPurity',
+		],
+		group: 0,
+		artifact: [['LongNightsOath', 'ObsidianCodex'], 'MarechausseeHunter'],
+		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
 	// Cryo
 	Diona: {
@@ -1536,7 +1578,10 @@ export const builds: Record<CharacterKey, Build> = {
 			'WhiteTassel',
 		],
 		group: 0,
-		artifact: ['VermillionHereafter', 'MarechausseeHunter', 'DesertPavilionChronicle'],
+		artifact: [
+			['VermillionHereafter', 'MarechausseeHunter', 'LongNightsOath'],
+			'DesertPavilionChronicle',
+		],
 		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},

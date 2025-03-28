@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { Box, Button, DialogTitle, FormControlLabel, Grid2, Stack, Switch } from '@mui/material';
+import { Box, Button, DialogTitle, FormControlLabel, Grid, Stack, Switch } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import { Formik } from 'formik';
 import { Fragment, useMemo, useState } from 'react';
@@ -102,9 +102,9 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 							}
 							label='All Characters'
 						/>
-						<Grid2 container spacing={1}>
+						<Grid container spacing={1}>
 							{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
-								<Grid2 key={index}>
+								<Grid key={index}>
 									<CharacterImage
 										character={charactersInfo[build.key]}
 										sx={{
@@ -131,9 +131,9 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 											Current %p
 										</PercentBar>
 									)}
-								</Grid2>
+								</Grid>
 							))}
-						</Grid2>
+						</Grid>
 					</WeaponForm>
 				)}
 			</Formik>

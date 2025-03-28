@@ -30,7 +30,7 @@ import {
 	Button,
 	Checkbox,
 	FormControlLabel,
-	Grid2,
+	Grid,
 	IconButton,
 	ListItemIcon,
 	MenuItem,
@@ -54,6 +54,8 @@ export default function ArtifactList({
 }) {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
+
+	const setInfo = artifactSetsInfo[artifactSet];
 
 	const [deleteMode, setDeleteMode] = useState(false);
 	const [marked, setMarked] = useState([]);
@@ -117,11 +119,11 @@ export default function ArtifactList({
 			title={
 				artifactSet && (
 					<PageLink
-						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(artifactSetsInfo[artifactSet].name)}`}
+						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(setInfo.name)}`}
 						target='_blank'
 						underline='none'
 						color='textPrimary'>
-						{artifactSetsInfo[artifactSet].name}
+						{setInfo.name}
 					</PageLink>
 				)
 			}
@@ -153,6 +155,18 @@ export default function ArtifactList({
 					)}
 				</Box>
 			}>
+			{artifactSet && (
+				<Box sx={{ mb: 1 }}>
+					<Typography>
+						<b>{setInfo.effect4Pc ? '2' : '1'}-Piece Set:</b> {setInfo.effect2Pc}
+					</Typography>
+					{setInfo.effect4Pc && (
+						<Typography>
+							<b>4-Piece Set:</b> {setInfo.effect4Pc}
+						</Typography>
+					)}
+				</Box>
+			)}
 			<Stack spacing={1} direction='row'>
 				<Stack spacing={0.25} direction='row'>
 					<IconButton onClick={() => setSort({ sortDir: !sortDir, sortType })}>
@@ -202,12 +216,12 @@ export default function ArtifactList({
 					).length
 				}
 			</Typography>
-			<Grid2 container spacing={1}>
+			<Grid container spacing={1}>
 				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }, index) => {
 					const isMarked = marked.find(({ id }) => artifact.id === id);
 
 					return (
-						<Grid2 key={index} size={{ xs: 6, sm: 4, md: 3 }}>
+						<Grid key={index} size={{ xs: 6, sm: 4, md: 3 }}>
 							<ArtifactStatImage
 								artifact={artifact}
 								sx={{
@@ -231,19 +245,19 @@ export default function ArtifactList({
 										showModal(ArtifactModal, { props: { artifact } });
 									}
 								}}>
-								<Grid2 container size={12} spacing={0}>
-									<Grid2 size={6}>
+								<Grid container size={12} spacing={0}>
+									<Grid size={6}>
 										<PercentBar p={statRollPercent}>Stats: %p</PercentBar>
-									</Grid2>
-									<Grid2 size={6}>
+									</Grid>
+									<Grid size={6}>
 										<PercentBar p={potential}>Potential: %p</PercentBar>
-									</Grid2>
-								</Grid2>
+									</Grid>
+								</Grid>
 							</ArtifactStatImage>
-						</Grid2>
+						</Grid>
 					);
 				})}
-			</Grid2>
+			</Grid>
 		</PageSection>
 	);
 }

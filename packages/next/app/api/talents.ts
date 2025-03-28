@@ -1,4 +1,4 @@
-import talent from './talent.json';
+import talent from './talents.json';
 import weekly from './weekly.json';
 
 export const talentsInfo: { name: string; image: string; location: string; day: number }[] = talent;

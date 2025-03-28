@@ -3,7 +3,7 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
-import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid2 } from '@mui/material';
+import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
@@ -28,8 +28,8 @@ export default function BatchAddArtifactModal() {
 		<DialogWrapper>
 			<DialogTitle>Add Artifacts</DialogTitle>
 			<DialogContent>
-				<Grid2 container spacing={1}>
-					<Grid2 size={4}>
+				<Grid container spacing={1}>
+					<Grid size={4}>
 						<Box
 							sx={{
 								border: 1,
@@ -114,19 +114,19 @@ export default function BatchAddArtifactModal() {
 								'Click to Capture'
 							)}
 						</Box>
-					</Grid2>
-					<Grid2 size={8}>
-						<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
+					</Grid>
+					<Grid size={8}>
+						<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 							{Object.entries(artifacts)
 								.toReversed()
 								.map(([key, artifact]) => (
-									<Grid2 key={key} size={6}>
+									<Grid key={key} size={6}>
 										<ArtifactStatImage artifact={artifact} />
-									</Grid2>
+									</Grid>
 								))}
-						</Grid2>
-					</Grid2>
-				</Grid2>
+						</Grid>
+					</Grid>
+				</Grid>
 			</DialogContent>
 			<DialogActions>
 				<Button

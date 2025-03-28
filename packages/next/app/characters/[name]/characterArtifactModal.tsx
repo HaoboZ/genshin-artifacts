@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IArtifact, SlotKey } from '@/src/types/good';
-import { Box, DialogContent, DialogTitle, FormControlLabel, Grid2, Switch } from '@mui/material';
+import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
@@ -71,9 +71,9 @@ export default function CharacterArtifactModal({
 					<Fragment>
 						<ArtifactActions artifact={artifact} />
 						<ArtifactStatImage hideCharacter artifact={artifact}>
-							<Grid2 size={12}>
+							<Grid size={12}>
 								<PercentBar p={weightedStatRollPercent(build, artifact)} />
-							</Grid2>
+							</Grid>
 						</ArtifactStatImage>
 					</Fragment>
 				)}
@@ -89,9 +89,9 @@ export default function CharacterArtifactModal({
 					}
 					label='All in Best Set'
 				/>
-				<Grid2 container spacing={1} sx={{ overflowY: 'auto' }}>
+				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{artifactsSorted.map(({ statRollPercent, ...artifact }, index) => (
-						<Grid2 key={index} size={{ xs: 6, md: 4 }}>
+						<Grid key={index} size={{ xs: 6, md: 4 }}>
 							<ArtifactStatImage
 								artifact={artifact}
 								sx={{ ':hover': { cursor: 'pointer' } }}
@@ -101,13 +101,13 @@ export default function CharacterArtifactModal({
 									dispatch(goodActions.giveArtifact([build.key, artifact]));
 									closeModal();
 								}}>
-								<Grid2 size={12}>
+								<Grid size={12}>
 									<PercentBar p={statRollPercent} />
-								</Grid2>
+								</Grid>
 							</ArtifactStatImage>
-						</Grid2>
+						</Grid>
 					))}
-				</Grid2>
+				</Grid>
 			</DialogContent>
 		</DialogWrapper>
 	);
