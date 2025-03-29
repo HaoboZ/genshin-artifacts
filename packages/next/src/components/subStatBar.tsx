@@ -5,7 +5,7 @@ import PercentBar from './percentBar';
 export default function SubStatBar({ substat }: { substat: ISubstat }) {
 	return (
 		<PercentBar key={substat.key} p={substat.value / statsMax[substat.key]}>
-			{statName[substat.key]}: {substat.value.toString()}
+			{statName[substat.key]}: {substat.value?.toString()}
 		</PercentBar>
 	);
 }
