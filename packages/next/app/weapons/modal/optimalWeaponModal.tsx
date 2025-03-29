@@ -14,15 +14,19 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
+	FormControlLabel,
 	Grid,
 	List,
 	ListItem,
 	ListItemText,
+	Switch,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
+
+type GiveWeapon = { weapon: IWeapon; tier: number; character: Build; selected: boolean };
 
 export default function OptimalWeaponModal() {
 	const dispatch = useAppDispatch();
@@ -31,9 +35,13 @@ export default function OptimalWeaponModal() {
 
 	const characters = useCharacters({ owned: true });
 
-	const [giveWeapons, setGiveWeapons] = useState(() => {
+	const [checked, setChecked] = useState<boolean>(true);
+
+	const [giveWeapons, setGiveWeapons] = useState<GiveWeapon[]>([]);
+
+	useEffect(() => {
 		const weapons = structuredClone(storedWeapons);
-		const result: { weapon: IWeapon; tier: number; character: Build; selected: boolean }[] = [];
+		const result: GiveWeapon[] = [];
 		for (let i = 0; i < characters.length; i++) {
 			const character = builds[characters[i].key];
 			const tieredWeapons = pipe(
@@ -42,7 +50,7 @@ export default function OptimalWeaponModal() {
 					weapon,
 					tier: arrDeepIndex(builds[character.key].weapon, weapon.key),
 				})),
-				filter(({ tier }) => tier !== -1),
+				filter(({ tier, weapon }) => tier !== -1 && (checked ? weapon.level > 1 : true)),
 				sortBy(pget('tier')),
 			);
 
@@ -63,13 +71,23 @@ export default function OptimalWeaponModal() {
 				break;
 			}
 		}
-		return result;
-	});
+		setGiveWeapons(result);
+	}, [checked]);
 
 	return (
 		<DialogWrapper>
 			<DialogTitle>Weapons</DialogTitle>
 			<DialogContent>
+				<FormControlLabel
+					control={
+						<Switch
+							sx={{ ml: 0 }}
+							checked={checked}
+							onChange={({ target }) => setChecked(target.checked)}
+						/>
+					}
+					label='No min level weapons'
+				/>
 				<List>
 					{giveWeapons.map(({ weapon, tier, character, selected }, i) => (
 						<ListItem

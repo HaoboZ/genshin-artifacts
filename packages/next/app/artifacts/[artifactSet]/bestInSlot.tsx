@@ -21,7 +21,7 @@ export default function BestInSlot({
 }) {
 	const characters = useCharacters({ artifactSet }).filter((x) => x.group === group);
 
-	const { mainStat, subStat } = useMemo(
+	const { mainStat, subStat, role } = useMemo(
 		() => getArtifactSetBuild(characters, artifactSet, group),
 		[characters],
 	);
@@ -39,6 +39,7 @@ export default function BestInSlot({
 							sx={{ border: level ? 0 : 1, borderColor: 'red' }}
 							tooltip={
 								<Fragment>
+									<Typography variant='h6'>{role}</Typography>
 									<Typography>
 										{statName[makeArray(mainStat.sands)[0]]} -{' '}
 										{statName[makeArray(mainStat.goblet)[0]]} -{' '}

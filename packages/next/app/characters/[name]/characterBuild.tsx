@@ -14,6 +14,7 @@ export default function CharacterBuild({ build }: { build: Build }) {
 	return (
 		<PageSection title='Build'>
 			<Stack spacing={1}>
+				<Typography>{build.role}</Typography>
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<Typography>Weapon</Typography>
 					<CharacterWeaponTier build={build} />

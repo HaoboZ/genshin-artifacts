@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/28/25
+// 3/29/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -16,7 +16,7 @@ export const builds: Record<CharacterKey, Build> = {
 	// Pyro
 	Amber: {
 		key: 'Amber',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: ['ElegyForTheEnd', 'FavoniusWarbow', 'SacrificialBow', 'TheViridescentHunt'],
 		group: 0,
 		artifact: ['NoblesseOblige', 'Instructor', 'TheExile'],
@@ -59,7 +59,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Bennett: {
 		key: 'Bennett',
-		role: 'Support',
+		role: 'Heal & Buff Support',
 		weapon: [
 			['MistsplitterReforged', 'AquilaFavonia', 'Absolution'],
 			['FreedomSworn', 'PeakPatrolSong'],
@@ -130,7 +130,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Chevreuse: {
 		key: 'Chevreuse',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'FavoniusLance',
 			'DialoguesOfTheDesertSages',
@@ -148,7 +148,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Gaming: {
 		key: 'Gaming',
-		role: 'Vaporize DPS',
+		role: 'DPS',
 		weapon: [
 			['AThousandBlazingSuns', 'SerpentSpine'],
 			['RedhornStonethresher', 'Verdict', 'BeaconOfTheReedSea'],
@@ -256,7 +256,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Dehya: {
 		key: 'Dehya',
-		role: 'Support',
+		role: 'Tank Support',
 		weapon: [
 			'FavoniusGreatsword',
 			['WolfsGravestone', 'MakhairaAquamarine'],
@@ -315,7 +315,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Mavuika: {
 		key: 'Mavuika',
-		role: 'DPS',
+		role: 'DPS & Buff Support',
 		weapon: [
 			'AThousandBlazingSuns',
 			['BeaconOfTheReedSea', 'Verdict', 'FangOfTheMountainKing'],
@@ -331,10 +331,307 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas'],
 	},
+	// Electro
+	Fischl: {
+		key: 'Fischl',
+		role: 'Off-Field DPS',
+		weapon: [
+			'PolarStar',
+			'AquaSimulacra',
+			['SkywardHarp', 'ThunderingPulse', 'HuntersPath'],
+			['AmosBow', 'AlleyHunter', 'TheViridescentHunt'],
+			'ElegyForTheEnd',
+			'FadingTwilight',
+			'TheStringless',
+			'PrototypeCrescent',
+		],
+		group: 0,
+		artifact: ['GoldenTroupe', 'Thundersoother', 'TenacityOfTheMillelith'],
+		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+	},
+	Beidou: {
+		key: 'Beidou',
+		role: 'Off-Field DPS',
+		weapon: [
+			'AThousandBlazingSuns',
+			['WolfsGravestone', 'FangOfTheMountainKing', 'RedhornStonethresher'],
+			'TheUnforged',
+			['BeaconOfTheReedSea', 'Verdict'],
+			['TidalShadow', 'SerpentSpine'],
+			['Akuoumaru', 'UltimateOverlordsMegaMagicSword'],
+			['LithicBlade', 'LuxuriousSeaLord', 'SkywardPride'],
+		],
+		group: 1,
+		artifact: ['EmblemOfSeveredFate', ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige']],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+	},
+	Lisa: {
+		key: 'Lisa',
+		role: 'Aggravate DPS',
+		weapon: [
+			'KagurasVerity',
+			'LostPrayerToTheSacredWinds',
+			['SkywardAtlas', 'AThousandFloatingDreams', 'TheWidsith'],
+			['TulaytullahsRemembrance', 'SolarPearl', 'MemoryOfDust'],
+			'BlackcliffAgate',
+			'MappaMare',
+			['DodocoTales', 'MagicGuide'],
+		],
+		group: 0,
+		artifact: ['Thundersoother', 'ThunderingFury', 'GildedDreams'],
+		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', ['atk_', 'eleMas'], 'enerRech_'],
+	},
+	Razor: {
+		key: 'Razor',
+		role: 'Hyperbloom/Reaction DPS',
+		weapon: [
+			['MailedFlower', 'MakhairaAquamarine'],
+			['Rainslasher', 'BloodtaintedGreatsword'],
+			'FavoniusGreatsword',
+			'ForestRegalia',
+		],
+		group: 1,
+		artifact: [['GildedDreams', 'FlowerOfParadiseLost'], 'ThunderingFury'],
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['eleMas', 'enerRech_', 'critRate_'],
+	},
+	KujouSara: {
+		key: 'KujouSara',
+		role: 'Buff Support & Damage',
+		weapon: [
+			'SkywardHarp',
+			['PolarStar', 'ElegyForTheEnd'],
+			'TheFirstGreatMagic',
+			['AquaSimulacra', 'HuntersPath'],
+			'ThunderingPulse',
+			'AmosBow',
+			[
+				'FadingTwilight',
+				'MouunsMoon',
+				'AlleyHunter',
+				'TheViridescentHunt',
+				'ScionOfTheBlazingSun',
+			],
+			['SacrificialBow', 'ChainBreaker'],
+			'FavoniusWarbow',
+		],
+		group: 1,
+		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige'],
+		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_'],
+	},
+	KukiShinobu: {
+		key: 'KukiShinobu',
+		role: 'Hyperbloom',
+		weapon: [
+			'FreedomSworn',
+			'XiphosMoonlight',
+			['IronSting', 'KeyOfKhajNisut', 'ToukabouShigure'],
+			['DarkIronSword', 'SapwoodBlade'],
+		],
+		group: 0,
+		artifact: ['FlowerOfParadiseLost', 'GildedDreams', 'ThunderingFury'],
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['eleMas', 'hp_', 'enerRech_'],
+	},
+	Dori: {
+		key: 'Dori',
+		role: 'Heal Support',
+		weapon: [
+			'FavoniusGreatsword',
+			'SacrificialGreatsword',
+			'KatsuragikiriNagamasa',
+			'ForestRegalia',
+		],
+		group: 1,
+		artifact: ['NoblesseOblige', 'DeepwoodMemories', 'Instructor', 'TheExile'],
+		mainStat: {
+			sands: ['enerRech_', 'hp_', 'eleMas'],
+			goblet: ['hp_', 'eleMas'],
+			circlet: ['heal_', 'hp_', 'eleMas'],
+		},
+		subStat: ['critRate_', 'enerRech_', 'hp_', 'eleMas'],
+	},
+	Sethos: {
+		key: 'Sethos',
+		role: 'Charged Attack DPS',
+		weapon: ['HuntersPath', 'AstralVulturesCrimsonPlumage', 'Slingshot'],
+		group: 0,
+		artifact: ['WanderersTroupe', 'GildedDreams'],
+		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
+	},
+	Ororon: {
+		key: 'Ororon',
+		role: 'Off-Field DPS',
+		weapon: [
+			['PolarStar', 'TheFirstGreatMagic'],
+			['ThunderingPulse', 'AquaSimulacra', 'HuntersPath', 'SkywardHarp'],
+			'AstralVulturesCrimsonPlumage',
+			['ChainBreaker', 'AlleyHunter'],
+			['RangeGauge', 'SongOfStillness'],
+			['ElegyForTheEnd', 'FadingTwilight'],
+			'FavoniusWarbow',
+		],
+		group: 1,
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige', 'EmblemOfSeveredFate'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+	},
+	Iansan: {
+		key: 'Iansan',
+		role: 'Buff Support',
+		weapon: [
+			'CalamityQueller',
+			'EngulfingLightning',
+			'FavoniusLance',
+			'VortexVanquisher',
+			'SkywardSpine',
+			['LumidouceElegy', 'StaffOfHoma'],
+			'MissiveWindspear',
+			'TamayurateiNoOhanashi',
+			['ProspectorsDrill', 'WavebreakersFin', 'LithicSpear'],
+			['TheCatch', 'PrototypeStarglitter'],
+		],
+		group: 0,
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
+		subStat: ['enerRech_', 'atk_', 'critRate_'],
+	},
+	Keqing: {
+		key: 'Keqing',
+		role: 'Aggravate DPS',
+		weapon: [
+			'MistsplitterReforged',
+			['PrimordialJadeCutter', 'HaranGeppakuFutsu'],
+			'FreedomSworn',
+			'LightOfFoliarIncision',
+			'HarbingerOfDawn',
+			'SummitShaper',
+			'ToukabouShigure',
+			'WolfFang',
+			['LionsRoar', 'TheBlackSword'],
+			'IronSting',
+		],
+		group: 0,
+		artifact: [['ThunderingFury', 'Thundersoother'], 'GildedDreams'],
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', ['atk_', 'eleMas'], 'atk', 'enerRech_'],
+	},
+	RaidenShogun: {
+		key: 'RaidenShogun',
+		role: 'DPS & Energy Support',
+		weapon: [
+			'EngulfingLightning',
+			['StaffOfHoma', 'StaffOfTheScarletSands', 'LumidouceElegy', 'PrimordialJadeWingedSpear'],
+			['CalamityQueller', 'Deathmatch'],
+			'VortexVanquisher',
+			['TheCatch', 'SkywardSpine'],
+			['WavebreakersFin', 'LithicSpear'],
+			'FavoniusLance',
+		],
+		group: 0,
+		artifact: ['EmblemOfSeveredFate', 'TenacityOfTheMillelith'],
+		mainStat: {
+			sands: ['enerRech_', 'atk_'],
+			goblet: ['electro_dmg_', 'atk_'],
+			circlet: 'critRD_',
+		},
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+	},
+	YaeMiko: {
+		key: 'YaeMiko',
+		role: 'Off-Field Aggravate DPS',
+		weapon: [
+			'KagurasVerity',
+			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
+			'TomeOfTheEternalFlow',
+			['LostPrayerToTheSacredWinds', 'SkywardAtlas', 'TheWidsith', 'TulaytullahsRemembrance'],
+			'SolarPearl',
+			'OathswornEye',
+			'HakushinRing',
+			'MappaMare',
+		],
+		group: 0,
+		artifact: [
+			['GildedDreams', 'EmblemOfSeveredFate', 'GoldenTroupe'],
+			'Thundersoother',
+			'TenacityOfTheMillelith',
+		],
+		mainStat: {
+			sands: ['enerRech_', 'eleMas', 'atk_'],
+			goblet: 'electro_dmg_',
+			circlet: 'critRD_',
+		},
+		subStat: ['critRD_', 'eleMas', 'atk_', 'enerRech_'],
+	},
+	Cyno: {
+		key: 'Cyno',
+		role: 'Quickbloom/Hyperbloom DPS',
+		weapon: [
+			'StaffOfTheScarletSands',
+			'BalladOfTheFjords',
+			'PrimordialJadeWingedSpear',
+			'Deathmatch',
+			['LumidouceElegy', 'StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
+			['KitainCrossSpear', 'DragonsBane'],
+			'SkywardSpine',
+			'FavoniusLance',
+		],
+		group: 1,
+		artifact: [
+			'ThunderingFury',
+			['GildedDreams', 'FlowerOfParadiseLost'],
+			'GladiatorsFinale',
+			'MarechausseeHunter',
+		],
+		mainStat: {
+			sands: 'eleMas',
+			goblet: ['electro_dmg_', 'eleMas'],
+			circlet: ['critRD_', 'eleMas'],
+		},
+		subStat: ['enerRech_', 'eleMas', 'critRD_', 'atk_'],
+	},
+	Clorinde: {
+		key: 'Clorinde',
+		role: 'DPS',
+		weapon: [
+			'Absolution',
+			['LightOfFoliarIncision', 'HaranGeppakuFutsu'],
+			['MistsplitterReforged', 'PrimordialJadeCutter', 'UrakuMisugiri', 'FreedomSworn'],
+			'CalamityOfEshu',
+			['FinaleOfTheDeep', 'TheBlackSword'],
+		],
+		group: 0,
+		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'ThunderingFury'],
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
+	},
+	Varesa: {
+		key: 'Varesa',
+		role: 'DPS',
+		weapon: [
+			'VividNotions',
+			['TomeOfTheEternalFlow', 'SurfsUp'],
+			'KagurasVerity',
+			['LostPrayerToTheSacredWinds', 'CashflowSupervision'],
+			'CranesEchoingCall',
+			'TulaytullahsRemembrance',
+			'TheWidsith',
+			'FlowingPurity',
+		],
+		group: 0,
+		artifact: [['LongNightsOath', 'ObsidianCodex'], 'MarechausseeHunter'],
+		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+	},
 	// Dendro
 	Collei: {
 		key: 'Collei',
-		role: 'Support',
+		role: 'Reaction Support',
 		weapon: ['ElegyForTheEnd', 'PolarStar', 'SacrificialBow', 'FavoniusWarbow'],
 		group: 0,
 		artifact: [
@@ -354,7 +651,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Yaoyao: {
 		key: 'Yaoyao',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'FavoniusLance',
 			'DialoguesOfTheDesertSages',
@@ -440,7 +737,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Nahida: {
 		key: 'Nahida',
-		role: 'DPS & Support',
+		role: 'Buff Support & Damage',
 		weapon: [
 			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'KagurasVerity',
@@ -489,7 +786,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Baizhu: {
 		key: 'Baizhu',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'JadefallsSplendor',
 			'PrototypeAmber',
@@ -564,7 +861,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Barbara: {
 		key: 'Barbara',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'ThrillingTalesOfDragonSlayers',
 			'EverlastingMoonglow',
@@ -582,7 +879,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Candace: {
 		key: 'Candace',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'FavoniusLance',
 			'EngulfingLightning',
@@ -624,7 +921,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Mona: {
 		key: 'Mona',
-		role: 'Burst Support',
+		role: 'Buff Support',
 		weapon: [
 			'ThrillingTalesOfDragonSlayers',
 			'FavoniusCodex',
@@ -643,7 +940,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	SangonomiyaKokomi: {
 		key: 'SangonomiyaKokomi',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'ThrillingTalesOfDragonSlayers',
 			'PrototypeAmber',
@@ -741,7 +1038,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Furina: {
 		key: 'Furina',
-		role: 'Off-Field DPS & Support',
+		role: 'Off-Field DPS & Buff Support',
 		weapon: [
 			'SplendorOfTranquilWaters',
 			'PrimordialJadeCutter',
@@ -761,7 +1058,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Sigewinne: {
 		key: 'Sigewinne',
-		role: 'Healer',
+		role: 'Heal Support',
 		weapon: ['SilvershowerHeartstrings', 'RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd'],
 		group: 0,
 		artifact: ['SongOfDaysPast', 'OceanHuedClam'],
@@ -786,307 +1083,10 @@ export const builds: Record<CharacterKey, Build> = {
 		},
 		subStat: ['critRD_', ['eleMas', 'hp_'], 'hp'],
 	},
-	// Electro
-	Fischl: {
-		key: 'Fischl',
-		role: 'Off-Field DPS',
-		weapon: [
-			'PolarStar',
-			'AquaSimulacra',
-			['SkywardHarp', 'ThunderingPulse', 'HuntersPath'],
-			['AmosBow', 'AlleyHunter', 'TheViridescentHunt'],
-			'ElegyForTheEnd',
-			'FadingTwilight',
-			'TheStringless',
-			'PrototypeCrescent',
-		],
-		group: 0,
-		artifact: ['GoldenTroupe', 'Thundersoother', 'TenacityOfTheMillelith'],
-		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
-	},
-	Beidou: {
-		key: 'Beidou',
-		role: 'Off-Field DPS',
-		weapon: [
-			'AThousandBlazingSuns',
-			['WolfsGravestone', 'FangOfTheMountainKing', 'RedhornStonethresher'],
-			'TheUnforged',
-			['BeaconOfTheReedSea', 'Verdict'],
-			['TidalShadow', 'SerpentSpine'],
-			['Akuoumaru', 'UltimateOverlordsMegaMagicSword'],
-			['LithicBlade', 'LuxuriousSeaLord', 'SkywardPride'],
-		],
-		group: 1,
-		artifact: ['EmblemOfSeveredFate', ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige']],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
-	},
-	Lisa: {
-		key: 'Lisa',
-		role: 'Aggravate DPS',
-		weapon: [
-			'KagurasVerity',
-			'LostPrayerToTheSacredWinds',
-			['SkywardAtlas', 'AThousandFloatingDreams', 'TheWidsith'],
-			['TulaytullahsRemembrance', 'SolarPearl', 'MemoryOfDust'],
-			'BlackcliffAgate',
-			'MappaMare',
-			['DodocoTales', 'MagicGuide'],
-		],
-		group: 0,
-		artifact: ['Thundersoother', 'ThunderingFury', 'GildedDreams'],
-		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', ['atk_', 'eleMas'], 'enerRech_'],
-	},
-	Razor: {
-		key: 'Razor',
-		role: 'Reaction DPS',
-		weapon: [
-			['MailedFlower', 'MakhairaAquamarine'],
-			['Rainslasher', 'BloodtaintedGreatsword'],
-			'FavoniusGreatsword',
-			'ForestRegalia',
-		],
-		group: 1,
-		artifact: [['GildedDreams', 'FlowerOfParadiseLost'], 'ThunderingFury'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_', 'critRate_'],
-	},
-	KujouSara: {
-		key: 'KujouSara',
-		role: 'Support and Damage',
-		weapon: [
-			'SkywardHarp',
-			['PolarStar', 'ElegyForTheEnd'],
-			'TheFirstGreatMagic',
-			['AquaSimulacra', 'HuntersPath'],
-			'ThunderingPulse',
-			'AmosBow',
-			[
-				'FadingTwilight',
-				'MouunsMoon',
-				'AlleyHunter',
-				'TheViridescentHunt',
-				'ScionOfTheBlazingSun',
-			],
-			['SacrificialBow', 'ChainBreaker'],
-			'FavoniusWarbow',
-		],
-		group: 1,
-		artifact: ['EmblemOfSeveredFate', 'NoblesseOblige'],
-		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_'],
-	},
-	KukiShinobu: {
-		key: 'KukiShinobu',
-		role: 'Hyperbloom',
-		weapon: [
-			'FreedomSworn',
-			'XiphosMoonlight',
-			['IronSting', 'KeyOfKhajNisut', 'ToukabouShigure'],
-			['DarkIronSword', 'SapwoodBlade'],
-		],
-		group: 0,
-		artifact: ['FlowerOfParadiseLost', 'GildedDreams', 'ThunderingFury'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'hp_', 'enerRech_'],
-	},
-	Dori: {
-		key: 'Dori',
-		role: 'Support',
-		weapon: [
-			'FavoniusGreatsword',
-			'SacrificialGreatsword',
-			'KatsuragikiriNagamasa',
-			'ForestRegalia',
-		],
-		group: 1,
-		artifact: ['NoblesseOblige', 'DeepwoodMemories', 'Instructor', 'TheExile'],
-		mainStat: {
-			sands: ['enerRech_', 'hp_', 'eleMas'],
-			goblet: ['hp_', 'eleMas'],
-			circlet: ['heal_', 'hp_', 'eleMas'],
-		},
-		subStat: ['critRate_', 'enerRech_', 'hp_', 'eleMas'],
-	},
-	Sethos: {
-		key: 'Sethos',
-		role: 'Charged Attack DPS',
-		weapon: ['HuntersPath', 'AstralVulturesCrimsonPlumage', 'Slingshot'],
-		group: 0,
-		artifact: ['WanderersTroupe', 'GildedDreams'],
-		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
-	},
-	Ororon: {
-		key: 'Ororon',
-		role: 'Off-Field DPS',
-		weapon: [
-			['PolarStar', 'TheFirstGreatMagic'],
-			['ThunderingPulse', 'AquaSimulacra', 'HuntersPath', 'SkywardHarp'],
-			'AstralVulturesCrimsonPlumage',
-			['ChainBreaker', 'AlleyHunter'],
-			['RangeGauge', 'SongOfStillness'],
-			['ElegyForTheEnd', 'FadingTwilight'],
-			'FavoniusWarbow',
-		],
-		group: 1,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige', 'EmblemOfSeveredFate'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
-	},
-	Iansan: {
-		key: 'Iansan',
-		role: 'Support',
-		weapon: [
-			'CalamityQueller',
-			'EngulfingLightning',
-			'FavoniusLance',
-			'VortexVanquisher',
-			'SkywardSpine',
-			['LumidouceElegy', 'StaffOfHoma'],
-			'MissiveWindspear',
-			'TamayurateiNoOhanashi',
-			['ProspectorsDrill', 'WavebreakersFin', 'LithicSpear'],
-			['TheCatch', 'PrototypeStarglitter'],
-		],
-		group: 0,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
-		subStat: ['enerRech_', 'atk_', 'critRate_'],
-	},
-	Keqing: {
-		key: 'Keqing',
-		role: 'Aggravate DPS',
-		weapon: [
-			'MistsplitterReforged',
-			['PrimordialJadeCutter', 'HaranGeppakuFutsu'],
-			'FreedomSworn',
-			'LightOfFoliarIncision',
-			'HarbingerOfDawn',
-			'SummitShaper',
-			'ToukabouShigure',
-			'WolfFang',
-			['LionsRoar', 'TheBlackSword'],
-			'IronSting',
-		],
-		group: 0,
-		artifact: [['ThunderingFury', 'Thundersoother'], 'GildedDreams'],
-		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', ['atk_', 'eleMas'], 'atk', 'enerRech_'],
-	},
-	RaidenShogun: {
-		key: 'RaidenShogun',
-		role: 'DPS',
-		weapon: [
-			'EngulfingLightning',
-			['StaffOfHoma', 'StaffOfTheScarletSands', 'LumidouceElegy', 'PrimordialJadeWingedSpear'],
-			['CalamityQueller', 'Deathmatch'],
-			'VortexVanquisher',
-			['TheCatch', 'SkywardSpine'],
-			['WavebreakersFin', 'LithicSpear'],
-			'FavoniusLance',
-		],
-		group: 0,
-		artifact: ['EmblemOfSeveredFate', 'TenacityOfTheMillelith'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_'],
-			goblet: ['electro_dmg_', 'atk_'],
-			circlet: 'critRD_',
-		},
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
-	},
-	YaeMiko: {
-		key: 'YaeMiko',
-		role: 'Off-Field Aggravate DPS',
-		weapon: [
-			'KagurasVerity',
-			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
-			'TomeOfTheEternalFlow',
-			['LostPrayerToTheSacredWinds', 'SkywardAtlas', 'TheWidsith', 'TulaytullahsRemembrance'],
-			'SolarPearl',
-			'OathswornEye',
-			'HakushinRing',
-			'MappaMare',
-		],
-		group: 0,
-		artifact: [
-			['GildedDreams', 'EmblemOfSeveredFate', 'GoldenTroupe'],
-			'Thundersoother',
-			'TenacityOfTheMillelith',
-		],
-		mainStat: {
-			sands: ['enerRech_', 'eleMas', 'atk_'],
-			goblet: 'electro_dmg_',
-			circlet: 'critRD_',
-		},
-		subStat: ['critRD_', 'eleMas', 'atk_', 'enerRech_'],
-	},
-	Cyno: {
-		key: 'Cyno',
-		role: 'Quickbloom DPS',
-		weapon: [
-			'StaffOfTheScarletSands',
-			'BalladOfTheFjords',
-			'PrimordialJadeWingedSpear',
-			'Deathmatch',
-			['LumidouceElegy', 'StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
-			['KitainCrossSpear', 'DragonsBane'],
-			'SkywardSpine',
-			'FavoniusLance',
-		],
-		group: 1,
-		artifact: [
-			'ThunderingFury',
-			['GildedDreams', 'FlowerOfParadiseLost'],
-			'GladiatorsFinale',
-			'MarechausseeHunter',
-		],
-		mainStat: {
-			sands: 'eleMas',
-			goblet: ['electro_dmg_', 'eleMas'],
-			circlet: ['critRD_', 'eleMas'],
-		},
-		subStat: ['enerRech_', 'eleMas', 'critRD_', 'atk_'],
-	},
-	Clorinde: {
-		key: 'Clorinde',
-		role: 'DPS',
-		weapon: [
-			'Absolution',
-			['LightOfFoliarIncision', 'HaranGeppakuFutsu'],
-			['MistsplitterReforged', 'PrimordialJadeCutter', 'UrakuMisugiri', 'FreedomSworn'],
-			'CalamityOfEshu',
-			['FinaleOfTheDeep', 'TheBlackSword'],
-		],
-		group: 0,
-		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'ThunderingFury'],
-		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
-	},
-	Varesa: {
-		key: 'Varesa',
-		role: 'DPS',
-		weapon: [
-			'VividNotions',
-			['TomeOfTheEternalFlow', 'SurfsUp'],
-			'KagurasVerity',
-			['LostPrayerToTheSacredWinds', 'CashflowSupervision'],
-			'CranesEchoingCall',
-			'TulaytullahsRemembrance',
-			'TheWidsith',
-			'FlowingPurity',
-		],
-		group: 0,
-		artifact: [['LongNightsOath', 'ObsidianCodex'], 'MarechausseeHunter'],
-		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
-	},
 	// Cryo
 	Diona: {
 		key: 'Diona',
-		role: 'Support',
+		role: 'Heal & Shield Support',
 		weapon: [
 			['FavoniusWarbow', 'SacrificialBow'],
 			'ElegyForTheEnd',
@@ -1181,7 +1181,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Layla: {
 		key: 'Layla',
-		role: 'Support and Damage',
+		role: 'Shield Support & Damage',
 		weapon: [
 			'PrimordialJadeCutter',
 			'HarbingerOfDawn',
@@ -1206,7 +1206,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Mika: {
 		key: 'Mika',
-		role: 'Support',
+		role: 'Heal & Buff Support',
 		weapon: [
 			'FavoniusLance',
 			'DialoguesOfTheDesertSages',
@@ -1236,7 +1236,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Charlotte: {
 		key: 'Charlotte',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			['PrototypeAmber', 'FavoniusCodex'],
 			'ThrillingTalesOfDragonSlayers',
@@ -1258,7 +1258,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Qiqi: {
 		key: 'Qiqi',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'SacrificialSword',
 			'FavoniusSword',
@@ -1358,7 +1358,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Shenhe: {
 		key: 'Shenhe',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'CalamityQueller',
 			'EngulfingLightning',
@@ -1399,7 +1399,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Citlali: {
 		key: 'Citlali',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'StarcallersWatch',
 			['ThrillingTalesOfDragonSlayers', 'FavoniusCodex', 'WanderingEvenstar'],
@@ -1416,7 +1416,7 @@ export const builds: Record<CharacterKey, Build> = {
 	// Anemo
 	Sucrose: {
 		key: 'Sucrose',
-		role: 'EM Build',
+		role: 'EM Support',
 		weapon: [
 			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'WanderingEvenstar',
@@ -1432,7 +1432,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Sayu: {
 		key: 'Sayu',
-		role: 'Support',
+		role: 'Heal Support',
 		weapon: [
 			'FavoniusGreatsword',
 			'WolfsGravestone',
@@ -1471,7 +1471,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Faruzan: {
 		key: 'Faruzan',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'FavoniusWarbow',
 			'ElegyForTheEnd',
@@ -1502,7 +1502,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	LanYan: {
 		key: 'LanYan',
-		role: 'Support',
+		role: 'Shield & Buff Support',
 		weapon: [
 			'StarcallersWatch',
 			'ThrillingTalesOfDragonSlayers',
@@ -1522,7 +1522,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Jean: {
 		key: 'Jean',
-		role: 'Support and Damage',
+		role: 'Heal Support & Damage',
 		weapon: [
 			'PrimordialJadeCutter',
 			'FreedomSworn',
@@ -1587,7 +1587,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	KaedeharaKazuha: {
 		key: 'KaedeharaKazuha',
-		role: 'Reaction DPS & Support',
+		role: 'Reaction DPS & Buff Support',
 		weapon: [
 			'FreedomSworn',
 			'FavoniusSword',
@@ -1627,7 +1627,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Xianyun: {
 		key: 'Xianyun',
-		role: 'Low Energy Requirement Support',
+		role: 'Buff & Heal Support',
 		weapon: [
 			'CranesEchoingCall',
 			['SkywardAtlas', 'MemoryOfDust'],
@@ -1720,7 +1720,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Gorou: {
 		key: 'Gorou',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: ['FavoniusWarbow', 'SacrificialBow', 'ElegyForTheEnd'],
 		group: 0,
 		artifact: ['TheExile', 'NoblesseOblige'],
@@ -1733,7 +1733,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	YunJin: {
 		key: 'YunJin',
-		role: 'Support',
+		role: 'Buff Support',
 		weapon: [
 			'FavoniusLance',
 			'EngulfingLightning',
@@ -1750,7 +1750,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Kachina: {
 		key: 'Kachina',
-		role: 'Support and Off-Field DPS',
+		role: 'Support & Off-Field DPS',
 		weapon: [
 			'FavoniusLance',
 			'FootprintOfTheRainbow',
@@ -1784,9 +1784,14 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			['PeakPatrolSong', 'UrakuMisugiri'],
-			'CinnabarSpindle',
-			['HarbingerOfDawn', 'PrimordialJadeCutter'],
-			['LightOfFoliarIncision', 'HaranGeppakuFutsu', 'MistsplitterReforged', 'WolfFang'],
+			['PrimordialJadeCutter', 'CinnabarSpindle'],
+			[
+				'WolfFang',
+				'LightOfFoliarIncision',
+				'MistsplitterReforged',
+				'HaranGeppakuFutsu',
+				'HarbingerOfDawn',
+			],
 		],
 		group: 0,
 		artifact: [['HuskOfOpulentDreams', 'GoldenTroupe'], 'ArchaicPetra', 'TenacityOfTheMillelith'],
@@ -1848,7 +1853,7 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Xilonen: {
 		key: 'Xilonen',
-		role: 'Support',
+		role: 'Buff & Heal Support',
 		weapon: [
 			'PeakPatrolSong',
 			'FreedomSworn',
