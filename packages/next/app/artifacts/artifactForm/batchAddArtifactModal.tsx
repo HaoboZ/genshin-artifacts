@@ -121,7 +121,17 @@ export default function BatchAddArtifactModal() {
 								.toReversed()
 								.map(([key, artifact]) => (
 									<Grid key={key} size={6}>
-										<ArtifactStatImage artifact={artifact} />
+										<ArtifactStatImage
+											artifact={artifact}
+											sx={{ ':hover': { cursor: 'pointer' } }}
+											onClick={() =>
+												setArtifacts((artifacts) => {
+													const newArtifacts = { ...artifacts };
+													delete newArtifacts[key];
+													return newArtifacts;
+												})
+											}
+										/>
 									</Grid>
 								))}
 						</Grid>

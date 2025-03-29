@@ -23,9 +23,6 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
-			if (payload.weapons) {
-				payload.weapons = payload.weapons.filter(({ level }) => level > 1);
-			}
 			return { ...state, ...payload };
 		},
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
