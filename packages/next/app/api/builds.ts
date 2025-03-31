@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/29/25
+// 3/31/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -11,7 +11,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['GladiatorsFinale'],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas', 'atk'],
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
 	},
 	// Pyro
 	Amber: {
@@ -160,8 +160,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 1,
 		artifact: [
 			['CrimsonWitchOfFlames', 'MarechausseeHunter'],
-			'GildedDreams',
-			'VermillionHereafter',
+			['GildedDreams', 'LongNightsOath'],
 		],
 		mainStat: {
 			sands: ['eleMas', 'atk_', 'enerRech_'],
@@ -485,19 +484,15 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Iansan',
 		role: 'Buff Support',
 		weapon: [
-			'CalamityQueller',
 			'EngulfingLightning',
-			'FavoniusLance',
-			'VortexVanquisher',
+			['CalamityQueller', 'FavoniusLance', 'TamayurateiNoOhanashi'],
 			'SkywardSpine',
-			['LumidouceElegy', 'StaffOfHoma'],
+			'VortexVanquisher',
 			'MissiveWindspear',
-			'TamayurateiNoOhanashi',
-			['ProspectorsDrill', 'WavebreakersFin', 'LithicSpear'],
-			['TheCatch', 'PrototypeStarglitter'],
+			'KitainCrossSpear',
 		],
 		group: 0,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige', 'Instructor'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
 		subStat: ['enerRech_', 'atk_', 'critRate_'],
 	},
