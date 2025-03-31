@@ -72,10 +72,6 @@ const goodSlice = createSlice({
 			state.artifacts = state.artifacts.map((artifact) =>
 				artifact.id === payload.id ? payload : artifact,
 			);
-			const oldArtifact = state.artifacts.find(
-				({ location, slotKey }) => location === payload.location && slotKey === payload.slotKey,
-			);
-			if (oldArtifact) oldArtifact.location = '';
 		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
 			const characterA = payload[0];
@@ -138,9 +134,11 @@ const goodSlice = createSlice({
 			state.weapons = [...state.weapons, payload];
 		},
 		editWeapon(state, { payload }: PayloadAction<IWeapon>) {
+			const oldWeapon = state.weapons.find(({ location }) => location === payload.location);
 			state.weapons = state.weapons.map((weapon) =>
 				weapon.id === payload.id ? payload : weapon,
 			);
+			if (oldWeapon) oldWeapon.location = '';
 		},
 		giveWeapon(state, { payload }: PayloadAction<[CharacterKey, IWeapon]>) {
 			const characterA = payload[0];

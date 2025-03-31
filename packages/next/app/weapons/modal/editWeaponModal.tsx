@@ -73,8 +73,9 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 			</DialogTitle>
 			<Formik<IWeapon>
 				initialValues={weapon}
-				onSubmit={(weapon) => {
-					dispatch(goodActions.editWeapon(weapon));
+				onSubmit={(values) => {
+					dispatch(goodActions.giveWeapon([values.location, weapon]));
+					dispatch(goodActions.editWeapon(values));
 					closeModal();
 				}}>
 				{({ values, setFieldValue }) => (
@@ -110,7 +111,7 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 										sx={{
 											':hover': { cursor: 'pointer' },
 											'border': build.key === values.location ? 2 : 0,
-											'borderColor': 'red',
+											'borderColor': 'blue',
 										}}
 										onClick={() => setFieldValue('location', build.key)}>
 										{oldWeapon && (
