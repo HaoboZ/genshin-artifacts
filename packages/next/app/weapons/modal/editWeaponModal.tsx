@@ -11,7 +11,16 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { Build } from '@/src/types/data';
 import type { IWeapon } from '@/src/types/good';
-import { Box, Button, DialogTitle, FormControlLabel, Grid, Stack, Switch } from '@mui/material';
+import {
+	Box,
+	Button,
+	DialogTitle,
+	FormControlLabel,
+	Grid,
+	Stack,
+	Switch,
+	Typography,
+} from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import { Formik } from 'formik';
 import { Fragment, useMemo, useState } from 'react';
@@ -89,7 +98,12 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 								</Box>
 								<Stack direction='row' spacing={1}>
 									<CharacterImage character={charactersInfo[values.location]} />
-									<CharacterWeaponTier build={builds[values.location]} />
+									<Box>
+										<Typography sx={{ my: 0.5 }}>
+											{builds[values.location].role}
+										</Typography>
+										<CharacterWeaponTier build={builds[values.location]} />
+									</Box>
 								</Stack>
 							</Fragment>
 						)}
