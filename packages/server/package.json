@@ -1,6 +1,6 @@
 {
 	"name": "@genshin-artifacts/server",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"scripts": {
 		"start": "npx tsx ./server.ts"
 	},
@@ -9,7 +9,7 @@
 		"body-parser": "2.2.0",
 		"cors": "2.8.5",
 		"dotenv": "16.4.7",
-		"express": "5.0.1",
+		"express": "5.1.0",
 		"nanoid": "5.1.5",
 		"web-push": "3.6.7"
 	},
@@ -17,8 +17,8 @@
 		"@types/body-parser": "1.19.5",
 		"@types/cors": "2.8.17",
 		"@types/express": "5.0.1",
-		"@types/node": "22.13.14",
+		"@types/node": "22.14.0",
 		"@types/web-push": "3.6.4",
-		"typescript": "5.8.2"
+		"typescript": "5.8.3"
 	}
 }
