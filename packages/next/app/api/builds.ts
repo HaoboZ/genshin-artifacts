@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/31/25
+// 4/12/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -896,18 +896,18 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Tartaglia',
 		role: 'DPS',
 		weapon: [
-			['PolarStar', 'AquaSimulacra', 'ThunderingPulse', 'HuntersPath'],
-			'SkywardHarp',
-			['AmosBow', 'PrototypeCrescent', 'TheViridescentHunt'],
-			['KingsSquire', 'MouunsMoon'],
+			'PolarStar',
 			[
-				'Hamayumi',
-				'FadingTwilight',
-				'BlackcliffWarbow',
-				'TheStringless',
-				'ElegyForTheEnd',
-				'Rust',
+				'HuntersPath',
+				'AquaSimulacra',
+				'SkywardHarp',
+				'ThunderingPulse',
+				'AstralVulturesCrimsonPlumage',
 			],
+			['TheFirstGreatMagic', 'TheViridescentHunt'],
+			['KingsSquire', 'AmosBow', 'TheStringless'],
+			['ScionOfTheBlazingSun', 'BlackcliffWarbow'],
+			['WindblumeOde', 'Hamayumi', 'ChainBreaker', 'MouunsMoon', 'Rust'],
 		],
 		group: 0,
 		artifact: ['NymphsDream', 'HeartOfDepth', 'ShimenawasReminiscence'],
