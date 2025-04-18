@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/12/25
+// 4/17/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -59,22 +59,17 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Bennett: {
 		key: 'Bennett',
-		role: 'Heal & Buff Support',
+		role: 'Support',
 		weapon: [
-			['MistsplitterReforged', 'AquilaFavonia', 'Absolution'],
-			['FreedomSworn', 'PeakPatrolSong'],
-			'TheAlleyFlash',
-			'SkywardBlade',
+			['MistsplitterReforged', 'Absolution', 'AquilaFavonia'],
+			['TheAlleyFlash', 'FreedomSworn', 'PeakPatrolSong', 'SkywardBlade'],
 			'SapwoodBlade',
-			['PrototypeRancour', 'CalamityOfEshu', 'BlackcliffLongsword'],
-			'FesteringDesire',
-			'FavoniusSword',
-			'SacrificialSword',
+			['PrototypeRancour', 'CalamityOfEshu', 'FavoniusSword'],
 		],
 		group: 1,
-		artifact: ['NoblesseOblige', 'Instructor'],
+		artifact: ['NoblesseOblige', 'Instructor', 'ScrollOfTheHeroOfCinderCity', 'DeepwoodMemories'],
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'hp_'] },
-		subStat: ['enerRech_', 'hp_'],
+		subStat: ['enerRech_', ['critRD_', 'hp_'], ['atk_', 'hp']],
 	},
 	Xinyan: {
 		key: 'Xinyan',
@@ -336,18 +331,22 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			'PolarStar',
-			'AquaSimulacra',
-			['SkywardHarp', 'ThunderingPulse', 'HuntersPath'],
-			['AmosBow', 'AlleyHunter', 'TheViridescentHunt'],
-			'ElegyForTheEnd',
-			'FadingTwilight',
-			'TheStringless',
-			'PrototypeCrescent',
+			['AquaSimulacra', 'ThunderingPulse', 'HuntersPath'],
+			['TheFirstGreatMagic', 'SkywardHarp'],
+			[
+				'AstralVulturesCrimsonPlumage',
+				'SongOfStillness',
+				'ChainBreaker',
+				'TheViridescentHunt',
+				'AmosBow',
+			],
+			'AlleyHunter',
+			['TheViridescentHunt', 'TheStringless', 'FadingTwilight'],
 		],
 		group: 0,
 		artifact: ['GoldenTroupe', 'Thundersoother', 'TenacityOfTheMillelith'],
 		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
 	Beidou: {
 		key: 'Beidou',
@@ -1157,22 +1156,23 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Rosaria',
 		role: 'Freeze',
 		weapon: [
+			'CalamityQueller',
 			'StaffOfHoma',
-			'WavebreakersFin',
-			'VortexVanquisher',
-			['PrimordialJadeWingedSpear', 'LumidouceElegy'],
-			'BlackcliffPole',
-			'SkywardSpine',
-			'EngulfingLightning',
-			'LithicSpear',
-			'StaffOfTheScarletSands',
+			['CrimsonMoonsSemblance', 'VortexVanquisher'],
+			[
+				'PrimordialJadeWingedSpear',
+				'LumidouceElegy',
+				'SkywardSpine',
+				'TamayurateiNoOhanashi',
+				'EngulfingLightning',
+			],
 			'TheCatch',
-			'Deathmatch',
+			'FavoniusLance',
 		],
 		group: 0,
-		artifact: ['BlizzardStrayer', 'NoblesseOblige'],
+		artifact: [['BlizzardStrayer', 'EmblemOfSeveredFate'], 'NoblesseOblige'],
 		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
-		subStat: ['critDMG_', 'atk_', 'enerRech_', 'critRate_'],
+		subStat: ['enerRech_', 'critDMG_', 'atk_', 'critRate_'],
 	},
 	Layla: {
 		key: 'Layla',
