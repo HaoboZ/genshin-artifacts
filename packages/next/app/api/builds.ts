@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/17/25
+// 4/27/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -154,8 +154,8 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: [
-			['CrimsonWitchOfFlames', 'MarechausseeHunter'],
-			['GildedDreams', 'LongNightsOath'],
+			['CrimsonWitchOfFlames', 'MarechausseeHunter', 'LongNightsOath'],
+			['GildedDreams'],
 		],
 		mainStat: {
 			sands: ['eleMas', 'atk_', 'enerRech_'],
@@ -219,8 +219,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: [
-			'CrimsonWitchOfFlames',
-			'ShimenawasReminiscence',
+			['CrimsonWitchOfFlames', 'ShimenawasReminiscence'],
 			'GildedDreams',
 			'MarechausseeHunter',
 		],
