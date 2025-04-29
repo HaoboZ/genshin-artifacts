@@ -93,6 +93,7 @@ export default function Main() {
 				</Box>
 				<div className='onesignal-customlink-container' />
 				<ClientOnly>
+					<RespawnNotification storageKey='test-respawn' item='Test' delay={10 * 1000} />
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
