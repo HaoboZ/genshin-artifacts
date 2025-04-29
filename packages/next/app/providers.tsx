@@ -1,7 +1,6 @@
 import ComponentComposer, { component } from '@/src/helpers/componentComposer';
 import EventsProvider from '@/src/providers/events';
 import ModalProvider from '@/src/providers/modal';
-import NotificationProvider from '@/src/providers/notification';
 import ClientSnackbarProvider from '@/src/providers/snackbar';
 import ThemeProvider from '@/src/providers/theme';
 import StoreProvider from '@/src/store/provider';
@@ -17,7 +16,6 @@ export default function Providers({ children }: { children: ReactNode }) {
 				// data
 				component(EventsProvider),
 				component(StoreProvider),
-				component(NotificationProvider),
 				// theme
 				component(AppRouterCacheProvider),
 				component(ThemeProvider),

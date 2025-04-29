@@ -612,6 +612,7 @@ __metadata:
     pixelmatch: "npm:7.1.0"
     react: "npm:19.1.0"
     react-dom: "npm:19.1.0"
+    react-onesignal: "npm:3.2.2"
     react-redux: "npm:9.2.0"
     remeda: "npm:2.21.3"
     sass: "npm:1.87.0"
@@ -6559,6 +6560,13 @@ __metadata:
   version: 19.1.0
   resolution: "react-is@npm:19.1.0"
   checksum: 10c0/b6c6cadd172d5d39f66d493700d137a5545c294a62ce0f8ec793d59794c97d2bed6bad227626f16bd0e90004ed7fdc8ed662a004e6edcf5d2b7ecb6e3040ea6b
+  languageName: node
+  linkType: hard
+
+"react-onesignal@npm:3.2.2":
+  version: 3.2.2
+  resolution: "react-onesignal@npm:3.2.2"
+  checksum: 10c0/2996616fa92bb7820527caf978c66a76b34ab6aaa08f38a5d5839bbbeafc342b719affd496408d863451130b38e817b8a7be67e11c530331ca2a2536908d6737
   languageName: node
   linkType: hard
 

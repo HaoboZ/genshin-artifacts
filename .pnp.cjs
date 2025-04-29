@@ -878,6 +878,7 @@ const RAW_RUNTIME_STATE =
           ["pixelmatch", "npm:7.1.0"],\
           ["react", "npm:19.1.0"],\
           ["react-dom", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:19.1.0"],\
+          ["react-onesignal", "npm:3.2.2"],\
           ["react-redux", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:9.2.0"],\
           ["remeda", "npm:2.21.3"],\
           ["sass", "npm:1.87.0"],\
@@ -8005,6 +8006,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/react-is-npm-19.1.0-969a96b5b0-10c0.zip/node_modules/react-is/",\
         "packageDependencies": [\
           ["react-is", "npm:19.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-onesignal", [\
+      ["npm:3.2.2", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/react-onesignal-npm-3.2.2-15c0393bce-10c0.zip/node_modules/react-onesignal/",\
+        "packageDependencies": [\
+          ["react-onesignal", "npm:3.2.2"]\
         ],\
         "linkType": "HARD"\
       }]\

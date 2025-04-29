@@ -1,10 +1,9 @@
 import AsyncButton from '@/components/loaders/asyncButton';
-import { useNotifications } from '@/src/providers/notification';
-import { cancelNotification } from '@/src/providers/notification/actions';
-import NotificationButton from '@/src/providers/notification/button';
 import { Stack, Typography } from '@mui/material';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { Fragment, useEffect, useState } from 'react';
+import OneSignal from 'react-onesignal';
+import { cancelNotification, sendNotification } from './notificationActions';
 
 export default function RespawnNotification({
 	storageKey,
@@ -15,9 +14,8 @@ export default function RespawnNotification({
 	storageKey: string;
 	item: string;
 	icon?: string;
-	delay: number;
+	delay?: number;
 }) {
-	const { subscription } = useNotifications();
 	const [time, setTime] = useState(() => new Date());
 
 	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(storageKey);
@@ -32,23 +30,28 @@ export default function RespawnNotification({
 
 	return (
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
-			<NotificationButton
-				title={`${item} Respawned`}
-				icon={icon}
-				delay={delay}
-				onComplete={async (id, delay) => {
-					if (respawn?.id) await cancelNotification(subscription.toJSON(), respawn.id);
-					setRespawn({ id, time: +new Date() + delay });
+			<AsyncButton
+				variant='contained'
+				onClick={async () => {
+					const time = +new Date() + delay;
+					const id = await sendNotification(OneSignal.User.onesignalId, {
+						title: `${item} Respawned`,
+						icon,
+						time: new Date(time).toUTCString(),
+					});
+
+					if (respawn?.id) await cancelNotification(respawn.id);
+					setRespawn({ id, time });
 				}}>
 				{item} Notification
-			</NotificationButton>
+			</AsyncButton>
 			{respawn && +time < respawn.time && (
 				<Fragment>
 					<AsyncButton
 						variant='contained'
 						color='error'
 						onClick={async () => {
-							await cancelNotification(subscription.toJSON(), respawn.id);
+							await cancelNotification(respawn.id);
 							setRespawn(null);
 						}}>
 						Cancel

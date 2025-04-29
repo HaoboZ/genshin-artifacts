@@ -1,21 +1,19 @@
 'use client';
 import ClientOnly from '@/components/clientOnly';
-import AsyncButton from '@/components/loaders/asyncButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
-import { useNotifications } from '@/src/providers/notification';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useEffect } from 'react';
+import OneSignal from 'react-onesignal';
 import RespawnNotification from './respawnNotification';
 
 export default function Main() {
-	const { unsubscribe } = useNotifications();
-
 	const main = useAppSelector(pget('main'));
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
@@ -37,6 +35,15 @@ export default function Main() {
 			reader.readAsText(item.getAsFile());
 		},
 	);
+
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		OneSignal.init({
+			appId: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
+			safari_web_id: process.env.NEXT_PUBLIC_ONESIGNAL_SAFARI_WEB_ID,
+			allowLocalhostAsSecureOrigin: process.env.NODE_ENV === 'development',
+		});
+	}, []);
 
 	return (
 		<PageContainer>
@@ -84,20 +91,8 @@ export default function Main() {
 					<Typography>Artifacts: {good.artifacts.length}</Typography>
 					<Typography>Weapons: {good.weapons.length}</Typography>
 				</Box>
+				<div className='onesignal-customlink-container' />
 				<ClientOnly>
-					<Box>
-						<AsyncButton
-							color='error'
-							variant='contained'
-							onClick={async () => {
-								await unsubscribe();
-								localStorage.removeItem('artifact-respawn');
-								localStorage.removeItem('specialties-respawn');
-								localStorage.removeItem('crystals-respawn');
-							}}>
-							Reset
-						</AsyncButton>
-					</Box>
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
@@ -107,7 +102,7 @@ export default function Main() {
 					<RespawnNotification
 						storageKey='specialties-respawn'
 						item='Specialties Farming'
-						icon='/material.png'
+						icon='/materials.png'
 						delay={(2 * 24 * 60 + 2) * 60 * 1000}
 					/>
 					<RespawnNotification
