@@ -42,7 +42,7 @@ export default function Main() {
 			appId: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
 			safari_web_id: process.env.NEXT_PUBLIC_ONESIGNAL_SAFARI_WEB_ID,
 			allowLocalhostAsSecureOrigin: process.env.NODE_ENV === 'development',
-		});
+		}).then();
 	}, []);
 
 	return (
@@ -93,7 +93,6 @@ export default function Main() {
 				</Box>
 				<div className='onesignal-customlink-container' />
 				<ClientOnly>
-					<RespawnNotification storageKey='test-respawn' item='Test' delay={10 * 1000} />
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
