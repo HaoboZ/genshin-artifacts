@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/27/25
+// 4/30/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -62,13 +62,19 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Support',
 		weapon: [
 			['MistsplitterReforged', 'Absolution', 'AquilaFavonia'],
-			['TheAlleyFlash', 'FreedomSworn', 'PeakPatrolSong', 'SkywardBlade'],
+			'TheAlleyFlash',
+			['FreedomSworn', 'PeakPatrolSong', 'SkywardBlade'],
 			'SapwoodBlade',
-			['PrototypeRancour', 'CalamityOfEshu', 'FavoniusSword'],
+			['PrototypeRancour', 'CalamityOfEshu'],
+			'FavoniusSword',
 		],
 		group: 1,
 		artifact: ['NoblesseOblige', 'Instructor', 'ScrollOfTheHeroOfCinderCity', 'DeepwoodMemories'],
-		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'hp_'] },
+		mainStat: {
+			sands: ['enerRech_', 'hp_'],
+			goblet: ['hp_', 'pyro_dmg_'],
+			circlet: ['heal_', 'hp_', 'critRD_'],
+		},
 		subStat: ['enerRech_', ['critRD_', 'hp_'], ['atk_', 'hp']],
 	},
 	Xinyan: {
@@ -265,7 +271,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'DeepwoodMemories',
 		],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
-		subStat: ['hp_', 'hp', 'eleMas', 'atk_'],
+		subStat: ['hp_', 'hp', 'critRate_'],
 	},
 	Lyney: {
 		key: 'Lyney',
@@ -332,13 +338,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'PolarStar',
 			['AquaSimulacra', 'ThunderingPulse', 'HuntersPath'],
 			['TheFirstGreatMagic', 'SkywardHarp'],
-			[
-				'AstralVulturesCrimsonPlumage',
-				'SongOfStillness',
-				'ChainBreaker',
-				'TheViridescentHunt',
-				'AmosBow',
-			],
+			['AstralVulturesCrimsonPlumage', 'SongOfStillness', 'ChainBreaker', 'AmosBow'],
 			'AlleyHunter',
 			['TheViridescentHunt', 'TheStringless', 'FadingTwilight'],
 		],
@@ -370,15 +370,16 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'KagurasVerity',
 			'LostPrayerToTheSacredWinds',
-			['SkywardAtlas', 'AThousandFloatingDreams', 'TheWidsith'],
-			['TulaytullahsRemembrance', 'SolarPearl', 'MemoryOfDust'],
-			'BlackcliffAgate',
+			['TomeOfTheEternalFlow', 'SurfsUp'],
+			['AThousandFloatingDreams', 'CashflowSupervision'],
+			['TheWidsith', 'TulaytullahsRemembrance', 'MemoryOfDust'],
+			['SolarPearl', 'SacrificialJade', 'BlackcliffAgate'],
+			'FlowingPurity',
 			'MappaMare',
-			['DodocoTales', 'MagicGuide'],
 		],
 		group: 0,
 		artifact: ['Thundersoother', 'ThunderingFury', 'GildedDreams'],
-		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
+		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', ['atk_', 'eleMas'], 'enerRech_'],
 	},
 	Razor: {
@@ -490,7 +491,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'KitainCrossSpear',
 		],
 		group: 0,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige', 'Instructor'],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
 		subStat: ['enerRech_', 'atk_', 'critRate_'],
 	},
@@ -625,7 +626,7 @@ export const builds: Record<CharacterKey, Build> = {
 	Collei: {
 		key: 'Collei',
 		role: 'Reaction Support',
-		weapon: ['ElegyForTheEnd', 'PolarStar', 'SacrificialBow', 'FavoniusWarbow'],
+		weapon: ['ElegyForTheEnd', 'FavoniusWarbow', 'PolarStar', 'SacrificialBow'],
 		group: 0,
 		artifact: [
 			'DeepwoodMemories',
@@ -633,7 +634,6 @@ export const builds: Record<CharacterKey, Build> = {
 			'TenacityOfTheMillelith',
 			'Instructor',
 			'GildedDreams',
-			'TheExile',
 		],
 		mainStat: {
 			sands: ['enerRech_', 'atk_', 'eleMas'],
@@ -981,7 +981,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'RecurveBow',
 		],
 		group: 1,
-		artifact: ['EmblemOfSeveredFate'],
+		artifact: ['EmblemOfSeveredFate', 'MarechausseeHunter'],
 		mainStat: {
 			sands: ['enerRech_', 'hp_'],
 			goblet: ['hydro_dmg_', 'hp_'],
@@ -1052,9 +1052,12 @@ export const builds: Record<CharacterKey, Build> = {
 	Sigewinne: {
 		key: 'Sigewinne',
 		role: 'Heal Support',
-		weapon: ['SilvershowerHeartstrings', 'RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd'],
+		weapon: [
+			'SilvershowerHeartstrings',
+			['RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd', 'SacrificialBow'],
+		],
 		group: 0,
-		artifact: ['SongOfDaysPast', 'OceanHuedClam'],
+		artifact: [['SongOfDaysPast', 'OceanHuedClam'], 'TenacityOfTheMillelith'],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['hp_', 'hp', 'critRate_'],
 	},
@@ -1133,23 +1136,23 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'PrimordialJadeCutter',
 			'MistsplitterReforged',
-			['HaranGeppakuFutsu', 'LightOfFoliarIncision'],
-			['FreedomSworn', 'SkywardBlade'],
-			'ToukabouShigure',
-			['SummitShaper', 'LionsRoar', 'KagotsurubeIsshin', 'AquilaFavonia'],
-			['IronSting', 'TheAlleyFlash'],
-			'FavoniusSword',
+			['HaranGeppakuFutsu', 'UrakuMisugiri', 'LightOfFoliarIncision'],
+			[
+				'Absolution',
+				'SplendorOfTranquilWaters',
+				'FreedomSworn',
+				'ToukabouShigure',
+				'IronSting',
+				'HarbingerOfDawn',
+			],
+			['SummitShaper', 'LionsRoar'],
+			'FinaleOfTheDeep',
+			['SkywardBlade', 'FavoniusSword'],
 		],
 		group: 1,
-		artifact: [
-			'EmblemOfSeveredFate',
-			'Lavawalker',
-			'GildedDreams',
-			'NoblesseOblige',
-			'Instructor',
-		],
-		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige', 'Instructor'],
+		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
 	},
 	Rosaria: {
 		key: 'Rosaria',
@@ -1795,11 +1798,15 @@ export const builds: Record<CharacterKey, Build> = {
 	AratakiItto: {
 		key: 'AratakiItto',
 		role: 'DPS',
-		weapon: ['RedhornStonethresher', 'SerpentSpine', 'SkywardPride', 'Whiteblind'],
+		weapon: [
+			'RedhornStonethresher',
+			['SerpentSpine', 'BeaconOfTheReedSea', 'Verdict', 'AThousandBlazingSuns'],
+			['Whiteblind', 'SkywardPride'],
+		],
 		group: 0,
 		artifact: ['HuskOfOpulentDreams', 'DesertPavilionChronicle', 'RetracingBolide'],
 		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'def_', 'enerRech_', 'atk_'],
+		subStat: ['enerRech_', 'critRD_', 'def_', 'atk_'],
 	},
 	Navia: {
 		key: 'Navia',
