@@ -185,5 +185,22 @@
 				"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Eroded_Scale-Feather.png"
 			}
 		]
+	},
+	{
+		"name": "The Game Before the Gate",
+		"items": [
+			{
+				"name": "Ascended Sample: Knight",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_Ascended_Sample_Knight.png"
+			},
+			{
+				"name": "Ascended Sample: Rook",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Item_Ascended_Sample_Rook.png"
+			},
+			{
+				"name": "Ascended Sample: Queen",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Ascended_Sample_Queen.png"
+			}
+		]
 	}
 ]

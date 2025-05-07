@@ -366,7 +366,8 @@
 		"weaponType": "Catalyst",
 		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Ifa_Icon.png",
-		"talentMaterial": "Conflict"
+		"talentMaterial": "Conflict",
+		"weeklyMaterial": "Ascended Sample: Rook"
 	},
 	"Jean": {
 		"key": "Jean",
