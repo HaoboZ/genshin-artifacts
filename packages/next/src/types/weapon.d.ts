@@ -93,6 +93,7 @@ export type WeaponKey =
 	| 'SkywardSpine' // Skyward Spine
 	| 'StaffOfHoma' // Staff of Homa
 	| 'StaffOfTheScarletSands' // Staff of the Scarlet Sands
+	| 'SymphonistOfScents' // Symphonist of Scents
 	| 'VortexVanquisher' // Vortex Vanquisher
 	| 'TheCatch' // "The Catch"
 	| 'BalladOfTheFjords' // Ballad of the Fjords
@@ -195,6 +196,7 @@ export type WeaponKey =
 	| 'Rust' // Rust
 	| 'SacrificialBow' // Sacrificial Bow
 	| 'ScionOfTheBlazingSun' // Scion of the Blazing Sun
+	| 'SequenceOfSolitude' // Sequence of Solitude
 	| 'SongOfStillness' // Song of Stillness
 	| 'TheStringless' // The Stringless
 	| 'TheViridescentHunt' // The Viridescent Hunt

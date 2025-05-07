@@ -5,9 +5,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Geo",
-		"weeklyMaterial": "Tusk of Monoceros Caeli",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Albedo_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Tusk of Monoceros Caeli"
 	},
 	"Alhaitham": {
 		"key": "Alhaitham",
@@ -15,9 +15,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Dendro",
-		"weeklyMaterial": "Mirror of Mushin",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Alhaitham_Icon.png",
-		"talentMaterial": "Ingenuity"
+		"talentMaterial": "Ingenuity",
+		"weeklyMaterial": "Mirror of Mushin"
 	},
 	"Aloy": {
 		"key": "Aloy",
@@ -25,9 +25,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Cryo",
-		"weeklyMaterial": "Molten Moment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Aloy_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Molten Moment"
 	},
 	"Amber": {
 		"key": "Amber",
@@ -35,9 +35,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Pyro",
-		"weeklyMaterial": "Dvalin's Sigh",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/75/Amber_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Dvalin's Sigh"
 	},
 	"AratakiItto": {
 		"key": "AratakiItto",
@@ -45,9 +45,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Geo",
-		"weeklyMaterial": "Ashen Heart",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Arataki_Itto_Icon.png",
-		"talentMaterial": "Elegance"
+		"talentMaterial": "Elegance",
+		"weeklyMaterial": "Ashen Heart"
 	},
 	"Arlecchino": {
 		"key": "Arlecchino",
@@ -55,9 +55,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Pyro",
-		"weeklyMaterial": "Fading Candle",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Arlecchino_Icon.png",
-		"talentMaterial": "Order"
+		"talentMaterial": "Order",
+		"weeklyMaterial": "Fading Candle"
 	},
 	"Baizhu": {
 		"key": "Baizhu",
@@ -65,9 +65,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Dendro",
-		"weeklyMaterial": "Worldspan Fern",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Worldspan Fern"
 	},
 	"Barbara": {
 		"key": "Barbara",
@@ -75,9 +75,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Hydro",
-		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Barbara_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Ring of Boreas"
 	},
 	"Beidou": {
 		"key": "Beidou",
@@ -85,9 +85,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Electro",
-		"weeklyMaterial": "Dvalin's Sigh",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Beidou_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Dvalin's Sigh"
 	},
 	"Bennett": {
 		"key": "Bennett",
@@ -95,9 +95,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Pyro",
-		"weeklyMaterial": "Dvalin's Plume",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Bennett_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dvalin's Plume"
 	},
 	"Candace": {
 		"key": "Candace",
@@ -105,9 +105,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Hydro",
-		"weeklyMaterial": "Tears of the Calamitous God",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Candace_Icon.png",
-		"talentMaterial": "Admonition"
+		"talentMaterial": "Admonition",
+		"weeklyMaterial": "Tears of the Calamitous God"
 	},
 	"Charlotte": {
 		"key": "Charlotte",
@@ -115,9 +115,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Cryo",
-		"weeklyMaterial": "Lightless Silk String",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png",
-		"talentMaterial": "Justice"
+		"talentMaterial": "Justice",
+		"weeklyMaterial": "Lightless Silk String"
 	},
 	"Chasca": {
 		"key": "Chasca",
@@ -125,9 +125,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Anemo",
-		"weeklyMaterial": "Silken Feather",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Chasca_Icon.png",
-		"talentMaterial": "Conflict"
+		"talentMaterial": "Conflict",
+		"weeklyMaterial": "Silken Feather"
 	},
 	"Chevreuse": {
 		"key": "Chevreuse",
@@ -135,9 +135,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Pyro",
-		"weeklyMaterial": "Lightless Eye of the Maelstrom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Chevreuse_Icon.png",
-		"talentMaterial": "Order"
+		"talentMaterial": "Order",
+		"weeklyMaterial": "Lightless Eye of the Maelstrom"
 	},
 	"Chiori": {
 		"key": "Chiori",
@@ -145,9 +145,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Geo",
-		"weeklyMaterial": "Lightless Silk String",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Chiori_Icon.png",
-		"talentMaterial": "Light"
+		"talentMaterial": "Light",
+		"weeklyMaterial": "Lightless Silk String"
 	},
 	"Chongyun": {
 		"key": "Chongyun",
@@ -155,9 +155,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Cryo",
-		"weeklyMaterial": "Dvalin's Sigh",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Chongyun_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Dvalin's Sigh"
 	},
 	"Citlali": {
 		"key": "Citlali",
@@ -165,9 +165,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Cryo",
-		"weeklyMaterial": "Denial and Judgment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png",
-		"talentMaterial": "Kindling"
+		"talentMaterial": "Kindling",
+		"weeklyMaterial": "Denial and Judgment"
 	},
 	"Clorinde": {
 		"key": "Clorinde",
@@ -175,9 +175,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Electro",
-		"weeklyMaterial": "Everamber",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Clorinde_Icon.png",
-		"talentMaterial": "Justice"
+		"talentMaterial": "Justice",
+		"weeklyMaterial": "Everamber"
 	},
 	"Collei": {
 		"key": "Collei",
@@ -185,9 +185,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Dendro",
-		"weeklyMaterial": "Tears of the Calamitous God",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Collei_Icon.png",
-		"talentMaterial": "Praxis"
+		"talentMaterial": "Praxis",
+		"weeklyMaterial": "Tears of the Calamitous God"
 	},
 	"Cyno": {
 		"key": "Cyno",
@@ -195,9 +195,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Electro",
-		"weeklyMaterial": "Mudra of the Malefic General",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Cyno_Icon.png",
-		"talentMaterial": "Admonition"
+		"talentMaterial": "Admonition",
+		"weeklyMaterial": "Mudra of the Malefic General"
 	},
 	"Dehya": {
 		"key": "Dehya",
@@ -205,9 +205,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Pyro",
-		"weeklyMaterial": "Puppet Strings",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Dehya_Icon.png",
-		"talentMaterial": "Praxis"
+		"talentMaterial": "Praxis",
+		"weeklyMaterial": "Puppet Strings"
 	},
 	"Diluc": {
 		"key": "Diluc",
@@ -215,9 +215,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Pyro",
-		"weeklyMaterial": "Dvalin's Plume",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Diluc_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dvalin's Plume"
 	},
 	"Diona": {
 		"key": "Diona",
@@ -225,9 +225,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Cryo",
-		"weeklyMaterial": "Shard of a Foul Legacy",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Diona_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Shard of a Foul Legacy"
 	},
 	"Dori": {
 		"key": "Dori",
@@ -235,9 +235,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Electro",
-		"weeklyMaterial": "Bloodjade Branch",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Dori_Icon.png",
-		"talentMaterial": "Ingenuity"
+		"talentMaterial": "Ingenuity",
+		"weeklyMaterial": "Bloodjade Branch"
 	},
 	"Emilie": {
 		"key": "Emilie",
@@ -245,9 +245,19 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Dendro",
-		"weeklyMaterial": "Silken Feather",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/aa/Emilie_Icon.png",
-		"talentMaterial": "Order"
+		"talentMaterial": "Order",
+		"weeklyMaterial": "Silken Feather"
+	},
+	"Escoffier": {
+		"key": "Escoffier",
+		"name": "Escoffier",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Escoffier_Icon.png",
+		"talentMaterial": "Justice",
+		"weeklyMaterial": "Eroded Horn"
 	},
 	"Eula": {
 		"key": "Eula",
@@ -255,9 +265,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Cryo",
-		"weeklyMaterial": "Dragon Lord's Crown",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Eula_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dragon Lord's Crown"
 	},
 	"Faruzan": {
 		"key": "Faruzan",
@@ -265,9 +275,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Anemo",
-		"weeklyMaterial": "Puppet Strings",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Faruzan_Icon.png",
-		"talentMaterial": "Admonition"
+		"talentMaterial": "Admonition",
+		"weeklyMaterial": "Puppet Strings"
 	},
 	"Fischl": {
 		"key": "Fischl",
@@ -275,9 +285,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Electro",
-		"weeklyMaterial": "Spirit Locket of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Fischl_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Spirit Locket of Boreas"
 	},
 	"Freminet": {
 		"key": "Freminet",
@@ -285,9 +295,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Cryo",
-		"weeklyMaterial": "Worldspan Fern",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Freminet_Icon.png",
-		"talentMaterial": "Justice"
+		"talentMaterial": "Justice",
+		"weeklyMaterial": "Worldspan Fern"
 	},
 	"Furina": {
 		"key": "Furina",
@@ -295,9 +305,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Hydro",
-		"weeklyMaterial": "Lightless Mass",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Furina_Icon.png",
-		"talentMaterial": "Justice"
+		"talentMaterial": "Justice",
+		"weeklyMaterial": "Lightless Mass"
 	},
 	"Gaming": {
 		"key": "Gaming",
@@ -305,9 +315,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Pyro",
-		"weeklyMaterial": "Lightless Mass",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Gaming_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Lightless Mass"
 	},
 	"Ganyu": {
 		"key": "Ganyu",
@@ -315,9 +325,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Cryo",
-		"weeklyMaterial": "Shadow of the Warrior",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Ganyu_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Shadow of the Warrior"
 	},
 	"Gorou": {
 		"key": "Gorou",
@@ -325,9 +335,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Geo",
-		"weeklyMaterial": "Molten Moment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Gorou_Icon.png",
-		"talentMaterial": "Light"
+		"talentMaterial": "Light",
+		"weeklyMaterial": "Molten Moment"
 	},
 	"HuTao": {
 		"key": "HuTao",
@@ -335,9 +345,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Pyro",
-		"weeklyMaterial": "Shard of a Foul Legacy",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Hu_Tao_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Shard of a Foul Legacy"
 	},
 	"Iansan": {
 		"key": "Iansan",
@@ -345,9 +355,18 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Electro",
-		"weeklyMaterial": "Denial and Judgment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Iansan_Icon.png",
-		"talentMaterial": "Contention"
+		"talentMaterial": "Contention",
+		"weeklyMaterial": "Denial and Judgment"
+	},
+	"Ifa": {
+		"key": "Ifa",
+		"name": "Ifa",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Ifa_Icon.png",
+		"talentMaterial": "Conflict"
 	},
 	"Jean": {
 		"key": "Jean",
@@ -355,9 +374,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Anemo",
-		"weeklyMaterial": "Dvalin's Plume",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/64/Jean_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dvalin's Plume"
 	},
 	"Kachina": {
 		"key": "Kachina",
@@ -365,9 +384,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Geo",
-		"weeklyMaterial": "Fading Candle",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Kachina_Icon.png",
-		"talentMaterial": "Conflict"
+		"talentMaterial": "Conflict",
+		"weeklyMaterial": "Fading Candle"
 	},
 	"KaedeharaKazuha": {
 		"key": "KaedeharaKazuha",
@@ -375,9 +394,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Anemo",
-		"weeklyMaterial": "Gilded Scale",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Kaedehara_Kazuha_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Gilded Scale"
 	},
 	"Kaeya": {
 		"key": "Kaeya",
@@ -385,9 +404,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Cryo",
-		"weeklyMaterial": "Spirit Locket of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kaeya_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Spirit Locket of Boreas"
 	},
 	"KamisatoAyaka": {
 		"key": "KamisatoAyaka",
@@ -395,9 +414,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Cryo",
-		"weeklyMaterial": "Bloodjade Branch",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Kamisato_Ayaka_Icon.png",
-		"talentMaterial": "Elegance"
+		"talentMaterial": "Elegance",
+		"weeklyMaterial": "Bloodjade Branch"
 	},
 	"KamisatoAyato": {
 		"key": "KamisatoAyato",
@@ -405,9 +424,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Hydro",
-		"weeklyMaterial": "Mudra of the Malefic General",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Kamisato_Ayato_Icon.png",
-		"talentMaterial": "Elegance"
+		"talentMaterial": "Elegance",
+		"weeklyMaterial": "Mudra of the Malefic General"
 	},
 	"Kaveh": {
 		"key": "Kaveh",
@@ -415,9 +434,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Dendro",
-		"weeklyMaterial": "Primordial Greenbloom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Kaveh_Icon.png",
-		"talentMaterial": "Ingenuity"
+		"talentMaterial": "Ingenuity",
+		"weeklyMaterial": "Primordial Greenbloom"
 	},
 	"Keqing": {
 		"key": "Keqing",
@@ -425,9 +444,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Electro",
-		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Keqing_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Ring of Boreas"
 	},
 	"Kinich": {
 		"key": "Kinich",
@@ -435,9 +454,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Dendro",
-		"weeklyMaterial": "Denial and Judgment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Kinich_Icon.png",
-		"talentMaterial": "Kindling"
+		"talentMaterial": "Kindling",
+		"weeklyMaterial": "Denial and Judgment"
 	},
 	"Kirara": {
 		"key": "Kirara",
@@ -445,9 +464,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Dendro",
-		"weeklyMaterial": "Everamber",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "Everamber"
 	},
 	"Klee": {
 		"key": "Klee",
@@ -455,9 +474,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Pyro",
-		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Klee_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Ring of Boreas"
 	},
 	"KujouSara": {
 		"key": "KujouSara",
@@ -465,9 +484,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Electro",
-		"weeklyMaterial": "Ashen Heart",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Kujou_Sara_Icon.png",
-		"talentMaterial": "Elegance"
+		"talentMaterial": "Elegance",
+		"weeklyMaterial": "Ashen Heart"
 	},
 	"KukiShinobu": {
 		"key": "KukiShinobu",
@@ -475,9 +494,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Electro",
-		"weeklyMaterial": "Tears of the Calamitous God",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Kuki_Shinobu_Icon.png",
-		"talentMaterial": "Elegance"
+		"talentMaterial": "Elegance",
+		"weeklyMaterial": "Tears of the Calamitous God"
 	},
 	"LanYan": {
 		"key": "LanYan",
@@ -485,9 +504,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "Eroded Sunfire",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Lan_Yan_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Eroded Sunfire"
 	},
 	"Layla": {
 		"key": "Layla",
@@ -495,9 +514,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Cryo",
-		"weeklyMaterial": "Mirror of Mushin",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Layla_Icon.png",
-		"talentMaterial": "Ingenuity"
+		"talentMaterial": "Ingenuity",
+		"weeklyMaterial": "Mirror of Mushin"
 	},
 	"Lisa": {
 		"key": "Lisa",
@@ -505,9 +524,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Electro",
-		"weeklyMaterial": "Dvalin's Claw",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/65/Lisa_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Dvalin's Claw"
 	},
 	"Lynette": {
 		"key": "Lynette",
@@ -515,9 +534,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Anemo",
-		"weeklyMaterial": "Everamber",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Lynette_Icon.png",
-		"talentMaterial": "Order"
+		"talentMaterial": "Order",
+		"weeklyMaterial": "Everamber"
 	},
 	"Lyney": {
 		"key": "Lyney",
@@ -525,9 +544,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Pyro",
-		"weeklyMaterial": "Primordial Greenbloom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Lyney_Icon.png",
-		"talentMaterial": "Equity"
+		"talentMaterial": "Equity",
+		"weeklyMaterial": "Primordial Greenbloom"
 	},
 	"Mavuika": {
 		"key": "Mavuika",
@@ -535,9 +554,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Pyro",
-		"weeklyMaterial": "Eroded Horn",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Mavuika_Icon.png",
-		"talentMaterial": "Contention"
+		"talentMaterial": "Contention",
+		"weeklyMaterial": "Eroded Horn"
 	},
 	"Mika": {
 		"key": "Mika",
@@ -545,9 +564,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Cryo",
-		"weeklyMaterial": "Mirror of Mushin",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Mika_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Mirror of Mushin"
 	},
 	"Mona": {
 		"key": "Mona",
@@ -555,9 +574,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Hydro",
-		"weeklyMaterial": "Ring of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Mona_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Ring of Boreas"
 	},
 	"Mualani": {
 		"key": "Mualani",
@@ -565,9 +584,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Hydro",
-		"weeklyMaterial": "Lightless Mass",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Mualani_Icon.png",
-		"talentMaterial": "Contention"
+		"talentMaterial": "Contention",
+		"weeklyMaterial": "Lightless Mass"
 	},
 	"Nahida": {
 		"key": "Nahida",
@@ -575,9 +594,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Dendro",
-		"weeklyMaterial": "Puppet Strings",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Nahida_Icon.png",
-		"talentMaterial": "Ingenuity"
+		"talentMaterial": "Ingenuity",
+		"weeklyMaterial": "Puppet Strings"
 	},
 	"Navia": {
 		"key": "Navia",
@@ -585,9 +604,9 @@
 		"rarity": 5,
 		"weaponType": "Claymore",
 		"element": "Geo",
-		"weeklyMaterial": "Lightless Silk String",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Navia_Icon.png",
-		"talentMaterial": "Equity"
+		"talentMaterial": "Equity",
+		"weeklyMaterial": "Lightless Silk String"
 	},
 	"Neuvillette": {
 		"key": "Neuvillette",
@@ -595,9 +614,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Hydro",
-		"weeklyMaterial": "Everamber",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Neuvillette_Icon.png",
-		"talentMaterial": "Equity"
+		"talentMaterial": "Equity",
+		"weeklyMaterial": "Everamber"
 	},
 	"Nilou": {
 		"key": "Nilou",
@@ -605,9 +624,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Hydro",
-		"weeklyMaterial": "Tears of the Calamitous God",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Nilou_Icon.png",
-		"talentMaterial": "Praxis"
+		"talentMaterial": "Praxis",
+		"weeklyMaterial": "Tears of the Calamitous God"
 	},
 	"Ningguang": {
 		"key": "Ningguang",
@@ -615,9 +634,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Geo",
-		"weeklyMaterial": "Spirit Locket of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Ningguang_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Spirit Locket of Boreas"
 	},
 	"Noelle": {
 		"key": "Noelle",
@@ -625,9 +644,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Geo",
-		"weeklyMaterial": "Dvalin's Claw",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dvalin's Claw"
 	},
 	"Ororon": {
 		"key": "Ororon",
@@ -635,9 +654,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Electro",
-		"weeklyMaterial": "Lightless Silk String",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Ororon_Icon.png",
-		"talentMaterial": "Kindling"
+		"talentMaterial": "Kindling",
+		"weeklyMaterial": "Lightless Silk String"
 	},
 	"Qiqi": {
 		"key": "Qiqi",
@@ -645,9 +664,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Cryo",
-		"weeklyMaterial": "Tail of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Qiqi_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Tail of Boreas"
 	},
 	"RaidenShogun": {
 		"key": "RaidenShogun",
@@ -655,9 +674,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Electro",
-		"weeklyMaterial": "Molten Moment",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Raiden_Shogun_Icon.png",
-		"talentMaterial": "Light"
+		"talentMaterial": "Light",
+		"weeklyMaterial": "Molten Moment"
 	},
 	"Razor": {
 		"key": "Razor",
@@ -665,9 +684,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Electro",
-		"weeklyMaterial": "Dvalin's Claw",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Razor_Icon.png",
-		"talentMaterial": "Resistance"
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "Dvalin's Claw"
 	},
 	"Rosaria": {
 		"key": "Rosaria",
@@ -675,9 +694,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Cryo",
-		"weeklyMaterial": "Shadow of the Warrior",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Rosaria_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Shadow of the Warrior"
 	},
 	"SangonomiyaKokomi": {
 		"key": "SangonomiyaKokomi",
@@ -685,9 +704,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Hydro",
-		"weeklyMaterial": "Hellfire Butterfly",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Sangonomiya_Kokomi_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "Hellfire Butterfly"
 	},
 	"Sayu": {
 		"key": "Sayu",
@@ -695,9 +714,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Anemo",
-		"weeklyMaterial": "Gilded Scale",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/22/Sayu_Icon.png",
-		"talentMaterial": "Light"
+		"talentMaterial": "Light",
+		"weeklyMaterial": "Gilded Scale"
 	},
 	"Sethos": {
 		"key": "Sethos",
@@ -705,9 +724,9 @@
 		"rarity": 4,
 		"weaponType": "Bow",
 		"element": "Electro",
-		"weeklyMaterial": "Daka's Bell",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Sethos_Icon.png",
-		"talentMaterial": "Praxis"
+		"talentMaterial": "Praxis",
+		"weeklyMaterial": "Daka's Bell"
 	},
 	"Shenhe": {
 		"key": "Shenhe",
@@ -715,9 +734,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Cryo",
-		"weeklyMaterial": "Hellfire Butterfly",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Shenhe_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Hellfire Butterfly"
 	},
 	"ShikanoinHeizou": {
 		"key": "ShikanoinHeizou",
@@ -725,9 +744,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "The Meaning of Aeons",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Shikanoin_Heizou_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "The Meaning of Aeons"
 	},
 	"Sigewinne": {
 		"key": "Sigewinne",
@@ -735,9 +754,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Hydro",
-		"weeklyMaterial": "Lightless Eye of the Maelstrom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Sigewinne_Icon.png",
-		"talentMaterial": "Equity"
+		"talentMaterial": "Equity",
+		"weeklyMaterial": "Lightless Eye of the Maelstrom"
 	},
 	"Sucrose": {
 		"key": "Sucrose",
@@ -745,9 +764,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "Spirit Locket of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Sucrose_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Spirit Locket of Boreas"
 	},
 	"Tartaglia": {
 		"key": "Tartaglia",
@@ -755,9 +774,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Hydro",
-		"weeklyMaterial": "Shard of a Foul Legacy",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Tartaglia_Icon.png",
-		"talentMaterial": "Freedom"
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "Shard of a Foul Legacy"
 	},
 	"Thoma": {
 		"key": "Thoma",
@@ -765,9 +784,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Pyro",
-		"weeklyMaterial": "Hellfire Butterfly",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Thoma_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "Hellfire Butterfly"
 	},
 	"Tighnari": {
 		"key": "Tighnari",
@@ -775,9 +794,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Dendro",
-		"weeklyMaterial": "The Meaning of Aeons",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Tighnari_Icon.png",
-		"talentMaterial": "Admonition"
+		"talentMaterial": "Admonition",
+		"weeklyMaterial": "The Meaning of Aeons"
 	},
 	"Traveler": {
 		"key": "Traveler",
@@ -793,9 +812,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Electro",
-		"weeklyMaterial": "Eroded Scale-Feather",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Varesa_Icon.png",
-		"talentMaterial": "Conflict"
+		"talentMaterial": "Conflict",
+		"weeklyMaterial": "Eroded Scale-Feather"
 	},
 	"Venti": {
 		"key": "Venti",
@@ -803,9 +822,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Anemo",
-		"weeklyMaterial": "Tail of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Venti_Icon.png",
-		"talentMaterial": "Ballad"
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Tail of Boreas"
 	},
 	"Wanderer": {
 		"key": "Wanderer",
@@ -813,9 +832,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "Daka's Bell",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png",
-		"talentMaterial": "Praxis"
+		"talentMaterial": "Praxis",
+		"weeklyMaterial": "Daka's Bell"
 	},
 	"Wriothesley": {
 		"key": "Wriothesley",
@@ -823,9 +842,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Cryo",
-		"weeklyMaterial": "Primordial Greenbloom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Wriothesley_Icon.png",
-		"talentMaterial": "Order"
+		"talentMaterial": "Order",
+		"weeklyMaterial": "Primordial Greenbloom"
 	},
 	"Xiangling": {
 		"key": "Xiangling",
@@ -833,9 +852,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Pyro",
-		"weeklyMaterial": "Dvalin's Claw",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Xiangling_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Dvalin's Claw"
 	},
 	"Xianyun": {
 		"key": "Xianyun",
@@ -843,9 +862,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "Lightless Eye of the Maelstrom",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Xianyun_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Lightless Eye of the Maelstrom"
 	},
 	"Xiao": {
 		"key": "Xiao",
@@ -853,9 +872,9 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Anemo",
-		"weeklyMaterial": "Shadow of the Warrior",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Xiao_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Shadow of the Warrior"
 	},
 	"Xilonen": {
 		"key": "Xilonen",
@@ -863,9 +882,9 @@
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "Geo",
-		"weeklyMaterial": "Mirror of Mushin",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Xilonen_Icon.png",
-		"talentMaterial": "Kindling"
+		"talentMaterial": "Kindling",
+		"weeklyMaterial": "Mirror of Mushin"
 	},
 	"Xingqiu": {
 		"key": "Xingqiu",
@@ -873,9 +892,9 @@
 		"rarity": 4,
 		"weaponType": "Sword",
 		"element": "Hydro",
-		"weeklyMaterial": "Tail of Boreas",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Xingqiu_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Tail of Boreas"
 	},
 	"Xinyan": {
 		"key": "Xinyan",
@@ -883,9 +902,9 @@
 		"rarity": 4,
 		"weaponType": "Claymore",
 		"element": "Pyro",
-		"weeklyMaterial": "Tusk of Monoceros Caeli",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Xinyan_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Tusk of Monoceros Caeli"
 	},
 	"YaeMiko": {
 		"key": "YaeMiko",
@@ -893,9 +912,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Electro",
-		"weeklyMaterial": "The Meaning of Aeons",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Yae_Miko_Icon.png",
-		"talentMaterial": "Light"
+		"talentMaterial": "Light",
+		"weeklyMaterial": "The Meaning of Aeons"
 	},
 	"Yanfei": {
 		"key": "Yanfei",
@@ -903,9 +922,9 @@
 		"rarity": 4,
 		"weaponType": "Catalyst",
 		"element": "Pyro",
-		"weeklyMaterial": "Bloodjade Branch",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Yanfei_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Bloodjade Branch"
 	},
 	"Yaoyao": {
 		"key": "Yaoyao",
@@ -913,9 +932,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Dendro",
-		"weeklyMaterial": "Daka's Bell",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Yaoyao_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Daka's Bell"
 	},
 	"Yelan": {
 		"key": "Yelan",
@@ -923,9 +942,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Hydro",
-		"weeklyMaterial": "Gilded Scale",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Yelan_Icon.png",
-		"talentMaterial": "Prosperity"
+		"talentMaterial": "Prosperity",
+		"weeklyMaterial": "Gilded Scale"
 	},
 	"Yoimiya": {
 		"key": "Yoimiya",
@@ -933,9 +952,9 @@
 		"rarity": 5,
 		"weaponType": "Bow",
 		"element": "Pyro",
-		"weeklyMaterial": "Dragon Lord's Crown",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Yoimiya_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "Dragon Lord's Crown"
 	},
 	"YumemizukiMizuki": {
 		"key": "YumemizukiMizuki",
@@ -943,9 +962,9 @@
 		"rarity": 5,
 		"weaponType": "Catalyst",
 		"element": "Anemo",
-		"weeklyMaterial": "Fading Candle",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Yumemizuki_Mizuki_Icon.png",
-		"talentMaterial": "Transience"
+		"talentMaterial": "Transience",
+		"weeklyMaterial": "Fading Candle"
 	},
 	"YunJin": {
 		"key": "YunJin",
@@ -953,9 +972,9 @@
 		"rarity": 4,
 		"weaponType": "Polearm",
 		"element": "Geo",
-		"weeklyMaterial": "Ashen Heart",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Yun_Jin_Icon.png",
-		"talentMaterial": "Diligence"
+		"talentMaterial": "Diligence",
+		"weeklyMaterial": "Ashen Heart"
 	},
 	"Zhongli": {
 		"key": "Zhongli",
@@ -963,8 +982,8 @@
 		"rarity": 5,
 		"weaponType": "Polearm",
 		"element": "Geo",
-		"weeklyMaterial": "Tusk of Monoceros Caeli",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png",
-		"talentMaterial": "Gold"
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "Tusk of Monoceros Caeli"
 	}
 }

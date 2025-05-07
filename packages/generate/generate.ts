@@ -7,26 +7,26 @@ import { fetchWeekly, writeWeekly } from './weekly';
 
 const run = {
 	elements: false,
-	characters: false,
+	characters: true,
 	talents: false,
 	weekly: false,
 	artifacts: false,
-	weapons: true,
+	weapons: false,
 };
 
 (async () => {
 	try {
-		console.log('Elements');
+		if (run.elements) console.log('Elements');
 		const elements = run.elements && (await fetchElements());
-		console.log('Characters');
+		if (run.characters) console.log('Characters');
 		const characters = run.characters && (await fetchCharacters());
-		console.log('Talents');
-		const talents = run.talents && (await fetchTalents(characters));
-		console.log('Weekly');
-		const weekly = run.weekly && (await fetchWeekly(characters));
-		console.log('Artifacts');
+		if (run.characters || run.talents) console.log('Talents');
+		const talents = (run.characters || run.talents) && (await fetchTalents(characters));
+		if (run.characters || run.weekly) console.log('Weekly');
+		const weekly = (run.characters || run.weekly) && (await fetchWeekly(characters));
+		if (run.artifacts) console.log('Artifacts');
 		const artifacts = run.artifacts && (await fetchArtifacts());
-		console.log('Weapons');
+		if (run.weapons) console.log('Weapons');
 		const weapons = run.weapons && (await fetchWeapons());
 
 		if (run.elements) writeElements(elements);
