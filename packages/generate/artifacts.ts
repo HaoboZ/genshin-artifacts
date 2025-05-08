@@ -26,7 +26,6 @@ const artifactLocation = {
 	LuckyDog: 1,
 	Adventurer: 1,
 };
-const artifactOrder = Object.keys(artifactLocation);
 
 export async function fetchArtifacts() {
 	const { data } = await axios.get('https://genshin-impact.fandom.com/wiki/Artifact/Sets');

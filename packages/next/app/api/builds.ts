@@ -1403,7 +1403,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['GoldenTroupe', 'BlizzardStrayer'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['atk_', 'cryo_dmg_'], circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
 	// Anemo

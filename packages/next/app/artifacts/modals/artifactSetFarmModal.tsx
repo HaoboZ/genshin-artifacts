@@ -8,7 +8,7 @@ import pget from '@/src/helpers/pget';
 import statArrMatch from '@/src/helpers/statArrMatch';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
-import type { StatKey } from '@/src/types/good';
+import type { ArtifactSetKey, StatKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
@@ -22,18 +22,25 @@ export default function ArtifactSetFarmModal() {
 		const artifactSetPriority = pipe(
 			artifacts,
 			filter(({ location }) => Boolean(location)),
-			map((artifact) => ({
-				...artifact,
-				mainStatMismatch:
-					artifact.slotKey !== 'flower' &&
-					artifact.slotKey !== 'plume' &&
-					!statArrMatch(
-						builds[artifact.location].mainStat[artifact.slotKey],
-						artifact.mainStatKey,
-						true,
-					),
-				potential: potentialStatRollPercent(builds[artifact.location], artifact),
-			})),
+			map((artifact) => {
+				const bisArtifact = makeArray(builds[artifact.location].artifact[0])[0];
+				return {
+					...artifact,
+					setKey: (bisArtifact === artifact.setKey
+						? artifact.setKey
+						: bisArtifact) as ArtifactSetKey,
+					mainStatMismatch:
+						bisArtifact !== artifact.setKey ||
+						(artifact.slotKey !== 'flower' &&
+							artifact.slotKey !== 'plume' &&
+							!statArrMatch(
+								builds[artifact.location].mainStat[artifact.slotKey],
+								artifact.mainStatKey,
+								true,
+							)),
+					potential: potentialStatRollPercent(builds[artifact.location], artifact),
+				};
+			}),
 			groupBy(pget('setKey')),
 			mapValues((artifacts) => ({
 				mainStats: artifacts.filter(pget('mainStatMismatch')).reduce(
