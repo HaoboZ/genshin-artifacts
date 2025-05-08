@@ -91,7 +91,7 @@ export default function Main() {
 					<Typography>Artifacts: {good.artifacts.length}</Typography>
 					<Typography>Weapons: {good.weapons.length}</Typography>
 				</Box>
-				<Box className='onesignal-customlink-container' sx={{ minHeight: 'unset' }} />
+				<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
 				<ClientOnly>
 					<RespawnNotification
 						storageKey='artifact-respawn'
