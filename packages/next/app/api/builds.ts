@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 5/7/25
+// 5/9/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -129,6 +129,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Chevreuse',
 		role: 'Buff Support',
 		weapon: [
+			'SymphonistOfScents',
 			'FavoniusLance',
 			'DialoguesOfTheDesertSages',
 			['BlackTassel', 'RightfulReward'],
@@ -475,7 +476,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Iansan',
 		role: 'Buff Support',
 		weapon: [
-			'EngulfingLightning',
+			['EngulfingLightning', 'SymphonistOfScents'],
 			['CalamityQueller', 'FavoniusLance', 'TamayurateiNoOhanashi'],
 			'SkywardSpine',
 			'VortexVanquisher',
@@ -1396,15 +1397,28 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Escoffier: {
 		key: 'Escoffier',
-		role: 'Support',
+		role: 'Off-Field DPS',
 		weapon: [
 			'SymphonistOfScents',
-			['StaffOfHoma', 'EngulfingLightning', 'ProspectorsDrill', 'TamayurateiNoOhanashi'],
+			'EngulfingLightning',
+			'CalamityQueller',
+			'StaffOfHoma',
+			'LumidouceElegy',
+			[
+				'StaffOfTheScarletSands',
+				'VortexVanquisher',
+				'KitainCrossSpear',
+				'Deathmatch',
+				'FavoniusLance',
+				'SkywardSpine',
+			],
+			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance', 'ProspectorsDrill'],
+			['TamayurateiNoOhanashi', 'MountainBracingBolt', 'WavebreakersFin'],
 		],
 		group: 0,
-		artifact: ['GoldenTroupe', 'BlizzardStrayer'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['atk_', 'cryo_dmg_'], circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
+		artifact: ['GoldenTroupe', 'BlizzardStrayer', 'TenacityOfTheMillelith'],
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},
 	// Anemo
 	Sucrose: {
@@ -1473,7 +1487,8 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: [
-			['ViridescentVenerer', 'NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+			['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+			'ViridescentVenerer',
 			'EmblemOfSeveredFate',
 			['GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
