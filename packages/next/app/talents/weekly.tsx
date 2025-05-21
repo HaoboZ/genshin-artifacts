@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { filter, flat, groupBy, map, pipe, reduce } from 'remeda';
+import type { ICharacter } from '../../src/types/good';
 
 export default function TalentsWeekly() {
 	const dispatch = useAppDispatch();
@@ -45,7 +46,7 @@ export default function TalentsWeekly() {
 								items,
 								map(({ name }) => charactersWeekly[name]),
 								flat(2),
-								filter<any>(Boolean),
+								filter<ICharacter>(Boolean),
 								reduce(
 									(total, { talent }) =>
 										total +

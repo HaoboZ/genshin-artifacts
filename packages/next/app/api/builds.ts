@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 5/9/25
+// 5/20/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -148,8 +148,8 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Gaming',
 		role: 'DPS',
 		weapon: [
-			['AThousandBlazingSuns', 'SerpentSpine'],
-			['RedhornStonethresher', 'Verdict', 'BeaconOfTheReedSea'],
+			'SerpentSpine',
+			['RedhornStonethresher', 'AThousandBlazingSuns', 'Verdict', 'BeaconOfTheReedSea'],
 			['FruitfulHook', 'WolfsGravestone', 'Rainslasher'],
 			'TheUnforged',
 			['MailedFlower', 'LithicBlade'],
@@ -968,10 +968,10 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'AquaSimulacra',
 			'SilvershowerHeartstrings',
-			['MouunsMoon', 'TheStringless', 'Slingshot'],
+			['MouunsMoon', 'TheStringless', 'Slingshot', 'SequenceOfSolitude'],
 			['HuntersPath', 'PolarStar', 'ThunderingPulse', 'SkywardHarp'],
 			'FadingTwilight',
-			['RecurveBow', 'SequenceOfSolitude'],
+			'RecurveBow',
 		],
 		group: 1,
 		artifact: ['EmblemOfSeveredFate', 'MarechausseeHunter'],
@@ -1043,7 +1043,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Heal Support',
 		weapon: [
 			'SilvershowerHeartstrings',
-			['RecurveBow', 'SequenceOfSolitude', 'FavoniusWarbow', 'ElegyForTheEnd', 'SacrificialBow'],
+			['SequenceOfSolitude', 'RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd', 'SacrificialBow'],
 		],
 		group: 0,
 		artifact: [['SongOfDaysPast', 'OceanHuedClam'], 'TenacityOfTheMillelith'],
@@ -1056,7 +1056,8 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'SurfsUp',
 			['SacrificialJade', 'AThousandFloatingDreams'],
-			'TomeOfTheEternalFlow',
+			['TomeOfTheEternalFlow', 'StarcallersWatch'],
+			'SunnyMorningSleepIn',
 			['RingOfYaxche', 'TheWidsith'],
 		],
 		group: 1,
@@ -1673,8 +1674,15 @@ export const builds: Record<CharacterKey, Build> = {
 			['AquaSimulacra', 'TheFirstGreatMagic'],
 			'ThunderingPulse',
 			'SkywardHarp',
-			['ChainBreaker', 'SongOfStillness', 'AmosBow', 'PolarStar', 'FlowerWreathedFeathers'],
-			['ScionOfTheBlazingSun', 'RangeGauge'],
+			[
+				'SongOfStillness',
+				'AmosBow',
+				'PolarStar',
+				'FlowerWreathedFeathers',
+				'ScionOfTheBlazingSun',
+				'Hamayumi',
+			],
+			['ChainBreaker', 'RangeGauge'],
 		],
 		group: 0,
 		artifact: ['ObsidianCodex', 'ViridescentVenerer', 'MarechausseeHunter'],
