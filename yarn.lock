@@ -575,9 +575,9 @@ __metadata:
     "@types/node": "npm:22.15.21"
     axios: "npm:1.9.0"
     change-case: "npm:5.4.4"
-    globals: "npm:16.1.0"
+    globals: "npm:16.2.0"
     jsdom: "npm:26.1.0"
-    remeda: "npm:2.21.8"
+    remeda: "npm:2.22.1"
     type-fest: "npm:4.41.0"
     typescript: "npm:5.8.3"
   languageName: unknown
@@ -612,7 +612,7 @@ __metadata:
     dayjs: "npm:1.11.13"
     events: "npm:3.3.0"
     formik: "npm:2.4.6"
-    globals: "npm:16.1.0"
+    globals: "npm:16.2.0"
     mirada: "npm:0.0.15"
     nanoid: "npm:5.1.5"
     next: "npm:15.3.2"
@@ -623,7 +623,7 @@ __metadata:
     react-dom: "npm:19.1.0"
     react-onesignal: "npm:3.2.2"
     react-redux: "npm:9.2.0"
-    remeda: "npm:2.21.8"
+    remeda: "npm:2.22.1"
     sass: "npm:1.89.0"
     tesseract.js: "npm:6.0.1"
     type-fest: "npm:4.41.0"
@@ -4045,10 +4045,10 @@ __metadata:
     eslint-config-prettier: "npm:10.1.5"
     eslint-plugin-prettier: "npm:5.4.0"
     eslint-plugin-react-hooks: "npm:5.2.0"
-    globals: "npm:16.1.0"
+    globals: "npm:16.2.0"
     next: "npm:15.3.2"
     prettier: "npm:3.5.3"
-    remeda: "npm:2.21.8"
+    remeda: "npm:2.22.1"
     typescript: "npm:5.8.3"
     typescript-eslint: "npm:8.32.1"
   languageName: unknown
@@ -4178,10 +4178,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:16.1.0":
-  version: 16.1.0
-  resolution: "globals@npm:16.1.0"
-  checksum: 10c0/51df6319b5b9e679338baf058ecf1125af0d3148b97e57592deabd65fca5c5dcdcca321d7589282bd6afbea9f5a40bc7329c746f46d56780813d7d1c457209a2
+"globals@npm:16.2.0":
+  version: 16.2.0
+  resolution: "globals@npm:16.2.0"
+  checksum: 10c0/c2b3ea163faa6f8a38076b471b12f4bda891f7df7f7d2e8294fb4801d735a51a73431bf4c1696c5bf5dbca5e0a0db894698acfcbd3068730c6b12eef185dea25
   languageName: node
   linkType: hard
 
@@ -6165,12 +6165,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remeda@npm:2.21.8":
-  version: 2.21.8
-  resolution: "remeda@npm:2.21.8"
+"remeda@npm:2.22.1":
+  version: 2.22.1
+  resolution: "remeda@npm:2.22.1"
   dependencies:
     type-fest: "npm:^4.40.1"
-  checksum: 10c0/d180ab66e65c4541d3b572022c1e047311947a7d53562a4eabdfd9f7ed06fee57577b962efe7d91c36d5af6b1c7beb115087b98ab513be7420efc063f8ab5510
+  checksum: 10c0/b1ecd2758300f0b65d991375d2458143df8d37099c3b28e724c2d0b521b63d585a01d77732f3f58064ddb4248d6d507b899fc2c2df1daecf47edfd5d6b82e0c2
   languageName: node
   linkType: hard
 
