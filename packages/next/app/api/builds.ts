@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 5/21/25
+// 5/27/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -817,7 +817,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['EarthShaker', 'WolfsGravestone', 'RedhornStonethresher'],
 		],
 		group: 0,
-		artifact: ['ObsidianCodex', 'UnfinishedReverie', 'GoldenTroupe', 'MarechausseeHunter'],
+		artifact: [['ObsidianCodex', 'UnfinishedReverie'], 'GoldenTroupe', 'MarechausseeHunter'],
 		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
@@ -1093,26 +1093,16 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Chongyun',
 		role: 'Burst Support',
 		weapon: [
-			'WolfsGravestone',
-			'SerpentSpine',
-			['RedhornStonethresher', 'BeaconOfTheReedSea'],
-			'TheUnforged',
-			'SkywardPride',
-			'Akuoumaru',
-			'LuxuriousSeaLord',
-			'LithicBlade',
-			'SacrificialGreatsword',
-			'BlackcliffSlasher',
-			'PrototypeArchaic',
+			['SerpentSpine', 'SacrificialGreatsword'],
+			'AThousandFloatingDreams',
+			['RedhornStonethresher', 'BeaconOfTheReedSea', 'Verdict'],
+			['MailedFlower', 'FangOfTheMountainKing'],
+			['SkywardPride', 'TheUnforged', 'LuxuriousSeaLord', 'Akuoumaru'],
+			['TidalShadow', 'MakhairaAquamarine', 'BlackcliffSlasher'],
 			'FavoniusGreatsword',
 		],
 		group: 0,
-		artifact: [
-			'NoblesseOblige',
-			['EmblemOfSeveredFate', 'ScrollOfTheHeroOfCinderCity'],
-			'GildedDreams',
-			'NoblesseOblige',
-		],
+		artifact: ['NoblesseOblige', ['EmblemOfSeveredFate', 'GildedDreams']],
 		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
@@ -1529,13 +1519,17 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Ifa',
 		role: 'Reaction DPS',
 		weapon: [
-			'SunnyMorningSleepIn',
-			['AThousandFloatingDreams', 'SacrificialFragments', 'MappaMare'],
+			['SunnyMorningSleepIn', 'StarcallersWatch'],
+			'AThousandFloatingDreams',
+			'WanderingEvenstar',
+			['SacrificialFragments', 'MappaMare'],
+			'HakushinRing',
+			'ThrillingTalesOfDragonSlayers',
 		],
 		group: 1,
-		artifact: ['ViridescentVenerer'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_'],
+		artifact: ['ViridescentVenerer', 'ObsidianCodex', 'ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['enerRech_', 'eleMas', 'atk_', 'critRD_'],
 	},
 	Jean: {
 		key: 'Jean',

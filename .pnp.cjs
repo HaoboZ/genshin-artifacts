@@ -49,10 +49,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:5.4.0"],\
           ["eslint-plugin-react-hooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:5.2.0"],\
           ["genshin-artifacts", "workspace:."],\
-          ["globals", "npm:16.1.0"],\
+          ["globals", "npm:16.2.0"],\
           ["next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:15.3.2"],\
           ["prettier", "npm:3.5.3"],\
-          ["remeda", "npm:2.21.8"],\
+          ["remeda", "npm:2.22.1"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
           ["typescript-eslint", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:8.32.1"]\
         ],\
@@ -845,9 +845,9 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:22.15.21"],\
           ["axios", "npm:1.9.0"],\
           ["change-case", "npm:5.4.4"],\
-          ["globals", "npm:16.1.0"],\
+          ["globals", "npm:16.2.0"],\
           ["jsdom", "virtual:344f692adf029f8badd1359b0edc03a4ad5c9536f84c8dfcf480688a8d745700bac84ca02203243eac2099ee627e4f5e6c084bb5bc39a995e158c6a2a3c44bb4#npm:26.1.0"],\
-          ["remeda", "npm:2.21.8"],\
+          ["remeda", "npm:2.22.1"],\
           ["type-fest", "npm:4.41.0"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
         ],\
@@ -884,7 +884,7 @@ const RAW_RUNTIME_STATE =
           ["dayjs", "npm:1.11.13"],\
           ["events", "npm:3.3.0"],\
           ["formik", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:2.4.6"],\
-          ["globals", "npm:16.1.0"],\
+          ["globals", "npm:16.2.0"],\
           ["mirada", "npm:0.0.15"],\
           ["nanoid", "npm:5.1.5"],\
           ["next", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:15.3.2"],\
@@ -895,7 +895,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:19.1.0"],\
           ["react-onesignal", "npm:3.2.2"],\
           ["react-redux", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:9.2.0"],\
-          ["remeda", "npm:2.21.8"],\
+          ["remeda", "npm:2.22.1"],\
           ["sass", "npm:1.89.0"],\
           ["tesseract.js", "npm:6.0.1"],\
           ["type-fest", "npm:4.41.0"],\
@@ -5123,10 +5123,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:5.4.0"],\
           ["eslint-plugin-react-hooks", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:5.2.0"],\
           ["genshin-artifacts", "workspace:."],\
-          ["globals", "npm:16.1.0"],\
+          ["globals", "npm:16.2.0"],\
           ["next", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:15.3.2"],\
           ["prettier", "npm:3.5.3"],\
-          ["remeda", "npm:2.21.8"],\
+          ["remeda", "npm:2.22.1"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
           ["typescript-eslint", "virtual:cacddffe0d1533f78634991074c8f570e230b4b819d9be8302eb0ba2acdc216d26211b7f1b619d9fdedd443c3143e6dbd2a599295f3bcb9f49d92b8f06c93f56#npm:8.32.1"]\
         ],\
@@ -5272,10 +5272,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:16.1.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/globals-npm-16.1.0-c706e7707f-10c0.zip/node_modules/globals/",\
+      ["npm:16.2.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/globals-npm-16.2.0-b5218dda62-10c0.zip/node_modules/globals/",\
         "packageDependencies": [\
-          ["globals", "npm:16.1.0"]\
+          ["globals", "npm:16.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7575,10 +7575,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["remeda", [\
-      ["npm:2.21.8", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-2.21.8-4132d197af-10c0.zip/node_modules/remeda/",\
+      ["npm:2.22.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-2.22.1-a13d63a533-10c0.zip/node_modules/remeda/",\
         "packageDependencies": [\
-          ["remeda", "npm:2.21.8"],\
+          ["remeda", "npm:2.22.1"],\
           ["type-fest", "npm:4.41.0"]\
         ],\
         "linkType": "HARD"\
