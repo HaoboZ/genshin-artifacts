@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 5/27/25
+// 6/1/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -811,7 +811,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'FangOfTheMountainKing',
-			'BeaconOfTheReedSea',
+			['AThousandBlazingSuns', 'BeaconOfTheReedSea'],
 			'SerpentSpine',
 			'Verdict',
 			['EarthShaker', 'WolfsGravestone', 'RedhornStonethresher'],

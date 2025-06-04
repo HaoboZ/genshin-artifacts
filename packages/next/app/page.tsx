@@ -94,6 +94,11 @@ export default function Main() {
 				<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
 				<ClientOnly>
 					<RespawnNotification
+						storageKey='test-respawn'
+						item='Test Notification'
+						delay={2 * 60 * 1000}
+					/>
+					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
 						icon='/essence.png'
