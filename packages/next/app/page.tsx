@@ -94,8 +94,8 @@ export default function Main() {
 				<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
 				<ClientOnly>
 					<RespawnNotification
-						storageKey='test-respawn'
-						item='Test Notification'
+						storageKey='test-notification'
+						item='Test'
 						delay={2 * 60 * 1000}
 					/>
 					<RespawnNotification
