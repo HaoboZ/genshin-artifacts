@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 6/1/25
+// 6/16/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -29,7 +29,13 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'StaffOfTheScarletSands',
 			['LumidouceElegy', 'StaffOfHoma', 'EngulfingLightning'],
-			['PrimordialJadeWingedSpear', 'TheCatch', 'Deathmatch', 'BalladOfTheFjords'],
+			[
+				'PrimordialJadeWingedSpear',
+				'SymphonistOfScents',
+				'TheCatch',
+				'Deathmatch',
+				'BalladOfTheFjords',
+			],
 			[
 				'VortexVanquisher',
 				'CalamityQueller',
@@ -513,7 +519,13 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS & Energy Support',
 		weapon: [
 			'EngulfingLightning',
-			['StaffOfHoma', 'StaffOfTheScarletSands', 'LumidouceElegy', 'PrimordialJadeWingedSpear'],
+			[
+				'StaffOfHoma',
+				'StaffOfTheScarletSands',
+				'SymphonistOfScents',
+				'LumidouceElegy',
+				'PrimordialJadeWingedSpear',
+			],
 			['CalamityQueller', 'Deathmatch'],
 			'VortexVanquisher',
 			['TheCatch', 'SkywardSpine'],
@@ -895,10 +907,11 @@ export const builds: Record<CharacterKey, Build> = {
 				'ThunderingPulse',
 				'AstralVulturesCrimsonPlumage',
 			],
-			['TheFirstGreatMagic', 'TheViridescentHunt'],
+			'TheFirstGreatMagic',
+			'TheViridescentHunt',
 			['KingsSquire', 'AmosBow', 'TheStringless'],
-			['ScionOfTheBlazingSun', 'BlackcliffWarbow'],
-			['WindblumeOde', 'Hamayumi', 'ChainBreaker', 'MouunsMoon', 'Rust'],
+			['ScionOfTheBlazingSun', 'BlackcliffWarbow', 'ChainBreaker'],
+			['WindblumeOde', 'Hamayumi', 'MouunsMoon', 'Rust'],
 		],
 		group: 0,
 		artifact: ['NymphsDream', 'HeartOfDepth', 'ShimenawasReminiscence'],
