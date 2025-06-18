@@ -895,6 +895,21 @@ export const builds: Record<CharacterKey, Build> = {
 		},
 		subStat: ['enerRech_', 'critRate_', 'hp_', 'hp'],
 	},
+	Dahlia: {
+		key: 'Dahlia',
+		role: 'Shield Support',
+		weapon: [
+			'FavoniusSword',
+			'KeyOfKhajNisut',
+			'TheDockhandsAssistant',
+			['PeakPatrolSong', 'FreedomSworn'],
+			'SkyriderSword',
+		],
+		group: 1,
+		artifact: ['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: 'hp_' },
+		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
+	},
 	Tartaglia: {
 		key: 'Tartaglia',
 		role: 'DPS',
@@ -1423,6 +1438,24 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['GoldenTroupe', 'BlizzardStrayer', 'TenacityOfTheMillelith'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_'],
+	},
+	Skirk: {
+		key: 'Skirk',
+		role: 'DPS',
+		weapon: [
+			'Azurelight',
+			'MistsplitterReforged',
+			'HaranGeppakuFutsu',
+			['LightOfFoliarIncision', 'PrimordialJadeCutter', 'SummitShaper'],
+			'FinaleOfTheDeep',
+			['AquilaFavonia', 'SkywardBlade'],
+			['AmenomaKageuchi', 'TheBlackSword', 'KagotsurubeIsshin'],
+			'HarbingerOfDawn',
+		],
+		group: 0,
+		artifact: ['FinaleOfTheDeepGalleries'],
+		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_'],
 	},
 	// Anemo
 	Sucrose: {

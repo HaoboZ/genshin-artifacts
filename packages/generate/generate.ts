@@ -9,7 +9,7 @@ const run = {
 	elements: false,
 	characters: true,
 	talents: false,
-	weekly: true,
+	weekly: false,
 	artifacts: false,
 	weapons: false,
 };

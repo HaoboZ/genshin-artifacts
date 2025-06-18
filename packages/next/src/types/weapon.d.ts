@@ -1,6 +1,7 @@
 export type WeaponKey =
 	| 'Absolution' // Absolution
 	| 'AquilaFavonia' // Aquila Favonia
+	| 'Azurelight' // Azurelight
 	| 'FreedomSworn' // Freedom-Sworn
 	| 'HaranGeppakuFutsu' // Haran Geppaku Futsu
 	| 'KeyOfKhajNisut' // Key of Khaj-Nisut

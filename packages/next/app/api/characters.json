@@ -199,6 +199,16 @@
 		"talentMaterial": "Admonition",
 		"weeklyMaterial": "Mudra of the Malefic General"
 	},
+	"Dahlia": {
+		"key": "Dahlia",
+		"name": "Dahlia",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Hydro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Dahlia_Icon.png",
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "Eroded Scale-Feather"
+	},
 	"Dehya": {
 		"key": "Dehya",
 		"name": "Dehya",
@@ -758,6 +768,16 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Sigewinne_Icon.png",
 		"talentMaterial": "Equity",
 		"weeklyMaterial": "Lightless Eye of the Maelstrom"
+	},
+	"Skirk": {
+		"key": "Skirk",
+		"name": "Skirk",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Skirk_Icon.png",
+		"talentMaterial": "Contention",
+		"weeklyMaterial": "Ascended Sample: Knight"
 	},
 	"Sucrose": {
 		"key": "Sucrose",

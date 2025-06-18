@@ -19,6 +19,16 @@
 		"stat": "Physical DMG Bonus 41.3%",
 		"ability": "ATK is increased by 20~40%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to 100~160% of ATK and dealing 200~320% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s."
 	},
+	"Azurelight": {
+		"key": "Azurelight",
+		"name": "Azurelight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Azurelight.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "Within 12s after an Elemental Skill is used, ATK is increased by 24~48%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24~48%, and CRIT DMG will be increased by 40~80%."
+	},
 	"FreedomSworn": {
 		"key": "FreedomSworn",
 		"name": "Freedom-Sworn",
@@ -1977,7 +1987,7 @@
 		"weaponType": "Bow",
 		"atk": 510,
 		"stat": "HP 41.3%",
-		"ability": "When an attack hits an opponent, deal AoE DMG equal to 40~?% of Max HP at the target location. This effect can be triggered once every 15s."
+		"ability": "When an attack hits an opponent, deal AoE DMG equal to 40~80% of Max HP at the target location. This effect can be triggered once every 15s."
 	},
 	"SongOfStillness": {
 		"key": "SongOfStillness",

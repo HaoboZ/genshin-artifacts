@@ -19,6 +19,7 @@ export type CharacterKey =
 	| 'Clorinde' // Clorinde
 	| 'Collei' // Collei
 	| 'Cyno' // Cyno
+	| 'Dahlia' // Dahlia
 	| 'Dehya' // Dehya
 	| 'Diluc' // Diluc
 	| 'Diona' // Diona
@@ -75,6 +76,7 @@ export type CharacterKey =
 	| 'Shenhe' // Shenhe
 	| 'ShikanoinHeizou' // Shikanoin Heizou
 	| 'Sigewinne' // Sigewinne
+	| 'Skirk' // Skirk
 	| 'Sucrose' // Sucrose
 	| 'Tartaglia' // Tartaglia
 	| 'Thoma' // Thoma
