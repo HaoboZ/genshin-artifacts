@@ -21,7 +21,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['NoblesseOblige', 'Instructor', 'TheExile'],
 		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
 	Xiangling: {
 		key: 'Xiangling',
@@ -207,7 +207,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'MarechausseeHunter',
 		],
 		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
 	HuTao: {
 		key: 'HuTao',
@@ -344,7 +344,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['GoldenTroupe', 'Thundersoother', 'TenacityOfTheMillelith'],
 		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
 	Beidou: {
 		key: 'Beidou',
@@ -625,7 +625,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: [['LongNightsOath', 'ObsidianCodex'], 'MarechausseeHunter'],
 		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
 	// Dendro
 	Collei: {
@@ -668,7 +668,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'GildedDreams',
 		],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: 'heal_' },
-		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
+		subStat: ['hp_', 'enerRech_', 'critRate_', 'hp'],
 	},
 	Kaveh: {
 		key: 'Kaveh',
@@ -710,7 +710,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['Instructor', 'DeepwoodMemories', ['NoblesseOblige', 'TenacityOfTheMillelith']],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
-		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
+		subStat: ['hp_', 'enerRech_', 'critRate_', 'hp'],
 	},
 	Tighnari: {
 		key: 'Tighnari',
@@ -760,7 +760,7 @@ export const builds: Record<CharacterKey, Build> = {
 			goblet: ['eleMas', 'dendro_dmg_'],
 			circlet: ['eleMas', 'critRD_'],
 		},
-		subStat: ['enerRech_', ['critRD_', 'eleMas'], 'atk_'],
+		subStat: [['critRD_', 'eleMas'], 'enerRech_', 'atk_'],
 	},
 	Alhaitham: {
 		key: 'Alhaitham',
@@ -780,7 +780,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['GildedDreams', 'DeepwoodMemories'],
 		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'dendro_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
+		subStat: ['critRD_', 'enerRech_', 'eleMas', 'atk_'],
 	},
 	Baizhu: {
 		key: 'Baizhu',
@@ -1048,7 +1048,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['RetracingBolide', 'WanderersTroupe', 'NymphsDream'],
 		],
 		mainStat: { sands: 'hp_', goblet: ['hydro_dmg_', 'hp_'], circlet: ['critRD_', 'hp_'] },
-		subStat: ['enerRech_', ['critRD_', 'hp_'], 'hp'],
+		subStat: [['critRD_', 'hp_'], 'enerRech_', 'hp'],
 	},
 	Furina: {
 		key: 'Furina',
@@ -1156,7 +1156,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 1,
 		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige', 'Instructor'],
 		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
+		subStat: ['critRD_', 'enerRech_', ['atk_', 'eleMas']],
 	},
 	Rosaria: {
 		key: 'Rosaria',
@@ -1644,7 +1644,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'DesertPavilionChronicle',
 		],
 		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_'],
+		subStat: ['critRD_', 'enerRech_', 'atk_'],
 	},
 	KaedeharaKazuha: {
 		key: 'KaedeharaKazuha',
@@ -1828,7 +1828,7 @@ export const builds: Record<CharacterKey, Build> = {
 			goblet: ['geo_dmg_', 'def_'],
 			circlet: ['critRD_'],
 		},
-		subStat: ['enerRech_', 'critRD_', 'def_'],
+		subStat: ['critRD_', 'enerRech_', 'def_'],
 	},
 	Zhongli: {
 		key: 'Zhongli',
@@ -1873,7 +1873,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['HuskOfOpulentDreams', 'DesertPavilionChronicle', 'RetracingBolide'],
 		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'def_', 'atk_'],
+		subStat: ['critRD_', 'enerRech_', 'def_', 'atk_'],
 	},
 	Navia: {
 		key: 'Navia',
@@ -1896,7 +1896,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['NighttimeWhispersInTheEchoingWoods', 'GoldenTroupe', 'MarechausseeHunter'],
 		mainStat: { sands: 'atk_', goblet: 'geo_dmg_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', 'atk_'],
+		subStat: ['critRD_', 'enerRech_', 'atk_'],
 	},
 	Chiori: {
 		key: 'Chiori',
