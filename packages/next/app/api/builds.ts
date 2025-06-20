@@ -1762,7 +1762,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'FlowingPurity',
 			'DodocoTales',
 		],
-		group: 1,
+		group: 0,
 		artifact: [
 			'NighttimeWhispersInTheEchoingWoods',
 			'HuskOfOpulentDreams',

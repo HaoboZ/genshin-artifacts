@@ -42,9 +42,12 @@ export default function CharacterTierImage({
 				size={65}
 				sx={{ border: character ? 0 : 1, borderColor: 'red' }}>
 				{character && (
-					<OverlayText right size={12}>
-						{character.level}
-					</OverlayText>
+					<Fragment>
+						<OverlayText size={12}>C{character.constellation}</OverlayText>
+						<OverlayText right size={12}>
+							{character.level}
+						</OverlayText>
+					</Fragment>
 				)}
 			</CharacterImage>
 			<PercentBar p={percent} />

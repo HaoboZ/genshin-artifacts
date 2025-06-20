@@ -84,19 +84,34 @@ export default function Character({ characterData }: { characterData: DCharacter
 			<Stack direction='row' spacing={1}>
 				<CharacterImage character={characterData} />
 				{character && (
-					<FormattedTextField
-						fullWidth={false}
-						label='Level'
-						value={character.level}
-						onChange={({ target }) =>
-							dispatch(
-								goodActions.editCharacter({
-									key: character.key,
-									level: clamp(+target.value, { min: 1, max: 90 }),
-								}),
-							)
-						}
-					/>
+					<Stack spacing={1}>
+						<FormattedTextField
+							fullWidth={false}
+							label='Level'
+							value={character.level}
+							onChange={({ target }) =>
+								dispatch(
+									goodActions.editCharacter({
+										key: character.key,
+										level: clamp(+target.value, { min: 1, max: 90 }),
+									}),
+								)
+							}
+						/>
+						<FormattedTextField
+							fullWidth={false}
+							label='Constellation'
+							value={character.constellation}
+							onChange={({ target }) =>
+								dispatch(
+									goodActions.editCharacter({
+										key: character.key,
+										constellation: clamp(+target.value, { min: 0, max: 6 }),
+									}),
+								)
+							}
+						/>
+					</Stack>
 				)}
 			</Stack>
 			<CharacterBuild build={build} />

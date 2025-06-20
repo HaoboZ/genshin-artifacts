@@ -3,7 +3,7 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
-import { DialogTitle } from '@mui/material';
+import { Button, DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { useMemo } from 'react';
 import ArtifactForm from './index';
@@ -23,7 +23,20 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact })
 					dispatch(goodActions.editArtifact(artifact));
 					closeModal();
 				}}>
-				<ArtifactForm />
+				<ArtifactForm
+					deleteButton={
+						<Button
+							variant='contained'
+							color='error'
+							onClick={() => {
+								if (!confirm('Delete this artifact?')) return;
+								dispatch(goodActions.deleteArtifact(artifact));
+								closeModal();
+							}}>
+							Delete
+						</Button>
+					}
+				/>
 			</Formik>
 		</DialogWrapper>
 	);

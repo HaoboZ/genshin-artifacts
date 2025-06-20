@@ -15,12 +15,13 @@ import {
 	TextField,
 } from '@mui/material';
 import { useFormikContext } from 'formik';
+import type { ReactNode } from 'react';
 import { Fragment } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
 import Scanner from './scanner';
 
-export default function ArtifactForm() {
+export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNode }) {
 	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
@@ -161,6 +162,7 @@ export default function ArtifactForm() {
 				</Grid>
 			</DialogContent>
 			<DialogActions>
+				{deleteButton}
 				<Button variant='contained' onClick={(e) => handleSubmit(e as any)}>
 					Save
 				</Button>
