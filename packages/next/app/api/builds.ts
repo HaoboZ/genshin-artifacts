@@ -63,7 +63,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Bennett',
 		role: 'Support',
 		weapon: [
-			['MistsplitterReforged', 'Absolution', 'AquilaFavonia'],
+			['MistsplitterReforged', 'Absolution', 'Azurelight', 'AquilaFavonia'],
 			'TheAlleyFlash',
 			['FreedomSworn', 'PeakPatrolSong', 'SkywardBlade'],
 			'SapwoodBlade',
@@ -73,7 +73,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 1,
 		artifact: ['NoblesseOblige', 'Instructor', 'ScrollOfTheHeroOfCinderCity', 'DeepwoodMemories'],
 		mainStat: {
-			sands: ['enerRech_', 'hp_'],
+			sands: ['enerRech_', 'atk_', 'hp_'],
 			goblet: ['hp_', 'pyro_dmg_'],
 			circlet: ['heal_', 'hp_', 'critRD_'],
 		},
@@ -767,7 +767,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Spread DPS',
 		weapon: [
 			'LightOfFoliarIncision',
-			'PrimordialJadeCutter',
+			['UrakuMisugiri', 'PrimordialJadeCutter'],
 			['MistsplitterReforged', 'HaranGeppakuFutsu'],
 			'FreedomSworn',
 			'WolfFang',
@@ -1455,8 +1455,9 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: [
 			'FinaleOfTheDeepGalleries',
 			'DesertPavilionChronicle',
-			'MarechausseeHunter',
+			'GladiatorsFinale',
 			'BlizzardStrayer',
+			'MarechausseeHunter',
 		],
 		mainStat: { sands: 'atk_', goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_'],
