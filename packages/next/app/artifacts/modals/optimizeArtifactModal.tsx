@@ -1,6 +1,6 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
-import { weightedStatRollPercent } from '@/api/stats';
+import { weightedPercent } from '@/api/stats';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import statArrMatch from '@/src/helpers/statArrMatch';
@@ -49,7 +49,7 @@ export default function OptimizeArtifactModal() {
 							setKey === makeArray(character.artifact[0])[0] &&
 							statArrMatch(character.mainStat[slotKey], mainStatKey, true),
 					),
-					sortBy([(artifact) => weightedStatRollPercent(character, artifact), 'desc']),
+					sortBy([(artifact) => weightedPercent(character, artifact), 'desc']),
 				);
 
 				for (const artifact of tieredArtifacts) {

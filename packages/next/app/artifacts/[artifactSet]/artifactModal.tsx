@@ -1,7 +1,7 @@
 import { artifactSetsInfo, missingArtifactSets, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { statName, weightedStatRollPercent } from '@/api/stats';
+import { statName, weightedPercent } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import PercentBar from '@/components/percentBar';
 import SubStatBar from '@/components/subStatBar';
@@ -50,7 +50,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 				),
 				map((build) => ({
 					build,
-					statRollPercent: weightedStatRollPercent(build, artifact),
+					statRollPercent: weightedPercent(build, artifact),
 				})),
 				sortBy([pget('statRollPercent'), 'desc']),
 			),
@@ -142,7 +142,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 								<Grid container size={12} spacing={0}>
 									<Grid size={6}>
 										{currentArtifact && (
-											<PercentBar p={weightedStatRollPercent(build, currentArtifact)}>
+											<PercentBar p={weightedPercent(build, currentArtifact)}>
 												Current: %p
 											</PercentBar>
 										)}

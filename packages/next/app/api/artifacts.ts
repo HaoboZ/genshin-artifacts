@@ -18,15 +18,6 @@ export const artifactSlotImages = {
 };
 
 export const missingArtifactSets: Record<string, Build> = {
-	FinaleOfTheDeepGalleries: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: [],
-		group: 0,
-		artifact: ['FinaleOfTheDeepGalleries'],
-		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'eleMas', 'atk'],
-	},
 	EchoesOfAnOffering: {
 		key: 'Traveler',
 		role: 'DPS',

@@ -5,11 +5,7 @@ import {
 	useArtifacts,
 } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import {
-	potentialStatRollPercent,
-	potentialStatRollPercents,
-	weightedStatRollPercent,
-} from '@/api/stats';
+import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/api/stats';
 import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
@@ -84,15 +80,12 @@ export default function ArtifactList({
 				),
 				map((artifact) => ({
 					...artifact,
-					statRollPercent: weightedStatRollPercent(builds[artifact.location], artifact),
+					statRollPercent: weightedPercent(builds[artifact.location], artifact),
 					potential: artifact.location
-						? potentialStatRollPercent(builds[artifact.location], artifact)
-						: Math.max(
-								0,
-								...potentialStatRollPercents(
-									[...Object.values(builds), ...Object.values(missingArtifactSets)],
-									artifact,
-								),
+						? potentialPercent(builds[artifact.location], artifact)
+						: maxPotentialPercents(
+								[...Object.values(builds), ...Object.values(missingArtifactSets)],
+								artifact,
 							),
 				})),
 				sortBy(

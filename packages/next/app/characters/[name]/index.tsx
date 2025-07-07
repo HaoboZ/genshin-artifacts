@@ -2,7 +2,7 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
-import { weightedStatRollPercent } from '@/api/stats';
+import { weightedPercent } from '@/api/stats';
 import { weaponsInfo } from '@/api/weapons';
 import FormattedTextField from '@/components/formattedTextField';
 import PageContainer from '@/components/page/container';
@@ -172,7 +172,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 					</Grid>
 					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsIndexed[slot];
-						const statRollPercent = weightedStatRollPercent(build, artifact);
+						const statRollPercent = weightedPercent(build, artifact);
 
 						return (
 							<Grid key={slot} size={{ xs: 6, sm: 4 }}>

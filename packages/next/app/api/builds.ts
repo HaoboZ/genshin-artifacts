@@ -162,10 +162,7 @@ export const builds: Record<CharacterKey, Build> = {
 			['TidalShadow', 'UltimateOverlordsMegaMagicSword'],
 		],
 		group: 1,
-		artifact: [
-			['CrimsonWitchOfFlames', 'MarechausseeHunter', 'LongNightsOath'],
-			['GildedDreams'],
-		],
+		artifact: ['CrimsonWitchOfFlames', ['MarechausseeHunter', 'LongNightsOath'], 'GildedDreams'],
 		mainStat: { sands: ['eleMas', 'atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
 	},

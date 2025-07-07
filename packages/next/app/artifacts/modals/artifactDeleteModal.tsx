@@ -1,5 +1,7 @@
+import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialStatRollPercents } from '@/api/stats';
+import { maxPotentialPercents } from '@/api/stats';
+import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -13,13 +15,12 @@ import {
 	List,
 	ListItem,
 	ListItemText,
-	Typography,
 } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
 
-const buildArr = Object.values(builds);
+const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets)];
 
 export default function ArtifactDeleteModal() {
 	const { closeModal } = useModalControls();
@@ -43,7 +44,7 @@ export default function ArtifactDeleteModal() {
 			filter(({ lock, location, level }) => lock && !location && !level),
 			map((artifact) => ({
 				...artifact,
-				potential: Math.max(...potentialStatRollPercents(buildArr, artifact)),
+				potential: maxPotentialPercents(buildArr, artifact),
 			})),
 			filter(
 				({ potential, setKey, slotKey }) =>
@@ -77,8 +78,8 @@ export default function ArtifactDeleteModal() {
 										});
 									}}
 								/>
+								<PercentBar p={artifact.potential}>Potential: %p</PercentBar>
 							</ListItemText>
-							<Typography sx={{ pl: 2 }}>{Math.round(artifact.potential * 100)}%</Typography>
 						</ListItem>
 					))}
 				</List>

@@ -1,5 +1,5 @@
 import { charactersInfo } from '@/api/characters';
-import { weightedStatRollPercent } from '@/api/stats';
+import { weightedPercent } from '@/api/stats';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
@@ -50,7 +50,7 @@ export default function CharacterArtifactModal({
 			artifactsFiltered,
 			map((artifact) => ({
 				...artifact,
-				statRollPercent: weightedStatRollPercent(build, artifact),
+				statRollPercent: weightedPercent(build, artifact),
 			})),
 			sortBy(
 				[({ setKey }) => arrDeepIndex(build.artifact, setKey), 'desc'],
@@ -72,7 +72,7 @@ export default function CharacterArtifactModal({
 						<ArtifactActions artifact={artifact} />
 						<ArtifactStatImage hideCharacter artifact={artifact}>
 							<Grid size={12}>
-								<PercentBar p={weightedStatRollPercent(build, artifact)} />
+								<PercentBar p={weightedPercent(build, artifact)} />
 							</Grid>
 						</ArtifactStatImage>
 					</Fragment>

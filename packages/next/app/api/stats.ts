@@ -114,7 +114,7 @@ export const statsAverage: Record<StatKey, Record<number, number>> = {
 	pyro_dmg_: undefined,
 };
 
-export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
+export function weightedPercent(build: Build, artifact: IArtifact) {
 	if (!build || !artifact) return 0;
 	if (
 		artifact.slotKey !== 'flower' &&
@@ -134,7 +134,7 @@ export function weightedStatRollPercent(build: Build, artifact: IArtifact) {
 	);
 }
 
-export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
+export function potentialPercent(build: Build, artifact: IArtifact) {
 	if (!build || !artifact) return 0;
 	if (
 		artifact.slotKey !== 'flower' &&
@@ -160,11 +160,20 @@ export function potentialStatRollPercent(build: Build, artifact: IArtifact) {
 	);
 }
 
-export function potentialStatRollPercents(builds: Build[], artifact: IArtifact) {
+export function maxPotentialPercents(builds: Build[], artifact: IArtifact) {
 	const setKey = artifact.setKey;
 	return builds
 		.filter(({ artifact }) => makeArray(artifact[0])[0] === setKey)
-		.map((build) => potentialStatRollPercent(build, artifact));
+		.map((build) => potentialPercent(build, artifact))
+		.reduce((a, b) => (a > b ? a : b), 0);
+}
+
+export function maxPotentialBuild(builds: Build[], artifact: IArtifact) {
+	const setKey = artifact.setKey;
+	return builds
+		.filter(({ artifact }) => makeArray(artifact[0])[0] === setKey)
+		.map((build) => ({ build, potential: potentialPercent(build, artifact) }))
+		.reduce((a, b) => (a.potential > b.potential ? a : b), { build: undefined, potential: 0 });
 }
 
 function getWeightedStat(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {

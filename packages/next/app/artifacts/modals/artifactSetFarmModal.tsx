@@ -1,6 +1,6 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialStatRollPercent, statName } from '@/api/stats';
+import { potentialPercent, statName } from '@/api/stats';
 import OverlayText from '@/components/overlayText';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
@@ -38,7 +38,7 @@ export default function ArtifactSetFarmModal() {
 								artifact.mainStatKey,
 								true,
 							)),
-					potential: potentialStatRollPercent(builds[artifact.location], artifact),
+					potential: potentialPercent(builds[artifact.location], artifact),
 				};
 			}),
 			groupBy(pget('setKey')),

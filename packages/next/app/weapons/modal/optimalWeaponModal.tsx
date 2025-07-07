@@ -114,7 +114,7 @@ export default function OptimalWeaponModal() {
 									</Grid>
 								</Grid>
 							</ListItemText>
-							<CharacterImage character={charactersInfo[character.key]} />
+							<CharacterImage character={charactersInfo[character.key]} sx={{ ml: 1 }} />
 						</ListItem>
 					))}
 				</List>

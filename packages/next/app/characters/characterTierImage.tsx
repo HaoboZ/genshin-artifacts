@@ -1,6 +1,6 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { weightedStatRollPercent } from '@/api/stats';
+import { weightedPercent } from '@/api/stats';
 import OverlayText from '@/components/overlayText';
 import PercentBar, { combinePercents } from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
@@ -30,7 +30,7 @@ export default function CharacterTierImage({
 			},
 			...artifacts.map((artifact) => ({
 				weight: 0.15,
-				percent: weightedStatRollPercent(build, artifact),
+				percent: weightedPercent(build, artifact),
 			})),
 		);
 	}, [characterKey, good]);

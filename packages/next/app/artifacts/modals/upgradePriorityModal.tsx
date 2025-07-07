@@ -1,42 +1,50 @@
+import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialStatRollPercent, potentialStatRollPercents } from '@/api/stats';
+import { charactersInfo } from '@/api/characters';
+import { maxPotentialBuild, potentialPercent } from '@/api/stats';
+import PageLink from '@/components/page/link';
+import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
-import { useModal } from '@/src/providers/modal';
+import { useModal, useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
-import {
-	DialogContent,
-	DialogTitle,
-	List,
-	ListItem,
-	ListItemText,
-	Typography,
-} from '@mui/material';
+import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import CharacterImage from '../../characters/characterImage';
 import EditArtifactModal from '../artifactForm/editArtifactModal';
 import ArtifactStatImage from '../artifactStatImage';
 
 export default function UpgradePriorityModal() {
 	const { showModal } = useModal();
+	const { closeModal } = useModalControls();
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
-	const artifactsFiltered = useMemo(
-		() =>
-			pipe(
-				artifacts,
-				filter(({ level, rarity }) => level < rarity * 4),
-				map((artifact) => ({
-					...artifact,
-					potential: artifact.location
-						? potentialStatRollPercent(builds[artifact.location], artifact)
-						: Math.max(...potentialStatRollPercents(Object.values(builds), artifact)),
-				})),
-				filter(({ potential }) => potential > 0.4),
-				sortBy([pget('potential'), 'desc']),
-			),
-		[artifacts],
-	);
+	const artifactsFiltered = useMemo(() => {
+		return pipe(
+			artifacts,
+			filter(({ level, rarity }) => level < rarity * 4),
+			map((artifact) => ({
+				...artifact,
+				...maxPotentialBuild(
+					[...Object.values(builds), ...Object.values(missingArtifactSets)],
+					artifact,
+				),
+			})),
+			filter(({ potential }) => potential > 0.4),
+			map((artifact) => ({
+				...artifact,
+				currentPotential: potentialPercent(
+					artifact.build,
+					artifacts.find(
+						({ location, slotKey }) =>
+							artifact.build?.key === location && artifact.slotKey === slotKey,
+					),
+				),
+			})),
+			sortBy([pget('potential'), 'desc']),
+		);
+	}, [artifacts]);
 
 	return (
 		<DialogWrapper>
@@ -53,8 +61,18 @@ export default function UpgradePriorityModal() {
 										showModal(EditArtifactModal, { props: { artifact } });
 									}}
 								/>
+								<PercentBar p={artifact.potential}>Potential: %p</PercentBar>
 							</ListItemText>
-							<Typography sx={{ pl: 2 }}>{Math.round(artifact.potential * 100)}%</Typography>
+							{artifact.build && artifact.build.key !== artifact.location && (
+								<Box sx={{ ml: 1 }}>
+									<PageLink
+										href={`/characters/${artifact.build.key}`}
+										onClick={() => closeModal()}>
+										<CharacterImage character={charactersInfo[artifact.build.key]} />
+										<PercentBar p={artifact.currentPotential}>Potential: %p</PercentBar>
+									</PageLink>
+								</Box>
+							)}
 						</ListItem>
 					))}
 				</List>
