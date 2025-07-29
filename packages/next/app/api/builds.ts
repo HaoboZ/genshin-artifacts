@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 6/16/25
+// 7/28/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -56,7 +56,11 @@ export const builds: Record<CharacterKey, Build> = {
 			'NoblesseOblige',
 			'DeepwoodMemories',
 		],
-		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['enerRech_', 'atk_', 'eleMas'],
+			goblet: 'pyro_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
 	Bennett: {
@@ -163,7 +167,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['CrimsonWitchOfFlames', ['MarechausseeHunter', 'LongNightsOath'], 'GildedDreams'],
-		mainStat: { sands: ['eleMas', 'atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['eleMas', 'atk_', 'enerRech_'],
+			goblet: 'pyro_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
 	},
 	Diluc: {
@@ -488,7 +496,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
+		mainStat: {
+			sands: ['atk_', 'enerRech_'],
+			goblet: 'atk_',
+			circlet: ['atk_', 'critRate_'],
+		},
 		subStat: ['enerRech_', 'atk_', 'critRate_'],
 	},
 	Keqing: {
@@ -801,7 +813,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'LumidouceElegy',
 			'CalamityQueller',
-			'StaffOfHoma',
+			['SymphonistOfScents', 'StaffOfHoma'],
 			['EngulfingLightning', 'StaffOfTheScarletSands'],
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance'],
 			'Deathmatch',
@@ -837,7 +849,13 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'PrimordialJadeCutter',
 			'MistsplitterReforged',
-			['HaranGeppakuFutsu', 'LightOfFoliarIncision', 'UrakuMisugiri', 'Absolution'],
+			[
+				'Azurelight',
+				'HaranGeppakuFutsu',
+				'LightOfFoliarIncision',
+				'UrakuMisugiri',
+				'Absolution',
+			],
 			['SummitShaper', 'SkywardBlade'],
 			'SplendorOfTranquilWaters',
 			'WolfFang',
@@ -1060,7 +1078,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
-		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
+		mainStat: {
+			sands: ['enerRech_', 'hp_'],
+			goblet: ['hp_', 'hydro_dmg_'],
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', ['hp_', 'critRD_'], 'hp'],
 	},
 	Sigewinne: {
@@ -1128,7 +1150,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['NoblesseOblige', ['EmblemOfSeveredFate', 'GildedDreams']],
-		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['atk_', 'enerRech_', 'eleMas'],
+			goblet: 'cryo_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Kaeya: {
@@ -1152,7 +1178,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige', 'Instructor'],
-		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		mainStat: {
+			sands: ['enerRech_', 'atk_', 'eleMas'],
+			goblet: 'cryo_dmg_',
+			circlet: 'critRD_',
+		},
 		subStat: ['critRD_', 'enerRech_', ['atk_', 'eleMas']],
 	},
 	Rosaria: {
@@ -1206,7 +1236,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Mika',
 		role: 'Heal & Buff Support',
 		weapon: [
-			'FavoniusLance',
+			['SymphonistOfScents', 'FavoniusLance'],
 			'DialoguesOfTheDesertSages',
 			'EngulfingLightning',
 			['PrototypeStarglitter', 'TheCatch', 'RightfulReward'],
@@ -1433,7 +1463,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['GoldenTroupe', 'BlizzardStrayer', 'TenacityOfTheMillelith'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
+		mainStat: {
+			sands: ['atk_', 'enerRech_'],
+			goblet: ['cryo_dmg_', 'atk_'],
+			circlet: 'critRD_',
+		},
 		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},
 	Skirk: {
@@ -1560,7 +1594,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['ViridescentVenerer'],
-		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
+		mainStat: {
+			sands: ['atk_', 'enerRech_'],
+			goblet: 'atk_',
+			circlet: ['atk_', 'critRate_'],
+		},
 		subStat: ['enerRech_', 'atk_', 'eleMas', 'critRate_'],
 	},
 	Ifa: {
@@ -1716,15 +1754,9 @@ export const builds: Record<CharacterKey, Build> = {
 			['AquaSimulacra', 'TheFirstGreatMagic'],
 			'ThunderingPulse',
 			'SkywardHarp',
-			[
-				'SongOfStillness',
-				'AmosBow',
-				'PolarStar',
-				'FlowerWreathedFeathers',
-				'ScionOfTheBlazingSun',
-				'Hamayumi',
-			],
-			['ChainBreaker', 'RangeGauge'],
+			['AmosBow', 'PolarStar', 'ScionOfTheBlazingSun'],
+			['ChainBreaker', 'SongOfStillness', 'FlowerWreathedFeathers', 'Hamayumi'],
+			'RangeGauge',
 		],
 		group: 0,
 		artifact: ['ObsidianCodex', 'ViridescentVenerer', 'MarechausseeHunter'],
@@ -1807,7 +1839,11 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['HuskOfOpulentDreams', 'NoblesseOblige'],
-		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: ['def_', 'critRate_'] },
+		mainStat: {
+			sands: ['def_', 'enerRech_'],
+			goblet: 'def_',
+			circlet: ['def_', 'critRate_'],
+		},
 		subStat: ['def_', 'enerRech_', 'def', 'critRate_'],
 	},
 	Kachina: {
