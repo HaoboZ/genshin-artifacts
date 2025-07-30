@@ -379,6 +379,16 @@
 		"talentMaterial": "Conflict",
 		"weeklyMaterial": "Ascended Sample: Rook"
 	},
+	"Ineffa": {
+		"key": "Ineffa",
+		"name": "Ineffa",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Ineffa_Icon.png",
+		"talentMaterial": "Conflict",
+		"weeklyMaterial": "Eroded Sunfire"
+	},
 	"Jean": {
 		"key": "Jean",
 		"name": "Jean",

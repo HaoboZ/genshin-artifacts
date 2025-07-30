@@ -619,6 +619,16 @@
 		"stat": "Energy Recharge 61.3%",
 		"ability": "CRIT hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
 	},
+	"FlameForgedInsight": {
+		"key": "FlameForgedInsight",
+		"name": "Flame-Forged Insight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Flame-Forged_Insight.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "When Electro-Charged, Lunar-Charged, or Bloom is triggered, restore 12~? Elemental Energy and increase Elemental Mastery by 60~? for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
+	},
 	"ForestRegalia": {
 		"key": "ForestRegalia",
 		"name": "Forest Regalia",
@@ -898,6 +908,16 @@
 		"atk": 608,
 		"stat": "Energy Recharge 55.1%",
 		"ability": "ATK increased by 28~56% of Energy Recharge over the base 100%. You can gain a maximum bonus of 80~120% ATK. Gain 30~50% Energy Recharge for 12s after using an Elemental Burst."
+	},
+	"FracturedHalo": {
+		"key": "FracturedHalo",
+		"name": "Fractured Halo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Fractured_Halo.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "After an Elemental Skill or Elemental Burst is used, ATK is increased by 24~?% for 20s. If the equipping character creates a Shield while this effect is active, they will gain the Electrifying Edict effect for 20s: All nearby party members deal 40~?% more Lunar-Charged DMG."
 	},
 	"LumidouceElegy": {
 		"key": "LumidouceElegy",
@@ -1917,7 +1937,7 @@
 		"weaponType": "Bow",
 		"atk": 510,
 		"stat": "ATK 41.3%",
-		"ability": "This weapon's effect is only applied on the following platform(s):\n\"PlayStation Network\"\nDealing Cryo DMG to opponents increases this character's Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks.Additionally, when Aloy equips Predator, ATK is increased by 66."
+		"ability": "Effective only on the following platform:\"PlayStation Network\"Dealing Cryo DMG to opponents increases this character's Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks. Additionally, when Aloy equips Predator, ATK is increased by 66."
 	},
 	"PrototypeCrescent": {
 		"key": "PrototypeCrescent",

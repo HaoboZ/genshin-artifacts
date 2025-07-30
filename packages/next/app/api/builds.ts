@@ -636,6 +636,34 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
+	Ineffa: {
+		key: 'Ineffa',
+		role: 'Off-Field DPS',
+		weapon: [
+			'FracturedHalo',
+			'StaffOfTheScarletSands',
+			['StaffOfHoma', 'LumidouceElegy', 'SymphonistOfScents', 'CalamityQueller'],
+			'Deathmatch',
+			'BalladOfTheFjords',
+			['CrimsonMoonsSemblance', 'PrimordialJadeWingedSpear'],
+			'SkywardSpine',
+			'VortexVanquisher',
+			'LithicSpear',
+			'MissiveWindspear',
+			'TamayurateiNoOhanashi',
+			'BlackcliffPole',
+			'DragonsBane',
+			'FavoniusLance',
+		],
+		group: 0,
+		artifact: ['GildedDreams', 'ThunderingFury'],
+		mainStat: {
+			sands: ['atk_', 'eleMas'],
+			goblet: ['atk_', 'eleMas'],
+			circlet: 'critRD_',
+		},
+		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
+	},
 	// Dendro
 	Collei: {
 		key: 'Collei',
@@ -1659,7 +1687,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Xiao',
 		role: 'DPS',
 		weapon: [
-			['StaffOfHoma', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
+			['FracturedHalo', 'StaffOfHoma', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
 			'StaffOfTheScarletSands',
 			[
 				'CalamityQueller',

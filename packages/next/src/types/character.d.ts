@@ -37,6 +37,7 @@ export type CharacterKey =
 	| 'HuTao' // Hu Tao
 	| 'Iansan' // Iansan
 	| 'Ifa' // Ifa
+	| 'Ineffa' // Ineffa
 	| 'Jean' // Jean
 	| 'Kachina' // Kachina
 	| 'KaedeharaKazuha' // Kaedehara Kazuha

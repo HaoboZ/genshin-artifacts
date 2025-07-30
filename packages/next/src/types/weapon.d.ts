@@ -61,6 +61,7 @@ export type WeaponKey =
 	| 'BlackcliffSlasher' // Blackcliff Slasher
 	| 'EarthShaker' // Earth Shaker
 	| 'FavoniusGreatsword' // Favonius Greatsword
+	| 'FlameForgedInsight' // Flame-Forged Insight
 	| 'ForestRegalia' // Forest Regalia
 	| 'FruitfulHook' // Fruitful Hook
 	| 'KatsuragikiriNagamasa' // Katsuragikiri Nagamasa
@@ -89,6 +90,7 @@ export type WeaponKey =
 	| 'CalamityQueller' // Calamity Queller
 	| 'CrimsonMoonsSemblance' // Crimson Moon's Semblance
 	| 'EngulfingLightning' // Engulfing Lightning
+	| 'FracturedHalo' // Fractured Halo
 	| 'LumidouceElegy' // Lumidouce Elegy
 	| 'PrimordialJadeWingedSpear' // Primordial Jade Winged-Spear
 	| 'SkywardSpine' // Skyward Spine
