@@ -31,7 +31,7 @@ export default function UpgradePriorityModal() {
 					artifact,
 				),
 			})),
-			filter(({ potential }) => potential > 0.4),
+			filter(({ potential }) => potential > 0.25),
 			map((artifact) => ({
 				...artifact,
 				currentPotential: potentialPercent(
@@ -69,7 +69,7 @@ export default function UpgradePriorityModal() {
 										href={`/characters/${artifact.build.key}`}
 										onClick={() => closeModal()}>
 										<CharacterImage character={charactersInfo[artifact.build.key]} />
-										<PercentBar p={artifact.currentPotential}>Potential: %p</PercentBar>
+										<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
 									</PageLink>
 								</Box>
 							)}
