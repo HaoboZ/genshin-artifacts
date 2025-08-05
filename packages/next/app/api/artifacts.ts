@@ -17,7 +17,7 @@ export const artifactSlotImages = {
 	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
 };
 
-export const missingArtifactSets: Record<string, Build> = {
+export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {
 	EchoesOfAnOffering: {
 		key: 'Traveler',
 		role: 'DPS',

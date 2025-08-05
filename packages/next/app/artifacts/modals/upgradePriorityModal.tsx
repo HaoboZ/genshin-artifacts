@@ -1,7 +1,7 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { maxPotentialBuild, potentialPercent } from '@/api/stats';
+import { potentialPercent } from '@/api/stats';
 import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
@@ -10,7 +10,8 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, groupBy, map, pipe, sortBy } from 'remeda';
+import makeArray from '../../../src/helpers/makeArray';
 import CharacterImage from '../../characters/characterImage';
 import EditArtifactModal from '../artifactForm/editArtifactModal';
 import ArtifactStatImage from '../artifactStatImage';
@@ -21,27 +22,33 @@ export default function UpgradePriorityModal() {
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
 	const artifactsFiltered = useMemo(() => {
+		const artifactBuilds = groupBy(
+			[...Object.values(builds), ...Object.values(missingArtifactSets)],
+			({ artifact }) => makeArray(artifact[0])[0],
+		);
+		const equippedArtifacts = groupBy(artifacts, pget('location'));
+
 		return pipe(
 			artifacts,
 			filter(({ level, rarity }) => level < rarity * 4),
 			map((artifact) => ({
 				...artifact,
-				...maxPotentialBuild(
-					[...Object.values(builds), ...Object.values(missingArtifactSets)],
-					artifact,
-				),
+				...sortBy(
+					artifactBuilds[artifact.setKey].map((build) => ({
+						build,
+						potential: potentialPercent(build, artifact),
+						currentPotential: potentialPercent(
+							build,
+							equippedArtifacts[build.key].find(
+								({ slotKey }) => artifact.slotKey === slotKey,
+							),
+						),
+					})),
+					({ potential, currentPotential }) =>
+						potential > 0.5 ? -potential : currentPotential - potential,
+				)[0],
 			})),
 			filter(({ potential }) => potential > 0.25),
-			map((artifact) => ({
-				...artifact,
-				currentPotential: potentialPercent(
-					artifact.build,
-					artifacts.find(
-						({ location, slotKey }) =>
-							artifact.build?.key === location && artifact.slotKey === slotKey,
-					),
-				),
-			})),
 			sortBy([pget('potential'), 'desc']),
 		);
 	}, [artifacts]);

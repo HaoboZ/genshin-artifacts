@@ -168,14 +168,6 @@ export function maxPotentialPercents(builds: Build[], artifact: IArtifact) {
 		.reduce((a, b) => (a > b ? a : b), 0);
 }
 
-export function maxPotentialBuild(builds: Build[], artifact: IArtifact) {
-	const setKey = artifact.setKey;
-	return builds
-		.filter(({ artifact }) => makeArray(artifact[0])[0] === setKey)
-		.map((build) => ({ build, potential: potentialPercent(build, artifact) }))
-		.reduce((a, b) => (a.potential > b.potential ? a : b), { build: undefined, potential: 0 });
-}
-
 function getWeightedStat(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {
 	if (!subStat) return 0;
 

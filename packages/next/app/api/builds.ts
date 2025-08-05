@@ -1687,7 +1687,13 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Xiao',
 		role: 'DPS',
 		weapon: [
-			['FracturedHalo', 'StaffOfHoma', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
+			[
+				'FracturedHalo',
+				'StaffOfHoma',
+				'PrimordialJadeWingedSpear',
+				'LumidouceElegy',
+				'SymphonistOfScents',
+			],
 			'StaffOfTheScarletSands',
 			[
 				'CalamityQueller',
