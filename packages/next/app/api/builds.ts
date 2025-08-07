@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 7/28/25
+// 8/6/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -324,8 +324,8 @@ export const builds: Record<CharacterKey, Build> = {
 			['BeaconOfTheReedSea', 'Verdict', 'FangOfTheMountainKing'],
 			['TheUnforged', 'RedhornStonethresher', 'WolfsGravestone'],
 			'SerpentSpine',
-			'MailedFlower',
-			'TidalShadow',
+			['MailedFlower', 'Akuoumaru'],
+			['TidalShadow', 'SkywardPride'],
 			'Rainslasher',
 			'TalkingStick',
 		],
@@ -645,8 +645,13 @@ export const builds: Record<CharacterKey, Build> = {
 			'SymphonistOfScents',
 			'StaffOfHoma',
 			['CalamityQueller', 'LumidouceElegy'],
-			'EngulfingLightning',
-			['KitainCrossSpear', 'SkywardSpine', 'PrimordialJadeWingedSpear'],
+			[
+				'MissiveWindspear',
+				'EngulfingLightning',
+				'KitainCrossSpear',
+				'SkywardSpine',
+				'PrimordialJadeWingedSpear',
+			],
 			'BalladOfTheFjords',
 			'Deathmatch',
 		],
