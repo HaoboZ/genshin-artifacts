@@ -1,6 +1,6 @@
 {
 	"name": "@genshin-artifacts/generate",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"scripts": {
 		"start": "npx tsx ./generate.ts"
 	},
@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"@types/jsdom": "21.1.7",
-		"@types/node": "22.17.1",
+		"@types/node": "22.17.2",
 		"globals": "16.3.0",
 		"type-fest": "4.41.0",
 		"typescript": "5.9.2"
