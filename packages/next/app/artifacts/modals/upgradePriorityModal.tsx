@@ -39,7 +39,7 @@ export default function UpgradePriorityModal() {
 						potential: potentialPercent(build, artifact),
 						currentPotential: potentialPercent(
 							build,
-							equippedArtifacts[build.key].find(
+							equippedArtifacts[build.key]?.find(
 								({ slotKey }) => artifact.slotKey === slotKey,
 							),
 						),

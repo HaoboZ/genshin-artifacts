@@ -126,7 +126,7 @@ export function weightedPercent(build: Build, artifact: IArtifact) {
 	return (
 		(artifact.substats.reduce(
 			(current, { key, value }) =>
-				current + (getWeightedStat(build.subStat, key) * value) / statsMax[key],
+				current + (value * weightedMultiplier(build.subStat, key)) / statsMax[key],
 			0,
 		) /
 			getMaxStat(build.subStat, artifact.mainStatKey)) *
@@ -147,16 +147,14 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) - (4 - artifact.substats.length);
 
 	return (
-		(artifact.substats.reduce(
+		artifact.substats.reduce(
 			(current, { key, value }) =>
 				current +
-				(getWeightedStat(build.subStat, key) *
-					(value + (rolls / 4) * statsAverage[key][artifact.rarity])) /
+				((value + statsAverage[key][artifact.rarity] * (rolls / 4)) *
+					weightedMultiplier(build.subStat, key)) /
 					statsMax[key],
 			0,
-		) /
-			getMaxStat(build.subStat, artifact.mainStatKey)) *
-		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
+		) / getMaxStat(build.subStat, artifact.mainStatKey)
 	);
 }
 
@@ -168,7 +166,7 @@ export function maxPotentialPercents(builds: Build[], artifact: IArtifact) {
 		.reduce((a, b) => (a > b ? a : b), 0);
 }
 
-function getWeightedStat(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {
+function weightedMultiplier(subStatArr: (StatKey | StatKey[])[], subStat: StatKey) {
 	if (!subStat) return 0;
 
 	const statTier = arrDeepIndex(convertCD(subStatArr), subStat);
