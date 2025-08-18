@@ -9,12 +9,12 @@ export default function RespawnNotification({
 	storageKey,
 	item,
 	icon,
-	delay,
+	notificationTime,
 }: {
 	storageKey: string;
 	item: string;
 	icon?: string;
-	delay?: number;
+	notificationTime?: () => Date;
 }) {
 	const [time, setTime] = useState(() => new Date());
 
@@ -33,15 +33,15 @@ export default function RespawnNotification({
 			<AsyncButton
 				variant='contained'
 				onClick={async () => {
-					const time = +new Date() + delay;
+					const date = notificationTime();
 					const id = await sendNotification(OneSignal.User.onesignalId, {
 						title: `${item} Respawned`,
 						icon,
-						time: new Date(time).toUTCString(),
+						time: date.toUTCString(),
 					});
 
 					if (respawn?.id) await cancelNotification(respawn.id);
-					setRespawn({ id, time });
+					setRespawn({ id, time: +date });
 				}}>
 				{item} Notification
 			</AsyncButton>

@@ -7,9 +7,9 @@ import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import { Box, Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import { Box, Button, ButtonGroup, Stack, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
 import RespawnNotification from './respawnNotification';
 
@@ -18,6 +18,11 @@ export default function Main() {
 	const good = useAppSelector(pget('good'));
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
+
+	const [time, setTime] = useState(() => {
+		const now = new Date();
+		return now.toTimeString().slice(0, 8);
+	});
 
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,
@@ -96,26 +101,70 @@ export default function Main() {
 					<RespawnNotification
 						storageKey='test-notification'
 						item='Test'
-						delay={2 * 60 * 1000}
+						notificationTime={() => {
+							const now = new Date();
+							now.setMinutes(now.getMinutes() + 2);
+							return now;
+						}}
 					/>
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
 						icon='/essence.png'
-						delay={(24 * 60 + 2) * 60 * 1000}
+						notificationTime={() => {
+							const now = new Date();
+							now.setDate(now.getDate() + 1);
+							now.setMinutes(now.getMinutes() + 2);
+							return now;
+						}}
 					/>
 					<RespawnNotification
 						storageKey='specialties-respawn'
 						item='Specialties Farming'
 						icon='/materials.png'
-						delay={(2 * 24 * 60 + 2) * 60 * 1000}
+						notificationTime={() => {
+							const now = new Date();
+							now.setDate(now.getDate() + 2);
+							now.setMinutes(now.getMinutes() + 2);
+							return now;
+						}}
 					/>
 					<RespawnNotification
 						storageKey='crystals-respawn'
 						item='Crystals Farming'
 						icon='/crystal.png'
-						delay={(3 * 24 * 60 + 2) * 60 * 1000}
+						notificationTime={() => {
+							const now = new Date();
+							now.setDate(now.getDate() + 3);
+							now.setMinutes(now.getMinutes() + 2);
+							return now;
+						}}
 					/>
+					<Stack spacing={1} direction='row'>
+						<TextField
+							fullWidth={false}
+							type='time'
+							slotProps={{ htmlInput: { step: 1 } }}
+							value={time}
+							onChange={({ target }) => setTime(target.value)}
+						/>
+						<RespawnNotification
+							storageKey='custom'
+							item='Custom'
+							notificationTime={() => {
+								const tomorrow = new Date();
+								tomorrow.setDate(tomorrow.getDate() + 1);
+
+								const timeParts = time.split(':');
+								const hours = parseInt(timeParts[0]);
+								const minutes = parseInt(timeParts[1]);
+								const seconds = timeParts[2] ? parseInt(timeParts[2]) : 0;
+
+								tomorrow.setHours(hours, minutes, seconds, 0);
+								return tomorrow;
+							}}
+						/>
+					</Stack>
 				</ClientOnly>
 			</Stack>
 		</PageContainer>
