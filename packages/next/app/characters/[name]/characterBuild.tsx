@@ -30,7 +30,7 @@ export default function CharacterBuild({ build }: { build: Build }) {
 									size={50}
 									component={Link}
 									// @ts-ignore
-									href={`/artifacts?set=${artifact}`}
+									href={`/artifacts/${artifact}`}
 								/>
 							))}
 						</AvatarGroup>
