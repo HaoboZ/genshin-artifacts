@@ -1,4 +1,5 @@
 export type CharacterKey =
+	| 'Aino' // Aino
 	| 'Albedo' // Albedo
 	| 'Alhaitham' // Alhaitham
 	| 'Aloy' // Aloy
@@ -52,6 +53,7 @@ export type CharacterKey =
 	| 'KujouSara' // Kujou Sara
 	| 'KukiShinobu' // Kuki Shinobu
 	| 'LanYan' // Lan Yan
+	| 'Lauma' // Lauma
 	| 'Layla' // Layla
 	| 'Lisa' // Lisa
 	| 'Lynette' // Lynette

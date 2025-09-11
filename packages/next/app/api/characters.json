@@ -1,4 +1,14 @@
 {
+	"Aino": {
+		"key": "Aino",
+		"name": "Aino",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"element": "Hydro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a3/Aino_Icon.png",
+		"talentMaterial": "Elysium",
+		"weeklyMaterial": "Silken Feather"
+	},
 	"Albedo": {
 		"key": "Albedo",
 		"name": "Albedo",
@@ -528,6 +538,16 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Lan_Yan_Icon.png",
 		"talentMaterial": "Diligence",
 		"weeklyMaterial": "Eroded Sunfire"
+	},
+	"Lauma": {
+		"key": "Lauma",
+		"name": "Lauma",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Dendro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Lauma_Icon.png",
+		"talentMaterial": "Moonlight",
+		"weeklyMaterial": "Eroded Scale-Feather"
 	},
 	"Layla": {
 		"key": "Layla",

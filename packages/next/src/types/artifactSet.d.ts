@@ -1,4 +1,6 @@
 export type ArtifactSetKey =
+	| 'SilkenMoonsSerenade' // Silken Moon's Serenade
+	| 'NightOfTheSkysUnveiling' // Night of the Sky's Unveiling
 	| 'LongNightsOath' // Long Night's Oath
 	| 'FinaleOfTheDeepGalleries' // Finale of the Deep Galleries
 	| 'ObsidianCodex' // Obsidian Codex

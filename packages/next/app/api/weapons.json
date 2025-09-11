@@ -299,6 +299,16 @@
 		"stat": "Energy Recharge 30.6%",
 		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
 	},
+	"SerenitysCall": {
+		"key": "SerenitysCall",
+		"name": "Serenity's Call",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Weapon_Serenity%27s_Call.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Max HP by 16~32% for 12s. Moonsign: Ascendant Gleam: Max HP from this effect is further increased by 16~32%. This effect can be triggered even if the equipping character is off-field."
+	},
 	"SturdyBone": {
 		"key": "SturdyBone",
 		"name": "Sturdy Bone",
@@ -417,7 +427,7 @@
 		"weaponType": "Sword",
 		"atk": 401,
 		"stat": "Elemental Mastery 141",
-		"ability": "Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, or Electro-infused Swirl reaction, ATK is increased by 20~40% for 12s."
+		"ability": "Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, Lunar-Charged, or Electro-infused Swirl reaction, ATK is increased by 20~?% for 12s."
 	},
 	"FilletBlade": {
 		"key": "FilletBlade",
@@ -627,7 +637,7 @@
 		"weaponType": "Claymore",
 		"atk": 510,
 		"stat": "Elemental Mastery 165",
-		"ability": "When Electro-Charged, Lunar-Charged, or Bloom is triggered, restore 12~? Elemental Energy and increase Elemental Mastery by 60~? for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
+		"ability": "When Electro-Charged, Lunar-Charged, Bloom, or Lunar-Bloom is triggered, restore 12~24 Elemental Energy and increase Elemental Mastery by 60~120 for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
 	},
 	"ForestRegalia": {
 		"key": "ForestRegalia",
@@ -698,6 +708,16 @@
 		"atk": 510,
 		"stat": "Elemental Mastery 165",
 		"ability": "The following effect will trigger every 10s: The equipping character will gain 24~48% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field."
+	},
+	"MasterKey": {
+		"key": "MasterKey",
+		"name": "Master Key",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Master_Key.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Elemental Mastery by 60~120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 60~120. This effect can be triggered even if the equipping character is off-field."
 	},
 	"PortablePowerSaw": {
 		"key": "PortablePowerSaw",
@@ -917,7 +937,7 @@
 		"weaponType": "Polearm",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "After an Elemental Skill or Elemental Burst is used, ATK is increased by 24~?% for 20s. If the equipping character creates a Shield while this effect is active, they will gain the Electrifying Edict effect for 20s: All nearby party members deal 40~?% more Lunar-Charged DMG."
+		"ability": "After an Elemental Skill or Elemental Burst is used, ATK is increased by 24~48% for 20s. If the equipping character creates a Shield while this effect is active, they will gain the Electrifying Edict effect for 20s: All nearby party members deal 40~80% more Lunar-Charged DMG."
 	},
 	"LumidouceElegy": {
 		"key": "LumidouceElegy",
@@ -1149,6 +1169,16 @@
 		"stat": "ATK 27.6%",
 		"ability": "When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain 3~7% ATK and 7~13% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field."
 	},
+	"ProspectorsShovel": {
+		"key": "ProspectorsShovel",
+		"name": "Prospector's Shovel",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Prospector%27s_Shovel.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Electro-Charged DMG is increased by 48~96%, and Lunar-Charged DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Charged DMG is increased by an additional 12~24%."
+	},
 	"PrototypeStarglitter": {
 		"key": "PrototypeStarglitter",
 		"name": "Prototype Starglitter",
@@ -1329,6 +1359,16 @@
 		"stat": "ATK 49.6%",
 		"ability": "Increases Shield Strength by 20~40%. Scoring hits on opponents increases ATK by 4~8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
 	},
+	"NightweaversLookingGlass": {
+		"key": "NightweaversLookingGlass",
+		"name": "Nightweaver's Looking Glass",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Weapon_Nightweaver%27s_Looking_Glass.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Elemental Mastery 265",
+		"ability": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 60~120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 60~120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 120~240%, their Hyperbloom and Burgeon DMG is increased by 80~160%, and their Lunar-Bloom DMG is increased by 40~80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field."
+	},
 	"SkywardAtlas": {
 		"key": "SkywardAtlas",
 		"name": "Skyward Atlas",
@@ -1429,6 +1469,16 @@
 		"stat": "CRIT DMG 55.1%",
 		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
 	},
+	"BlackmarrowLantern": {
+		"key": "BlackmarrowLantern",
+		"name": "Blackmarrow Lantern",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Blackmarrow_Lantern.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "Elemental Mastery 221",
+		"ability": "Bloom DMG is increased by 48~96%, and Lunar-Bloom DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Bloom DMG is increased by an additional 12~24%."
+	},
 	"DodocoTales": {
 		"key": "DodocoTales",
 		"name": "Dodoco Tales",
@@ -1438,6 +1488,16 @@
 		"atk": 454,
 		"stat": "ATK 55.1%",
 		"ability": "Normal Attack hits on opponents increase Charged Attack DMG by 16~32% for 6s. Charged Attack hits on opponents increase ATK by 8~16% for 6s."
+	},
+	"EtherlightSpindlelute": {
+		"key": "EtherlightSpindlelute",
+		"name": "Etherlight Spindlelute",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Weapon_Etherlight_Spindlelute.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "For 20s after using an Elemental Skill, the equipping character's Elemental Mastery is increased by 100~200."
 	},
 	"EyeOfPerception": {
 		"key": "EyeOfPerception",
@@ -1627,7 +1687,7 @@
 		"weaponType": "Catalyst",
 		"atk": 448,
 		"stat": "Elemental Mastery 94",
-		"ability": "Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, or a Hydro-infused Swirl reaction, increases ATK by 20~40% for 12s."
+		"ability": "Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, Lunar-Charged, Lunar-Bloom, or a Hydro-infused Swirl reaction, ATK is increased by 20~40% for 12s."
 	},
 	"MagicGuide": {
 		"key": "MagicGuide",
@@ -2008,6 +2068,16 @@
 		"atk": 510,
 		"stat": "HP 41.3%",
 		"ability": "When an attack hits an opponent, deal AoE DMG equal to 40~80% of Max HP at the target location. This effect can be triggered once every 15s."
+	},
+	"SnareHook": {
+		"key": "SnareHook",
+		"name": "Snare Hook",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Weapon_Snare_Hook.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Elemental Mastery by 60~120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 60~120. This effect can be triggered even if the equipping character is off-field."
 	},
 	"SongOfStillness": {
 		"key": "SongOfStillness",

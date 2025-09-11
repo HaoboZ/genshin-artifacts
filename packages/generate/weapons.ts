@@ -37,13 +37,6 @@ export async function fetchWeapons() {
 		}
 	}
 	return weapons;
-
-	// const { data } = await axios.get(`https://genshin-impact.fandom.com/wiki/${weaponName}`);
-	// const images = [
-	// 	...data.matchAll(
-	// 		/<img src="(https:\/\/static.wikia.nocookie.net\/gensin-impact\/images\/.\/..\/Weapon_[^"]*)\/revision/g,
-	// 	),
-	// ].map(pget('1'));
 }
 
 export function writeWeapons(weapons: any[]) {

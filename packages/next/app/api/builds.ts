@@ -625,10 +625,10 @@ export const builds: Record<CharacterKey, Build> = {
 			'VividNotions',
 			['TomeOfTheEternalFlow', 'SurfsUp'],
 			'KagurasVerity',
-			'TheWidsith',
 			['LostPrayerToTheSacredWinds', 'CashflowSupervision'],
 			'CranesEchoingCall',
 			'TulaytullahsRemembrance',
+			['TheWidsith', 'SacrificialJade'],
 			'FlowingPurity',
 		],
 		group: 0,
@@ -870,6 +870,15 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: 'atk_', goblet: 'dendro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
+	Lauma: {
+		key: 'Lauma',
+		role: 'Off-Field Support',
+		weapon: ['NightweaversLookingGlass', 'EtherlightSpindlelute', 'BlackmarrowLantern'],
+		group: 0,
+		artifact: ['SilkenMoonsSerenade', 'DeepwoodMemories', 'GildedDreams'],
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['enerRech_', 'eleMas', 'critRD_'],
+	},
 	// Hydro
 	Xingqiu: {
 		key: 'Xingqiu',
@@ -952,6 +961,25 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: 'hp_' },
 		subStat: ['enerRech_', 'hp_', 'critRate_', 'hp'],
+	},
+	Aino: {
+		key: 'Aino',
+		role: 'Application Support',
+		weapon: ['FavoniusGreatsword', 'MakhairaAquamarine', ['FlameForgedInsight', 'MasterKey']],
+		group: 1,
+		artifact: [
+			'SilkenMoonsSerenade',
+			'NoblesseOblige',
+			'ScrollOfTheHeroOfCinderCity',
+			'Instructor',
+			'DeepwoodMemories',
+		],
+		mainStat: {
+			sands: ['enerRech_', 'eleMas'],
+			goblet: 'eleMas',
+			circlet: ['eleMas', 'critRate_'],
+		},
+		subStat: ['enerRech_', 'eleMas', 'critRate_'],
 	},
 	Tartaglia: {
 		key: 'Tartaglia',

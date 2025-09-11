@@ -29,6 +29,7 @@ export type WeaponKey =
 	| 'RoyalLongsword' // Royal Longsword
 	| 'SacrificialSword' // Sacrificial Sword
 	| 'SapwoodBlade' // Sapwood Blade
+	| 'SerenitysCall' // Serenity's Call
 	| 'SturdyBone' // Sturdy Bone
 	| 'SwordOfDescension' // Sword of Descension
 	| 'SwordOfNarzissenkreuz' // Sword of Narzissenkreuz
@@ -69,6 +70,7 @@ export type WeaponKey =
 	| 'LuxuriousSeaLord' // Luxurious Sea-Lord
 	| 'MailedFlower' // Mailed Flower
 	| 'MakhairaAquamarine' // Makhaira Aquamarine
+	| 'MasterKey' // Master Key
 	| 'PortablePowerSaw' // Portable Power Saw
 	| 'PrototypeArchaic' // Prototype Archaic
 	| 'Rainslasher' // Rainslasher
@@ -87,6 +89,7 @@ export type WeaponKey =
 	| 'WhiteIronGreatsword' // White Iron Greatsword
 	| 'OldMercsPal' // Old Merc's Pal
 	| 'WasterGreatsword' // Waster Greatsword
+	| 'BloodsoakedRuins' // Bloodsoaked Ruins
 	| 'CalamityQueller' // Calamity Queller
 	| 'CrimsonMoonsSemblance' // Crimson Moon's Semblance
 	| 'EngulfingLightning' // Engulfing Lightning
@@ -114,6 +117,7 @@ export type WeaponKey =
 	| 'Moonpiercer' // Moonpiercer
 	| 'MountainBracingBolt' // Mountain-Bracing Bolt
 	| 'ProspectorsDrill' // Prospector's Drill
+	| 'ProspectorsShovel' // Prospector's Shovel
 	| 'PrototypeStarglitter' // Prototype Starglitter
 	| 'RightfulReward' // Rightful Reward
 	| 'RoyalSpear' // Royal Spear
@@ -132,6 +136,7 @@ export type WeaponKey =
 	| 'KagurasVerity' // Kagura's Verity
 	| 'LostPrayerToTheSacredWinds' // Lost Prayer to the Sacred Winds
 	| 'MemoryOfDust' // Memory of Dust
+	| 'NightweaversLookingGlass' // Nightweaver's Looking Glass
 	| 'SkywardAtlas' // Skyward Atlas
 	| 'StarcallersWatch' // Starcaller's Watch
 	| 'SunnyMorningSleepIn' // Sunny Morning Sleep-In
@@ -142,7 +147,9 @@ export type WeaponKey =
 	| 'AshGravenDrinkingHorn' // Ash-Graven Drinking Horn
 	| 'BalladOfTheBoundlessBlue' // Ballad of the Boundless Blue
 	| 'BlackcliffAgate' // Blackcliff Agate
+	| 'BlackmarrowLantern' // Blackmarrow Lantern
 	| 'DodocoTales' // Dodoco Tales
+	| 'EtherlightSpindlelute' // Etherlight Spindlelute
 	| 'EyeOfPerception' // Eye of Perception
 	| 'FavoniusCodex' // Favonius Codex
 	| 'FlowingPurity' // Flowing Purity
@@ -200,6 +207,7 @@ export type WeaponKey =
 	| 'SacrificialBow' // Sacrificial Bow
 	| 'ScionOfTheBlazingSun' // Scion of the Blazing Sun
 	| 'SequenceOfSolitude' // Sequence of Solitude
+	| 'SnareHook' // Snare Hook
 	| 'SongOfStillness' // Song of Stillness
 	| 'TheStringless' // The Stringless
 	| 'TheViridescentHunt' // The Viridescent Hunt
