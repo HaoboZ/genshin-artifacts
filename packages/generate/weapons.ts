@@ -30,7 +30,7 @@ export async function fetchWeapons() {
 				// image2: images[1],
 				rarity: +children[2].querySelector('img').alt[0],
 				weaponType,
-				atk: +children[3].textContent.match(/\d+/)[0],
+				atk: +(children[3].textContent.match(/\d+/)?.[0] ?? 0),
 				stat: children[4].textContent.match(/(.*)\(/)?.[1] ?? 'None',
 				ability: children[5].textContent.trim(),
 			});

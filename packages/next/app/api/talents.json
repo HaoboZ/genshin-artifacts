@@ -106,5 +106,23 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Item_Philosophies_of_Conflict.png",
 		"location": "Natlan",
 		"day": 3
+	},
+	{
+		"name": "Moonlight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Item_Philosophies_of_Moonlight.png",
+		"location": "Nod-Krai",
+		"day": 1
+	},
+	{
+		"name": "Elysium",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Item_Philosophies_of_Elysium.png",
+		"location": "Nod-Krai",
+		"day": 2
+	},
+	{
+		"name": "Vagrancy",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Philosophies_of_Vagrancy.png",
+		"location": "Nod-Krai",
+		"day": 3
 	}
 ]

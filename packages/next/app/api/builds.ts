@@ -876,7 +876,11 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: ['NightweaversLookingGlass', 'EtherlightSpindlelute', 'BlackmarrowLantern'],
 		group: 0,
 		artifact: ['SilkenMoonsSerenade', 'DeepwoodMemories', 'GildedDreams'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
+		mainStat: {
+			sands: ['eleMas', 'enerRech_'],
+			goblet: 'eleMas',
+			circlet: ['eleMas', 'critRD_'],
+		},
 		subStat: ['enerRech_', 'eleMas', 'critRD_'],
 	},
 	// Hydro

@@ -259,6 +259,16 @@
 		"stat": "ATK 41.3%",
 		"ability": "Increases DMG against enemies affected by Pyro or Electro by 20~36%."
 	},
+	"MoonweaversDawn": {
+		"key": "MoonweaversDawn",
+		"name": "Moonweaver's Dawn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Weapon_Moonweaver%27s_Dawn.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Increases Elemental Burst DMG by 20~40%. When the equipping character's Energy Capacity does not exceed 60/40, their Elemental Burst DMG is increased by an additional 16%/28~32%/56%."
+	},
 	"PrototypeRancour": {
 		"key": "PrototypeRancour",
 		"name": "Prototype Rancour",
@@ -896,6 +906,16 @@
 		"rarity": 1,
 		"weaponType": "Claymore",
 		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	},
+	"BloodsoakedRuins": {
+		"key": "BloodsoakedRuins",
+		"name": "Bloodsoaked Ruins",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Weapon_Bloodsoaked_Ruins.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 0,
 		"stat": "None",
 		"ability": "None"
 	},

@@ -25,6 +25,7 @@ export type WeaponKey =
 	| 'IronSting' // Iron Sting
 	| 'KagotsurubeIsshin' // Kagotsurube Isshin
 	| 'LionsRoar' // Lion's Roar
+	| 'MoonweaversDawn' // Moonweaver's Dawn
 	| 'PrototypeRancour' // Prototype Rancour
 	| 'RoyalLongsword' // Royal Longsword
 	| 'SacrificialSword' // Sacrificial Sword
