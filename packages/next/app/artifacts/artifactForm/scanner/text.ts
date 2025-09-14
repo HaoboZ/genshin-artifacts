@@ -2,7 +2,8 @@ import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo } from '@/api/characters';
 import type { ArtifactSetKey, CharacterKey, IArtifact, StatKey } from '@/src/types/good';
 import { capitalCase } from 'change-case';
-import { createWorker, OEM, PSM } from 'tesseract.js';
+import { flatMap } from 'remeda';
+import { createWorker } from 'tesseract.js';
 
 const mainStatsScan: Record<string, StatKey> = {
 	'atk': 'atk_',
@@ -37,11 +38,7 @@ const textAreas = {
 	slot: [0, 0.12, 0.5, 0.09],
 	mainStat: [0, 0.3, 0.5, 0.065],
 	level: [0.065, 0.63, 0.11, 0.053],
-	subStat1: [0.04, 0.719, 0.9, 0.079],
-	subStat2: [0.04, 0.798, 0.9, 0.079],
-	subStat3: [0.04, 0.877, 0.9, 0.079],
-	subStat4: [0.04, 0.956, 0.9, 0.079],
-	subStat5: [0.04, 1.035, 0.9, 0.079],
+	subStats: [0.04, 0.719, 0.9, 0.46],
 	character: [0.158, -0.109, 0.842, 0.1],
 };
 
@@ -50,8 +47,7 @@ const artifactNames = Object.values(artifactSetsInfo).map<[string, ArtifactSetKe
 );
 
 export default async function text(canvas: HTMLCanvasElement, setProgress?) {
-	const worker = await createWorker('eng', OEM.DEFAULT);
-	await worker.setParameters({ tessedit_pageseg_mode: PSM.SINGLE_LINE });
+	const worker = await createWorker('eng');
 
 	// @ts-ignore
 	const artifact: IArtifact = {
@@ -66,14 +62,18 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 	const scale = canvas.width;
 	for (const key in textAreas) {
 		const rect = textAreas[key];
-		const { data } = await worker.recognize(canvas, {
-			rectangle: {
-				left: rect[0] * scale,
-				top: rect[1] >= 0 ? rect[1] * scale : canvas.height + rect[1] * scale,
-				width: rect[2] * scale,
-				height: rect[3] * scale,
+		const { data } = await worker.recognize(
+			canvas,
+			{
+				rectangle: {
+					left: rect[0] * scale,
+					top: rect[1] >= 0 ? rect[1] * scale : canvas.height + rect[1] * scale,
+					width: rect[2] * scale,
+					height: rect[3] * scale,
+				},
 			},
-		});
+			{ blocks: true },
+		);
 
 		const ctx = canvas.getContext('2d');
 		ctx.strokeStyle = 'blue';
@@ -109,17 +109,26 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 				break;
 			}
 			default: {
-				const match = text.match(/([a-z]+? ?[a-z]+)\+([0-9.]+)(%?)/);
-				if (match) {
-					artifact.substats.push({
-						key: subStatsScan[
-							Object.keys(subStatsScan).find((stat) => match[1].includes(stat))
-						][+Boolean(match[3])],
-						value: +match[2],
-					});
-				} else {
-					const found = artifactNames.find((value) => text.includes(value[0]));
-					if (found) artifact.setKey = found[1];
+				const lines = flatMap(data.blocks, ({ paragraphs }) =>
+					flatMap(paragraphs, ({ lines }) => flatMap(lines, ({ text }) => text.toLowerCase())),
+				);
+
+				let found: any[];
+				for (const text of lines) {
+					const match = text.match(/([a-z]+? ?[a-z]+)\+([0-9.]+)(%?)/);
+					if (match) {
+						artifact.substats.push({
+							key: subStatsScan[
+								Object.keys(subStatsScan).find((stat) => match[1].includes(stat))
+							][+Boolean(match[3])],
+							value: +match[2],
+						});
+					} else {
+						found = artifactNames.find((value) => text.includes(value[0]));
+						if (found) artifact.setKey = found[1];
+					}
+					if (text.includes('unactivated'))
+						artifact.substats[artifact.substats.length - 1].unactivated = true;
 				}
 				break;
 			}

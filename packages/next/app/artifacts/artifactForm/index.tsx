@@ -7,6 +7,7 @@ import SwitchField from '@/components/fields/switch';
 import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
 import {
 	Button,
+	Checkbox,
 	DialogActions,
 	DialogContent,
 	FormControlLabel,
@@ -118,45 +119,64 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 					<Grid size='auto' sx={{ display: 'flex', alignItems: 'center' }}>
 						<ArtifactImage artifact={values} />
 					</Grid>
-					<Grid size='grow'>
+					<Grid container size='grow'>
 						{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
-							<SelectField
-								key={index}
-								name={`substats.${index}.key`}
-								value={values.substats[index]?.key ?? ''}
-								onChange={({ target }) => {
-									const substats = [...values.substats];
-									if (!target.value) substats.splice(index, 1);
-									else substats[index] = { key: target.value as StatKey, value: 0 };
-									setFieldValue('substats', substats);
-									return false;
-								}}>
-								<MenuItem value=''>None</MenuItem>
-								{subStats.map((subStat) => (
-									<MenuItem key={subStat} value={subStat}>
-										{statName[subStat]}
-									</MenuItem>
-								))}
-							</SelectField>
-						))}
-					</Grid>
-					<Grid size='grow'>
-						{[...Array(values.substats.length)].map((_, index) => (
-							<InputField
-								key={index}
-								name={`substats.${index}.value`}
-								type='number'
-								onChange={({ target }) => {
-									const substats = [...values.substats];
-									const { key } = values.substats[index];
-									substats[index] = {
-										key,
-										value: clamp(+target.value, { min: 0, max: statsMax[key] }),
-									};
-									setFieldValue('substats', substats);
-									return false;
-								}}
-							/>
+							<Fragment key={index}>
+								<Grid size={7}>
+									<SelectField
+										name={`substats.${index}.key`}
+										value={values.substats[index]?.key ?? ''}
+										onChange={({ target }) => {
+											const substats = [...values.substats];
+											if (!target.value) substats.splice(index, 1);
+											else substats[index] = { key: target.value as StatKey, value: 0 };
+											setFieldValue('substats', substats);
+											return false;
+										}}>
+										<MenuItem value=''>None</MenuItem>
+										{subStats.map((subStat) => (
+											<MenuItem key={subStat} value={subStat}>
+												{statName[subStat]}
+											</MenuItem>
+										))}
+									</SelectField>
+								</Grid>
+								{values.substats[index] && (
+									<Fragment>
+										<Grid size={4}>
+											<InputField
+												name={`substats.${index}.value`}
+												type='number'
+												onChange={({ target }) => {
+													const substats = [...values.substats];
+													const { key } = values.substats[index];
+													substats[index] = {
+														key,
+														value: clamp(+target.value, {
+															min: 0,
+															max: statsMax[key],
+														}),
+													};
+													setFieldValue('substats', substats);
+													return false;
+												}}
+											/>
+										</Grid>
+										<Grid size={1}>
+											<Checkbox
+												key={index}
+												checked={!values.substats[index]?.unactivated}
+												onChange={({ target }) => {
+													setFieldValue(
+														`substats.${index}.unactivated`,
+														!target.checked,
+													);
+												}}
+											/>
+										</Grid>
+									</Fragment>
+								)}
+							</Fragment>
 						))}
 					</Grid>
 				</Grid>

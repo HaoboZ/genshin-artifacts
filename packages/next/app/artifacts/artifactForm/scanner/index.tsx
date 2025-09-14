@@ -29,15 +29,15 @@ export default function Scanner({
 				ctx.drawImage(img, 0, 0);
 
 				try {
-					await crop(canvas);
-					if ((await match(canvas)) > 30000) throw 'No matches';
+					const newCanvas = await crop(canvas);
+					if ((await match(newCanvas)) > 30000) throw 'No matches';
 
-					const artifact = await text(canvas, setProgress);
+					const artifact = await text(newCanvas, setProgress);
 					setArtifact((prevArtifact) => ({
 						...prevArtifact,
 						...artifact,
-						rarity: rarity(canvas),
-						lock: lock(canvas),
+						rarity: rarity(newCanvas),
+						lock: lock(newCanvas),
 					}));
 				} catch (e) {
 					console.error(e);

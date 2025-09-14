@@ -29,12 +29,12 @@ export default function BatchAddArtifactModal() {
 			<DialogTitle>Add Artifacts</DialogTitle>
 			<DialogContent>
 				<Grid container spacing={1}>
-					<Grid size={4}>
+					<Grid size={12}>
 						<Box
 							sx={{
 								border: 1,
 								width: '100%',
-								aspectRatio: '10/17',
+								aspectRatio: '16/9',
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',
@@ -65,16 +65,16 @@ export default function BatchAddArtifactModal() {
 										detecting = true;
 										try {
 											const newCanvas = await crop(canvas);
-											if ((await match(canvas)) > 30000) throw 'No matches';
+											// if ((await match(canvas)) > 30000) throw 'No matches';
+											if (prevCanvas && (await match(newCanvas, prevCanvas)) < 1000)
+												throw 'Identical detected';
 											canvasRef.current.width = newCanvas.width;
 											canvasRef.current.height = newCanvas.height;
 											const ctx = canvasRef.current.getContext('2d');
 											ctx.drawImage(newCanvas, 0, 0);
-											if (prevCanvas && (await match(canvas, prevCanvas)) < 1000)
-												throw 'Identical detected';
-											prevCanvas = canvas;
+											prevCanvas = newCanvas;
 
-											const artifact = await text(canvas);
+											const artifact = await text(canvasRef.current);
 											setArtifacts((artifacts) => ({
 												...artifacts,
 												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {

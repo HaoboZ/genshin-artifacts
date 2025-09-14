@@ -24,6 +24,7 @@ export interface IArtifact {
 export interface ISubstat {
 	key: StatKey; //e.g. "critDMG_"
 	value: number; //e.g. 19.4
+	unactivated?: boolean;
 }
 
 export type SlotKey = 'flower' | 'plume' | 'sands' | 'goblet' | 'circlet';

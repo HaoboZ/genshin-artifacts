@@ -144,7 +144,9 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 		return 0;
 
 	const rolls =
-		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) - (4 - artifact.substats.length);
+		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) -
+		(4 - artifact.substats.length) -
+		artifact.substats.reduce((total, { unactivated }) => total + (unactivated ? 1 : 0), 0);
 
 	return (
 		artifact.substats.reduce(

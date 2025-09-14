@@ -1,30 +1,31 @@
 import type { CV } from 'mirada';
 
 export default async function crop(canvas: HTMLCanvasElement) {
-	const cv: CV = await window.cv;
+	const cv: CV = window.cv;
 	const image = cv.imread(canvas);
 
 	// Convert to grayscale
 	const gray = new cv.Mat();
 	cv.cvtColor(image, gray, cv.COLOR_RGBA2GRAY);
 
-	// // Apply GaussianBlur to reduce noise and improve edge detection
-	// const blurred = new cv.Mat();
-	// cv.GaussianBlur(gray, blurred, new cv.Size(5, 5), 0, 0, cv.BORDER_DEFAULT);
-
 	// Apply Canny edge detector
 	const edges = new cv.Mat();
-	cv.Canny(gray, edges, 50, 150, 3);
+	cv.Canny(gray, edges, 100, 300, 3);
+	gray.delete();
 
-	// // Apply morphological operations to clean up the edges
-	// const kernel = cv.getStructuringElement(cv.MORPH_RECT, new cv.Size(5, 5));
-	// const morphed = new cv.Mat();
-	// cv.morphologyEx(edges, morphed, cv.MORPH_CLOSE, kernel);
+	// Apply morphological operations to clean up the edges
+	const kernel = cv.getStructuringElement(cv.MORPH_RECT, new cv.Size(5, 5));
+	const morphed = new cv.Mat();
+	cv.morphologyEx(edges, morphed, cv.MORPH_CLOSE, kernel);
+	kernel.delete();
+	edges.delete();
 
 	// Find Contours
 	const contours = new cv.MatVector();
 	const hierarchy = new cv.Mat();
-	cv.findContours(edges, contours, hierarchy, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE);
+	cv.findContours(morphed, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
+	hierarchy.delete();
+	morphed.delete();
 
 	// Filter contours to find rectangles
 	let boundingRect = null;
@@ -42,22 +43,13 @@ export default async function crop(canvas: HTMLCanvasElement) {
 		}
 	}
 	approx.delete();
+	contours.delete();
 
 	const box = image.roi(boundingRect);
 	const newCanvas = document.createElement('canvas');
 	cv.imshow(newCanvas, box);
-	const gray2 = new cv.Mat();
-	cv.cvtColor(box, gray2, cv.COLOR_RGBA2GRAY);
-	cv.imshow(canvas, gray2);
+	box.delete();
 
 	image.delete();
-	gray.delete();
-	// blurred.delete();
-	edges.delete();
-	// morphed.delete();
-	contours.delete();
-	hierarchy.delete();
-	box.delete();
-	gray2.delete();
 	return newCanvas;
 }
