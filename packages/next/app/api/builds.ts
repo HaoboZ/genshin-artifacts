@@ -782,7 +782,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			['AThousandFloatingDreams', 'SunnyMorningSleepIn'],
 			'KagurasVerity',
-			'SacrificialFragments',
+			['SacrificialFragments', 'EtherlightSpindlelute'],
 			'WanderingEvenstar',
 			['TheWidsith', 'SacrificialJade'],
 			['SkywardAtlas', 'LostPrayerToTheSacredWinds', 'MemoryOfDust', 'SolarPearl'],
@@ -878,14 +878,23 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Lauma: {
 		key: 'Lauma',
-		role: 'Off-Field Support',
-		weapon: ['NightweaversLookingGlass', 'EtherlightSpindlelute', 'BlackmarrowLantern'],
+		role: 'Buff Support',
+		weapon: [
+			'NightweaversLookingGlass',
+			['AThousandFloatingDreams', 'EtherlightSpindlelute'],
+			['StarcallersWatch', 'SunnyMorningSleepIn'],
+			'BlackmarrowLantern',
+		],
 		group: 0,
-		artifact: ['SilkenMoonsSerenade', 'DeepwoodMemories', 'GildedDreams'],
+		artifact: [
+			['SilkenMoonsSerenade', 'DeepwoodMemories'],
+			'NightOfTheSkysUnveiling',
+			'GildedDreams',
+		],
 		mainStat: {
-			sands: ['eleMas', 'enerRech_'],
+			sands: ['enerRech_', 'eleMas'],
 			goblet: 'eleMas',
-			circlet: ['eleMas', 'critRD_'],
+			circlet: ['critRD_', 'eleMas'],
 		},
 		subStat: ['enerRech_', 'eleMas', 'critRD_'],
 	},
@@ -1496,7 +1505,13 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Buff Support',
 		weapon: [
 			'StarcallersWatch',
-			['ThrillingTalesOfDragonSlayers', 'FavoniusCodex', 'WanderingEvenstar'],
+			[
+				'ThrillingTalesOfDragonSlayers',
+				'FavoniusCodex',
+				'EtherlightSpindlelute',
+				'SacrificialFragments',
+				'WanderingEvenstar',
+			],
 		],
 		group: 0,
 		artifact: ['ScrollOfTheHeroOfCinderCity', 'TenacityOfTheMillelith', 'Instructor'],
