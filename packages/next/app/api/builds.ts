@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/12/25
+// 9/23/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -979,7 +979,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Aino',
 		role: 'Application Support',
 		weapon: ['FavoniusGreatsword', 'MakhairaAquamarine', ['FlameForgedInsight', 'MasterKey']],
-		group: 1,
+		group: 0,
 		artifact: [
 			'SilkenMoonsSerenade',
 			'NoblesseOblige',
@@ -1098,18 +1098,11 @@ export const builds: Record<CharacterKey, Build> = {
 	Nilou: {
 		key: 'Nilou',
 		role: 'Bloom Support',
-		weapon: [
-			'KeyOfKhajNisut',
-			'TheDockhandsAssistant',
-			['FreedomSworn', 'XiphosMoonlight'],
-			['IronSting', 'ToukabouShigure'],
-			['FavoniusSword', 'FesteringDesire', 'SacrificialSword', 'SapwoodBlade'],
-			'PrimordialJadeCutter',
-		],
+		weapon: ['KeyOfKhajNisut', 'TheDockhandsAssistant', 'SerenitysCall'],
 		group: 0,
 		artifact: ['VourukashasGlow', 'DeepwoodMemories'],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: 'hp_' },
-		subStat: ['hp_', 'hp', 'enerRech_', 'eleMas', 'critRD_'],
+		subStat: ['hp_', 'hp', 'eleMas'],
 	},
 	Neuvillette: {
 		key: 'Neuvillette',
@@ -1631,6 +1624,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'FavoniusWarbow',
 			'ElegyForTheEnd',
+			'SnareHook',
 			'EndOfTheLine',
 			['FadingTwilight', 'SacrificialBow'],
 		],
