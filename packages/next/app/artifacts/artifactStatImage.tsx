@@ -50,6 +50,9 @@ export default function ArtifactStatImage({
 								{artifact.substats.map((substat) => (
 									<SubStatBar key={substat.key} substat={substat} />
 								))}
+								{artifact.unactivatedSubstats?.map((substat) => (
+									<SubStatBar key={substat.key} unactivated substat={substat} />
+								))}
 							</Box>
 						)}
 					</Grid>

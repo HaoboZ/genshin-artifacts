@@ -123,8 +123,10 @@ export function weightedPercent(build: Build, artifact: IArtifact) {
 	)
 		return 0;
 
+	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
+
 	return (
-		(artifact.substats.reduce(
+		(substats.reduce(
 			(current, { key, value }) =>
 				current + (value * weightedMultiplier(build.subStat, key)) / statsMax[key],
 			0,
@@ -146,10 +148,12 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 	const rolls =
 		Math.ceil((artifact.rarity * 4 - artifact.level) / 4) -
 		(4 - artifact.substats.length) -
-		artifact.substats.reduce((total, { unactivated }) => total + (unactivated ? 1 : 0), 0);
+		(artifact.unactivatedSubstats?.length ?? 0);
+
+	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
 
 	return (
-		artifact.substats.reduce(
+		substats.reduce(
 			(current, { key, value }) =>
 				current +
 				((value + statsAverage[key][artifact.rarity] * (rolls / 4)) *

@@ -127,8 +127,10 @@ export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 						found = artifactNames.find((value) => text.includes(value[0]));
 						if (found) artifact.setKey = found[1];
 					}
-					if (text.includes('unactivated'))
-						artifact.substats[artifact.substats.length - 1].unactivated = true;
+					if (text.includes('unactivated')) {
+						if (!artifact.unactivatedSubstats) artifact.unactivatedSubstats = [];
+						artifact.unactivatedSubstats.push(artifact.substats.pop());
+					}
 				}
 				break;
 			}

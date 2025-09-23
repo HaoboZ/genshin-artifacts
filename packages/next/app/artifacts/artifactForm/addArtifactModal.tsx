@@ -8,6 +8,8 @@ import { DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
+import { omit, partition } from 'remeda';
+import pget from '../../../src/helpers/pget';
 import ArtifactModal from '../[artifactSet]/artifactModal';
 import ArtifactForm from './index';
 
@@ -38,7 +40,17 @@ export default function AddArtifactModal() {
 			<Formik<IArtifact>
 				initialValues={initialValues}
 				onSubmit={(artifact) => {
-					dispatch(goodActions.addArtifact(artifact));
+					const [unactivatedSubstats, substats] = partition(
+						artifact.substats,
+						pget('unactivated'),
+					);
+					dispatch(
+						goodActions.addArtifact({
+							...artifact,
+							substats: substats.map(omit(['unactivated'])),
+							unactivatedSubstats: unactivatedSubstats?.map(omit(['unactivated'])),
+						}),
+					);
 					closeModal();
 					showModal(ArtifactModal, { props: { artifact } });
 				}}>

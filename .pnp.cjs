@@ -838,7 +838,7 @@ const RAW_RUNTIME_STATE =
           ["@genshin-artifacts/generate", "workspace:packages/generate"],\
           ["@types/jsdom", "npm:21.1.7"],\
           ["@types/node", "npm:22.18.1"],\
-          ["axios", "npm:1.11.0"],\
+          ["axios", "npm:1.12.0"],\
           ["change-case", "npm:5.4.4"],\
           ["globals", "npm:16.3.0"],\
           ["jsdom", "virtual:344f692adf029f8badd1359b0edc03a4ad5c9536f84c8dfcf480688a8d745700bac84ca02203243eac2099ee627e4f5e6c084bb5bc39a995e158c6a2a3c44bb4#npm:26.1.0"],\
@@ -874,7 +874,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-redux", "npm:7.1.34"],\
           ["@uidotdev/usehooks", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:2.4.1"],\
           ["@vercel/analytics", "virtual:20c8843e630057c78385fdd70d60a9f8f52d3572ca8be27fa369c61b257d6873db7c3412f762fd85d922aa3def3e5dc421b191d2046b601ba52bd10b05ec44bf#npm:1.5.0"],\
-          ["axios", "npm:1.11.0"],\
+          ["axios", "npm:1.12.0"],\
           ["change-case", "npm:5.4.4"],\
           ["dayjs", "npm:1.11.18"],\
           ["events", "npm:3.3.0"],\
@@ -3136,11 +3136,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["axios", [\
-      ["npm:1.11.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/axios-npm-1.11.0-64966324ac-10c0.zip/node_modules/axios/",\
+      ["npm:1.12.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/axios-npm-1.12.0-58e24ac59e-10c0.zip/node_modules/axios/",\
         "packageDependencies": [\
-          ["axios", "npm:1.11.0"],\
-          ["follow-redirects", "virtual:64966324acb1c9e829d59ac6bca19b45b43dc1234d7283c5d2bb20566c18be5fa16a88d38b39ab3c3bd238b9a4c2a56d68914ca1163a12899a78f10804e91e91#npm:1.15.6"],\
+          ["axios", "npm:1.12.0"],\
+          ["follow-redirects", "virtual:58e24ac59ed4f801797831333a65a5df3bd85bc9be6bf725983a68b2c9bd36659e4c9c86f006b9d10f4d981a7dca8d7192659cd30e0d542a39db8b9e42cbb40a#npm:1.15.6"],\
           ["form-data", "npm:4.0.4"],\
           ["proxy-from-env", "npm:1.1.0"]\
         ],\
@@ -5021,12 +5021,12 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:64966324acb1c9e829d59ac6bca19b45b43dc1234d7283c5d2bb20566c18be5fa16a88d38b39ab3c3bd238b9a4c2a56d68914ca1163a12899a78f10804e91e91#npm:1.15.6", {\
-        "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-08915ad199/3/AppData/Local/Yarn/Berry/cache/follow-redirects-npm-1.15.6-50635fe51d-10c0.zip/node_modules/follow-redirects/",\
+      ["virtual:58e24ac59ed4f801797831333a65a5df3bd85bc9be6bf725983a68b2c9bd36659e4c9c86f006b9d10f4d981a7dca8d7192659cd30e0d542a39db8b9e42cbb40a#npm:1.15.6", {\
+        "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-eec3a3d79e/3/AppData/Local/Yarn/Berry/cache/follow-redirects-npm-1.15.6-50635fe51d-10c0.zip/node_modules/follow-redirects/",\
         "packageDependencies": [\
           ["@types/debug", null],\
           ["debug", null],\
-          ["follow-redirects", "virtual:64966324acb1c9e829d59ac6bca19b45b43dc1234d7283c5d2bb20566c18be5fa16a88d38b39ab3c3bd238b9a4c2a56d68914ca1163a12899a78f10804e91e91#npm:1.15.6"]\
+          ["follow-redirects", "virtual:58e24ac59ed4f801797831333a65a5df3bd85bc9be6bf725983a68b2c9bd36659e4c9c86f006b9d10f4d981a7dca8d7192659cd30e0d542a39db8b9e42cbb40a#npm:1.15.6"]\
         ],\
         "packagePeers": [\
           "@types/debug",\

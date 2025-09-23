@@ -11,7 +11,7 @@ const run = {
 	talents: false,
 	weekly: false,
 	artifacts: false,
-	weapons: true,
+	weapons: false,
 };
 
 (async () => {

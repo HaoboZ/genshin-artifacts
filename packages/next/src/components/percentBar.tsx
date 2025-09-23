@@ -1,3 +1,4 @@
+import type { SxProps } from '@mui/material';
 import { Box, LinearProgress, linearProgressClasses, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
 
@@ -8,7 +9,15 @@ export function combinePercents(...vals: { percent: number; weight: number }[]) 
 	}, 0);
 }
 
-export default function PercentBar({ p, children }: { p: number; children?: ReactNode }) {
+export default function PercentBar({
+	p,
+	children,
+	sx,
+}: {
+	p: number;
+	children?: ReactNode;
+	sx?: SxProps;
+}) {
 	const rounded = Math.round(p * 100);
 
 	const text = typeof children === 'string' ? children.replaceAll('%p', `${rounded}%`) : children;
@@ -16,7 +25,14 @@ export default function PercentBar({ p, children }: { p: number; children?: Reac
 	return (
 		<Box sx={{ position: 'relative' }}>
 			<Typography
-				sx={{ zIndex: 1000, position: 'absolute', color: 'text.primary', ml: 1, fontSize: 11 }}>
+				sx={{
+					zIndex: 1000,
+					position: 'absolute',
+					color: 'text.primary',
+					ml: 1,
+					fontSize: 11,
+					...sx,
+				}}>
 				{text ?? `${rounded}%`}
 			</Typography>
 			<LinearProgress

@@ -79,6 +79,9 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 						{artifact.substats.map((substat) => (
 							<SubStatBar key={substat.key} substat={substat} />
 						))}
+						{artifact.unactivatedSubstats?.map((substat) => (
+							<SubStatBar key={substat.key} unactivated substat={substat} />
+						))}
 					</Grid>
 				</Grid>
 				<FormControlLabel
@@ -135,6 +138,9 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 											</OverflowTypography>
 											{currentArtifact.substats.map((substat) => (
 												<SubStatBar key={substat.key} substat={substat} />
+											))}
+											{currentArtifact.unactivatedSubstats?.map((substat) => (
+												<SubStatBar key={substat.key} unactivated substat={substat} />
 											))}
 										</Box>
 									)}

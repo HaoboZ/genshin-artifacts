@@ -6,13 +6,26 @@ import type { IArtifact } from '@/src/types/good';
 import { Button, DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { useMemo } from 'react';
+import { omit, partition } from 'remeda';
 import ArtifactForm from './index';
 
 export default function EditArtifactModal({ artifact }: { artifact: IArtifact }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const initialValues = useMemo(() => structuredClone(artifact), [artifact]);
+	const initialValues = useMemo(
+		() => ({
+			...structuredClone(artifact),
+			substats: [
+				...artifact.substats,
+				...(artifact.unactivatedSubstats?.map((substat) => ({
+					...substat,
+					unactivated: true,
+				})) ?? []),
+			],
+		}),
+		[artifact],
+	);
 
 	return (
 		<DialogWrapper>
@@ -20,7 +33,20 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact })
 			<Formik<IArtifact>
 				initialValues={initialValues}
 				onSubmit={(artifact) => {
-					dispatch(goodActions.editArtifact(artifact));
+					const [unactivatedSubstats, substats] = partition(
+						artifact.substats,
+						(substat) => substat.unactivated,
+					);
+
+					dispatch(
+						goodActions.editArtifact({
+							...artifact,
+							substats: substats.map(omit(['unactivated'])),
+							unactivatedSubstats: unactivatedSubstats.length
+								? unactivatedSubstats.map(omit(['unactivated']))
+								: undefined,
+						}),
+					);
 					closeModal();
 				}}>
 				<ArtifactForm
