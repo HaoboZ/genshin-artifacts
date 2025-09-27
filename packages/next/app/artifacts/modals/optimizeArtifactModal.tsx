@@ -38,6 +38,7 @@ export default function OptimizeArtifactModal() {
 			selected: boolean;
 		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
+
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
 			for (const slot of artifactSlotOrder) {
@@ -70,6 +71,7 @@ export default function OptimizeArtifactModal() {
 				}
 			}
 		}
+
 		return result;
 	});
 

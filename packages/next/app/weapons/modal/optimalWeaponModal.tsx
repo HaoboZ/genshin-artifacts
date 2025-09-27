@@ -14,14 +14,12 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	FormControlLabel,
 	Grid,
 	List,
 	ListItem,
 	ListItemText,
-	Switch,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
@@ -35,13 +33,10 @@ export default function OptimalWeaponModal() {
 
 	const characters = useCharacters({ owned: true });
 
-	const [checked, setChecked] = useState<boolean>(true);
-
-	const [giveWeapons, setGiveWeapons] = useState<GiveWeapon[]>([]);
-
-	useEffect(() => {
+	const [giveWeapons, setGiveWeapons] = useState(() => {
 		const weapons = structuredClone(storedWeapons);
 		const result: GiveWeapon[] = [];
+
 		for (let i = 0; i < characters.length; i++) {
 			const character = builds[characters[i].key];
 			const tieredWeapons = pipe(
@@ -50,19 +45,19 @@ export default function OptimalWeaponModal() {
 					weapon,
 					tier: arrDeepIndex(builds[character.key].weapon, weapon.key),
 				})),
-				filter(({ tier, weapon }) => tier !== -1 && (checked ? weapon.level > 1 : true)),
-				sortBy(pget('tier')),
+				filter(({ tier }) => tier !== -1),
+				sortBy(({ weapon }) => (weapon.level > 1 ? 0 : 1), pget('tier')),
 			);
 
+			if (character.key === 'Xianyun') console.log(tieredWeapons);
+
 			for (const { weapon, tier } of tieredWeapons) {
-				if (weapon.lock) continue;
 				if (weapon.location === character.key) break;
 				const currentLocation = characters.findIndex(({ key }) => key === weapon.location);
 				if (currentLocation !== -1 && currentLocation < i) continue;
 
 				const currentWeapon = weapons.find(({ location }) => location === character.key);
 				if (currentWeapon) {
-					if (currentWeapon.lock) break;
 					if (tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)) continue;
 					currentWeapon.location = '';
 				}
@@ -71,23 +66,14 @@ export default function OptimalWeaponModal() {
 				break;
 			}
 		}
-		setGiveWeapons(result);
-	}, [checked]);
+
+		return result;
+	});
 
 	return (
 		<DialogWrapper>
 			<DialogTitle>Weapons</DialogTitle>
 			<DialogContent>
-				<FormControlLabel
-					control={
-						<Switch
-							sx={{ ml: 0 }}
-							checked={checked}
-							onChange={({ target }) => setChecked(target.checked)}
-						/>
-					}
-					label='No min level weapons'
-				/>
 				<List>
 					{giveWeapons.map(({ weapon, tier, character, selected }, i) => (
 						<ListItem

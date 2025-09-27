@@ -36,6 +36,15 @@ export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {
 		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
+	NightOfTheSkysUnveiling: {
+		key: 'Traveler',
+		role: 'DPS',
+		weapon: [],
+		group: 0,
+		artifact: ['NightOfTheSkysUnveiling'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'atk_', 'critRD_', 'eleMas'],
+	},
 };
 
 export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];

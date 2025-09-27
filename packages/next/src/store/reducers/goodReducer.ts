@@ -1,7 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 import hash from 'object-hash';
-import { differenceWith, pick, uniqueBy } from 'remeda';
+import { differenceWith, uniqueBy } from 'remeda';
 import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
@@ -23,7 +24,15 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
-			return { ...state, ...pick(payload, ['characters', 'artifacts', 'weapons']) };
+			if (payload.characters) state.characters = payload.characters;
+			if (payload.artifacts) {
+				state.artifacts = payload.artifacts;
+				state.artifacts.forEach((artifact) => (artifact.id = nanoid()));
+			}
+			if (payload.weapons) {
+				state.weapons = payload.weapons;
+				state.weapons.forEach((weapon) => (weapon.id = nanoid()));
+			}
 		},
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);
