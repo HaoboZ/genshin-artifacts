@@ -1,14 +1,14 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import hash from 'object-hash';
-import { differenceWith, uniqueBy } from 'remeda';
+import { differenceWith, pick, uniqueBy } from 'remeda';
 import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',
-	version: 2,
+	version: 3,
 	source: 'genshin-artifacts.vercel.app',
 	characters: [],
 	artifacts: [],
@@ -23,7 +23,7 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
-			return { ...state, ...payload };
+			return { ...state, ...pick(payload, ['characters', 'artifacts', 'weapons']) };
 		},
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);
