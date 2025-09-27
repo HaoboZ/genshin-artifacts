@@ -1,4 +1,5 @@
 import { artifactSetsInfo } from '@/api/artifacts';
+import pget from '@/src/helpers/pget';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -9,7 +10,6 @@ import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { omit, partition } from 'remeda';
-import pget from '../../../src/helpers/pget';
 import ArtifactModal from '../[artifactSet]/artifactModal';
 import ArtifactForm from './index';
 

@@ -4,6 +4,7 @@ import { charactersInfo } from '@/api/characters';
 import { potentialPercent } from '@/api/stats';
 import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
+import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -11,7 +12,6 @@ import { useAppSelector } from '@/src/store/hooks';
 import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, sortBy } from 'remeda';
-import makeArray from '../../../src/helpers/makeArray';
 import CharacterImage from '../../characters/characterImage';
 import EditArtifactModal from '../artifactForm/editArtifactModal';
 import ArtifactStatImage from '../artifactStatImage';
@@ -70,16 +70,17 @@ export default function UpgradePriorityModal() {
 								/>
 								<PercentBar p={artifact.potential}>Potential: %p</PercentBar>
 							</ListItemText>
-							{artifact.build && artifact.build.key !== artifact.location && (
-								<Box sx={{ ml: 1 }}>
-									<PageLink
-										href={`/characters/${artifact.build.key}`}
-										onClick={() => closeModal()}>
-										<CharacterImage character={charactersInfo[artifact.build.key]} />
-										<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
-									</PageLink>
-								</Box>
-							)}
+							{artifact.build?.weapon.length !== 0 &&
+								artifact.build.key !== artifact.location && (
+									<Box sx={{ ml: 1 }}>
+										<PageLink
+											href={`/characters/${artifact.build.key}`}
+											onClick={() => closeModal()}>
+											<CharacterImage character={charactersInfo[artifact.build.key]} />
+											<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
+										</PageLink>
+									</Box>
+								)}
 						</ListItem>
 					))}
 				</List>
