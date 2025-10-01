@@ -30,6 +30,7 @@ export type CharacterKey =
 	| 'Eula' // Eula
 	| 'Faruzan' // Faruzan
 	| 'Fischl' // Fischl
+	| 'Flins' // Flins
 	| 'Freminet' // Freminet
 	| 'Furina' // Furina
 	| 'Gaming' // Gaming

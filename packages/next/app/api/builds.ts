@@ -56,11 +56,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'NoblesseOblige',
 			'DeepwoodMemories',
 		],
-		mainStat: {
-			sands: ['enerRech_', 'atk_', 'eleMas'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
 	Bennett: {
@@ -167,11 +163,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['CrimsonWitchOfFlames', ['MarechausseeHunter', 'LongNightsOath'], 'GildedDreams'],
-		mainStat: {
-			sands: ['eleMas', 'atk_', 'enerRech_'],
-			goblet: 'pyro_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['eleMas', 'atk_', 'enerRech_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
 	},
 	Diluc: {
@@ -496,11 +488,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'atk_',
-			circlet: ['atk_', 'critRate_'],
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
 		subStat: ['enerRech_', 'atk_', 'critRate_'],
 	},
 	Keqing: {
@@ -663,11 +651,30 @@ export const builds: Record<CharacterKey, Build> = {
 			'ThunderingFury',
 			['EmblemOfSeveredFate', 'GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'atk_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
+	},
+	Flins: {
+		key: 'Flins',
+		role: 'DPS',
+		weapon: [
+			'BloodsoakedRuins',
+			'StaffOfTheScarletSands',
+			['FracturedHalo', 'StaffOfHoma'],
+			['SymphonistOfScents', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
+			[
+				'BalladOfTheFjords',
+				'Deathmatch',
+				'CrimsonMoonsSemblance',
+				'CalamityQueller',
+				'SkywardSpine',
+				'VortexVanquisher',
+			],
+			['TamayurateiNoOhanashi', 'EngulfingLightning', 'ProspectorsShovel'],
+		],
+		group: 0,
+		artifact: ['NightOfTheSkysUnveiling', 'GildedDreams'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
 	},
 	// Dendro
@@ -890,11 +897,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'NightOfTheSkysUnveiling',
 			'GildedDreams',
 		],
-		mainStat: {
-			sands: ['enerRech_', 'eleMas'],
-			goblet: 'eleMas',
-			circlet: 'eleMas',
-		},
+		mainStat: { sands: ['enerRech_', 'eleMas'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'critRD_'],
 	},
 	// Hydro
@@ -1141,11 +1144,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
-		mainStat: {
-			sands: ['enerRech_', 'hp_'],
-			goblet: ['hp_', 'hydro_dmg_'],
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'hp_'], goblet: ['hp_', 'hydro_dmg_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', ['hp_', 'critRD_'], 'hp'],
 	},
 	Sigewinne: {
@@ -1213,11 +1212,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['NoblesseOblige', ['EmblemOfSeveredFate', 'GildedDreams']],
-		mainStat: {
-			sands: ['atk_', 'enerRech_', 'eleMas'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Kaeya: {
@@ -1241,11 +1236,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige', 'Instructor'],
-		mainStat: {
-			sands: ['enerRech_', 'atk_', 'eleMas'],
-			goblet: 'cryo_dmg_',
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['enerRech_', 'atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', ['atk_', 'eleMas']],
 	},
 	Rosaria: {
@@ -1532,11 +1523,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['GoldenTroupe', 'BlizzardStrayer', 'TenacityOfTheMillelith'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: ['cryo_dmg_', 'atk_'],
-			circlet: 'critRD_',
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},
 	Skirk: {
@@ -1664,11 +1651,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: ['ViridescentVenerer'],
-		mainStat: {
-			sands: ['atk_', 'enerRech_'],
-			goblet: 'atk_',
-			circlet: ['atk_', 'critRate_'],
-		},
+		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['atk_', 'critRate_'] },
 		subStat: ['enerRech_', 'atk_', 'eleMas', 'critRate_'],
 	},
 	Ifa: {
@@ -1915,11 +1898,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 1,
 		artifact: ['HuskOfOpulentDreams', 'NoblesseOblige'],
-		mainStat: {
-			sands: ['def_', 'enerRech_'],
-			goblet: 'def_',
-			circlet: ['def_', 'critRate_'],
-		},
+		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: ['def_', 'critRate_'] },
 		subStat: ['def_', 'enerRech_', 'def', 'critRate_'],
 	},
 	Kachina: {

@@ -309,6 +309,16 @@
 		"talentMaterial": "Ballad",
 		"weeklyMaterial": "Spirit Locket of Boreas"
 	},
+	"Flins": {
+		"key": "Flins",
+		"name": "Flins",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Flins_Icon.png",
+		"talentMaterial": "Vagrancy",
+		"weeklyMaterial": "Ascended Sample: Queen"
+	},
 	"Freminet": {
 		"key": "Freminet",
 		"name": "Freminet",
