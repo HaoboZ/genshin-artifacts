@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/23/25
+// 9/30/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -675,7 +675,7 @@ export const builds: Record<CharacterKey, Build> = {
 		group: 0,
 		artifact: ['NightOfTheSkysUnveiling', 'GildedDreams'],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
+		subStat: ['critRD_', 'enerRech_', ['atk_', 'eleMas']],
 	},
 	// Dendro
 	Collei: {
