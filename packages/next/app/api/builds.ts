@@ -646,8 +646,7 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: [
-			'GildedDreams',
-			'SilkenMoonsSerenade',
+			['GildedDreams', 'SilkenMoonsSerenade'],
 			'ThunderingFury',
 			['EmblemOfSeveredFate', 'GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
