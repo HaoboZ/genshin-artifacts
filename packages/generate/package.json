@@ -15,7 +15,7 @@
 		"@types/jsdom": "27.0.0",
 		"@types/node": "22.18.11",
 		"globals": "16.4.0",
-		"type-fest": "4.41.0",
+		"type-fest": "5.1.0",
 		"typescript": "5.9.3"
 	}
 }
