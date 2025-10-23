@@ -2,10 +2,19 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 9/30/25
+// 10/22/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
+		role: 'DPS',
+		weapon: ['SwordOfNarzissenkreuz'],
+		group: 0,
+		artifact: ['GladiatorsFinale'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+	},
+	WonderlandManekin: {
+		key: 'WonderlandManekin',
 		role: 'DPS',
 		weapon: ['SwordOfNarzissenkreuz'],
 		group: 0,
@@ -899,6 +908,15 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['enerRech_', 'eleMas'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'critRD_'],
 	},
+	Nefer: {
+		key: 'Nefer',
+		role: 'DPS',
+		weapon: ['ReliquaryOfTruth', 'DawningFrost', 'BlackmarrowLantern', 'TheWidsith'],
+		group: 1,
+		artifact: ['NightOfTheSkysUnveiling'],
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: ['critRD_', 'eleMas'] },
+		subStat: ['critRD_', 'eleMas'],
+	},
 	// Hydro
 	Xingqiu: {
 		key: 'Xingqiu',
@@ -1163,6 +1181,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Vaporize DPS',
 		weapon: [
 			'SurfsUp',
+			'ReliquaryOfTruth',
 			['SacrificialJade', 'AThousandFloatingDreams'],
 			['TomeOfTheEternalFlow', 'StarcallersWatch'],
 			'SunnyMorningSleepIn',

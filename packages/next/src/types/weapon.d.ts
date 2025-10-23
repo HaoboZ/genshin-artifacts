@@ -122,6 +122,7 @@ export type WeaponKey =
 	| 'PrototypeStarglitter' // Prototype Starglitter
 	| 'RightfulReward' // Rightful Reward
 	| 'RoyalSpear' // Royal Spear
+	| 'SacrificersStaff' // Sacrificer's Staff
 	| 'TamayurateiNoOhanashi' // Tamayuratei no Ohanashi
 	| 'WavebreakersFin' // Wavebreaker's Fin
 	| 'BlackTassel' // Black Tassel
@@ -138,6 +139,7 @@ export type WeaponKey =
 	| 'LostPrayerToTheSacredWinds' // Lost Prayer to the Sacred Winds
 	| 'MemoryOfDust' // Memory of Dust
 	| 'NightweaversLookingGlass' // Nightweaver's Looking Glass
+	| 'ReliquaryOfTruth' // Reliquary of Truth
 	| 'SkywardAtlas' // Skyward Atlas
 	| 'StarcallersWatch' // Starcaller's Watch
 	| 'SunnyMorningSleepIn' // Sunny Morning Sleep-In
@@ -149,6 +151,7 @@ export type WeaponKey =
 	| 'BalladOfTheBoundlessBlue' // Ballad of the Boundless Blue
 	| 'BlackcliffAgate' // Blackcliff Agate
 	| 'BlackmarrowLantern' // Blackmarrow Lantern
+	| 'DawningFrost' // Dawning Frost
 	| 'DodocoTales' // Dodoco Tales
 	| 'EtherlightSpindlelute' // Etherlight Spindlelute
 	| 'EyeOfPerception' // Eye of Perception

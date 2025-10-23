@@ -1,3 +1,4 @@
+'use client';
 import { Button, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
 

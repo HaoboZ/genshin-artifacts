@@ -65,6 +65,7 @@ export type CharacterKey =
 	| 'Mualani' // Mualani
 	| 'Nahida' // Nahida
 	| 'Navia' // Navia
+	| 'Nefer' // Nefer
 	| 'Neuvillette' // Neuvillette
 	| 'Nilou' // Nilou
 	| 'Ningguang' // Ningguang
@@ -89,6 +90,7 @@ export type CharacterKey =
 	| 'Varesa' // Varesa
 	| 'Venti' // Venti
 	| 'Wanderer' // Wanderer
+	| 'WonderlandManekin' // Wonderland Manekin
 	| 'Wriothesley' // Wriothesley
 	| 'Xiangling' // Xiangling
 	| 'Xianyun' // Xianyun

@@ -659,6 +659,16 @@
 		"talentMaterial": "Equity",
 		"weeklyMaterial": "Lightless Silk String"
 	},
+	"Nefer": {
+		"key": "Nefer",
+		"name": "Nefer",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Dendro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Nefer_Icon.png",
+		"talentMaterial": "Elysium",
+		"weeklyMaterial": "Ascended Sample: Rook"
+	},
 	"Neuvillette": {
 		"key": "Neuvillette",
 		"name": "Neuvillette",
@@ -896,6 +906,14 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Wanderer_Icon.png",
 		"talentMaterial": "Praxis",
 		"weeklyMaterial": "Daka's Bell"
+	},
+	"WonderlandManekin": {
+		"key": "WonderlandManekin",
+		"name": "Wonderland Manekin",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "None",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Wonderland_Manekin_Icon.png"
 	},
 	"Wriothesley": {
 		"key": "Wriothesley",

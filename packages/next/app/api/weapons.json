@@ -507,7 +507,7 @@
 		"weaponType": "Claymore",
 		"atk": 741,
 		"stat": "CRIT Rate 11.0%",
-		"ability": "Gain the \"Scorching Brilliance\" effect when using an Elemental Skill or Burst: CRIT DMG increased by 20~40% and ATK increased by 28~56% for 6s. This effect can trigger once every 10s.While a \"Scorching Brilliance\" instance is active, its duration is increased by 2s after Normal or Charged attacks deal Elemental DMG. This effect can trigger once every second. and the max duration increase is 6s.Additionally, when the equipping character is in the Nightsoul's Blessing state, \"Scorching Brilliance\" effects are increased by 75%, and its duration will not count down when the equipping character is off—field."
+		"ability": "Gain the \"Scorching Brilliance\" effect when using an Elemental Skill or Burst: CRIT DMG increased by 20~40% and ATK increased by 28~56% for 6s. This effect can trigger once every 10s.While a \"Scorching Brilliance\" instance is active, its duration is increased by 2s after Normal or Charged attacks deal Elemental DMG. This effect can trigger once every second, and the max duration increase is 6s.Additionally, when the equipping character is in the Nightsoul's Blessing state, \"Scorching Brilliance\" effects are increased by 75%, and its duration will not count down when the equipping character is off—field."
 	},
 	"BeaconOfTheReedSea": {
 		"key": "BeaconOfTheReedSea",
@@ -915,9 +915,9 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Weapon_Bloodsoaked_Ruins.png",
 		"rarity": 5,
 		"weaponType": "Polearm",
-		"atk": 0,
-		"stat": "None",
-		"ability": "None"
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "For 3.5s after using an Elemental Burst, the equipping character's Lunar-Charged DMG dealt to opponents is increased by 36~84%. Additionally, after triggering a Lunar-Charged reaction, the equipping character will gain Requiem of Ruin: CRIT DMG is increased by 28~56% for 6s. They will also regain 12~16 Elemental Energy. Elemental Energy can be restored this way once every 14s."
 	},
 	"CalamityQueller": {
 		"key": "CalamityQueller",
@@ -1229,6 +1229,16 @@
 		"stat": "ATK 27.6%",
 		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
 	},
+	"SacrificersStaff": {
+		"key": "SacrificersStaff",
+		"name": "Sacrificer's Staff",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Sacrificer%27s_Staff.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 620,
+		"stat": "CRIT Rate 9.2%",
+		"ability": "For 6s after an Elemental Skill hits an opponent, ATK is increased by 8~16% and Energy Recharge is increased by 6~12%. Max 3 stacks. This effect can be triggered even when the equipping character is off-field."
+	},
 	"TamayurateiNoOhanashi": {
 		"key": "TamayurateiNoOhanashi",
 		"name": "Tamayuratei no Ohanashi",
@@ -1327,7 +1337,7 @@
 		"weaponType": "Catalyst",
 		"atk": 741,
 		"stat": "ATK 16.5%",
-		"ability": "After the equipping character hits an opponent with a Plunging Attack, all nearby party members' Plunging Attacks will deal 28~80% increased DMG for 20s. When nearby party members hit opponents with Plunging Attacks, they will restore 2.5~3.5 Energy to the equipping character. Energy can restored this way every 0.7s. This energy regain effect can be triggered even if the equipping character is not on the field."
+		"ability": "After the equipping character hits an opponent with a Plunging Attack, all nearby party members' Plunging Attacks will deal 28~80% increased DMG for 20s. When nearby party members hit opponents with Plunging Attacks, they will restore 2.5~3.5 Energy to the equipping character. Energy can be restored this way every 0.7s. This energy regain effect can be triggered even if the equipping character is not on the field."
 	},
 	"EverlastingMoonglow": {
 		"key": "EverlastingMoonglow",
@@ -1389,6 +1399,16 @@
 		"stat": "Elemental Mastery 265",
 		"ability": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 60~120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 60~120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 120~240%, their Hyperbloom and Burgeon DMG is increased by 80~160%, and their Lunar-Bloom DMG is increased by 40~80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field."
 	},
+	"ReliquaryOfTruth": {
+		"key": "ReliquaryOfTruth",
+		"name": "Reliquary of Truth",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Reliquary_of_Truth.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "CRIT Rate is increased by 8~16%. When the equipping character unleashes an Elemental Skill, they gain the Secret of Lies effect: Elemental Mastery is increased by 80~160 for 12s. When the equipping character deals Lunar-Bloom DMG to an opponent, they gain the Moon of Truth effect: CRIT DMG is increased by 24~48% for 4s. When both the Secret of Lies and Moon of Truth effects are active at the same time, the results of both effects will be increased by 50%."
+	},
 	"SkywardAtlas": {
 		"key": "SkywardAtlas",
 		"name": "Skyward Atlas",
@@ -1397,7 +1417,7 @@
 		"weaponType": "Catalyst",
 		"atk": 674,
 		"stat": "ATK 33.1%",
-		"ability": "Increases Elemental DMG Bonus by 12~24%. Normal Attack hits have a 50% chance to earn the favor of the clouds. which actively seek out nearby opponents to attack for 15s, dealing 160~320% ATK DMG. Can only occur once every 30s."
+		"ability": "Increases Elemental DMG Bonus by 12~24%. Normal Attack hits have a 50% chance to earn the favor of the clouds, which actively seek out nearby opponents to attack for 15s, dealing 160~320% ATK DMG. Can only occur once every 30s."
 	},
 	"StarcallersWatch": {
 		"key": "StarcallersWatch",
@@ -1457,7 +1477,7 @@
 		"weaponType": "Catalyst",
 		"atk": 674,
 		"stat": "CRIT DMG 44.1%",
-		"ability": "ATK is increased by 28~56%. When you use a Plunging Attack, you will gain the \"Dawn's First Hue\" effect: Plunging Attack CRIT DMG is increased by 28~56%. When you use an Elemental Skill or Burst, you will gain the \"Twilight's Splendor\" effect: Plunging Attack CRIT DMG is increased by 40~80%. The two effects above each last for 15s. and will be canceled 0.1s after the ground impact hits a target."
+		"ability": "ATK is increased by 28~56%. When you use a Plunging Attack, you will gain the \"Dawn's First Hue\" effect: Plunging Attack CRIT DMG is increased by 28~56%. When you use an Elemental Skill or Burst, you will gain the \"Twilight's Splendor\" effect: Plunging Attack CRIT DMG is increased by 40~80%. The two effects above each last for 15s, and will be canceled 0.1s after the ground impact hits a target."
 	},
 	"AshGravenDrinkingHorn": {
 		"key": "AshGravenDrinkingHorn",
@@ -1498,6 +1518,16 @@
 		"atk": 454,
 		"stat": "Elemental Mastery 221",
 		"ability": "Bloom DMG is increased by 48~96%, and Lunar-Bloom DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Bloom DMG is increased by an additional 12~24%."
+	},
+	"DawningFrost": {
+		"key": "DawningFrost",
+		"name": "Dawning Frost",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0d/Weapon_Dawning_Frost.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "For 10s after a Charged Attack hits an opponent, Elemental Mastery is increased by 72~144. For 10s after an Elemental Skill hits an opponent. Elemental Mastery is increased by 48~96."
 	},
 	"DodocoTales": {
 		"key": "DodocoTales",
@@ -1977,7 +2007,7 @@
 		"weaponType": "Bow",
 		"atk": 565,
 		"stat": "ATK 27.6%",
-		"ability": "The character's Elemental Mastery will increase by 40~80 within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can triggered once every 0.5s."
+		"ability": "The character's Elemental Mastery will increase by 40~80 within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can be triggered once every 0.5s."
 	},
 	"KingsSquire": {
 		"key": "KingsSquire",

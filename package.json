@@ -12,23 +12,23 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"@next/bundle-analyzer": "15.5.6",
-		"next": "15.5.6",
+		"@next/bundle-analyzer": "16.0.0",
+		"next": "16.0.0",
 		"remeda": "2.32.0"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.1",
-		"@next/eslint-plugin-next": "15.5.6",
+		"@next/eslint-plugin-next": "16.0.0",
 		"@types/eslint": "9.6.1",
-		"@types/node": "22.18.11",
+		"@types/node": "24.9.1",
 		"eslint": "9.38.0",
-		"eslint-config-next": "15.5.6",
+		"eslint-config-next": "16.0.0",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-prettier": "5.5.4",
-		"eslint-plugin-react-hooks": "5.2.0",
+		"eslint-plugin-react-hooks": "7.0.0",
 		"globals": "16.4.0",
 		"prettier": "3.6.2",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.46.1"
+		"typescript-eslint": "8.46.2"
 	}
 }
