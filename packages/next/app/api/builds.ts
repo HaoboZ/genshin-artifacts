@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 10/22/25
+// 10/24/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -911,10 +911,18 @@ export const builds: Record<CharacterKey, Build> = {
 	Nefer: {
 		key: 'Nefer',
 		role: 'DPS',
-		weapon: ['ReliquaryOfTruth', 'DawningFrost', 'BlackmarrowLantern', 'TheWidsith'],
+		weapon: [
+			'ReliquaryOfTruth',
+			['NightweaversLookingGlass', 'SunnyMorningSleepIn'],
+			'StarcallersWatch',
+			'AThousandFloatingDreams',
+			['SurfsUp', 'TomeOfTheEternalFlow'],
+			['BlackmarrowLantern', 'DawningFrost'],
+			'TheWidsith',
+		],
 		group: 1,
 		artifact: ['NightOfTheSkysUnveiling'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: ['critRD_', 'eleMas'] },
+		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'critRD_' },
 		subStat: ['critRD_', 'eleMas'],
 	},
 	// Hydro
