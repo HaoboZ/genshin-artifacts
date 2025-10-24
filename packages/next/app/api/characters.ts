@@ -39,5 +39,5 @@ export function useCharacters({
 				return index === -1 ? Infinity : index;
 			}),
 		);
-	}, [priority, characters, owned]);
+	}, [priority, characters, owned, artifactSet]);
 }

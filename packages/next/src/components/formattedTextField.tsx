@@ -8,6 +8,7 @@ export default function FormattedTextField(props: TextFieldProps) {
 	const [focused, setFocused] = useState(false);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		if (!focused) setText(props.value);
 	}, [focused, props.value]);
 

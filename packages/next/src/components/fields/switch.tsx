@@ -17,7 +17,7 @@ export default function SwitchField({
 				checked={field.value}
 				{...props}
 				onChange={(e) => {
-					// @ts-ignore
+					// @ts-expect-error onChange return
 					if (props.onChange?.(e) !== false) helpers.setValue(e.target.checked);
 				}}
 			/>

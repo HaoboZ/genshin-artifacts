@@ -23,7 +23,7 @@ export default function BestInSlot({
 
 	const { mainStat, subStat, role } = useMemo(
 		() => getArtifactSetBuild(characters, artifactSet, group),
-		[characters],
+		[characters, artifactSet, group],
 	);
 
 	if (!mainStat.sands[0].length) return null;

@@ -28,7 +28,7 @@ export default function Sortable<Item>({
 	const [setA, setSetA] = useState(false);
 	const [skipB, setSkipB] = useState(true);
 	const [list, setList] = useState<{ id: string; item: Item }[]>(() =>
-		// @ts-ignore
+		// @ts-expect-error item id
 		items.map((item) => ({ id: item.id ?? nanoid(), item })),
 	);
 	const [active, setActive] = useState<Active>(null);
@@ -43,12 +43,14 @@ export default function Sortable<Item>({
 		setSetA(false);
 		setSkipB(true);
 		setItems(list.map(pget('item')));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [list]);
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		// @ts-ignore
+		// @ts-expect-error item id
 		setList(items.map((item, index) => ({ id: item.id ?? list[index]?.id ?? nanoid(), item })));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const container = useMemo(
@@ -56,6 +58,7 @@ export default function Sortable<Item>({
 			list.map(({ id, item }) => (
 				<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
 			)),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[list, ...dependencies],
 	);
 

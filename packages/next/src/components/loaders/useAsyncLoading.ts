@@ -1,7 +1,10 @@
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 
-export default function useAsyncLoading(): [boolean, <F extends Function>(func: F) => F] {
+export default function useAsyncLoading(): [
+	boolean,
+	<F extends (...args: any[]) => any>(func: F) => F,
+] {
 	const { enqueueSnackbar } = useSnackbar();
 
 	const [loading, setLoading] = useState(false);

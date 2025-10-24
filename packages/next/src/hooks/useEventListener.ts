@@ -17,9 +17,9 @@ export default function useEventListener(
 
 	useEffect(() => {
 		if (!event) return;
-		// @ts-ignore
+		// @ts-expect-error event listener
 		const add = event.addEventListener || event.addListener || event.on;
-		// @ts-ignore
+		// @ts-expect-error event listener
 		const remove = event.removeEventListener || event.removeListener || event.off;
 
 		const func = (...args) => ref.current(...args);

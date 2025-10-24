@@ -59,7 +59,7 @@ export default function Artifacts() {
 							size={50}
 							sx={{ 'mr': 1, ':hover': { cursor: 'pointer' } }}
 							component={Link}
-							// @ts-ignore
+							// @ts-expect-error link
 							href={`/artifacts/${artifactSet.key}`}
 						/>
 						{charactersFiltered.map(({ key, level }) => (

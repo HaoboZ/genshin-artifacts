@@ -27,7 +27,7 @@ export default function AutocompleteField<
 			{...field}
 			{...props}
 			onChange={(e, value, reason, details) => {
-				// @ts-ignore
+				// @ts-expect-error onChange return
 				if (props.onChange?.(e, value, reason, details) !== false) helpers.setValue(value);
 			}}
 		/>

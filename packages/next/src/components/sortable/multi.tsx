@@ -49,6 +49,7 @@ export default function MultiSortable<Item>({
 		setSetA(false);
 		setSkipB(true);
 		setGroups(mapValues(lists, (list) => list.map(pget('item'))));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lists]);
 
 	useEffect(() => {
@@ -58,6 +59,7 @@ export default function MultiSortable<Item>({
 				items.map((item, index) => ({ id: lists[group][index]?.id ?? nanoid(), item })),
 			),
 		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [groups]);
 
 	const containers = useMemo(
@@ -73,6 +75,7 @@ export default function MultiSortable<Item>({
 					/>
 				)),
 			),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[lists, ...dependencies],
 	);
 

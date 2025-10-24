@@ -40,13 +40,13 @@ export function useWeapons({
 					({ weaponType, rarity, name }) =>
 						(!type || weaponType === type) &&
 						(!rarityType || rarityType === rarity) &&
-						(search ? name.toLowerCase().includes(searchVal) : true),
+						(searchVal ? name.toLowerCase().includes(searchVal) : true),
 				),
 				sortBy([pget('rarity'), 'desc'], [pget('level'), 'desc'], pget('key'), [
 					pget('refinement'),
 					'desc',
 				]),
 			),
-		[weapons, type, rarityType, search],
+		[weapons, type, rarityType, searchVal],
 	);
 }

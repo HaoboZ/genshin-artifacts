@@ -43,7 +43,7 @@ export default function AddWeaponModal() {
 				return index === -1 ? Infinity : index;
 			}),
 		);
-	}, [weapon]);
+	}, [priority, weapon]);
 
 	return (
 		<DialogWrapper>

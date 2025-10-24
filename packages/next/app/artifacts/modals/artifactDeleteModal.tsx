@@ -35,7 +35,7 @@ export default function ArtifactDeleteModal() {
 				counts[setKey][slotKey]++;
 				return counts;
 			}, {}),
-		[],
+		[artifacts],
 	);
 
 	const [deleteArtifacts, setDeleteArtifacts] = useState(() =>

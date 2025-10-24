@@ -47,6 +47,7 @@ export default function Scanner({
 			img.src = target.result as string;
 		};
 		reader.readAsDataURL(file);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useClipboardImage((items) => {

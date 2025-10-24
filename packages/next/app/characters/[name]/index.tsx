@@ -45,7 +45,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 				artifacts.filter(({ location }) => location === characterData.key),
 				pget('slotKey'),
 			),
-		[artifacts],
+		[artifacts, characterData.key],
 	);
 
 	const build = builds[characterData.key];

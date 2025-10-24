@@ -49,7 +49,7 @@ const artifactNames = Object.values(artifactSetsInfo).map<[string, ArtifactSetKe
 export default async function text(canvas: HTMLCanvasElement, setProgress?) {
 	const worker = await createWorker('eng');
 
-	// @ts-ignore
+	// @ts-expect-error partial artifact
 	const artifact: IArtifact = {
 		setKey: 'GladiatorsFinale',
 		slotKey: 'flower',

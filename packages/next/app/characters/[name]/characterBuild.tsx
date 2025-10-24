@@ -29,7 +29,7 @@ export default function CharacterBuild({ build }: { build: Build }) {
 									artifactSet={artifactSetsInfo[artifact]}
 									size={50}
 									component={Link}
-									// @ts-ignore
+									// @ts-expect-error link
 									href={`/artifacts/${artifact}`}
 								/>
 							))}

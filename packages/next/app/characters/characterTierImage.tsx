@@ -33,7 +33,7 @@ export default function CharacterTierImage({
 				percent: weightedPercent(build, artifact),
 			})),
 		);
-	}, [characterKey, good]);
+	}, [build, characterKey, good.artifacts, good.weapons]);
 
 	return (
 		<Fragment>

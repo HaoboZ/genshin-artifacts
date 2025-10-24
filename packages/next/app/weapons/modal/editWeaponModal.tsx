@@ -67,7 +67,7 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 				},
 			),
 		);
-	}, [weapon, checked]);
+	}, [priority, weapon.key, weapons, checked]);
 
 	return (
 		<DialogWrapper>

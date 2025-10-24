@@ -55,10 +55,11 @@ export default function CharacterPriority({
 				);
 			}),
 		);
-	}, [characters, editMode, element, weaponType, rarity, owned, search]);
+	}, [editMode, characters, search, element, weaponType, rarity, owned, good.characters]);
 
 	useEffect(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [characters]);
 
 	return (
