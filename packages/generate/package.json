@@ -2,9 +2,8 @@
 	"name": "@genshin-artifacts/generate",
 	"version": "1.0.27",
 	"scripts": {
-		"start": "npx tsx ./generate.ts"
+		"start": "bun ./index.ts"
 	},
-	"packageManager": "yarn@4.10.3",
 	"dependencies": {
 		"axios": "1.12.2",
 		"change-case": "5.4.4",
