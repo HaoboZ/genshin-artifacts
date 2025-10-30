@@ -3,14 +3,14 @@
 	"extends": ["config:recommended"],
 	"packageRules": [
 		{
+			"matchPackageNames": ["*"],
 			"matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
 			"groupName": "all non-major dependencies",
 			"groupSlug": "all-minor-patch",
 			"bumpVersion": "patch",
 			"automerge": true,
 			"automergeSchedule": ["before 4am on Monday"],
-			"automergeType": "branch",
-			"matchPackageNames": ["*"]
+			"automergeType": "branch"
 		}
 	]
 }
