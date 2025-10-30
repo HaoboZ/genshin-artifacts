@@ -3,7 +3,7 @@
 	"extends": ["config:recommended"],
 	"packageRules": [
 		{
-			"matchPackagePatterns": ["*"],
+			"matchPackageNames": ["*"],
 			"matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
 			"groupName": "all non-major dependencies",
 			"groupSlug": "all-minor-patch",
@@ -14,4 +14,3 @@
 		}
 	]
 }
-
