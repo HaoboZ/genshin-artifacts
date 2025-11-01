@@ -41,5 +41,23 @@ export async function fetchWeekly(characters) {
 }
 
 export function writeWeekly(weekly) {
+	
 	writeFileSync('../next/app/api/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
+	const file = '../next/src/types/weekly.d.ts';
+	writeFileSync(
+		file,
+		`export type WeeklyMaterialKey =${weekly
+			.map((boss) =>
+			boss.items
+				.map((item) =>
+					`\n\t| '${pascalCase(item.name.replace(/'/g, ""))}' // ${item.name}`,
+			)
+			.join('')
+	 	)
+		.join('')}\n`
+	);
+	const lines = readFileSync(file, 'utf8').trimEnd().split('\n');
+	const last = lines.pop();
+	lines.push(last.replace(/"?(.*?)"?\s*\/\/\s*(.*)/, '$1; // $2'));
+	writeFileSync(file, lines.join('\n'));
 }
