@@ -90,7 +90,8 @@ export type CharacterKey =
 	| 'Varesa' // Varesa
 	| 'Venti' // Venti
 	| 'Wanderer' // Wanderer
-	| 'WonderlandManekin' // Wonderland Manekin
+	| 'Manekina' // Manekina
+	| 'Manekin' // Manekin
 	| 'Wriothesley' // Wriothesley
 	| 'Xiangling' // Xiangling
 	| 'Xianyun' // Xianyun

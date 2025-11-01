@@ -34,7 +34,7 @@ export default function UpgradePriorityModal() {
 			map((artifact) => ({
 				...artifact,
 				...sortBy(
-					artifactBuilds[artifact.setKey].map((build) => ({
+					(artifactBuilds[artifact.setKey] ?? []).map((build) => ({
 						build,
 						potential: potentialPercent(build, artifact),
 						currentPotential: potentialPercent(

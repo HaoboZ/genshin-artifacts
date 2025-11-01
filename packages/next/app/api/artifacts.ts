@@ -17,26 +17,7 @@ export const artifactSlotImages = {
 	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
 };
 
-export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {
-	EchoesOfAnOffering: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: [],
-		group: 0,
-		artifact: ['EchoesOfAnOffering'],
-		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
-	},
-	BloodstainedChivalry: {
-		key: 'Traveler',
-		role: 'DPS',
-		weapon: [],
-		group: 0,
-		artifact: ['BloodstainedChivalry'],
-		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
-	},
-};
+export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {};
 
 export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
 

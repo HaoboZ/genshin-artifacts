@@ -907,13 +907,21 @@
 		"talentMaterial": "Praxis",
 		"weeklyMaterial": "Daka's Bell"
 	},
-	"WonderlandManekin": {
-		"key": "WonderlandManekin",
-		"name": "Wonderland Manekin",
+	"Manekina": {
+		"key": "Manekina",
+		"name": "Manekina",
 		"rarity": 5,
 		"weaponType": "Sword",
 		"element": "None",
-		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Wonderland_Manekin_Icon.png"
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Manekina_Icon.png"
+	},
+	"Manekin": {
+		"key": "Manekin",
+		"name": "Manekin",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "None",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Manekin_Icon.png"
 	},
 	"Wriothesley": {
 		"key": "Wriothesley",

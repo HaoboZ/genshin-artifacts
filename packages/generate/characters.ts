@@ -2,7 +2,7 @@ import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { indexBy } from 'remeda';
+import { indexBy, pick } from 'remeda';
 import pget from '../next/src/helpers/pget';
 
 export async function fetchCharacters() {
@@ -15,7 +15,11 @@ export async function fetchCharacters() {
 		const character = children[1].querySelector('a');
 		if (!character) continue;
 
-		characters.push({
+		if (character.title === 'Wonderland Manekin') {
+			character.title = 'Manekin';
+		}
+
+		const characterData = {
 			key: pascalCase(character.title),
 			name: character.title,
 			rarity: +children[2].querySelector('img').alt[0],
@@ -25,7 +29,20 @@ export async function fetchCharacters() {
 				.querySelector('img')
 				.getAttribute('data-src')
 				.replace(/(\.png).*$/, '$1'),
-		});
+		};
+
+		if (characterData.name === 'Manekin') {
+			characterData.image =
+				'https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Manekin_Icon.png';
+			characters.push({
+				key: 'Manekina',
+				name: 'Manekina',
+				...pick(characterData, ['rarity', 'weaponType', 'element']),
+				image: 'https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Manekina_Icon.png',
+			});
+		}
+
+		characters.push(characterData);
 	}
 
 	return characters;
