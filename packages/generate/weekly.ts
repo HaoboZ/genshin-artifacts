@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { writeFileSync } from 'fs';
+import { pascalCase } from 'change-case';
+import { writeFileSync, readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 
 export async function fetchWeekly(characters) {
@@ -41,20 +42,17 @@ export async function fetchWeekly(characters) {
 }
 
 export function writeWeekly(weekly) {
-	
 	writeFileSync('../next/app/api/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
 	const file = '../next/src/types/weekly.d.ts';
 	writeFileSync(
 		file,
 		`export type WeeklyMaterialKey =${weekly
 			.map((boss) =>
-			boss.items
-				.map((item) =>
-					`\n\t| '${pascalCase(item.name.replace(/'/g, ""))}' // ${item.name}`,
+				boss.items
+					.map((item) => `\n\t| '${pascalCase(item.name.replace(/'/g, ''))}' // ${item.name}`)
+					.join(''),
 			)
-			.join('')
-	 	)
-		.join('')}\n`
+			.join('')}\n`,
 	);
 	const lines = readFileSync(file, 'utf8').trimEnd().split('\n');
 	const last = lines.pop();
