@@ -29,7 +29,7 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 		const count = weeklyCount[character.talent[type]];
 		if (count) {
 			dispatch(
-				mainActions.setWeeklyMaterial({
+				goodActions.setWeeklyMaterial({
 					name: character.weeklyMaterial,
 					amount:
 						currentMaterials[character.weeklyMaterial] - weeklyCount[character.talent[type]],

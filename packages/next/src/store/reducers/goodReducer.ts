@@ -14,6 +14,7 @@ const initialState: IGOOD = {
 	characters: [],
 	artifacts: [],
 	weapons: [],
+	materials: {},
 };
 
 const goodSlice = createSlice({
@@ -33,6 +34,13 @@ const goodSlice = createSlice({
 				state.weapons = payload.weapons;
 				state.weapons.forEach((weapon) => (weapon.id = nanoid()));
 			}
+			if (payload.materials) {
+				state.materials = payload.materials;
+			}
+		},
+		setWeeklyMaterial(state, { payload }: PayloadAction<{ name: string; amount: number }>) {
+			state.materials = { ...state.materials };
+			state.materials[payload.name] = payload.amount;
 		},
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);

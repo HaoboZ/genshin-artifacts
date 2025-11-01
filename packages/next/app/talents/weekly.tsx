@@ -4,6 +4,7 @@ import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import {
 	Box,
@@ -77,7 +78,7 @@ export default function TalentsWeekly() {
 													value={currentMaterials[name] ?? 0}
 													onChange={({ target }) => {
 														dispatch(
-															mainActions.setWeeklyMaterial({
+															goodActions.setWeeklyMaterial({
 																name,
 																amount: +target.value,
 															}),

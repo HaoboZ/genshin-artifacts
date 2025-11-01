@@ -7,6 +7,9 @@ export interface IGOOD {
 	characters?: ICharacter[];
 	artifacts?: IArtifact[];
 	weapons?: IWeapon[];
+	materials?: {
+		[key: MaterialKey]: number;
+	};
 }
 
 export interface IArtifact {
