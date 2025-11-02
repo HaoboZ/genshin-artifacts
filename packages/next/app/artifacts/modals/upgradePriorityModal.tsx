@@ -44,7 +44,10 @@ export default function UpgradePriorityModal() {
 							),
 						),
 					})),
-					({ potential, currentPotential }) => currentPotential - potential,
+					({ potential, currentPotential }) => {
+						if (currentPotential < potential) return (currentPotential - potential) * 10;
+						return potential > 0.5 ? -potential : currentPotential - potential;
+					},
 				)[0],
 			})),
 			filter(({ potential }) => potential > 0.25),
