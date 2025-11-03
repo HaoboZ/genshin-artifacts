@@ -5,12 +5,12 @@ import {
 	useArtifacts,
 } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/api/stats';
 import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
+import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/src/helpers/stats';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch } from '@/src/store/hooks';

@@ -1,11 +1,11 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { potentialPercent } from '@/api/stats';
 import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
+import { matchingStats, potentialPercent } from '@/src/helpers/stats';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
@@ -36,6 +36,7 @@ export default function UpgradePriorityModal() {
 				...sortBy(
 					(artifactBuilds[artifact.setKey] ?? []).map((build) => ({
 						build,
+						stats: matchingStats(build, artifact),
 						potential: potentialPercent(build, artifact),
 						currentPotential: potentialPercent(
 							build,
@@ -70,7 +71,9 @@ export default function UpgradePriorityModal() {
 										showModal(EditArtifactModal, { props: { artifact } });
 									}}
 								/>
-								<PercentBar p={artifact.potential}>Potential: %p</PercentBar>
+								<PercentBar p={artifact.potential}>
+									Potential: %p ({artifact.stats[0]}/{artifact.stats[1]})
+								</PercentBar>
 							</ListItemText>
 							{artifact.build?.weapon.length !== 0 &&
 								artifact.build.key !== artifact.location && (

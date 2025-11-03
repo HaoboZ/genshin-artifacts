@@ -1,10 +1,9 @@
 import { charactersInfo } from '@/api/characters';
-import { weightedPercent } from '@/api/stats';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import statArrMatch from '@/src/helpers/statArrMatch';
+import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';

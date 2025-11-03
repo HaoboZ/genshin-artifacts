@@ -1,6 +1,7 @@
 import useClipboardImage from '@/src/hooks/useClipboardImage';
 import type { IArtifact } from '@/src/types/good';
 import { Button, CircularProgress } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
 import crop from './crop';
@@ -14,6 +15,7 @@ export default function Scanner({
 }: {
 	setArtifact: Dispatch<SetStateAction<IArtifact>>;
 }) {
+	const { enqueueSnackbar } = useSnackbar();
 	const [progress, setProgress] = useState(0);
 
 	const scanFile = useCallback((file: File) => {
@@ -40,7 +42,13 @@ export default function Scanner({
 						lock: lock(newCanvas),
 					}));
 				} catch (e) {
-					console.error(e);
+					const error = e?.response?.data || e?.message || e;
+					if (typeof error === 'string') {
+						enqueueSnackbar(error, { variant: 'error' });
+					} else {
+						console.error(error);
+						enqueueSnackbar('An unknown error has occurred', { variant: 'error' });
+					}
 				}
 				setProgress(0);
 			};

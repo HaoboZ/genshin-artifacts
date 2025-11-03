@@ -2,7 +2,6 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
-import { weightedPercent } from '@/api/stats';
 import { weaponsInfo } from '@/api/weapons';
 import FormattedTextField from '@/components/formattedTextField';
 import PageContainer from '@/components/page/container';
@@ -12,6 +11,7 @@ import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import { weightedPercent } from '@/src/helpers/stats';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';

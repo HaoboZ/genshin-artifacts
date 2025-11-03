@@ -1,11 +1,11 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { potentialPercent, statName } from '@/api/stats';
+import { statName } from '@/api/stats';
 import OverlayText from '@/components/overlayText';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import statArrMatch from '@/src/helpers/statArrMatch';
+import { potentialPercent, statArrMatch } from '@/src/helpers/stats';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey, StatKey } from '@/src/types/good';

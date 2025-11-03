@@ -1,14 +1,14 @@
 import { artifactSetsInfo, missingArtifactSets, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { statName, weightedPercent } from '@/api/stats';
+import { statName } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import PercentBar from '@/components/percentBar';
 import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import statArrMatch from '@/src/helpers/statArrMatch';
+import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';

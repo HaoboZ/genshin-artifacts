@@ -1,8 +1,8 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
-import { maxPotentialPercents } from '@/api/stats';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
+import { maxPotentialPercents } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';

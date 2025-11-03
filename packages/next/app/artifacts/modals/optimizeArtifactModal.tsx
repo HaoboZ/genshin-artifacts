@@ -1,9 +1,8 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
-import { weightedPercent } from '@/api/stats';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import statArrMatch from '@/src/helpers/statArrMatch';
+import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';

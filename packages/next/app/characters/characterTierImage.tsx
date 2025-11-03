@@ -1,9 +1,9 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import { weightedPercent } from '@/api/stats';
 import OverlayText from '@/components/overlayText';
 import PercentBar, { combinePercents } from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
+import { weightedPercent } from '@/src/helpers/stats';
 import type { CharacterKey, IGOOD } from '@/src/types/good';
 import { Fragment, useMemo } from 'react';
 import CharacterImage from './characterImage';

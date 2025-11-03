@@ -1,7 +1,8 @@
-import arrDeepIndex from './arrDeepIndex';
-import makeArray from './makeArray';
+import { StatKey } from '../../types/good';
+import arrDeepIndex from '../arrDeepIndex';
+import makeArray from '../makeArray';
 
-export default function statArrMatch(arr: string | string[], str: string, exact?: boolean) {
+export function statArrMatch(arr: StatKey | StatKey[], str: StatKey, exact?: boolean) {
 	if (arr === undefined) return true;
 	arr = makeArray(arr);
 	const index = arr.indexOf('critRD_');
