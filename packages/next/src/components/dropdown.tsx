@@ -1,16 +1,16 @@
 'use client';
-import type { ButtonProps } from '@mui/material';
-import { Button, Menu } from '@mui/material';
-import type { ReactNode } from 'react';
-import { forwardRef, Fragment, useState } from 'react';
+import { Button, ButtonProps, Menu } from '@mui/material';
+import { Fragment, ReactNode, useState } from 'react';
 
-const Dropdown = forwardRef<
-	HTMLButtonElement,
-	{
-		button: ReactNode;
-		children: ReactNode | ((closeMenu: () => void) => ReactNode);
-	} & Omit<ButtonProps, 'children'>
->(function ({ button, children, ...props }, ref) {
+export default function Dropdown({
+	ref,
+	button,
+	children,
+	...props
+}: {
+	button: ReactNode;
+	children: ReactNode | ((closeMenu: () => void) => ReactNode);
+} & Omit<ButtonProps, 'children'>) {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -31,6 +31,4 @@ const Dropdown = forwardRef<
 			</Menu>
 		</Fragment>
 	);
-});
-
-export default Dropdown;
+}

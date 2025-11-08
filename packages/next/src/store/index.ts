@@ -9,7 +9,7 @@ const rootReducer = combineReducers({ main, good });
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: process.env.NODE_ENV === 'development',
-	preloadedState: loadState(),
+	preloadedState: typeof window !== 'undefined' ? loadState() : undefined,
 });
 
 store.subscribe(debounce(() => saveState(store.getState()), 500));

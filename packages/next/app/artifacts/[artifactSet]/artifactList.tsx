@@ -40,14 +40,9 @@ import { filter, map, pipe, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatImage from '../artifactStatImage';
 import ArtifactModal from './artifactModal';
+import SlotFilter from './slotFilter';
 
-export default function ArtifactList({
-	artifactSet,
-	slot,
-}: {
-	artifactSet?: ArtifactSetKey;
-	slot: SlotKey;
-}) {
+export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
@@ -61,6 +56,7 @@ export default function ArtifactList({
 		locked: 0,
 		maxLevel: 0,
 	});
+	const [slot, setSlot] = useParamState<SlotKey>('slot', null);
 	const [rarity, setRarity] = useParamState('rarity', null);
 
 	const artifacts = useArtifacts({ artifactSet, rarity: +rarity, slot });
@@ -193,6 +189,7 @@ export default function ArtifactList({
 						))}
 					</Dropdown>
 				</Badge>
+				<SlotFilter slot={slot} setSlot={setSlot} />
 				<RarityFilter rarity={rarity} setRarity={setRarity} />
 			</Stack>
 			<Typography>

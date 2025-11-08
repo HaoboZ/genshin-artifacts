@@ -3,11 +3,16 @@ import pget from '@/src/helpers/pget';
 import type { DArtifact } from '@/src/types/data';
 import { Button, ButtonGroup, Grid } from '@mui/material';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { groupBy, pipe, reverse, sortBy } from 'remeda';
 import ArtifactSetImage from './artifactSetImage';
 
 export default function ArtifactSetFilter() {
+	const searchParams = useSearchParams();
+
+	const query = useMemo(() => Object.fromEntries(searchParams), [searchParams]);
+
 	const artifactGroups = useMemo(
 		() =>
 			pipe(
@@ -27,7 +32,10 @@ export default function ArtifactSetFilter() {
 					<Button sx={{ height: 50 }} component={Link} href='/artifacts'>
 						All
 					</Button>
-					<Button sx={{ height: 50 }} component={Link} href='/artifacts/all?rarity=5'>
+					<Button
+						sx={{ height: 50 }}
+						component={Link}
+						href={{ pathname: '/artifacts/all', query } as any}>
 						Unused
 					</Button>
 				</ButtonGroup>
@@ -40,7 +48,7 @@ export default function ArtifactSetFilter() {
 								key={artifactSet.key}
 								sx={{ p: 0, overflow: 'hidden' }}
 								component={Link}
-								href={`/artifacts/${artifactSet.key}`}>
+								href={{ pathname: `/artifacts/${artifactSet.key}`, query } as any}>
 								<ArtifactSetImage artifactSet={artifactSet} size={50} variant='square' />
 							</Button>
 						))}
