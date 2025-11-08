@@ -2,10 +2,12 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
-import { differenceWith, uniqueBy } from 'remeda';
+import { differenceWith, pick, uniqueBy } from 'remeda';
 import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
+import { weeklyInfo } from '@/app/api/talents';
+import pget from '@/src/helpers/pget';
 
 const initialState: IGOOD = {
 	format: 'GOOD',
@@ -35,12 +37,13 @@ const goodSlice = createSlice({
 				state.weapons.forEach((weapon) => (weapon.id = nanoid()));
 			}
 			if (payload.materials) {
-				state.materials = payload.materials;
+				const keys = weeklyInfo.flatMap(({ items }) => items.map(pget('key')));
+				state.materials = pick(payload.materials, keys);
 			}
 		},
-		setWeeklyMaterial(state, { payload }: PayloadAction<{ name: string; amount: number }>) {
+		setWeeklyMaterial(state, { payload }: PayloadAction<{ key: string; amount: number }>) {
 			state.materials = { ...state.materials };
-			state.materials[payload.name] = payload.amount;
+			state.materials[payload.key] = payload.amount;
 		},
 		toggleCharacter(state, { payload }: PayloadAction<CharacterKey>) {
 			const index = state.characters.findIndex(({ key }) => key === payload);

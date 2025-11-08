@@ -1,5 +1,7 @@
 // https://frzyc.github.io/genshin-optimizer/#/doc
 
+import { MaterialKey } from './materials';
+
 export interface IGOOD {
 	format: 'GOOD'; // A way for people to recognize this format.
 	version: number; // GOOD API version.
@@ -7,9 +9,7 @@ export interface IGOOD {
 	characters?: ICharacter[];
 	artifacts?: IArtifact[];
 	weapons?: IWeapon[];
-	materials?: {
-		[key: MaterialKey]: number;
-	};
+	materials?: Optional<Record<MaterialKey, number>>;
 }
 
 export interface IArtifact {

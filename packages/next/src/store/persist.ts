@@ -1,3 +1,6 @@
+import { pascalCase } from 'change-case';
+import { mapKeys } from 'remeda';
+
 const KEY = 'genshinArtifactsPersist';
 
 export function loadState() {
@@ -5,9 +8,15 @@ export function loadState() {
 		const serializedState = localStorage.getItem(KEY);
 		if (!serializedState) return undefined;
 		const state = JSON.parse(serializedState);
-		if (!('weekly' in state.main)) state.main.weekly = {};
+		if (state.main?.weekly) {
+			const weekly = state.main.weekly;
+			delete state.main.weekly;
+			// ADD HERE
+			state.good.materials = mapKeys(weekly, (key) => pascalCase(key.replace(/'/g, '')));
+		}
 		return state;
-	} catch {
+	} catch (err) {
+		console.log(err);
 		return undefined;
 	}
 }

@@ -14,10 +14,10 @@ import { clamp, indexBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 
 export default function BooksCharacter({ character }: { character: DCharacter & ICharacter }) {
-	const currentMaterials = useAppSelector(pget('main.weekly'));
+	const currentMaterials = useAppSelector(pget('good.materials'));
 	const dispatch = useAppDispatch();
 
-	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('name')), []);
+	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('key')), []);
 
 	const increaseSkill = (type) => {
 		dispatch(
@@ -30,7 +30,7 @@ export default function BooksCharacter({ character }: { character: DCharacter & 
 		if (count) {
 			dispatch(
 				goodActions.setWeeklyMaterial({
-					name: character.weeklyMaterial,
+					key: character.weeklyMaterial,
 					amount:
 						currentMaterials[character.weeklyMaterial] - weeklyCount[character.talent[type]],
 				}),

@@ -1,4 +1,4 @@
-export type WeeklyMaterialKey =
+export type MaterialKey =
 	| 'DvalinsPlume' // Dvalin's Plume
 	| 'DvalinsClaw' // Dvalin's Claw
 	| 'DvalinsSigh' // Dvalin's Sigh
