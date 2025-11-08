@@ -33,7 +33,7 @@ export default function Main() {
 			const reader = new FileReader();
 			reader.onload = ({ target }) => {
 				const { main, ...good } = JSON.parse(target.result as string);
-				if (main) dispatch(mainActions.setMain(main));
+				if (main) dispatch(mainActions.import(main));
 				dispatch(goodActions.import(good));
 				enqueueSnackbar('Imported');
 			};
@@ -66,7 +66,7 @@ export default function Main() {
 								const reader = new FileReader();
 								reader.onload = ({ target }) => {
 									const { main, ...good } = JSON.parse(target.result as string);
-									if (main) dispatch(mainActions.setMain(main));
+									if (main) dispatch(mainActions.import(main));
 									dispatch(goodActions.import(good));
 									enqueueSnackbar('Imported');
 								};

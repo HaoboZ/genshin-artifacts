@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { writeFileSync } from 'fs';
+import { pascalCase } from 'change-case';
+import { writeFileSync, readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 
 export async function fetchWeekly(characters) {
@@ -22,15 +23,16 @@ export async function fetchWeekly(characters) {
 			name: boss.querySelector('a').title.replace(' (Weekly Boss)', ''),
 			items: matContainer.map((container) => {
 				const image = container.querySelector('img');
-
+				const key = pascalCase(image.alt.replace(/'/g, ''));
 				if (characters) {
 					for (const character of container.nextElementSibling.querySelectorAll('a')) {
 						const found = characters.find(({ name }) => name === character.title);
-						if (found) found.weeklyMaterial = image.alt;
+						if (found) found.weeklyMaterial = key;
 					}
 				}
 
 				return {
+					key,
 					name: image.alt,
 					image: image.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
 				};
@@ -42,4 +44,15 @@ export async function fetchWeekly(characters) {
 
 export function writeWeekly(weekly) {
 	writeFileSync('../next/app/api/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
+	const entries = weekly.flatMap(({ items }) =>
+		items.map(({ name, key }) => `\n\t| '${key}' // ${name}`),
+	);
+
+	// Add semicolon to the last union entry
+	entries[entries.length - 1] = entries[entries.length - 1].replace(/^(\n\t\| '[^']+')/, '$1;');
+
+	writeFileSync(
+		'../next/src/types/materials.d.ts',
+		`export type MaterialKey =${entries.join('')}\n`,
+	);
 }

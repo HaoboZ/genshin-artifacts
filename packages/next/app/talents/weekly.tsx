@@ -4,6 +4,7 @@ import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import {
 	Box,
@@ -19,7 +20,7 @@ import { filter, flat, groupBy, map, pipe, reduce } from 'remeda';
 
 export default function TalentsWeekly() {
 	const dispatch = useAppDispatch();
-	const currentMaterials = useAppSelector(pget('main.weekly'));
+	const currentMaterials = useAppSelector(pget('good.materials'));
 	const characters = useCharacters();
 
 	const charactersWeekly = groupBy(characters, pget('weeklyMaterial'));
@@ -43,7 +44,7 @@ export default function TalentsWeekly() {
 						{weeklyInfo.map(({ name, items }) => {
 							const wanted = pipe(
 								items,
-								map(({ name }) => charactersWeekly[name]),
+								map(({ key }) => charactersWeekly[key]),
 								flat(2),
 								filter(Boolean),
 								reduce(
@@ -56,15 +57,15 @@ export default function TalentsWeekly() {
 								),
 							);
 							const owned = items.reduce(
-								(total, { name }) => total + (currentMaterials[name] ?? 0),
+								(total, { key }) => total + (currentMaterials[key] ?? 0),
 								0,
 							);
 
 							return (
 								<TableRow key={name}>
 									<TableCell>{name}</TableCell>
-									{items.map(({ name, image }) => (
-										<TableCell key={name}>
+									{items.map(({ key, name, image }) => (
+										<TableCell key={key}>
 											<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 												<Image
 													alt={name}
@@ -74,11 +75,11 @@ export default function TalentsWeekly() {
 													style={{ alignSelf: 'center' }}
 												/>
 												<FormattedTextField
-													value={currentMaterials[name] ?? 0}
+													value={currentMaterials[key] ?? 0}
 													onChange={({ target }) => {
 														dispatch(
-															mainActions.setWeeklyMaterial({
-																name,
+															goodActions.setWeeklyMaterial({
+																key,
 																amount: +target.value,
 															}),
 														);

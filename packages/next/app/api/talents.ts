@@ -1,8 +1,12 @@
+import { MaterialKey } from '@/src/types/materials';
 import talent from './talents.json';
 import weekly from './weekly.json';
 
 export const talentsInfo: { name: string; image: string; location: string; day: number }[] = talent;
-export const weeklyInfo: { name: string; items: { name: string; image: string }[] }[] = weekly;
+export const weeklyInfo: {
+	name: string;
+	items: { key: MaterialKey; name: string; image: string }[];
+}[] = weekly as any;
 
 export const weeklyRequirement = {
 	undefined: 6,
