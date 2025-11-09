@@ -20,7 +20,7 @@ export default function RarityFilter({
 		<ToggleButtonGroup
 			exclusive
 			value={rarity ?? 'none'}
-			onChange={(e, newRarity) => setRarity(newRarity === 'none' ? null : newRarity)}>
+			onChange={(_, newRarity) => setRarity(newRarity === 'none' ? null : newRarity)}>
 			<ToggleButton value='none'>All</ToggleButton>
 			{rarities.map(([rarity, color]) => {
 				if (hide3 && rarity === '3') return null;

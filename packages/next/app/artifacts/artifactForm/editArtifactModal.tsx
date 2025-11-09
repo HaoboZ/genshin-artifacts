@@ -1,5 +1,6 @@
 import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
+import { store } from '@/src/store';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
@@ -9,12 +10,13 @@ import { useMemo } from 'react';
 import { omit, partition } from 'remeda';
 import ArtifactForm from './index';
 
-export default function EditArtifactModal({ artifact }: { artifact: IArtifact }) {
+export default function EditArtifactModal({ id }: { id: string }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const initialValues = useMemo(
-		() => ({
+	const initialValues = useMemo(() => {
+		const artifact = store.getState().good.artifacts.find((artifact) => artifact.id === id);
+		return {
 			...structuredClone(artifact),
 			substats: [
 				...artifact.substats,
@@ -23,9 +25,8 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact })
 					unactivated: true,
 				})) ?? []),
 			],
-		}),
-		[artifact],
-	);
+		};
+	}, [id]);
 
 	return (
 		<DialogWrapper>
@@ -56,7 +57,7 @@ export default function EditArtifactModal({ artifact }: { artifact: IArtifact })
 							color='error'
 							onClick={() => {
 								if (!confirm('Delete this artifact?')) return;
-								dispatch(goodActions.deleteArtifact(artifact));
+								dispatch(goodActions.deleteArtifact(id));
 								closeModal();
 							}}>
 							Delete

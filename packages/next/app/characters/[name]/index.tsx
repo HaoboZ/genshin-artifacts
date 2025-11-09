@@ -89,27 +89,27 @@ export default function Character({ characterData }: { characterData: DCharacter
 							fullWidth={false}
 							label='Level'
 							value={character.level}
-							onChange={({ target }) =>
+							onChange={({ target }) => {
 								dispatch(
 									goodActions.editCharacter({
 										key: character.key,
 										level: clamp(+target.value, { min: 1, max: 90 }),
 									}),
-								)
-							}
+								);
+							}}
 						/>
 						<FormattedTextField
 							fullWidth={false}
 							label='Constellation'
 							value={character.constellation}
-							onChange={({ target }) =>
+							onChange={({ target }) => {
 								dispatch(
 									goodActions.editCharacter({
 										key: character.key,
 										constellation: clamp(+target.value, { min: 0, max: 6 }),
 									}),
-								)
-							}
+								);
+							}}
 						/>
 					</Stack>
 				)}
@@ -127,14 +127,14 @@ export default function Character({ characterData }: { characterData: DCharacter
 								<FormattedTextField
 									label={name}
 									value={character.talent[type]}
-									onChange={({ target }) =>
+									onChange={({ target }) => {
 										dispatch(
 											goodActions.editCharacter({
 												key: character.key,
 												talent: { [type]: clamp(+target.value, { min: 1, max: 10 }) },
 											}),
-										)
-									}
+										);
+									}}
 								/>
 							</Grid>
 						))}

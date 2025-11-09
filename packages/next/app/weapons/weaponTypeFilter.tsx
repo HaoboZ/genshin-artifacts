@@ -16,9 +16,9 @@ export default function WeaponTypeFilter({
 		<ToggleButtonGroup
 			exclusive
 			value={weaponType ?? 'none'}
-			onChange={(e, newWeaponType) =>
-				setWeaponType(newWeaponType === 'none' ? null : newWeaponType)
-			}>
+			onChange={(_, newWeaponType) => {
+				setWeaponType(newWeaponType === 'none' ? null : newWeaponType);
+			}}>
 			<ToggleButton value='none'>All</ToggleButton>
 			{weaponsTypes.map((weaponType) => (
 				<ToggleButton key={weaponType} value={weaponType} sx={{ p: 0 }}>

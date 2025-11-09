@@ -58,9 +58,7 @@ export default function Scanner({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useClipboardImage((items) => {
-		scanFile(items[0].getAsFile());
-	});
+	useClipboardImage((items) => scanFile(items[0].getAsFile()));
 
 	return (
 		<Button

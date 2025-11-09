@@ -72,7 +72,7 @@ export default function AddWeaponModal() {
 							options={Object.keys(weaponsInfo)}
 							getOptionLabel={(key) => weaponsInfo[key].name}
 							value={weapon as any}
-							onChange={(e, value) => {
+							onChange={(_, value) => {
 								setWeapon(value);
 								setFieldValue('key', value);
 							}}

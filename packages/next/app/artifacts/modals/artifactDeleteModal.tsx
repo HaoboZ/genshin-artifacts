@@ -103,9 +103,7 @@ export default function ArtifactDeleteModal() {
 				<Button
 					color='error'
 					variant='contained'
-					onClick={() => {
-						dispatch(goodActions.deleteUnlockedArtifacts());
-					}}>
+					onClick={() => dispatch(goodActions.deleteUnlockedArtifacts())}>
 					Delete Unlocked
 				</Button>
 			</DialogActions>

@@ -1,3 +1,5 @@
+import { weeklyInfo } from '@/app/api/talents';
+import pget from '@/src/helpers/pget';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
@@ -6,8 +8,6 @@ import { differenceWith, pick, uniqueBy } from 'remeda';
 import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
-import { weeklyInfo } from '@/app/api/talents';
-import pget from '@/src/helpers/pget';
 
 const initialState: IGOOD = {
 	format: 'GOOD',
@@ -135,13 +135,17 @@ const goodSlice = createSlice({
 			}
 			return state;
 		},
-		removeArtifact(state, { payload }: PayloadAction<IArtifact>) {
-			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
+		removeArtifact(state, { payload }: PayloadAction<string>) {
+			const index = state.artifacts.findIndex(({ id }) => id === payload);
 			state.artifacts = [...state.artifacts];
-			if (index !== -1) state.artifacts[index] = { ...payload, location: '' };
+			if (index !== -1)
+				state.artifacts[index] = {
+					...state.artifacts[index],
+					location: '',
+				};
 		},
-		deleteArtifact(state, { payload }: PayloadAction<IArtifact>) {
-			const index = state.artifacts.findIndex(({ id }) => id === payload.id);
+		deleteArtifact(state, { payload }: PayloadAction<string>) {
+			const index = state.artifacts.findIndex(({ id }) => id === payload);
 			if (index !== -1) state.artifacts = state.artifacts.filter((_, i) => i !== index);
 		},
 		deleteArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
@@ -196,8 +200,8 @@ const goodSlice = createSlice({
 				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
 			}
 		},
-		deleteWeapon(state, { payload }: PayloadAction<IWeapon>) {
-			const index = state.weapons.findIndex(({ id }) => id === payload.id);
+		deleteWeapon(state, { payload }: PayloadAction<string>) {
+			const index = state.weapons.findIndex(({ id }) => id === payload);
 			if (index !== -1) state.weapons = state.weapons.filter((_, i) => i !== index);
 		},
 	},

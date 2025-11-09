@@ -5,7 +5,6 @@ import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import { mainActions } from '@/src/store/reducers/mainReducer';
 import {
 	Box,
 	Table,

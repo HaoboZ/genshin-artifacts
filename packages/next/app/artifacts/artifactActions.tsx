@@ -16,7 +16,7 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 			<Button
 				onClick={() => {
 					closeModal();
-					showModal(EditArtifactModal, { props: { artifact } });
+					showModal(EditArtifactModal, { props: { id: artifact.id } });
 				}}>
 				Edit
 			</Button>
@@ -29,7 +29,7 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 							)
 						)
 							return;
-						dispatch(goodActions.removeArtifact(artifact));
+						dispatch(goodActions.removeArtifact(artifact.id));
 						closeModal();
 					}}>
 					Remove
@@ -38,7 +38,7 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 			<Button
 				onClick={() => {
 					if (!confirm('Delete this artifact?')) return;
-					dispatch(goodActions.deleteArtifact(artifact));
+					dispatch(goodActions.deleteArtifact(artifact.id));
 					closeModal();
 				}}>
 				Delete

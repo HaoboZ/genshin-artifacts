@@ -14,7 +14,7 @@ export default function SlotFilter({
 		<ToggleButtonGroup
 			exclusive
 			value={slot ?? 'none'}
-			onChange={(e, newSlot) => setSlot(newSlot === 'none' ? null : newSlot)}>
+			onChange={(_, newSlot) => setSlot(newSlot === 'none' ? null : newSlot)}>
 			<ToggleButton value='none'>All</ToggleButton>
 			{artifactSlotOrder.map((slot) => (
 				<ToggleButton key={slot} value={slot} sx={{ p: 0.5 }}>

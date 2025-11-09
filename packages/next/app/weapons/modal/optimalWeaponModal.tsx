@@ -84,12 +84,12 @@ export default function OptimalWeaponModal() {
 								'borderColor': selected ? 'blue' : 'rgba(127,127,127,.3)',
 								'borderRadius': 3,
 							}}
-							onClick={() =>
+							onClick={() => {
 								setGiveWeapons((giveWeapons) => {
 									giveWeapons[i].selected = !selected;
 									return [...giveWeapons];
-								})
-							}>
+								});
+							}}>
 							<ListItemText>
 								<Grid container spacing={1}>
 									<Grid size='auto'>

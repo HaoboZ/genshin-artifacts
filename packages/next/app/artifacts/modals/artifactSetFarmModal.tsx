@@ -5,7 +5,7 @@ import OverlayText from '@/components/overlayText';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import { potentialPercent, statArrMatch } from '@/src/helpers/stats';
+import { potentialPercent } from '@/src/helpers/stats';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey, StatKey } from '@/src/types/good';
@@ -13,6 +13,7 @@ import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
+import isMainStat from '../../../src/helpers/stats/isMainStat';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
@@ -24,6 +25,7 @@ export default function ArtifactSetFarmModal() {
 			filter(({ location }) => Boolean(location)),
 			map((artifact) => {
 				const bisArtifact = makeArray(builds[artifact.location].artifact[0])[0];
+
 				return {
 					...artifact,
 					setKey: (bisArtifact === artifact.setKey
@@ -31,13 +33,7 @@ export default function ArtifactSetFarmModal() {
 						: bisArtifact) as ArtifactSetKey,
 					mainStatMismatch:
 						bisArtifact !== artifact.setKey ||
-						(artifact.slotKey !== 'flower' &&
-							artifact.slotKey !== 'plume' &&
-							!statArrMatch(
-								builds[artifact.location].mainStat[artifact.slotKey],
-								artifact.mainStatKey,
-								true,
-							)),
+						!isMainStat(builds[artifact.location], artifact),
 					potential: potentialPercent(builds[artifact.location], artifact),
 				};
 			}),

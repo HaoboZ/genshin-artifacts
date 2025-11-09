@@ -13,7 +13,7 @@ export default function ElementFilter({
 		<ToggleButtonGroup
 			exclusive
 			value={element ?? 'none'}
-			onChange={(e, newElement) => setElement(newElement === 'none' ? null : newElement)}>
+			onChange={(_, newElement) => setElement(newElement === 'none' ? null : newElement)}>
 			<ToggleButton value='none'>All</ToggleButton>
 			{Object.entries(elementsInfo).map(([key, image]) => (
 				<ToggleButton key={key} value={key} sx={{ p: 0.5 }}>

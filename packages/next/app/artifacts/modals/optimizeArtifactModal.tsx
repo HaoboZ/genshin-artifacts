@@ -89,12 +89,12 @@ export default function OptimizeArtifactModal() {
 										'border': 1,
 										'borderColor': selected ? 'blue' : 'transparent',
 									}}
-									onClick={() =>
+									onClick={() => {
 										setGiveArtifacts((giveArtifacts) => {
 											giveArtifacts[i].selected = !selected;
 											return [...giveArtifacts];
-										})
-									}
+										});
+									}}
 								/>
 							</ListItemText>
 							<ListItemAvatar sx={{ pl: 2 }}>

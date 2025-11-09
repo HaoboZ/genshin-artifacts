@@ -5,13 +5,14 @@ import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
-import { matchingStats, potentialPercent } from '@/src/helpers/stats';
+import { matchingSubStats, potentialPercent } from '@/src/helpers/stats';
 import { useModal, useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, sortBy } from 'remeda';
+import { Build } from '../../../src/types/data';
 import CharacterImage from '../../characters/characterImage';
 import EditArtifactModal from '../artifactForm/editArtifactModal';
 import ArtifactStatImage from '../artifactStatImage';
@@ -34,25 +35,31 @@ export default function UpgradePriorityModal() {
 			map((artifact) => ({
 				...artifact,
 				...sortBy(
-					(artifactBuilds[artifact.setKey] ?? []).map((build) => ({
-						build,
-						stats: matchingStats(build, artifact),
-						potential: potentialPercent(build, artifact),
-						currentPotential: potentialPercent(
+					((artifactBuilds[artifact.setKey] ?? []) as Build[]).map((build) => {
+						const matching = matchingSubStats(build, artifact);
+
+						return {
 							build,
-							equippedArtifacts[build.key]?.find(
-								({ slotKey }) => artifact.slotKey === slotKey,
+							matching,
+							maxMatching: matching[0] === 4 || matching[0] === matching[1],
+							potential: potentialPercent(build, artifact),
+							currentPotential: potentialPercent(
+								build,
+								equippedArtifacts[build.key]?.find(
+									({ slotKey }) => artifact.slotKey === slotKey,
+								),
 							),
-						),
-					})),
+						};
+					}),
+					[pget('maxMatching'), 'desc'],
 					({ potential, currentPotential }) => {
 						if (currentPotential < potential) return (currentPotential - potential) * 10;
 						return potential > 0.5 ? -potential : currentPotential - potential;
 					},
 				)[0],
 			})),
-			filter(({ potential }) => potential > 0.25),
-			sortBy([pget('potential'), 'desc']),
+			filter(({ maxMatching, potential }) => maxMatching || potential > 0.25),
+			sortBy([pget('maxMatching'), 'desc'], [pget('potential'), 'desc']),
 		);
 	}, [artifacts]);
 
@@ -68,11 +75,11 @@ export default function UpgradePriorityModal() {
 									artifact={artifact}
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() => {
-										showModal(EditArtifactModal, { props: { artifact } });
+										showModal(EditArtifactModal, { props: { id: artifact.id } });
 									}}
 								/>
 								<PercentBar p={artifact.potential}>
-									Potential: %p ({artifact.stats[0]}/{artifact.stats[1]})
+									Potential: %p ({artifact.matching[0]}/{artifact.matching[1]})
 								</PercentBar>
 							</ListItemText>
 							{artifact.build?.weapon.length !== 0 &&

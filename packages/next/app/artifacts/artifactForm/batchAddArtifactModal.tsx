@@ -124,13 +124,13 @@ export default function BatchAddArtifactModal() {
 										<ArtifactStatImage
 											artifact={artifact}
 											sx={{ ':hover': { cursor: 'pointer' } }}
-											onClick={() =>
+											onClick={() => {
 												setArtifacts((artifacts) => {
 													const newArtifacts = { ...artifacts };
 													delete newArtifacts[key];
 													return newArtifacts;
-												})
-											}
+												});
+											}}
 										/>
 									</Grid>
 								))}

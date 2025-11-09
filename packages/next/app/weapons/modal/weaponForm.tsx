@@ -71,7 +71,7 @@ export default function WeaponForm({
 						color='error'
 						onClick={() => {
 							if (!confirm('Delete this weapon?')) return;
-							dispatch(goodActions.deleteWeapon(values));
+							dispatch(goodActions.deleteWeapon(values.id));
 							closeModal();
 						}}>
 						Delete
