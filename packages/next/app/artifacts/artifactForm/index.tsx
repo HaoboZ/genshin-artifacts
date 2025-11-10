@@ -45,8 +45,11 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							}}
 						/>
 					</Grid>
-					<Grid size={3} sx={{ display: 'flex', alignItems: 'center' }}>
+					<Grid size={1.5} sx={{ display: 'flex', alignItems: 'center' }}>
 						<FormControlLabel control={<SwitchField name='lock' />} label='Locked' />
+					</Grid>
+					<Grid size={1.5} sx={{ display: 'flex', alignItems: 'center' }}>
+						<FormControlLabel control={<SwitchField name='astralMark' />} label='Mark' />
 					</Grid>
 					<Grid
 						size={3}

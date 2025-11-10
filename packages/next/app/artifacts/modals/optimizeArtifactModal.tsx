@@ -37,10 +37,18 @@ export default function OptimizeArtifactModal() {
 			selected: boolean;
 		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
+		console.log('modal');
+
+		const marked = new Set<string>();
+		for (const a of artifactsClone) {
+			if (a.astralMark && a.location) marked.add(`${a.location}:${a.slotKey}`);
+		}
 
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
 			for (const slot of artifactSlotOrder) {
+				// skip marked slots
+				if (marked.has(`${character.key}:${slot}`)) continue;
 				const tieredArtifacts = pipe(
 					artifactsClone,
 					filter(
@@ -55,6 +63,8 @@ export default function OptimizeArtifactModal() {
 				for (const artifact of tieredArtifacts) {
 					if (artifact.location === character.key) break;
 					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
+					// astralMarked artifacts are skipped
+					if (artifact.astralMark) continue;
 					if (currentLocation !== -1 && currentLocation < i) continue;
 					const currentArtifact = artifactsClone.find(
 						({ slotKey, location }) => slotKey === slot && location === character.key,

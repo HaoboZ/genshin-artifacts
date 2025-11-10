@@ -10,6 +10,7 @@ export interface IGOOD {
 	artifacts?: IArtifact[];
 	weapons?: IWeapon[];
 	materials?: Optional<Record<MaterialKey, number>>;
+	astralMark?: boolean;
 }
 
 export interface IArtifact {
