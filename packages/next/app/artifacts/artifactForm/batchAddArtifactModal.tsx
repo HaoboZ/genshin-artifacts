@@ -29,12 +29,12 @@ export default function BatchAddArtifactModal() {
 			<DialogTitle>Add Artifacts</DialogTitle>
 			<DialogContent>
 				<Grid container spacing={1}>
-					<Grid size={12}>
+					<Grid size={4}>
 						<Box
 							sx={{
 								border: 1,
 								width: '100%',
-								aspectRatio: '16/9',
+								aspectRatio: '10/17',
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',

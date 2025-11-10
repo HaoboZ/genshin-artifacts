@@ -7,6 +7,7 @@ import { Button, CircularProgress, Grid } from '@mui/material';
 import Script from 'next/script';
 import { useSnackbar } from 'notistack';
 import { useCallback, useRef, useState } from 'react';
+import { IArtifact } from '../../src/types/good';
 import crop from '../artifacts/artifactForm/scanner/crop';
 import lock from '../artifacts/artifactForm/scanner/lock';
 import match from '../artifacts/artifactForm/scanner/match';
@@ -18,6 +19,8 @@ export default function ScanTest() {
 
 	const { enqueueSnackbar } = useSnackbar();
 	const [progress, setProgress] = useState(0);
+
+	const [artifact, setArtifact] = useState<IArtifact>();
 
 	const scanFile = useCallback((file: File) => {
 		setProgress(1);
@@ -42,7 +45,7 @@ export default function ScanTest() {
 
 					const artifact = await text(canvasRef.current, setProgress);
 
-					console.log({
+					setArtifact({
 						...artifact,
 						rarity: rarity(newCanvas),
 						lock: lock(newCanvas),
@@ -91,6 +94,7 @@ export default function ScanTest() {
 								}}
 							/>
 						</Button>
+						<pre>{JSON.stringify(artifact, null, 2)}</pre>
 					</Grid>
 					<Grid size={4}>
 						<canvas
