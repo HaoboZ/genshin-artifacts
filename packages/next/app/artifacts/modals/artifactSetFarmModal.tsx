@@ -6,6 +6,7 @@ import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { potentialPercent } from '@/src/helpers/stats';
+import isMainStat from '@/src/helpers/stats/isMainStat';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
 import type { ArtifactSetKey, StatKey } from '@/src/types/good';
@@ -13,7 +14,6 @@ import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
-import isMainStat from '../../../src/helpers/stats/isMainStat';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {

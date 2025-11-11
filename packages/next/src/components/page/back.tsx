@@ -10,7 +10,7 @@ import PageLink from './link';
 
 export type PageBackProps = {
 	confirm?: boolean;
-	onClickAction?: MouseEventHandler<HTMLButtonElement>;
+	onClickAction?: MouseEventHandler<HTMLElement>;
 	pathMap?: Record<number, boolean | string>;
 	homeName?: string;
 	button?: boolean;
@@ -42,8 +42,8 @@ export default function PageBack({
 		}, []);
 	}, [pathMap, pathname]);
 
-	const clickListener = async (e) => {
-		if (confirmBack && !confirm('Are you sure you want to leave?')) throw 'cancel';
+	const clickListener: MouseEventHandler<HTMLElement> = async (e) => {
+		if (confirmBack && !confirm('Are you sure you want to leave?')) return;
 
 		await onClickAction?.(e);
 		if (backButton) router.back();

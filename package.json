@@ -14,8 +14,6 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"@next/bundle-analyzer": "16.0.1",
-		"next": "16.0.1",
 		"remeda": "2.32.0"
 	},
 	"devDependencies": {
@@ -25,10 +23,10 @@
 		"eslint": "9.39.1",
 		"eslint-config-next": "16.0.1",
 		"eslint-config-prettier": "10.1.8",
-		"globals": "16.5.0",
 		"husky": "9.1.7",
 		"lint-staged": "16.2.6",
 		"prettier": "3.6.2",
+		"type-fest": "5.2.0",
 		"typescript": "5.9.3",
 		"typescript-eslint": "8.46.3"
 	}

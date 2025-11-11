@@ -32,7 +32,7 @@ export default function Scanner({
 
 				try {
 					const newCanvas = await crop(canvas);
-					if ((await match(newCanvas)) > 30000) throw 'No matches';
+					if ((await match(newCanvas)) > 30000) throw Error('No matches');
 
 					const artifact = await text(newCanvas, setProgress);
 					setArtifact((prevArtifact) => ({

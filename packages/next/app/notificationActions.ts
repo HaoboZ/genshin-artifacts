@@ -9,7 +9,7 @@ export async function sendNotification(
 		time?: string;
 	},
 ) {
-	if (!user) throw new Error('No user available');
+	if (!user) throw Error('No user available');
 
 	const res = await axios.post(
 		'https://api.onesignal.com/notifications',

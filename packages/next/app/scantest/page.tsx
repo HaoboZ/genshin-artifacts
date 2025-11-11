@@ -3,11 +3,11 @@ import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useClipboardImage from '@/src/hooks/useClipboardImage';
+import { IArtifact } from '@/src/types/good';
 import { Button, CircularProgress, Grid } from '@mui/material';
 import Script from 'next/script';
 import { useSnackbar } from 'notistack';
 import { useCallback, useRef, useState } from 'react';
-import { IArtifact } from '../../src/types/good';
 import crop from '../artifacts/artifactForm/scanner/crop';
 import lock from '../artifacts/artifactForm/scanner/lock';
 import match from '../artifacts/artifactForm/scanner/match';
@@ -36,7 +36,7 @@ export default function ScanTest() {
 
 				try {
 					const newCanvas = await crop(canvas);
-					if ((await match(newCanvas)) > 30000) throw 'No matches';
+					if ((await match(newCanvas)) > 30000) throw Error('No matches');
 
 					canvasRef.current.width = newCanvas.width;
 					canvasRef.current.height = newCanvas.height;
