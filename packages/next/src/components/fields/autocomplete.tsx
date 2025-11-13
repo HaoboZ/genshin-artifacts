@@ -1,4 +1,3 @@
-'use client';
 import type { AutocompleteProps, ChipTypeMap } from '@mui/material';
 import { Autocomplete } from '@mui/material';
 import { useField } from 'formik';

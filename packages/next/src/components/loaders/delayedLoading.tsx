@@ -1,4 +1,3 @@
-'use client';
 import { Box, CircularProgress } from '@mui/material';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';

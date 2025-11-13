@@ -13,6 +13,7 @@ import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
 import { weightedPercent } from '@/src/helpers/stats';
 import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { DCharacter } from '@/src/types/data';
@@ -24,9 +25,10 @@ import { clamp, indexBy } from 'remeda';
 import ArtifactStatImage from '../../artifacts/artifactStatImage';
 import WeaponImage from '../../weapons/weaponImage';
 import CharacterImage from '../characterImage';
-import CharacterArtifactModal from './characterArtifactModal';
 import CharacterBuild from './characterBuild';
-import CharacterWeaponModal from './characterWeaponModal';
+
+const CharacterArtifactModal = dynamicModal(() => import('./characterArtifactModal'));
+const CharacterWeaponModal = dynamicModal(() => import('./characterWeaponModal'));
 
 export default function Character({ characterData }: { characterData: DCharacter }) {
 	const dispatch = useAppDispatch();

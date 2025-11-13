@@ -3,7 +3,6 @@ import { builds } from '@/api/builds';
 import PercentBar from '@/components/percentBar';
 import pget from '@/src/helpers/pget';
 import { maxPotentialPercents } from '@/src/helpers/stats';
-import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -18,6 +17,7 @@ import {
 } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import { useModalControls } from '../../../src/providers/modal/controls';
 import ArtifactStatImage from '../artifactStatImage';
 
 const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets)];

@@ -1,4 +1,3 @@
-'use client';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Breadcrumbs, Button, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';

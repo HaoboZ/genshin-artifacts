@@ -21,7 +21,7 @@ export default function lock(canvas: HTMLCanvasElement) {
 		const iconGray = iconData[i];
 		const bgGray = backData[i];
 
-		++totalPixels;
+		totalPixels++;
 		if (Math.abs(iconGray - bgGray) > 60) iconDiffPixels++;
 	}
 

@@ -1,4 +1,3 @@
-'use client';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import Script from 'next/script';

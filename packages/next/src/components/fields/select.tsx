@@ -1,4 +1,3 @@
-'use client';
 import type { SelectProps } from '@mui/material';
 import { FormControl, FormLabel, Select } from '@mui/material';
 import { useField } from 'formik';

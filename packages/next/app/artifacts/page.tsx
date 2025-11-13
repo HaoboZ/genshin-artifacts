@@ -6,18 +6,20 @@ import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppSelector } from '@/src/store/hooks';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
-import AddArtifactModal from './artifactForm/addArtifactModal';
-import BatchAddArtifactModal from './artifactForm/batchAddArtifactModal';
 import ArtifactSetImage from './artifactSetImage';
-import ArtifactDeleteModal from './modals/artifactDeleteModal';
-import ArtifactSetFarmModal from './modals/artifactSetFarmModal';
-import OptimizeArtifactModal from './modals/optimizeArtifactModal';
-import UpgradePriorityModal from './modals/upgradePriorityModal';
+
+const AddArtifactModal = dynamicModal(() => import('./artifactForm/addArtifactModal'));
+const ArtifactDeleteModal = dynamicModal(() => import('./modals/artifactDeleteModal'));
+const ArtifactSetFarmModal = dynamicModal(() => import('./modals/artifactSetFarmModal'));
+const BatchAddArtifactModal = dynamicModal(() => import('./artifactForm/batchAddArtifactModal'));
+const OptimizeArtifactModal = dynamicModal(() => import('./modals/optimizeArtifactModal'));
+const UpgradePriorityModal = dynamicModal(() => import('./modals/upgradePriorityModal'));
 
 export default function Artifacts() {
 	const { showModal } = useModal();

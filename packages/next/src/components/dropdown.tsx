@@ -1,4 +1,3 @@
-'use client';
 import { Button, ButtonProps, Menu } from '@mui/material';
 import { Fragment, ReactNode, useState } from 'react';
 

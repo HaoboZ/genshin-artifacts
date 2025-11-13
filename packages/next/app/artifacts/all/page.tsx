@@ -1,4 +1,3 @@
-'use client';
 import ArtifactList from '../[artifactSet]/artifactList';
 
 export default function ArtifactSet() {

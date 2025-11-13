@@ -1,3 +1,4 @@
+'use client';
 import { artifactSetsInfo } from '@/api/artifacts';
 import pget from '@/src/helpers/pget';
 import type { DArtifact } from '@/src/types/data';

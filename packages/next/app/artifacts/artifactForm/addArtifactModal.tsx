@@ -1,7 +1,8 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import pget from '@/src/helpers/pget';
-import { useModal, useModalControls } from '@/src/providers/modal';
+import { useModal } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
@@ -10,8 +11,10 @@ import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { omit, partition } from 'remeda';
-import ArtifactModal from '../[artifactSet]/artifactModal';
-import ArtifactForm from './index';
+import ArtifactForm from '.';
+import { useModalControls } from '../../../src/providers/modal/controls';
+
+const ArtifactModal = dynamicModal(() => import('../artifactModal'));
 
 export default function AddArtifactModal() {
 	const dispatch = useAppDispatch();

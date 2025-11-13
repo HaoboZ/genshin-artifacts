@@ -1,5 +1,5 @@
 import type { ArtifactSetKey } from '@/src/types/good';
-import ArtifactSet from './index';
+import ArtifactSet from '.';
 
 export default async function ArtifactSetPage({
 	params,

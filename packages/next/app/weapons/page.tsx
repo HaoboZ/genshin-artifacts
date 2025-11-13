@@ -6,15 +6,17 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { Lock as LockIcon } from '@mui/icons-material';
 import { Grid, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import RarityFilter from '../characters/rarityFilter';
-import AddWeaponModal from './modal/addWeaponModal';
-import EditWeaponModal from './modal/editWeaponModal';
-import OptimalWeaponModal from './modal/optimalWeaponModal';
 import WeaponCharacterImage from './weaponCharacterImage';
 import WeaponTypeFilter from './weaponTypeFilter';
+
+const AddWeaponModal = dynamicModal(() => import('./modal/addWeaponModal'));
+const EditWeaponModal = dynamicModal(() => import('./modal/editWeaponModal'));
+const OptimalWeaponModal = dynamicModal(() => import('./modal/optimalWeaponModal'));
 
 export default function Weapons() {
 	const { showModal } = useModal();

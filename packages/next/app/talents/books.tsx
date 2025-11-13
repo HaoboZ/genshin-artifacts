@@ -1,3 +1,4 @@
+'use client';
 import { useCharacters } from '@/api/characters';
 import { talentsInfo } from '@/api/talents';
 import Dropdown from '@/components/dropdown';

@@ -1,10 +1,13 @@
 import { charactersInfo } from '@/api/characters';
-import { useModal, useModalControls } from '@/src/providers/modal';
+import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { IArtifact } from '@/src/types/good';
 import { Button, ButtonGroup } from '@mui/material';
-import EditArtifactModal from './artifactForm/editArtifactModal';
+import { useModalControls } from '../../src/providers/modal/controls';
+
+const EditArtifactModal = dynamicModal(() => import('./artifactForm/editArtifactModal'));
 
 export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 	const { showModal } = useModal();
@@ -13,11 +16,7 @@ export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 
 	return (
 		<ButtonGroup sx={{ pb: 1 }}>
-			<Button
-				onClick={() => {
-					closeModal();
-					showModal(EditArtifactModal, { props: { id: artifact.id } });
-				}}>
+			<Button onClick={() => showModal(EditArtifactModal, { props: { id: artifact.id } })}>
 				Edit
 			</Button>
 			{artifact.location ? (

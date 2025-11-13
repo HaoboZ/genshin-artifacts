@@ -1,4 +1,3 @@
-'use client';
 import type { MenuItemProps } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import useAsyncLoading from './useAsyncLoading';

@@ -5,7 +5,6 @@ import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
-import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -25,10 +24,11 @@ import { pascalSnakeCase } from 'change-case';
 import { Formik } from 'formik';
 import { Fragment, useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import { useModalControls } from '../../../src/providers/modal/controls';
 import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
+import WeaponForm from '../weaponForm';
 import WeaponImage from '../weaponImage';
-import WeaponForm from './weaponForm';
 
 export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 	const dispatch = useAppDispatch();

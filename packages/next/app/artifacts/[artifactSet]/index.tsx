@@ -1,13 +1,15 @@
 'use client';
 import PageSection from '@/components/page/section';
 import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import type { ArtifactSetKey } from '@/src/types/good';
 import { Grid } from '@mui/material';
 import { Fragment } from 'react';
-import AddArtifactModal from '../artifactForm/addArtifactModal';
-import BatchAddArtifactModal from '../artifactForm/batchAddArtifactModal';
 import ArtifactList from './artifactList';
 import BestInSlot from './bestInSlot';
+
+const AddArtifactModal = dynamicModal(() => import('../artifactForm/addArtifactModal'));
+const BatchAddArtifactModal = dynamicModal(() => import('../artifactForm/batchAddArtifactModal'));
 
 export default function ArtifactSet({ artifactSet }: { artifactSet: ArtifactSetKey }) {
 	const { showModal } = useModal();

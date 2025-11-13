@@ -1,3 +1,4 @@
+'use client';
 import {
 	artifactSetsInfo,
 	artifactSlotOrder,
@@ -13,6 +14,7 @@ import pget from '@/src/helpers/pget';
 import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/src/helpers/stats';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
+import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
@@ -39,8 +41,9 @@ import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatImage from '../artifactStatImage';
-import ArtifactModal from './artifactModal';
 import SlotFilter from './slotFilter';
+
+const ArtifactModal = dynamicModal(() => import('../artifactModal'));
 
 export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();
@@ -101,6 +104,17 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				),
 			),
 		[artifacts, sortDir, sortType, filtered],
+	);
+
+	const [greatCount, goodCount] = useMemo(
+		() => [
+			artifactsSorted.filter(
+				({ location, statRollPercent }) => location && statRollPercent > 0.6,
+			).length,
+			artifactsSorted.filter(({ location, statRollPercent }) => location && statRollPercent)
+				.length,
+		],
+		[artifactsSorted],
 	);
 
 	return (
@@ -193,18 +207,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				<RarityFilter rarity={rarity} setRarity={setRarity} />
 			</Stack>
 			<Typography>
-				Great:{' '}
-				{
-					artifactsSorted.filter(
-						({ location, statRollPercent }) => location && statRollPercent > 0.6,
-					).length
-				}{' '}
-				/ Good:{' '}
-				{
-					artifactsSorted.filter(
-						({ location, statRollPercent }) => location && statRollPercent,
-					).length
-				}
+				Great: {greatCount} / Good: {goodCount}
 			</Typography>
 			<Grid container spacing={1}>
 				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }, index) => {

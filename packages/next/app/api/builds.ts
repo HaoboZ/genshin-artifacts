@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 10/30/25
+// 11/11/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -201,7 +201,7 @@ export const builds: Record<CharacterKey, Build> = {
 			'FangOfTheMountainKing',
 			['WolfsGravestone', 'TheUnforged'],
 			['SongOfBrokenPines', 'Rainslasher', 'MailedFlower'],
-			['TidalShadow', 'SkywardPride'],
+			['TidalShadow', 'BlackcliffSlasher', 'SkywardPride'],
 			'EarthShaker',
 		],
 		group: 0,
@@ -919,7 +919,7 @@ export const builds: Record<CharacterKey, Build> = {
 		weapon: [
 			'NightweaversLookingGlass',
 			['AThousandFloatingDreams', 'EtherlightSpindlelute'],
-			['StarcallersWatch', 'SunnyMorningSleepIn', 'BlackmarrowLantern'],
+			['StarcallersWatch', 'SunnyMorningSleepIn', 'FruitOfFulfillment', 'BlackmarrowLantern'],
 		],
 		group: 0,
 		artifact: [

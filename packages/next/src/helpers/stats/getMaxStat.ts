@@ -11,7 +11,7 @@ export function getMaxStat(subStatArr: (StatKey | StatKey[])[], mainStat: StatKe
 		for (let i = 0; i < statArr.length; i++) {
 			if (count >= 4) break;
 			max += (1 - Math.min(4, tier) * 0.2) / (count ? 6 : 1);
-			++count;
+			count++;
 		}
 	}
 	return max;

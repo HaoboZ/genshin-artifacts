@@ -1,7 +1,6 @@
-'use client';
 import type { DrawerProps } from '@mui/material';
 import { Drawer } from '@mui/material';
-import { useModalControls } from './index';
+import { useModalControls } from './controls';
 
 export default function DrawerWrapper(props: Omit<DrawerProps, 'open'>) {
 	const { modalState, closeModal } = useModalControls();

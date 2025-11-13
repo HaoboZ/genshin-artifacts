@@ -1,4 +1,3 @@
-'use client';
 import { colors, createTheme } from '@mui/material';
 
 export default createTheme({

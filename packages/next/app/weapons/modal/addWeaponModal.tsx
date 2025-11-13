@@ -4,7 +4,6 @@ import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
-import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -15,8 +14,9 @@ import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
+import { useModalControls } from '../../../src/providers/modal/controls';
 import CharacterImage from '../../characters/characterImage';
-import WeaponForm from './weaponForm';
+import WeaponForm from '../weaponForm';
 
 export default function AddWeaponModal() {
 	const dispatch = useAppDispatch();

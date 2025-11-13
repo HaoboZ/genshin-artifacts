@@ -1,4 +1,3 @@
-import { useModalControls } from '@/src/providers/modal';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -7,6 +6,7 @@ import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@m
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
+import { useModalControls } from '../../../src/providers/modal/controls';
 import ArtifactStatImage from '../artifactStatImage';
 import crop from './scanner/crop';
 import lock from './scanner/lock';
