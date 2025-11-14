@@ -3,6 +3,7 @@ import { charactersInfo, useCharacters } from '@/api/characters';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -20,7 +21,6 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
-import { useModalControls } from '../../../src/providers/modal/controls';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
 

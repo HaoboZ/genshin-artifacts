@@ -1,3 +1,4 @@
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { store } from '@/src/store';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -8,7 +9,6 @@ import { Formik } from 'formik';
 import { useMemo } from 'react';
 import { omit, partition } from 'remeda';
 import ArtifactForm from '.';
-import { useModalControls } from '../../../src/providers/modal/controls';
 
 export default function EditArtifactModal({ id }: { id: string }) {
 	const dispatch = useAppDispatch();

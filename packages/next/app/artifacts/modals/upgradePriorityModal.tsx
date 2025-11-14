@@ -7,6 +7,7 @@ import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { matchingSubStats, potentialPercent } from '@/src/helpers/stats';
 import { useModal } from '@/src/providers/modal';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppSelector } from '@/src/store/hooks';
@@ -14,7 +15,6 @@ import { Build } from '@/src/types/data';
 import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, sortBy } from 'remeda';
-import { useModalControls } from '../../../src/providers/modal/controls';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatImage from '../artifactStatImage';
 

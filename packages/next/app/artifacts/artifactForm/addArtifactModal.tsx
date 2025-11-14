@@ -1,6 +1,7 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -12,7 +13,6 @@ import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { omit, partition } from 'remeda';
 import ArtifactForm from '.';
-import { useModalControls } from '../../../src/providers/modal/controls';
 
 const ArtifactModal = dynamicModal(() => import('../artifactModal'));
 

@@ -3,6 +3,7 @@ import { charactersInfo, useCharacters } from '@/api/characters';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -19,8 +20,7 @@ import {
 	ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
-import { filter, pipe, sortBy } from 'remeda';
-import { useModalControls } from '../../../src/providers/modal/controls';
+import { filter, groupBy, indexBy, pipe, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatImage from '../artifactStatImage';
 
@@ -37,18 +37,18 @@ export default function OptimizeArtifactModal() {
 			selected: boolean;
 		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
-		console.log('modal');
-
-		const marked = new Set<string>();
-		for (const a of artifactsClone) {
-			if (a.astralMark && a.location) marked.add(`${a.location}:${a.slotKey}`);
-		}
+		const equippedArtifacts = groupBy<IArtifact>(artifacts, pget('location'));
 
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
+			const characterArtifacts = indexBy(
+				equippedArtifacts[character.key] ?? [],
+				pget('slotKey'),
+			);
 			for (const slot of artifactSlotOrder) {
 				// skip marked slots
-				if (marked.has(`${character.key}:${slot}`)) continue;
+				if (characterArtifacts[slot]?.astralMark) continue;
+
 				const tieredArtifacts = pipe(
 					artifactsClone,
 					filter(

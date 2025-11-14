@@ -4,6 +4,7 @@ import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
 import pget from '@/src/helpers/pget';
 import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -13,7 +14,6 @@ import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from 
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { map, pipe, reverse, sortBy } from 'remeda';
-import { useModalControls } from '../../../src/providers/modal/controls';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactStatImage from '../../artifacts/artifactStatImage';
 

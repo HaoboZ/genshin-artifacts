@@ -1,6 +1,7 @@
 import { charactersInfo } from '@/api/characters';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import pget from '@/src/helpers/pget';
+import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -9,7 +10,6 @@ import type { IWeapon } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, pipe, sortBy } from 'remeda';
-import { useModalControls } from '../../../src/providers/modal/controls';
 import WeaponCharacterImage from '../../weapons/weaponCharacterImage';
 
 export default function CharacterWeaponModal({ build, weapon }: { build: Build; weapon: IWeapon }) {
