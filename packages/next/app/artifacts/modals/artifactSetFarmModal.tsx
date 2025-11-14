@@ -9,17 +9,17 @@ import { potentialPercent } from '@/src/helpers/stats';
 import isMainStat from '@/src/helpers/stats/isMainStat';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
-import type { ArtifactSetKey, StatKey } from '@/src/types/good';
+import type { ArtifactSetKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
-import { Fragment, useMemo } from 'react';
+import { useMemo } from 'react';
 import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
 	const artifacts = useAppSelector(pget('good.artifacts'));
 
-	const { missingMainStat, lowPotential } = useMemo(() => {
+	const { incompleteArtifacts, lowPotential } = useMemo(() => {
 		const artifactSetPriority = pipe(
 			artifacts,
 			filter(({ location }) => Boolean(location)),
@@ -31,32 +31,50 @@ export default function ArtifactSetFarmModal() {
 					setKey: (bisArtifact === artifact.setKey
 						? artifact.setKey
 						: bisArtifact) as ArtifactSetKey,
+					wantedMainStat: builds[artifact.location].mainStat[artifact.slotKey],
 					mainStatMismatch:
 						bisArtifact !== artifact.setKey ||
-						!isMainStat(builds[artifact.location], artifact),
+						!isMainStat(builds[artifact.location], artifact, true),
+					notMaxRarity: artifact.rarity !== artifactSetsInfo[artifact.setKey].rarity,
 					potential: potentialPercent(builds[artifact.location], artifact),
 				};
 			}),
 			groupBy(pget('setKey')),
 			mapValues((artifacts) => ({
-				mainStats: artifacts.filter(pget('mainStatMismatch')).reduce(
-					(mismatch, { slotKey, location }) => {
-						if (!mismatch[slotKey]) mismatch[slotKey] = [];
-						mismatch[slotKey].push(makeArray(builds[location].mainStat[slotKey])[0]);
-						return mismatch;
-					},
-					{} as Record<string, StatKey[]>,
+				badArtifacts: artifacts.filter(
+					({ mainStatMismatch, notMaxRarity }) => mainStatMismatch || notMaxRarity,
 				),
 				potentials: artifacts.map(pget('potential')),
 			})),
 		);
 
 		return {
-			missingMainStat: pipe(
+			incompleteArtifacts: pipe(
 				artifactSetPriority,
+				mapValues(({ badArtifacts }) => ({
+					mainStat: badArtifacts.filter(pget('mainStatMismatch')).length,
+					total: badArtifacts.length,
+					slots: pipe(
+						badArtifacts,
+						groupBy(pget('slotKey')),
+						mapValues((slots) =>
+							pipe(
+								slots,
+								map(
+									({ location, slotKey }) =>
+										makeArray(builds[location].mainStat[slotKey])[0],
+								),
+								unique(),
+								map((stat) => statName[stat]),
+								(stats) => stats.join(', '),
+							),
+						),
+						entries(),
+					),
+				})),
 				entries(),
-				filter(([, { mainStats }]) => Object.keys(mainStats).length > 0),
-				sortBy([([, { mainStats }]) => Object.values(mainStats).flat().length, 'desc']),
+				filter(([, { total }]) => total > 0),
+				sortBy([([, { total }]) => total, 'desc']),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
@@ -75,25 +93,20 @@ export default function ArtifactSetFarmModal() {
 		<DialogWrapper>
 			<DialogTitle>Artifact Set Farm Priority</DialogTitle>
 			<DialogContent>
-				<PageSection title='Missing Main Stats'>
+				<PageSection title='Incomplete Artifacts'>
 					<Grid container spacing={1}>
-						{missingMainStat.map(([artifactSet, { mainStats }]) => (
+						{incompleteArtifacts.map(([artifactSet, { mainStat, total, slots }]) => (
 							<Grid key={artifactSet}>
 								<ArtifactSetImage
 									artifactSet={artifactSetsInfo[artifactSet]}
-									tooltip={
-										<Fragment>
-											{Object.entries(mainStats).map(([slot, stats]) => (
-												<Typography key={slot}>
-													{capitalCase(slot)}:{' '}
-													{unique(stats.flat())
-														.map((stat) => statName[stat])
-														.join(', ')}
-												</Typography>
-											))}
-										</Fragment>
-									}>
-									<OverlayText>{Object.values(mainStats).flat().length}</OverlayText>
+									tooltip={slots.map(([slot, stats]) => (
+										<Typography key={slot} variant='body2'>
+											{capitalCase(slot)}: {stats}
+										</Typography>
+									))}>
+									<OverlayText>
+										{mainStat} / {total}
+									</OverlayText>
 								</ArtifactSetImage>
 							</Grid>
 						))}
