@@ -4,6 +4,7 @@ import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/subStatBar';
 import type { IArtifact, SlotKey } from '@/src/types/good';
 import { Lock as LockIcon } from '@mui/icons-material';
+import { Star as StarIcon } from '@mui/icons-material';
 import type { CardProps } from '@mui/material';
 import { Box, Card, CardContent, Grid } from '@mui/material';
 import CharacterImage from '../characters/characterImage';
@@ -38,6 +39,18 @@ export default function ArtifactStatImage({
 										bgcolor: 'white',
 										borderRadius: 1,
 										opacity: 0.75,
+									}}
+								/>
+							)}
+							{artifact?.astralMark && (
+								<StarIcon
+									sx={{
+										position: 'absolute',
+										bottom: 0,
+										right: 0,
+										bgcolor: 'white',
+										borderRadius: 1,
+										opacity: 0.5,
 									}}
 								/>
 							)}

@@ -34,6 +34,7 @@ export default function AddArtifactModal() {
 			substats: [],
 			location: '',
 			lock: false,
+			astralMark: false,
 		};
 	}, []);
 
