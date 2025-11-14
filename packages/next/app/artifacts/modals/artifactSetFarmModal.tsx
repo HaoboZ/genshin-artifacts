@@ -74,7 +74,7 @@ export default function ArtifactSetFarmModal() {
 				})),
 				entries(),
 				filter(([, { total }]) => total > 0),
-				sortBy([([, { total }]) => total, 'desc']),
+				sortBy([pget('1.mainStat'), 'desc'], [pget('1.total'), 'desc']),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
