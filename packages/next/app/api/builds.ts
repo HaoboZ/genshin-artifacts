@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/11/25
+// 11/14/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -394,12 +394,14 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Lisa',
 		role: 'Aggravate DPS',
 		weapon: [
+			'ReliquaryOfTruth',
+			'VividNotions',
 			'KagurasVerity',
 			'LostPrayerToTheSacredWinds',
 			['TomeOfTheEternalFlow', 'SurfsUp'],
 			['AThousandFloatingDreams', 'CashflowSupervision'],
-			['TheWidsith', 'TulaytullahsRemembrance', 'MemoryOfDust'],
-			['SolarPearl', 'SacrificialJade', 'BlackcliffAgate'],
+			'TheWidsith',
+			['SolarPearl', 'SacrificialJade'],
 			'FlowingPurity',
 			'MappaMare',
 		],
