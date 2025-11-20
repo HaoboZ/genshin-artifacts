@@ -44,9 +44,9 @@
 		"@types/events": "3.0.3",
 		"@types/object-hash": "3.0.6",
 		"@types/pixelmatch": "5.2.6",
-		"@types/react": "19.2.5",
+		"@types/react": "19.2.6",
 		"@types/react-redux": "7.1.34",
 		"mirada": "0.0.15",
-		"sass": "1.94.0"
+		"sass": "1.94.2"
 	}
 }
