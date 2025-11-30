@@ -1,7 +1,7 @@
 'use client';
 import { useCharacters } from '@/api/characters';
 import { weeklyInfo, weeklyRequirement } from '@/api/talents';
-import FormattedTextField from '@/components/formattedTextField';
+import NumberSpinner from '@/components/numberSpinner';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -74,15 +74,12 @@ export default function TalentsWeekly() {
 													height={50}
 													style={{ alignSelf: 'center' }}
 												/>
-												<FormattedTextField
+												<NumberSpinner
+													size='small'
+													min={0}
 													value={currentMaterials[key] ?? 0}
-													onChange={({ target }) => {
-														dispatch(
-															goodActions.setWeeklyMaterial({
-																key,
-																amount: +target.value,
-															}),
-														);
+													onValueChange={(amount) => {
+														dispatch(goodActions.setWeeklyMaterial({ key, amount }));
 													}}
 												/>
 											</Box>
