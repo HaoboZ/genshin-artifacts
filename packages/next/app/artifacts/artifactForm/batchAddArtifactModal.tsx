@@ -1,3 +1,9 @@
+import cropBox from '@/components/scanner/cropBox';
+import findText from '@/components/scanner/findText';
+import getRarity from '@/components/scanner/getRarity';
+import isMarked from '@/components/scanner/isMarked';
+import matchPixels from '@/components/scanner/matchPixels';
+import preprocessImage from '@/components/scanner/preprocessImage';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -8,11 +14,6 @@ import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
 import ArtifactStatImage from '../artifactStatImage';
-import crop from './scanner/crop';
-import lock from './scanner/lock';
-import match from './scanner/match';
-import rarity from './scanner/rarity';
-import text from './scanner/text';
 
 export default function BatchAddArtifactModal() {
 	const dispatch = useAppDispatch();
@@ -64,25 +65,24 @@ export default function BatchAddArtifactModal() {
 										ctx.drawImage(videoRef.current, 0, 0);
 										detecting = true;
 										try {
-											const newCanvas = await crop(canvas);
-											// if ((await match(canvas)) > 30000) throw Error('No matches');
-											if (prevCanvas && (await match(newCanvas, prevCanvas)) < 1000)
+											cropBox(preprocessImage(canvas), canvas);
+											if (prevCanvas && (await matchPixels(canvas, prevCanvas)) < 1000)
 												throw Error('Identical detected');
-											canvasRef.current.width = newCanvas.width;
-											canvasRef.current.height = newCanvas.height;
+											canvasRef.current.width = canvas.width;
+											canvasRef.current.height = canvas.height;
 											const ctx = canvasRef.current.getContext('2d');
-											ctx.drawImage(newCanvas, 0, 0);
-											prevCanvas = newCanvas;
+											ctx.drawImage(canvas, 0, 0);
+											prevCanvas = canvas;
 
-											const artifact = await text(canvasRef.current);
+											const artifact = await findText(canvasRef.current);
 											setArtifacts((artifacts) => ({
 												...artifacts,
 												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {
 													id: nanoid(),
 													location: '',
-													...artifact,
-													rarity: rarity(canvas),
-													lock: lock(canvas),
+													...(artifact as IArtifact),
+													rarity: getRarity(canvas),
+													...isMarked(canvas),
 												},
 											}));
 										} catch (e) {

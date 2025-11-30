@@ -18,12 +18,8 @@ export default function useAsyncLoading(): [
 					return await func(...args);
 				} catch (e) {
 					const error = e?.response?.data || e?.message || e;
-					if (typeof error === 'string') {
-						enqueueSnackbar(error, { variant: 'error' });
-					} else {
-						console.error(error);
-						enqueueSnackbar('An unknown error has occurred', { variant: 'error' });
-					}
+					console.error(error);
+					enqueueSnackbar(error, { variant: 'error' });
 				} finally {
 					setLoading(false);
 				}

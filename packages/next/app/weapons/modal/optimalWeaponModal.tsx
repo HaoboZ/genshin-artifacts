@@ -49,8 +49,6 @@ export default function OptimalWeaponModal() {
 				sortBy(({ weapon }) => (weapon.level > 1 ? 0 : 1), pget('tier')),
 			);
 
-			if (character.key === 'Xianyun') console.log(tieredWeapons);
-
 			for (const { weapon, tier } of tieredWeapons) {
 				if (weapon.location === character.key) break;
 				const currentLocation = characters.findIndex(({ key }) => key === weapon.location);

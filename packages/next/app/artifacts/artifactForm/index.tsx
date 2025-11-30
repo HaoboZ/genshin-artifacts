@@ -4,6 +4,7 @@ import AutocompleteField from '@/components/fields/autocomplete';
 import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
 import SwitchField from '@/components/fields/switch';
+import Scanner from '@/components/scanner';
 import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
 import {
 	Button,
@@ -20,7 +21,6 @@ import type { ReactNode } from 'react';
 import { Fragment } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
-import Scanner from './scanner';
 
 export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNode }) {
 	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();

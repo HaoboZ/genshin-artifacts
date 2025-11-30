@@ -1,15 +1,18 @@
+import drawImageData from './drawImageData';
+import setupContext from './setupContext';
+
 const iconAreas = [
-	[5, 0.324],
-	[4, 0.257],
-	[3, 0.19],
+	[5, 164],
+	[4, 130],
+	[3, 96],
 ];
 
-export default function rarity(canvas: HTMLCanvasElement) {
-	const ctx = canvas.getContext('2d');
-	const scale = canvas.width;
+export default function getRarity(canvas: HTMLCanvasElement, newCanvas?: HTMLCanvasElement) {
+	const context = setupContext(canvas, newCanvas);
 
-	for (const [rarity, offset] of iconAreas) {
-		const { data } = ctx.getImageData(offset * scale, 0.48 * scale, 0.067 * scale, 0.067 * scale);
+	for (const [rarity, x] of iconAreas) {
+		const data = drawImageData(context, x, 240, 32, 32);
+
 		const numPixels = data.length / 4;
 
 		let meanIntensity = 0;
