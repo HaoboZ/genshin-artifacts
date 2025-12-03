@@ -259,6 +259,16 @@
 		"talentMaterial": "Ingenuity",
 		"weeklyMaterial": "BloodjadeBranch"
 	},
+	"Durin": {
+		"key": "Durin",
+		"name": "Durin",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Pyro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Durin_Icon.png",
+		"talentMaterial": "Ballad",
+		"weeklyMaterial": "ErodedSunfire"
+	},
 	"Emilie": {
 		"key": "Emilie",
 		"name": "Emilie",
@@ -408,6 +418,16 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Ineffa_Icon.png",
 		"talentMaterial": "Conflict",
 		"weeklyMaterial": "ErodedSunfire"
+	},
+	"Jahoda": {
+		"key": "Jahoda",
+		"name": "Jahoda",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"element": "Anemo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Jahoda_Icon.png",
+		"talentMaterial": "Vagrancy",
+		"weeklyMaterial": "AscendedSampleKnight"
 	},
 	"Jean": {
 		"key": "Jean",

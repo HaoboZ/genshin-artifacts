@@ -19,6 +19,16 @@
 		"stat": "Physical DMG Bonus 41.3%",
 		"ability": "ATK is increased by 20~40%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to 100~160% of ATK and dealing 200~320% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s."
 	},
+	"AthameArtis": {
+		"key": "AthameArtis",
+		"name": "Athame Artis",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Athame_Artis.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "CRIT DMG from Elemental Bursts is increased by 16~?%. When an Elemental Burst hits an opponent, gain the Blade of the Daylight Hours effect: ATK is increased by 20~?%. Nearby active party members other than the equipping character have their ATK increased by 16~?% for 3s.Additionally, when the party possesses Hexerei: Secret Rite effects, the effects of Blade of the Daylight Hours are increased by an additional 75%. This effect can be triggered even if the equipping character is off-field."
+	},
 	"Azurelight": {
 		"key": "Azurelight",
 		"name": "Azurelight",
@@ -307,7 +317,7 @@
 		"weaponType": "Sword",
 		"atk": 565,
 		"stat": "Energy Recharge 30.6%",
-		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Lunar-Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
 	},
 	"SerenitysCall": {
 		"key": "SerenitysCall",
@@ -1879,6 +1889,16 @@
 		"stat": "CRIT Rate 22.1%",
 		"ability": "Increases CRIT DMG by 20~40%. Hits have a 60~100% chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every 4~2s."
 	},
+	"TheDaybreakChronicles": {
+		"key": "TheDaybreakChronicles",
+		"name": "The Daybreak Chronicles",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Weapon_The_Daybreak_Chronicles.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "The equipping character gains Stirring Dawn Breeze: 3s after leaving combat, Normal Attack, Elemental Skill, and Elemental Burst DMG is increased by 60~?%. While in combat, this DMG Bonus will decrease by 10~?% per second until it reaches 0%. When the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for the corresponding DMG type is increased by 10~?% until it reaches 60~?%. This effect can be triggered once every 0.1s for each of the attack types mentioned above. This effect can be triggered even if the equipping character is off-field.Additionally, when the party possesses Hexerei: Secret Rite effects, when the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for all these DMG types is increased by 20~?% instead."
+	},
 	"TheFirstGreatMagic": {
 		"key": "TheFirstGreatMagic",
 		"name": "The First Great Magic",
@@ -2058,6 +2078,16 @@
 		"atk": 510,
 		"stat": "ATK 41.3%",
 		"ability": "Charged Attack hits on weak points increase Movement SPD by 10% and ATK by 36~72% for 10s."
+	},
+	"RainbowSerpentsRainBow": {
+		"key": "RainbowSerpentsRainBow",
+		"name": "Rainbow Serpent's Rain Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Rainbow_Serpent%27s_Rain_Bow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "ATK is increased by 28~?% for 8s after the equipping character's attacks hit an opponent while the equipping character is off-field."
 	},
 	"RangeGauge": {
 		"key": "RangeGauge",

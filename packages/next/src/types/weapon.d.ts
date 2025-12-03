@@ -1,6 +1,7 @@
 export type WeaponKey =
 	| 'Absolution' // Absolution
 	| 'AquilaFavonia' // Aquila Favonia
+	| 'AthameArtis' // Athame Artis
 	| 'Azurelight' // Azurelight
 	| 'FreedomSworn' // Freedom-Sworn
 	| 'HaranGeppakuFutsu' // Haran Geppaku Futsu
@@ -187,6 +188,7 @@ export type WeaponKey =
 	| 'PolarStar' // Polar Star
 	| 'SilvershowerHeartstrings' // Silvershower Heartstrings
 	| 'SkywardHarp' // Skyward Harp
+	| 'TheDaybreakChronicles' // The Daybreak Chronicles
 	| 'TheFirstGreatMagic' // The First Great Magic
 	| 'ThunderingPulse' // Thundering Pulse
 	| 'AlleyHunter' // Alley Hunter
@@ -205,6 +207,7 @@ export type WeaponKey =
 	| 'MouunsMoon' // Mouun's Moon
 	| 'Predator' // Predator
 	| 'PrototypeCrescent' // Prototype Crescent
+	| 'RainbowSerpentsRainBow' // Rainbow Serpent's Rain Bow
 	| 'RangeGauge' // Range Gauge
 	| 'RoyalBow' // Royal Bow
 	| 'Rust' // Rust

@@ -25,6 +25,7 @@ export type CharacterKey =
 	| 'Diluc' // Diluc
 	| 'Diona' // Diona
 	| 'Dori' // Dori
+	| 'Durin' // Durin
 	| 'Emilie' // Emilie
 	| 'Escoffier' // Escoffier
 	| 'Eula' // Eula
@@ -40,6 +41,7 @@ export type CharacterKey =
 	| 'Iansan' // Iansan
 	| 'Ifa' // Ifa
 	| 'Ineffa' // Ineffa
+	| 'Jahoda' // Jahoda
 	| 'Jean' // Jean
 	| 'Kachina' // Kachina
 	| 'KaedeharaKazuha' // Kaedehara Kazuha

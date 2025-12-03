@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 11/14/25
+// 12/2/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -355,6 +355,25 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas'],
+	},
+	Durin: {
+		key: 'Durin',
+		role: 'Sub DPS',
+		weapon: [
+			'AthameArtis',
+			'FreedomSworn',
+			'Absolution',
+			'PrimordialJadeCutter',
+			'Azurelight',
+			'LionsRoar',
+			'WolfFang',
+			'AmenomaKageuchi',
+			'HarbingerOfDawn',
+		],
+		group: 0,
+		artifact: ['NoblesseOblige', 'EmblemOfSeveredFate'],
+		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['atk_', 'eleMas', 'critRD_'],
 	},
 	// Electro
 	Fischl: {
@@ -1169,7 +1188,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'TomeOfTheEternalFlow',
-			['SacrificialJade', 'SurfsUp'],
+			['SacrificialJade', 'SurfsUp', 'ReliquaryOfTruth'],
 			[
 				'JadefallsSplendor',
 				'PrototypeAmber',
@@ -1178,6 +1197,7 @@ export const builds: Record<CharacterKey, Build> = {
 				'KagurasVerity',
 				'LostPrayerToTheSacredWinds',
 			],
+			'AshGravenDrinkingHorn',
 		],
 		group: 1,
 		artifact: [
@@ -1747,6 +1767,28 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: ['ViridescentVenerer', 'ObsidianCodex', 'ScrollOfTheHeroOfCinderCity'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'atk_', 'critRD_'],
+	},
+	Jahoda: {
+		key: 'Jahoda',
+		role: 'Support',
+		weapon: [
+			'ElegyForTheEnd',
+			'AquaSimulacra',
+			'FavoniusWarbow',
+			'SnareHook',
+			'SacrificialBow',
+			'AlleyHunter',
+			'EndOfTheLine',
+			'WindblumeOde',
+		],
+		group: 0,
+		artifact: ['ViridescentVenerer'],
+		mainStat: {
+			sands: ['enerRech_', 'atk_'],
+			goblet: 'atk_',
+			circlet: ['atk_', 'heal_', 'critRate_'],
+		},
+		subStat: ['enerRech_', 'atk_', 'critRate_', 'eleMas'],
 	},
 	Jean: {
 		key: 'Jean',

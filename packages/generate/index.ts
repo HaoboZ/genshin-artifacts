@@ -7,11 +7,11 @@ import { fetchWeekly, writeWeekly } from './weekly';
 
 const run = {
 	elements: false,
-	characters: false,
+	characters: true,
 	talents: false,
 	weekly: false,
 	artifacts: false,
-	weapons: false,
+	weapons: true,
 };
 
 (async () => {
