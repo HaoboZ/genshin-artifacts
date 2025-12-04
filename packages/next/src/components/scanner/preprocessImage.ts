@@ -2,10 +2,9 @@ export default function preprocessImage(canvas: HTMLCanvasElement) {
 	const image = cv.imread(canvas);
 	const result = cv.Mat.zeros(image.rows, image.cols, cv.CV_8UC1);
 
-	cv.cvtColor(image, result, cv.COLOR_RGBA2GRAY);
-	cv.Canny(result, result, 50, 200);
+	cv.Canny(image, result, 100, 300);
 	const lines = new cv.Mat();
-	cv.HoughLinesP(result, lines, 1, Math.PI / 2, 5, 10, 20);
+	cv.HoughLinesP(result, lines, 1, Math.PI / 2, 2, 4, 8);
 	result.setTo(new cv.Scalar(0));
 
 	for (let i = 0; i < lines.rows; ++i) {

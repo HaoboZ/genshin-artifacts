@@ -975,7 +975,7 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Xingqiu',
 		role: 'Off-Field DPS',
 		weapon: [
-			'PrimordialJadeCutter',
+			['AthameArtis', 'PrimordialJadeCutter'],
 			'MistsplitterReforged',
 			['Azurelight', 'HaranGeppakuFutsu', 'LightOfFoliarIncision', 'Absolution'],
 			['SummitShaper', 'SkywardBlade', 'UrakuMisugiri'],
