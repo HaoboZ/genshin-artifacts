@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/2/25
+// 12/3/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -124,16 +124,13 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Yanfei',
 		role: 'Vaporize DPS',
 		weapon: [
-			['SurfsUp', 'VividNotions', 'AThousandFloatingDreams'],
-			['TomeOfTheEternalFlow', 'CashflowSupervision'],
-			['FlowingPurity', 'TheWidsith'],
-			['SunnyMorningSleepIn', 'StarcallersWatch'],
-			['SkywardAtlas', 'TulaytullahsRemembrance', 'LostPrayerToTheSacredWinds'],
-			['KagurasVerity', 'MemoryOfDust'],
-			['DodocoTales', 'MappaMare'],
+			['ReliquaryOfTruth', 'TomeOfTheEternalFlow'],
+			['CashflowSupervision', 'VividNotions', 'SurfsUp'],
+			['AThousandFloatingDreams', 'StarcallersWatch'],
+			['FlowingPurity', 'TheWidsith', 'DawningFrost'],
 		],
 		group: 0,
-		artifact: ['CrimsonWitchOfFlames', 'GildedDreams', 'WanderersTroupe', 'RetracingBolide'],
+		artifact: ['CrimsonWitchOfFlames', 'GildedDreams', 'WanderersTroupe', 'MarechausseeHunter'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
@@ -226,7 +223,7 @@ export const builds: Record<CharacterKey, Build> = {
 		artifact: [
 			['Lavawalker', 'DesertPavilionChronicle'],
 			'EchoesOfAnOffering',
-			'GladiatorsFinale',
+			'WanderersTroupe',
 			'FragmentOfHarmonicWhimsy',
 		],
 		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
@@ -358,22 +355,19 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Durin: {
 		key: 'Durin',
-		role: 'Sub DPS',
+		role: 'Buff Support & Off-Field DPS',
 		weapon: [
 			'AthameArtis',
-			'FreedomSworn',
+			['PrimordialJadeCutter', 'MistsplitterReforged', 'Azurelight'],
+			'HaranGeppakuFutsu',
 			'Absolution',
-			'PrimordialJadeCutter',
-			'Azurelight',
-			'LionsRoar',
-			'WolfFang',
-			'AmenomaKageuchi',
-			'HarbingerOfDawn',
+			['LightOfFoliarIncision', 'FreedomSworn', 'LionsRoar', 'WolfFang', 'FinaleOfTheDeep'],
+			['UrakuMisugiri', 'SplendorOfTranquilWaters', 'MoonweaversDawn'],
 		],
 		group: 0,
-		artifact: ['NoblesseOblige', 'EmblemOfSeveredFate'],
-		mainStat: { sands: 'atk_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
-		subStat: ['atk_', 'eleMas', 'critRD_'],
+		artifact: ['NoblesseOblige', 'EmblemOfSeveredFate', 'ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: 'atk_', goblet: ['pyro_dmg_', 'atk_'], circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
 	// Electro
 	Fischl: {
@@ -1535,17 +1529,16 @@ export const builds: Record<CharacterKey, Build> = {
 			'CalamityQueller',
 			'EngulfingLightning',
 			'VortexVanquisher',
+			'SymphonistOfScents',
 			'SkywardSpine',
-			'FavoniusLance',
-			'PrimordialJadeWingedSpear',
+			['FavoniusLance', 'TamayurateiNoOhanashi'],
 			'LithicSpear',
-			'StaffOfHoma',
 			'WavebreakersFin',
 			'MissiveWindspear',
-			'PrototypeStarglitter',
+			['PrototypeStarglitter', 'ProspectorsShovel'],
 		],
 		group: 0,
-		artifact: ['NoblesseOblige'],
+		artifact: ['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'atk_' },
 		subStat: ['enerRech_', 'atk_', 'critRD_', 'atk'],
 	},
