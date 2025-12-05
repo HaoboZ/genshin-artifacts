@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/3/25
+// 12/4/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -1764,22 +1764,13 @@ export const builds: Record<CharacterKey, Build> = {
 	Jahoda: {
 		key: 'Jahoda',
 		role: 'Support',
-		weapon: [
-			'ElegyForTheEnd',
-			'AquaSimulacra',
-			'FavoniusWarbow',
-			'SnareHook',
-			'SacrificialBow',
-			'AlleyHunter',
-			'EndOfTheLine',
-			'WindblumeOde',
-		],
+		weapon: ['FavoniusWarbow', 'ElegyForTheEnd', 'RainbowSerpentsRainBow', 'SnareHook'],
 		group: 0,
-		artifact: ['ViridescentVenerer'],
+		artifact: ['ViridescentVenerer', 'SilkenMoonsSerenade', 'DeepwoodMemories'],
 		mainStat: {
 			sands: ['enerRech_', 'atk_'],
 			goblet: 'atk_',
-			circlet: ['atk_', 'heal_', 'critRate_'],
+			circlet: ['heal_', 'atk_', 'critRate_'],
 		},
 		subStat: ['enerRech_', 'atk_', 'critRate_', 'eleMas'],
 	},
@@ -1806,20 +1797,25 @@ export const builds: Record<CharacterKey, Build> = {
 	},
 	Venti: {
 		key: 'Venti',
-		role: 'Reaction Off-Field DPS',
+		role: 'Off-Field DPS',
 		weapon: [
-			'ElegyForTheEnd',
-			['TheStringless', 'Cloudforged'],
-			['WindblumeOde', 'PolarStar'],
-			'FavoniusWarbow',
-			['RavenBow', 'FadingTwilight'],
-			['AlleyHunter', 'MouunsMoon'],
-			'SongOfStillness',
+			'TheDaybreakChronicles',
+			'PolarStar',
+			'AstralVulturesCrimsonPlumage',
+			['HuntersPath', 'TheFirstGreatMagic', 'AquaSimulacra', 'SkywardHarp'],
+			'ThunderingPulse',
+			['MouunsMoon', 'SongOfStillness', 'TheStringless', 'AlleyHunter'],
 		],
-		group: 1,
-		artifact: ['ViridescentVenerer', 'NoblesseOblige', 'GildedDreams'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_', 'atk_', 'critRD_'],
+		group: 0,
+		artifact: [
+			'ViridescentVenerer',
+			'NoblesseOblige',
+			'ScrollOfTheHeroOfCinderCity',
+			'GildedDreams',
+			'EmblemOfSeveredFate',
+		],
+		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Xiao: {
 		key: 'Xiao',
