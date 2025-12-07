@@ -16,6 +16,7 @@ import {
 	ListItem,
 	ListItemText,
 } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
@@ -26,6 +27,7 @@ export default function ArtifactDeleteModal() {
 	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
 	const artifacts = useAppSelector(pget('good.artifacts'));
+	const { enqueueSnackbar } = useSnackbar();
 
 	const artifactCounts = useMemo(
 		() =>
@@ -103,7 +105,7 @@ export default function ArtifactDeleteModal() {
 					variant='contained'
 					onClick={() => {
 						dispatch(goodActions.deleteUnlockedArtifacts());
-						closeModal();
+						enqueueSnackbar('Deleted Unlocked Artifacts');
 					}}>
 					Delete Unlocked
 				</Button>

@@ -38,22 +38,26 @@ export default function UpgradePriorityModal() {
 			map((artifact) => ({
 				...artifact,
 				...sortBy(
-					((artifactBuilds[artifact.setKey] ?? []) as Build[]).map((build) => {
-						const matching = matchingSubStats(build, artifact);
+					pipe(
+						(artifactBuilds[artifact.setKey] ?? []) as Build[],
+						map((build) => {
+							const matching = matchingSubStats(build, artifact);
 
-						return {
-							build,
-							matching,
-							maxMatching: matching[0] === 4 || matching[0] === matching[1],
-							potential: potentialPercent(build, artifact),
-							currentPotential: potentialPercent(
+							return {
 								build,
-								equippedArtifacts[build.key]?.find(
-									({ slotKey }) => artifact.slotKey === slotKey,
+								matching,
+								maxMatching: matching[0] === 4 || matching[0] === matching[1],
+								potential: potentialPercent(build, artifact),
+								currentPotential: potentialPercent(
+									build,
+									equippedArtifacts[build.key]?.find(
+										({ slotKey }) => artifact.slotKey === slotKey,
+									),
 								),
-							),
-						};
-					}),
+							};
+						}),
+						filter(({ potential }) => Boolean(potential)),
+					),
 					[pget('maxMatching'), 'desc'],
 					({ potential, currentPotential }) => {
 						if (currentPotential < potential) return (currentPotential - potential) * 10;

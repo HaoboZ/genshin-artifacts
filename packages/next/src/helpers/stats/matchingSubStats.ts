@@ -5,7 +5,7 @@ import isMainStat from './isMainStat';
 import { statArrMatch } from './statArrMatch';
 
 export function matchingSubStats(build: Build, artifact: IArtifact) {
-	if (!isMainStat(build, artifact)) return [0, 1];
+	if (!isMainStat(build, artifact, true)) return [0, 1];
 
 	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
 	const buildSubstats = flat(build.subStat);
