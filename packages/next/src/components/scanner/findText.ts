@@ -37,7 +37,7 @@ const subStatsScan: Record<string, StatKey[]> = {
 
 const textAreas: { item: string; area: number[] }[] = [
 	{ item: 'mainStat', area: [20, 152, 250, 32] },
-	{ item: 'level', area: [33, 314, 54, 25] },
+	{ item: 'level', area: [33, 313, 54, 25] },
 	{ item: 'subStats', area: [20, 360, 450, 230] },
 	{ item: 'character', area: [80, -50, 400, 50] },
 ];

@@ -4,6 +4,7 @@ import getRarity from '@/components/scanner/getRarity';
 import isMarked from '@/components/scanner/isMarked';
 import matchPixels from '@/components/scanner/matchPixels';
 import preprocessImage from '@/components/scanner/preprocessImage';
+import resizeScale from '@/components/scanner/resizeScale';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -57,8 +58,8 @@ export default function BatchAddArtifactModal() {
 									let prevCanvas: HTMLCanvasElement;
 									const interval = setInterval(async () => {
 										if (detecting) return;
-										const canvas = document.createElement('canvas');
-										const ctx = canvas.getContext('2d', { willReadFrequently: true });
+										let canvas = document.createElement('canvas');
+										const ctx = canvas.getContext('2d');
 
 										canvas.width = videoRef.current.videoWidth;
 										canvas.height = videoRef.current.videoHeight;
@@ -66,6 +67,8 @@ export default function BatchAddArtifactModal() {
 										detecting = true;
 										try {
 											cropBox(preprocessImage(canvas), canvas);
+											canvas = resizeScale(canvas);
+
 											if (prevCanvas && (await matchPixels(canvas, prevCanvas)) < 1000)
 												throw Error('Identical detected');
 											canvasRef.current.width = canvas.width;

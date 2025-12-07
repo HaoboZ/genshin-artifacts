@@ -91,9 +91,7 @@ export default function ArtifactDeleteModal() {
 					onClick={() => {
 						dispatch(
 							goodActions.deleteArtifacts(
-								deleteArtifacts
-									.filter(({ selected }) => selected)
-									.map(({ artifact }) => artifact),
+								deleteArtifacts.filter(pget('selected')).map(pget('artifact')),
 							),
 						);
 						closeModal();
@@ -103,7 +101,10 @@ export default function ArtifactDeleteModal() {
 				<Button
 					color='error'
 					variant='contained'
-					onClick={() => dispatch(goodActions.deleteUnlockedArtifacts())}>
+					onClick={() => {
+						dispatch(goodActions.deleteUnlockedArtifacts());
+						closeModal();
+					}}>
 					Delete Unlocked
 				</Button>
 			</DialogActions>

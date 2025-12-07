@@ -12,6 +12,7 @@ import findText from './findText';
 import getRarity from './getRarity';
 import isMarked from './isMarked';
 import preprocessImage from './preprocessImage';
+import resizeScale from './resizeScale';
 
 export default function Scanner({
 	setArtifact,
@@ -27,8 +28,9 @@ export default function Scanner({
 		try {
 			setIsLoading(true);
 
-			const canvas = await fileToCanvas(file);
+			let canvas = await fileToCanvas(file);
 			cropBox(preprocessImage(canvas), canvas);
+			canvas = resizeScale(canvas);
 			const artifact = await findText(canvas);
 
 			setArtifact((prevArtifact) => ({
