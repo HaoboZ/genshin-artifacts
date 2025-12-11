@@ -2,7 +2,6 @@ import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -13,7 +12,7 @@ import type { IArtifact, SlotKey } from '@/src/types/good';
 import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
-import { map, pipe, reverse, sortBy } from 'remeda';
+import { map, pipe, prop, reverse, sortBy } from 'remeda';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactStatImage from '../../artifacts/artifactStatImage';
 
@@ -26,7 +25,7 @@ export default function CharacterArtifactModal({
 	slot: SlotKey;
 	artifact: IArtifact;
 }) {
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
@@ -53,8 +52,8 @@ export default function CharacterArtifactModal({
 			})),
 			sortBy(
 				[({ setKey }) => arrDeepIndex(build.artifact, setKey), 'desc'],
-				pget('statRollPercent'),
-				pget('artifact.level'),
+				prop('statRollPercent'),
+				prop('level'),
 			),
 			reverse(),
 		);

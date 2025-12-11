@@ -1,7 +1,6 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -20,14 +19,14 @@ import {
 	ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
-import { filter, groupBy, indexBy, pipe, sortBy } from 'remeda';
+import { filter, groupBy, indexBy, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatImage from '../artifactStatImage';
 
 export default function OptimizeArtifactModal() {
 	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const characters = useCharacters();
 
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
@@ -37,13 +36,13 @@ export default function OptimizeArtifactModal() {
 			selected: boolean;
 		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
-		const equippedArtifacts = groupBy<IArtifact>(artifacts, pget('location'));
+		const equippedArtifacts = groupBy<IArtifact>(artifacts, prop('location'));
 
 		for (let i = 0; i < characters.length; i++) {
 			const character = characters[i];
 			const characterArtifacts = indexBy(
 				equippedArtifacts[character.key] ?? [],
-				pget('slotKey'),
+				prop('slotKey'),
 			);
 			for (const slot of artifactSlotOrder) {
 				// skip marked slots
@@ -121,7 +120,7 @@ export default function OptimizeArtifactModal() {
 				<Button
 					variant='contained'
 					onClick={() => {
-						dispatch(goodActions.optimizeArtifacts(giveArtifacts.filter(pget('selected'))));
+						dispatch(goodActions.optimizeArtifacts(giveArtifacts.filter(prop('selected'))));
 						closeModal();
 					}}>
 					Apply

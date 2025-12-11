@@ -1,12 +1,13 @@
 import type { SxProps } from '@mui/material';
 import { Box, LinearProgress, linearProgressClasses, Typography } from '@mui/material';
 import { Children, ReactNode } from 'react';
+import { sumBy } from 'remeda';
 
 export function combinePercents(...vals: { percent: number; weight: number }[]) {
-	return vals.reduce((total, { percent, weight }) => {
-		if (percent === -1) return total;
-		return total + weight * percent;
-	}, 0);
+	return sumBy(vals, ({ percent, weight }) => {
+		if (percent === -1) return 0;
+		return weight * percent;
+	});
 }
 
 export default function PercentBar({

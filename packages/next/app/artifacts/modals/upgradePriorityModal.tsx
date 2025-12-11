@@ -4,7 +4,6 @@ import { charactersInfo } from '@/api/characters';
 import PageLink from '@/components/page/link';
 import PercentBar from '@/components/percentBar';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { matchingSubStats, potentialPercent } from '@/src/helpers/stats';
 import { useModal } from '@/src/providers/modal';
 import { useModalControls } from '@/src/providers/modal/controls';
@@ -14,7 +13,7 @@ import { useAppSelector } from '@/src/store/hooks';
 import { Build } from '@/src/types/data';
 import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 import { useMemo } from 'react';
-import { filter, groupBy, map, pipe, sortBy } from 'remeda';
+import { filter, groupBy, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatImage from '../artifactStatImage';
 
@@ -23,14 +22,14 @@ const EditArtifactModal = dynamicModal(() => import('../artifactForm/editArtifac
 export default function UpgradePriorityModal() {
 	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	const artifactsFiltered = useMemo(() => {
 		const artifactBuilds = groupBy(
 			[...Object.values(builds), ...Object.values(missingArtifactSets)],
 			({ artifact }) => makeArray(artifact[0])[0],
 		);
-		const equippedArtifacts = groupBy(artifacts, pget('location'));
+		const equippedArtifacts = groupBy(artifacts, prop('location'));
 
 		return pipe(
 			artifacts,
@@ -58,7 +57,7 @@ export default function UpgradePriorityModal() {
 						}),
 						filter(({ potential }) => Boolean(potential)),
 					),
-					[pget('maxMatching'), 'desc'],
+					[prop('maxMatching'), 'desc'],
 					({ potential, currentPotential }) => {
 						if (currentPotential < potential) return (currentPotential - potential) * 10;
 						return potential > 0.5 ? -potential : currentPotential - potential;
@@ -66,7 +65,7 @@ export default function UpgradePriorityModal() {
 				)[0],
 			})),
 			filter(({ maxMatching, potential }) => maxMatching || potential > 0.25),
-			sortBy([pget('maxMatching'), 'desc'], [pget('potential'), 'desc']),
+			sortBy([prop('maxMatching'), 'desc'], [prop('potential'), 'desc']),
 		);
 	}, [artifacts]);
 

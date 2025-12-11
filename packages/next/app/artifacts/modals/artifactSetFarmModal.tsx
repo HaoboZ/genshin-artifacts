@@ -4,7 +4,6 @@ import { statName } from '@/api/stats';
 import OverlayText from '@/components/overlayText';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { potentialPercent } from '@/src/helpers/stats';
 import isMainStat from '@/src/helpers/stats/isMainStat';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -13,11 +12,26 @@ import type { ArtifactSetKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { useMemo } from 'react';
-import { entries, filter, groupBy, map, mapValues, pipe, sortBy, unique } from 'remeda';
+import {
+	entries,
+	filter,
+	groupBy,
+	join,
+	map,
+	mapValues,
+	pickBy,
+	pipe,
+	prop,
+	reverse,
+	sortBy,
+	sumBy,
+	unique,
+	values,
+} from 'remeda';
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactSetFarmModal() {
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	const { incompleteArtifacts, lowPotential } = useMemo(() => {
 		const artifactSetPriority = pipe(
@@ -39,12 +53,12 @@ export default function ArtifactSetFarmModal() {
 					potential: potentialPercent(builds[artifact.location], artifact),
 				};
 			}),
-			groupBy(pget('setKey')),
+			groupBy(prop('setKey')),
 			mapValues((artifacts) => ({
 				badArtifacts: artifacts.filter(
 					({ mainStatMismatch, notMaxRarity }) => mainStatMismatch || notMaxRarity,
 				),
-				potentials: artifacts.map(pget('potential')),
+				potentials: artifacts.map(prop('potential')),
 			})),
 		);
 
@@ -52,11 +66,11 @@ export default function ArtifactSetFarmModal() {
 			incompleteArtifacts: pipe(
 				artifactSetPriority,
 				mapValues(({ badArtifacts }) => ({
-					mainStat: badArtifacts.filter(pget('mainStatMismatch')).length,
+					mainStat: badArtifacts.filter(prop('mainStatMismatch')).length,
 					total: badArtifacts.length,
 					slots: pipe(
 						badArtifacts,
-						groupBy(pget('slotKey')),
+						groupBy(prop('slotKey')),
 						mapValues((slots) =>
 							pipe(
 								slots,
@@ -66,25 +80,33 @@ export default function ArtifactSetFarmModal() {
 								),
 								unique(),
 								map((stat) => statName[stat]),
-								(stats) => stats.join(', '),
+								join(', '),
 							),
 						),
 						entries(),
 					),
 				})),
+				pickBy(({ total }) => total > 0),
 				entries(),
-				filter(([, { total }]) => total > 0),
-				sortBy([pget('1.mainStat'), 'desc'], [pget('1.total'), 'desc']),
+				groupBy((value) => artifactSetsInfo[value[0]].group),
+				values(),
+				sortBy(
+					[(sets) => sumBy(sets, prop(1, 'mainStat')), 'desc'],
+					[(sets) => sumBy(sets, prop(1, 'total')), 'desc'],
+				),
 			),
 			lowPotential: pipe(
 				artifactSetPriority,
-				mapValues(({ potentials }) => [
-					potentials.length,
-					potentials.filter((potential) => potential < 0.3).length,
-				]),
+				mapValues(({ potentials }) => ({
+					total: potentials.length,
+					bad: potentials.filter((potential) => potential < 0.3).length,
+				})),
+				pickBy(({ bad }) => Boolean(bad)),
 				entries(),
-				filter(([, [, count]]) => Boolean(count)),
-				sortBy([pget('1.1'), 'desc']),
+				groupBy((value) => artifactSetsInfo[value[0]].group),
+				values(),
+				reverse(),
+				sortBy([(sets) => sumBy(sets, prop(1, 'bad')), 'desc']),
 			),
 		};
 	}, [artifacts]);
@@ -95,32 +117,41 @@ export default function ArtifactSetFarmModal() {
 			<DialogContent>
 				<PageSection title='Incomplete Artifacts'>
 					<Grid container spacing={1}>
-						{incompleteArtifacts.map(([artifactSet, { mainStat, total, slots }]) => (
-							<Grid key={artifactSet}>
-								<ArtifactSetImage
-									artifactSet={artifactSetsInfo[artifactSet]}
-									tooltip={slots.map(([slot, stats]) => (
-										<Typography key={slot} variant='body2'>
-											{capitalCase(slot)}: {stats}
-										</Typography>
-									))}>
-									<OverlayText>
-										{mainStat} / {total}
-									</OverlayText>
-								</ArtifactSetImage>
+						{incompleteArtifacts.map((setGroups, index) => (
+							<Grid key={index}>
+								{setGroups.map(([artifactSet, { mainStat, total, slots }]) => (
+									<ArtifactSetImage
+										sx={{ height: 100 / setGroups.length }}
+										key={artifactSet}
+										artifactSet={artifactSetsInfo[artifactSet]}
+										tooltip={slots.map(([slot, stats]) => (
+											<Typography key={slot} variant='body2'>
+												{capitalCase(slot)}: {stats}
+											</Typography>
+										))}>
+										<OverlayText>
+											{mainStat} / {total}
+										</OverlayText>
+									</ArtifactSetImage>
+								))}
 							</Grid>
 						))}
 					</Grid>
 				</PageSection>
 				<PageSection title='Low Potential'>
 					<Grid container spacing={1}>
-						{lowPotential.map(([artifactSet, [total, count]]) => (
-							<Grid key={artifactSet}>
-								<ArtifactSetImage artifactSet={artifactSetsInfo[artifactSet]}>
-									<OverlayText>
-										{count} / {total}
-									</OverlayText>
-								</ArtifactSetImage>
+						{lowPotential.map((setGroups, index) => (
+							<Grid key={index}>
+								{setGroups.map(([artifactSet, { total, bad }]) => (
+									<ArtifactSetImage
+										sx={{ height: 100 / setGroups.length }}
+										key={artifactSet}
+										artifactSet={artifactSetsInfo[artifactSet]}>
+										<OverlayText>
+											{bad} / {total}
+										</OverlayText>
+									</ArtifactSetImage>
+								))}
 							</Grid>
 						))}
 					</Grid>

@@ -10,10 +10,10 @@ import isMarked from '@/components/scanner/isMarked';
 import matchPixels from '@/components/scanner/matchPixels';
 import preprocessImage from '@/components/scanner/preprocessImage';
 import resizeScale from '@/components/scanner/resizeScale';
+import { IArtifact } from '@/src/types/good';
 import { Box, Button, Stack } from '@mui/material';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
-import { IArtifact } from '../../../src/types/good';
 
 export default function ScanTest() {
 	const containerRef = useRef<HTMLDivElement>(null);

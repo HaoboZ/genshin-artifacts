@@ -2,8 +2,7 @@ import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { indexBy } from 'remeda';
-import pget from '../next/src/helpers/pget';
+import { indexBy, prop } from 'remeda';
 
 export async function fetchWeapons() {
 	const { data } = await axios.get(
@@ -42,7 +41,7 @@ export async function fetchWeapons() {
 export function writeWeapons(weapons: any[]) {
 	writeFileSync(
 		'../next/app/api/weapons.json',
-		`${JSON.stringify(indexBy(weapons, pget('key')), null, '\t')}\n`,
+		`${JSON.stringify(indexBy(weapons, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(
 		'../next/src/types/weapon.d.ts',

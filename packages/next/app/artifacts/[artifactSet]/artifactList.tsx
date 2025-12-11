@@ -10,7 +10,6 @@ import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PercentBar from '@/components/percentBar';
-import pget from '@/src/helpers/pget';
 import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/src/helpers/stats';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
@@ -38,7 +37,7 @@ import {
 } from '@mui/material';
 import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatImage from '../artifactStatImage';
 import SlotFilter from './slotFilter';
@@ -90,7 +89,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				sortBy(
 					[
 						(artifact) =>
-							pget(
+							prop(
 								artifact,
 								{
 									potential: 'potential',

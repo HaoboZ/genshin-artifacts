@@ -1,12 +1,10 @@
 'use client';
 import { artifactSetsInfo } from '@/api/artifacts';
-import pget from '@/src/helpers/pget';
-import type { DArtifact } from '@/src/types/data';
 import { Button, ButtonGroup, Grid } from '@mui/material';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { groupBy, pipe, reverse, sortBy } from 'remeda';
+import { groupBy, pipe, prop, reverse, sortBy, values } from 'remeda';
 import ArtifactSetImage from './artifactSetImage';
 
 export default function ArtifactSetFilter() {
@@ -15,14 +13,7 @@ export default function ArtifactSetFilter() {
 	const query = useMemo(() => Object.fromEntries(searchParams), [searchParams]);
 
 	const artifactGroups = useMemo(
-		() =>
-			pipe(
-				artifactSetsInfo,
-				Object.values<DArtifact>,
-				groupBy(pget('group')),
-				Object.values<DArtifact[]>,
-				reverse(),
-			),
+		() => pipe(artifactSetsInfo, values(), groupBy(prop('group')), values(), reverse()),
 		[],
 	);
 
@@ -44,7 +35,7 @@ export default function ArtifactSetFilter() {
 			{artifactGroups.map((artifactGroup, index) => (
 				<Grid key={index}>
 					<ButtonGroup>
-						{sortBy(artifactGroup, pget('order')).map((artifactSet) => (
+						{sortBy(artifactGroup, prop('order')).map((artifactSet) => (
 							<Button
 								key={artifactSet.key}
 								sx={{ p: 0, overflow: 'hidden' }}

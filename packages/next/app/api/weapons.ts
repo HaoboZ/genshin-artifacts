@@ -1,9 +1,8 @@
-import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DWeapon } from '@/src/types/data';
 import type { WeaponKey } from '@/src/types/good';
 import { useMemo } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import data from './weapons.json';
 
 export type WeaponType = 'Sword' | 'Claymore' | 'Polearm' | 'Catalyst' | 'Bow';
@@ -27,7 +26,7 @@ export function useWeapons({
 	rarity?: number;
 	search?: string;
 }) {
-	const weapons = useAppSelector(pget('good.weapons'));
+	const weapons = useAppSelector(prop('good', 'weapons'));
 
 	const searchVal = search.toLowerCase();
 
@@ -42,8 +41,8 @@ export function useWeapons({
 						(!rarityType || rarityType === rarity) &&
 						(searchVal ? name.toLowerCase().includes(searchVal) : true),
 				),
-				sortBy([pget('rarity'), 'desc'], [pget('level'), 'desc'], pget('key'), [
-					pget('refinement'),
+				sortBy([prop('rarity'), 'desc'], [prop('level'), 'desc'], prop('key'), [
+					prop('refinement'),
 					'desc',
 				]),
 			),

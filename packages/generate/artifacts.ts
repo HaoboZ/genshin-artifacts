@@ -2,8 +2,7 @@ import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { indexBy } from 'remeda';
-import pget from '../next/src/helpers/pget';
+import { indexBy, prop } from 'remeda';
 
 const artifactLocation = {
 	// 4
@@ -65,7 +64,7 @@ export async function fetchArtifacts() {
 export function writeArtifacts(artifacts: any[]) {
 	writeFileSync(
 		'../next/app/api/artifacts.json',
-		`${JSON.stringify(indexBy(artifacts, pget('key')), null, '\t')}\n`,
+		`${JSON.stringify(indexBy(artifacts, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(
 		'../next/src/types/artifactSet.d.ts',

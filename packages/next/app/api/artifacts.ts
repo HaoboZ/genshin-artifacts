@@ -1,9 +1,8 @@
-import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { Build, DArtifact } from '@/src/types/data';
 import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
 import { useMemo } from 'react';
-import { filter, pipe, sortBy } from 'remeda';
+import { filter, pipe, prop, sortBy } from 'remeda';
 import data from './artifacts.json';
 
 export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data as any;
@@ -30,7 +29,7 @@ export function useArtifacts({
 	rarity?: number;
 	slot?: SlotKey;
 }) {
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	return useMemo(
 		() =>
@@ -44,7 +43,7 @@ export function useArtifacts({
 				),
 				sortBy(
 					[({ setKey }) => artifactSetsInfo[setKey].group, 'desc'],
-					[pget('level'), 'desc'],
+					[prop('level'), 'desc'],
 				),
 			),
 		[artifacts, artifactSet, rarityType, slot],

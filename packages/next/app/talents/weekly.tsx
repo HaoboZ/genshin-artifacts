@@ -3,7 +3,6 @@ import { useCharacters } from '@/api/characters';
 import { weeklyInfo, weeklyRequirement } from '@/api/talents';
 import NumberSpinner from '@/components/numberSpinner';
 import PageSection from '@/components/page/section';
-import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import {
@@ -16,14 +15,14 @@ import {
 	TableRow,
 } from '@mui/material';
 import Image from 'next/image';
-import { filter, flat, groupBy, map, pipe, reduce } from 'remeda';
+import { filter, flat, groupBy, map, pipe, prop, sumBy } from 'remeda';
 
 export default function TalentsWeekly() {
 	const dispatch = useAppDispatch();
-	const currentMaterials = useAppSelector(pget('good.materials'));
+	const currentMaterials = useAppSelector(prop('good', 'materials'));
 	const characters = useCharacters();
 
-	const charactersWeekly = groupBy(characters, pget('weeklyMaterial'));
+	const charactersWeekly = groupBy(characters, prop('weeklyMaterial'));
 
 	return (
 		<PageSection title='Weekly Boss Materials'>
@@ -47,19 +46,14 @@ export default function TalentsWeekly() {
 								map(({ key }) => charactersWeekly[key]),
 								flat(2),
 								filter(Boolean),
-								reduce(
-									(total, { talent }) =>
-										total +
+								sumBy(
+									({ talent }) =>
 										weeklyRequirement[talent?.auto] +
 										weeklyRequirement[talent?.skill] +
 										weeklyRequirement[talent?.burst],
-									0,
 								),
 							);
-							const owned = items.reduce(
-								(total, { key }) => total + (currentMaterials[key] ?? 0),
-								0,
-							);
+							const owned = sumBy(items, ({ key }) => currentMaterials[key] ?? 0);
 
 							return (
 								<TableRow key={name}>

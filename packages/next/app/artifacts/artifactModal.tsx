@@ -7,7 +7,6 @@ import PercentBar from '@/components/percentBar';
 import SubStatBar from '@/components/subStatBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -24,7 +23,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { useMemo, useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 import ArtifactActions from './artifactActions';
 import ArtifactImage from './artifactImage';
@@ -52,7 +51,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 					build,
 					statRollPercent: weightedPercent(build, artifact),
 				})),
-				sortBy([pget('statRollPercent'), 'desc']),
+				sortBy([prop('statRollPercent'), 'desc']),
 			),
 		[artifact, checked],
 	);

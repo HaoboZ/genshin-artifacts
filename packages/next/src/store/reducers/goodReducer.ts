@@ -1,10 +1,9 @@
 import { weeklyInfo } from '@/app/api/talents';
-import pget from '@/src/helpers/pget';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
-import { differenceWith, pick, uniqueBy } from 'remeda';
+import { differenceWith, pick, prop, uniqueBy } from 'remeda';
 import type { PartialDeep } from 'type-fest';
 import type { Build } from '../../types/data';
 import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
@@ -37,7 +36,7 @@ const goodSlice = createSlice({
 				state.weapons.forEach((weapon) => (weapon.id = nanoid()));
 			}
 			if (payload.materials) {
-				const keys = weeklyInfo.flatMap(({ items }) => items.map(pget('key')));
+				const keys = weeklyInfo.flatMap(({ items }) => items.map(prop('key')));
 				state.materials = pick(payload.materials, keys);
 			}
 		},

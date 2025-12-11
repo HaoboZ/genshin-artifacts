@@ -11,8 +11,7 @@ import { arrayMove } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
-import { mapValues } from 'remeda';
-import pget from '../../helpers/pget';
+import { mapValues, prop } from 'remeda';
 import SortableContainer from './sortableContainer';
 import SortableItem from './sortableItem';
 
@@ -48,7 +47,8 @@ export default function MultiSortable<Item>({
 		if (!setA) return;
 		setSetA(false);
 		setSkipB(true);
-		setGroups(mapValues(lists, (list) => list.map(pget('item'))));
+		// @ts-expect-error NoInfer
+		setGroups(mapValues(lists, (list) => list.map(prop('item'))));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lists]);
 

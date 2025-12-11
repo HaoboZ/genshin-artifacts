@@ -1,5 +1,4 @@
 import { artifactSetsInfo } from '@/api/artifacts';
-import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -11,7 +10,7 @@ import { DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
-import { omit, partition } from 'remeda';
+import { omit, partition, prop } from 'remeda';
 import ArtifactForm from '.';
 
 const ArtifactModal = dynamicModal(() => import('../artifactModal'));
@@ -46,7 +45,7 @@ export default function AddArtifactModal() {
 				onSubmit={(artifact) => {
 					const [unactivatedSubstats, substats] = partition(
 						artifact.substats,
-						pget('unactivated'),
+						prop('unactivated'),
 					);
 					dispatch(
 						goodActions.addArtifact({

@@ -3,7 +3,6 @@ import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -14,13 +13,13 @@ import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponForm from '../weaponForm';
 
 export default function AddWeaponModal() {
 	const dispatch = useAppDispatch();
-	const priority = useAppSelector(pget('main.priority'));
+	const priority = useAppSelector(prop('main', 'priority'));
 	const { closeModal } = useModalControls();
 
 	const [weapon, setWeapon] = useState<WeaponKey>(null);

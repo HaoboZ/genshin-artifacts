@@ -1,7 +1,6 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import PercentBar from '@/components/percentBar';
-import pget from '@/src/helpers/pget';
 import { maxPotentialPercents } from '@/src/helpers/stats';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
@@ -18,7 +17,7 @@ import {
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import ArtifactStatImage from '../artifactStatImage';
 
 const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets)];
@@ -26,7 +25,7 @@ const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets
 export default function ArtifactDeleteModal() {
 	const { closeModal } = useModalControls();
 	const dispatch = useAppDispatch();
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const { enqueueSnackbar } = useSnackbar();
 
 	const artifactCounts = useMemo(
@@ -53,7 +52,7 @@ export default function ArtifactDeleteModal() {
 					potential < (slotKey === 'flower' || slotKey === 'plume' ? 0.6 : 0.4) &&
 					artifactCounts[setKey]?.[slotKey] > 1,
 			),
-			sortBy(pget('potential')),
+			sortBy(prop('potential')),
 			map((artifact) => ({ artifact, selected: true })),
 		),
 	);
@@ -93,7 +92,7 @@ export default function ArtifactDeleteModal() {
 					onClick={() => {
 						dispatch(
 							goodActions.deleteArtifacts(
-								deleteArtifacts.filter(pget('selected')).map(pget('artifact')),
+								deleteArtifacts.filter(prop('selected')).map(prop('artifact')),
 							),
 						);
 						closeModal();

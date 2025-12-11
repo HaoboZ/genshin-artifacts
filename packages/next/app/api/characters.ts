@@ -1,10 +1,9 @@
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { useAppSelector } from '@/src/store/hooks';
 import type { DCharacter } from '@/src/types/data';
 import type { ArtifactSetKey, CharacterKey } from '@/src/types/good';
 import { useMemo } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy, values } from 'remeda';
 import { builds } from './builds';
 import data from './characters.json';
 
@@ -17,13 +16,14 @@ export function useCharacters({
 	artifactSet?: ArtifactSetKey;
 	owned?: boolean;
 } = {}) {
-	const priority = useAppSelector(pget('main.priority'));
-	const characters = useAppSelector(pget('good.characters'));
+	const priority = useAppSelector(prop('main', 'priority'));
+	const characters = useAppSelector(prop('good', 'characters'));
 
 	return useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
 		return pipe(
-			Object.values(charactersInfo),
+			charactersInfo,
+			values(),
 			map((character) => ({
 				...character,
 				...characters.find(({ key }) => character.key === key),

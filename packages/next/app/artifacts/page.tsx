@@ -4,13 +4,12 @@ import { charactersInfo, useCharacters } from '@/api/characters';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppSelector } from '@/src/store/hooks';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
-import { sortBy } from 'remeda';
+import { prop, sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 import ArtifactSetImage from './artifactSetImage';
 
@@ -24,7 +23,7 @@ const UpgradePriorityModal = dynamicModal(() => import('./modals/upgradePriority
 export default function Artifacts() {
 	const { showModal } = useModal();
 	const characters = useCharacters();
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	return (
 		<PageSection
@@ -45,7 +44,7 @@ export default function Artifacts() {
 				<Button onClick={() => showModal(ArtifactSetFarmModal)}>Farm</Button>
 				<Button onClick={() => showModal(ArtifactDeleteModal)}>Delete</Button>
 			</ButtonGroup>
-			{sortBy(Object.values(artifactSetsInfo), pget('order')).map((artifactSet) => {
+			{sortBy(Object.values(artifactSetsInfo), prop('order')).map((artifactSet) => {
 				const charactersFiltered = characters.filter(
 					({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key,
 				);

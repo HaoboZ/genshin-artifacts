@@ -2,8 +2,7 @@ import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { indexBy, pick } from 'remeda';
-import pget from '../next/src/helpers/pget';
+import { indexBy, pick, prop } from 'remeda';
 
 export async function fetchCharacters() {
 	const { data } = await axios.get('https://genshin-impact.fandom.com/wiki/Character/List');
@@ -51,7 +50,7 @@ export async function fetchCharacters() {
 export function writeCharacters(characters: any[]) {
 	writeFileSync(
 		'../next/app/api/characters.json',
-		`${JSON.stringify(indexBy(characters, pget('key')), null, '\t')}\n`,
+		`${JSON.stringify(indexBy(characters, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(
 		'../next/src/types/character.d.ts',

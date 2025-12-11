@@ -1,9 +1,8 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import makeArray from '@/src/helpers/makeArray';
-import pget from '@/src/helpers/pget';
 import type { Build } from '@/src/types/data';
 import type { ArtifactSetKey, StatKey } from '@/src/types/good';
-import { groupBy, map, pipe, reduce, take } from 'remeda';
+import { groupBy, map, pipe, prop, reduce, take } from 'remeda';
 
 export default function getArtifactSetBuild(
 	characterBuilds: Build[],
@@ -52,9 +51,9 @@ export default function getArtifactSetBuild(
 				{} as Record<StatKey, number>,
 			),
 			Object.entries<number>,
-			groupBy(pget('1')),
+			groupBy(prop(1)),
 			Object.values<[string, number][]>,
-			map((stat) => stat.flatMap(pget('0'))),
+			map((stat) => stat.flatMap(prop(0))),
 			take(4),
 		) as any,
 	};

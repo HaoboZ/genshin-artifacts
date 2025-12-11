@@ -1,23 +1,21 @@
 import { weeklyCount, weeklyInfo } from '@/api/talents';
 import ContextMenu from '@/components/contextMenu';
-import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { DCharacter } from '@/src/types/data';
 import type { ICharacter } from '@/src/types/good';
 import { Box, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { clamp, indexBy } from 'remeda';
+import { clamp, indexBy, prop } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 
 export default function BooksCharacter({ character }: { character: DCharacter & ICharacter }) {
-	const currentMaterials = useAppSelector(pget('good.materials'));
+	const currentMaterials = useAppSelector(prop('good', 'materials'));
 	const dispatch = useAppDispatch();
 
-	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(pget('items')), pget('key')), []);
+	const weeklyItems = useMemo(() => indexBy(weeklyInfo.flatMap(prop('items')), prop('key')), []);
 
 	const increaseSkill = (type) => {
 		dispatch(

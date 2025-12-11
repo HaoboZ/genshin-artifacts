@@ -2,7 +2,6 @@ import { builds } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -20,7 +19,7 @@ import {
 	ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
-import { filter, map, pipe, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
 
@@ -28,7 +27,7 @@ type GiveWeapon = { weapon: IWeapon; tier: number; character: Build; selected: b
 
 export default function OptimalWeaponModal() {
 	const dispatch = useAppDispatch();
-	const storedWeapons = useAppSelector(pget('good.weapons'));
+	const storedWeapons = useAppSelector(prop('good', 'weapons'));
 	const { closeModal } = useModalControls();
 
 	const characters = useCharacters({ owned: true });
@@ -46,7 +45,7 @@ export default function OptimalWeaponModal() {
 					tier: arrDeepIndex(builds[character.key].weapon, weapon.key),
 				})),
 				filter(({ tier }) => tier !== -1),
-				sortBy(({ weapon }) => (weapon.level > 1 ? 0 : 1), pget('tier')),
+				sortBy(({ weapon }) => (weapon.level > 1 ? 0 : 1), prop('tier')),
 			);
 
 			for (const { weapon, tier } of tieredWeapons) {
@@ -107,7 +106,7 @@ export default function OptimalWeaponModal() {
 				<Button
 					variant='contained'
 					onClick={() => {
-						dispatch(goodActions.optimizeWeapons(giveWeapons.filter(pget('selected'))));
+						dispatch(goodActions.optimizeWeapons(giveWeapons.filter(prop('selected'))));
 						closeModal();
 					}}>
 					Apply All

@@ -2,7 +2,6 @@
 import ClientOnly from '@/components/clientOnly';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
-import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -11,11 +10,12 @@ import { Box, Button, ButtonGroup, Stack, TextField, Typography } from '@mui/mat
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
+import { prop } from 'remeda';
 import RespawnNotification from './respawnNotification';
 
 export default function Main() {
-	const main = useAppSelector(pget('main'));
-	const good = useAppSelector(pget('good'));
+	const main = useAppSelector(prop('main'));
+	const good = useAppSelector(prop('good'));
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
 

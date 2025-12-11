@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/4/25
+// 12/10/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -302,7 +302,6 @@ export const builds: Record<CharacterKey, Build> = {
 			'SkywardHarp',
 			'AmosBow',
 			['PolarStar', 'SongOfStillness', 'PrototypeCrescent'],
-			['ScionOfTheBlazingSun', 'BlackcliffWarbow'],
 		],
 		group: 0,
 		artifact: [

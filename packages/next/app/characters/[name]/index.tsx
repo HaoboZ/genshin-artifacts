@@ -10,7 +10,6 @@ import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import PercentBar from '@/components/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import pget from '@/src/helpers/pget';
 import { weightedPercent } from '@/src/helpers/stats';
 import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
@@ -21,7 +20,7 @@ import { Card, CardContent, Grid, Stack, Switch, Typography } from '@mui/materia
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
-import { clamp, indexBy } from 'remeda';
+import { clamp, indexBy, prop } from 'remeda';
 import ArtifactStatImage from '../../artifacts/artifactStatImage';
 import WeaponImage from '../../weapons/weaponImage';
 import CharacterImage from '../characterImage';
@@ -40,12 +39,12 @@ export default function Character({ characterData }: { characterData: DCharacter
 	const weapon = useAppSelector(({ good }) =>
 		good.weapons.find(({ location }) => location === characterData.key),
 	);
-	const artifacts = useAppSelector(pget('good.artifacts'));
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const artifactsIndexed = useMemo(
 		() =>
 			indexBy(
 				artifacts.filter(({ location }) => location === characterData.key),
-				pget('slotKey'),
+				prop('slotKey'),
 			),
 		[artifacts, characterData.key],
 	);

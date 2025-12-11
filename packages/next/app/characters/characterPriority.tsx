@@ -1,13 +1,12 @@
 import { charactersInfo } from '@/api/characters';
 import MultiSortable from '@/components/sortable/multi';
-import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import type { CharacterKey } from '@/src/types/good';
 import { Grid, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { filter, isIncludedIn, isNot, mapValues, omit } from 'remeda';
+import { filter, isIncludedIn, isNot, mapValues, omit, prop } from 'remeda';
 import CharacterTierImage from './characterTierImage';
 
 export default function CharacterPriority({
@@ -25,8 +24,8 @@ export default function CharacterPriority({
 	owned: boolean;
 	search: string;
 }) {
-	const good = useAppSelector(pget('good'));
-	const priority = useAppSelector(pget('main.priority'));
+	const good = useAppSelector(prop('good'));
+	const priority = useAppSelector(prop('main', 'priority'));
 	const dispatch = useAppDispatch();
 
 	const [characters, setCharacters] = useState(
