@@ -88,15 +88,13 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				})),
 				sortBy(
 					[
-						(artifact) =>
-							prop(
-								artifact,
-								{
-									potential: 'potential',
-									stats: 'statRollPercent',
-									level: 'level',
-								}[sortType],
-							),
+						prop(
+							{
+								potential: 'potential',
+								stats: 'statRollPercent',
+								level: 'level',
+							}[sortType],
+						),
 						sortDir ? 'asc' : 'desc',
 					],
 					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
