@@ -40,7 +40,6 @@ export default function CharacterPriority({
 	);
 
 	const filteredCharacters = useMemo(() => {
-		if (editMode) return characters;
 		const searchVal = search.toLowerCase();
 		return mapValues(characters, (characters) =>
 			characters.filter((key) => {
@@ -54,7 +53,7 @@ export default function CharacterPriority({
 				);
 			}),
 		);
-	}, [editMode, characters, search, element, weaponType, rarity, owned, good.characters]);
+	}, [characters, search, element, weaponType, rarity, owned, good.characters]);
 
 	useEffect(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));

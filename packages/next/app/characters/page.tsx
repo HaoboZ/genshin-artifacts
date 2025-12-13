@@ -44,6 +44,7 @@ export default function Characters() {
 						control={
 							<Switch
 								checked={editMode}
+								disabled={Boolean(element || weaponType || rarity || search)}
 								onChange={({ target }) => setEditMode(target.checked)}
 							/>
 						}
