@@ -17,17 +17,17 @@
 		"remeda": "2.32.0"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "16.0.10",
+		"@next/eslint-plugin-next": "16.1.0",
 		"@types/eslint": "9.6.1",
-		"@types/node": "25.0.2",
+		"@types/node": "25.0.3",
 		"eslint": "9.39.2",
-		"eslint-config-next": "16.0.10",
+		"eslint-config-next": "16.1.0",
 		"eslint-config-prettier": "10.1.8",
 		"husky": "9.1.7",
 		"lint-staged": "16.2.7",
 		"prettier": "3.7.4",
 		"type-fest": "5.3.1",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.49.0"
+		"typescript-eslint": "8.50.0"
 	}
 }
