@@ -14,6 +14,8 @@ export default function RouteMap({
 	setPoints,
 	time: _time = 0,
 	setTime: _setTime,
+	activeSpot: _activeSpot,
+	setActiveSpot: _setActiveSpot,
 	sx,
 	...props
 }: {
@@ -22,6 +24,8 @@ export default function RouteMap({
 	setPoints?: Dispatch<SetStateAction<Point[]>>;
 	time?: number;
 	setTime?: Dispatch<number>;
+	activeSpot?: Spot;
+	setActiveSpot?: Dispatch<Spot>;
 } & BoxProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +34,7 @@ export default function RouteMap({
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
 
 	const [time, setTime] = useControlledState(_time, _setTime);
-	const [activeSpot, setActiveSpot] = useState<Spot>(null);
+	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
 
 	// sync activeSpot with time
@@ -45,9 +49,10 @@ export default function RouteMap({
 				y: spot.point.y * containerSize.height,
 			};
 		}
-		// eslint-disable-next-line react-hooks/set-state-in-effect
+
 		setActiveSpot(spot);
-	}, [time, points, containerSize]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [time, containerSize]);
 
 	return (
 		<RouteMapContainer
@@ -82,28 +87,6 @@ export default function RouteMap({
 				}}>
 				Reset View
 			</Button>
-			{/*{activeSpot && (*/}
-			{/*	<Box*/}
-			{/*		sx={{*/}
-			{/*			position: 'absolute',*/}
-			{/*			top: 10,*/}
-			{/*			right: 10,*/}
-			{/*			zIndex: 1,*/}
-			{/*			bgcolor: '#10b981',*/}
-			{/*			color: 'white',*/}
-			{/*			px: 2,*/}
-			{/*			py: 1,*/}
-			{/*			borderRadius: 1,*/}
-			{/*			fontWeight: 'bold',*/}
-			{/*		}}>*/}
-			{/*		Path {activeSpot.pointIndex}: {activeSpot.percentage}%*/}
-			{/*		{time !== undefined && (*/}
-			{/*			<Box component='span' sx={{ ml: 1, opacity: 0.9 }}>*/}
-			{/*				| Time: {time.toFixed(1)}*/}
-			{/*			</Box>*/}
-			{/*		)}*/}
-			{/*	</Box>*/}
-			{/*)}*/}
 			<Box
 				sx={{
 					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,

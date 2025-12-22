@@ -1,14 +1,15 @@
 'use client';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
-import { Box, Button, MenuItem, Select, Stack } from '@mui/material';
+import { Box, Button, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import RouteMap from '../../../farming/routeMap';
-import { Point } from '../../../farming/routeMap/utils';
+import { Point, Spot } from '../../../farming/routeMap/utils';
 import VideoPlayer from '../../../farming/videoPlayer';
 import route from '../../route.json';
 import { savePointsServer } from '../actions';
+import TimePointControls from './timePointControls';
 
 const maps = route[0].maps;
 
@@ -20,6 +21,7 @@ export default function RouteSyncTest() {
 	const [currentRoute, setCurrentRoute] = useState(maps[0]);
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${currentRoute}.json`, []);
 	const [time, setTime] = useState(0);
+	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
 	const currentIndex = maps.indexOf(currentRoute);
 
@@ -27,6 +29,25 @@ export default function RouteSyncTest() {
 	useEventListener(videoRef.current, 'timeupdate', () => {
 		setTime(videoRef.current.currentTime);
 	});
+
+	const updatePointTime = (index: number, field: 'start' | 'end', value: number | undefined) => {
+		setPoints((prevPoints) => {
+			const newPoints = [...prevPoints];
+			if (index >= 0 && index < newPoints.length) {
+				const updatedPoint = { ...newPoints[index] };
+				if (value === undefined) {
+					delete updatedPoint[field];
+				} else {
+					updatedPoint[field] = value;
+				}
+				newPoints[index] = updatedPoint;
+			}
+			return newPoints;
+		});
+	};
+
+	const currentPointIndex = activeSpot?.pointIndex ?? null;
+	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
 	return (
 		<Box
@@ -44,7 +65,6 @@ export default function RouteSyncTest() {
 					aspectRatio: '16 / 9',
 					display: 'grid',
 					gridTemplate: '1fr 1fr',
-					border: '1px solid blue',
 				}}>
 				<Box
 					sx={{
@@ -53,6 +73,8 @@ export default function RouteSyncTest() {
 						justifySelf: 'start',
 						alignSelf: 'start',
 						width: '50%',
+						maxHeight: '100%',
+						overflow: 'auto',
 					}}>
 					<Stack spacing={1} sx={{ p: 1 }}>
 						<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
@@ -92,17 +114,36 @@ export default function RouteSyncTest() {
 							}}>
 							Save Points
 						</Button>
+						<Typography variant='body2' sx={{ mt: 1 }}>
+							Current Time: {time.toFixed(2)}s
+						</Typography>
+						<TimePointControls
+							time={time}
+							point={
+								currentPointIndex !== null && currentPointIndex >= 0
+									? points[currentPointIndex]
+									: null
+							}
+							pointIndex={currentPointIndex}
+							updatePointTime={updatePointTime}
+						/>
+						<TimePointControls
+							time={time}
+							point={
+								nextPointIndex !== null && nextPointIndex < points.length
+									? points[nextPointIndex]
+									: null
+							}
+							pointIndex={nextPointIndex}
+							updatePointTime={updatePointTime}
+						/>
 					</Stack>
 				</Box>
 				<RouteMap
 					src={currentRoute}
 					points={points}
-					time={time}
-					setTime={(time) => {
-						setTime(time);
-						if (!videoRef.current) return;
-						videoRef.current.currentTime = time;
-					}}
+					activeSpot={activeSpot}
+					setActiveSpot={setActiveSpot}
 					sx={{
 						gridColumn: 1,
 						gridRow: 1,
