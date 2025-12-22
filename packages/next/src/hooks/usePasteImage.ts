@@ -1,6 +1,7 @@
 import useEventListener from './useEventListener';
 
-export default function useClipboardImage(listener: (items: DataTransferItem[]) => void) {
+// paste image directly to the window
+export default function usePasteImage(listener: (items: DataTransferItem[]) => void) {
 	return useEventListener(
 		typeof window !== 'undefined' ? window : null,
 		'paste',

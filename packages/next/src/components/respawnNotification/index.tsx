@@ -1,8 +1,8 @@
-import AsyncButton from '@/components/loaders/asyncButton';
 import { Stack, Typography } from '@mui/material';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { Fragment, useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
+import AsyncButton from '../loaders/asyncButton';
 import { cancelNotification, sendNotification } from './notificationActions';
 
 export default function RespawnNotification({

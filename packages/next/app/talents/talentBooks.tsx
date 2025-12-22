@@ -19,7 +19,7 @@ import {
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { useState } from 'react';
-import BooksCharacter from './character';
+import TalentBooksCharacter from './talentBooksCharacter';
 
 const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];
 const levelFilters = ['All', '<9', '9-10', '10'];
@@ -108,7 +108,10 @@ export default function TalentBooks() {
 													return true;
 												})
 												.map((character) => (
-													<BooksCharacter key={character.key} character={character} />
+													<TalentBooksCharacter
+														key={character.key}
+														character={character}
+													/>
 												))}
 										</Box>
 									</TableCell>

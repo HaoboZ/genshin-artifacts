@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { pascalCase } from 'change-case';
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 
 export async function fetchWeekly(characters) {
@@ -48,7 +48,7 @@ export function writeWeekly(weekly) {
 		items.map(({ name, key }) => `\n\t| '${key}' // ${name}`),
 	);
 
-	// Add semicolon to the last union entry
+	// add semicolon to the last union entry
 	entries[entries.length - 1] = entries[entries.length - 1].replace(/^(\n\t\| '[^']+')/, '$1;');
 
 	writeFileSync(

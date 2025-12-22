@@ -3,8 +3,8 @@ import { useNProgress } from '@tanem/react-nprogress';
 import { useSnackbar } from 'notistack';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
-import useClipboardImage from '../../hooks/useClipboardImage';
 import useLoading from '../../hooks/useLoading';
+import usePasteImage from '../../hooks/usePasteImage';
 import type { IArtifact } from '../../types/good';
 import cropBox from './cropBox';
 import fileToCanvas from './fileToCanvas';
@@ -49,7 +49,7 @@ export default function Scanner({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useClipboardImage((items) => scanFile(items[0].getAsFile()));
+	usePasteImage((items) => scanFile(items[0].getAsFile()));
 
 	return (
 		<Button

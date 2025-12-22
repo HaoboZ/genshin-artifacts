@@ -1,7 +1,7 @@
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
-import TalentBooks from './books';
-import TalentsWeekly from './weekly';
+import TalentBooks from './talentBooks';
+import TalentsWeekly from './talentsWeekly';
 
 export default function Talents() {
 	return (

@@ -38,6 +38,7 @@
 		"react-onesignal": "3.4.0",
 		"react-redux": "9.2.0",
 		"redux": "5.0.1",
+		"swr": "2.3.8",
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {

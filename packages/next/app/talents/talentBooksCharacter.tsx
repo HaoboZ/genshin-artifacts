@@ -11,7 +11,11 @@ import { useMemo } from 'react';
 import { clamp, indexBy, prop } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 
-export default function BooksCharacter({ character }: { character: DCharacter & ICharacter }) {
+export default function TalentBooksCharacter({
+	character,
+}: {
+	character: DCharacter & ICharacter;
+}) {
 	const currentMaterials = useAppSelector(prop('good', 'materials'));
 	const dispatch = useAppDispatch();
 

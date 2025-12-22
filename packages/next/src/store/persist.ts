@@ -11,7 +11,6 @@ export function loadState() {
 		if (state.main?.weekly) {
 			const weekly = state.main.weekly;
 			delete state.main.weekly;
-			// ADD HERE
 			state.good.materials = mapKeys(weekly, (key) => pascalCase(key.replace(/'/g, '')));
 		}
 		return state;

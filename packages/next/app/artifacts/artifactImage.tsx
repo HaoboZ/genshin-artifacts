@@ -10,6 +10,7 @@ export default function ArtifactImage({
 	slot,
 	size = 100,
 	children,
+	sx,
 	...props
 }: { artifact: IArtifact; slot?: SlotKey; size?: number } & AvatarProps) {
 	const artifactSet = artifactSetsInfo[artifact?.setKey];
@@ -18,14 +19,14 @@ export default function ArtifactImage({
 		<Tooltip followCursor title={artifactSet?.name}>
 			<Avatar
 				variant='rounded'
-				{...props}
 				sx={{
 					width: size,
 					height: size,
 					overflow: 'hidden',
 					position: 'relative',
-					...props.sx,
-				}}>
+					...sx,
+				}}
+				{...props}>
 				<Image
 					alt={artifactSet?.name ?? slot ?? 'artifact'}
 					src={artifactSet?.[artifact?.slotKey ?? slot] ?? artifactSlotImages[slot]}

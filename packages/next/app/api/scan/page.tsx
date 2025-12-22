@@ -100,7 +100,9 @@ export default function ScanTest() {
 						<Button
 							variant='contained'
 							onClick={() => {
+								const time = performance.now();
 								const [image, processed] = preprocessImage(canvases[currentIndex]);
+								console.log('time:', performance.now() - time, 'ms');
 								const canvas = document.createElement('canvas');
 								cv.imshow(canvas, processed);
 								image.delete();
@@ -113,7 +115,9 @@ export default function ScanTest() {
 							variant='contained'
 							onClick={() => {
 								const canvas = document.createElement('canvas');
+								const time = performance.now();
 								cropBox(preprocessImage(canvases[currentIndex]), canvas);
+								console.log('time:', performance.now() - time, 'ms');
 								addCanvas(canvas);
 							}}>
 							Process & Crop
@@ -127,7 +131,9 @@ export default function ScanTest() {
 							variant='contained'
 							onClick={async () => {
 								const canvas = document.createElement('canvas');
+								const time = performance.now();
 								const artifact = await findText(canvases[currentIndex], canvas);
+								console.log('time:', performance.now() - time, 'ms');
 								setArtifact(artifact);
 								addCanvas(canvas);
 							}}>

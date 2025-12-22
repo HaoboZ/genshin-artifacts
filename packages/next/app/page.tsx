@@ -2,6 +2,7 @@
 import ClientOnly from '@/components/clientOnly';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
+import RespawnNotification from '@/src/components/respawnNotification';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
@@ -11,7 +12,6 @@ import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
 import { prop } from 'remeda';
-import RespawnNotification from './respawnNotification';
 
 export default function Main() {
 	const main = useAppSelector(prop('main'));
@@ -110,7 +110,7 @@ export default function Main() {
 					<RespawnNotification
 						storageKey='artifact-respawn'
 						item='Artifacts Farming'
-						icon='/essence.png'
+						icon='/icons/essence.png'
 						notificationTime={() => {
 							const now = new Date();
 							now.setDate(now.getDate() + 1);
@@ -121,7 +121,7 @@ export default function Main() {
 					<RespawnNotification
 						storageKey='specialties-respawn'
 						item='Specialties Farming'
-						icon='/materials.png'
+						icon='/icons/materials.png'
 						notificationTime={() => {
 							const now = new Date();
 							now.setDate(now.getDate() + 2);
@@ -132,7 +132,7 @@ export default function Main() {
 					<RespawnNotification
 						storageKey='crystals-respawn'
 						item='Crystals Farming'
-						icon='/crystal.png'
+						icon='/icons/crystal.png'
 						notificationTime={() => {
 							const now = new Date();
 							now.setDate(now.getDate() + 3);

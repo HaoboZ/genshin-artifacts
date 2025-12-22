@@ -9,20 +9,21 @@ export default function CharacterImage({
 	size = 100,
 	children,
 	tooltip,
+	sx,
 	...props
 }: { character: DCharacter; size?: number; tooltip?: ReactNode } & AvatarProps) {
 	return (
 		<Tooltip followCursor title={tooltip ?? character.name}>
 			<Avatar
 				variant='rounded'
-				{...props}
 				sx={{
 					width: size,
 					height: size,
 					overflow: 'hidden',
 					position: 'relative',
-					...props.sx,
-				}}>
+					...sx,
+				}}
+				{...props}>
 				<Image
 					alt={character.name}
 					src={character.image}

@@ -14,6 +14,7 @@ export default function WeaponImage({
 	size = 100,
 	hideStats,
 	children,
+	sx,
 	...props
 }: {
 	weapon: string | IWeapon;
@@ -26,14 +27,14 @@ export default function WeaponImage({
 		<Tooltip followCursor title={weaponInfo?.name}>
 			<Avatar
 				variant='rounded'
-				{...props}
 				sx={{
 					width: size,
 					height: size,
 					overflow: 'hidden',
 					position: 'relative',
-					...props.sx,
-				}}>
+					...sx,
+				}}
+				{...props}>
 				<Image
 					alt={weaponInfo?.name ?? type ?? 'weapon'}
 					src={

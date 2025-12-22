@@ -16,13 +16,13 @@ export default function getRarity(canvas: HTMLCanvasElement, newCanvas?: HTMLCan
 		const numPixels = data.length / 4;
 
 		let meanIntensity = 0;
-		// Calculate the mean intensity
+		// calculate the mean intensity
 		for (let i = 0; i < data.length; i += 4) {
 			meanIntensity += data[i];
 		}
 		meanIntensity /= numPixels;
 
-		// Calculate the variance
+		// calculate the variance
 		let variance = 0;
 		for (let i = 0; i < data.length; i += 4) {
 			variance += Math.pow(data[i] - meanIntensity, 2);

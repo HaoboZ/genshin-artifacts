@@ -11,7 +11,7 @@ import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { omit, partition, prop } from 'remeda';
-import ArtifactForm from '.';
+import ArtifactForm from './index';
 
 const ArtifactModal = dynamicModal(() => import('../artifactModal'));
 

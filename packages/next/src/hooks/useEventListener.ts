@@ -1,11 +1,17 @@
 import { useEffect, useRef } from 'react';
 
+export default function useEventListener<K extends keyof WindowEventMap>(
+	event: Window | Document | HTMLElement,
+	name: K,
+	listener: (ev: WindowEventMap[K]) => void,
+	callOnce?: boolean,
+): void;
 export default function useEventListener(
 	event:
 		| { on: Function; off: Function }
 		| { addListener: Function; removeListener: Function }
 		| { addEventListener: Function; removeEventListener: Function },
-	name: string | symbol | keyof WindowEventMap,
+	name: string,
 	listener: (...args: any[]) => void,
 	callOnce?: boolean,
 ) {

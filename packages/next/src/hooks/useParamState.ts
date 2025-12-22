@@ -2,6 +2,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { isEmpty } from 'remeda';
 
+// uses query parameter as state
 export default function useParamState<T>(key: string, initialState: T): [T, (value: T) => void] {
 	const router = useRouter();
 	const pathname = usePathname();
