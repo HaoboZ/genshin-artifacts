@@ -10,7 +10,7 @@ import { Point } from '../../farming/routeMap/utils';
 import route from '../route.json';
 import { savePointsServer } from './actions';
 
-const maps = route[0].maps;
+const maps = route[1].maps;
 
 export default function RouteTest() {
 	const { enqueueSnackbar } = useSnackbar();
