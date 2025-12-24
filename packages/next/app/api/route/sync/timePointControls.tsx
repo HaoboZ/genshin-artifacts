@@ -1,35 +1,47 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Button, Grid, Stack, Typography } from '@mui/material';
+import { Fragment } from 'react';
 import { Point } from '../../../farming/routeMap/utils';
 
 export default function TimePointControls({
 	time,
 	point,
 	pointIndex,
-	updatePointTime,
+	updatePointField,
 }: {
 	time: number;
 	point: Point;
 	pointIndex: number;
-	updatePointTime: (pointIndex: number, field: string, time: number) => void;
+	updatePointField: (pointIndex: number, field: string, time: number) => void;
 }) {
 	if (!point) return null;
 	return (
-		<Box>
+		<Grid size={6}>
 			<Typography variant='subtitle2' fontWeight='bold'>
 				Current Point (Index: {pointIndex})
 			</Typography>
+			{point.artifact && (
+				<Fragment>
+					<Typography>Artifact Time</Typography>
+					<Button
+						size='small'
+						variant='contained'
+						onClick={() => updatePointField(pointIndex, 'artifact', time)}>
+						{point.artifact.toFixed(2)} sec
+					</Button>
+				</Fragment>
+			)}
 			<Stack direction='row' spacing={1} sx={{ mt: 0.5, alignItems: 'center' }}>
 				<Typography>Start</Typography>
 				<Button
 					size='small'
 					variant='contained'
-					onClick={() => updatePointTime(pointIndex, 'start', time)}>
-					{point.start !== undefined ? `${point.start.toFixed(2)}s` : 'Not set'}
+					onClick={() => updatePointField(pointIndex, 'start', time)}>
+					{point.start !== undefined ? `${point.start.toFixed(2)} sec` : 'Not set'}
 				</Button>
 				<Button
 					size='small'
 					variant='outlined'
-					onClick={() => updatePointTime(pointIndex, 'start', undefined)}
+					onClick={() => updatePointField(pointIndex, 'start', undefined)}
 					disabled={point.start === undefined}>
 					Reset
 				</Button>
@@ -39,17 +51,17 @@ export default function TimePointControls({
 				<Button
 					size='small'
 					variant='contained'
-					onClick={() => updatePointTime(pointIndex, 'end', time)}>
-					{point.end !== undefined ? `${point.end.toFixed(2)}s` : 'Not set'}
+					onClick={() => updatePointField(pointIndex, 'end', time)}>
+					{point.end !== undefined ? `${point.end.toFixed(2)} sec` : 'Not set'}
 				</Button>
 				<Button
 					size='small'
 					variant='outlined'
-					onClick={() => updatePointTime(pointIndex, 'end', undefined)}
+					onClick={() => updatePointField(pointIndex, 'end', undefined)}
 					disabled={point.end === undefined}>
 					Reset
 				</Button>
 			</Stack>
-		</Box>
+		</Grid>
 	);
 }

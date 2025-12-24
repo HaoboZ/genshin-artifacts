@@ -1,6 +1,6 @@
 import { clamp } from 'remeda';
 
-export type Point = { x: number; y: number; temp?: boolean; start?: number; end?: number };
+export type Point = { x: number; y: number; artifact?: number; start?: number; end?: number };
 
 export type Spot = {
 	point: Point;
@@ -73,11 +73,11 @@ export function getClosestPointOnPath(
 		const distToEnd = Math.sqrt((mouseX - x2) ** 2 + (mouseY - y2) ** 2);
 
 		let snappedT = t;
-		if (!points[i - 1].temp && distToStart < snapThreshold && distToStart < distToEnd) {
+		if (points[i - 1].artifact && distToStart < snapThreshold && distToStart < distToEnd) {
 			px = x1;
 			py = y1;
 			snappedT = 0;
-		} else if (!points[i].temp && distToEnd < snapThreshold) {
+		} else if (points[i].artifact && distToEnd < snapThreshold) {
 			px = x2;
 			py = y2;
 			snappedT = 1;

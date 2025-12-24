@@ -35,7 +35,7 @@ export default function RouteMapPaths({
 				const arrowOffset = containerSize.width * 0.005;
 
 				// shorten line for arrows to stop inside arrowhead
-				if (!point.temp) {
+				if (point.artifact) {
 					const dx = x2 - x1;
 					const dy = y2 - y1;
 					const length = Math.sqrt(dx * dx + dy * dy);
@@ -59,7 +59,7 @@ export default function RouteMapPaths({
 						y2={y2}
 						stroke='#ff0000'
 						strokeWidth={lineWidth}
-						markerEnd={point.temp ? undefined : 'url(#arrowhead)'}
+						markerEnd={point.artifact && 'url(#arrowhead)'}
 					/>
 				);
 			})}

@@ -110,13 +110,14 @@ export default function RouteMapContainer({
 					const clickX = e.clientX - containerSize.x;
 					const clickY = e.clientY - containerSize.y;
 
-					const newPoint: { x: number; y: number; temp?: boolean } = {
+					const newPoint: Point = {
 						x: (clickX - mapOffset.x) / (containerSize.width * scale),
 						y: (clickY - mapOffset.y) / (containerSize.height * scale),
+						artifact: 1,
 					};
 
-					// hold ctrl to add temp point
-					if (e.ctrlKey) newPoint.temp = true;
+					// hold ctrl for non artifact point
+					if (e.ctrlKey) delete newPoint.artifact;
 
 					setPoints((prev) => [...prev, newPoint]);
 				} else if (hoverSpot) {

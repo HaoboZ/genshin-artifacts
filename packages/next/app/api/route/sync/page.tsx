@@ -1,7 +1,7 @@
 'use client';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
-import { Box, Button, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Box, Button, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import RouteMap from '../../../farming/routeMap';
@@ -30,7 +30,7 @@ export default function RouteSyncTest() {
 		setTime(videoRef.current.currentTime);
 	});
 
-	const updatePointTime = (index: number, field: 'start' | 'end', value: number | undefined) => {
+	const updatePointField = (index: number, field: string, value: number) => {
 		setPoints((prevPoints) => {
 			const newPoints = [...prevPoints];
 			if (index >= 0 && index < newPoints.length) {
@@ -117,26 +117,28 @@ export default function RouteSyncTest() {
 						<Typography variant='body2' sx={{ mt: 1 }}>
 							Current Time: {time.toFixed(2)}s
 						</Typography>
-						<TimePointControls
-							time={time}
-							point={
-								currentPointIndex !== null && currentPointIndex >= 0
-									? points[currentPointIndex]
-									: null
-							}
-							pointIndex={currentPointIndex}
-							updatePointTime={updatePointTime}
-						/>
-						<TimePointControls
-							time={time}
-							point={
-								nextPointIndex !== null && nextPointIndex < points.length
-									? points[nextPointIndex]
-									: null
-							}
-							pointIndex={nextPointIndex}
-							updatePointTime={updatePointTime}
-						/>
+						<Grid container>
+							<TimePointControls
+								time={time}
+								point={
+									currentPointIndex !== null && currentPointIndex >= 0
+										? points[currentPointIndex]
+										: null
+								}
+								pointIndex={currentPointIndex}
+								updatePointField={updatePointField}
+							/>
+							<TimePointControls
+								time={time}
+								point={
+									nextPointIndex !== null && nextPointIndex < points.length
+										? points[nextPointIndex]
+										: null
+								}
+								pointIndex={nextPointIndex}
+								updatePointField={updatePointField}
+							/>
+						</Grid>
 					</Stack>
 				</Box>
 				<RouteMap
