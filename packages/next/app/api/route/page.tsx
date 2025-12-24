@@ -28,7 +28,7 @@ type EditMode = 'add' | 'relocate' | 'insert';
 export default function RouteTest() {
 	const { enqueueSnackbar } = useSnackbar();
 
-	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0]);
+	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0].src);
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
 	const [editMode, setEditMode] = useState<EditMode>('add');
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
@@ -48,7 +48,7 @@ export default function RouteTest() {
 		}
 	});
 
-	const currentIndex = maps.indexOf(selectedRoute);
+	const currentIndex = maps.findIndex(({ src }) => src === selectedRoute);
 
 	return (
 		<PageContainer>
@@ -57,15 +57,15 @@ export default function RouteTest() {
 					variant='outlined'
 					onClick={() => {
 						if (currentIndex <= 0) return;
-						setSelectedRoute(maps[currentIndex - 1]);
+						setSelectedRoute(maps[currentIndex - 1].src);
 					}}
 					disabled={currentIndex <= 0}>
 					Previous
 				</Button>
 				<Select value={selectedRoute} onChange={({ target }) => setSelectedRoute(target.value)}>
-					{maps.map((routeName) => (
-						<MenuItem key={routeName} value={routeName}>
-							{routeName}
+					{maps.map(({ src }) => (
+						<MenuItem key={src} value={src}>
+							{src}
 						</MenuItem>
 					))}
 				</Select>
@@ -73,7 +73,7 @@ export default function RouteTest() {
 					variant='outlined'
 					onClick={() => {
 						if (currentIndex >= maps.length - 1) return;
-						setSelectedRoute(maps[currentIndex + 1]);
+						setSelectedRoute(maps[currentIndex + 1].src);
 					}}
 					disabled={currentIndex >= maps.length - 1}>
 					Next

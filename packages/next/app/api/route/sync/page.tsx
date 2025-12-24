@@ -6,7 +6,7 @@ import { Box, Button, Grid, MenuItem, Select, Slider, Stack, Typography } from '
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import RouteMap from '../../../farming/routeMap';
-import { Point, Spot } from '../../../farming/routeMap/utils';
+import { type Point, type Spot } from '../../../farming/routeMap/utils';
 import VideoPlayer from '../../../farming/videoPlayer';
 import route from '../../route.json';
 import { savePointsServer } from '../actions';
@@ -19,7 +19,7 @@ export default function RouteSyncTest() {
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0]);
+	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0].src);
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
 	const [time, setTime] = useState(0);
 	const [duration, setDuration] = useState(0);
@@ -53,7 +53,7 @@ export default function RouteSyncTest() {
 		});
 	};
 
-	const currentIndex = maps.indexOf(selectedRoute);
+	const currentIndex = maps.findIndex(({ src }) => src === selectedRoute);
 	const currentPointIndex = activeSpot?.pointIndex ?? null;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
@@ -90,7 +90,7 @@ export default function RouteSyncTest() {
 								variant='outlined'
 								onClick={() => {
 									if (currentIndex <= 0) return;
-									setSelectedRoute(maps[currentIndex - 1]);
+									setSelectedRoute(maps[currentIndex - 1].src);
 								}}
 								disabled={currentIndex <= 0}>
 								Previous
@@ -98,9 +98,9 @@ export default function RouteSyncTest() {
 							<Select
 								value={selectedRoute}
 								onChange={({ target }) => setSelectedRoute(target.value)}>
-								{maps.map((routeName) => (
-									<MenuItem key={routeName} value={routeName}>
-										{routeName}
+								{maps.map(({ src }) => (
+									<MenuItem key={src} value={src}>
+										{src}
 									</MenuItem>
 								))}
 							</Select>
@@ -108,7 +108,7 @@ export default function RouteSyncTest() {
 								variant='outlined'
 								onClick={() => {
 									if (currentIndex >= maps.length - 1) return;
-									setSelectedRoute(maps[currentIndex + 1]);
+									setSelectedRoute(maps[currentIndex + 1].src);
 								}}
 								disabled={currentIndex >= maps.length - 1}>
 								Next
