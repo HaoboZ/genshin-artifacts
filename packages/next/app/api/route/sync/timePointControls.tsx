@@ -28,6 +28,12 @@ export default function TimePointControls({
 						onClick={() => updatePointField(pointIndex, 'artifact', time)}>
 						{point.artifact.toFixed(2)} sec
 					</Button>
+					<Button
+						size='small'
+						variant='contained'
+						onClick={() => updatePointField(pointIndex, 'artifact', time + 7 / 60)}>
+						+ 7 frames
+					</Button>
 				</Fragment>
 			)}
 			<Stack direction='row' spacing={1} sx={{ mt: 0.5, alignItems: 'center' }}>

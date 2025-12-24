@@ -1,5 +1,7 @@
 'use client';
 import {
+	FastForward as FastForwardIcon,
+	FastRewind as FastRewindIcon,
 	Pause as PauseIcon,
 	PlayArrow as PlayArrowIcon,
 	SkipNext as SkipNextIcon,
@@ -82,6 +84,19 @@ export default function VideoPlayer({
 					<Box
 						onClick={(e) => {
 							e.stopPropagation();
+							seekByFrames(-seekFrames * 5);
+						}}
+						sx={{
+							'cursor': 'pointer',
+							'display': 'flex',
+							'alignItems': 'center',
+							'&:hover': { opacity: 0.7 },
+						}}>
+						<FastRewindIcon sx={{ fontSize: '8cqw' }} />
+					</Box>
+					<Box
+						onClick={(e) => {
+							e.stopPropagation();
 							seekByFrames(-seekFrames);
 						}}
 						sx={{
@@ -90,12 +105,12 @@ export default function VideoPlayer({
 							'alignItems': 'center',
 							'&:hover': { opacity: 0.7 },
 						}}>
-						<SkipPreviousIcon sx={{ fontSize: '15cqw' }} />
+						<SkipPreviousIcon sx={{ fontSize: '10cqw' }} />
 					</Box>
 					{isPlaying ? (
-						<PauseIcon sx={{ fontSize: '20cqw' }} />
+						<PauseIcon sx={{ fontSize: '15cqw' }} />
 					) : (
-						<PlayArrowIcon sx={{ fontSize: '20cqw' }} />
+						<PlayArrowIcon sx={{ fontSize: '15cqw' }} />
 					)}
 					<Box
 						onClick={(e) => {
@@ -108,7 +123,20 @@ export default function VideoPlayer({
 							'alignItems': 'center',
 							'&:hover': { opacity: 0.7 },
 						}}>
-						<SkipNextIcon sx={{ fontSize: '15cqw' }} />
+						<SkipNextIcon sx={{ fontSize: '10cqw' }} />
+					</Box>
+					<Box
+						onClick={(e) => {
+							e.stopPropagation();
+							seekByFrames(seekFrames * 5);
+						}}
+						sx={{
+							'cursor': 'pointer',
+							'display': 'flex',
+							'alignItems': 'center',
+							'&:hover': { opacity: 0.7 },
+						}}>
+						<FastForwardIcon sx={{ fontSize: '8cqw' }} />
 					</Box>
 				</Box>
 			</Box>

@@ -1,7 +1,7 @@
 'use client';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
-import { Box, Button, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Box, Button, Grid, MenuItem, Select, Slider, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import RouteMap from '../../../farming/routeMap';
@@ -21,14 +21,22 @@ export default function RouteSyncTest() {
 	const [currentRoute, setCurrentRoute] = useState(maps[0]);
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${currentRoute}.json`, []);
 	const [time, setTime] = useState(0);
+	const [duration, setDuration] = useState(0);
+	const [playbackRate, setPlaybackRate] = useState(1);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
 	const currentIndex = maps.indexOf(currentRoute);
 
 	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => {
-		setTime(videoRef.current.currentTime);
-	});
+	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
+
+	useEventListener(
+		// eslint-disable-next-line react-hooks/refs
+		videoRef.current,
+		'loadedmetadata',
+		() => setDuration(videoRef.current.duration),
+		true,
+	);
 
 	const updatePointField = (index: number, field: string, value: number) => {
 		setPoints((prevPoints) => {
@@ -163,8 +171,55 @@ export default function RouteSyncTest() {
 						justifySelf: 'start',
 						alignSelf: 'end',
 						width: '55%',
+						position: 'relative',
 					}}
 				/>
+				<Box
+					sx={{
+						gridColumn: 1,
+						gridRow: 1,
+						justifySelf: 'end',
+						alignSelf: 'end',
+						width: '45%',
+						p: 1,
+					}}>
+					<Stack>
+						<Stack direction='row' spacing={1} alignItems='center'>
+							<Typography variant='caption' sx={{ minWidth: 80 }}>
+								Scrub
+							</Typography>
+							<Slider
+								value={time}
+								min={0}
+								step={0.1}
+								max={duration || 100}
+								onChange={(_, value) => {
+									const video = videoRef.current;
+									if (!video) return;
+									video.currentTime = value;
+									setTime(value);
+								}}
+							/>
+						</Stack>
+						<Stack direction='row' spacing={1} alignItems='center'>
+							<Typography variant='caption' sx={{ minWidth: 80 }}>
+								Speed: {playbackRate.toFixed(2)}x
+							</Typography>
+							<Slider
+								value={playbackRate}
+								min={0.25}
+								max={2}
+								step={0.05}
+								onChange={(_, value) => {
+									const video = videoRef.current;
+									if (!video) return;
+									video.playbackRate = value;
+									setPlaybackRate(value);
+								}}
+							/>
+						</Stack>
+					</Stack>
+				</Box>
 			</Box>
 		</Box>
 	);

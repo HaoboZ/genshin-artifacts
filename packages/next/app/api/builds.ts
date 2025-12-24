@@ -2,7 +2,7 @@ import type { Build } from '@/src/types/data';
 import type { CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/10/25
+// 12/23/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -173,12 +173,11 @@ export const builds: Record<CharacterKey, Build> = {
 		key: 'Gaming',
 		role: 'DPS',
 		weapon: [
-			'SerpentSpine',
-			['RedhornStonethresher', 'AThousandBlazingSuns', 'Verdict', 'BeaconOfTheReedSea'],
+			['SerpentSpine', 'RedhornStonethresher', 'AThousandBlazingSuns', 'Verdict'],
+			'BeaconOfTheReedSea',
 			['FruitfulHook', 'WolfsGravestone', 'Rainslasher'],
-			'TheUnforged',
-			['MailedFlower', 'LithicBlade'],
-			['TidalShadow', 'UltimateOverlordsMegaMagicSword'],
+			['MailedFlower', 'LithicBlade', 'TheUnforged'],
+			['TidalShadow', 'UltimateOverlordsMegaMagicSword', 'MakhairaAquamarine'],
 		],
 		group: 1,
 		artifact: ['CrimsonWitchOfFlames', ['MarechausseeHunter', 'LongNightsOath'], 'GildedDreams'],
@@ -662,9 +661,8 @@ export const builds: Record<CharacterKey, Build> = {
 			'ReliquaryOfTruth',
 			'KagurasVerity',
 			'LostPrayerToTheSacredWinds',
-			'CranesEchoingCall',
 			['TomeOfTheEternalFlow', 'SurfsUp', 'CashflowSupervision'],
-			'TulaytullahsRemembrance',
+			['TulaytullahsRemembrance', 'CranesEchoingCall'],
 			['TheWidsith', 'SkywardAtlas'],
 			'SacrificialJade',
 			['SolarPearl', 'BlackcliffAgate', 'DawningFrost', 'FlowingPurity'],
