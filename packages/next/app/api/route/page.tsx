@@ -2,29 +2,53 @@
 import PageContainer from '@/components/page/container';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
-import { Button, MenuItem, Select, Stack } from '@mui/material';
+import useHistory from '@/src/hooks/useHistory';
+import useParamState from '@/src/hooks/useParamState';
+import {
+	Button,
+	FormControlLabel,
+	MenuItem,
+	Select,
+	Stack,
+	Switch,
+	ToggleButton,
+	ToggleButtonGroup,
+} from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 import RouteMap from '../../farming/routeMap';
-import { Point } from '../../farming/routeMap/utils';
+import { type Point, type Spot } from '../../farming/routeMap/utils';
 import route from '../route.json';
 import { savePointsServer } from './actions';
 
-const maps = route[1].maps;
+const maps = route[0].maps;
+
+type EditMode = 'add' | 'relocate' | 'insert';
 
 export default function RouteTest() {
 	const { enqueueSnackbar } = useSnackbar();
 
-	const [selectedRoute, setSelectedRoute] = useState(maps[0]);
+	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0]);
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
+	const [editMode, setEditMode] = useState<EditMode>('add');
+	const [activeSpot, setActiveSpot] = useState<Spot>(null);
+	const [applying, setApplying] = useState(true);
 
-	const currentIndex = maps.indexOf(selectedRoute);
+	useHistory(points, setPoints);
 
 	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
-		if (!e.ctrlKey || e.key !== 'z') return;
-		e.preventDefault();
-		setPoints((prev) => prev.slice(0, -1));
+		if (e.key === 'Delete' && activeSpot) {
+			e.preventDefault();
+			setPoints((points) => {
+				const newPoints = [...points];
+				newPoints.splice(activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0), 1);
+				return newPoints;
+			});
+			setActiveSpot(null);
+		}
 	});
+
+	const currentIndex = maps.indexOf(selectedRoute);
 
 	return (
 		<PageContainer>
@@ -66,10 +90,57 @@ export default function RouteTest() {
 					Save Points
 				</Button>
 			</Stack>
+			<Stack direction='row' spacing={1} sx={{ pb: 1 }}>
+				<ToggleButtonGroup
+					value={editMode}
+					exclusive
+					onChange={(_, value) => setEditMode(value)}>
+					<ToggleButton value='add'>Add Points</ToggleButton>
+					<ToggleButton value='relocate'>Relocate Point</ToggleButton>
+					<ToggleButton value='insert'>Insert Points</ToggleButton>
+				</ToggleButtonGroup>
+				<FormControlLabel
+					label='Applying'
+					control={
+						<Switch
+							checked={applying}
+							onChange={({ target }) => setApplying(target.checked)}
+						/>
+					}
+				/>
+				<Button variant='contained' onClick={() => setActiveSpot(null)}>
+					Clear Active
+				</Button>
+			</Stack>
 			<RouteMap
 				src={selectedRoute}
 				points={points}
-				setPoints={setPoints}
+				addPoint={
+					editMode === 'add' || (applying && activeSpot)
+						? (point) => {
+								setPoints((points) => {
+									switch (editMode) {
+										case 'add':
+											return [...points, point];
+										case 'relocate':
+											const newPoints = [...points];
+											newPoints[
+												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0)
+											] = point;
+											return newPoints;
+										case 'insert':
+											return points.toSpliced(
+												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0),
+												0,
+												point,
+											);
+									}
+								});
+							}
+						: undefined
+				}
+				activeSpot={activeSpot}
+				setActiveSpot={setActiveSpot}
 				sx={{ height: '90vh', width: 'unset', justifySelf: 'center' }}
 			/>
 		</PageContainer>

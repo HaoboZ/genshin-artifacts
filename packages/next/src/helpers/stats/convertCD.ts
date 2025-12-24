@@ -1,4 +1,4 @@
-import type { StatKey } from '../../types/good';
+import { type StatKey } from '../../types/good';
 
 export function convertCD(subStatArr: (StatKey | StatKey[])[]) {
 	return subStatArr.map((subStat) => {

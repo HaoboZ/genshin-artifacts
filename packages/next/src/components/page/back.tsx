@@ -3,8 +3,7 @@ import { Breadcrumbs, Button, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import type { MouseEventHandler } from 'react';
-import { useMemo } from 'react';
+import { type MouseEventHandler, useMemo } from 'react';
 import PageLink from './link';
 
 export type PageBackProps = {

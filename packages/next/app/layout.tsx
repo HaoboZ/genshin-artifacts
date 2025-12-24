@@ -1,8 +1,8 @@
 import { Analytics } from '@vercel/analytics/react';
-import type { Metadata, Viewport } from 'next';
+import { type Metadata, type Viewport } from 'next';
 import { Roboto } from 'next/font/google';
-import type { ReactNode } from 'react';
-import type { PackageJson } from 'type-fest';
+import { type ReactNode } from 'react';
+import { type PackageJson } from 'type-fest';
 import _packageJson from '../package.json';
 import Header from './header';
 import Providers from './providers';

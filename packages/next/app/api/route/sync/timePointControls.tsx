@@ -1,13 +1,14 @@
 import { Button, Grid, Stack, Typography } from '@mui/material';
-import { Fragment } from 'react';
 import { Point } from '../../../farming/routeMap/utils';
 
 export default function TimePointControls({
+	name,
 	time,
 	point,
 	pointIndex,
 	updatePointField,
 }: {
+	name: string;
 	time: number;
 	point: Point;
 	pointIndex: number;
@@ -17,25 +18,30 @@ export default function TimePointControls({
 	return (
 		<Grid size={6}>
 			<Typography variant='subtitle2' fontWeight='bold'>
-				Current Point (Index: {pointIndex})
+				{name} Point (Index: {pointIndex})
 			</Typography>
-			{point.artifact && (
-				<Fragment>
-					<Typography>Artifact Time</Typography>
-					<Button
-						size='small'
-						variant='contained'
-						onClick={() => updatePointField(pointIndex, 'artifact', time)}>
-						{point.artifact.toFixed(2)} sec
-					</Button>
-					<Button
-						size='small'
-						variant='contained'
-						onClick={() => updatePointField(pointIndex, 'artifact', time + 7 / 60)}>
-						+ 7 frames
-					</Button>
-				</Fragment>
-			)}
+			<Stack spacing={1} direction='row' sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
+				<Typography>Artifact Time</Typography>
+				<Button
+					size='small'
+					variant='contained'
+					onClick={() => updatePointField(pointIndex, 'artifact', time)}>
+					{point.artifact !== undefined ? `${point.artifact.toFixed(2)} sec` : 'Not set'}
+				</Button>
+				<Button
+					size='small'
+					variant='contained'
+					onClick={() => updatePointField(pointIndex, 'artifact', time + 7 / 60)}>
+					+ 7 frames
+				</Button>
+				<Button
+					size='small'
+					variant='outlined'
+					onClick={() => updatePointField(pointIndex, 'artifact', undefined)}
+					disabled={point.artifact === undefined}>
+					Reset
+				</Button>
+			</Stack>
 			<Stack direction='row' spacing={1} sx={{ mt: 0.5, alignItems: 'center' }}>
 				<Typography>Start</Typography>
 				<Button

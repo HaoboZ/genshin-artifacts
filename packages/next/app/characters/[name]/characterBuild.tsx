@@ -2,7 +2,7 @@ import { artifactSetsInfo } from '@/api/artifacts';
 import PageSection from '@/components/page/section';
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
-import type { Build } from '@/src/types/data';
+import { type Build } from '@/src/types/data';
 import { AvatarGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import ArtifactSetImage from '../../artifacts/artifactSetImage';

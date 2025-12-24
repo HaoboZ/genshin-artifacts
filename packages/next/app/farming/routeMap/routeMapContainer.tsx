@@ -1,9 +1,9 @@
 import useEventListener from '@/src/hooks/useEventListener';
-import { Box, BoxProps } from '@mui/material';
-import { Dispatch, RefObject, SetStateAction, useState } from 'react';
+import { Box, type BoxProps } from '@mui/material';
+import { type Dispatch, type RefObject, type SetStateAction, useState } from 'react';
 import { clamp } from 'remeda';
 
-import { clampPosition, getClosestPointOnPath, Point, Spot } from './utils';
+import { clampPosition, getClosestPointOnPath, type Point, type Spot } from './utils';
 
 export default function RouteMapContainer({
 	containerRef,
@@ -14,7 +14,7 @@ export default function RouteMapContainer({
 	mapOffset,
 	setMapOffset,
 	points,
-	setPoints,
+	addPoint,
 	hoverSpot,
 	setHoverSpot,
 	setActiveSpot,
@@ -29,7 +29,7 @@ export default function RouteMapContainer({
 	mapOffset: Point;
 	setMapOffset: Dispatch<SetStateAction<Point>>;
 	points: Point[];
-	setPoints?: Dispatch<SetStateAction<Point[]>>;
+	addPoint?: Dispatch<Point>;
 	hoverSpot: Spot;
 	setHoverSpot: Dispatch<SetStateAction<Spot>>;
 	setActiveSpot: Dispatch<Spot>;
@@ -42,6 +42,10 @@ export default function RouteMapContainer({
 		'resize',
 		() => setContainerSize(containerRef.current.getBoundingClientRect()),
 		true,
+	);
+
+	useEventListener(typeof window !== 'undefined' ? window : null, 'scroll', () =>
+		setContainerSize(containerRef.current.getBoundingClientRect()),
 	);
 
 	// eslint-disable-next-line react-hooks/refs
@@ -95,31 +99,31 @@ export default function RouteMapContainer({
 					return;
 				}
 
-				// show hover preview when setPoints is null
-				if (setPoints || !containerSize) return;
+				// show hover preview when addPoint is null
+				if (addPoint || !containerSize) return;
 
 				const mouseX = (e.clientX - containerSize.x - mapOffset.x) / scale;
 				const mouseY = (e.clientY - containerSize.y - mapOffset.y) / scale;
-				setHoverSpot(getClosestPointOnPath(containerSize, points, scale, mouseX, mouseY));
+				setHoverSpot(getClosestPointOnPath(containerSize, points, mouseX, mouseY));
 			}}
 			onMouseUp={() => setIsDragging(false)}
 			onClick={(e) => {
-				if (setPoints) {
+				if (addPoint) {
 					if (isDragging) return;
 
-					const clickX = e.clientX - containerSize.x;
-					const clickY = e.clientY - containerSize.y;
+					const clickX = (e.clientX - containerSize.x - mapOffset.x) / scale;
+					const clickY = (e.clientY - containerSize.y - mapOffset.y) / scale;
 
 					const newPoint: Point = {
-						x: (clickX - mapOffset.x) / (containerSize.width * scale),
-						y: (clickY - mapOffset.y) / (containerSize.height * scale),
+						x: clickX / containerSize.width,
+						y: clickY / containerSize.height,
 						artifact: 1,
 					};
 
 					// hold ctrl for non artifact point
 					if (e.ctrlKey) delete newPoint.artifact;
 
-					setPoints((prev) => [...prev, newPoint]);
+					addPoint(newPoint);
 				} else if (hoverSpot) {
 					setActiveSpot(hoverSpot);
 				}

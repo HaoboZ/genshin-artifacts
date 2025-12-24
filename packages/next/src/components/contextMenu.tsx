@@ -1,6 +1,5 @@
 import { Box, Menu } from '@mui/material';
-import type { ReactNode } from 'react';
-import { Fragment, useState } from 'react';
+import { Fragment, type ReactNode, useState } from 'react';
 
 export default function ContextMenu({
 	disabled,

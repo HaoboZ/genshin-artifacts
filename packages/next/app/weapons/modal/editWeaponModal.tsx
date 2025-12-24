@@ -8,8 +8,8 @@ import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { Build } from '@/src/types/data';
-import type { IWeapon } from '@/src/types/good';
+import { type Build } from '@/src/types/data';
+import { type IWeapon } from '@/src/types/good';
 import {
 	Box,
 	Button,

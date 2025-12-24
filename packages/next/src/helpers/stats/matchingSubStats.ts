@@ -1,6 +1,6 @@
 import { flat, sumBy } from 'remeda';
-import type { Build } from '../../types/data';
-import type { IArtifact } from '../../types/good';
+import { type Build } from '../../types/data';
+import { type IArtifact } from '../../types/good';
 import isMainStat from './isMainStat';
 import { statArrMatch } from './statArrMatch';
 

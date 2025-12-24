@@ -1,17 +1,17 @@
 'use client';
 import useControlledState from '@/src/hooks/useControlledState';
-import { Box, BoxProps, Button } from '@mui/material';
+import { Box, type BoxProps, Button } from '@mui/material';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { type Dispatch, useEffect, useRef, useState } from 'react';
 import RouteMapContainer from './routeMapContainer';
 import RouteMapPaths from './routeMapPaths';
 import RouteMapPoints from './routeMapPoints';
-import { findSpotByTime, findTimeBySpot, Point, Spot } from './utils';
+import { findSpotByTime, findTimeBySpot, type Point, type Spot } from './utils';
 
 export default function RouteMap({
 	src,
 	points,
-	setPoints,
+	addPoint,
 	time: _time = 0,
 	setTime: _setTime,
 	activeSpot: _activeSpot,
@@ -21,7 +21,7 @@ export default function RouteMap({
 }: {
 	src: string;
 	points: Point[];
-	setPoints?: Dispatch<SetStateAction<Point[]>>;
+	addPoint?: Dispatch<Point>;
 	time?: number;
 	setTime?: Dispatch<number>;
 	activeSpot?: Spot;
@@ -64,7 +64,7 @@ export default function RouteMap({
 			mapOffset={mapOffset}
 			setMapOffset={setMapOffset}
 			points={points}
-			setPoints={setPoints}
+			addPoint={addPoint}
 			hoverSpot={hoverSpot}
 			setHoverSpot={setHoverSpot}
 			setActiveSpot={(spot) => {

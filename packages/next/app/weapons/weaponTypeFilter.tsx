@@ -1,5 +1,4 @@
-import type { WeaponType } from '@/api/weapons';
-import { weaponImages } from '@/api/weapons';
+import { weaponImages, type WeaponType } from '@/api/weapons';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
 

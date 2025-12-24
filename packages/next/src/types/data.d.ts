@@ -1,5 +1,5 @@
-import type { WeaponType } from '@/app/weapons/weaponData';
-import type { ArtifactSetKey, CharacterKey, StatKey, WeaponKey } from './good';
+import { type WeaponType } from '@/app/weapons/weaponData';
+import { type ArtifactSetKey, type CharacterKey, type StatKey, type WeaponKey } from './good';
 
 export interface DElement {
 	key: string;

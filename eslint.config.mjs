@@ -23,6 +23,10 @@ export default defineConfig([
 			// react
 			'react/display-name': 'off',
 			// typescript
+			'@typescript-eslint/consistent-type-imports': [
+				'error',
+				{ fixStyle: 'inline-type-imports' },
+			],
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-unsafe-function-type': 'off',
 		},

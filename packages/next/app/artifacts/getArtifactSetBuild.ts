@@ -1,7 +1,7 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import makeArray from '@/src/helpers/makeArray';
-import type { Build } from '@/src/types/data';
-import type { ArtifactSetKey, StatKey } from '@/src/types/good';
+import { type Build } from '@/src/types/data';
+import { type ArtifactSetKey, type StatKey } from '@/src/types/good';
 import { groupBy, map, pipe, prop, reduce, take } from 'remeda';
 
 export default function getArtifactSetBuild(

@@ -1,4 +1,4 @@
-import type { StatKey } from '../../types/good';
+import { type StatKey } from '../../types/good';
 import makeArray from '../makeArray';
 import { convertCD } from './convertCD';
 

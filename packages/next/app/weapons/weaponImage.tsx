@@ -1,10 +1,8 @@
-import type { WeaponType } from '@/api/weapons';
-import { weaponImages, weaponsInfo } from '@/api/weapons';
+import { weaponImages, weaponsInfo, type WeaponType } from '@/api/weapons';
 import OverlayText from '@/components/overlayText';
-import type { DWeapon } from '@/src/types/data';
-import type { IWeapon } from '@/src/types/good';
-import type { AvatarProps } from '@mui/material';
-import { Avatar, Tooltip } from '@mui/material';
+import { type DWeapon } from '@/src/types/data';
+import { type IWeapon } from '@/src/types/good';
+import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { Fragment } from 'react';
 

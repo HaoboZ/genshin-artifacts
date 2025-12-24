@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from '@mui/material';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
 export default function DelayedLoading({

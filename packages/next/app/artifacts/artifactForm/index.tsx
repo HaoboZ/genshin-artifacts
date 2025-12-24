@@ -5,7 +5,7 @@ import InputField from '@/components/fields/input';
 import SelectField from '@/components/fields/select';
 import SwitchField from '@/components/fields/switch';
 import Scanner from '@/components/scanner';
-import type { ArtifactSetKey, IArtifact, StatKey } from '@/src/types/good';
+import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/src/types/good';
 import {
 	Button,
 	Checkbox,
@@ -17,8 +17,7 @@ import {
 	TextField,
 } from '@mui/material';
 import { useFormikContext } from 'formik';
-import type { ReactNode } from 'react';
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
 

@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/src/store/hooks';
-import type { Build, DArtifact } from '@/src/types/data';
-import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
+import { type Build, type DArtifact } from '@/src/types/data';
+import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';
 import { useMemo } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
 import data from './artifacts.json';

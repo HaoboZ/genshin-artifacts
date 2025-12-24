@@ -5,7 +5,7 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { IArtifact } from '@/src/types/good';
+import { type IArtifact } from '@/src/types/good';
 import { DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';

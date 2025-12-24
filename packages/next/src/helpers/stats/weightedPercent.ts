@@ -1,8 +1,8 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import { statsMax } from '@/api/stats';
 import { sumBy } from 'remeda';
-import type { Build } from '../../types/data';
-import type { IArtifact } from '../../types/good';
+import { type Build } from '../../types/data';
+import { type IArtifact } from '../../types/good';
 import { getMaxStat } from './getMaxStat';
 import isMainStat from './isMainStat';
 import { weightedMultiplier } from './weightedMultiplier';

@@ -1,6 +1,7 @@
 'use client';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
+import useParamState from '@/src/hooks/useParamState';
 import { Box, Button, Grid, MenuItem, Select, Slider, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
@@ -18,14 +19,12 @@ export default function RouteSyncTest() {
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [currentRoute, setCurrentRoute] = useState(maps[0]);
-	const [points, setPoints] = useFetchState<Point[]>(`/points/${currentRoute}.json`, []);
+	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0]);
+	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
 	const [time, setTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
-
-	const currentIndex = maps.indexOf(currentRoute);
 
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
@@ -54,6 +53,7 @@ export default function RouteSyncTest() {
 		});
 	};
 
+	const currentIndex = maps.indexOf(selectedRoute);
 	const currentPointIndex = activeSpot?.pointIndex ?? null;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
@@ -90,14 +90,14 @@ export default function RouteSyncTest() {
 								variant='outlined'
 								onClick={() => {
 									if (currentIndex <= 0) return;
-									setCurrentRoute(maps[currentIndex - 1]);
+									setSelectedRoute(maps[currentIndex - 1]);
 								}}
 								disabled={currentIndex <= 0}>
 								Previous
 							</Button>
 							<Select
-								value={currentRoute}
-								onChange={({ target }) => setCurrentRoute(target.value)}>
+								value={selectedRoute}
+								onChange={({ target }) => setSelectedRoute(target.value)}>
 								{maps.map((routeName) => (
 									<MenuItem key={routeName} value={routeName}>
 										{routeName}
@@ -108,7 +108,7 @@ export default function RouteSyncTest() {
 								variant='outlined'
 								onClick={() => {
 									if (currentIndex >= maps.length - 1) return;
-									setCurrentRoute(maps[currentIndex + 1]);
+									setSelectedRoute(maps[currentIndex + 1]);
 								}}
 								disabled={currentIndex >= maps.length - 1}>
 								Next
@@ -117,7 +117,7 @@ export default function RouteSyncTest() {
 						<Button
 							variant='contained'
 							onClick={async () => {
-								await savePointsServer(points, currentRoute);
+								await savePointsServer(points, selectedRoute);
 								enqueueSnackbar('Saved', { variant: 'info' });
 							}}>
 							Save Points
@@ -127,6 +127,7 @@ export default function RouteSyncTest() {
 						</Typography>
 						<Grid container>
 							<TimePointControls
+								name='Previous'
 								time={time}
 								point={
 									currentPointIndex !== null && currentPointIndex >= 0
@@ -137,6 +138,7 @@ export default function RouteSyncTest() {
 								updatePointField={updatePointField}
 							/>
 							<TimePointControls
+								name='Current'
 								time={time}
 								point={
 									nextPointIndex !== null && nextPointIndex < points.length
@@ -150,7 +152,7 @@ export default function RouteSyncTest() {
 					</Stack>
 				</Box>
 				<RouteMap
-					src={currentRoute}
+					src={selectedRoute}
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
@@ -164,7 +166,7 @@ export default function RouteSyncTest() {
 				/>
 				<VideoPlayer
 					ref={videoRef}
-					src={currentRoute}
+					src={selectedRoute}
 					sx={{
 						gridColumn: 1,
 						gridRow: 1,

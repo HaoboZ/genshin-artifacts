@@ -2,7 +2,7 @@ import { charactersInfo } from '@/api/characters';
 import MultiSortable from '@/components/sortable/multi';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import type { CharacterKey } from '@/src/types/good';
+import { type CharacterKey } from '@/src/types/good';
 import { Grid, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';

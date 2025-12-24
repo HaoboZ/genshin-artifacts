@@ -1,5 +1,4 @@
-import type { SwitchProps } from '@mui/material';
-import { FormControl, FormLabel, Switch } from '@mui/material';
+import { FormControl, FormLabel, Switch, type SwitchProps } from '@mui/material';
 import { useField } from 'formik';
 
 export default function SwitchField({

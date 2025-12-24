@@ -8,7 +8,7 @@ import { potentialPercent } from '@/src/helpers/stats';
 import isMainStat from '@/src/helpers/stats/isMainStat';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppSelector } from '@/src/store/hooks';
-import type { ArtifactSetKey } from '@/src/types/good';
+import { type ArtifactSetKey } from '@/src/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { useMemo } from 'react';

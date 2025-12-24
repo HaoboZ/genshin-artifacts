@@ -1,11 +1,10 @@
 import { Button, CircularProgress } from '@mui/material';
 import { useNProgress } from '@tanem/react-nprogress';
 import { useSnackbar } from 'notistack';
-import type { Dispatch, SetStateAction } from 'react';
-import { useCallback, useState } from 'react';
+import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
 import useLoading from '../../hooks/useLoading';
 import usePasteImage from '../../hooks/usePasteImage';
-import type { IArtifact } from '../../types/good';
+import { type IArtifact } from '../../types/good';
 import cropBox from './cropBox';
 import fileToCanvas from './fileToCanvas';
 import findText from './findText';

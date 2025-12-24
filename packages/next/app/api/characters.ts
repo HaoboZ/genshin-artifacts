@@ -1,7 +1,7 @@
 import makeArray from '@/src/helpers/makeArray';
 import { useAppSelector } from '@/src/store/hooks';
-import type { DCharacter } from '@/src/types/data';
-import type { ArtifactSetKey, CharacterKey } from '@/src/types/good';
+import { type DCharacter } from '@/src/types/data';
+import { type ArtifactSetKey, type CharacterKey } from '@/src/types/good';
 import { useMemo } from 'react';
 import { filter, map, pipe, prop, sortBy, values } from 'remeda';
 import { builds } from './builds';

@@ -1,5 +1,4 @@
-import type { TooltipProps, TypographyProps } from '@mui/material';
-import { Tooltip, Typography } from '@mui/material';
+import { Tooltip, type TooltipProps, Typography, type TypographyProps } from '@mui/material';
 import { useRef, useState } from 'react';
 import useEventListener from '../hooks/useEventListener';
 

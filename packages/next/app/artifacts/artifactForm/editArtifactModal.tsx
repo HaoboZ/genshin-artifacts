@@ -3,7 +3,7 @@ import DialogWrapper from '@/src/providers/modal/dialog';
 import { store } from '@/src/store';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { IArtifact } from '@/src/types/good';
+import { type IArtifact } from '@/src/types/good';
 import { Button, DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { useMemo } from 'react';

@@ -2,7 +2,7 @@
 import PageSection from '@/components/page/section';
 import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
-import type { ArtifactSetKey } from '@/src/types/good';
+import { type ArtifactSetKey } from '@/src/types/good';
 import { Grid } from '@mui/material';
 import { Fragment } from 'react';
 import ArtifactList from './artifactList';

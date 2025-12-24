@@ -4,7 +4,7 @@ import PageLink from '@/components/page/link';
 import StatChipArray from '@/components/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import useParamState from '@/src/hooks/useParamState';
-import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
+import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';
 import { Stack, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';

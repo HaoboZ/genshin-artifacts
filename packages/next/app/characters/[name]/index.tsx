@@ -15,7 +15,7 @@ import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { DCharacter } from '@/src/types/data';
+import { type DCharacter } from '@/src/types/data';
 import { Card, CardContent, Grid, Stack, Switch, Typography } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';

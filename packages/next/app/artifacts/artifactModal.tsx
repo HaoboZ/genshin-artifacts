@@ -12,7 +12,7 @@ import { useModalControls } from '@/src/providers/modal/controls';
 import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { IArtifact } from '@/src/types/good';
+import { type IArtifact } from '@/src/types/good';
 import {
 	Box,
 	DialogContent,

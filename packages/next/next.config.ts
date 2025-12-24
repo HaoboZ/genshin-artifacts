@@ -1,5 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
-import type { NextConfig } from 'next';
+import { type NextConfig } from 'next';
 import { pipe } from 'remeda';
 
 const nextConfig: NextConfig = {

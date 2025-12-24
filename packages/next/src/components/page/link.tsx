@@ -1,7 +1,5 @@
-import type { LinkProps } from '@mui/material';
-import { Link } from '@mui/material';
-import type { LinkProps as NextLinkProps } from 'next/link';
-import NextLink from 'next/link';
+import { Link, type LinkProps } from '@mui/material';
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
 
 export type PageLinkProps = NextLinkProps & LinkProps;
 

@@ -1,7 +1,6 @@
 'use client';
 import { EventEmitter } from 'events';
-import type { ComponentType, ReactNode } from 'react';
-import { createContext, useContext, useState } from 'react';
+import { type ComponentType, createContext, type ReactNode, useContext, useState } from 'react';
 
 const EventsContext = createContext<EventEmitter>(null);
 EventsContext.displayName = 'Events';

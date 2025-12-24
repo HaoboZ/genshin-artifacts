@@ -4,7 +4,7 @@ import SwitchField from '@/components/fields/switch';
 import { useModalControls } from '@/src/providers/modal/controls';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { IWeapon } from '@/src/types/good';
+import { type IWeapon } from '@/src/types/good';
 import {
 	Box,
 	Button,
@@ -15,8 +15,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { useFormikContext } from 'formik';
-import type { ReactNode } from 'react';
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import WeaponImage from './weaponImage';
 
 export default function WeaponForm({

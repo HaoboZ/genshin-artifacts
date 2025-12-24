@@ -1,8 +1,6 @@
-import type { TypographyProps } from '@mui/material';
-import { Box, Typography } from '@mui/material';
-import type { ReactNode } from 'react';
-import type { ActionProps } from '../actions';
-import Actions from '../actions';
+import { Box, Typography, type TypographyProps } from '@mui/material';
+import { type ReactNode } from 'react';
+import Actions, { type ActionProps } from '../actions';
 
 export type PageTitleProps = {
 	actions?: ActionProps[] | ReactNode;

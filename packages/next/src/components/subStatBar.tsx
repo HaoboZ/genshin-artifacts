@@ -1,5 +1,5 @@
 import { statName, statsMax } from '@/api/stats';
-import type { ISubstat } from '../types/good';
+import { type ISubstat } from '../types/good';
 import PercentBar from './percentBar';
 
 export default function SubStatBar({

@@ -1,6 +1,5 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import type { CharacterKey } from '../../types/good';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type CharacterKey } from '../../types/good';
 
 type State = {
 	priority: Record<string, CharacterKey[]>;

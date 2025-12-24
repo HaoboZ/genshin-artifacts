@@ -1,4 +1,4 @@
-import type { StatKey } from '../../types/good';
+import { type StatKey } from '../../types/good';
 import arrDeepIndex from '../arrDeepIndex';
 import { convertCD } from './convertCD';
 

@@ -1,12 +1,17 @@
 import { weeklyInfo } from '@/app/api/talents';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { differenceWith, pick, prop, uniqueBy } from 'remeda';
-import type { PartialDeep } from 'type-fest';
-import type { Build } from '../../types/data';
-import type { CharacterKey, IArtifact, ICharacter, IGOOD, IWeapon } from '../../types/good';
+import { type PartialDeep } from 'type-fest';
+import { type Build } from '../../types/data';
+import {
+	type CharacterKey,
+	type IArtifact,
+	type ICharacter,
+	type IGOOD,
+	type IWeapon,
+} from '../../types/good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',

@@ -1,5 +1,5 @@
-import type { Active } from '@dnd-kit/core';
 import {
+	type Active,
 	defaultDropAnimationSideEffects,
 	DndContext,
 	DragOverlay,
@@ -9,8 +9,7 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
-import type { ReactNode } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { prop } from 'remeda';
 import SortableItem from './sortableItem';
 

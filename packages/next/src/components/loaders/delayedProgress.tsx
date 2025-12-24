@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from '@mui/material';
 import { useNProgress } from '@tanem/react-nprogress';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
 export default function DelayedProgress({

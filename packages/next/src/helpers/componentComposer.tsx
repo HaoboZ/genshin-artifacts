@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from 'react';
+import { type ComponentType, type ReactNode } from 'react';
 
 export function component<P>(component: ComponentType<P>, props?: Omit<P, 'children'>) {
 	return { component, props };

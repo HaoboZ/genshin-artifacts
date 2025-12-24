@@ -1,5 +1,4 @@
-import type { TextFieldProps } from '@mui/material';
-import { FormControl, FormLabel } from '@mui/material';
+import { FormControl, FormLabel, type TextFieldProps } from '@mui/material';
 import { useField } from 'formik';
 import FormattedTextField from '../formattedTextField';
 

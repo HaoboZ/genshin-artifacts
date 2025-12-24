@@ -28,7 +28,6 @@ export function clampPosition(containerSize: DOMRect, x: number, y: number, curr
 export function getClosestPointOnPath(
 	containerSize: DOMRect,
 	points: Point[],
-	scale: number,
 	mouseX: number,
 	mouseY: number,
 ) {

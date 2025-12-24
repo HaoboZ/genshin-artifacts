@@ -16,7 +16,7 @@ import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
-import type { ArtifactSetKey, SlotKey } from '@/src/types/good';
+import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';
 import {
 	ArrowDownward as ArrowDownwardIcon,
 	ArrowUpward as ArrowUpwardIcon,

@@ -2,8 +2,13 @@ import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo } from '@/api/characters';
 import { capitalCase } from 'change-case';
 import { flatMap } from 'remeda';
-import { Bbox, createScheduler, createWorker } from 'tesseract.js';
-import type { ArtifactSetKey, CharacterKey, IArtifact, StatKey } from '../../types/good';
+import { type Bbox, createScheduler, createWorker } from 'tesseract.js';
+import {
+	type ArtifactSetKey,
+	type CharacterKey,
+	type IArtifact,
+	type StatKey,
+} from '../../types/good';
 import setupContext from './setupContext';
 
 const mainStatsScan: Record<string, StatKey> = {

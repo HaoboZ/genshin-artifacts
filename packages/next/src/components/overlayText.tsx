@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 export default function OverlayText({
 	children,

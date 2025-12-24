@@ -1,5 +1,5 @@
-import type { Build } from '@/src/types/data';
-import type { CharacterKey } from '@/src/types/good';
+import { type Build } from '@/src/types/data';
+import { type CharacterKey } from '@/src/types/good';
 
 // https://tinyurl.com/genshinbuilds
 // 12/23/25

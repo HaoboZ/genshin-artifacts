@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import { createContext, useContext } from 'react';
+import { createContext, type ReactNode, useContext } from 'react';
 
 const DataContext = createContext<any>(null);
 DataContext.displayName = 'Data';

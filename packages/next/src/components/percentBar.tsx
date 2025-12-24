@@ -1,6 +1,11 @@
-import type { SxProps } from '@mui/material';
-import { Box, LinearProgress, linearProgressClasses, Typography } from '@mui/material';
-import { Children, ReactNode } from 'react';
+import {
+	Box,
+	LinearProgress,
+	linearProgressClasses,
+	type SxProps,
+	Typography,
+} from '@mui/material';
+import { Children, type ReactNode } from 'react';
 import { sumBy } from 'remeda';
 
 export function combinePercents(...vals: { percent: number; weight: number }[]) {

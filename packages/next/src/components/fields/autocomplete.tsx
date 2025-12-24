@@ -1,7 +1,6 @@
-import type { AutocompleteProps, ChipTypeMap } from '@mui/material';
-import { Autocomplete } from '@mui/material';
+import { Autocomplete, type AutocompleteProps, type ChipTypeMap } from '@mui/material';
 import { useField } from 'formik';
-import type { ElementType } from 'react';
+import { type ElementType } from 'react';
 
 export default function AutocompleteField<
 	Value,
