@@ -1,16 +1,18 @@
 import { Fragment, useMemo, useRef } from 'react';
-import { Point, Spot } from './utils';
+import { type Point, type Spot } from './utils';
 
 export default function RouteMapPoints({
 	containerSize,
 	scale,
 	points,
+	showPoints,
 	hoverSpot,
 	activeSpot,
 }: {
 	containerSize: DOMRect;
 	scale: number;
 	points: Point[];
+	showPoints?: boolean;
 	hoverSpot: Spot;
 	activeSpot: Spot;
 }) {
@@ -49,22 +51,23 @@ export default function RouteMapPoints({
 					}
 				}
 			`}</style>
-			{points.map((point, i) => {
-				const x = point.x * containerSize.width;
-				const y = point.y * containerSize.height;
+			{showPoints &&
+				points.map((point, i) => {
+					const x = point.x * containerSize.width;
+					const y = point.y * containerSize.height;
 
-				return (
-					<circle
-						key={`dot-${i}`}
-						cx={x}
-						cy={y}
-						r={3 / scale}
-						fill='#0000ff'
-						stroke='white'
-						strokeWidth={0.5 / scale}
-					/>
-				);
-			})}
+					return (
+						<circle
+							key={`dot-${i}`}
+							cx={x}
+							cy={y}
+							r={3 / scale}
+							fill='#0000ff'
+							stroke='white'
+							strokeWidth={0.5 / scale}
+						/>
+					);
+				})}
 			{hoverSpot && (
 				<circle
 					cx={hoverSpot.point.x}

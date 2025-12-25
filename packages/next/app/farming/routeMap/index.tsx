@@ -1,6 +1,6 @@
 'use client';
 import useControlledState from '@/src/hooks/useControlledState';
-import { Box, type BoxProps, Button } from '@mui/material';
+import { Box, type BoxProps } from '@mui/material';
 import Image from 'next/image';
 import { type Dispatch, useEffect, useRef, useState } from 'react';
 import RouteMapContainer from './routeMapContainer';
@@ -109,23 +109,14 @@ export default function RouteMap({
 			}}
 			sx={sx}
 			{...props}>
-			<Button
-				variant='contained'
-				sx={{ position: 'absolute', top: 10, left: 10, zIndex: 1 }}
-				onClick={(e) => {
-					e.stopPropagation();
-					setScale(1);
-					setMapOffset({ x: 0, y: 0 });
-				}}>
-				Reset View
-			</Button>
 			<Box
 				sx={{
 					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,
 					transformOrigin: '0 0',
 					width: '100%',
 					height: '100%',
-					transition: isAnimating ? 'transform 0.6s ease' : 'none',
+					transition: isAnimating ? 'transform 1s ease' : 'none',
+					transitionDelay: '1s',
 				}}>
 				{!isLoading && <Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />}
 				{containerSize && (
@@ -135,6 +126,7 @@ export default function RouteMap({
 							containerSize={containerSize}
 							scale={scale}
 							points={points}
+							showPoints={Boolean(addPoint)}
 							activeSpot={activeSpot}
 							hoverSpot={hoverSpot}
 						/>

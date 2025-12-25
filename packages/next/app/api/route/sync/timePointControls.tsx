@@ -1,5 +1,5 @@
 import { Button, Grid, Stack, Typography } from '@mui/material';
-import { Point } from '../../../farming/routeMap/utils';
+import { type Point } from '../../../farming/routeMap/utils';
 
 export default function TimePointControls({
 	name,

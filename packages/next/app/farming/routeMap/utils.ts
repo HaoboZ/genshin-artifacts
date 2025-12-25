@@ -293,7 +293,7 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect) {
 	const scaleX = (containerSize.width * containerPadding) / boundingBox.width;
 	const scaleY = (containerSize.height * containerPadding) / boundingBox.height;
 
-	const scale = Math.min(scaleX, scaleY, 2);
+	const scale = Math.min(scaleX, scaleY, 3);
 
 	// calculate offset to center the bounding box
 	const containerCenterX = containerSize.width / 2;

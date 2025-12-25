@@ -3,7 +3,7 @@ import { routesInfo } from '@/api/routes';
 import PageTitle from '@/components/page/title';
 import useEventListener from '@/src/hooks/useEventListener';
 import useParamState from '@/src/hooks/useParamState';
-import { Box, Container, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Box, Container, MenuItem, Paper, Select, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
@@ -77,8 +77,11 @@ export default function Farming() {
 							alignSelf: 'start',
 							width: '50%',
 						}}>
-						<Stack spacing={1} sx={{ alignItems: 'center', py: 1 }}>
-							<Typography variant='h1'>Total: {spots}</Typography>
+						<Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
+							<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
+								<Typography variant='h1'>Total: {spots}</Typography>
+							</Paper>
+							<Typography variant='h2'>Spots: {route.maps[selectedMap].spots}</Typography>
 							<MapSelect
 								route={route}
 								selectedMap={selectedMap}

@@ -59,5 +59,8 @@ export default function useParamState<T>(
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchParams, key, initialState]);
 
-	return [currentValue, (value) => router.push(`${pathname}${createQueryString(value)}`)];
+	return [
+		currentValue,
+		(value) => router.push(`${pathname}${createQueryString(value)}`, { scroll: false }),
+	];
 }

@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-
-import { Point } from './utils';
+import { type Point } from './utils';
 
 export default function RouteMapPaths({
 	containerSize,

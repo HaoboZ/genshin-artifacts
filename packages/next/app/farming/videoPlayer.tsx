@@ -9,6 +9,7 @@ import {
 } from '@mui/icons-material';
 import { Box, type BoxProps } from '@mui/material';
 import React, { type RefObject, useState } from 'react';
+import { clamp } from 'remeda';
 
 export default function VideoPlayer({
 	ref,
@@ -29,10 +30,8 @@ export default function VideoPlayer({
 
 		if (video.paused) {
 			video.play();
-			setIsPlaying(true);
 		} else {
 			video.pause();
-			setIsPlaying(false);
 		}
 	};
 
@@ -43,7 +42,7 @@ export default function VideoPlayer({
 		const frameRate = 60;
 		const timePerFrame = 1 / frameRate;
 		const seekTime = frames * timePerFrame;
-		video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + seekTime));
+		video.currentTime = clamp(video.currentTime + seekTime, { min: 0, max: video.duration });
 	};
 
 	return (
@@ -59,7 +58,8 @@ export default function VideoPlayer({
 				controls={false}
 				src={`/videos/${src}.mp4`}
 				style={{ width: '100%', display: 'block' }}
-				onEnded={() => setIsPlaying(false)}
+				onPlay={() => setIsPlaying(true)}
+				onPause={() => setIsPlaying(false)}
 			/>
 			<Box
 				className='video-overlay'
@@ -67,7 +67,7 @@ export default function VideoPlayer({
 					position: 'absolute',
 					inset: 0,
 					display: 'flex',
-					alignItems: 'center',
+					alignItems: 'end',
 					justifyContent: 'center',
 					opacity: 0,
 					containerType: 'inline-size',
@@ -76,6 +76,7 @@ export default function VideoPlayer({
 				<Box
 					sx={{
 						'display': 'flex',
+						'height': 150,
 						'alignItems': 'center',
 						'.MuiBox-root': {
 							display: 'flex',
