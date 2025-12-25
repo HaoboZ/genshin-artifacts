@@ -5,22 +5,24 @@ import useParamState from '@/src/hooks/useParamState';
 import { Box, Button, Grid, MenuItem, Select, Slider, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
+import MapSelect from '../../../farming/mapSelect';
 import RouteMap from '../../../farming/routeMap';
 import { type Point, type Spot } from '../../../farming/routeMap/utils';
 import VideoPlayer from '../../../farming/videoPlayer';
-import route from '../../route.json';
+import { routesInfo } from '../../routes';
 import { savePointsServer } from '../actions';
 import TimePointControls from './timePointControls';
-
-const maps = route[0].maps;
 
 export default function RouteSyncTest() {
 	const { enqueueSnackbar } = useSnackbar();
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0].src);
-	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
+	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const route = routesInfo[selectedRoute];
+	const [selectedMap, setSelectedMap] = useParamState('map', 0);
+	const mapName = route.maps[selectedMap].src;
+	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 	const [time, setTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
@@ -53,7 +55,6 @@ export default function RouteSyncTest() {
 		});
 	};
 
-	const currentIndex = maps.findIndex(({ src }) => src === selectedRoute);
 	const currentPointIndex = activeSpot?.pointIndex ?? null;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
@@ -85,39 +86,29 @@ export default function RouteSyncTest() {
 						overflow: 'auto',
 					}}>
 					<Stack spacing={1} sx={{ p: 1 }}>
-						<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
-							<Button
-								variant='outlined'
-								onClick={() => {
-									if (currentIndex <= 0) return;
-									setSelectedRoute(maps[currentIndex - 1].src);
-								}}
-								disabled={currentIndex <= 0}>
-								Previous
-							</Button>
+						<Stack direction='row' spacing={1}>
 							<Select
 								value={selectedRoute}
-								onChange={({ target }) => setSelectedRoute(target.value)}>
-								{maps.map(({ src }) => (
-									<MenuItem key={src} value={src}>
-										{src}
+								onChange={({ target }) => {
+									setSelectedRoute(target.value);
+									setSelectedMap(0);
+								}}>
+								{routesInfo.map(({ spots, mora }, index) => (
+									<MenuItem key={index} value={index}>
+										Spots: {spots}, Mora: {mora}
 									</MenuItem>
 								))}
 							</Select>
-							<Button
-								variant='outlined'
-								onClick={() => {
-									if (currentIndex >= maps.length - 1) return;
-									setSelectedRoute(maps[currentIndex + 1].src);
-								}}
-								disabled={currentIndex >= maps.length - 1}>
-								Next
-							</Button>
+							<MapSelect
+								route={route}
+								selectedMap={selectedMap}
+								setSelectedMap={setSelectedMap}
+							/>
 						</Stack>
 						<Button
 							variant='contained'
 							onClick={async () => {
-								await savePointsServer(points, selectedRoute);
+								await savePointsServer(points, mapName);
 								enqueueSnackbar('Saved', { variant: 'info' });
 							}}>
 							Save Points
@@ -152,7 +143,7 @@ export default function RouteSyncTest() {
 					</Stack>
 				</Box>
 				<RouteMap
-					src={selectedRoute}
+					src={mapName}
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
@@ -166,7 +157,7 @@ export default function RouteSyncTest() {
 				/>
 				<VideoPlayer
 					ref={videoRef}
-					src={selectedRoute}
+					src={mapName}
 					sx={{
 						gridColumn: 1,
 						gridRow: 1,

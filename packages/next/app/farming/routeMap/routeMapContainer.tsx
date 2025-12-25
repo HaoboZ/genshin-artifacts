@@ -2,7 +2,6 @@ import useEventListener from '@/src/hooks/useEventListener';
 import { Box, type BoxProps } from '@mui/material';
 import { type Dispatch, type RefObject, type SetStateAction, useState } from 'react';
 import { clamp } from 'remeda';
-
 import { clampPosition, getClosestPointOnPath, type Point, type Spot } from './utils';
 
 export default function RouteMapContainer({
@@ -15,6 +14,7 @@ export default function RouteMapContainer({
 	setMapOffset,
 	points,
 	addPoint,
+	setIsAnimating,
 	hoverSpot,
 	setHoverSpot,
 	setActiveSpot,
@@ -30,6 +30,7 @@ export default function RouteMapContainer({
 	setMapOffset: Dispatch<SetStateAction<Point>>;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
+	setIsAnimating: Dispatch<SetStateAction<boolean>>;
 	hoverSpot: Spot;
 	setHoverSpot: Dispatch<SetStateAction<Spot>>;
 	setActiveSpot: Dispatch<Spot>;
@@ -51,6 +52,9 @@ export default function RouteMapContainer({
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(containerRef.current, 'wheel', (e) => {
 		e.preventDefault();
+
+		// Disable animation on wheel event
+		setIsAnimating(false);
 
 		// get mouse position relative to container
 		const mouseX = e.clientX - containerSize.x;

@@ -16,21 +16,21 @@ import {
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
+import MapSelect from '../../farming/mapSelect';
 import RouteMap from '../../farming/routeMap';
 import { type Point, type Spot } from '../../farming/routeMap/utils';
-import route from '../route.json';
+import { routesInfo } from '../routes';
 import { savePointsServer } from './actions';
-
-const maps = route[0].maps;
-
-type EditMode = 'add' | 'relocate' | 'insert';
 
 export default function RouteTest() {
 	const { enqueueSnackbar } = useSnackbar();
 
-	const [selectedRoute, setSelectedRoute] = useParamState<string>('route', maps[0].src);
-	const [points, setPoints] = useFetchState<Point[]>(`/points/${selectedRoute}.json`, []);
-	const [editMode, setEditMode] = useState<EditMode>('add');
+	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const route = routesInfo[selectedRoute];
+	const [selectedMap, setSelectedMap] = useParamState('map', 0);
+	const mapName = route.maps[selectedMap].src;
+	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+	const [editMode, setEditMode] = useState<string>('add');
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 	const [applying, setApplying] = useState(true);
 
@@ -48,49 +48,35 @@ export default function RouteTest() {
 		}
 	});
 
-	const currentIndex = maps.findIndex(({ src }) => src === selectedRoute);
-
 	return (
 		<PageContainer>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center', py: 1 }}>
-				<Button
-					variant='outlined'
-					onClick={() => {
-						if (currentIndex <= 0) return;
-						setSelectedRoute(maps[currentIndex - 1].src);
-					}}
-					disabled={currentIndex <= 0}>
-					Previous
-				</Button>
-				<Select value={selectedRoute} onChange={({ target }) => setSelectedRoute(target.value)}>
-					{maps.map(({ src }) => (
-						<MenuItem key={src} value={src}>
-							{src}
+				<Select
+					value={selectedRoute}
+					onChange={({ target }) => {
+						setSelectedRoute(target.value);
+						setSelectedMap(0);
+					}}>
+					{routesInfo.map(({ spots, mora }, index) => (
+						<MenuItem key={index} value={index}>
+							Spots: {spots}, Mora: {mora}
 						</MenuItem>
 					))}
 				</Select>
-				<Button
-					variant='outlined'
-					onClick={() => {
-						if (currentIndex >= maps.length - 1) return;
-						setSelectedRoute(maps[currentIndex + 1].src);
-					}}
-					disabled={currentIndex >= maps.length - 1}>
-					Next
-				</Button>
+				<MapSelect route={route} selectedMap={selectedMap} setSelectedMap={setSelectedMap} />
+			</Stack>
+			<Stack direction='row' spacing={1} sx={{ pb: 1 }}>
 				<Button variant='contained' disabled={!points.length} onClick={() => setPoints([])}>
 					Clear Points
 				</Button>
 				<Button
 					variant='contained'
 					onClick={async () => {
-						await savePointsServer(points, selectedRoute);
+						await savePointsServer(points, mapName);
 						enqueueSnackbar('Saved', { variant: 'info' });
 					}}>
 					Save Points
 				</Button>
-			</Stack>
-			<Stack direction='row' spacing={1} sx={{ pb: 1 }}>
 				<ToggleButtonGroup
 					value={editMode}
 					exclusive
@@ -113,7 +99,7 @@ export default function RouteTest() {
 				</Button>
 			</Stack>
 			<RouteMap
-				src={selectedRoute}
+				src={mapName}
 				points={points}
 				addPoint={
 					editMode === 'add' || (applying && activeSpot)

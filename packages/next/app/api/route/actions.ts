@@ -2,8 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-
-import { Point } from '../../farming/routeMap/utils';
+import { type Point } from '../../farming/routeMap/utils';
 
 export async function savePointsServer(points: Point[], name: string) {
 	const parts = name.split('/');

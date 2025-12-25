@@ -7,8 +7,8 @@ import {
 	SkipNext as SkipNextIcon,
 	SkipPrevious as SkipPreviousIcon,
 } from '@mui/icons-material';
-import { Box, BoxProps } from '@mui/material';
-import React, { RefObject, useState } from 'react';
+import { Box, type BoxProps } from '@mui/material';
+import React, { type RefObject, useState } from 'react';
 
 export default function VideoPlayer({
 	ref,
@@ -50,11 +50,9 @@ export default function VideoPlayer({
 		<Box
 			sx={{
 				'position': 'relative',
-				'cursor': 'pointer',
 				'&:hover .video-overlay': { opacity: 1 },
 				...sx,
 			}}
-			onClick={togglePlay}
 			{...props}>
 			<video
 				ref={ref}
@@ -77,20 +75,21 @@ export default function VideoPlayer({
 				}}>
 				<Box
 					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						gap: 2,
+						'display': 'flex',
+						'alignItems': 'center',
+						'.MuiBox-root': {
+							display: 'flex',
+							cursor: 'pointer',
+						},
+						'.MuiSvgIcon-root': {
+							'opacity': 0.5,
+							'&:hover': { opacity: 0.75 },
+						},
 					}}>
 					<Box
 						onClick={(e) => {
 							e.stopPropagation();
 							seekByFrames(-seekFrames * 5);
-						}}
-						sx={{
-							'cursor': 'pointer',
-							'display': 'flex',
-							'alignItems': 'center',
-							'&:hover': { opacity: 0.7 },
 						}}>
 						<FastRewindIcon sx={{ fontSize: '8cqw' }} />
 					</Box>
@@ -98,30 +97,18 @@ export default function VideoPlayer({
 						onClick={(e) => {
 							e.stopPropagation();
 							seekByFrames(-seekFrames);
-						}}
-						sx={{
-							'cursor': 'pointer',
-							'display': 'flex',
-							'alignItems': 'center',
-							'&:hover': { opacity: 0.7 },
 						}}>
 						<SkipPreviousIcon sx={{ fontSize: '10cqw' }} />
 					</Box>
 					{isPlaying ? (
-						<PauseIcon sx={{ fontSize: '15cqw' }} />
+						<PauseIcon sx={{ fontSize: '15cqw' }} onClick={togglePlay} />
 					) : (
-						<PlayArrowIcon sx={{ fontSize: '15cqw' }} />
+						<PlayArrowIcon sx={{ fontSize: '15cqw' }} onClick={togglePlay} />
 					)}
 					<Box
 						onClick={(e) => {
 							e.stopPropagation();
 							seekByFrames(seekFrames);
-						}}
-						sx={{
-							'cursor': 'pointer',
-							'display': 'flex',
-							'alignItems': 'center',
-							'&:hover': { opacity: 0.7 },
 						}}>
 						<SkipNextIcon sx={{ fontSize: '10cqw' }} />
 					</Box>
@@ -129,12 +116,6 @@ export default function VideoPlayer({
 						onClick={(e) => {
 							e.stopPropagation();
 							seekByFrames(seekFrames * 5);
-						}}
-						sx={{
-							'cursor': 'pointer',
-							'display': 'flex',
-							'alignItems': 'center',
-							'&:hover': { opacity: 0.7 },
 						}}>
 						<FastForwardIcon sx={{ fontSize: '8cqw' }} />
 					</Box>

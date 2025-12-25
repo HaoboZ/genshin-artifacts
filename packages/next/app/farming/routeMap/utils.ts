@@ -178,6 +178,16 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		}
 	}
 
+	// if time is beyond all points, return the last point
+	const lastPoint = points[points.length - 1];
+	if (lastPoint && lastPoint.start !== undefined) {
+		return {
+			point: { x: lastPoint.x, y: lastPoint.y },
+			pointIndex: Math.max(0, points.length - 2),
+			percentage: 100,
+		};
+	}
+
 	return null;
 }
 
@@ -250,4 +260,47 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	const distanceRatio = totalDistanceToSpot / totalDistance;
 	const segmentDuration = endPoint.start - startPointEnd;
 	return startPointEnd + segmentDuration * distanceRatio;
+}
+
+export function calculateOptimalZoom(points: Point[], containerSize: DOMRect) {
+	if (!containerSize || points.length === 0) {
+		return { scale: 1, offset: { x: 0, y: 0 } };
+	}
+
+	// find bounding box of all points (normalized coordinates)
+	let minX = Infinity,
+		maxX = -Infinity,
+		minY = Infinity,
+		maxY = -Infinity;
+
+	for (const point of points) {
+		minX = Math.min(minX, point.x);
+		maxX = Math.max(maxX, point.x);
+		minY = Math.min(minY, point.y);
+		maxY = Math.max(maxY, point.y);
+	}
+
+	// convert to pixel coordinates
+	const boundingBox = {
+		width: (maxX - minX) * containerSize.width,
+		height: (maxY - minY) * containerSize.height,
+		centerX: ((minX + maxX) / 2) * containerSize.width,
+		centerY: ((minY + maxY) / 2) * containerSize.height,
+	};
+
+	// calculate scale to fit bounding box with some padding
+	const containerPadding = 0.8;
+	const scaleX = (containerSize.width * containerPadding) / boundingBox.width;
+	const scaleY = (containerSize.height * containerPadding) / boundingBox.height;
+
+	const scale = Math.min(scaleX, scaleY, 2);
+
+	// calculate offset to center the bounding box
+	const containerCenterX = containerSize.width / 2;
+	const containerCenterY = containerSize.height / 2;
+
+	const offsetX = containerCenterX - boundingBox.centerX * scale;
+	const offsetY = containerCenterY - boundingBox.centerY * scale;
+
+	return { scale, offset: { x: offsetX, y: offsetY } };
 }

@@ -1,6 +1,6 @@
 [
 	{
-		"investigation": 165,
+		"spots": 165,
 		"artifacts": 249.375,
 		"mora": 129537.5,
 		"maps": [
@@ -36,7 +36,7 @@
 		]
 	},
 	{
-		"investigation": 133,
+		"spots": 133,
 		"artifacts": 183.15,
 		"mora": 82123,
 		"maps": [

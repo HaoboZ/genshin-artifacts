@@ -1,39 +1,58 @@
 'use client';
-import route from '@/api/route.json';
+import { routesInfo } from '@/api/routes';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import useEventListener from '@/src/hooks/useEventListener';
-import { Box, Button, MenuItem, Select, Stack, Typography } from '@mui/material';
+import useParamState from '@/src/hooks/useParamState';
+import { Box, MenuItem, Select, Stack, Typography } from '@mui/material';
 import axios from 'axios';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
+import MapSelect from './mapSelect';
 import RouteMap from './routeMap';
 import { type Point } from './routeMap/utils';
 import VideoPlayer from './videoPlayer';
 
-const maps = route[0].maps;
-
 export default function Farming() {
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useState(maps[0].src);
+	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const route = routesInfo[selectedRoute];
+	const [selectedMap, setSelectedMap] = useParamState('map', 0);
+	const mapName = route.maps[selectedMap].src;
 	const [time, setTime] = useState(0);
 
-	const { data } = useSWR<Point[]>(`/points/${selectedRoute}.json`, async (url) => {
+	const { data } = useSWR<Point[]>(`/points/${mapName}.json`, async (url: string) => {
 		const { data } = await axios.get(url);
 		return data;
 	});
 
 	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => {
-		setTime(videoRef.current.currentTime);
-	});
+	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
-	const currentIndex = maps.findIndex(({ src }) => src === selectedRoute);
+	// calculate spots collected at current time
+	const spots = useMemo(
+		() =>
+			route.maps[selectedMap].start +
+			(data?.filter((point) => (!point.artifact ? false : time >= point.artifact)).length ?? 0),
+		[route, selectedMap, data, time],
+	);
 
 	return (
 		<PageContainer>
 			<PageTitle>Artifact Farming</PageTitle>
+			<Select
+				value={selectedRoute}
+				onChange={({ target }) => {
+					setSelectedRoute(target.value);
+					setSelectedMap(0);
+				}}>
+				{routesInfo.map(({ spots, mora }, index) => (
+					<MenuItem key={index} value={index}>
+						Spots: {spots}, Mora: {mora}
+					</MenuItem>
+				))}
+			</Select>
 			<Box
 				sx={{
 					width: '100%',
@@ -59,39 +78,17 @@ export default function Farming() {
 							alignSelf: 'start',
 							width: '50%',
 						}}>
-						<Typography variant='h1'>Total Artifacts</Typography>
-						<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
-							<Button
-								variant='outlined'
-								onClick={() => {
-									if (currentIndex <= 0) return;
-									setSelectedRoute(maps[currentIndex - 1].src);
-								}}
-								disabled={currentIndex <= 0}>
-								Previous
-							</Button>
-							<Select
-								value={selectedRoute}
-								onChange={({ target }) => setSelectedRoute(target.value)}>
-								{maps.map(({ src }) => (
-									<MenuItem key={src} value={src}>
-										{src}
-									</MenuItem>
-								))}
-							</Select>
-							<Button
-								variant='outlined'
-								onClick={() => {
-									if (currentIndex >= maps.length - 1) return;
-									setSelectedRoute(maps[currentIndex + 1].src);
-								}}
-								disabled={currentIndex >= maps.length - 1}>
-								Next
-							</Button>
+						<Stack spacing={1} sx={{ alignItems: 'center', py: 1 }}>
+							<Typography variant='h1'>Total: {spots}</Typography>
+							<MapSelect
+								route={route}
+								selectedMap={selectedMap}
+								setSelectedMap={setSelectedMap}
+							/>
 						</Stack>
 					</Box>
 					<RouteMap
-						src={selectedRoute}
+						src={mapName}
 						points={data ?? []}
 						time={time}
 						setTime={(time) => {
@@ -109,7 +106,7 @@ export default function Farming() {
 					/>
 					<VideoPlayer
 						ref={videoRef}
-						src={selectedRoute}
+						src={mapName}
 						sx={{
 							gridColumn: 1,
 							gridRow: 1,

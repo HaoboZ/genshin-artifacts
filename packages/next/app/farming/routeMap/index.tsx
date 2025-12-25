@@ -6,7 +6,13 @@ import { type Dispatch, useEffect, useRef, useState } from 'react';
 import RouteMapContainer from './routeMapContainer';
 import RouteMapPaths from './routeMapPaths';
 import RouteMapPoints from './routeMapPoints';
-import { findSpotByTime, findTimeBySpot, type Point, type Spot } from './utils';
+import {
+	calculateOptimalZoom,
+	findSpotByTime,
+	findTimeBySpot,
+	type Point,
+	type Spot,
+} from './utils';
 
 export default function RouteMap({
 	src,
@@ -32,10 +38,30 @@ export default function RouteMap({
 	const [containerSize, setContainerSize] = useState<DOMRect>(null);
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
+	const [isAnimating, setIsAnimating] = useState(false);
 
 	const [time, setTime] = useControlledState(_time, _setTime);
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
+
+	useEffect(() => {
+		setScale(1);
+		setMapOffset({ x: 0, y: 0 });
+		setActiveSpot(null);
+		setIsAnimating(false);
+
+		if (!points?.length) return;
+
+		const animId = requestAnimationFrame(() => {
+			const { scale, offset } = calculateOptimalZoom(points, containerSize);
+
+			setIsAnimating(true);
+			setScale(scale);
+			setMapOffset(offset);
+		});
+
+		return () => cancelAnimationFrame(animId);
+	}, [points]);
 
 	// sync activeSpot with time
 	useEffect(() => {
@@ -65,6 +91,7 @@ export default function RouteMap({
 			setMapOffset={setMapOffset}
 			points={points}
 			addPoint={addPoint}
+			setIsAnimating={setIsAnimating}
 			hoverSpot={hoverSpot}
 			setHoverSpot={setHoverSpot}
 			setActiveSpot={(spot) => {
@@ -93,6 +120,7 @@ export default function RouteMap({
 					transformOrigin: '0 0',
 					width: '100%',
 					height: '100%',
+					transition: isAnimating ? 'transform 0.6s ease' : 'none',
 				}}>
 				<Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />
 				{containerSize && (
