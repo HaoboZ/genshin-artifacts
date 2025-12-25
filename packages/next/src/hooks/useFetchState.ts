@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 
 // fetches the url data into the initial state
 export default function useFetchState<S>(

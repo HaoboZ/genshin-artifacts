@@ -1,13 +1,12 @@
 'use client';
 import ClientOnly from '@/components/clientOnly';
-import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import RespawnNotification from '@/src/components/respawnNotification';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';
-import { Box, Button, ButtonGroup, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, ButtonGroup, Container, Stack, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
@@ -51,7 +50,7 @@ export default function Main() {
 	}, []);
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Genshin Artifacts</PageTitle>
 			<Stack spacing={1}>
 				<ButtonGroup variant='contained' color='primary'>
@@ -167,6 +166,6 @@ export default function Main() {
 					</Stack>
 				</ClientOnly>
 			</Stack>
-		</PageContainer>
+		</Container>
 	);
 }

@@ -1,10 +1,9 @@
 'use client';
 import { routesInfo } from '@/api/routes';
-import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import useEventListener from '@/src/hooks/useEventListener';
 import useParamState from '@/src/hooks/useParamState';
-import { Box, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Box, Container, MenuItem, Select, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
@@ -16,7 +15,7 @@ import VideoPlayer from './videoPlayer';
 export default function Farming() {
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const [selectedRoute, setSelectedRoute] = useState(0);
 	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = route.maps[selectedMap].src;
@@ -39,7 +38,7 @@ export default function Farming() {
 	);
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Artifact Farming</PageTitle>
 			<Select
 				value={selectedRoute}
@@ -117,6 +116,6 @@ export default function Farming() {
 					/>
 				</Box>
 			</Box>
-		</PageContainer>
+		</Container>
 	);
 }

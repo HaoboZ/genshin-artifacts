@@ -1,11 +1,11 @@
 'use client';
-import PageContainer from '@/components/page/container';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
 import useHistory from '@/src/hooks/useHistory';
 import useParamState from '@/src/hooks/useParamState';
 import {
 	Button,
+	Container,
 	FormControlLabel,
 	MenuItem,
 	Select,
@@ -25,7 +25,7 @@ import { savePointsServer } from './actions';
 export default function RouteTest() {
 	const { enqueueSnackbar } = useSnackbar();
 
-	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const [selectedRoute, setSelectedRoute] = useState(0);
 	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = route.maps[selectedMap].src;
@@ -49,13 +49,14 @@ export default function RouteTest() {
 	});
 
 	return (
-		<PageContainer>
+		<Container>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center', py: 1 }}>
 				<Select
 					value={selectedRoute}
 					onChange={({ target }) => {
 						setSelectedRoute(target.value);
 						setSelectedMap(0);
+						setPoints([]);
 					}}>
 					{routesInfo.map(({ spots, mora }, index) => (
 						<MenuItem key={index} value={index}>
@@ -63,7 +64,14 @@ export default function RouteTest() {
 						</MenuItem>
 					))}
 				</Select>
-				<MapSelect route={route} selectedMap={selectedMap} setSelectedMap={setSelectedMap} />
+				<MapSelect
+					route={route}
+					selectedMap={selectedMap}
+					setSelectedMap={(selectedMap) => {
+						setSelectedMap(selectedMap);
+						setPoints([]);
+					}}
+				/>
 			</Stack>
 			<Stack direction='row' spacing={1} sx={{ pb: 1 }}>
 				<Button variant='contained' disabled={!points.length} onClick={() => setPoints([])}>
@@ -129,6 +137,6 @@ export default function RouteTest() {
 				setActiveSpot={setActiveSpot}
 				sx={{ height: '90vh', width: 'unset', justifySelf: 'center' }}
 			/>
-		</PageContainer>
+		</Container>
 	);
 }

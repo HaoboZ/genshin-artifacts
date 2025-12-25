@@ -1,13 +1,12 @@
 'use client';
 import { useWeapons, type WeaponType } from '@/api/weapons';
-import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
 import dynamicModal from '@/src/providers/modal/dynamic';
 import { Lock as LockIcon } from '@mui/icons-material';
-import { Grid, Stack, TextField } from '@mui/material';
+import { Container, Grid, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import RarityFilter from '../characters/rarityFilter';
 import WeaponCharacterImage from './weaponCharacterImage';
@@ -28,7 +27,7 @@ export default function Weapons() {
 	const weapons = useWeapons({ type, rarity: +rarity, search });
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Weapons</PageTitle>
 			<Stack direction='row' spacing={2}>
 				<WeaponTypeFilter weaponType={type} setWeaponType={setType} />
@@ -71,6 +70,6 @@ export default function Weapons() {
 					))}
 				</Grid>
 			</PageSection>
-		</PageContainer>
+		</Container>
 	);
 }

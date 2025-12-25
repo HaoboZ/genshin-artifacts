@@ -1,14 +1,14 @@
-import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
+import { Container } from '@mui/material';
 import TalentBooks from './talentBooks';
 import TalentsWeekly from './talentsWeekly';
 
 export default function Talents() {
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Talents</PageTitle>
 			<TalentBooks />
 			<TalentsWeekly />
-		</PageContainer>
+		</Container>
 	);
 }

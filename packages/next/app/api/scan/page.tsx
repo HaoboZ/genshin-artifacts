@@ -1,5 +1,4 @@
 'use client';
-import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import cropBox from '@/components/scanner/cropBox';
@@ -10,8 +9,8 @@ import isMarked from '@/components/scanner/isMarked';
 import matchPixels from '@/components/scanner/matchPixels';
 import preprocessImage from '@/components/scanner/preprocessImage';
 import resizeScale from '@/components/scanner/resizeScale';
-import { IArtifact } from '@/src/types/good';
-import { Box, Button, Stack } from '@mui/material';
+import { type IArtifact } from '@/src/types/good';
+import { Box, Button, Container, Stack } from '@mui/material';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 
@@ -41,7 +40,7 @@ export default function ScanTest() {
 	}
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Scan Test</PageTitle>
 			<Script src='https://docs.opencv.org/4.x/opencv.js' />
 			<PageSection>
@@ -173,6 +172,6 @@ export default function ScanTest() {
 					</Box>
 				</Stack>
 			</PageSection>
-		</PageContainer>
+		</Container>
 	);
 }

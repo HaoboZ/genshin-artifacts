@@ -38,6 +38,7 @@ export default function RouteMap({
 	const [containerSize, setContainerSize] = useState<DOMRect>(null);
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
+	const [isLoading, setIsLoading] = useState(false);
 	const [isAnimating, setIsAnimating] = useState(false);
 
 	const [time, setTime] = useControlledState(_time, _setTime);
@@ -49,8 +50,11 @@ export default function RouteMap({
 		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
 		setIsAnimating(false);
+		setIsLoading(true);
+	}, [src]);
 
-		if (!points?.length) return;
+	useEffect(() => {
+		if (!isLoading || !points?.length) return;
 
 		const animId = requestAnimationFrame(() => {
 			const { scale, offset } = calculateOptimalZoom(points, containerSize);
@@ -58,10 +62,11 @@ export default function RouteMap({
 			setIsAnimating(true);
 			setScale(scale);
 			setMapOffset(offset);
+			setIsLoading(false);
 		});
 
 		return () => cancelAnimationFrame(animId);
-	}, [points]);
+	}, [isLoading, points]);
 
 	// sync activeSpot with time
 	useEffect(() => {
@@ -122,7 +127,7 @@ export default function RouteMap({
 					height: '100%',
 					transition: isAnimating ? 'transform 0.6s ease' : 'none',
 				}}>
-				<Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />
+				{!isLoading && <Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />}
 				{containerSize && (
 					<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
 						<RouteMapPaths containerSize={containerSize} points={points} />

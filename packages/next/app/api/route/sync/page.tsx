@@ -2,7 +2,17 @@
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
 import useParamState from '@/src/hooks/useParamState';
-import { Box, Button, Grid, MenuItem, Select, Slider, Stack, Typography } from '@mui/material';
+import {
+	Box,
+	Button,
+	Container,
+	Grid,
+	MenuItem,
+	Select,
+	Slider,
+	Stack,
+	Typography,
+} from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import MapSelect from '../../../farming/mapSelect';
@@ -18,7 +28,7 @@ export default function RouteSyncTest() {
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const [selectedRoute, setSelectedRoute] = useState(0);
 	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = route.maps[selectedMap].src;
@@ -28,8 +38,12 @@ export default function RouteSyncTest() {
 	const [playbackRate, setPlaybackRate] = useState(1);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
+	console.log(mapName, points);
+
 	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
+	useEventListener(videoRef.current, 'timeupdate', () => {
+		setTime(videoRef.current.currentTime);
+	});
 
 	useEventListener(
 		// eslint-disable-next-line react-hooks/refs
@@ -59,161 +73,167 @@ export default function RouteSyncTest() {
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
 	return (
-		<Box
-			sx={{
-				width: '100%',
-				height: '100vh',
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-			}}>
+		<Container>
+			<Stack direction='row' spacing={1}>
+				<Select
+					value={selectedRoute}
+					onChange={({ target }) => {
+						setSelectedRoute(target.value);
+						setSelectedMap(0);
+						setPoints([]);
+					}}>
+					{routesInfo.map(({ spots, mora }, index) => (
+						<MenuItem key={index} value={index}>
+							Spots: {spots}, Mora: {mora}
+						</MenuItem>
+					))}
+				</Select>
+				<MapSelect
+					route={route}
+					selectedMap={selectedMap}
+					setSelectedMap={(selectedMap) => {
+						setSelectedMap(selectedMap);
+						setPoints([]);
+					}}
+				/>
+			</Stack>
 			<Box
 				sx={{
 					width: '100%',
-					maxWidth: 'calc(100vh * 16 / 9)',
-					aspectRatio: '16 / 9',
-					display: 'grid',
-					gridTemplate: '1fr 1fr',
+					height: '100vh',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
 				}}>
 				<Box
 					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'start',
-						alignSelf: 'start',
-						width: '50%',
-						maxHeight: '100%',
-						overflow: 'auto',
+						width: '100%',
+						maxWidth: 'calc(100vh * 16 / 9)',
+						aspectRatio: '16 / 9',
+						display: 'grid',
+						gridTemplate: '1fr 1fr',
 					}}>
-					<Stack spacing={1} sx={{ p: 1 }}>
-						<Stack direction='row' spacing={1}>
-							<Select
-								value={selectedRoute}
-								onChange={({ target }) => {
-									setSelectedRoute(target.value);
-									setSelectedMap(0);
+					<Box
+						sx={{
+							gridColumn: 1,
+							gridRow: 1,
+							justifySelf: 'start',
+							alignSelf: 'start',
+							width: '50%',
+							maxHeight: '100%',
+							overflow: 'auto',
+						}}>
+						<Stack spacing={1} sx={{ p: 1 }}>
+							<Button
+								variant='contained'
+								onClick={async () => {
+									await savePointsServer(points, mapName);
+									enqueueSnackbar('Saved', { variant: 'info' });
 								}}>
-								{routesInfo.map(({ spots, mora }, index) => (
-									<MenuItem key={index} value={index}>
-										Spots: {spots}, Mora: {mora}
-									</MenuItem>
-								))}
-							</Select>
-							<MapSelect
-								route={route}
-								selectedMap={selectedMap}
-								setSelectedMap={setSelectedMap}
-							/>
-						</Stack>
-						<Button
-							variant='contained'
-							onClick={async () => {
-								await savePointsServer(points, mapName);
-								enqueueSnackbar('Saved', { variant: 'info' });
-							}}>
-							Save Points
-						</Button>
-						<Typography variant='body2' sx={{ mt: 1 }}>
-							Current Time: {time.toFixed(2)}s
-						</Typography>
-						<Grid container>
-							<TimePointControls
-								name='Previous'
-								time={time}
-								point={
-									currentPointIndex !== null && currentPointIndex >= 0
-										? points[currentPointIndex]
-										: null
-								}
-								pointIndex={currentPointIndex}
-								updatePointField={updatePointField}
-							/>
-							<TimePointControls
-								name='Current'
-								time={time}
-								point={
-									nextPointIndex !== null && nextPointIndex < points.length
-										? points[nextPointIndex]
-										: null
-								}
-								pointIndex={nextPointIndex}
-								updatePointField={updatePointField}
-							/>
-						</Grid>
-					</Stack>
-				</Box>
-				<RouteMap
-					src={mapName}
-					points={points}
-					activeSpot={activeSpot}
-					setActiveSpot={setActiveSpot}
-					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'end',
-						alignSelf: 'start',
-						width: '50%',
-					}}
-				/>
-				<VideoPlayer
-					ref={videoRef}
-					src={mapName}
-					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'start',
-						alignSelf: 'end',
-						width: '55%',
-						position: 'relative',
-					}}
-				/>
-				<Box
-					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'end',
-						alignSelf: 'end',
-						width: '45%',
-						p: 1,
-					}}>
-					<Stack>
-						<Stack direction='row' spacing={1} alignItems='center'>
-							<Typography variant='caption' sx={{ minWidth: 80 }}>
-								Scrub
+								Save Points
+							</Button>
+							<Typography variant='body2' sx={{ mt: 1 }}>
+								Current Time: {time.toFixed(2)}s
 							</Typography>
-							<Slider
-								value={time}
-								min={0}
-								step={0.1}
-								max={duration || 100}
-								onChange={(_, value) => {
-									const video = videoRef.current;
-									if (!video) return;
-									video.currentTime = value;
-									setTime(value);
-								}}
-							/>
+							<Grid container>
+								<TimePointControls
+									name='Previous'
+									time={time}
+									point={
+										currentPointIndex !== null && currentPointIndex >= 0
+											? points[currentPointIndex]
+											: null
+									}
+									pointIndex={currentPointIndex}
+									updatePointField={updatePointField}
+								/>
+								<TimePointControls
+									name='Current'
+									time={time}
+									point={
+										nextPointIndex !== null && nextPointIndex < points.length
+											? points[nextPointIndex]
+											: null
+									}
+									pointIndex={nextPointIndex}
+									updatePointField={updatePointField}
+								/>
+							</Grid>
 						</Stack>
-						<Stack direction='row' spacing={1} alignItems='center'>
-							<Typography variant='caption' sx={{ minWidth: 80 }}>
-								Speed: {playbackRate.toFixed(2)}x
-							</Typography>
-							<Slider
-								value={playbackRate}
-								min={0.25}
-								max={2}
-								step={0.05}
-								onChange={(_, value) => {
-									const video = videoRef.current;
-									if (!video) return;
-									video.playbackRate = value;
-									setPlaybackRate(value);
-								}}
-							/>
+					</Box>
+					<RouteMap
+						src={mapName}
+						points={points}
+						activeSpot={activeSpot}
+						setActiveSpot={setActiveSpot}
+						sx={{
+							gridColumn: 1,
+							gridRow: 1,
+							justifySelf: 'end',
+							alignSelf: 'start',
+							width: '50%',
+						}}
+					/>
+					<VideoPlayer
+						ref={videoRef}
+						src={mapName}
+						sx={{
+							gridColumn: 1,
+							gridRow: 1,
+							justifySelf: 'start',
+							alignSelf: 'end',
+							width: '55%',
+							position: 'relative',
+						}}
+					/>
+					<Box
+						sx={{
+							gridColumn: 1,
+							gridRow: 1,
+							justifySelf: 'end',
+							alignSelf: 'end',
+							width: '45%',
+							p: 1,
+						}}>
+						<Stack>
+							<Stack direction='row' spacing={1} alignItems='center'>
+								<Typography variant='caption' sx={{ minWidth: 80 }}>
+									Scrub
+								</Typography>
+								<Slider
+									value={time}
+									min={0}
+									step={0.1}
+									max={duration || 100}
+									onChange={(_, value) => {
+										const video = videoRef.current;
+										if (!video) return;
+										video.currentTime = value;
+										setTime(value);
+									}}
+								/>
+							</Stack>
+							<Stack direction='row' spacing={1} alignItems='center'>
+								<Typography variant='caption' sx={{ minWidth: 80 }}>
+									Speed: {playbackRate.toFixed(2)}x
+								</Typography>
+								<Slider
+									value={playbackRate}
+									min={0.25}
+									max={2}
+									step={0.05}
+									onChange={(_, value) => {
+										const video = videoRef.current;
+										if (!video) return;
+										video.playbackRate = value;
+										setPlaybackRate(value);
+									}}
+								/>
+							</Stack>
 						</Stack>
-					</Stack>
+					</Box>
 				</Box>
 			</Box>
-		</Box>
+		</Container>
 	);
 }

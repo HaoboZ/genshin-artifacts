@@ -1,9 +1,8 @@
 'use client';
-import PageContainer from '@/components/page/container';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
 import useParamState from '@/src/hooks/useParamState';
-import { Checkbox, FormControlLabel, Stack, Switch, TextField } from '@mui/material';
+import { Checkbox, Container, FormControlLabel, Stack, Switch, TextField } from '@mui/material';
 import { useState } from 'react';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';
 import CharacterPriority from './characterPriority';
@@ -20,7 +19,7 @@ export default function Characters() {
 	const [owned, setOwned] = useState(false);
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>Characters</PageTitle>
 			<Stack direction='row' spacing={2}>
 				<ElementFilter element={element} setElement={setElement} />
@@ -61,6 +60,6 @@ export default function Characters() {
 					search={search.toLowerCase()}
 				/>
 			</PageSection>
-		</PageContainer>
+		</Container>
 	);
 }

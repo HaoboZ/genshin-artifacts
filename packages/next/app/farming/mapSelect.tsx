@@ -1,6 +1,6 @@
 import { type Route } from '@/api/routes';
 import { Button, MenuItem, Select, Stack } from '@mui/material';
-import { type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch } from 'react';
 
 export default function MapSelect({
 	route,
@@ -9,7 +9,7 @@ export default function MapSelect({
 }: {
 	route: Route;
 	selectedMap: number;
-	setSelectedMap: Dispatch<SetStateAction<number>>;
+	setSelectedMap: Dispatch<number>;
 }) {
 	return (
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>

@@ -4,7 +4,6 @@ import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
 import { weaponsInfo } from '@/api/weapons';
 import FormattedTextField from '@/components/formattedTextField';
-import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageSection from '@/components/page/section';
 import PageTitle from '@/components/page/title';
@@ -16,7 +15,7 @@ import dynamicModal from '@/src/providers/modal/dynamic';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type DCharacter } from '@/src/types/data';
-import { Card, CardContent, Grid, Stack, Switch, Typography } from '@mui/material';
+import { Card, CardContent, Container, Grid, Stack, Switch, Typography } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
@@ -57,7 +56,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 	}, [build, weapon]);
 
 	return (
-		<PageContainer>
+		<Container>
 			<PageTitle>
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<PageLink
@@ -198,6 +197,6 @@ export default function Character({ characterData }: { characterData: DCharacter
 					})}
 				</Grid>
 			</PageSection>
-		</PageContainer>
+		</Container>
 	);
 }
