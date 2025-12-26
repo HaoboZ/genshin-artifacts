@@ -126,7 +126,7 @@ export default function RouteMap({
 							containerSize={containerSize}
 							scale={scale}
 							points={points}
-							showPoints={Boolean(addPoint)}
+							showPoints={Boolean(_setActiveSpot)}
 							activeSpot={activeSpot}
 							hoverSpot={hoverSpot}
 						/>

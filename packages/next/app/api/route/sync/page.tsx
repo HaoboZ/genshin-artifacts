@@ -203,7 +203,7 @@ export default function RouteSyncTest() {
 								<Slider
 									value={time}
 									min={0}
-									step={0.1}
+									step={1 / 15}
 									max={duration || 100}
 									onChange={(_, value) => {
 										const video = videoRef.current;
