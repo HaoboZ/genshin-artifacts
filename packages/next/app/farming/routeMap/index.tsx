@@ -73,14 +73,7 @@ export default function RouteMap({
 		if (!containerSize) return;
 
 		const spot = findSpotByTime(points, time);
-		if (spot) {
-			// convert normalized coordinates to pixel coordinates
-			spot.point = {
-				x: spot.point.x * containerSize.width,
-				y: spot.point.y * containerSize.height,
-			};
-		}
-
+		if (!spot) return;
 		setActiveSpot(spot);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [time, containerSize]);

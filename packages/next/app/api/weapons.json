@@ -27,7 +27,7 @@
 		"weaponType": "Sword",
 		"atk": 608,
 		"stat": "CRIT Rate 33.1%",
-		"ability": "CRIT DMG from Elemental Bursts is increased by 16~?%. When an Elemental Burst hits an opponent, gain the Blade of the Daylight Hours effect: ATK is increased by 20~?%. Nearby active party members other than the equipping character have their ATK increased by 16~?% for 3s.Additionally, when the party possesses Hexerei: Secret Rite effects, the effects of Blade of the Daylight Hours are increased by an additional 75%. This effect can be triggered even if the equipping character is off-field."
+		"ability": "CRIT DMG from Elemental Bursts is increased by 16~32%. When an Elemental Burst hits an opponent, gain the Blade of the Daylight Hours effect: ATK is increased by 20~40%. Nearby active party members other than the equipping character have their ATK increased by 16~32% for 3s.Additionally, when the party possesses Hexerei: Secret Rite effects, the effects of Blade of the Daylight Hours are increased by an additional 75%. This effect can be triggered even if the equipping character is off-field."
 	},
 	"Azurelight": {
 		"key": "Azurelight",
@@ -277,7 +277,7 @@
 		"weaponType": "Sword",
 		"atk": 565,
 		"stat": "ATK 27.6%",
-		"ability": "Increases Elemental Burst DMG by 20~40%. When the equipping character's Energy Capacity does not exceed 60/40, their Elemental Burst DMG is increased by an additional 16%/28~32%/56%."
+		"ability": "Increases Elemental Burst DMG by 20~40%. When the equipping character's Energy Capacity does not exceed 60/40, their Elemental Burst DMG is increased by an additional 16/28~32/56%."
 	},
 	"PrototypeRancour": {
 		"key": "PrototypeRancour",
@@ -1837,7 +1837,7 @@
 		"weaponType": "Bow",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "For 12s after triggering a Swirl reaction, ATK increases by 24%~48%. In addition, when 1/2 or more characters in the party are of a different Elemental Type from the equipping character, the DMG dealt by the equipping character's Charged Attacks is increased by 20%/48%~40%/96% and Elemental Burst DMG dealt is increased by 10%/24%~20%/48%."
+		"ability": "For 12s after triggering a Swirl reaction, ATK increases by 24~48%. In addition, when 1/2 or more characters in the party are of a different Elemental Type from the equipping character, the DMG dealt by the equipping character's Charged Attacks is increased by 20/48~40/96% and Elemental Burst DMG dealt is increased by 10/24~20/48%."
 	},
 	"ElegyForTheEnd": {
 		"key": "ElegyForTheEnd",
@@ -1877,7 +1877,7 @@
 		"weaponType": "Bow",
 		"atk": 542,
 		"stat": "HP 66.2%",
-		"ability": "The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by 12%/24%/40%~24%/48%/80%. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a Bond of Life value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by 28%~56%. This effect will be canceled 4s after falling under 3 stacks."
+		"ability": "The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by 12/24/40~24/48/80. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a Bond of Life value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by 28~56. This effect will be canceled 4s after falling under 3 stacks."
 	},
 	"SkywardHarp": {
 		"key": "SkywardHarp",
@@ -1897,7 +1897,7 @@
 		"weaponType": "Bow",
 		"atk": 674,
 		"stat": "CRIT DMG 44.1%",
-		"ability": "The equipping character gains Stirring Dawn Breeze: 3s after leaving combat, Normal Attack, Elemental Skill, and Elemental Burst DMG is increased by 60~?%. While in combat, this DMG Bonus will decrease by 10~?% per second until it reaches 0%. When the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for the corresponding DMG type is increased by 10~?% until it reaches 60~?%. This effect can be triggered once every 0.1s for each of the attack types mentioned above. This effect can be triggered even if the equipping character is off-field.Additionally, when the party possesses Hexerei: Secret Rite effects, when the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for all these DMG types is increased by 20~?% instead."
+		"ability": "The equipping character gains Stirring Dawn Breeze: 3s after leaving combat, Normal Attack, Elemental Skill, and Elemental Burst DMG is increased by 60~120%. While in combat, this DMG Bonus will decrease by 10~20% per second until it reaches 0%. When the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for the corresponding DMG type is increased by 10~20% until it reaches 60~120%. This effect can be triggered once every 0.1s for each of the attack types mentioned above. This effect can be triggered even if the equipping character is off-field.Additionally, when the party possesses Hexerei: Secret Rite effects, when the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for all these DMG types is increased by 20~40% instead."
 	},
 	"TheFirstGreatMagic": {
 		"key": "TheFirstGreatMagic",
@@ -1907,7 +1907,7 @@
 		"weaponType": "Bow",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "DMG dealt by Charged Attacks increased by 16~32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 16%/32%/48%~32%/64%/96%. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 4%/7%/10%~12%/15%/18%."
+		"ability": "DMG dealt by Charged Attacks increased by 16~32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 16/32/48~32/64/96. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 4/7/10~12/15/18."
 	},
 	"ThunderingPulse": {
 		"key": "ThunderingPulse",
@@ -1987,7 +1987,7 @@
 		"weaponType": "Bow",
 		"atk": 565,
 		"stat": "Energy Recharge 30.6%",
-		"ability": "Has three states, Evengleam, Afterglow, and Dawnblaze, which increase DMG dealt by 6%/10%/14%~12%/20%/28% respectively. When attacks hit opponents, this weapon will switch to the next state. This weapon can change states once every 7s. The character equipping this weapon can still trigger the state switch while not on the field."
+		"ability": "Has three states, Evengleam, Afterglow, and Dawnblaze, which increase DMG dealt by 6/10/14~12/20/28 respectively. When attacks hit opponents, this weapon will switch to the next state. This weapon can change states once every 7s. The character equipping this weapon can still trigger the state switch while not on the field."
 	},
 	"FavoniusWarbow": {
 		"key": "FavoniusWarbow",
@@ -2087,7 +2087,7 @@
 		"weaponType": "Bow",
 		"atk": 510,
 		"stat": "Energy Recharge 45.9%",
-		"ability": "ATK is increased by 28~?% for 8s after the equipping character's attacks hit an opponent while the equipping character is off-field."
+		"ability": "ATK is increased by 28~56% for 8s after the equipping character's attacks hit an opponent while the equipping character is off-field."
 	},
 	"RangeGauge": {
 		"key": "RangeGauge",

@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
+import { pick } from 'remeda';
 import MapSelect from '../../../farming/mapSelect';
 import RouteMap from '../../../farming/routeMap';
 import { type Point, type Spot } from '../../../farming/routeMap/utils';
@@ -37,8 +38,6 @@ export default function RouteSyncTest() {
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
-
-	console.log(mapName, points);
 
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(videoRef.current, 'timeupdate', () => {
@@ -135,6 +134,50 @@ export default function RouteSyncTest() {
 							<Typography variant='body2' sx={{ mt: 1 }}>
 								Current Time: {time.toFixed(2)}s
 							</Typography>
+							<Stack direction='row' spacing={1}>
+								<Button
+									variant='contained'
+									size='small'
+									disabled={currentPointIndex <= 0}
+									onClick={() => {
+										setActiveSpot({
+											point: points[currentPointIndex],
+											pointIndex: currentPointIndex - 1,
+											percentage: currentPointIndex === 1 ? 0 : 100,
+										});
+									}}>
+									Prev Point
+								</Button>
+								<Button
+									variant='contained'
+									size='small'
+									disabled={nextPointIndex + 1 >= points.length}
+									onClick={() => {
+										setActiveSpot({
+											point: points[currentPointIndex + 2],
+											pointIndex: currentPointIndex + 1,
+											percentage: 100,
+										});
+									}}>
+									Next Point
+								</Button>
+								<Button
+									variant='contained'
+									size='small'
+									onClick={() => {
+										setPoints((points) => {
+											const newPoints = [...points];
+											newPoints.splice(
+												nextPointIndex,
+												0,
+												pick(activeSpot.point, ['x', 'y', 'artifact']),
+											);
+											return newPoints;
+										});
+									}}>
+									Duplicate
+								</Button>
+							</Stack>
 							<Grid container>
 								<TimePointControls
 									name='Previous'

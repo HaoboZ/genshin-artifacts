@@ -67,7 +67,6 @@ export default function Farming() {
 						aspectRatio: '16 / 9',
 						display: 'grid',
 						gridTemplate: '1fr 1fr',
-						border: '1px solid blue',
 					}}>
 					<Box
 						sx={{

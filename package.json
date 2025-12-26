@@ -6,10 +6,13 @@
 		"email": "haobozhang9081@gmail.com"
 	},
 	"version": "1.3.37",
-	"scripts": {
-		"prepare": "husky"
-	},
 	"private": true,
+	"scripts": {
+		"prepare": "husky",
+		"next": "cd packages/next && bun run dev",
+		"generate-data": "cd packages/generate-data && bun run start",
+		"map-capture": "cd packages/map-capture && bun run start"
+	},
 	"workspaces": [
 		"packages/*"
 	],

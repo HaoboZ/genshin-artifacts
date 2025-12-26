@@ -106,9 +106,11 @@ export default function RouteMapContainer({
 				// show hover preview when addPoint is null
 				if (addPoint || !containerSize) return;
 
-				const mouseX = (e.clientX - containerSize.x - mapOffset.x) / scale;
-				const mouseY = (e.clientY - containerSize.y - mapOffset.y) / scale;
-				setHoverSpot(getClosestPointOnPath(containerSize, points, mouseX, mouseY));
+				const mouseX =
+					(e.clientX - containerSize.x - mapOffset.x) / scale / containerSize.width;
+				const mouseY =
+					(e.clientY - containerSize.y - mapOffset.y) / scale / containerSize.height;
+				setHoverSpot(getClosestPointOnPath(points, mouseX, mouseY, 15 / containerSize.width));
 			}}
 			onMouseUp={() => setIsDragging(false)}
 			onClick={(e) => {

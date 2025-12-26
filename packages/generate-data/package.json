@@ -1,6 +1,6 @@
 {
-	"name": "@genshin-artifacts/generate",
-	"version": "1.0.27",
+	"name": "@genshin-artifacts/generate-data",
+	"private": true,
 	"scripts": {
 		"start": "bun ./index.ts"
 	},

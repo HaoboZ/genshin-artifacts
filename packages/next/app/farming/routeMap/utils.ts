@@ -26,14 +26,12 @@ export function clampPosition(containerSize: DOMRect, x: number, y: number, curr
 
 // calculate closest point on path with segment info and snapping
 export function getClosestPointOnPath(
-	containerSize: DOMRect,
 	points: Point[],
 	mouseX: number,
 	mouseY: number,
+	snapThreshold: number,
 ) {
-	if (!containerSize || points.length < 2) return null;
-
-	const snapThreshold = 15; // snap within certain distance
+	if (points.length < 2) return null;
 
 	let closestPoint = null;
 	let minDistance = Infinity;
@@ -42,10 +40,10 @@ export function getClosestPointOnPath(
 
 	// check each segment
 	for (let i = 1; i < points.length; i++) {
-		const x1 = points[i - 1].x * containerSize.width;
-		const y1 = points[i - 1].y * containerSize.height;
-		const x2 = points[i].x * containerSize.width;
-		const y2 = points[i].y * containerSize.height;
+		const x1 = points[i - 1].x;
+		const y1 = points[i - 1].y;
+		const x2 = points[i].x;
+		const y2 = points[i].y;
 
 		const segmentLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 2;
 
@@ -118,7 +116,7 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		// check if time is at this point
 		if (time >= point.start && time <= pointEnd) {
 			return {
-				point: { x: point.x, y: point.y },
+				point,
 				pointIndex: Math.max(0, i - 1),
 				percentage: i === 0 ? 0 : 100,
 			};
@@ -179,10 +177,10 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 	}
 
 	// if time is beyond all points, return the last point
-	const lastPoint = points[points.length - 1];
-	if (lastPoint && lastPoint.start !== undefined) {
+	const point = points[points.length - 1];
+	if (point && point.start !== undefined) {
 		return {
-			point: { x: lastPoint.x, y: lastPoint.y },
+			point,
 			pointIndex: Math.max(0, points.length - 2),
 			percentage: 100,
 		};

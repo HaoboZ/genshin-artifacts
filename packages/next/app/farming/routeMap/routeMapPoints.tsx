@@ -28,13 +28,12 @@ export default function RouteMapPoints({
 		const dx = activeSpot.point.x - prevSpotRef.current.point.x;
 		const dy = activeSpot.point.y - prevSpotRef.current.point.y;
 		const distance = Math.sqrt(dx * dx + dy * dy);
-		const threshold = containerSize.width * 0.05;
 
-		const shouldAnimate = distance <= threshold;
+		const shouldAnimate = distance <= 0.05;
 		prevSpotRef.current = activeSpot;
 
 		return shouldAnimate;
-	}, [activeSpot, containerSize]);
+	}, [activeSpot]);
 
 	return (
 		<Fragment>
@@ -70,8 +69,8 @@ export default function RouteMapPoints({
 				})}
 			{hoverSpot && (
 				<circle
-					cx={hoverSpot.point.x}
-					cy={hoverSpot.point.y}
+					cx={hoverSpot.point.x * containerSize.width}
+					cy={hoverSpot.point.y * containerSize.height}
 					r={3}
 					fill='#ffff00'
 					fillOpacity={0.6}
@@ -82,15 +81,15 @@ export default function RouteMapPoints({
 			{activeSpot && (
 				<g>
 					<circle
-						cx={activeSpot.point.x}
-						cy={activeSpot.point.y}
+						cx={activeSpot.point.x * containerSize.width}
+						cy={activeSpot.point.y * containerSize.height}
 						r={4}
 						fill='#00ff00'
 						stroke='#008800'
 						strokeWidth={1}
 						style={{
 							animation: 'pulse 2s ease-in-out infinite',
-							transformOrigin: `${activeSpot.point.x}px ${activeSpot.point.y}px`,
+							transformOrigin: `${activeSpot.point.x * containerSize.width}px ${activeSpot.point.y * containerSize.height}px`,
 							transition: shouldTransition ? 'cx 0.25s linear, cy 0.25s linear' : 'none',
 						}}
 					/>

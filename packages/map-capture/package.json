@@ -1,0 +1,11 @@
+{
+	"name": "@genshin-artifacts/map-capture",
+	"private": true,
+	"scripts": {
+		"start": "bun ./index.ts"
+	},
+	"dependencies": {
+		"playwright": "1.57.0"
+	},
+	"devDependencies": {}
+}
