@@ -63,7 +63,7 @@ export async function fetchArtifacts() {
 
 export function writeArtifacts(artifacts: any[]) {
 	writeFileSync(
-		'../next/app/api/artifacts.json',
+		'../next/public/data/artifacts.json',
 		`${JSON.stringify(indexBy(artifacts, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(

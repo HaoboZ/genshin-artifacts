@@ -49,7 +49,7 @@ export async function fetchCharacters() {
 
 export function writeCharacters(characters: any[]) {
 	writeFileSync(
-		'../next/app/api/characters.json',
+		'../next/public/data/characters.json',
 		`${JSON.stringify(indexBy(characters, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(

@@ -1,9 +1,9 @@
+import data from '@/public/data/weapons.json';
 import { useAppSelector } from '@/src/store/hooks';
 import { type DWeapon } from '@/src/types/data';
 import { type WeaponKey } from '@/src/types/good';
 import { useMemo } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
-import data from './weapons.json';
 
 export type WeaponType = 'Sword' | 'Claymore' | 'Polearm' | 'Catalyst' | 'Bow';
 

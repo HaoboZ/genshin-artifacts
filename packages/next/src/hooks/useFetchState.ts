@@ -6,12 +6,14 @@ export default function useFetchState<S>(
 	url: string,
 	defaultState?: S,
 ): [S, Dispatch<SetStateAction<S>>] {
-	const [state, setState] = useState<S>(defaultState);
+	const [state, setState] = useState<S>(null);
 
 	useEffect(() => {
+		setState(null);
 		(async () => {
 			try {
 				const { data } = await axios.get(url);
+				console.log(url, typeof data);
 				setState(data);
 			} catch {
 				setState(defaultState);

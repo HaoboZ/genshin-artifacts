@@ -1,6 +1,6 @@
 import { artifactSetsInfo } from '@/api/artifacts';
-import PageSection from '@/components/page/section';
-import StatChipArray from '@/components/statChipArray';
+import PageSection from '@/components/page/pageSection';
+import StatChipArray from '@/components/stats/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import { type Build } from '@/src/types/data';
 import { AvatarGroup, Stack, Typography } from '@mui/material';

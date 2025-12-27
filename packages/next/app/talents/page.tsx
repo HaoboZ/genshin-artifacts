@@ -1,4 +1,4 @@
-import PageTitle from '@/components/page/title';
+import PageTitle from '@/components/page/pageTitle';
 import { Container } from '@mui/material';
 import TalentBooks from './talentBooks';
 import TalentsWeekly from './talentsWeekly';

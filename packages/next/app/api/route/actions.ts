@@ -1,8 +1,8 @@
 'use server';
 
+import { type Point } from '@/components/imageRoutePath/types';
 import fs from 'fs';
 import path from 'path';
-import { type Point } from '../../farming/routeMap/utils';
 
 export async function savePointsServer(points: Point[], name: string) {
 	const parts = name.split('/');

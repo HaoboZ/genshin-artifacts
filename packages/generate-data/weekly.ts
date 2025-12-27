@@ -43,7 +43,7 @@ export async function fetchWeekly(characters) {
 }
 
 export function writeWeekly(weekly) {
-	writeFileSync('../next/app/api/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
+	writeFileSync('../next/public/data/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
 	const entries = weekly.flatMap(({ items }) =>
 		items.map(({ name, key }) => `\n\t| '${key}' // ${name}`),
 	);

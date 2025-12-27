@@ -1,6 +1,6 @@
 'use client';
-import PageSection from '@/components/page/section';
-import PageTitle from '@/components/page/title';
+import PageSection from '@/components/page/pageSection';
+import PageTitle from '@/components/page/pageTitle';
 import cropBox from '@/components/scanner/cropBox';
 import fileToCanvas from '@/components/scanner/fileToCanvas';
 import findText from '@/components/scanner/findText';

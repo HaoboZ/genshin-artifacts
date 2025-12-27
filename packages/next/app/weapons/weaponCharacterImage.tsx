@@ -1,6 +1,6 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
-import PercentBar from '@/components/percentBar';
+import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import { type IWeapon } from '@/src/types/good';
 import { type AvatarProps, Box } from '@mui/material';

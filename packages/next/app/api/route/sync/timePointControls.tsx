@@ -1,5 +1,5 @@
+import { type Point } from '@/components/imageRoutePath/types';
 import { Button, Grid, Stack, Typography } from '@mui/material';
-import { type Point } from '../../../farming/routeMap/utils';
 
 export default function TimePointControls({
 	name,
@@ -25,20 +25,20 @@ export default function TimePointControls({
 				<Button
 					size='small'
 					variant='contained'
-					onClick={() => updatePointField(pointIndex, 'artifact', time)}>
-					{point.artifact !== undefined ? `${point.artifact.toFixed(2)} sec` : 'Not set'}
+					onClick={() => updatePointField(pointIndex, 'marked', time)}>
+					{point.marked !== undefined ? `${point.marked.toFixed(2)} sec` : 'Not set'}
 				</Button>
 				<Button
 					size='small'
 					variant='contained'
-					onClick={() => updatePointField(pointIndex, 'artifact', time + 7 / 60)}>
+					onClick={() => updatePointField(pointIndex, 'marked', time + 7 / 60)}>
 					+ 7 frames
 				</Button>
 				<Button
 					size='small'
 					variant='outlined'
-					onClick={() => updatePointField(pointIndex, 'artifact', undefined)}
-					disabled={point.artifact === undefined}>
+					onClick={() => updatePointField(pointIndex, 'marked', undefined)}
+					disabled={point.marked === undefined}>
 					Reset
 				</Button>
 			</Stack>

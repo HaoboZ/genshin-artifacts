@@ -40,7 +40,7 @@ export async function fetchWeapons() {
 
 export function writeWeapons(weapons: any[]) {
 	writeFileSync(
-		'../next/app/api/weapons.json',
+		'../next/public/data/weapons.json',
 		`${JSON.stringify(indexBy(weapons, prop('key')), null, '\t')}\n`,
 	);
 	writeFileSync(

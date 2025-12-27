@@ -1,5 +1,5 @@
-import { useModalControls } from '@/src/providers/modal/controls';
-import DialogWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialogWrapper';
+import useModalControls from '@/src/providers/modal/useModalControls';
 import { store } from '@/src/store';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';

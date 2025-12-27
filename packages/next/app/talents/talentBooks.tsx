@@ -2,7 +2,7 @@
 import { useCharacters } from '@/api/characters';
 import { talentsInfo } from '@/api/talents';
 import Dropdown from '@/components/dropdown';
-import PageSection from '@/components/page/section';
+import PageSection from '@/components/page/pageSection';
 import {
 	Box,
 	Checkbox,

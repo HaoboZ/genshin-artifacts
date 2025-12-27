@@ -1,0 +1,2272 @@
+{
+	"Absolution": {
+		"key": "Absolution",
+		"name": "Absolution",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Weapon_Absolution.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "CRIT DMG increased by 20~40%. Increasing the value of a Bond of Life increases the DMG the equipping character deals by 16~32% for 6s. Max 3 stacks."
+	},
+	"AquilaFavonia": {
+		"key": "AquilaFavonia",
+		"name": "Aquila Favonia",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Aquila_Favonia.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "Physical DMG Bonus 41.3%",
+		"ability": "ATK is increased by 20~40%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to 100~160% of ATK and dealing 200~320% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s."
+	},
+	"AthameArtis": {
+		"key": "AthameArtis",
+		"name": "Athame Artis",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Athame_Artis.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "CRIT DMG from Elemental Bursts is increased by 16~32%. When an Elemental Burst hits an opponent, gain the Blade of the Daylight Hours effect: ATK is increased by 20~40%. Nearby active party members other than the equipping character have their ATK increased by 16~32% for 3s.Additionally, when the party possesses Hexerei: Secret Rite effects, the effects of Blade of the Daylight Hours are increased by an additional 75%. This effect can be triggered even if the equipping character is off-field."
+	},
+	"Azurelight": {
+		"key": "Azurelight",
+		"name": "Azurelight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Azurelight.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "Within 12s after an Elemental Skill is used, ATK is increased by 24~48%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24~48%, and CRIT DMG will be increased by 40~80%."
+	},
+	"FreedomSworn": {
+		"key": "FreedomSworn",
+		"name": "Freedom-Sworn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Freedom-Sworn.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "Elemental Mastery 198",
+		"ability": "A part of the \"Millennial Movement\" that wanders amidst the winds.Increases DMG by 10~20%.When the character wielding this weapon triggers Elemental Reactions, they gain a Sigil of Rebellion. This effect can be triggered once every 0.5s and can be triggered even if said character is not on the field.When you possess 2 Sigils of Rebellion, all of them will be consumed and all nearby party members will obtain \"Millennial Movement: Song of Resistance\" for 12s.\"Millennial Movement: Song of Resistance\" increases Normal, Charged, and Plunging Attack DMG by 16~32% and increases ATK by 20~40%. Once this effect is triggered, you will not gain Sigils of Rebellion for 20s.Of the many effects of the \"Millennial Movement,\" buffs of the same type will not stack."
+	},
+	"HaranGeppakuFutsu": {
+		"key": "HaranGeppakuFutsu",
+		"name": "Haran Geppaku Futsu",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Haran_Geppaku_Futsu.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "Obtain 12~24% All Elemental DMG Bonus. When other nearby party members use Elemental Skills, the character equipping this weapon will gain 1 Wavespike stack. Max 2 stacks. This effect can be triggered once every 0.3s. When the character equipping this weapon uses an Elemental Skill, all stacks of Wavespike will be consumed to gain Rippling Upheaval: each stack of Wavespike consumed will increase Normal Attack DMG by 20~40% for 8s."
+	},
+	"KeyOfKhajNisut": {
+		"key": "KeyOfKhajNisut",
+		"name": "Key of Khaj-Nisut",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Key_of_Khaj-Nisut.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "HP 66.2%",
+		"ability": "HP increased by 20~40%. When an Elemental Skill hits opponents, you gain the Grand Hymn effect for 20s. This effect increases the equipping character's Elemental Mastery by 0.12~0.24% of their Max HP. This effect can trigger once every 0.3s. Max 3 stacks. When this effect gains 3 stacks, or when the third stack's duration is refreshed, the Elemental Mastery of all nearby party members will be increased by 0.2~0.4% of the equipping character's max HP for 20s."
+	},
+	"LightOfFoliarIncision": {
+		"key": "LightOfFoliarIncision",
+		"name": "Light of Foliar Incision",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Light_of_Foliar_Incision.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "CRIT Rate is increased by 4~8%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by 120~240% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s."
+	},
+	"MistsplitterReforged": {
+		"key": "MistsplitterReforged",
+		"name": "Mistsplitter Reforged",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Mistsplitter_Reforged.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "Gain a 12~24% Elemental DMG Bonus for all elements and receive the might of the Mistsplitter's Emblem. At stack levels 1/2/3, Mistsplitter's Emblem provides a 8/16/28~16/32/56% Elemental DMG Bonus for the character's Elemental Type. The character will obtain 1 stack of Mistsplitter's Emblem in each of the following scenarios: Normal Attack deals Elemental DMG (stack lasts 5s), casting Elemental Burst (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently."
+	},
+	"PeakPatrolSong": {
+		"key": "PeakPatrolSong",
+		"name": "Peak Patrol Song",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b4/Weapon_Peak_Patrol_Song.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "DEF 82.7%",
+		"ability": "Gain \"Ode to Flowers\" after Normal or Plunging Attacks hit an opponent: DEF increases by 8~16% and gain a 10~20% All Elemental DMG Bonus for 6s. Max 2 stacks. Can trigger once per 0.1s. When this effect reaches 2 stacks or the 2nd stack's duration is refreshed, increase all nearby party members' All Elemental DMG Bonus by 8~16% for every 1,000 DEF the equipping character has, up to a maximum of 25.6~51.2%, for 15s."
+	},
+	"PrimordialJadeCutter": {
+		"key": "PrimordialJadeCutter",
+		"name": "Primordial Jade Cutter",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Primordial_Jade_Cutter.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "CRIT Rate 44.1%",
+		"ability": "HP increased by 20~40%. Additionally, provides an ATK Bonus based on 1.2~2.4% of the wielder's Max HP."
+	},
+	"SkywardBlade": {
+		"key": "SkywardBlade",
+		"name": "Skyward Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_Skyward_Blade.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "Energy Recharge 55.1%",
+		"ability": "CRIT Rate increased by 4~8%. Gains Skypiercing Might upon using an Elemental Burst: Increases Movement SPD by 10%, increases ATK SPD by 10%, and Normal and Charged hits deal additional DMG equal to 20~40% of ATK. Skypiercing Might lasts for 12s."
+	},
+	"SplendorOfTranquilWaters": {
+		"key": "SplendorOfTranquilWaters",
+		"name": "Splendor of Tranquil Waters",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Splendor_of_Tranquil_Waters.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by 8~16% for 6s. Max 3 stacks. This effect can be triggered once every 0.2s. When other party members' current HP increases or decreases, the equipping character's Max HP will be increased by 14~28% for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field."
+	},
+	"SummitShaper": {
+		"key": "SummitShaper",
+		"name": "Summit Shaper",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Summit_Shaper.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases Shield Strength by 20~40%. Scoring hits on opponents increases ATK by 4~8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
+	},
+	"UrakuMisugiri": {
+		"key": "UrakuMisugiri",
+		"name": "Uraku Misugiri",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Uraku_Misugiri.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "Normal Attack DMG is increased by 16~32% and Elemental Skill DMG is increased by 24~48%. After a nearby active character deals Geo DMG, the aforementioned effects increase by 100% for 15s. Additionally, the wielder's DEF is increased by 20~40%."
+	},
+	"AmenomaKageuchi": {
+		"key": "AmenomaKageuchi",
+		"name": "Amenoma Kageuchi",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Amenoma_Kageuchi.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates 6~12 Energy for each seed consumed."
+	},
+	"BlackcliffLongsword": {
+		"key": "BlackcliffLongsword",
+		"name": "Blackcliff Longsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Blackcliff_Longsword.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "CRIT DMG 36.8%",
+		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"CalamityOfEshu": {
+		"key": "CalamityOfEshu",
+		"name": "Calamity of Eshu",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Calamity_of_Eshu.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "While characters are protected by a Shield, DMG dealt by Normal and Charged Attacks is increased by 20~40%, and Normal and Charged Attack CRIT Rate is increased by 8~16%."
+	},
+	"CinnabarSpindle": {
+		"key": "CinnabarSpindle",
+		"name": "Cinnabar Spindle",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Cinnabar_Spindle.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "DEF 69.0%",
+		"ability": "Elemental Skill DMG is increased by 40~80% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG."
+	},
+	"FavoniusSword": {
+		"key": "FavoniusSword",
+		"name": "Favonius Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Favonius_Sword.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "CRIT hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
+	},
+	"FesteringDesire": {
+		"key": "FesteringDesire",
+		"name": "Festering Desire",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/70/Weapon_Festering_Desire.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Increases Elemental Skill DMG by 16~32% and Elemental Skill CRIT Rate by 6~12%."
+	},
+	"FinaleOfTheDeep": {
+		"key": "FinaleOfTheDeep",
+		"name": "Finale of the Deep",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Weapon_Finale_of_the_Deep.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "When using an Elemental Skill, ATK will be increased by 12~24% for 15s, and a Bond of Life worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, a maximum of 150~300 ATK will be gained based on 2.4~4.8% of the total amount of the Life Bond cleared, lasting for 15s."
+	},
+	"FleuveCendreFerryman": {
+		"key": "FleuveCendreFerryman",
+		"name": "Fleuve Cendre Ferryman",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Fleuve_Cendre_Ferryman.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Increases Elemental Skill CRIT Rate by 8~16%. Additionally, increases Energy Recharge by 16~32% for 5s after using an Elemental Skill."
+	},
+	"FluteOfEzpitzal": {
+		"key": "FluteOfEzpitzal",
+		"name": "Flute of Ezpitzal",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Flute_of_Ezpitzal.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "DEF 69.0%",
+		"ability": "Using an Elemental Skill increases DEF by 16~32% for 15s."
+	},
+	"IronSting": {
+		"key": "IronSting",
+		"name": "Iron Sting",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Iron_Sting.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "Dealing Elemental DMG increases all DMG by 6~12% for 6s. Max 2 stacks. Can only occur once every 1s."
+	},
+	"KagotsurubeIsshin": {
+		"key": "KagotsurubeIsshin",
+		"name": "Kagotsurube Isshin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Weapon_Kagotsurube_Isshin.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s."
+	},
+	"LionsRoar": {
+		"key": "LionsRoar",
+		"name": "Lion's Roar",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Lion%27s_Roar.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Increases DMG against enemies affected by Pyro or Electro by 20~36%."
+	},
+	"MoonweaversDawn": {
+		"key": "MoonweaversDawn",
+		"name": "Moonweaver's Dawn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f1/Weapon_Moonweaver%27s_Dawn.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Increases Elemental Burst DMG by 20~40%. When the equipping character's Energy Capacity does not exceed 60/40, their Elemental Burst DMG is increased by an additional 16/28~32/56%."
+	},
+	"PrototypeRancour": {
+		"key": "PrototypeRancour",
+		"name": "Prototype Rancour",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Prototype_Rancour.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "Physical DMG Bonus 34.5%",
+		"ability": "On hit, Normal or Charged Attacks increase ATK and DEF by 4~8% for 6s. Max 4 stacks. This effect can only occur once every 0.3s."
+	},
+	"RoyalLongsword": {
+		"key": "RoyalLongsword",
+		"name": "Royal Longsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Royal_Longsword.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
+	},
+	"SacrificialSword": {
+		"key": "SacrificialSword",
+		"name": "Sacrificial Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Sacrificial_Sword.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40~80% chance to end its own CD. Can only occur once every 30~16s."
+	},
+	"SapwoodBlade": {
+		"key": "SapwoodBlade",
+		"name": "Sapwood Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Sapwood_Blade.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Lunar-Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
+	},
+	"SerenitysCall": {
+		"key": "SerenitysCall",
+		"name": "Serenity's Call",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fe/Weapon_Serenity%27s_Call.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Max HP by 16~32% for 12s. Moonsign: Ascendant Gleam: Max HP from this effect is further increased by 16~32%. This effect can be triggered even if the equipping character is off-field."
+	},
+	"SturdyBone": {
+		"key": "SturdyBone",
+		"name": "Sturdy Bone",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_Sturdy_Bone.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Sprint or Alternate Sprint Stamina Consumption decreased by 15%. Additionally, after using Sprint or Alternate Sprint, Normal Attack DMG is increased by 16~32% of ATK. This effect expires after triggering 18 times or 7s."
+	},
+	"SwordOfDescension": {
+		"key": "SwordOfDescension",
+		"name": "Sword of Descension",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sword_of_Descension.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 440,
+		"stat": "ATK 35.2%",
+		"ability": "Effective only on the following platform:\"PlayStation Network\"Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s.Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66."
+	},
+	"SwordOfNarzissenkreuz": {
+		"key": "SwordOfNarzissenkreuz",
+		"name": "Sword of Narzissenkreuz",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Sword_of_Narzissenkreuz_Pneuma.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "When the equipping character does not have an Arkhe: When Normal Attacks, Charged Attacks, or Plunging Attacks strike, a Pneuma or Ousia energy blast will be unleashed, dealing 160~320% of ATK as DMG. This effect can be triggered once every 12s. The energy blast type is determined by the current type of the Sword of Narzissenkreuz."
+	},
+	"TheAlleyFlash": {
+		"key": "TheAlleyFlash",
+		"name": "The Alley Flash",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_The_Alley_Flash.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 620,
+		"stat": "Elemental Mastery 55",
+		"ability": "Increases DMG dealt by the character equipping this weapon by 12~24%. Taking DMG disables this effect for 5s."
+	},
+	"TheBlackSword": {
+		"key": "TheBlackSword",
+		"name": "The Black Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_The_Black_Sword.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Increases DMG dealt by Normal and Charged Attacks by 20~40%.Additionally, regenerates 60~100% of ATK as HP when Normal and Charged Attacks score a CRIT Hit. This effect can occur once every 5s."
+	},
+	"TheDockhandsAssistant": {
+		"key": "TheDockhandsAssistant",
+		"name": "The Dockhand's Assistant",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_The_Dockhand%27s_Assistant.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain 40~80 Elemental Mastery, and 2s after the effect occurs, 2~4 Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field."
+	},
+	"TheFlute": {
+		"key": "TheFlute",
+		"name": "The Flute",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_The_Flute.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals 100~200% ATK DMG to surrounding enemies. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s."
+	},
+	"ToukabouShigure": {
+		"key": "ToukabouShigure",
+		"name": "Toukabou Shigure",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Toukabou_Shigure.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "After an attack hits opponents, it will inflict an instance of Cursed Parasol upon one of them for 10s. This effect can be triggered once every 15s. If this opponent is defeated during Cursed Parasol's duration, Cursed Parasol's CD will be refreshed immediately. The character wielding this weapon will deal 16~32% more DMG to the opponent affected by Cursed Parasol."
+	},
+	"WolfFang": {
+		"key": "WolfFang",
+		"name": "Wolf-Fang",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Wolf-Fang.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "DMG dealt by Elemental Skill and Elemental Burst is increased by 16~32%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by 2~4%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by 2~4%. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s."
+	},
+	"XiphosMoonlight": {
+		"key": "XiphosMoonlight",
+		"name": "Xiphos' Moonlight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Xiphos%27_Moonlight.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "The following effect will trigger every 10s: The equipping character will gain 0.036~0.072% Energy Recharge for each point of Elemental Mastery they possess for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field."
+	},
+	"CoolSteel": {
+		"key": "CoolSteel",
+		"name": "Cool Steel",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Cool_Steel.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 401,
+		"stat": "ATK 35.2%",
+		"ability": "Increases DMG against opponents affected by Hydro or Cryo by 12~24%."
+	},
+	"DarkIronSword": {
+		"key": "DarkIronSword",
+		"name": "Dark Iron Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Dark_Iron_Sword.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 401,
+		"stat": "Elemental Mastery 141",
+		"ability": "Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, Lunar-Charged, or Electro-infused Swirl reaction, ATK is increased by 20~?% for 12s."
+	},
+	"FilletBlade": {
+		"key": "FilletBlade",
+		"name": "Fillet Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Fillet_Blade.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 401,
+		"stat": "ATK 35.2%",
+		"ability": "On hit, has 50% chance to deal 240~400% ATK DMG to a single enemy. Can only occur once every 15~11s."
+	},
+	"HarbingerOfDawn": {
+		"key": "HarbingerOfDawn",
+		"name": "Harbinger of Dawn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 401,
+		"stat": "CRIT DMG 46.9%",
+		"ability": "When HP is above 90%, increases CRIT Rate by 14~28%."
+	},
+	"SkyriderSword": {
+		"key": "SkyriderSword",
+		"name": "Skyrider Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Skyrider_Sword.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 354,
+		"stat": "Energy Recharge 51.7%",
+		"ability": "Using an Elemental Burst grants a 12~24% increase in ATK and Movement SPD for 15s."
+	},
+	"TravelersHandySword": {
+		"key": "TravelersHandySword",
+		"name": "Traveler's Handy Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c9/Weapon_Traveler%27s_Handy_Sword.png",
+		"rarity": 3,
+		"weaponType": "Sword",
+		"atk": 448,
+		"stat": "DEF 29.3%",
+		"ability": "Each Elemental Orb or Particle collected restores 1~2% HP."
+	},
+	"SilverSword": {
+		"key": "SilverSword",
+		"name": "Silver Sword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Silver_Sword.png",
+		"rarity": 2,
+		"weaponType": "Sword",
+		"atk": 243,
+		"stat": "None",
+		"ability": "None"
+	},
+	"DullBlade": {
+		"key": "DullBlade",
+		"name": "Dull Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Weapon_Dull_Blade.png",
+		"rarity": 1,
+		"weaponType": "Sword",
+		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	},
+	"AThousandBlazingSuns": {
+		"key": "AThousandBlazingSuns",
+		"name": "A Thousand Blazing Suns",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2c/Weapon_A_Thousand_Blazing_Suns.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 741,
+		"stat": "CRIT Rate 11.0%",
+		"ability": "Gain the \"Scorching Brilliance\" effect when using an Elemental Skill or Burst: CRIT DMG increased by 20~40% and ATK increased by 28~56% for 6s. This effect can trigger once every 10s.While a \"Scorching Brilliance\" instance is active, its duration is increased by 2s after Normal or Charged attacks deal Elemental DMG. This effect can trigger once every second, and the max duration increase is 6s.Additionally, when the equipping character is in the Nightsoul's Blessing state, \"Scorching Brilliance\" effects are increased by 75%, and its duration will not count down when the equipping character is off—field."
+	},
+	"BeaconOfTheReedSea": {
+		"key": "BeaconOfTheReedSea",
+		"name": "Beacon of the Reed Sea",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Beacon_of_the_Reed_Sea.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "After the character's Elemental Skill hits an opponent, their ATK will be increased by 20~40% for 8s. After the character takes DMG, their ATK will be increased by 20~40% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by 32~64%."
+	},
+	"FangOfTheMountainKing": {
+		"key": "FangOfTheMountainKing",
+		"name": "Fang of the Mountain King",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Fang_of_the_Mountain_King.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 741,
+		"stat": "CRIT Rate 11.0%",
+		"ability": "Gain 1 stack of Canopy's Favor after hitting an opponent with an Elemental Skill. This can be triggered once every 0.5s. After a nearby party member triggers a Burning or Burgeon reaction, the equipping character will gain 3 stacks. This effect can be triggered once every 2s and can be triggered even when the triggering party member is off-field. Canopy's Favor: Elemental Skill and Burst DMG is increased by 10~20% for 6s. Max 6 stacks. Each stack is counted independently."
+	},
+	"RedhornStonethresher": {
+		"key": "RedhornStonethresher",
+		"name": "Redhorn Stonethresher",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Redhorn_Stonethresher.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "DEF is increased by 28~56%. Normal and Charged Attack DMG is increased by 40~80% of DEF."
+	},
+	"SkywardPride": {
+		"key": "SkywardPride",
+		"name": "Skyward Pride",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Skyward_Pride.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 674,
+		"stat": "Energy Recharge 36.8%",
+		"ability": "Increases all DMG by 8~16%. After using an Elemental Burst, a vacuum blade that does 80~160% of ATK as DMG to opponents along its path will be created when Normal or Charged Attacks hit. Lasts for 20s or 8 vacuum blades."
+	},
+	"SongOfBrokenPines": {
+		"key": "SongOfBrokenPines",
+		"name": "Song of Broken Pines",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Song_of_Broken_Pines.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 741,
+		"stat": "Physical DMG Bonus 20.7%",
+		"ability": "A part of the \"Millennial Movement\" that wanders amidst the winds.Increases ATK by 16~32%, and when Normal or Charged Attacks hit opponents, the character gains a Sigil of Whispers. This effect can be triggered once every 0.3s.When you possess four Sigils of Whispers, all of them will be consumed and all nearby party members will obtain the \"Millennial Movement: Banner-Hymn\" effect for 12s.\"Millennial Movement: Banner-Hymn\" increases Normal ATK SPD by 12~24% and increases ATK by 20~40%. Once this effect is triggered, you will not gain Sigils of Whispers for 20s.Of the many effects of the \"Millennial Movement\", buffs of the same type will not stack."
+	},
+	"TheUnforged": {
+		"key": "TheUnforged",
+		"name": "The Unforged",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_The_Unforged.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases Shield Strength by 20~40%. Scoring hits on opponents increases ATK by 4~8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
+	},
+	"Verdict": {
+		"key": "Verdict",
+		"name": "Verdict",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Verdict.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "Increases ATK by 20~40%. When characters in your party obtain Elemental Shards from Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by 18~36%. The Seal lasts for 15s, and the equipped may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG."
+	},
+	"WolfsGravestone": {
+		"key": "WolfsGravestone",
+		"name": "Wolf's Gravestone",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Weapon_Wolf%27s_Gravestone.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases ATK by 20~40%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by 40~80% for 12s. Can only occur once every 30s."
+	},
+	"UltimateOverlordsMegaMagicSword": {
+		"key": "UltimateOverlordsMegaMagicSword",
+		"name": "\"Ultimate Overlord's Mega Magic Sword\"",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "ATK increased by 12~24%. That's not all! The support from all Melusines you've helped in Merusea Village fills you with strength! Based on the number of them you've helped, your ATK is increased by up to an additional 12~24%."
+	},
+	"Akuoumaru": {
+		"key": "Akuoumaru",
+		"name": "Akuoumaru",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c5/Weapon_Akuoumaru.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.12~0.24%. A maximum of 40~80% increased Elemental Burst DMG can be achieved this way."
+	},
+	"BlackcliffSlasher": {
+		"key": "BlackcliffSlasher",
+		"name": "Blackcliff Slasher",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Blackcliff_Slasher.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"EarthShaker": {
+		"key": "EarthShaker",
+		"name": "Earth Shaker",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/78/Weapon_Earth_Shaker.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "After a party member triggers a Pyro-related reaction, the equipping character's Elemental Skill DMG is increased by 16~32% for 8s. This effect can be triggered even when the triggering party member is not on the field."
+	},
+	"FavoniusGreatsword": {
+		"key": "FavoniusGreatsword",
+		"name": "Favonius Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Weapon_Favonius_Greatsword.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "CRIT hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
+	},
+	"FlameForgedInsight": {
+		"key": "FlameForgedInsight",
+		"name": "Flame-Forged Insight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Flame-Forged_Insight.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "When Electro-Charged, Lunar-Charged, Bloom, or Lunar-Bloom is triggered, restore 12~24 Elemental Energy and increase Elemental Mastery by 60~120 for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
+	},
+	"ForestRegalia": {
+		"key": "ForestRegalia",
+		"name": "Forest Regalia",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Forest_Regalia.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
+	},
+	"FruitfulHook": {
+		"key": "FruitfulHook",
+		"name": "Fruitful Hook",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Fruitful_Hook.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Increase Plunging Attack CRIT Rate by 16~32%; After a Plunging Attack hits an opponent, Normal, Charged, and Plunging Attack DMG increased by 16~32% for 10s."
+	},
+	"KatsuragikiriNagamasa": {
+		"key": "KatsuragikiriNagamasa",
+		"name": "Katsuragikiri Nagamasa",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Katsuragikiri_Nagamasa.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Increases Elemental Skill DMG by 6~12%. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates 3~5 Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field."
+	},
+	"LithicBlade": {
+		"key": "LithicBlade",
+		"name": "Lithic Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3a/Weapon_Lithic_Blade.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "For every character in the party who hails from Liyue, the character who equips this weapon gains 7~11% ATK increase and 3~7% CRIT Rate increase. This effect stacks up to 4 times."
+	},
+	"LuxuriousSeaLord": {
+		"key": "LuxuriousSeaLord",
+		"name": "Luxurious Sea-Lord",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Luxurious_Sea-Lord.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "Increases Elemental Burst DMG by 12~24%. When Elemental Burst hits opponents, there is a 100% chance of summoning a huge onrush of tuna that deals 100~200% ATK as AoE DMG. This effect can occur once every 15s."
+	},
+	"MailedFlower": {
+		"key": "MailedFlower",
+		"name": "Mailed Flower",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Mailed_Flower.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "Elemental Mastery 110",
+		"ability": "Within 8s after the character's Elemental Skill hits an opponent or the character triggers an Elemental Reaction, their ATK and Elemental Mastery will be increased by 12~24% and 48~96 respectively."
+	},
+	"MakhairaAquamarine": {
+		"key": "MakhairaAquamarine",
+		"name": "Makhaira Aquamarine",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Weapon_Makhaira_Aquamarine.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "The following effect will trigger every 10s: The equipping character will gain 24~48% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field."
+	},
+	"MasterKey": {
+		"key": "MasterKey",
+		"name": "Master Key",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Master_Key.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Elemental Mastery by 60~120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 60~120. This effect can be triggered even if the equipping character is off-field."
+	},
+	"PortablePowerSaw": {
+		"key": "PortablePowerSaw",
+		"name": "Portable Power Saw",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Portable_Power_Saw.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 454,
+		"stat": "HP 55.1%",
+		"ability": "When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain 40~80 Elemental Mastery, and 2s after the effect occurs, 2~4 Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field."
+	},
+	"PrototypeArchaic": {
+		"key": "PrototypeArchaic",
+		"name": "Prototype Archaic",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Prototype_Archaic.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "On hit, Normal or Charged Attacks have a 50% chance to deal an additional 240~480% ATK DMG to opponents within a small AoE. Can only occur once every 15s."
+	},
+	"Rainslasher": {
+		"key": "Rainslasher",
+		"name": "Rainslasher",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Weapon_Rainslasher.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "Increases DMG against opponents affected by Hydro or Electro by 20~36%."
+	},
+	"RoyalGreatsword": {
+		"key": "RoyalGreatsword",
+		"name": "Royal Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Weapon_Royal_Greatsword.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
+	},
+	"SacrificialGreatsword": {
+		"key": "SacrificialGreatsword",
+		"name": "Sacrificial Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Sacrificial_Greatsword.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40~80% chance to end its own CD. Can only occur once every 30~16s."
+	},
+	"SerpentSpine": {
+		"key": "SerpentSpine",
+		"name": "Serpent Spine",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Serpent_Spine.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Every 4s a character is on the field, they will deal 6~10% more DMG and take 3~2%  more DMG. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be reduced by 1 stack when the character takes DMG."
+	},
+	"SnowTombedStarsilver": {
+		"key": "SnowTombedStarsilver",
+		"name": "Snow-Tombed Starsilver",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Weapon_Snow-Tombed_Starsilver.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "Physical DMG Bonus 34.5%",
+		"ability": "Hitting an opponent with Normal and Charged Attacks has a 60~100% chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to 80~140% of ATK. Opponents affected by Cryo are instead dealt DMG equal to 200~360% of ATK. Can only occur once every 10s."
+	},
+	"TalkingStick": {
+		"key": "TalkingStick",
+		"name": "Talking Stick",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Weapon_Talking_Stick.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "CRIT Rate 18.4%",
+		"ability": "ATK will be increased by  16~32% for 15s after being affected by Pyro. This effect can be triggered once every 12s. All Elemental DMG Bonus will be increased by 12~24% for 15s after being affected by Hydro, Cryo, Electro, or Dendro. This effect can be triggered once every 12s."
+	},
+	"TheBell": {
+		"key": "TheBell",
+		"name": "The Bell",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_The_Bell.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "Taking DMG generates a shield which absorbs DMG up to 20~32% of max HP. This shield lasts for 10s or until broken, and can only be triggered once every 45s. While protected by a shield, the character gains 12~24% increased DMG."
+	},
+	"TidalShadow": {
+		"key": "TidalShadow",
+		"name": "Tidal Shadow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Tidal_Shadow.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "After the wielder is healed, ATK will be increased by 24~48% for 8s. This can be triggered even when the character is not on the field."
+	},
+	"Whiteblind": {
+		"key": "Whiteblind",
+		"name": "Whiteblind",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Whiteblind.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "DEF 51.7%",
+		"ability": "On hit, Normal or Charged Attacks increase ATK and DEF by 6~12% for 6s. Max 4 stacks (24~48%  total). Can only occur once every 0.5s."
+	},
+	"BloodtaintedGreatsword": {
+		"key": "BloodtaintedGreatsword",
+		"name": "Bloodtainted Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Weapon_Bloodtainted_Greatsword.png",
+		"rarity": 3,
+		"weaponType": "Claymore",
+		"atk": 354,
+		"stat": "Elemental Mastery 187",
+		"ability": "Increases DMG against opponents affected by Pyro or Electro by 12~24%."
+	},
+	"DebateClub": {
+		"key": "DebateClub",
+		"name": "Debate Club",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/74/Weapon_Debate_Club.png",
+		"rarity": 3,
+		"weaponType": "Claymore",
+		"atk": 401,
+		"stat": "ATK 35.2%",
+		"ability": "After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional 60~120% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s."
+	},
+	"FerrousShadow": {
+		"key": "FerrousShadow",
+		"name": "Ferrous Shadow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Ferrous_Shadow.png",
+		"rarity": 3,
+		"weaponType": "Claymore",
+		"atk": 401,
+		"stat": "HP 35.2%",
+		"ability": "When HP falls below 70~90%, increases Charged Attack DMG by 30~50%, and Charged Attacks become much harder to interrupt."
+	},
+	"SkyriderGreatsword": {
+		"key": "SkyriderGreatsword",
+		"name": "Skyrider Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Skyrider_Greatsword.png",
+		"rarity": 3,
+		"weaponType": "Claymore",
+		"atk": 401,
+		"stat": "Physical DMG Bonus 43.9%",
+		"ability": "On hit, Normal or Charged Attacks increase ATK by 6~10% for 6s. Max 4 stacks. Can only occur once every 0.5s."
+	},
+	"WhiteIronGreatsword": {
+		"key": "WhiteIronGreatsword",
+		"name": "White Iron Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/56/Weapon_White_Iron_Greatsword.png",
+		"rarity": 3,
+		"weaponType": "Claymore",
+		"atk": 401,
+		"stat": "DEF 43.9%",
+		"ability": "Defeating an opponent restores 8~16% HP."
+	},
+	"OldMercsPal": {
+		"key": "OldMercsPal",
+		"name": "Old Merc's Pal",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Old_Merc%27s_Pal.png",
+		"rarity": 2,
+		"weaponType": "Claymore",
+		"atk": 243,
+		"stat": "None",
+		"ability": "None"
+	},
+	"WasterGreatsword": {
+		"key": "WasterGreatsword",
+		"name": "Waster Greatsword",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Waster_Greatsword.png",
+		"rarity": 1,
+		"weaponType": "Claymore",
+		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	},
+	"BloodsoakedRuins": {
+		"key": "BloodsoakedRuins",
+		"name": "Bloodsoaked Ruins",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Weapon_Bloodsoaked_Ruins.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "For 3.5s after using an Elemental Burst, the equipping character's Lunar-Charged DMG dealt to opponents is increased by 36~84%. Additionally, after triggering a Lunar-Charged reaction, the equipping character will gain Requiem of Ruin: CRIT DMG is increased by 28~56% for 6s. They will also regain 12~16 Elemental Energy. Elemental Energy can be restored this way once every 14s."
+	},
+	"CalamityQueller": {
+		"key": "CalamityQueller",
+		"name": "Calamity Queller",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Weapon_Calamity_Queller.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 741,
+		"stat": "ATK 16.5%",
+		"ability": "Gain 12~24% All Elemental DMG Bonus. Obtain Consummation for 20s after using an Elemental Skill, causing ATK to increase by 3.2~6.4% per second. This ATK increase has a maximum of 6 stacks. When the character equipped with this weapon is not on the field, Consummation's ATK increase is doubled."
+	},
+	"CrimsonMoonsSemblance": {
+		"key": "CrimsonMoonsSemblance",
+		"name": "Crimson Moon's Semblance",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Crimson_Moon%27s_Semblance.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "Grants a Bond of Life equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a Bond of Life, they gain a 12~28% DMG Bonus; if the value of the Bond of Life is greater than or equal to 30% of Max HP, then gain an additional 24~56% DMG."
+	},
+	"EngulfingLightning": {
+		"key": "EngulfingLightning",
+		"name": "Engulfing Lightning",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Engulfing_Lightning.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "Energy Recharge 55.1%",
+		"ability": "ATK increased by 28~56% of Energy Recharge over the base 100%. You can gain a maximum bonus of 80~120% ATK. Gain 30~50% Energy Recharge for 12s after using an Elemental Burst."
+	},
+	"FracturedHalo": {
+		"key": "FracturedHalo",
+		"name": "Fractured Halo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Fractured_Halo.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "After an Elemental Skill or Elemental Burst is used, ATK is increased by 24~48% for 20s. If the equipping character creates a Shield while this effect is active, they will gain the Electrifying Edict effect for 20s: All nearby party members deal 40~80% more Lunar-Charged DMG."
+	},
+	"LumidouceElegy": {
+		"key": "LumidouceElegy",
+		"name": "Lumidouce Elegy",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Lumidouce_Elegy.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "ATK increased by 15~31%. After the equipping character triggers Burning on an opponent or deals Dendro DMG to Burning opponents, the DMG dealt is increased by 18~38%. This effect lasts for 8s, max 2 stacks. When 2 stacks are reached or when the duration is refreshed at 2 stacks, restore 12~16 Energy. Energy can be restored this way once every 12s. The 2 aforementioned effects can be triggered even when the character is off-field."
+	},
+	"PrimordialJadeWingedSpear": {
+		"key": "PrimordialJadeWingedSpear",
+		"name": "Primordial Jade Winged-Spear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/80/Weapon_Primordial_Jade_Winged-Spear.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "On hit, increases ATK by 3.2~6.0% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 12~24%."
+	},
+	"SkywardSpine": {
+		"key": "SkywardSpine",
+		"name": "Skyward Spine",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Skyward_Spine.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 674,
+		"stat": "Energy Recharge 36.8%",
+		"ability": "Increases CRIT Rate by 8~16% and increases Normal ATK SPD by 12%. Additionally, Normal and Charged Attacks hits on opponents have a 50% chance to trigger a vacuum blade that deals 40~100% of ATK as DMG in a small AoE. This effect can occur no more than once every 2s."
+	},
+	"StaffOfHoma": {
+		"key": "StaffOfHoma",
+		"name": "Staff of Homa",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Staff_of_Homa.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "HP increased by 20~40%. Additionally, provides an ATK Bonus based on 0.8~1.6% of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1~1.8% of Max HP."
+	},
+	"StaffOfTheScarletSands": {
+		"key": "StaffOfTheScarletSands",
+		"name": "Staff of the Scarlet Sands",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Staff_of_the_Scarlet_Sands.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 542,
+		"stat": "CRIT Rate 44.1%",
+		"ability": "The equipping character gains 52~104% of their Elemental Mastery as bonus ATK. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain 28~56% of their Elemental Mastery as bonus ATK. Max 3 stacks."
+	},
+	"SymphonistOfScents": {
+		"key": "SymphonistOfScents",
+		"name": "Symphonist of Scents",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Symphonist_of_Scents.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "ATK is increased by 12~24%. When the equipping character is off-field, ATK is increased by an additional 12~24%. After initiating healing, the equipping character and the character(s) they have healed will obtain the \"Sweet Echoes\" effect, increasing their ATK by 32~64% for 3s. This effect can be triggered even if the equipping character is off-field."
+	},
+	"VortexVanquisher": {
+		"key": "VortexVanquisher",
+		"name": "Vortex Vanquisher",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Vortex_Vanquisher.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases Shield Strength by 20~40%. Scoring hits on opponents increases ATK by 4~8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
+	},
+	"TheCatch": {
+		"key": "TheCatch",
+		"name": "\"The Catch\"",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Weapon_The_Catch.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Increases Elemental Burst DMG by 16~32% and Elemental Burst CRIT Rate by 6~12%."
+	},
+	"BalladOfTheFjords": {
+		"key": "BalladOfTheFjords",
+		"name": "Ballad of the Fjords",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Ballad_of_the_Fjords.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "When there are at least 3 different Elemental Types in your party, Elemental Mastery will be increased by 120~240."
+	},
+	"BlackcliffPole": {
+		"key": "BlackcliffPole",
+		"name": "Blackcliff Pole",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Weapon_Blackcliff_Pole.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"CrescentPike": {
+		"key": "CrescentPike",
+		"name": "Crescent Pike",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Crescent_Pike.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Physical DMG Bonus 34.5%",
+		"ability": "After picking up an Elemental Orb/Particle, Normal and Charged Attacks deal an additional 20~40% ATK as DMG for 5s."
+	},
+	"Deathmatch": {
+		"key": "Deathmatch",
+		"name": "Deathmatch",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Deathmatch.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 454,
+		"stat": "CRIT Rate 36.8%",
+		"ability": "If there are at least 2 opponents nearby, ATK is increased by 16~32% and DEF is increased by 16~32%. If there are fewer than 2 opponents nearby, ATK is increased by 24~48%."
+	},
+	"DialoguesOfTheDesertSages": {
+		"key": "DialoguesOfTheDesertSages",
+		"name": "Dialogues of the Desert Sages",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Weapon_Dialogues_of_the_Desert_Sages.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "When the wielder performs healing, restore 8~16 Energy. This effect can be triggered once every 10s and can occur even when the character is not on the field."
+	},
+	"DragonsBane": {
+		"key": "DragonsBane",
+		"name": "Dragon's Bane",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Dragon%27s_Bane.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 454,
+		"stat": "Elemental Mastery 221",
+		"ability": "Increases DMG against opponents affected by Hydro or Pyro by 20~36%."
+	},
+	"DragonspineSpear": {
+		"key": "DragonspineSpear",
+		"name": "Dragonspine Spear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Dragonspine_Spear.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 454,
+		"stat": "Physical DMG Bonus 69.0%",
+		"ability": "Hitting an opponent with Normal and Charged Attacks has a 60~100% chance of forming and dropping an Everfrost Icicle above them, dealing 80~140% AoE ATK DMG. Opponents affected by Cryo are dealt 200~360% ATK DMG instead by the icicle. Can only occur once every 10s."
+	},
+	"FavoniusLance": {
+		"key": "FavoniusLance",
+		"name": "Favonius Lance",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Favonius_Lance.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "CRIT Hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
+	},
+	"FootprintOfTheRainbow": {
+		"key": "FootprintOfTheRainbow",
+		"name": "Footprint of the Rainbow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Weapon_Footprint_of_the_Rainbow.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "DEF 51.7%",
+		"ability": "Using an Elemental Skill increases DEF by 16~32% for 15s."
+	},
+	"KitainCrossSpear": {
+		"key": "KitainCrossSpear",
+		"name": "Kitain Cross Spear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/13/Weapon_Kitain_Cross_Spear.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Elemental Mastery 110",
+		"ability": "Increases Elemental Skill DMG by 6~12%. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates 3~5 Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field."
+	},
+	"LithicSpear": {
+		"key": "LithicSpear",
+		"name": "Lithic Spear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Lithic_Spear.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "For every character in the party who hails from Liyue, the character who equips this weapon gains 7~11% ATK increase and a 3~7% CRIT Rate increase. This effect stacks up to 4 times."
+	},
+	"MissiveWindspear": {
+		"key": "MissiveWindspear",
+		"name": "Missive Windspear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Weapon_Missive_Windspear.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Within 10s after an Elemental Reaction is triggered, ATK is increased by 12~24% and Elemental Mastery is increased by 48~96."
+	},
+	"Moonpiercer": {
+		"key": "Moonpiercer",
+		"name": "Moonpiercer",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Moonpiercer.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Elemental Mastery 110",
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 16~32% ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field."
+	},
+	"MountainBracingBolt": {
+		"key": "MountainBracingBolt",
+		"name": "Mountain-Bracing Bolt",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Mountain-Bracing_Bolt.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "Decreases Climbing Stamina Consumption by 15% and increases Elemental Skill DMG by 12~24%. Also, after other nearby party members use Elemental Skills, the equipping character's Elemental Skill DMG will also increase by 12~24% for 8s."
+	},
+	"ProspectorsDrill": {
+		"key": "ProspectorsDrill",
+		"name": "Prospector's Drill",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Prospector%27s_Drill.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain 3~7% ATK and 7~13% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field."
+	},
+	"ProspectorsShovel": {
+		"key": "ProspectorsShovel",
+		"name": "Prospector's Shovel",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Prospector%27s_Shovel.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Electro-Charged DMG is increased by 48~96%, and Lunar-Charged DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Charged DMG is increased by an additional 12~24%."
+	},
+	"PrototypeStarglitter": {
+		"key": "PrototypeStarglitter",
+		"name": "Prototype Starglitter",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7e/Weapon_Prototype_Starglitter.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "After using an Elemental Skill, increases Normal and Charged Attack DMG by 8~16% for 12s. Max 2 stacks."
+	},
+	"RightfulReward": {
+		"key": "RightfulReward",
+		"name": "Rightful Reward",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Weapon_Rightful_Reward.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "HP 27.6%",
+		"ability": "When the wielder is healed, restore 8~16 Energy. This effect can be triggered once every 10s, and can occur even when the character is not on the field."
+	},
+	"RoyalSpear": {
+		"key": "RoyalSpear",
+		"name": "Royal Spear",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Royal_Spear.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
+	},
+	"SacrificersStaff": {
+		"key": "SacrificersStaff",
+		"name": "Sacrificer's Staff",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Sacrificer%27s_Staff.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 620,
+		"stat": "CRIT Rate 9.2%",
+		"ability": "For 6s after an Elemental Skill hits an opponent, ATK is increased by 8~16% and Energy Recharge is increased by 6~12%. Max 3 stacks. This effect can be triggered even when the equipping character is off-field."
+	},
+	"TamayurateiNoOhanashi": {
+		"key": "TamayurateiNoOhanashi",
+		"name": "Tamayuratei no Ohanashi",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Weapon_Tamayuratei_no_Ohanashi.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "Increase ATK by 20~40% and Movement SPD by 10% for 10s when using an Elemental Skill."
+	},
+	"WavebreakersFin": {
+		"key": "WavebreakersFin",
+		"name": "Wavebreaker's Fin",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Wavebreaker%27s_Fin.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 620,
+		"stat": "ATK 13.8%",
+		"ability": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.12~0.24%. A maximum of 40~80% increased Elemental Burst DMG can be achieved this way."
+	},
+	"BlackTassel": {
+		"key": "BlackTassel",
+		"name": "Black Tassel",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Black_Tassel.png",
+		"rarity": 3,
+		"weaponType": "Polearm",
+		"atk": 354,
+		"stat": "HP 46.9%",
+		"ability": "Increases DMG against slimes by 40~80%."
+	},
+	"Halberd": {
+		"key": "Halberd",
+		"name": "Halberd",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Halberd.png",
+		"rarity": 3,
+		"weaponType": "Polearm",
+		"atk": 448,
+		"stat": "ATK 23.4%",
+		"ability": "Normal Attacks deal an additional 160~320% DMG. Can only occur once every 10s."
+	},
+	"WhiteTassel": {
+		"key": "WhiteTassel",
+		"name": "White Tassel",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_White_Tassel.png",
+		"rarity": 3,
+		"weaponType": "Polearm",
+		"atk": 401,
+		"stat": "CRIT Rate 23.4%",
+		"ability": "Increases Normal Attack DMG by 24~48%."
+	},
+	"IronPoint": {
+		"key": "IronPoint",
+		"name": "Iron Point",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Iron_Point.png",
+		"rarity": 2,
+		"weaponType": "Polearm",
+		"atk": 243,
+		"stat": "None",
+		"ability": "None"
+	},
+	"BeginnersProtector": {
+		"key": "BeginnersProtector",
+		"name": "Beginner's Protector",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Beginner%27s_Protector.png",
+		"rarity": 1,
+		"weaponType": "Polearm",
+		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	},
+	"AThousandFloatingDreams": {
+		"key": "AThousandFloatingDreams",
+		"name": "A Thousand Floating Dreams",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_A_Thousand_Floating_Dreams.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "Elemental Mastery 265",
+		"ability": "Party members other than the equipping character will provide the equipping character with buffs based on whether their Elemental Type is the same as the latter or not. If their Elemental Types are the same, increase Elemental Mastery by 32~64. If not, increase the equipping character's DMG Bonus from their Elemental Type by 10~26%. Each of the aforementioned effects can have up to 3 stacks. Additionally, all nearby party members other than the equipping character will have their Elemental Mastery increased by 40~48. Multiple such effects from multiple such weapons can stack."
+	},
+	"CashflowSupervision": {
+		"key": "CashflowSupervision",
+		"name": "Cashflow Supervision",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Cashflow_Supervision.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "ATK is increased by 16~32%. When current HP increases or decreases, Normal Attack DMG will be increased by 16~32% and Charged Attack DMG will be increased by 14~28% for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by 8~16%."
+	},
+	"CranesEchoingCall": {
+		"key": "CranesEchoingCall",
+		"name": "Crane's Echoing Call",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Crane%27s_Echoing_Call.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 741,
+		"stat": "ATK 16.5%",
+		"ability": "After the equipping character hits an opponent with a Plunging Attack, all nearby party members' Plunging Attacks will deal 28~80% increased DMG for 20s. When nearby party members hit opponents with Plunging Attacks, they will restore 2.5~3.5 Energy to the equipping character. Energy can be restored this way every 0.7s. This energy regain effect can be triggered even if the equipping character is not on the field."
+	},
+	"EverlastingMoonglow": {
+		"key": "EverlastingMoonglow",
+		"name": "Everlasting Moonglow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e1/Weapon_Everlasting_Moonglow.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 608,
+		"stat": "HP 49.6%",
+		"ability": "Healing Bonus increased by 10~20%, Normal Attack DMG is increased by 1~3.0% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s."
+	},
+	"JadefallsSplendor": {
+		"key": "JadefallsSplendor",
+		"name": "Jadefall's Splendor",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Jadefall%27s_Splendor.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 608,
+		"stat": "HP 49.6%",
+		"ability": "For 3s after using an Elemental Burst or creating a shield, the equipping character can gain the Primordial Jade Regalia effect: Restore 4.5~6.5 Energy every 2.5s, and gain 0.3~1.1% Elemental DMG Bonus for their corresponding Elemental Type for every 1,000 Max HP they possess, up to 12~44%. Primordial Jade Regalia will still take effect even if the equipping character is not on the field."
+	},
+	"KagurasVerity": {
+		"key": "KagurasVerity",
+		"name": "Kagura's Verity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Weapon_Kagura%27s_Verity.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by 12~24% for 16s. Max 3 stacks. This character will gain 12~24% All Elemental DMG Bonus when they possess 3 stacks."
+	},
+	"LostPrayerToTheSacredWinds": {
+		"key": "LostPrayerToTheSacredWinds",
+		"name": "Lost Prayer to the Sacred Winds",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Lost_Prayer_to_the_Sacred_Winds.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "Increases Movement SPD by 10%. When in battle, gain an 8~16% Elemental DMG Bonus every 4s. Max 4 stacks. Lasts until the character falls or leaves combat."
+	},
+	"MemoryOfDust": {
+		"key": "MemoryOfDust",
+		"name": "Memory of Dust",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Memory_of_Dust.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases Shield Strength by 20~40%. Scoring hits on opponents increases ATK by 4~8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
+	},
+	"NightweaversLookingGlass": {
+		"key": "NightweaversLookingGlass",
+		"name": "Nightweaver's Looking Glass",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Weapon_Nightweaver%27s_Looking_Glass.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Elemental Mastery 265",
+		"ability": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 60~120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 60~120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 120~240%, their Hyperbloom and Burgeon DMG is increased by 80~160%, and their Lunar-Bloom DMG is increased by 40~80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field."
+	},
+	"ReliquaryOfTruth": {
+		"key": "ReliquaryOfTruth",
+		"name": "Reliquary of Truth",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Reliquary_of_Truth.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "CRIT Rate is increased by 8~16%. When the equipping character unleashes an Elemental Skill, they gain the Secret of Lies effect: Elemental Mastery is increased by 80~160 for 12s. When the equipping character deals Lunar-Bloom DMG to an opponent, they gain the Moon of Truth effect: CRIT DMG is increased by 24~48% for 4s. When both the Secret of Lies and Moon of Truth effects are active at the same time, the results of both effects will be increased by 50%."
+	},
+	"SkywardAtlas": {
+		"key": "SkywardAtlas",
+		"name": "Skyward Atlas",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Skyward_Atlas.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 674,
+		"stat": "ATK 33.1%",
+		"ability": "Increases Elemental DMG Bonus by 12~24%. Normal Attack hits have a 50% chance to earn the favor of the clouds, which actively seek out nearby opponents to attack for 15s, dealing 160~320% ATK DMG. Can only occur once every 30s."
+	},
+	"StarcallersWatch": {
+		"key": "StarcallersWatch",
+		"name": "Starcaller's Watch",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Weapon_Starcaller%27s_Watch.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "Elemental Mastery 265",
+		"ability": "Increases Elemental Mastery by 100~200. Gain the \"Mirror of Night\" effect within 15s after the equipping character creates a shield: The current active party member deals 28~56% increased DMG to nearby opponents. You can gain the \"Mirror of Night\" effect once every 14s."
+	},
+	"SunnyMorningSleepIn": {
+		"key": "SunnyMorningSleepIn",
+		"name": "Sunny Morning Sleep-In",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Sunny_Morning_Sleep-In.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "Elemental Mastery 265",
+		"ability": "Elemental Mastery increases by 120~240 for 6s after triggering Swirl. Elemental Mastery increases by 96~192 for 9s after the wielder's Elemental Skill hits an opponent. Elemental Mastery increases by 32~64 for 30s after the wielder's Elemental Burst hits an opponent."
+	},
+	"SurfsUp": {
+		"key": "SurfsUp",
+		"name": "Surf's Up",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Weapon_Surf%27s_Up.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "Max HP increased by 20~40%. Once every 15s, for the 14s after using an Elemental Skill: Gain 4 Scorching Summer stacks. Each stack increases Normal Attack DMG by 12~24%. For the duration of the effect, every 1.5s, lose 1 stack after a Normal Attack hits an opponent; once every 1.5s, gain 1 stack after triggering a Vaporize reaction on an opponent. Max 4 Scorching Summer stacks."
+	},
+	"TomeOfTheEternalFlow": {
+		"key": "TomeOfTheEternalFlow",
+		"name": "Tome of the Eternal Flow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Tome_of_the_Eternal_Flow.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "HP is increased by 16~32%. When current HP increases or decreases, Charged Attack DMG will be increased by 14~30% for 4s. Max 3 stacks, can be triggered once every 0.3s. When you have 3 stacks or refresh a third stack's duration, 8~12 Energy will be restored. This Energy restoration effect can be triggered once every 12s."
+	},
+	"TulaytullahsRemembrance": {
+		"key": "TulaytullahsRemembrance",
+		"name": "Tulaytullah's Remembrance",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Tulaytullah%27s_Remembrance.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "Normal Attack SPD is increased by 10~20%. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by 4.8~9.6% every second for 14s. After this character hits an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by 9.6~19.2%. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is 48~96%. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs."
+	},
+	"VividNotions": {
+		"key": "VividNotions",
+		"name": "Vivid Notions",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Weapon_Vivid_Notions.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "ATK is increased by 28~56%. When you use a Plunging Attack, you will gain the \"Dawn's First Hue\" effect: Plunging Attack CRIT DMG is increased by 28~56%. When you use an Elemental Skill or Burst, you will gain the \"Twilight's Splendor\" effect: Plunging Attack CRIT DMG is increased by 40~80%. The two effects above each last for 15s, and will be canceled 0.1s after the ground impact hits a target."
+	},
+	"AshGravenDrinkingHorn": {
+		"key": "AshGravenDrinkingHorn",
+		"name": "Ash-Graven Drinking Horn",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Ash-Graven_Drinking_Horn.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "When an attack hits an opponent, deal AoE DMG equal to 40~80% of Max HP at the target location. This effect can be triggered once every 15s."
+	},
+	"BalladOfTheBoundlessBlue": {
+		"key": "BalladOfTheBoundlessBlue",
+		"name": "Ballad of the Boundless Blue",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Ballad_of_the_Boundless_Blue.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "Within 6s after Normal or Charged Attacks hit an opponent, Normal Attack DMG will be increased by 8~16% and Charged Attack DMG will be increased by 6~12%. Max 3 stacks. This effect can be triggered once every 0.3s."
+	},
+	"BlackcliffAgate": {
+		"key": "BlackcliffAgate",
+		"name": "Blackcliff Agate",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Weapon_Blackcliff_Agate.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"BlackmarrowLantern": {
+		"key": "BlackmarrowLantern",
+		"name": "Blackmarrow Lantern",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Blackmarrow_Lantern.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "Elemental Mastery 221",
+		"ability": "Bloom DMG is increased by 48~96%, and Lunar-Bloom DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Bloom DMG is increased by an additional 12~24%."
+	},
+	"DawningFrost": {
+		"key": "DawningFrost",
+		"name": "Dawning Frost",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0d/Weapon_Dawning_Frost.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "For 10s after a Charged Attack hits an opponent, Elemental Mastery is increased by 72~144. For 10s after an Elemental Skill hits an opponent. Elemental Mastery is increased by 48~96."
+	},
+	"DodocoTales": {
+		"key": "DodocoTales",
+		"name": "Dodoco Tales",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Dodoco_Tales.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "Normal Attack hits on opponents increase Charged Attack DMG by 16~32% for 6s. Charged Attack hits on opponents increase ATK by 8~16% for 6s."
+	},
+	"EtherlightSpindlelute": {
+		"key": "EtherlightSpindlelute",
+		"name": "Etherlight Spindlelute",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Weapon_Etherlight_Spindlelute.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "For 20s after using an Elemental Skill, the equipping character's Elemental Mastery is increased by 100~200."
+	},
+	"EyeOfPerception": {
+		"key": "EyeOfPerception",
+		"name": "Eye of Perception",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Eye_of_Perception.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing 240~360% ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every 12~8s."
+	},
+	"FavoniusCodex": {
+		"key": "FavoniusCodex",
+		"name": "Favonius Codex",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/36/Weapon_Favonius_Codex.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "CRIT hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
+	},
+	"FlowingPurity": {
+		"key": "FlowingPurity",
+		"name": "Flowing Purity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Flowing_Purity.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "When using an Elemental Skill, All Elemental DMG Bonus will be increased by 8~16% for 15s, and a Bond of Life worth 24% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, every 1,000 HP cleared in the process will provide 2~4% All Elemental DMG Bonus, up to a maximum of 12~24%. This effect lasts 15s."
+	},
+	"Frostbearer": {
+		"key": "Frostbearer",
+		"name": "Frostbearer",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Frostbearer.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Hitting an opponent with Normal and Charged Attacks has a 60~100% chance of forming and dropping an Everfrost Icicle above them, dealing 80~140% AoE ATK DMG. Opponents affected by Cryo are dealt 200~360% ATK DMG instead by the icicle. Can only occur once every 10s."
+	},
+	"FruitOfFulfillment": {
+		"key": "FruitOfFulfillment",
+		"name": "Fruit of Fulfillment",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Fruit_of_Fulfillment.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Obtain the \"Wax and Wane\" effect after an Elemental Reaction is triggered, gaining 24~36 Elemental Mastery while losing 5% ATK. For every 0.3s, 1 stack of Wax and Wane can be gained. Max 5 stacks. For every 6s that go by without an Elemental Reaction being triggered, 1 stack will be lost. This effect can be triggered even when the character is off-field."
+	},
+	"HakushinRing": {
+		"key": "HakushinRing",
+		"name": "Hakushin Ring",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Hakushin_Ring.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "After the character equipped with this weapon triggers an Electro elemental reaction, nearby party members of an Elemental Type involved in the elemental reaction receive a 10~20% Elemental DMG Bonus for their element, lasting 6s. Elemental Bonuses gained in this way cannot be stacked."
+	},
+	"MappaMare": {
+		"key": "MappaMare",
+		"name": "Mappa Mare",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Mappa_Mare.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Elemental Mastery 110",
+		"ability": "Triggering an Elemental reaction grants a 8~16% Elemental DMG Bonus for 10s. Max 2 stacks."
+	},
+	"OathswornEye": {
+		"key": "OathswornEye",
+		"name": "Oathsworn Eye",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Weapon_Oathsworn_Eye.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Increases Energy Recharge by 24~48% for 10s after using an Elemental Skill."
+	},
+	"PrototypeAmber": {
+		"key": "PrototypeAmber",
+		"name": "Prototype Amber",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Prototype_Amber.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "Using an Elemental Burst regenerates 4~6 Energy every 2s for 6s. All party members will regenerate 4~6% HP every 2s for this duration."
+	},
+	"RingOfYaxche": {
+		"key": "RingOfYaxche",
+		"name": "Ring of Yaxche",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Ring_of_Yaxche.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "Using an Elemental Skill grants the Jade-Forged Crown effect: Every 1,000 Max HP will increase the Normal Attack DMG dealt by the equipping character by 0.6~1% for 10s. Normal Attack DMG can be increased this way by a maximum of 16~32%."
+	},
+	"RoyalGrimoire": {
+		"key": "RoyalGrimoire",
+		"name": "Royal Grimoire",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Grimoire.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
+	},
+	"SacrificialFragments": {
+		"key": "SacrificialFragments",
+		"name": "Sacrificial Fragments",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Sacrificial_Fragments.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "Elemental Mastery 221",
+		"ability": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40~80% chance to end its own CD. Can only occur once every 30~16s."
+	},
+	"SacrificialJade": {
+		"key": "SacrificialJade",
+		"name": "Sacrificial Jade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Sacrificial_Jade.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "CRIT Rate 36.8%",
+		"ability": "When not on the field for more than 5s, Max HP will be increased by 32~64% and Elemental Mastery will be increased by 40~80. These effects will be canceled after the wielder has been on the field for 10s."
+	},
+	"SolarPearl": {
+		"key": "SolarPearl",
+		"name": "Solar Pearl",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Weapon_Solar_Pearl.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Normal Attack hits increase Elemental Skill and Elemental Burst DMG by 20~40% for 6s. Likewise, Elemental Skill or Elemental Burst hits increase Normal Attack DMG by 20~40% for 6s."
+	},
+	"TheWidsith": {
+		"key": "TheWidsith",
+		"name": "The Widsith",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Widsith.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.Recitative: ATK is increased by 60~120%.Aria: Increases all Elemental DMG by 48~96%.Interlude: Elemental Mastery is increased by 240~480."
+	},
+	"WanderingEvenstar": {
+		"key": "WanderingEvenstar",
+		"name": "Wandering Evenstar",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Wandering_Evenstar.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "The following effect will trigger every 10s: The equipping character will gain 24~48% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field."
+	},
+	"WaveridingWhirl": {
+		"key": "WaveridingWhirl",
+		"name": "Waveriding Whirl",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Waveriding_Whirl.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Decreases Swimming Stamina consumption by 15%. In addition, for 10s after using an Elemental Skill, Max HP is increased by 20~40%. For every Hydro Elemental character in the party, Max HP is increased by another 12~24%, and the maximum increase that can be achieved in this way is 24~48%. Can be triggered once every 15s."
+	},
+	"WineAndSong": {
+		"key": "WineAndSong",
+		"name": "Wine and Song",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Wine_and_Song.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "Hitting an opponent with a Normal Attack decreases the Stamina consumption of Sprint or Alternate Sprint by 14~22% for 5s. Additionally, using a Sprint or Alternate Sprint ability increases ATK by 20~40% for 5s."
+	},
+	"EmeraldOrb": {
+		"key": "EmeraldOrb",
+		"name": "Emerald Orb",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Emerald_Orb.png",
+		"rarity": 3,
+		"weaponType": "Catalyst",
+		"atk": 448,
+		"stat": "Elemental Mastery 94",
+		"ability": "Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, Lunar-Charged, Lunar-Bloom, or a Hydro-infused Swirl reaction, ATK is increased by 20~40% for 12s."
+	},
+	"MagicGuide": {
+		"key": "MagicGuide",
+		"name": "Magic Guide",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Weapon_Magic_Guide.png",
+		"rarity": 3,
+		"weaponType": "Catalyst",
+		"atk": 354,
+		"stat": "Elemental Mastery 187",
+		"ability": "Increases DMG against opponents affected by Hydro or Electro by 12~24%."
+	},
+	"OtherworldlyStory": {
+		"key": "OtherworldlyStory",
+		"name": "Otherworldly Story",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Otherworldly_Story.png",
+		"rarity": 3,
+		"weaponType": "Catalyst",
+		"atk": 401,
+		"stat": "Energy Recharge 39.0%",
+		"ability": "Each Elemental Orb or Particle collected restores 1~2% HP."
+	},
+	"ThrillingTalesOfDragonSlayers": {
+		"key": "ThrillingTalesOfDragonSlayers",
+		"name": "Thrilling Tales of Dragon Slayers",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Thrilling_Tales_of_Dragon_Slayers.png",
+		"rarity": 3,
+		"weaponType": "Catalyst",
+		"atk": 401,
+		"stat": "HP 35.2%",
+		"ability": "When switching characters, the new character taking the field has their ATK increased by 24~48% for 10s. This effect can only occur once every 20s."
+	},
+	"TwinNephrite": {
+		"key": "TwinNephrite",
+		"name": "Twin Nephrite",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Weapon_Twin_Nephrite.png",
+		"rarity": 3,
+		"weaponType": "Catalyst",
+		"atk": 448,
+		"stat": "CRIT Rate 15.6%",
+		"ability": "Defeating an opponent increases Movement SPD and ATK by 12~20% for 15s."
+	},
+	"PocketGrimoire": {
+		"key": "PocketGrimoire",
+		"name": "Pocket Grimoire",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Pocket_Grimoire.png",
+		"rarity": 2,
+		"weaponType": "Catalyst",
+		"atk": 243,
+		"stat": "None",
+		"ability": "None"
+	},
+	"ApprenticesNotes": {
+		"key": "ApprenticesNotes",
+		"name": "Apprentice's Notes",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Weapon_Apprentice%27s_Notes.png",
+		"rarity": 1,
+		"weaponType": "Catalyst",
+		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	},
+	"AmosBow": {
+		"key": "AmosBow",
+		"name": "Amos' Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/de/Weapon_Amos%27_Bow.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "ATK 49.6%",
+		"ability": "Increases Normal Attack and Charged Attack DMG by 12~24%. After a Normal or Charged Attack is fired, DMG dealt increases by a further 8~16% every 0.1 seconds the arrow is in the air for up to 5 times."
+	},
+	"AquaSimulacra": {
+		"key": "AquaSimulacra",
+		"name": "Aqua Simulacra",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Aqua_Simulacra.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "HP is increased by 16~32%. When there are opponents nearby, the DMG dealt by the wielder of this weapon is increased by 20~40%. This will take effect whether the character is on-field or not."
+	},
+	"AstralVulturesCrimsonPlumage": {
+		"key": "AstralVulturesCrimsonPlumage",
+		"name": "Astral Vulture's Crimson Plumage",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Weapon_Astral_Vulture%27s_Crimson_Plumage.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "For 12s after triggering a Swirl reaction, ATK increases by 24~48%. In addition, when 1/2 or more characters in the party are of a different Elemental Type from the equipping character, the DMG dealt by the equipping character's Charged Attacks is increased by 20/48~40/96% and Elemental Burst DMG dealt is increased by 10/24~20/48%."
+	},
+	"ElegyForTheEnd": {
+		"key": "ElegyForTheEnd",
+		"name": "Elegy for the End",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Weapon_Elegy_for_the_End.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "Energy Recharge 55.1%",
+		"ability": "A part of the \"Millennial Movement\" that wanders amidst the winds.Increases Elemental Mastery by 60~120.When the Elemental Skills or Elemental Bursts of the character wielding this weapon hit opponents, that character gains a Sigil of Remembrance. This effect can be triggered once every 0.2s and can be triggered even if said character is not on the field.When you possess 4 Sigils of Remembrance, all of them will be consumed and all nearby party members will obtain the \"Millennial Movement: Farewell Song\" effect for 12s.\"Millennial Movement: Farewell Song\" increases Elemental Mastery by 100~200 and increases ATK by 20~40%. Once this effect is triggered, you will not gain Sigils of Remembrance for 20s.Of the many effects of the \"Millennial Movement,\" buffs of the same type will not stack."
+	},
+	"HuntersPath": {
+		"key": "HuntersPath",
+		"name": "Hunter's Path",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Weapon_Hunter%27s_Path.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 542,
+		"stat": "CRIT Rate 44.1%",
+		"ability": "Gain 12~24% All Elemental DMG Bonus. Obtain the Tireless Hunt effect after hitting an opponent with a Charged Attack. This effect increases Charged Attack DMG by 160~320% of Elemental Mastery. This effect will be removed after 12 Charged Attacks or 10s. Only 1 instance of Tireless Hunt can be gained every 12s."
+	},
+	"PolarStar": {
+		"key": "PolarStar",
+		"name": "Polar Star",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Polar_Star.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "Elemental Skill and Elemental Burst DMG increased by 12~24%. After a Normal Attack, Charged Attack, Elemental Skill or Elemental Burst hits an opponent, 1 stack of Ashen Nightstar will be gained for 12s. When 1/2/3/4 stacks of Ashen Nightstar are present, ATK is increased by 10/20/30/48~20/40/60/96%. The stack of Ashen Nightstar created by the Normal Attack, Charged Attack, Elemental Skill or Elemental Burst will be counted independently of the others."
+	},
+	"SilvershowerHeartstrings": {
+		"key": "SilvershowerHeartstrings",
+		"name": "Silvershower Heartstrings",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Silvershower_Heartstrings.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 542,
+		"stat": "HP 66.2%",
+		"ability": "The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by 12/24/40~24/48/80. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a Bond of Life value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by 28~56. This effect will be canceled 4s after falling under 3 stacks."
+	},
+	"SkywardHarp": {
+		"key": "SkywardHarp",
+		"name": "Skyward Harp",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Skyward_Harp.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "Increases CRIT DMG by 20~40%. Hits have a 60~100% chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every 4~2s."
+	},
+	"TheDaybreakChronicles": {
+		"key": "TheDaybreakChronicles",
+		"name": "The Daybreak Chronicles",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Weapon_The_Daybreak_Chronicles.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "The equipping character gains Stirring Dawn Breeze: 3s after leaving combat, Normal Attack, Elemental Skill, and Elemental Burst DMG is increased by 60~120%. While in combat, this DMG Bonus will decrease by 10~20% per second until it reaches 0%. When the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for the corresponding DMG type is increased by 10~20% until it reaches 60~120%. This effect can be triggered once every 0.1s for each of the attack types mentioned above. This effect can be triggered even if the equipping character is off-field.Additionally, when the party possesses Hexerei: Secret Rite effects, when the equipping character's Normal Attacks, Elemental Skills, or Elemental Bursts hit an opponent, the DMG Bonus for all these DMG types is increased by 20~40% instead."
+	},
+	"TheFirstGreatMagic": {
+		"key": "TheFirstGreatMagic",
+		"name": "The First Great Magic",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Weapon_The_First_Great_Magic.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "DMG dealt by Charged Attacks increased by 16~32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 16/32/48~32/64/96. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 4/7/10~12/15/18."
+	},
+	"ThunderingPulse": {
+		"key": "ThunderingPulse",
+		"name": "Thundering Pulse",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Thundering_Pulse.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 608,
+		"stat": "CRIT DMG 66.2%",
+		"ability": "Increases ATK by 20~40% and grants the might of the Thunder Emblem. At stack levels 1/2/3, the Thunder Emblem increases Normal Attack DMG by 12/24/40~24/48/80%. The character will obtain 1 stack of Thunder Emblem in each of the following scenarios: Normal Attack deals DMG (stack lasts 5s), casting Elemental Skill (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently."
+	},
+	"AlleyHunter": {
+		"key": "AlleyHunter",
+		"name": "Alley Hunter",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Weapon_Alley_Hunter.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "While the character equipped with this weapon is in the party but not on the field, their DMG increases by 2~4% every second up to a max of 20~40%. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by 4~8% per second until it reaches 0%."
+	},
+	"BlackcliffWarbow": {
+		"key": "BlackcliffWarbow",
+		"name": "Blackcliff Warbow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Blackcliff_Warbow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "CRIT DMG 36.8%",
+		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"ChainBreaker": {
+		"key": "ChainBreaker",
+		"name": "Chain Breaker",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Chain_Breaker.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "For every party member from Natlan or who has a different Elemental Type from the equipping character, the equipping character gains 4.8~9.6% increased ATK. When there are no less than 3 of the aforementioned characters, the equipping character gains 24~48 Elemental Mastery."
+	},
+	"Cloudforged": {
+		"key": "Cloudforged",
+		"name": "Cloudforged",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Weapon_Cloudforged.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "After Elemental Energy is decreased, the equipping character's Elemental Mastery will increase by 40~80 for 18s. Max 2 stacks."
+	},
+	"CompoundBow": {
+		"key": "CompoundBow",
+		"name": "Compound Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Weapon_Compound_Bow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "Physical DMG Bonus 69.0%",
+		"ability": "Normal Attack and Charged Attack hits increase ATK by 4~8% and Normal ATK SPD by 1.2~2.4% for 6s. Max 4 stacks. Can only occur once every 0.3s."
+	},
+	"EndOfTheLine": {
+		"key": "EndOfTheLine",
+		"name": "End of the Line",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_End_of_the_Line.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Triggers the Flowrider effect after using an Elemental Skill, dealing 80~160% ATK as AoE DMG upon hitting an opponent with an attack. Flowrider will be removed after 15s or after causing 3 instances of AoE DMG. Only 1 instance of AoE DMG can be caused every 2s in this way. Flowrider can be triggered once every 12s."
+	},
+	"FadingTwilight": {
+		"key": "FadingTwilight",
+		"name": "Fading Twilight",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_Fading_Twilight.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "Has three states, Evengleam, Afterglow, and Dawnblaze, which increase DMG dealt by 6/10/14~12/20/28 respectively. When attacks hit opponents, this weapon will switch to the next state. This weapon can change states once every 7s. The character equipping this weapon can still trigger the state switch while not on the field."
+	},
+	"FavoniusWarbow": {
+		"key": "FavoniusWarbow",
+		"name": "Favonius Warbow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Favonius_Warbow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "CRIT hits have a 60~100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12~6s."
+	},
+	"FlowerWreathedFeathers": {
+		"key": "FlowerWreathedFeathers",
+		"name": "Flower-Wreathed Feathers",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Flower-Wreathed_Feathers.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Decreases Gliding Stamina consumption by 15%. When using Aimed Shots, the DMG dealt by Charged Attacks increases by 6~12% every 0.5s. This effect can stack up to 6 times and will be removed 10s after leaving Aiming Mode."
+	},
+	"Hamayumi": {
+		"key": "Hamayumi",
+		"name": "Hamayumi",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Weapon_Hamayumi.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "Increases Normal Attack DMG by 16~32% and Charged Attack DMG by 12~24%. When the equipping character's Energy reaches 100%, this effect is increased by 100%."
+	},
+	"IbisPiercer": {
+		"key": "IbisPiercer",
+		"name": "Ibis Piercer",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Ibis_Piercer.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "The character's Elemental Mastery will increase by 40~80 within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can be triggered once every 0.5s."
+	},
+	"KingsSquire": {
+		"key": "KingsSquire",
+		"name": "King's Squire",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_King%27s_Squire.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "ATK 55.1%",
+		"ability": "Obtain the Teachings of the Forest effect when unleashing Elemental Skills and Elemental Burst, increasing Elemental Mastery by 60~140 for 12s. This effect will be removed when switching characters. When the Teachings of the Forest effect ends or is removed, it will deal 100~180% of ATK as DMG to 1 nearby opponent. The Teachings of the Forest effect can be triggered once every 20s."
+	},
+	"MitternachtsWaltz": {
+		"key": "MitternachtsWaltz",
+		"name": "Mitternachts Waltz",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Weapon_Mitternachts_Waltz.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Physical DMG Bonus 51.7%",
+		"ability": "Normal Attack hits on opponents increase Elemental Skill DMG by 20~40% for 5s. Elemental Skill hits on opponents increase Normal Attack DMG by 20~40% for 5s."
+	},
+	"MouunsMoon": {
+		"key": "MouunsMoon",
+		"name": "Mouun's Moon",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/42/Weapon_Mouun%27s_Moon.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.12~0.24%. A maximum of 40~80% increased Elemental Burst DMG can be achieved this way."
+	},
+	"Predator": {
+		"key": "Predator",
+		"name": "Predator",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2e/Weapon_Predator.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Effective only on the following platform:\"PlayStation Network\"Dealing Cryo DMG to opponents increases this character's Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks. Additionally, when Aloy equips Predator, ATK is increased by 66."
+	},
+	"PrototypeCrescent": {
+		"key": "PrototypeCrescent",
+		"name": "Prototype Crescent",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Weapon_Prototype_Crescent.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Charged Attack hits on weak points increase Movement SPD by 10% and ATK by 36~72% for 10s."
+	},
+	"RainbowSerpentsRainBow": {
+		"key": "RainbowSerpentsRainBow",
+		"name": "Rainbow Serpent's Rain Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Rainbow_Serpent%27s_Rain_Bow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "ATK is increased by 28~56% for 8s after the equipping character's attacks hit an opponent while the equipping character is off-field."
+	},
+	"RangeGauge": {
+		"key": "RangeGauge",
+		"name": "Range Gauge",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Weapon_Range_Gauge.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain 3~7% ATK and 7~13% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field."
+	},
+	"RoyalBow": {
+		"key": "RoyalBow",
+		"name": "Royal Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Weapon_Royal_Bow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Upon dealing damage to an opponent, increases CRIT Rate by 8~16%. Max 5 stacks. A CRIT hit removes all existing stacks."
+	},
+	"Rust": {
+		"key": "Rust",
+		"name": "Rust",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Weapon_Rust.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Increases Normal Attack DMG by 40~80% but decreases Charged Attack DMG by 10%."
+	},
+	"SacrificialBow": {
+		"key": "SacrificialBow",
+		"name": "Sacrificial Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Sacrificial_Bow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "Energy Recharge 30.6%",
+		"ability": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40~80% chance to end its own CD. Can only occur once every 30~16s."
+	},
+	"ScionOfTheBlazingSun": {
+		"key": "ScionOfTheBlazingSun",
+		"name": "Scion of the Blazing Sun",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Scion_of_the_Blazing_Sun.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 565,
+		"stat": "CRIT Rate 18.4%",
+		"ability": "After a Charged Attack hits an opponent, a Sunfire Arrow will descend upon the opponent hit, dealing 60~120% ATK as DMG, and applying the Heartsearer effect to the opponent damaged by said Arrow for 10s. Opponents affected by Heartsearer take 28~56% more Charged Attack DMG from the wielder. A Sunfire Arrow can be triggered once every 10s."
+	},
+	"SequenceOfSolitude": {
+		"key": "SequenceOfSolitude",
+		"name": "Sequence of Solitude",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Weapon_Sequence_of_Solitude.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "HP 41.3%",
+		"ability": "When an attack hits an opponent, deal AoE DMG equal to 40~80% of Max HP at the target location. This effect can be triggered once every 15s."
+	},
+	"SnareHook": {
+		"key": "SnareHook",
+		"name": "Snare Hook",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Weapon_Snare_Hook.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 454,
+		"stat": "Energy Recharge 61.3%",
+		"ability": "Upon causing an Elemental Reaction, increases Elemental Mastery by 60~120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 60~120. This effect can be triggered even if the equipping character is off-field."
+	},
+	"SongOfStillness": {
+		"key": "SongOfStillness",
+		"name": "Song of Stillness",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Weapon_Song_of_Stillness.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "After the wielder is healed, they will deal 16~32% more DMG for 8s. This can be triggered even when the character is not on the field."
+	},
+	"TheStringless": {
+		"key": "TheStringless",
+		"name": "The Stringless",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Weapon_The_Stringless.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "Increases Elemental Skill and Elemental Burst DMG by 24~48%."
+	},
+	"TheViridescentHunt": {
+		"key": "TheViridescentHunt",
+		"name": "The Viridescent Hunt",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Weapon_The_Viridescent_Hunt.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Upon hit, Normal and Aimed Shot Attacks have a 50% chance to generate a Cyclone, which will continuously attract surrounding opponents, dealing 40~80% of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every 14~10s."
+	},
+	"WindblumeOde": {
+		"key": "WindblumeOde",
+		"name": "Windblume Ode",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Windblume_Ode.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "After using an Elemental Skill, receive a boon from the ancient wish of the Windblume, increasing ATK by 16~32% for 6s."
+	},
+	"Messenger": {
+		"key": "Messenger",
+		"name": "Messenger",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/38/Weapon_Messenger.png",
+		"rarity": 3,
+		"weaponType": "Bow",
+		"atk": 448,
+		"stat": "CRIT DMG 31.2%",
+		"ability": "Charged Attack hits on weak spots deal an additional 100~200% ATK DMG as CRIT DMG. Can only occur once every 10s."
+	},
+	"RavenBow": {
+		"key": "RavenBow",
+		"name": "Raven Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d0/Weapon_Raven_Bow.png",
+		"rarity": 3,
+		"weaponType": "Bow",
+		"atk": 448,
+		"stat": "Elemental Mastery 94",
+		"ability": "Increases DMG against opponents affected by Hydro or Pyro by 12~24%."
+	},
+	"RecurveBow": {
+		"key": "RecurveBow",
+		"name": "Recurve Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Recurve_Bow.png",
+		"rarity": 3,
+		"weaponType": "Bow",
+		"atk": 354,
+		"stat": "HP 46.9%",
+		"ability": "Defeating an opponent restores 8~16% HP."
+	},
+	"SharpshootersOath": {
+		"key": "SharpshootersOath",
+		"name": "Sharpshooter's Oath",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Weapon_Sharpshooter%27s_Oath.png",
+		"rarity": 3,
+		"weaponType": "Bow",
+		"atk": 401,
+		"stat": "CRIT DMG 46.9%",
+		"ability": "Increases DMG against weak spots by 24~48%."
+	},
+	"Slingshot": {
+		"key": "Slingshot",
+		"name": "Slingshot",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Slingshot.png",
+		"rarity": 3,
+		"weaponType": "Bow",
+		"atk": 354,
+		"stat": "CRIT Rate 31.2%",
+		"ability": "If a Normal or Charged Attack hits a target within 0.3s of being fired, increases DMG by 36~60%. Otherwise, decreases DMG by 10%."
+	},
+	"SeasonedHuntersBow": {
+		"key": "SeasonedHuntersBow",
+		"name": "Seasoned Hunter's Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Seasoned_Hunter%27s_Bow.png",
+		"rarity": 2,
+		"weaponType": "Bow",
+		"atk": 243,
+		"stat": "None",
+		"ability": "None"
+	},
+	"HuntersBow": {
+		"key": "HuntersBow",
+		"name": "Hunter's Bow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Weapon_Hunter%27s_Bow.png",
+		"rarity": 1,
+		"weaponType": "Bow",
+		"atk": 185,
+		"stat": "None",
+		"ability": "None"
+	}
+}

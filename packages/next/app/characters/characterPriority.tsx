@@ -1,5 +1,5 @@
 import { charactersInfo } from '@/api/characters';
-import MultiSortable from '@/components/sortable/multi';
+import MultiSortable from '@/components/sortable/multiSortable';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { mainActions } from '@/src/store/reducers/mainReducer';
 import { type CharacterKey } from '@/src/types/good';

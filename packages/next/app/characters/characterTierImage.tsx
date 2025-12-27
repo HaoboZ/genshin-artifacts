@@ -1,7 +1,7 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import OverlayText from '@/components/overlayText';
-import PercentBar, { combinePercents } from '@/components/percentBar';
+import PercentBar, { combinePercents } from '@/components/stats/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
 import { weightedPercent } from '@/src/helpers/stats';
 import { type CharacterKey, type IGOOD } from '@/src/types/good';

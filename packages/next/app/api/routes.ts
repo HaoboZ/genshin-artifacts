@@ -1,4 +1,4 @@
-import data from './routes.json';
+import data from '@/public/data/routes.json';
 
 export const routesInfo: Route[] = data;
 

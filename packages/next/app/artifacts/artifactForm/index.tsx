@@ -1,9 +1,9 @@
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import { artifactSlotStats, statName, statsMax, subStats } from '@/api/stats';
-import AutocompleteField from '@/components/fields/autocomplete';
-import InputField from '@/components/fields/input';
-import SelectField from '@/components/fields/select';
-import SwitchField from '@/components/fields/switch';
+import AutocompleteField from '@/components/formik/autocompleteField';
+import InputField from '@/components/formik/inputField';
+import SelectField from '@/components/formik/selectField';
+import SwitchField from '@/components/formik/switchField';
 import Scanner from '@/components/scanner';
 import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/src/types/good';
 import {

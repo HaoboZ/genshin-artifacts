@@ -1,10 +1,10 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
-import PercentBar from '@/components/percentBar';
+import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import { useModalControls } from '@/src/providers/modal/controls';
-import DialogWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialogWrapper';
+import useModalControls from '@/src/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type Build } from '@/src/types/data';

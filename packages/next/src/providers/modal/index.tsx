@@ -2,7 +2,7 @@
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
 import { type ComponentType, createContext, type ReactNode, useContext, useState } from 'react';
-import { ModalControlsContext, type UseModalControls } from './controls';
+import { ModalControlsContext, type UseModalControls } from './useModalControls';
 
 export type ModalState<T = any> = {
 	id: string;
@@ -54,7 +54,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 	});
 
 	return (
-		<ModalContext.Provider
+		<ModalContext
 			value={{
 				modalStates,
 				showModal: (Component, { id = nanoid(), props } = {}) => {
@@ -95,13 +95,13 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 			}}>
 			{children}
 			{modalStates.map((modalState) => (
-				<ModalControlsContext.Provider
+				<ModalControlsContext
 					key={modalState.id}
 					value={{ ...modalState.controls, modalState }}>
 					<modalState.Component {...modalState.props} />
-				</ModalControlsContext.Provider>
+				</ModalControlsContext>
 			))}
-		</ModalContext.Provider>
+		</ModalContext>
 	);
 }
 

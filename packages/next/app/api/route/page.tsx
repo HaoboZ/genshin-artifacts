@@ -1,52 +1,19 @@
 'use client';
-import useEventListener from '@/src/hooks/useEventListener';
+import { type Point } from '@/components/imageRoutePath/types';
 import useFetchState from '@/src/hooks/useFetchState';
-import useHistory from '@/src/hooks/useHistory';
 import useParamState from '@/src/hooks/useParamState';
-import {
-	Button,
-	Container,
-	FormControlLabel,
-	MenuItem,
-	Select,
-	Stack,
-	Switch,
-	ToggleButton,
-	ToggleButtonGroup,
-} from '@mui/material';
-import { useSnackbar } from 'notistack';
+import { Container, MenuItem, Select, Stack } from '@mui/material';
 import { useState } from 'react';
-import MapSelect from '../../farming/mapSelect';
-import RouteMap from '../../farming/routeMap';
-import { type Point, type Spot } from '../../farming/routeMap/utils';
+import PathSelect from '../../farming/[route]/pathSelect';
 import { routesInfo } from '../routes';
-import { savePointsServer } from './actions';
+import ImageRoutePathEditor from './imageRoutePathEditor';
 
-export default function RouteTest() {
-	const { enqueueSnackbar } = useSnackbar();
-
+export default function InternalRoute() {
 	const [selectedRoute, setSelectedRoute] = useState(0);
 	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = route.maps[selectedMap].src;
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
-	const [editMode, setEditMode] = useState<string>('add');
-	const [activeSpot, setActiveSpot] = useState<Spot>(null);
-	const [applying, setApplying] = useState(true);
-
-	useHistory(points, setPoints);
-
-	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
-		if (e.key === 'Delete' && activeSpot) {
-			e.preventDefault();
-			setPoints((points) => {
-				const newPoints = [...points];
-				newPoints.splice(activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0), 1);
-				return newPoints;
-			});
-			setActiveSpot(null);
-		}
-	});
 
 	return (
 		<Container>
@@ -64,7 +31,7 @@ export default function RouteTest() {
 						</MenuItem>
 					))}
 				</Select>
-				<MapSelect
+				<PathSelect
 					route={route}
 					selectedMap={selectedMap}
 					setSelectedMap={(selectedMap) => {
@@ -73,69 +40,11 @@ export default function RouteTest() {
 					}}
 				/>
 			</Stack>
-			<Stack direction='row' spacing={1} sx={{ pb: 1 }}>
-				<Button variant='contained' disabled={!points.length} onClick={() => setPoints([])}>
-					Clear Points
-				</Button>
-				<Button
-					variant='contained'
-					onClick={async () => {
-						await savePointsServer(points, mapName);
-						enqueueSnackbar('Saved', { variant: 'info' });
-					}}>
-					Save Points
-				</Button>
-				<ToggleButtonGroup
-					value={editMode}
-					exclusive
-					onChange={(_, value) => setEditMode(value)}>
-					<ToggleButton value='add'>Add Points</ToggleButton>
-					<ToggleButton value='relocate'>Relocate Point</ToggleButton>
-					<ToggleButton value='insert'>Insert Points</ToggleButton>
-				</ToggleButtonGroup>
-				<FormControlLabel
-					label='Applying'
-					control={
-						<Switch
-							checked={applying}
-							onChange={({ target }) => setApplying(target.checked)}
-						/>
-					}
-				/>
-				<Button variant='contained' onClick={() => setActiveSpot(null)}>
-					Clear Active
-				</Button>
-			</Stack>
-			<RouteMap
+			<ImageRoutePathEditor
 				src={mapName}
 				points={points}
-				addPoint={
-					editMode === 'add' || (applying && activeSpot)
-						? (point) => {
-								setPoints((points) => {
-									switch (editMode) {
-										case 'add':
-											return [...points, point];
-										case 'relocate':
-											const newPoints = [...points];
-											newPoints[
-												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0)
-											] = point;
-											return newPoints;
-										case 'insert':
-											return points.toSpliced(
-												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0),
-												0,
-												point,
-											);
-									}
-								});
-							}
-						: undefined
-				}
-				activeSpot={activeSpot}
-				setActiveSpot={setActiveSpot}
-				sx={{ height: '90vh', width: 'unset', justifySelf: 'center' }}
+				setPoints={setPoints}
+				sx={{ aspectRatio: 1 }}
 			/>
 		</Container>
 	);

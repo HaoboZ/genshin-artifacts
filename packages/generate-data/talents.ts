@@ -42,5 +42,5 @@ export async function fetchTalents(characters) {
 }
 
 export function writeTalents(talents) {
-	writeFileSync('../next/app/api/talents.json', `${JSON.stringify(talents, null, '\t')}\n`);
+	writeFileSync('../next/public/data/talents.json', `${JSON.stringify(talents, null, '\t')}\n`);
 }

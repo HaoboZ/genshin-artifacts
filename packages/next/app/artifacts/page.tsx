@@ -1,11 +1,11 @@
 'use client';
 import { artifactSetsInfo } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
-import PageLink from '@/components/page/link';
-import PageSection from '@/components/page/section';
+import PageLink from '@/components/page/pageLink';
+import PageSection from '@/components/page/pageSection';
 import makeArray from '@/src/helpers/makeArray';
 import { useModal } from '@/src/providers/modal';
-import dynamicModal from '@/src/providers/modal/dynamic';
+import dynamicModal from '@/src/providers/modal/dynamicModal';
 import { useAppSelector } from '@/src/store/hooks';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';

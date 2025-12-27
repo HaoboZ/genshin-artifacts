@@ -47,7 +47,10 @@ export default function Sortable<Item>({
 	}, [list]);
 
 	useEffect(() => {
-		if (skipB) return setSkipB(false);
+		if (skipB) {
+			setSkipB(false);
+			return;
+		}
 		// @ts-expect-error item id
 		setList(items.map((item, index) => ({ id: item.id ?? list[index]?.id ?? nanoid(), item })));
 		// eslint-disable-next-line react-hooks/exhaustive-deps

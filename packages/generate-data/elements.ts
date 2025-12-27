@@ -15,5 +15,5 @@ export async function fetchElements() {
 }
 
 export function writeElements(elements) {
-	writeFileSync('../next/app/api/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
+	writeFileSync('../next/public/data/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
 }

@@ -7,13 +7,13 @@ import {
 } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import Dropdown from '@/components/dropdown';
-import PageLink from '@/components/page/link';
-import PageSection from '@/components/page/section';
-import PercentBar from '@/components/percentBar';
+import PageLink from '@/components/page/pageLink';
+import PageSection from '@/components/page/pageSection';
+import PercentBar from '@/components/stats/percentBar';
 import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/src/helpers/stats';
 import useParamState from '@/src/hooks/useParamState';
 import { useModal } from '@/src/providers/modal';
-import dynamicModal from '@/src/providers/modal/dynamic';
+import dynamicModal from '@/src/providers/modal/dynamicModal';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';

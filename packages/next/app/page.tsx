@@ -1,7 +1,7 @@
 'use client';
 import ClientOnly from '@/components/clientOnly';
-import PageTitle from '@/components/page/title';
-import RespawnNotification from '@/src/components/respawnNotification';
+import PageTitle from '@/components/page/pageTitle';
+import RespawnNotification from '@/components/respawnNotification';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';

@@ -1,11 +1,12 @@
 {
 	"name": "@genshin-artifacts/map-capture",
 	"private": true,
+	"type": "module",
 	"scripts": {
-		"start": "bun ./index.ts"
+		"start": "npx tsx ./index.ts"
 	},
 	"dependencies": {
-		"playwright": "1.57.0"
-	},
-	"devDependencies": {}
+		"playwright": "1.57.0",
+		"sharp": "0.34.5"
+	}
 }

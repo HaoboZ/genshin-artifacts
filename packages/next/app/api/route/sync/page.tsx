@@ -1,4 +1,7 @@
 'use client';
+import ImageRoutePath from '@/components/imageRoutePath';
+import { type Point, type Spot } from '@/components/imageRoutePath/types';
+import VideoPlayer from '@/components/videoPlayer';
 import useEventListener from '@/src/hooks/useEventListener';
 import useFetchState from '@/src/hooks/useFetchState';
 import useParamState from '@/src/hooks/useParamState';
@@ -16,15 +19,12 @@ import {
 import { useSnackbar } from 'notistack';
 import { useRef, useState } from 'react';
 import { pick } from 'remeda';
-import MapSelect from '../../../farming/mapSelect';
-import RouteMap from '../../../farming/routeMap';
-import { type Point, type Spot } from '../../../farming/routeMap/utils';
-import VideoPlayer from '../../../farming/videoPlayer';
+import PathSelect from '../../../farming/[route]/pathSelect';
 import { routesInfo } from '../../routes';
 import { savePointsServer } from '../actions';
 import TimePointControls from './timePointControls';
 
-export default function RouteSyncTest() {
+export default function InternalRouteSync() {
 	const { enqueueSnackbar } = useSnackbar();
 
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -87,7 +87,7 @@ export default function RouteSyncTest() {
 						</MenuItem>
 					))}
 				</Select>
-				<MapSelect
+				<PathSelect
 					route={route}
 					selectedMap={selectedMap}
 					setSelectedMap={(selectedMap) => {
@@ -141,9 +141,9 @@ export default function RouteSyncTest() {
 									disabled={currentPointIndex <= 0}
 									onClick={() => {
 										setActiveSpot({
-											point: points[currentPointIndex],
+											point: points[currentPointIndex - 1],
 											pointIndex: currentPointIndex - 1,
-											percentage: currentPointIndex === 1 ? 0 : 100,
+											percentage: 0,
 										});
 									}}>
 									Prev Point
@@ -151,12 +151,12 @@ export default function RouteSyncTest() {
 								<Button
 									variant='contained'
 									size='small'
-									disabled={nextPointIndex + 1 >= points.length}
+									disabled={nextPointIndex + 1 >= points?.length}
 									onClick={() => {
 										setActiveSpot({
-											point: points[currentPointIndex + 2],
+											point: points[currentPointIndex + 1],
 											pointIndex: currentPointIndex + 1,
-											percentage: 100,
+											percentage: 0,
 										});
 									}}>
 									Next Point
@@ -170,7 +170,7 @@ export default function RouteSyncTest() {
 											newPoints.splice(
 												nextPointIndex,
 												0,
-												pick(activeSpot.point, ['x', 'y', 'artifact']),
+												pick(activeSpot.point, ['x', 'y']),
 											);
 											return newPoints;
 										});
@@ -180,7 +180,7 @@ export default function RouteSyncTest() {
 							</Stack>
 							<Grid container>
 								<TimePointControls
-									name='Previous'
+									name='Current'
 									time={time}
 									point={
 										currentPointIndex !== null && currentPointIndex >= 0
@@ -191,7 +191,7 @@ export default function RouteSyncTest() {
 									updatePointField={updatePointField}
 								/>
 								<TimePointControls
-									name='Current'
+									name='Next'
 									time={time}
 									point={
 										nextPointIndex !== null && nextPointIndex < points.length
@@ -204,7 +204,7 @@ export default function RouteSyncTest() {
 							</Grid>
 						</Stack>
 					</Box>
-					<RouteMap
+					<ImageRoutePath
 						src={mapName}
 						points={points}
 						activeSpot={activeSpot}
@@ -215,6 +215,7 @@ export default function RouteSyncTest() {
 							justifySelf: 'end',
 							alignSelf: 'start',
 							width: '50%',
+							aspectRatio: 1,
 						}}
 					/>
 					<VideoPlayer

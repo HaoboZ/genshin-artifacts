@@ -1,4 +1,4 @@
-import PageTitle from '@/components/page/title';
+import PageTitle from '@/components/page/pageTitle';
 import { Container } from '@mui/material';
 import Script from 'next/script';
 import { type ReactNode } from 'react';

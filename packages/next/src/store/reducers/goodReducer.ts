@@ -1,4 +1,4 @@
-import { weeklyInfo } from '@/app/api/talents';
+import { weeklyInfo } from '@/api/talents';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';

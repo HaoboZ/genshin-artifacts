@@ -1,7 +1,7 @@
 import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
-import PageLink from '@/components/page/link';
-import StatChipArray from '@/components/statChipArray';
+import PageLink from '@/components/page/pageLink';
+import StatChipArray from '@/components/stats/statChipArray';
 import makeArray from '@/src/helpers/makeArray';
 import useParamState from '@/src/hooks/useParamState';
 import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';

@@ -1,3 +1,3 @@
-import data from './elements.json';
+import data from '@/public/data/elements.json';
 
 export const elementsInfo: Record<string, string> = data;
