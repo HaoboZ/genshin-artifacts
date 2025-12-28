@@ -1,5 +1,5 @@
 'use client';
-import ImageRoutePath from '@/components/imageRoutePath';
+import ImageRoutePathSync from '@/components/imageRoutePath/imageRoutePathSync';
 import { type Point, type Spot } from '@/components/imageRoutePath/types';
 import VideoPlayer from '@/components/videoPlayer';
 import useEventListener from '@/src/hooks/useEventListener';
@@ -17,7 +17,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { pick } from 'remeda';
 import PathSelect from '../../../farming/[route]/pathSelect';
 import { routesInfo } from '../../routes';
@@ -37,15 +37,12 @@ export default function InternalRouteSync() {
 	const [time, setTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
+	const [volume, setVolume] = useState(1);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
-	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => {
-		setTime(videoRef.current.currentTime);
-	});
+	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
 	useEventListener(
-		// eslint-disable-next-line react-hooks/refs
 		videoRef.current,
 		'loadedmetadata',
 		() => setDuration(videoRef.current.duration),
@@ -70,6 +67,15 @@ export default function InternalRouteSync() {
 
 	const currentPointIndex = activeSpot?.pointIndex ?? null;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
+
+	// calculate spots collected at current time
+	const spots = useMemo(
+		() =>
+			route.maps[selectedMap].start +
+			(points?.filter((point) => (!point.marked ? false : time >= point.marked)).length ?? 0),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[selectedRoute, selectedMap, points, time],
+	);
 
 	return (
 		<Container>
@@ -132,7 +138,7 @@ export default function InternalRouteSync() {
 								Save Points
 							</Button>
 							<Typography variant='body2' sx={{ mt: 1 }}>
-								Current Time: {time.toFixed(2)}s
+								Current Time: {time.toFixed(2)}s; Spots: {spots}
 							</Typography>
 							<Stack direction='row' spacing={1}>
 								<Button
@@ -204,9 +210,15 @@ export default function InternalRouteSync() {
 							</Grid>
 						</Stack>
 					</Box>
-					<ImageRoutePath
+					<ImageRoutePathSync
 						src={mapName}
 						points={points}
+						time={time}
+						setTime={(time) => {
+							setTime(time);
+							if (!videoRef.current) return;
+							videoRef.current.currentTime = time;
+						}}
 						activeSpot={activeSpot}
 						setActiveSpot={setActiveSpot}
 						sx={{
@@ -271,6 +283,21 @@ export default function InternalRouteSync() {
 										if (!video) return;
 										video.playbackRate = value;
 										setPlaybackRate(value);
+									}}
+								/>
+								<Typography variant='caption' sx={{ minWidth: 80 }}>
+									Volume: {volume * 100}%
+								</Typography>
+								<Slider
+									value={volume}
+									min={0}
+									max={1}
+									step={0.05}
+									onChange={(_, value) => {
+										const video = videoRef.current;
+										if (!video) return;
+										video.volume = value;
+										setVolume(value);
 									}}
 								/>
 							</Stack>
