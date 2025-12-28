@@ -1,13 +1,14 @@
 import { type BoxProps } from '@mui/material';
-import { type Dispatch, useEffect } from 'react';
+import { type ComponentType, type Dispatch, useEffect } from 'react';
 import useControlledState from '../../hooks/useControlledState';
-import ImageRoutePath from './index';
-import { type Point, type Spot } from './types';
+import ImageRoute from './index';
+import { type Point, type RenderPathProps, type RenderPointProps, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
-export default function ImageRoutePathSync({
+export default function ImageRouteSync({
 	src,
 	points,
+	hidePoints,
 	time,
 	setTime,
 	activeSpot: _activeSpot,
@@ -16,10 +17,13 @@ export default function ImageRoutePathSync({
 }: {
 	src: string;
 	points: Point[];
+	hidePoints?: boolean;
 	time: number;
 	setTime: Dispatch<number>;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
+	RenderPoint?: ComponentType<RenderPointProps>;
+	RenderPath?: ComponentType<RenderPathProps>;
 } & BoxProps) {
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 
@@ -32,9 +36,10 @@ export default function ImageRoutePathSync({
 	}, [points, time]);
 
 	return (
-		<ImageRoutePath
+		<ImageRoute
 			src={src}
 			points={points}
+			hidePoints={hidePoints}
 			activeSpot={activeSpot}
 			setActiveSpot={(spot) => {
 				setActiveSpot(spot);

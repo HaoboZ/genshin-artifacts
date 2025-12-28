@@ -1,7 +1,7 @@
 import { weaponsInfo } from '@/api/weapons';
 import InputField from '@/components/formik/inputField';
 import SwitchField from '@/components/formik/switchField';
-import useModalControls from '@/src/providers/modal/useModalControls';
+import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type IWeapon } from '@/src/types/good';

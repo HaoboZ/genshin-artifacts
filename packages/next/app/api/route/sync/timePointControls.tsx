@@ -1,4 +1,4 @@
-import { type Point } from '@/components/imageRoutePath/types';
+import { type Point } from '@/components/imageRoute/types';
 import { Button, Grid, Stack, Typography } from '@mui/material';
 
 export default function TimePointControls({

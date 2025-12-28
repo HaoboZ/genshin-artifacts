@@ -5,7 +5,7 @@ import useEventListener from '../../hooks/useEventListener';
 import { type Point, type Spot } from './types';
 import { clampPosition, getClosestPointOnPath } from './utils';
 
-export default function ImageRoutePathContainer({
+export default function ImageRouteContainer({
 	containerSize,
 	setContainerSize,
 	scale,

@@ -1,12 +1,13 @@
 'use client';
-import { type Point } from '@/components/imageRoutePath/types';
-import useFetchState from '@/src/hooks/useFetchState';
-import useParamState from '@/src/hooks/useParamState';
+import { type Point } from '@/components/imageRoute/types';
+import useFetchState from '@/hooks/useFetchState';
+import useParamState from '@/hooks/useParamState';
 import { Container, MenuItem, Select, Stack } from '@mui/material';
 import { useState } from 'react';
 import PathSelect from '../../farming/[route]/pathSelect';
+import { RouteMarker, RouteRenderPath, RouteRenderPoint } from '../../farming/[route]/render';
 import { routesInfo } from '../routes';
-import ImageRoutePathEditor from './imageRoutePathEditor';
+import ImageRouteEditor from './imageRouteEditor';
 
 export default function InternalRoute() {
 	const [selectedRoute, setSelectedRoute] = useState(0);
@@ -40,12 +41,15 @@ export default function InternalRoute() {
 					}}
 				/>
 			</Stack>
-			<ImageRoutePathEditor
+			<ImageRouteEditor
 				src={mapName}
 				points={points}
 				setPoints={setPoints}
-				sx={{ aspectRatio: 1 }}
-			/>
+				RenderPoint={RouteRenderPoint}
+				RenderPath={RouteRenderPath}
+				sx={{ aspectRatio: 1 }}>
+				<RouteMarker />
+			</ImageRouteEditor>
 		</Container>
 	);
 }

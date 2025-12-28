@@ -1,9 +1,9 @@
 import { missingArtifactSets } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import PercentBar from '@/components/stats/percentBar';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
 import { maxPotentialPercents } from '@/src/helpers/stats';
-import DialogWrapper from '@/src/providers/modal/dialogWrapper';
-import useModalControls from '@/src/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import {

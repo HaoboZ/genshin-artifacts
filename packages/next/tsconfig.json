@@ -6,7 +6,9 @@
 		"paths": {
 			"@/*": ["./*"],
 			"@/api/*": ["./app/api/*"],
-			"@/components/*": ["./src/components/*"]
+			"@/components/*": ["./src/components/*"],
+			"@/hooks/*": ["./src/hooks/*"],
+			"@/providers/*": ["./src/providers/*"]
 		},
 		"plugins": [
 			{

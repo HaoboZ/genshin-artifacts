@@ -1,8 +1,8 @@
 import { artifactSetsInfo } from '@/api/artifacts';
-import { useModal } from '@/src/providers/modal';
-import DialogWrapper from '@/src/providers/modal/dialogWrapper';
-import dynamicModal from '@/src/providers/modal/dynamicModal';
-import useModalControls from '@/src/providers/modal/useModalControls';
+import { useModal } from '@/providers/modal';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import dynamicModal from '@/providers/modal/dynamicModal';
+import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type IArtifact } from '@/src/types/good';

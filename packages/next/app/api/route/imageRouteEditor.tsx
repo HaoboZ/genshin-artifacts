@@ -1,8 +1,13 @@
 'use client';
-import ImageRoutePath from '@/components/imageRoutePath';
-import { type Point, type Spot } from '@/components/imageRoutePath/types';
-import useEventListener from '@/src/hooks/useEventListener';
-import useHistory from '@/src/hooks/useHistory';
+import ImageRoute from '@/components/imageRoute';
+import {
+	type Point,
+	type RenderPathProps,
+	type RenderPointProps,
+	type Spot,
+} from '@/components/imageRoute/types';
+import useEventListener from '@/hooks/useEventListener';
+import useHistory from '@/hooks/useHistory';
 import {
 	type BoxProps,
 	Button,
@@ -13,21 +18,23 @@ import {
 	ToggleButtonGroup,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { type Dispatch, Fragment, type SetStateAction, useState } from 'react';
+import { type ComponentType, type Dispatch, Fragment, type SetStateAction, useState } from 'react';
 import { savePointsServer } from './actions';
 
-export default function ImageRoutePathEditor({
+export default function ImageRouteEditor({
 	src,
-	imageSrc = src,
+	route,
 	points,
 	setPoints,
 	sx,
 	...props
 }: {
 	src: string;
-	imageSrc?: string;
+	route?: string;
 	points: Point[];
 	setPoints: Dispatch<SetStateAction<Point[]>>;
+	RenderPoint?: ComponentType<RenderPointProps>;
+	RenderPath?: ComponentType<RenderPathProps>;
 } & BoxProps) {
 	const { enqueueSnackbar } = useSnackbar();
 
@@ -58,7 +65,7 @@ export default function ImageRoutePathEditor({
 				<Button
 					variant='contained'
 					onClick={async () => {
-						await savePointsServer(points, src);
+						await savePointsServer(points, route);
 						enqueueSnackbar('Saved', { variant: 'info' });
 					}}>
 					Save Points
@@ -84,8 +91,9 @@ export default function ImageRoutePathEditor({
 					Clear Active
 				</Button>
 			</Stack>
-			<ImageRoutePath
-				src={imageSrc}
+			<ImageRoute
+				src={src}
+				route={route}
 				points={points}
 				addPoint={
 					editMode === 'add' || (applying && activeSpot?.pointIndex !== undefined)

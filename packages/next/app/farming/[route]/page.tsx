@@ -1,16 +1,17 @@
 'use client';
 import { routesInfo } from '@/api/routes';
-import ImageRoutePathSync from '@/components/imageRoutePath/imageRoutePathSync';
-import { type Point } from '@/components/imageRoutePath/types';
+import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
+import { type Point } from '@/components/imageRoute/types';
 import PageTitle from '@/components/page/pageTitle';
 import VideoPlayer from '@/components/videoPlayer';
-import useEventListener from '@/src/hooks/useEventListener';
-import useParamState from '@/src/hooks/useParamState';
+import useEventListener from '@/hooks/useEventListener';
+import useParamState from '@/hooks/useParamState';
 import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { use, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
 import PathSelect from './pathSelect';
+import { RouteMarker, RouteRenderPath, RouteRenderPoint } from './render';
 
 export default function FarmingRoute({ params }: { params: Promise<{ route: string }> }) {
 	const { route } = use(params);
@@ -79,15 +80,18 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 							/>
 						</Stack>
 					</Box>
-					<ImageRoutePathSync
+					<ImageRouteSync
 						src={mapName}
 						points={data}
+						hidePoints
 						time={time}
 						setTime={(time) => {
 							setTime(time);
 							if (!videoRef.current) return;
 							videoRef.current.currentTime = time;
 						}}
+						RenderPoint={RouteRenderPoint}
+						RenderPath={RouteRenderPath}
 						sx={{
 							gridColumn: 1,
 							gridRow: 1,
@@ -95,8 +99,9 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 							alignSelf: 'start',
 							width: '50%',
 							aspectRatio: 1,
-						}}
-					/>
+						}}>
+						<RouteMarker />
+					</ImageRouteSync>
 					<VideoPlayer
 						ref={videoRef}
 						src={mapName}

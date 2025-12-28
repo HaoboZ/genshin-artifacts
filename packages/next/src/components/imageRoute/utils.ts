@@ -24,7 +24,7 @@ export function getClosestPointOnPath(
 	mouseY: number,
 	snapThreshold: number,
 ) {
-	if (points.length < 2) return null;
+	if (!points || points.length < 2) return null;
 
 	let closestPoint = null;
 	let minDistance = Infinity;
@@ -72,12 +72,8 @@ export function getClosestPointOnPath(
 		} else if (points[i].marked && distToEnd < snapThreshold) {
 			px = x2;
 			py = y2;
-			snappedT = 1;
-			// If snapping to end point and there's a next segment, prefer next segment at 0%
-			if (i < points.length) {
-				preferredSegmentIndex = i;
-				snappedT = 0;
-			}
+			preferredSegmentIndex = i;
+			snappedT = 0;
 		}
 
 		// distance from mouse to closest point
@@ -289,7 +285,7 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect) {
 	};
 
 	// calculate scale to fit bounding box with some padding
-	const containerPadding = 0.8;
+	const containerPadding = 0.9;
 	const scaleX = (containerSize.width * containerPadding) / boundingBox.width;
 	const scaleY = (containerSize.height * containerPadding) / boundingBox.height;
 

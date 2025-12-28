@@ -1,10 +1,10 @@
 'use client';
-import ImageRoutePathSync from '@/components/imageRoutePath/imageRoutePathSync';
-import { type Point, type Spot } from '@/components/imageRoutePath/types';
+import ImageRoutePathSync from '@/components/imageRoute/imageRouteSync';
+import { type Point, type Spot } from '@/components/imageRoute/types';
 import VideoPlayer from '@/components/videoPlayer';
-import useEventListener from '@/src/hooks/useEventListener';
-import useFetchState from '@/src/hooks/useFetchState';
-import useParamState from '@/src/hooks/useParamState';
+import useEventListener from '@/hooks/useEventListener';
+import useFetchState from '@/hooks/useFetchState';
+import useParamState from '@/hooks/useParamState';
 import {
 	Box,
 	Button,
@@ -20,6 +20,7 @@ import { useSnackbar } from 'notistack';
 import { useMemo, useRef, useState } from 'react';
 import { pick } from 'remeda';
 import PathSelect from '../../../farming/[route]/pathSelect';
+import { RouteMarker, RouteRenderPath, RouteRenderPoint } from '../../../farming/[route]/render';
 import { routesInfo } from '../../routes';
 import { savePointsServer } from '../actions';
 import TimePointControls from './timePointControls';
@@ -221,6 +222,8 @@ export default function InternalRouteSync() {
 						}}
 						activeSpot={activeSpot}
 						setActiveSpot={setActiveSpot}
+						RenderPoint={RouteRenderPoint}
+						RenderPath={RouteRenderPath}
 						sx={{
 							gridColumn: 1,
 							gridRow: 1,
@@ -228,8 +231,9 @@ export default function InternalRouteSync() {
 							alignSelf: 'start',
 							width: '50%',
 							aspectRatio: 1,
-						}}
-					/>
+						}}>
+						<RouteMarker />
+					</ImageRoutePathSync>
 					<VideoPlayer
 						ref={videoRef}
 						src={mapName}

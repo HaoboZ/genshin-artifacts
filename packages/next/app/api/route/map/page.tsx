@@ -1,10 +1,11 @@
 'use client';
-import { type Point } from '@/components/imageRoutePath/types';
-import useFetchState from '@/src/hooks/useFetchState';
+import { type Point } from '@/components/imageRoute/types';
+import useFetchState from '@/hooks/useFetchState';
 import { Container, MenuItem, Select, Stack } from '@mui/material';
 import { useState } from 'react';
+import { MapRenderPath, MapRenderPoint } from '../../../farming/render';
 import { routesInfo } from '../../routes';
-import ImageRoutePathEditor from '../imageRoutePathEditor';
+import ImageRouteEditor from '../imageRouteEditor';
 
 export default function InternalRouteMap() {
 	const [selectedRoute, setSelectedRoute] = useState(0);
@@ -27,12 +28,14 @@ export default function InternalRouteMap() {
 					))}
 				</Select>
 			</Stack>
-			<ImageRoutePathEditor
-				src={routeName}
-				imageSrc='teyvat'
+			<ImageRouteEditor
+				src='teyvat'
+				route={routeName}
 				points={points}
 				setPoints={setPoints}
 				sx={{ aspectRatio: '16 / 9' }}
+				RenderPoint={MapRenderPoint}
+				RenderPath={MapRenderPath}
 			/>
 		</Container>
 	);

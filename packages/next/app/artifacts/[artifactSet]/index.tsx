@@ -1,7 +1,7 @@
 'use client';
 import PageSection from '@/components/page/pageSection';
-import { useModal } from '@/src/providers/modal';
-import dynamicModal from '@/src/providers/modal/dynamicModal';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
 import { type ArtifactSetKey } from '@/src/types/good';
 import { Grid } from '@mui/material';
 import { Fragment } from 'react';

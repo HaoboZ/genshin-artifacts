@@ -1,7 +1,7 @@
 import { charactersInfo } from '@/api/characters';
-import { useModal } from '@/src/providers/modal';
-import dynamicModal from '@/src/providers/modal/dynamicModal';
-import useModalControls from '@/src/providers/modal/useModalControls';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type IArtifact } from '@/src/types/good';

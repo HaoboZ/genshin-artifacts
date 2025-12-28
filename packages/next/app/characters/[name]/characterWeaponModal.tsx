@@ -1,7 +1,7 @@
 import { charactersInfo } from '@/api/characters';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
 import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import DialogWrapper from '@/src/providers/modal/dialogWrapper';
-import useModalControls from '@/src/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { type Build } from '@/src/types/data';

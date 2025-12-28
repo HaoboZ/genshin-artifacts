@@ -1,7 +1,7 @@
 'use client';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
-import useParamState from '@/src/hooks/useParamState';
+import useParamState from '@/hooks/useParamState';
 import { Checkbox, Container, FormControlLabel, Stack, Switch, TextField } from '@mui/material';
 import { useState } from 'react';
 import WeaponTypeFilter from '../weapons/weaponTypeFilter';

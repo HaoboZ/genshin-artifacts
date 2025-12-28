@@ -1,6 +1,6 @@
 import { prop } from 'remeda';
 import sharp from 'sharp';
-import type { Shot } from './types';
+import { type Shot } from './types';
 
 export default async function stitchShots(
 	shots: Shot[],

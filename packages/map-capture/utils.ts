@@ -1,4 +1,4 @@
-import type { Page } from 'playwright';
+import { type Page } from 'playwright';
 
 export function getCenterFromUrl(url: string) {
 	const m = url.match(/center=([-0-9.]+),([-0-9.]+)/);

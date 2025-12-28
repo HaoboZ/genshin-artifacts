@@ -32,7 +32,7 @@ export default function useHistory<S>(state: S, setState: Dispatch<SetStateActio
 				setState(history[newIndex]);
 				return newIndex;
 			});
-		} else if (e.key === 'y' || (e.key === 'z' && e.shiftKey)) {
+		} else if (e.key === 'y' || e.key === 'Z') {
 			e.preventDefault();
 			setIndex((index) => {
 				if (index >= history.length - 1) return index;

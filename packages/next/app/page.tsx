@@ -2,7 +2,7 @@
 import ClientOnly from '@/components/clientOnly';
 import PageTitle from '@/components/page/pageTitle';
 import RespawnNotification from '@/components/respawnNotification';
-import useEventListener from '@/src/hooks/useEventListener';
+import useEventListener from '@/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { goodActions } from '@/src/store/reducers/goodReducer';
 import { mainActions } from '@/src/store/reducers/mainReducer';

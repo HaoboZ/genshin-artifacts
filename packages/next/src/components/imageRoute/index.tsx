@@ -1,28 +1,37 @@
 import { Box, type BoxProps } from '@mui/material';
 import Image from 'next/image';
-import { type Dispatch, useEffect, useState } from 'react';
+import { type ComponentType, type Dispatch, useEffect, useState } from 'react';
 import useControlledState from '../../hooks/useControlledState';
-import ImageRoutePathContainer from './imageRoutePathContainer';
-import ImageRoutePathPaths from './imageRoutePathPaths';
-import ImageRoutePathPoints from './imageRoutePathPoints';
-import { type Point, type Spot } from './types';
+import ImageRouteContainer from './imageRouteContainer';
+import ImageRoutePaths from './imageRoutePaths';
+import ImageRoutePoints from './imageRoutePoints';
+import { type Point, type RenderPathProps, type RenderPointProps, type Spot } from './types';
 import { calculateOptimalZoom } from './utils';
 
-export default function ImageRoutePath({
+export default function ImageRoute({
 	src,
+	route = src,
 	points,
 	addPoint,
+	hidePoints,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
+	RenderPoint,
+	RenderPath,
 	disableAnimations,
 	sx,
+	children,
 	...props
 }: {
 	src: string;
+	route?: string;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
+	hidePoints?: boolean;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
+	RenderPoint?: ComponentType<RenderPointProps>;
+	RenderPath?: ComponentType<RenderPathProps>;
 	disableAnimations?: boolean;
 } & BoxProps) {
 	const [containerSize, setContainerSize] = useState<DOMRect>(null);
@@ -41,7 +50,7 @@ export default function ImageRoutePath({
 		setIsAnimating(false);
 		setIsLoading(true);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [src]);
+	}, [route]);
 
 	useEffect(() => {
 		if (!isLoading || !points) return;
@@ -59,7 +68,7 @@ export default function ImageRoutePath({
 	}, [isLoading, points]);
 
 	return (
-		<ImageRoutePathContainer
+		<ImageRouteContainer
 			containerSize={containerSize}
 			setContainerSize={setContainerSize}
 			scale={scale}
@@ -93,18 +102,24 @@ export default function ImageRoutePath({
 				{!isLoading && <Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />}
 				{containerSize && (
 					<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
-						<ImageRoutePathPaths containerSize={containerSize} points={points} />
-						<ImageRoutePathPoints
+						{children}
+						<ImageRoutePaths
+							containerSize={containerSize}
+							points={points}
+							RenderPath={RenderPath}
+						/>
+						<ImageRoutePoints
 							containerSize={containerSize}
 							scale={scale}
 							points={points}
-							showPoints={Boolean(_setActiveSpot)}
+							hidePoints={hidePoints}
 							activeSpot={activeSpot}
 							hoverSpot={hoverSpot}
+							RenderPoint={RenderPoint}
 						/>
 					</svg>
 				)}
 			</Box>
-		</ImageRoutePathContainer>
+		</ImageRouteContainer>
 	);
 }
