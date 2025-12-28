@@ -1,4 +1,4 @@
-import { type DCharacter } from '@/src/types/data';
+import { type DCharacter } from '@/types/data';
 import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { type ReactNode } from 'react';

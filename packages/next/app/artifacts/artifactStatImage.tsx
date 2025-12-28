@@ -2,7 +2,7 @@ import { charactersInfo } from '@/api/characters';
 import { statName } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import SubStatBar from '@/components/stats/subStatBar';
-import { type IArtifact, type SlotKey } from '@/src/types/good';
+import { type IArtifact, type SlotKey } from '@/types/good';
 import { Lock as LockIcon, Star as StarIcon } from '@mui/icons-material';
 import { Box, Card, CardContent, type CardProps, Grid } from '@mui/material';
 import CharacterImage from '../characters/characterImage';

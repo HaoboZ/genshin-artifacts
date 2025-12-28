@@ -9,7 +9,7 @@ import isMarked from '@/components/scanner/isMarked';
 import matchPixels from '@/components/scanner/matchPixels';
 import preprocessImage from '@/components/scanner/preprocessImage';
 import resizeScale from '@/components/scanner/resizeScale';
-import { type IArtifact } from '@/src/types/good';
+import { type IArtifact } from '@/types/good';
 import { Box, Button, Container, Stack } from '@mui/material';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';

@@ -1,4 +1,4 @@
-import { type SlotKey, type StatKey } from '@/src/types/good';
+import { type SlotKey, type StatKey } from '@/types/good';
 
 export const artifactSlotStats: Record<SlotKey, { name: string; stats: StatKey[] }> = {
 	flower: { name: 'Flower', stats: ['hp'] },

@@ -11,7 +11,7 @@ export function MapRenderPoint({ point, containerSize, type, percentage }: Rende
 			cy={point.y * containerSize.height}
 			r={radius}
 			fillOpacity={0}
-			stroke={{ hover: 'black', active: 'white' }[type] ?? point.data ?? 'lime'}
+			stroke={type === 'hover' ? 'white' : (point.data ?? 'lime')}
 		/>
 	);
 }

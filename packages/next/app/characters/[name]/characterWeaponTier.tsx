@@ -1,5 +1,5 @@
-import makeArray from '@/src/helpers/makeArray';
-import { type Build } from '@/src/types/data';
+import makeArray from '@/helpers/makeArray';
+import { type Build } from '@/types/data';
 import { AvatarGroup, Box, Stack } from '@mui/material';
 import WeaponImage from '../../weapons/weaponImage';
 

@@ -1,4 +1,4 @@
-import { Mat, Rect } from 'mirada';
+import { type Mat, type Rect } from 'mirada';
 
 export default function cropBox([image, processed]: Mat[], canvas: HTMLCanvasElement) {
 	const contours = new cv.MatVector();

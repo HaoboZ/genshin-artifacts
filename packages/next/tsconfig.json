@@ -4,11 +4,10 @@
 		"jsx": "react-jsx",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"paths": {
-			"@/*": ["./*"],
+			"@/app/*": ["./app/*"],
+			"@/public/*": ["./public/*"],
 			"@/api/*": ["./app/api/*"],
-			"@/components/*": ["./src/components/*"],
-			"@/hooks/*": ["./src/hooks/*"],
-			"@/providers/*": ["./src/providers/*"]
+			"@/*": ["./src/*"]
 		},
 		"plugins": [
 			{

@@ -5,14 +5,14 @@ import { statName } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import PercentBar from '@/components/stats/percentBar';
 import SubStatBar from '@/components/stats/subStatBar';
+import arrDeepIndex from '@/helpers/arrDeepIndex';
+import makeArray from '@/helpers/makeArray';
+import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
-import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import makeArray from '@/src/helpers/makeArray';
-import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
-import { useAppDispatch } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type IArtifact } from '@/src/types/good';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type IArtifact } from '@/types/good';
 import {
 	Box,
 	DialogContent,

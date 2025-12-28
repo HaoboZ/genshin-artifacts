@@ -3,8 +3,8 @@ import { useCharacters } from '@/api/characters';
 import { weeklyInfo, weeklyRequirement } from '@/api/talents';
 import NumberSpinner from '@/components/numberSpinner';
 import PageSection from '@/components/page/pageSection';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
 import {
 	Box,
 	Table,

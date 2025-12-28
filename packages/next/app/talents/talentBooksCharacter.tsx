@@ -1,9 +1,9 @@
 import { weeklyCount, weeklyInfo } from '@/api/talents';
 import ContextMenu from '@/components/contextMenu';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type DCharacter } from '@/src/types/data';
-import { type ICharacter } from '@/src/types/good';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type DCharacter } from '@/types/data';
+import { type ICharacter } from '@/types/good';
 import { Box, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';

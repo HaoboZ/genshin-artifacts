@@ -108,11 +108,3 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 export function useModal() {
 	return useContext(ModalContext);
 }
-
-export function withModal<P>(Component: ComponentType<P & { modal: UseModal }>) {
-	return (props: P) => (
-		<ModalContext.Consumer>
-			{(modal) => <Component modal={modal} {...props} />}
-		</ModalContext.Consumer>
-	);
-}

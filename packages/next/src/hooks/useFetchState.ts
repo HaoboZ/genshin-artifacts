@@ -13,7 +13,6 @@ export default function useFetchState<S>(
 		(async () => {
 			try {
 				const { data } = await axios.get(url);
-				console.log(url, typeof data);
 				setState(data);
 			} catch {
 				setState(defaultState);

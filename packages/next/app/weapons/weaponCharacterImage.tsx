@@ -1,8 +1,8 @@
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
-import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import { type IWeapon } from '@/src/types/good';
+import arrDeepIndex from '@/helpers/arrDeepIndex';
+import { type IWeapon } from '@/types/good';
 import { type AvatarProps, Box } from '@mui/material';
 import { useMemo } from 'react';
 import CharacterImage from '../characters/characterImage';

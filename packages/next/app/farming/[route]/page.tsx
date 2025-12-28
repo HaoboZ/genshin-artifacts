@@ -4,10 +4,10 @@ import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
 import { type Point } from '@/components/imageRoute/types';
 import PageTitle from '@/components/page/pageTitle';
 import VideoPlayer from '@/components/videoPlayer';
+import fetcher from '@/helpers/fetcher';
 import useEventListener from '@/hooks/useEventListener';
 import useParamState from '@/hooks/useParamState';
 import { Box, Container, Paper, Stack, Typography } from '@mui/material';
-import axios from 'axios';
 import { use, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
 import PathSelect from './pathSelect';
@@ -23,10 +23,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const mapName = selectedRoute.maps[selectedMap].src;
 	const [time, setTime] = useState(0);
 
-	const { data } = useSWR<Point[]>(`/points/${mapName}.json`, async (url: string) => {
-		const { data } = await axios.get(url);
-		return data;
-	});
+	const { data } = useSWR<Point[]>(`/points/${mapName}.json`, fetcher);
 
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));

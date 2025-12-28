@@ -10,13 +10,13 @@ import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PercentBar from '@/components/stats/percentBar';
+import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/helpers/stats';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
-import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/src/helpers/stats';
-import { useAppDispatch } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type ArtifactSetKey, type SlotKey } from '@/types/good';
 import {
 	ArrowDownward as ArrowDownwardIcon,
 	ArrowUpward as ArrowUpwardIcon,

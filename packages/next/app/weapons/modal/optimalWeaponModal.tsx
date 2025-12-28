@@ -1,13 +1,13 @@
 import { builds } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
+import arrDeepIndex from '@/helpers/arrDeepIndex';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
-import arrDeepIndex from '@/src/helpers/arrDeepIndex';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type Build } from '@/src/types/data';
-import { type IWeapon } from '@/src/types/good';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type Build } from '@/types/data';
+import { type IWeapon } from '@/types/good';
 import {
 	Button,
 	DialogActions,

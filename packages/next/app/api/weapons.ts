@@ -1,7 +1,7 @@
 import data from '@/public/data/weapons.json';
-import { useAppSelector } from '@/src/store/hooks';
-import { type DWeapon } from '@/src/types/data';
-import { type WeaponKey } from '@/src/types/good';
+import { useAppSelector } from '@/store/hooks';
+import { type DWeapon } from '@/types/data';
+import { type WeaponKey } from '@/types/good';
 import { useMemo } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
 

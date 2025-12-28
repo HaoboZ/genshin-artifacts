@@ -1,6 +1,6 @@
 // https://frzyc.github.io/genshin-optimizer/#/doc
 
-import { MaterialKey } from './materials';
+import { type MaterialKey } from './materials';
 
 export interface IGOOD {
 	format: 'GOOD'; // A way for people to recognize this format.

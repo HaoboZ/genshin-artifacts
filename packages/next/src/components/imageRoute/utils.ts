@@ -258,7 +258,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	return startPointEnd + segmentDuration * distanceRatio;
 }
 
-export function calculateOptimalZoom(points: Point[], containerSize: DOMRect) {
+export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom: number = 0.8) {
 	if (!containerSize || points.length === 0) {
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
@@ -285,9 +285,8 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect) {
 	};
 
 	// calculate scale to fit bounding box with some padding
-	const containerPadding = 0.9;
-	const scaleX = (containerSize.width * containerPadding) / boundingBox.width;
-	const scaleY = (containerSize.height * containerPadding) / boundingBox.height;
+	const scaleX = (containerSize.width * zoom) / boundingBox.width;
+	const scaleY = (containerSize.height * zoom) / boundingBox.height;
 
 	const scale = Math.min(scaleX, scaleY, 3);
 

@@ -1,9 +1,9 @@
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
-import { store } from '@/src/store';
-import { useAppDispatch } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type IArtifact } from '@/src/types/good';
+import { store } from '@/store';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type IArtifact } from '@/types/good';
 import { Button, DialogTitle } from '@mui/material';
 import { Formik } from 'formik';
 import { useMemo } from 'react';

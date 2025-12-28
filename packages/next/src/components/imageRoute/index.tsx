@@ -18,6 +18,7 @@ export default function ImageRoute({
 	setActiveSpot: _setActiveSpot,
 	RenderPoint,
 	RenderPath,
+	zoom,
 	disableAnimations,
 	sx,
 	children,
@@ -32,11 +33,13 @@ export default function ImageRoute({
 	setActiveSpot?: Dispatch<Spot>;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
+	zoom?: number;
 	disableAnimations?: boolean;
 } & BoxProps) {
 	const [containerSize, setContainerSize] = useState<DOMRect>(null);
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
+
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAnimating, setIsAnimating] = useState(false);
 
@@ -56,10 +59,10 @@ export default function ImageRoute({
 		if (!isLoading || !points) return;
 
 		const animId = requestAnimationFrame(() => {
-			const { scale, offset } = calculateOptimalZoom(points, containerSize);
+			const { scale, offset } = calculateOptimalZoom(points, containerSize, zoom);
 			setScale(scale);
 			setMapOffset(offset);
-			setIsAnimating(true);
+			if (!disableAnimations) setIsAnimating(true);
 			setIsLoading(false);
 		});
 
@@ -96,7 +99,7 @@ export default function ImageRoute({
 					transformOrigin: '0 0',
 					width: '100%',
 					height: '100%',
-					transition: !disableAnimations && isAnimating ? 'transform 1s ease' : 'none',
+					transition: isAnimating ? 'transform 1s ease' : 'none',
 					transitionDelay: '1s',
 				}}>
 				{!isLoading && <Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />}

@@ -1,6 +1,6 @@
 import talent from '@/public/data/talents.json';
 import weekly from '@/public/data/weekly.json';
-import { type MaterialKey } from '@/src/types/materials';
+import { type MaterialKey } from '@/types/materials';
 
 export const talentsInfo: { name: string; image: string; location: string; day: number }[] = talent;
 export const weeklyInfo: {

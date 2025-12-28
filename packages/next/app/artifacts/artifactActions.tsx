@@ -2,9 +2,9 @@ import { charactersInfo } from '@/api/characters';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type IArtifact } from '@/src/types/good';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type IArtifact } from '@/types/good';
 import { Button, ButtonGroup } from '@mui/material';
 
 const EditArtifactModal = dynamicModal(() => import('./artifactForm/editArtifactModal'));

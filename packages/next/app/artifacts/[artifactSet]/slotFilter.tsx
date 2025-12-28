@@ -1,5 +1,5 @@
 import { artifactSlotImages, artifactSlotOrder } from '@/api/artifacts';
-import { type SlotKey } from '@/src/types/good';
+import { type SlotKey } from '@/types/good';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
 

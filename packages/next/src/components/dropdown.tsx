@@ -1,5 +1,5 @@
-import { Button, ButtonProps, Menu } from '@mui/material';
-import { Fragment, ReactNode, useState } from 'react';
+import { Button, type ButtonProps, Menu } from '@mui/material';
+import { Fragment, type ReactNode, useState } from 'react';
 
 export default function Dropdown({
 	ref,

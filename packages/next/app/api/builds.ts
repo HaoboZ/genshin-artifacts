@@ -1,8 +1,8 @@
-import { type Build } from '@/src/types/data';
-import { type CharacterKey } from '@/src/types/good';
+import { type Build } from '@/types/data';
+import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 12/23/25
+// 12/27/25
 export const builds: Record<CharacterKey, Build> = {
 	Traveler: {
 		key: 'Traveler',
@@ -2052,19 +2052,12 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			['PeakPatrolSong', 'UrakuMisugiri'],
-			['PrimordialJadeCutter', 'CinnabarSpindle'],
-			[
-				'WolfFang',
-				'LightOfFoliarIncision',
-				'MistsplitterReforged',
-				'HaranGeppakuFutsu',
-				'HarbingerOfDawn',
-			],
+			['HarbingerOfDawn', 'FluteOfEzpitzal', 'PrimordialJadeCutter', 'CinnabarSpindle'],
 		],
 		group: 0,
 		artifact: [['HuskOfOpulentDreams', 'GoldenTroupe'], 'ArchaicPetra', 'TenacityOfTheMillelith'],
-		mainStat: { sands: 'def_', goblet: ['geo_dmg_', 'def_'], circlet: ['critRD_', 'def_'] },
-		subStat: ['critRD_', 'def_', 'atk_', 'enerRech_'],
+		mainStat: { sands: 'def_', goblet: ['geo_dmg_', 'def_'], circlet: 'critRD_' },
+		subStat: ['critRD_', 'def_', 'enerRech_', 'atk_'],
 	},
 	AratakiItto: {
 		key: 'AratakiItto',

@@ -1,13 +1,13 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
+import makeArray from '@/helpers/makeArray';
+import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
-import makeArray from '@/src/helpers/makeArray';
-import { statArrMatch, weightedPercent } from '@/src/helpers/stats';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { goodActions } from '@/src/store/reducers/goodReducer';
-import { type Build } from '@/src/types/data';
-import { type IArtifact, type ICharacter } from '@/src/types/good';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type Build } from '@/types/data';
+import { type IArtifact, type ICharacter } from '@/types/good';
 import {
 	Button,
 	DialogActions,

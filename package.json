@@ -5,11 +5,12 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "1.3.37",
+	"version": "2.0.0",
 	"private": true,
 	"scripts": {
 		"prepare": "husky",
-		"next": "cd packages/next && bun run dev",
+		"next-dev": "cd packages/next && bun run dev",
+		"next-build": "cd packages/next && bun run build",
 		"generate-data": "cd packages/generate-data && bun run start",
 		"map-capture": "cd packages/map-capture && bun run start"
 	},

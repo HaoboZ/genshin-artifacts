@@ -1,8 +1,8 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import PageSection from '@/components/page/pageSection';
 import StatChipArray from '@/components/stats/statChipArray';
-import makeArray from '@/src/helpers/makeArray';
-import { type Build } from '@/src/types/data';
+import makeArray from '@/helpers/makeArray';
+import { type Build } from '@/types/data';
 import { AvatarGroup, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import ArtifactSetImage from '../../artifacts/artifactSetImage';

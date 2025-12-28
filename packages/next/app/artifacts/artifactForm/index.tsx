@@ -5,7 +5,7 @@ import InputField from '@/components/formik/inputField';
 import SelectField from '@/components/formik/selectField';
 import SwitchField from '@/components/formik/switchField';
 import Scanner from '@/components/scanner';
-import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/src/types/good';
+import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/types/good';
 import {
 	Button,
 	Checkbox,

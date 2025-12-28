@@ -3,19 +3,20 @@ import { routesInfo } from '@/api/routes';
 import ImageRoute from '@/components/imageRoute';
 import type { Point } from '@/components/imageRoute/types';
 import PageTitle from '@/components/page/pageTitle';
+import fetcher from '@/helpers/fetcher';
+import useParamState from '@/hooks/useParamState';
 import { Button, Container, MenuItem, Select } from '@mui/material';
-import axios from 'axios';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { MapRenderPath, MapRenderPoint } from './render';
 
 export default function Farming() {
-	const [selectedRoute, setSelectedRoute] = useState(0);
-	const { data } = useSWR<Point[]>(`/points/route_${selectedRoute}.json`, async (url: string) => {
-		const { data } = await axios.get(url);
-		return data;
-	});
+	const router = useRouter();
+
+	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+
+	const { data } = useSWR<Point[]>(`/points/route_${selectedRoute}.json`, fetcher);
 
 	return (
 		<Container>
@@ -42,9 +43,17 @@ export default function Farming() {
 				src='teyvat'
 				route={selectedRoute.toString()}
 				points={data}
-				sx={{ aspectRatio: '16 / 9' }}
+				setActiveSpot={(activeSpot) => {
+					if (!activeSpot) return;
+					router.push(
+						`/farming/${selectedRoute}?map=${data[activeSpot.pointIndex].marked - 1}`,
+					);
+				}}
 				RenderPoint={MapRenderPoint}
 				RenderPath={MapRenderPath}
+				zoom={0.9}
+				disableAnimations
+				sx={{ aspectRatio: '16 / 9' }}
 			/>
 		</Container>
 	);

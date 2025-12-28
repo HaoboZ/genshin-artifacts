@@ -1,7 +1,7 @@
 import data from '@/public/data/artifacts.json';
-import { useAppSelector } from '@/src/store/hooks';
-import { type Build, type DArtifact } from '@/src/types/data';
-import { type ArtifactSetKey, type SlotKey } from '@/src/types/good';
+import { useAppSelector } from '@/store/hooks';
+import { type Build, type DArtifact } from '@/types/data';
+import { type ArtifactSetKey, type SlotKey } from '@/types/good';
 import { useMemo } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
 

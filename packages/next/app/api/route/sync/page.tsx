@@ -34,12 +34,14 @@ export default function InternalRouteSync() {
 	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = route.maps[selectedMap].src;
+
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 	const [time, setTime] = useState(0);
+	const [activeSpot, setActiveSpot] = useState<Spot>(null);
+
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
 	const [volume, setVolume] = useState(1);
-	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
