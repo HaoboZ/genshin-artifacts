@@ -42,3 +42,6 @@ next-env.d.ts
 .vscode
 .idea
 .fleet
+
+packages/next/public/maps
+packages/next/public/videos

@@ -1,7 +1,6 @@
 'use client';
-import ImageRoutePathSync from '@/components/imageRoute/imageRouteSync';
+import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
 import { type Point, type Spot } from '@/components/imageRoute/types';
-import VideoPlayer from '@/components/videoPlayer';
 import useEventListener from '@/hooks/useEventListener';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
@@ -160,7 +159,7 @@ export default function InternalRouteSync() {
 								<Button
 									variant='contained'
 									size='small'
-									disabled={nextPointIndex + 1 >= points?.length}
+									disabled={nextPointIndex >= points?.length}
 									onClick={() => {
 										setActiveSpot({
 											point: points[currentPointIndex + 1],
@@ -213,8 +212,9 @@ export default function InternalRouteSync() {
 							</Grid>
 						</Stack>
 					</Box>
-					<ImageRoutePathSync
+					<ImageRouteSync
 						src={mapName}
+						videoRef={videoRef}
 						points={points}
 						time={time}
 						setTime={(time) => {
@@ -235,19 +235,7 @@ export default function InternalRouteSync() {
 							aspectRatio: 1,
 						}}>
 						<RouteMarker />
-					</ImageRoutePathSync>
-					<VideoPlayer
-						ref={videoRef}
-						src={mapName}
-						sx={{
-							gridColumn: 1,
-							gridRow: 1,
-							justifySelf: 'start',
-							alignSelf: 'end',
-							width: '55%',
-							position: 'relative',
-						}}
-					/>
+					</ImageRouteSync>
 					<Box
 						sx={{
 							gridColumn: 1,

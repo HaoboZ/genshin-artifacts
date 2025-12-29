@@ -2,12 +2,11 @@
 import { routesInfo } from '@/api/routes';
 import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
 import { type Point } from '@/components/imageRoute/types';
-import VideoPlayer from '@/components/videoPlayer';
 import fetcher from '@/helpers/fetcher';
 import useEventListener from '@/hooks/useEventListener';
 import useParamState from '@/hooks/useParamState';
 import { Box, Paper, Stack, Typography } from '@mui/material';
-import { use, useEffect, useMemo, useRef, useState } from 'react';
+import { use, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
 import PathSelect from './pathSelect';
 import { RouteMarker, RouteRenderPath, RouteRenderPoint } from './render';
@@ -21,7 +20,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 	const [time, setTime] = useState(0);
-	const [hideVideo, setHideVideo] = useState(true);
 
 	const { data } = useSWR<Point[]>(`/points/${mapName}.json`, fetcher);
 
@@ -35,14 +33,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 			(data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
 		[selectedRoute, selectedMap, data, time],
 	);
-
-	useEffect(() => {
-		setHideVideo(true);
-		const timeout = setTimeout(() => {
-			setHideVideo(false);
-		}, 2000);
-		return () => clearTimeout(timeout);
-	}, [mapName]);
 
 	return (
 		<Box
@@ -85,6 +75,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				</Box>
 				<ImageRouteSync
 					src={mapName}
+					videoRef={videoRef}
 					points={data}
 					hidePoints
 					time={time}
@@ -93,6 +84,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 						if (!videoRef.current) return;
 						videoRef.current.currentTime = time;
 					}}
+					autoplay
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					sx={{
@@ -105,18 +97,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					}}>
 					<RouteMarker />
 				</ImageRouteSync>
-				<VideoPlayer
-					ref={videoRef}
-					src={mapName}
-					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'start',
-						alignSelf: 'end',
-						width: '55%',
-						display: hideVideo ? 'none' : undefined,
-					}}
-				/>
 			</Box>
 		</Box>
 	);

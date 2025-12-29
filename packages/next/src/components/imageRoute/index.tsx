@@ -14,6 +14,7 @@ export default function ImageRoute({
 	points,
 	addPoint,
 	hidePoints,
+	onLoaded,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
 	RenderPoint,
@@ -29,6 +30,7 @@ export default function ImageRoute({
 	points: Point[];
 	addPoint?: Dispatch<Point>;
 	hidePoints?: boolean;
+	onLoaded?: () => void;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
 	RenderPoint?: ComponentType<RenderPointProps>;
@@ -40,23 +42,26 @@ export default function ImageRoute({
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
 
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [isAnimating, setIsAnimating] = useState(false);
 
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
 
 	useEffect(() => {
+		setIsLoading(true);
+	}, [src]);
+
+	useEffect(() => {
 		setScale(1);
 		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
 		setIsAnimating(false);
-		setIsLoading(true);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [route]);
 
 	useEffect(() => {
-		if (!isLoading || !points) return;
+		if (isLoading || !points) return;
 
 		const animId = requestAnimationFrame(() => {
 			const { scale, offset } = calculateOptimalZoom(points, containerSize, zoom);
@@ -64,6 +69,7 @@ export default function ImageRoute({
 			setMapOffset(offset);
 			if (!disableAnimations) setIsAnimating(true);
 			setIsLoading(false);
+			onLoaded?.();
 		});
 
 		return () => cancelAnimationFrame(animId);
@@ -95,6 +101,7 @@ export default function ImageRoute({
 			{...props}>
 			<Box
 				sx={{
+					position: 'relative',
 					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,
 					transformOrigin: '0 0',
 					width: '100%',
@@ -102,11 +109,21 @@ export default function ImageRoute({
 					transition: isAnimating ? 'transform 1s ease' : 'none',
 					transitionDelay: '1s',
 				}}>
-				{(disableAnimations || !isLoading) && (
-					<Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />
-				)}
+				<Image
+					fill
+					alt={src}
+					src={`${process.env.NEXT_PUBLIC_BLOB_URL}/maps/${src}.png`}
+					style={{ zIndex: -1, opacity: isLoading ? 0 : undefined }}
+					onLoad={() => setIsLoading(false)}
+				/>
 				{containerSize && (
-					<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
+					<svg
+						style={{
+							display: isLoading ? 'none' : undefined,
+							overflow: 'visible',
+							width: '100%',
+							height: '100%',
+						}}>
 						{children}
 						<ImageRoutePaths
 							containerSize={containerSize}

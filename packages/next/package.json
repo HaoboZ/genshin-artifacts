@@ -6,7 +6,8 @@
 		"build": "next build",
 		"test": "bun test",
 		"start": "next start",
-		"export": "next export"
+		"export": "next export",
+		"upload-files": "bun --env-file .env uploadFiles.ts"
 	},
 	"dependencies": {
 		"@base-ui-components/react": "1.0.0-rc.0",
@@ -23,6 +24,7 @@
 		"@tanem/react-nprogress": "5.0.56",
 		"@uidotdev/usehooks": "2.4.1",
 		"@vercel/analytics": "1.6.1",
+		"@vercel/blob": "2.0.0",
 		"axios": "1.13.2",
 		"change-case": "5.4.4",
 		"dayjs": "1.11.19",
