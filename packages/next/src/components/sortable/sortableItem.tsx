@@ -8,22 +8,20 @@ export default function SortableItem({ id, item, renderItem }) {
 	});
 
 	const trans = transform ?? { x: 0, y: 0, scaleX: 1, scaleY: 1 };
-	return useMemo(
-		() =>
-			renderItem(
-				item,
-				{
-					ref: setNodeRef,
-					style: {
-						opacity: isDragging ? 0.4 : undefined,
-						transform: CSS.Transform.toString(trans),
-						transition,
-					},
-					...attributes,
+	return useMemo(() => {
+		return renderItem(
+			item,
+			{
+				ref: setNodeRef,
+				style: {
+					opacity: isDragging ? 0.4 : undefined,
+					transform: CSS.Transform.toString(trans),
+					transition,
 				},
-				listeners,
-			),
+				...attributes,
+			},
+			listeners,
+		);
 		// eslint-disable-next-line react-hooks/use-memo, react-hooks/exhaustive-deps
-		[item, renderItem, ...Object.values(trans)],
-	);
+	}, [item, renderItem, ...Object.values(trans)]);
 }

@@ -21,7 +21,7 @@ import {
 import { useState } from 'react';
 import { filter, groupBy, indexBy, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
-import ArtifactStatImage from '../artifactStatImage';
+import ArtifactStatCard from '../artifactStatCard';
 
 export default function OptimizeArtifactModal() {
 	const { closeModal } = useModalControls();
@@ -91,7 +91,7 @@ export default function OptimizeArtifactModal() {
 					{giveArtifacts.map(({ artifact, character, selected }, i) => (
 						<ListItem key={i} sx={{ pt: 0 }}>
 							<ListItemText>
-								<ArtifactStatImage
+								<ArtifactStatCard
 									artifact={artifact}
 									sx={{
 										':hover': { cursor: 'pointer' },

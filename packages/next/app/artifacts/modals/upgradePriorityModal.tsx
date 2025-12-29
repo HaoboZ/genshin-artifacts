@@ -15,7 +15,7 @@ import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@
 import { useMemo } from 'react';
 import { filter, groupBy, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
-import ArtifactStatImage from '../artifactStatImage';
+import ArtifactStatCard from '../artifactStatCard';
 
 const EditArtifactModal = dynamicModal(() => import('../artifactForm/editArtifactModal'));
 
@@ -77,7 +77,7 @@ export default function UpgradePriorityModal() {
 					{artifactsFiltered.map((artifact, i) => (
 						<ListItem key={i}>
 							<ListItemText>
-								<ArtifactStatImage
+								<ArtifactStatCard
 									artifact={artifact}
 									sx={{ ':hover': { cursor: 'pointer' } }}
 									onClick={() => {

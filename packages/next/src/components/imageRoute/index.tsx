@@ -102,7 +102,9 @@ export default function ImageRoute({
 					transition: isAnimating ? 'transform 1s ease' : 'none',
 					transitionDelay: '1s',
 				}}>
-				{!isLoading && <Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />}
+				{(disableAnimations || !isLoading) && (
+					<Image fill alt={src} src={`/maps/${src}.png`} style={{ zIndex: -1 }} />
+				)}
 				{containerSize && (
 					<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
 						{children}

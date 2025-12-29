@@ -28,16 +28,15 @@ export default function CharacterPriority({
 	const priority = useAppSelector(prop('main', 'priority'));
 	const dispatch = useAppDispatch();
 
-	const [characters, setCharacters] = useState(
-		() =>
-			({
-				unSorted: filter(
-					Object.keys(charactersInfo),
-					isNot(isIncludedIn(Object.values(priority).flat())),
-				),
-				...structuredClone(priority),
-			}) as Record<string, CharacterKey[]>,
-	);
+	const [characters, setCharacters] = useState(() => {
+		return {
+			unSorted: filter(
+				Object.keys(charactersInfo),
+				isNot(isIncludedIn(Object.values(priority).flat())),
+			),
+			...structuredClone(priority),
+		} as Record<string, CharacterKey[]>;
+	});
 
 	const filteredCharacters = useMemo(() => {
 		const searchVal = search.toLowerCase();

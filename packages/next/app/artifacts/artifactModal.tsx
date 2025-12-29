@@ -36,25 +36,23 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 
 	const [checked, setChecked] = useState(false);
 
-	const charactersTiered = useMemo(
-		() =>
-			pipe(
-				[...Object.values(builds), ...Object.values(missingArtifactSets)],
-				filter(
-					(build) =>
-						(checked
-							? arrDeepIndex(build.artifact, artifact.setKey) !== -1
-							: makeArray(build.artifact[0])[0] === artifact.setKey) &&
-						statArrMatch(build.mainStat[artifact.slotKey], artifact.mainStatKey),
-				),
-				map((build) => ({
-					build,
-					statRollPercent: weightedPercent(build, artifact),
-				})),
-				sortBy([prop('statRollPercent'), 'desc']),
+	const charactersTiered = useMemo(() => {
+		return pipe(
+			[...Object.values(builds), ...Object.values(missingArtifactSets)],
+			filter(
+				(build) =>
+					(checked
+						? arrDeepIndex(build.artifact, artifact.setKey) !== -1
+						: makeArray(build.artifact[0])[0] === artifact.setKey) &&
+					statArrMatch(build.mainStat[artifact.slotKey], artifact.mainStatKey),
 			),
-		[artifact, checked],
-	);
+			map((build) => ({
+				build,
+				statRollPercent: weightedPercent(build, artifact),
+			})),
+			sortBy([prop('statRollPercent'), 'desc']),
+		);
+	}, [artifact, checked]);
 
 	return (
 		<DialogWrapper>

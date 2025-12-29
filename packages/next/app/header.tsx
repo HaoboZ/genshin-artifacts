@@ -1,8 +1,13 @@
 'use client';
 import { Button, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+	const pathname = usePathname();
+
+	if (pathname.startsWith('/farming')) return null;
+
 	return (
 		<header>
 			<ButtonGroup variant='contained' color='primary'>
@@ -20,6 +25,9 @@ export default function Header() {
 				</Button>
 				<Button component={Link} href='/weapons'>
 					Weapons
+				</Button>
+				<Button component={Link} href='/settings'>
+					Settings
 				</Button>
 			</ButtonGroup>
 		</header>

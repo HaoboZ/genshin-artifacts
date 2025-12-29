@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type Build } from '@/types/data';
 import { type IWeapon } from '@/types/good';
-import { DialogContent, DialogTitle, Grid } from '@mui/material';
+import { Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { useMemo } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
 import WeaponCharacterImage from '../../weapons/weaponCharacterImage';
@@ -16,15 +16,14 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 
-	const tierWeapons = useMemo(
-		() =>
-			pipe(
-				weapons,
-				filter(({ key }) => arrDeepIndex(build.weapon, key) !== -1),
-				sortBy(({ key }) => arrDeepIndex(build.weapon, key)),
-			),
-		[weapons, build],
-	);
+	const tierWeapons = useMemo(() => {
+		return pipe(
+			weapons,
+			filter(({ key }) => arrDeepIndex(build.weapon, key) !== -1),
+			sortBy(({ key }) => arrDeepIndex(build.weapon, key)),
+		);
+	}, [weapons, build]);
+
 	return (
 		<DialogWrapper>
 			<DialogTitle>Weapon for {charactersInfo[build.key].name}</DialogTitle>
@@ -47,6 +46,17 @@ export default function CharacterWeaponModal({ build, weapon }: { build: Build; 
 					))}
 				</Grid>
 			</DialogContent>
+			<DialogActions>
+				<Button
+					variant='outlined'
+					color='error'
+					onClick={() => {
+						dispatch(goodActions.removeWeapon(weapon.id));
+						closeModal();
+					}}>
+					Remove
+				</Button>
+			</DialogActions>
 		</DialogWrapper>
 	);
 }

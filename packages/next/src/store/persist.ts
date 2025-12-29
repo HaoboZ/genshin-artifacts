@@ -15,7 +15,7 @@ export function loadState() {
 		}
 		return state;
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		return undefined;
 	}
 }

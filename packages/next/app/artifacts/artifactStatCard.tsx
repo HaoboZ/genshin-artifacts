@@ -8,7 +8,7 @@ import { Box, Card, CardContent, type CardProps, Grid } from '@mui/material';
 import CharacterImage from '../characters/characterImage';
 import ArtifactImage from './artifactImage';
 
-export default function ArtifactStatImage({
+export default function ArtifactStatCard({
 	artifact,
 	slot,
 	hideCharacter,

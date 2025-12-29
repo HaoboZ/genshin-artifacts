@@ -14,7 +14,7 @@ import { Box, Button, Container, Stack } from '@mui/material';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 
-export default function ScanTest() {
+export default function InternalScan() {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const savedCanvasRef = useRef<HTMLCanvasElement>(null);
 

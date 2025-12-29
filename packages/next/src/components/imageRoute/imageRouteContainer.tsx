@@ -42,12 +42,12 @@ export default function ImageRouteContainer({
 	useEventListener(
 		typeof window !== 'undefined' ? window : null,
 		'resize',
-		() => setContainerSize(containerRef.current.getBoundingClientRect()),
+		() => setContainerSize(containerRef.current?.getBoundingClientRect()),
 		true,
 	);
 
 	useEventListener(typeof window !== 'undefined' ? window : null, 'scroll', () =>
-		setContainerSize(containerRef.current.getBoundingClientRect()),
+		setContainerSize(containerRef.current?.getBoundingClientRect()),
 	);
 
 	// eslint-disable-next-line react-hooks/refs

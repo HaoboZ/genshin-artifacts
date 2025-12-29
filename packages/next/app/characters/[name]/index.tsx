@@ -2,31 +2,36 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
-import { weaponsInfo } from '@/api/weapons';
 import FormattedTextField from '@/components/formattedTextField';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
 import PercentBar from '@/components/stats/percentBar';
-import arrDeepIndex from '@/helpers/arrDeepIndex';
 import { weightedPercent } from '@/helpers/stats';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type DCharacter } from '@/types/data';
-import { Card, CardContent, Container, Grid, Stack, Switch, Typography } from '@mui/material';
+import { Container, Grid, Stack, Switch } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
-import { Fragment, useMemo } from 'react';
+import { useMemo } from 'react';
 import { clamp, indexBy, prop } from 'remeda';
-import ArtifactStatImage from '../../artifacts/artifactStatImage';
-import WeaponImage from '../../weapons/weaponImage';
+import ArtifactStatCard from '../../artifacts/artifactStatCard';
 import CharacterImage from '../characterImage';
 import CharacterBuild from './characterBuild';
+import WeaponCard from './weaponCard';
 
+const CharacterOptimizeModal = dynamicModal(() => import('./characterOptimizeModal'));
 const CharacterArtifactModal = dynamicModal(() => import('./characterArtifactModal'));
 const CharacterWeaponModal = dynamicModal(() => import('./characterWeaponModal'));
+
+const talents = [
+	['auto', 'Auto Attack'],
+	['skill', 'Elemental Skill'],
+	['burst', 'Elemental Burst'],
+];
 
 export default function Character({ characterData }: { characterData: DCharacter }) {
 	const dispatch = useAppDispatch();
@@ -39,21 +44,14 @@ export default function Character({ characterData }: { characterData: DCharacter
 		good.weapons.find(({ location }) => location === characterData.key),
 	);
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
-	const artifactsIndexed = useMemo(
-		() =>
-			indexBy(
-				artifacts.filter(({ location }) => location === characterData.key),
-				prop('slotKey'),
-			),
-		[artifacts, characterData.key],
-	);
+	const artifactsIndexed = useMemo(() => {
+		return indexBy(
+			artifacts.filter(({ location }) => location === characterData.key),
+			prop('slotKey'),
+		);
+	}, [artifacts, characterData.key]);
 
 	const build = builds[characterData.key];
-	const weaponTier = useMemo(() => {
-		if (!weapon) return 0;
-		const index = arrDeepIndex(build.weapon, weapon.key);
-		return index !== -1 ? 1 - index / build.weapon.length : 0;
-	}, [build, weapon]);
 
 	return (
 		<Container>
@@ -118,11 +116,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 			{character && (
 				<PageSection title='Talents'>
 					<Grid container spacing={1}>
-						{[
-							['auto', 'Auto Attack'],
-							['skill', 'Elemental Skill'],
-							['burst', 'Elemental Burst'],
-						].map(([type, name]) => (
+						{talents.map(([type, name]) => (
 							<Grid key={type} size={4}>
 								<FormattedTextField
 									label={name}
@@ -131,7 +125,9 @@ export default function Character({ characterData }: { characterData: DCharacter
 										dispatch(
 											goodActions.editCharacter({
 												key: character.key,
-												talent: { [type]: clamp(+target.value, { min: 1, max: 10 }) },
+												talent: {
+													[type]: clamp(+target.value, { min: 1, max: 10 }),
+												},
 											}),
 										);
 									}}
@@ -141,42 +137,41 @@ export default function Character({ characterData }: { characterData: DCharacter
 					</Grid>
 				</PageSection>
 			)}
-			<PageSection title='Equipped'>
+			<PageSection
+				title='Equipped'
+				actions={[
+					{
+						name: 'Optimize',
+						onClick: () => {
+							showModal(CharacterOptimizeModal, {
+								props: {
+									build,
+									weapon,
+									artifactsIndexed,
+								},
+							});
+						},
+					},
+				]}>
 				<Grid container spacing={1}>
 					<Grid size={{ xs: 6, sm: 4 }}>
 						{character && (
-							<Card
+							<WeaponCard
+								build={build}
+								weapon={weapon}
 								sx={{ ':hover': { cursor: 'pointer' } }}
 								onClick={() => {
 									showModal(CharacterWeaponModal, { props: { build, weapon } });
-								}}>
-								<CardContent>
-									<Grid container spacing={1}>
-										<Grid size='auto'>
-											<WeaponImage weapon={weapon} type={characterData.weaponType} />
-										</Grid>
-										{weapon && (
-											<Fragment>
-												<Grid size='grow'>
-													<Typography>{weaponsInfo[weapon?.key]?.name}</Typography>
-												</Grid>
-												<Grid size={12}>
-													<PercentBar p={weaponTier} />
-												</Grid>
-											</Fragment>
-										)}
-									</Grid>
-								</CardContent>
-							</Card>
+								}}
+							/>
 						)}
 					</Grid>
 					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsIndexed[slot];
-						const statRollPercent = weightedPercent(build, artifact);
 
 						return (
 							<Grid key={slot} size={{ xs: 6, sm: 4 }}>
-								<ArtifactStatImage
+								<ArtifactStatCard
 									hideCharacter
 									artifact={artifact}
 									slot={slot}
@@ -188,10 +183,10 @@ export default function Character({ characterData }: { characterData: DCharacter
 									}}>
 									{artifact && (
 										<Grid size={12}>
-											<PercentBar p={statRollPercent} />
+											<PercentBar p={weightedPercent(build, artifact)} />
 										</Grid>
 									)}
-								</ArtifactStatImage>
+								</ArtifactStatCard>
 							</Grid>
 						);
 					})}

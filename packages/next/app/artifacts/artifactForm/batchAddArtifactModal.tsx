@@ -14,7 +14,7 @@ import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@m
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
-import ArtifactStatImage from '../artifactStatImage';
+import ArtifactStatCard from '../artifactStatCard';
 
 export default function BatchAddArtifactModal() {
 	const dispatch = useAppDispatch();
@@ -124,7 +124,7 @@ export default function BatchAddArtifactModal() {
 								.toReversed()
 								.map(([key, artifact]) => (
 									<Grid key={key} size={6}>
-										<ArtifactStatImage
+										<ArtifactStatCard
 											artifact={artifact}
 											sx={{ ':hover': { cursor: 'pointer' } }}
 											onClick={() => {

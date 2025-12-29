@@ -2,12 +2,12 @@
 import { routesInfo } from '@/api/routes';
 import ImageRoute from '@/components/imageRoute';
 import type { Point } from '@/components/imageRoute/types';
-import PageTitle from '@/components/page/pageTitle';
 import fetcher from '@/helpers/fetcher';
 import useParamState from '@/hooks/useParamState';
-import { Button, Container, MenuItem, Select } from '@mui/material';
+import { Box, Button, MenuItem, Select, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import useSWR from 'swr';
 import { MapRenderPath, MapRenderPoint } from './render';
 
@@ -15,30 +15,53 @@ export default function Farming() {
 	const router = useRouter();
 
 	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
+	const [isSelectOpen, setIsSelectOpen] = useState(false);
 
 	const { data } = useSWR<Point[]>(`/points/route_${selectedRoute}.json`, fetcher);
 
 	return (
-		<Container>
-			<PageTitle>Artifact Farming</PageTitle>
-			<Select
-				value={selectedRoute}
-				onChange={({ target }) => {
-					setSelectedRoute(target.value);
+		<Box sx={{ position: 'relative' }}>
+			<Stack
+				direction='row'
+				sx={{
+					'position': 'absolute',
+					'top': 16,
+					'left': '50%',
+					'transform': 'translateX(-50%)',
+					'zIndex': 10,
+					'opacity': isSelectOpen ? 1 : 0,
+					'transition': 'opacity 0.3s ease-in-out',
+					'&:hover': { opacity: 1 },
+					'width': 500,
 				}}>
-				{routesInfo.map(({ spots, mora }, index) => (
-					<MenuItem key={index} value={index}>
-						Spots: {spots}, Mora: {mora}
-					</MenuItem>
-				))}
-			</Select>
-			<Button
-				variant='contained'
-				component={Link}
-				href={`/farming/${selectedRoute}`}
-				sx={{ ml: 1 }}>
-				Go
-			</Button>
+				<Select
+					fullWidth
+					value={selectedRoute}
+					open={isSelectOpen}
+					onOpen={() => setIsSelectOpen(true)}
+					onClose={() => setIsSelectOpen(false)}
+					onChange={({ target }) => {
+						setSelectedRoute(target.value);
+					}}
+					sx={{
+						bgcolor: 'background.paper',
+						backdropFilter: 'blur(10px)',
+						color: 'text.primary',
+					}}>
+					{routesInfo.map(({ spots, mora }, index) => (
+						<MenuItem key={index} value={index}>
+							Artifact Spots: {spots}, Mora: {mora}
+						</MenuItem>
+					))}
+				</Select>
+				<Button
+					variant='contained'
+					component={Link}
+					href={`/farming/${selectedRoute}`}
+					sx={{ ml: 1, minWidth: 'fit-content' }}>
+					Go
+				</Button>
+			</Stack>
 			<ImageRoute
 				src='teyvat'
 				route={selectedRoute.toString()}
@@ -55,6 +78,6 @@ export default function Farming() {
 				disableAnimations
 				sx={{ aspectRatio: '16 / 9' }}
 			/>
-		</Container>
+		</Box>
 	);
 }

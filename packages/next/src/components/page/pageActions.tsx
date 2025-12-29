@@ -29,7 +29,7 @@ export default function PageActions({ items, max }: { items: ActionProps[]; max?
 		</AsyncButton>
 	));
 
-	if (menu.length)
+	if (menu.length) {
 		buttonElements.push(
 			<Dropdown key={-1} button={<MoreHorizIcon />}>
 				{(closeMenu) =>
@@ -48,6 +48,7 @@ export default function PageActions({ items, max }: { items: ActionProps[]; max?
 				}
 			</Dropdown>,
 		);
+	}
 
 	return <ButtonGroup>{buttonElements}</ButtonGroup>;
 }

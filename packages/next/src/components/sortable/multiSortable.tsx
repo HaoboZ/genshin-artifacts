@@ -64,22 +64,20 @@ export default function MultiSortable<Item>({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [groups]);
 
-	const containers = useMemo(
-		() =>
-			children(
-				mapValues(lists, (list, group) => (
-					<SortableContainer
-						key={group}
-						id={group}
-						items={list}
-						renderItems={renderItems}
-						renderItem={renderItem}
-					/>
-				)),
-			),
+	const containers = useMemo(() => {
+		return children(
+			mapValues(lists, (list, group) => (
+				<SortableContainer
+					key={group}
+					id={group}
+					items={list}
+					renderItems={renderItems}
+					renderItem={renderItem}
+				/>
+			)),
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[lists, ...dependencies],
-	);
+	}, [lists, ...dependencies]);
 
 	return (
 		<DndContext

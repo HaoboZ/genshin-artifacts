@@ -1,7 +1,6 @@
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
-import makeArray from '@/helpers/makeArray';
 import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
@@ -12,9 +11,9 @@ import { type IArtifact, type SlotKey } from '@/types/good';
 import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
 import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
-import { map, pipe, prop, reverse, sortBy } from 'remeda';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
 import ArtifactActions from '../../artifacts/artifactActions';
-import ArtifactStatImage from '../../artifacts/artifactStatImage';
+import ArtifactStatCard from '../../artifacts/artifactStatCard';
 
 export default function CharacterArtifactModal({
 	build,
@@ -25,39 +24,31 @@ export default function CharacterArtifactModal({
 	slot: SlotKey;
 	artifact: IArtifact;
 }) {
-	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
+	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	const [checked, setChecked] = useState(true);
 
 	const artifactsSorted = useMemo(() => {
-		const mainStat = build.mainStat[slot] && makeArray(build.mainStat[slot]);
-
-		const artifactsFiltered = artifacts.filter(({ slotKey, setKey, mainStatKey }) => {
-			if (checked) return slotKey === slot && arrDeepIndex(build.artifact, setKey) === 0;
-
-			return (
-				slotKey === slot &&
-				arrDeepIndex(build.artifact, setKey) !== -1 &&
-				statArrMatch(mainStat, mainStatKey)
-			);
-		});
-
 		return pipe(
-			artifactsFiltered,
+			artifacts,
+			filter(({ slotKey, setKey, mainStatKey }) => {
+				if (checked) return slotKey === slot && arrDeepIndex(build.artifact, setKey) === 0;
+
+				return (
+					slotKey === slot &&
+					arrDeepIndex(build.artifact, setKey) !== -1 &&
+					statArrMatch(build.mainStat[slot], mainStatKey)
+				);
+			}),
 			map((artifact) => ({
 				...artifact,
 				statRollPercent: weightedPercent(build, artifact),
 			})),
-			sortBy(
-				[({ setKey }) => arrDeepIndex(build.artifact, setKey), 'desc'],
-				prop('statRollPercent'),
-				prop('level'),
-			),
-			reverse(),
+			sortBy([prop('statRollPercent'), 'desc']),
 		);
-	}, [artifacts, checked, slot, build]);
+	}, [build, artifacts, checked, slot]);
 
 	return (
 		<DialogWrapper>
@@ -68,11 +59,11 @@ export default function CharacterArtifactModal({
 				{artifact && (
 					<Fragment>
 						<ArtifactActions artifact={artifact} />
-						<ArtifactStatImage hideCharacter artifact={artifact}>
+						<ArtifactStatCard hideCharacter artifact={artifact}>
 							<Grid size={12}>
 								<PercentBar p={weightedPercent(build, artifact)} />
 							</Grid>
-						</ArtifactStatImage>
+						</ArtifactStatCard>
 					</Fragment>
 				)}
 			</Box>
@@ -90,7 +81,7 @@ export default function CharacterArtifactModal({
 				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{artifactsSorted.map(({ statRollPercent, ...artifact }, index) => (
 						<Grid key={index} size={{ xs: 6, md: 4 }}>
-							<ArtifactStatImage
+							<ArtifactStatCard
 								artifact={artifact}
 								sx={{ ':hover': { cursor: 'pointer' } }}
 								onClick={() => {
@@ -102,7 +93,7 @@ export default function CharacterArtifactModal({
 								<Grid size={12}>
 									<PercentBar p={statRollPercent} />
 								</Grid>
-							</ArtifactStatImage>
+							</ArtifactStatCard>
 						</Grid>
 					))}
 				</Grid>

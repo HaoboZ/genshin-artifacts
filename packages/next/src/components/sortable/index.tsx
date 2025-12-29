@@ -56,14 +56,12 @@ export default function Sortable<Item>({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
-	const container = useMemo(
-		() =>
-			list.map(({ id, item }) => (
-				<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
-			)),
+	const container = useMemo(() => {
+		return list.map(({ id, item }) => (
+			<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
+		));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[list, ...dependencies],
-	);
+	}, [list, ...dependencies]);
 
 	return (
 		<DndContext

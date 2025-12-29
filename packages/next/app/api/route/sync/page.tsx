@@ -75,7 +75,7 @@ export default function InternalRouteSync() {
 	const spots = useMemo(
 		() =>
 			route.maps[selectedMap].start +
-			(points?.filter((point) => (!point.marked ? false : time >= point.marked)).length ?? 0),
+			(points?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[selectedRoute, selectedMap, points, time],
 	);

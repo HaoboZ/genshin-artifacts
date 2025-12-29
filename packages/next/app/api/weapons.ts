@@ -30,22 +30,20 @@ export function useWeapons({
 
 	const searchVal = search.toLowerCase();
 
-	return useMemo(
-		() =>
-			pipe(
-				weapons,
-				map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
-				filter(
-					({ weaponType, rarity, name }) =>
-						(!type || weaponType === type) &&
-						(!rarityType || rarityType === rarity) &&
-						(searchVal ? name.toLowerCase().includes(searchVal) : true),
-				),
-				sortBy([prop('rarity'), 'desc'], [prop('level'), 'desc'], prop('key'), [
-					prop('refinement'),
-					'desc',
-				]),
+	return useMemo(() => {
+		return pipe(
+			weapons,
+			map((weapon) => ({ ...weapon, ...weaponsInfo[weapon.key] })),
+			filter(
+				({ weaponType, rarity, name }) =>
+					(!type || weaponType === type) &&
+					(!rarityType || rarityType === rarity) &&
+					(searchVal ? name.toLowerCase().includes(searchVal) : true),
 			),
-		[weapons, type, rarityType, searchVal],
-	);
+			sortBy([prop('rarity'), 'desc'], [prop('level'), 'desc'], prop('key'), [
+				prop('refinement'),
+				'desc',
+			]),
+		);
+	}, [weapons, type, rarityType, searchVal]);
 }

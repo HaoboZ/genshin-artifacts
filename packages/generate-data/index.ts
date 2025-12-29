@@ -37,6 +37,6 @@ const run = {
 		if (run.weapons) writeWeapons(weapons);
 		console.log('Completed');
 	} catch (error) {
-		console.log('An error has occurred ', error);
+		console.error('An error has occurred ', error);
 	}
 })();

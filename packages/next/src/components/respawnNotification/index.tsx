@@ -32,6 +32,7 @@ export default function RespawnNotification({
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 			<AsyncButton
 				variant='contained'
+				size='small'
 				onClick={async () => {
 					const date = notificationTime();
 					const id = await sendNotification(OneSignal.User.onesignalId, {

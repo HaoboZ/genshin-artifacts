@@ -39,7 +39,7 @@ import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
-import ArtifactStatImage from '../artifactStatImage';
+import ArtifactStatCard from '../artifactStatCard';
 import SlotFilter from './slotFilter';
 
 const ArtifactModal = dynamicModal(() => import('../artifactModal'));
@@ -62,46 +62,44 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 	const [rarity, setRarity] = useParamState('rarity', null);
 
 	const artifacts = useArtifacts({ artifactSet, rarity: +rarity, slot });
-	const artifactsSorted = useMemo(
-		() =>
-			pipe(
-				artifacts,
-				filter(
-					(artifact) =>
-						(filtered.equipped
-							? Boolean(+Boolean(artifact.location) - filtered.equipped + 1)
-							: true) &&
-						(filtered.locked ? Boolean(+artifact.lock - filtered.locked + 1) : true) &&
-						(filtered.maxLevel
-							? Boolean(+(artifact.level === 20) - filtered.maxLevel + 1)
-							: true),
-				),
-				map((artifact) => ({
-					...artifact,
-					statRollPercent: weightedPercent(builds[artifact.location], artifact),
-					potential: artifact.location
-						? potentialPercent(builds[artifact.location], artifact)
-						: maxPotentialPercents(
-								[...Object.values(builds), ...Object.values(missingArtifactSets)],
-								artifact,
-							),
-				})),
-				sortBy(
-					[
-						prop(
-							{
-								potential: 'potential',
-								stats: 'statRollPercent',
-								level: 'level',
-							}[sortType],
-						),
-						sortDir ? 'asc' : 'desc',
-					],
-					({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
-				),
+	const artifactsSorted = useMemo(() => {
+		return pipe(
+			artifacts,
+			filter(
+				(artifact) =>
+					(filtered.equipped
+						? Boolean(+Boolean(artifact.location) - filtered.equipped + 1)
+						: true) &&
+					(filtered.locked ? Boolean(+artifact.lock - filtered.locked + 1) : true) &&
+					(filtered.maxLevel
+						? Boolean(+(artifact.level === 20) - filtered.maxLevel + 1)
+						: true),
 			),
-		[artifacts, sortDir, sortType, filtered],
-	);
+			map((artifact) => ({
+				...artifact,
+				statRollPercent: weightedPercent(builds[artifact.location], artifact),
+				potential: artifact.location
+					? potentialPercent(builds[artifact.location], artifact)
+					: maxPotentialPercents(
+							[...Object.values(builds), ...Object.values(missingArtifactSets)],
+							artifact,
+						),
+			})),
+			sortBy(
+				[
+					prop(
+						{
+							potential: 'potential',
+							stats: 'statRollPercent',
+							level: 'level',
+						}[sortType],
+					),
+					sortDir ? 'asc' : 'desc',
+				],
+				({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
+			),
+		);
+	}, [artifacts, sortDir, sortType, filtered]);
 
 	const [greatCount, goodCount] = useMemo(
 		() => [
@@ -212,7 +210,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 
 					return (
 						<Grid key={index} size={{ xs: 6, sm: 4, md: 3 }}>
-							<ArtifactStatImage
+							<ArtifactStatCard
 								artifact={artifact}
 								sx={{
 									':hover': { cursor: 'pointer' },
@@ -243,7 +241,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 										<PercentBar p={potential}>Potential: %p</PercentBar>
 									</Grid>
 								</Grid>
-							</ArtifactStatImage>
+							</ArtifactStatCard>
 						</Grid>
 					);
 				})}

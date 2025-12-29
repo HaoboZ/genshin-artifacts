@@ -91,7 +91,10 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 						{values.location && (
 							<Fragment>
 								<Box>
-									<Button variant='outlined' onClick={() => setFieldValue('location', '')}>
+									<Button
+										variant='outlined'
+										color='error'
+										onClick={() => setFieldValue('location', '')}>
 										Remove
 									</Button>
 								</Box>

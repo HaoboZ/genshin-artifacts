@@ -108,11 +108,12 @@ const goodSlice = createSlice({
 			);
 
 			state.artifacts = [...state.artifacts];
-			if (artifactBIndex)
+			if (artifactBIndex) {
 				state.artifacts[artifactBIndex] = {
 					...state.artifacts[artifactBIndex],
 					location: characterB || '',
 				};
+			}
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
 		},
 		optimizeArtifacts(
@@ -130,11 +131,12 @@ const goodSlice = createSlice({
 						location === character.key && slotKey === artifactA.slotKey,
 				);
 
-				if (artifactBIndex)
+				if (artifactBIndex) {
 					state.artifacts[artifactBIndex] = {
 						...state.artifacts[artifactBIndex],
 						location: characterB || '',
 					};
+				}
 				state.artifacts[artifactAIndex] = { ...artifactA, location: character.key };
 			}
 			return state;
@@ -142,11 +144,12 @@ const goodSlice = createSlice({
 		removeArtifact(state, { payload }: PayloadAction<string>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload);
 			state.artifacts = [...state.artifacts];
-			if (index !== -1)
+			if (index !== -1) {
 				state.artifacts[index] = {
 					...state.artifacts[index],
 					location: '',
 				};
+			}
 		},
 		deleteArtifact(state, { payload }: PayloadAction<string>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload);
@@ -203,6 +206,15 @@ const goodSlice = createSlice({
 				}
 				state.weapons[weaponAIndex] = { ...weaponA, location: character.key };
 			}
+		},
+		removeWeapon(state, { payload }: PayloadAction<string>) {
+			const index = state.weapons.findIndex(({ id }) => id === payload);
+			state.weapons = [...state.weapons];
+			if (index !== -1)
+				state.weapons[index] = {
+					...state.weapons[index],
+					location: '',
+				};
 		},
 		deleteWeapon(state, { payload }: PayloadAction<string>) {
 			const index = state.weapons.findIndex(({ id }) => id === payload);

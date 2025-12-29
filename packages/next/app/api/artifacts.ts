@@ -31,21 +31,16 @@ export function useArtifacts({
 }) {
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
-	return useMemo(
-		() =>
-			pipe(
-				artifacts,
-				filter(
-					({ setKey, rarity, slotKey }) =>
-						(!artifactSet || artifactSet === setKey) &&
-						(!rarityType || rarity === rarityType) &&
-						(!slot || slot === slotKey),
-				),
-				sortBy(
-					[({ setKey }) => artifactSetsInfo[setKey].group, 'desc'],
-					[prop('level'), 'desc'],
-				),
+	return useMemo(() => {
+		return pipe(
+			artifacts,
+			filter(
+				({ setKey, rarity, slotKey }) =>
+					(!artifactSet || artifactSet === setKey) &&
+					(!rarityType || rarity === rarityType) &&
+					(!slot || slot === slotKey),
 			),
-		[artifacts, artifactSet, rarityType, slot],
-	);
+			sortBy([({ setKey }) => artifactSetsInfo[setKey].group, 'desc'], [prop('level'), 'desc']),
+		);
+	}, [artifacts, artifactSet, rarityType, slot]);
 }

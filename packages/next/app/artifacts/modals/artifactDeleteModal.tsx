@@ -18,7 +18,7 @@ import {
 import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
-import ArtifactStatImage from '../artifactStatImage';
+import ArtifactStatCard from '../artifactStatCard';
 
 const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets)];
 
@@ -28,16 +28,14 @@ export default function ArtifactDeleteModal() {
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
 	const { enqueueSnackbar } = useSnackbar();
 
-	const artifactCounts = useMemo(
-		() =>
-			artifacts.reduce((counts, { setKey, slotKey }) => {
-				if (!counts[setKey])
-					counts[setKey] = { flower: 0, plume: 0, sands: 0, goblet: 0, circlet: 0 };
-				counts[setKey][slotKey]++;
-				return counts;
-			}, {}),
-		[artifacts],
-	);
+	const artifactCounts = useMemo(() => {
+		return artifacts.reduce((counts, { setKey, slotKey }) => {
+			if (!counts[setKey])
+				counts[setKey] = { flower: 0, plume: 0, sands: 0, goblet: 0, circlet: 0 };
+			counts[setKey][slotKey]++;
+			return counts;
+		}, {});
+	}, [artifacts]);
 
 	const [deleteArtifacts, setDeleteArtifacts] = useState(() =>
 		pipe(
@@ -65,7 +63,7 @@ export default function ArtifactDeleteModal() {
 					{deleteArtifacts.map(({ artifact, selected }, i) => (
 						<ListItem key={i}>
 							<ListItemText>
-								<ArtifactStatImage
+								<ArtifactStatCard
 									artifact={artifact}
 									sx={{
 										':hover': { cursor: 'pointer' },
