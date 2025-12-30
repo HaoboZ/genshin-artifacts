@@ -15,7 +15,6 @@ export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPo
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,
 				animation: type === 'active' ? 'pulse 2s ease-in-out infinite' : undefined,
-				transition: type === 'active' ? 'cx 0.25s linear, cy 0.25s linear' : undefined,
 			}}
 		/>
 	);

@@ -223,11 +223,7 @@ export default function InternalRouteSync() {
 						videoRef={videoRef}
 						points={points}
 						time={time}
-						setTime={(time) => {
-							setTime(time);
-							if (!videoRef.current) return;
-							videoRef.current.currentTime = time;
-						}}
+						setTime={setTime}
 						activeSpot={activeSpot}
 						setActiveSpot={setActiveSpot}
 						extraSpot={extraSpot}

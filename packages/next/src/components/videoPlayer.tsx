@@ -22,13 +22,11 @@ export default function VideoPlayer({
 } & BoxProps) {
 	const [isHovering, setIsHovering] = useState(false);
 
-	const frameDuration = 1 / fps;
-
 	const skipFrames = (frames: number) => {
 		const video = ref.current;
 		if (!video) return;
 
-		const newTime = video.currentTime + frames * frameDuration;
+		const newTime = video.currentTime + frames / fps;
 		video.currentTime = Math.max(0, Math.min(newTime, video.duration));
 	};
 

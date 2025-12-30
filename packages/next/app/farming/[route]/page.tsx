@@ -86,11 +86,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					points={data}
 					hidePoints
 					time={time}
-					setTime={(time) => {
-						setTime(time);
-						if (!videoRef.current) return;
-						videoRef.current.currentTime = time;
-					}}
+					setTime={setTime}
 					autoplay
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}

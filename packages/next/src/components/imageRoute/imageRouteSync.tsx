@@ -4,14 +4,18 @@ import {
 	type Dispatch,
 	Fragment,
 	type RefObject,
+	type SetStateAction,
 	useEffect,
 	useState,
 } from 'react';
 import useControlledState from '../../hooks/useControlledState';
+import useEventListener from '../../hooks/useEventListener';
 import VideoPlayer from '../videoPlayer';
 import ImageRoute from './index';
 import { type Point, type RenderPathProps, type RenderPointProps, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
+
+const fps = 60;
 
 export default function ImageRouteSync({
 	videoRef,
@@ -31,7 +35,7 @@ export default function ImageRouteSync({
 	points: Point[];
 	hidePoints?: boolean;
 	time: number;
-	setTime: Dispatch<number>;
+	setTime: Dispatch<SetStateAction<number>>;
 	autoplay?: boolean;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
@@ -41,6 +45,7 @@ export default function ImageRouteSync({
 } & BoxProps) {
 	const [hideVideo, setHideVideo] = useState(true);
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
+	const [playing, setPlaying] = useState(false);
 
 	// sync activeSpot with time
 	useEffect(() => {
@@ -54,6 +59,25 @@ export default function ImageRouteSync({
 		setHideVideo(true);
 	}, [src]);
 
+	useEventListener(videoRef.current, 'play', () => {
+		setTime(videoRef.current.currentTime);
+		setPlaying(true);
+	});
+
+	useEventListener(videoRef.current, 'pause', () => {
+		setTime(videoRef.current.currentTime);
+		setPlaying(false);
+	});
+
+	useEffect(() => {
+		if (!playing) return;
+		const interval = setInterval(() => {
+			setTime((time) => time + 1 / fps);
+		}, 1000 / fps);
+		return () => clearInterval(interval);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [playing]);
+
 	return (
 		<Fragment>
 			<ImageRoute
@@ -63,7 +87,6 @@ export default function ImageRouteSync({
 				onLoaded={() => {
 					if (!autoplay) {
 						setHideVideo(false);
-						return;
 					} else {
 						setTimeout(() => {
 							setHideVideo(false);
@@ -76,7 +99,10 @@ export default function ImageRouteSync({
 					setActiveSpot(spot);
 
 					const calculatedTime = findTimeBySpot(points, spot);
-					if (calculatedTime !== null) setTime(calculatedTime);
+					if (calculatedTime !== null) {
+						setTime(calculatedTime);
+						videoRef.current.currentTime = calculatedTime;
+					}
 				}}
 				extraSpot={extraSpot}
 				{...props}
