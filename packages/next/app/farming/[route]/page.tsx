@@ -27,12 +27,14 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
 	// calculate spots collected at current time
-	const spots = useMemo(
-		() =>
-			selectedRoute.maps[selectedMap].start +
-			(data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
-		[selectedRoute, selectedMap, data, time],
-	);
+	const spots = useMemo(() => {
+		let total = 0;
+		for (const point of data) {
+			if (point.marked) total += 1;
+			if (point.marked >= time) break;
+		}
+		return total;
+	}, [data, time]);
 
 	return (
 		<Box
