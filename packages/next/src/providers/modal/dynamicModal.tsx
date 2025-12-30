@@ -15,7 +15,7 @@ export default function dynamicModal(route: () => Promise<any>) {
 			const loading = useLoading(isLoading);
 
 			return (
-				<Backdrop open={loading} sx={{ zIndex: ({ zIndex }) => zIndex.modal + 1 }}>
+				<Backdrop open={loading} sx={{ zIndex: 'tooltip' }}>
 					<CircularProgress />
 				</Backdrop>
 			);

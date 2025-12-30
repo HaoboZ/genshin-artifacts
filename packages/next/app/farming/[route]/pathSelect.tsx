@@ -14,7 +14,7 @@ export default function PathSelect({
 	return (
 		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 			<Button
-				variant='outlined'
+				variant='contained'
 				onClick={() => {
 					if (selectedMap <= 0) return;
 					setSelectedMap(selectedMap - 1);
@@ -22,7 +22,10 @@ export default function PathSelect({
 				disabled={selectedMap <= 0}>
 				Previous
 			</Button>
-			<Select value={selectedMap} onChange={({ target }) => setSelectedMap(target.value)}>
+			<Select
+				value={selectedMap}
+				onChange={({ target }) => setSelectedMap(target.value)}
+				sx={{ bgcolor: 'background.paper', backdropFilter: 'blur(10px)' }}>
 				{route.maps.map(({ src }, index) => (
 					<MenuItem key={src} value={index}>
 						{src}
@@ -30,7 +33,7 @@ export default function PathSelect({
 				))}
 			</Select>
 			<Button
-				variant='outlined'
+				variant='contained'
 				onClick={() => {
 					if (selectedMap >= route.maps.length - 1) return;
 					setSelectedMap(selectedMap + 1);

@@ -49,7 +49,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					maxWidth: 'calc(100vh * 16 / 9)',
 					aspectRatio: '16 / 9',
 					display: 'grid',
-					gridTemplate: '1fr 1fr',
+					position: 'relative',
 				}}>
 				<Box
 					sx={{

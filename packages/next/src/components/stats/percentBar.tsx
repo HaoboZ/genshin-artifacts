@@ -32,7 +32,7 @@ export default function PercentBar({
 		<Box sx={{ position: 'relative' }}>
 			<Typography
 				sx={{
-					zIndex: 1000,
+					zIndex: 'fab',
 					position: 'absolute',
 					color: 'text.primary',
 					ml: 1,

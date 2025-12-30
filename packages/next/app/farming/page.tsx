@@ -28,7 +28,7 @@ export default function Farming() {
 					'top': 16,
 					'left': '50%',
 					'transform': 'translateX(-50%)',
-					'zIndex': 10,
+					'zIndex': 'drawer',
 					'opacity': isSelectOpen ? 1 : 0,
 					'transition': 'opacity 0.3s ease-in-out',
 					'&:hover': { opacity: 1 },
@@ -43,11 +43,7 @@ export default function Farming() {
 					onChange={({ target }) => {
 						setSelectedRoute(target.value);
 					}}
-					sx={{
-						bgcolor: 'background.paper',
-						backdropFilter: 'blur(10px)',
-						color: 'text.primary',
-					}}>
+					sx={{ bgcolor: 'background.paper', backdropFilter: 'blur(10px)' }}>
 					{routesInfo.map(({ spots, mora }, index) => (
 						<MenuItem key={index} value={index}>
 							Artifact Spots: {spots}, Mora: {mora}

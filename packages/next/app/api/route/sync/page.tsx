@@ -43,9 +43,11 @@ export default function InternalRouteSync() {
 	const [playbackRate, setPlaybackRate] = useState(1);
 	const [volume, setVolume] = useState(1);
 
+	// eslint-disable-next-line react-hooks/refs
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
 	useEventListener(
+		// eslint-disable-next-line react-hooks/refs
 		videoRef.current,
 		'loadedmetadata',
 		() => setDuration(videoRef.current.duration),
@@ -73,11 +75,8 @@ export default function InternalRouteSync() {
 
 	// calculate spots collected at current time
 	const spots = useMemo(
-		() =>
-			route.maps[selectedMap].start +
-			(points?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[selectedRoute, selectedMap, points, time],
+		() => points?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0,
+		[points, time],
 	);
 
 	return (
@@ -89,6 +88,7 @@ export default function InternalRouteSync() {
 						setSelectedRoute(target.value);
 						setSelectedMap(0);
 						setPoints([]);
+						setExtraSpot(null);
 					}}>
 					{routesInfo.map(({ spots, mora }, index) => (
 						<MenuItem key={index} value={index}>
@@ -102,6 +102,7 @@ export default function InternalRouteSync() {
 					setSelectedMap={(selectedMap) => {
 						setSelectedMap(selectedMap);
 						setPoints([]);
+						setExtraSpot(null);
 					}}
 				/>
 			</Stack>
@@ -119,7 +120,6 @@ export default function InternalRouteSync() {
 						maxWidth: 'calc(100vh * 16 / 9)',
 						aspectRatio: '16 / 9',
 						display: 'grid',
-						gridTemplate: '1fr 1fr',
 					}}>
 					<Box
 						sx={{
@@ -193,7 +193,7 @@ export default function InternalRouteSync() {
 									time={time}
 									point={
 										currentPointIndex !== null && currentPointIndex >= 0
-											? points[currentPointIndex]
+											? points?.[currentPointIndex]
 											: null
 									}
 									pointIndex={currentPointIndex}
@@ -203,8 +203,8 @@ export default function InternalRouteSync() {
 									name='Next'
 									time={time}
 									point={
-										nextPointIndex !== null && nextPointIndex < points.length
-											? points[nextPointIndex]
+										nextPointIndex !== null && nextPointIndex < points?.length
+											? points?.[nextPointIndex]
 											: null
 									}
 									pointIndex={nextPointIndex}
