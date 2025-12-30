@@ -54,6 +54,25 @@ export default function ImageRouteSync({
 		setHideVideo(true);
 	}, [src]);
 
+	// Global spacebar control for play/pause
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.code === 'Space' && videoRef.current) {
+				event.preventDefault();
+				if (videoRef.current.paused) {
+					videoRef.current.play();
+				} else {
+					videoRef.current.pause();
+				}
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
+	}, [videoRef]);
+
 	return (
 		<Fragment>
 			<ImageRoute
