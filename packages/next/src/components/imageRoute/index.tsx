@@ -74,7 +74,7 @@ export default function ImageRoute({
 
 		return () => cancelAnimationFrame(animId);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading, points]);
+	}, [isLoading, Boolean(points)]);
 
 	return (
 		<ImageRouteContainer

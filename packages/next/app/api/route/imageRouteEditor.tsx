@@ -23,7 +23,7 @@ import { savePointsServer } from './actions';
 
 export default function ImageRouteEditor({
 	src,
-	route,
+	route = src,
 	points,
 	setPoints,
 	sx,
