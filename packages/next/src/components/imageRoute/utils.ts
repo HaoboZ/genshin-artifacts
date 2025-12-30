@@ -23,7 +23,7 @@ export function getClosestPointOnPath(
 	mouseX: number,
 	mouseY: number,
 	snapThreshold: number,
-) {
+): Spot {
 	if (!points || points.length < 2) return null;
 
 	let closestPoint = null;
@@ -115,8 +115,8 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		if (time >= point.start && time <= pointEnd) {
 			return {
 				point,
-				pointIndex: Math.max(0, i - 1),
-				percentage: i === 0 ? 0 : 100,
+				pointIndex: Math.max(0, i),
+				percentage: 0,
 			};
 		}
 

@@ -17,6 +17,7 @@ export default function ImageRoute({
 	onLoaded,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
+	extraSpot,
 	RenderPoint,
 	RenderPath,
 	zoom,
@@ -33,6 +34,7 @@ export default function ImageRoute({
 	onLoaded?: () => void;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
+	extraSpot?: Spot;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	zoom?: number;
@@ -137,6 +139,7 @@ export default function ImageRoute({
 							hidePoints={hidePoints}
 							activeSpot={activeSpot}
 							hoverSpot={hoverSpot}
+							extraSpot={extraSpot}
 							RenderPoint={RenderPoint}
 						/>
 					</svg>

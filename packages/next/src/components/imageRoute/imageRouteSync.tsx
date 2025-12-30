@@ -23,6 +23,7 @@ export default function ImageRouteSync({
 	autoplay,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
+	extraSpot,
 	...props
 }: {
 	videoRef: RefObject<HTMLVideoElement>;
@@ -34,6 +35,7 @@ export default function ImageRouteSync({
 	autoplay?: boolean;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
+	extraSpot?: Spot;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 } & BoxProps) {
@@ -76,6 +78,7 @@ export default function ImageRouteSync({
 					const calculatedTime = findTimeBySpot(points, spot);
 					if (calculatedTime !== null) setTime(calculatedTime);
 				}}
+				extraSpot={extraSpot}
 				{...props}
 			/>
 			<VideoPlayer

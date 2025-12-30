@@ -8,9 +8,9 @@ export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPo
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={type ? 5 : 3 / scale}
-			fill={type === 'active' ? 'blue' : 'lime'}
+			fill={{ active: 'blue', extra: 'yellow' }[type] ?? 'lime'}
 			fillOpacity={type ? 0.5 : 1}
-			stroke={type === 'active' ? 'blue' : 'lime'}
+			stroke={{ active: 'blue', extra: 'yellow' }[type] ?? 'lime'}
 			strokeWidth={1}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,

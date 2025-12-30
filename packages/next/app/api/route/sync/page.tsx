@@ -37,6 +37,7 @@ export default function InternalRouteSync() {
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
+	const [extraSpot, setExtraSpot] = useState<Spot>(null);
 
 	const [duration, setDuration] = useState(0);
 	const [playbackRate, setPlaybackRate] = useState(1);
@@ -67,7 +68,7 @@ export default function InternalRouteSync() {
 		});
 	};
 
-	const currentPointIndex = activeSpot?.pointIndex ?? null;
+	const currentPointIndex = extraSpot?.pointIndex ?? null;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
 	// calculate spots collected at current time
@@ -148,7 +149,7 @@ export default function InternalRouteSync() {
 									size='small'
 									disabled={currentPointIndex <= 0}
 									onClick={() => {
-										setActiveSpot({
+										setExtraSpot({
 											point: points[currentPointIndex - 1],
 											pointIndex: currentPointIndex - 1,
 											percentage: 0,
@@ -161,7 +162,7 @@ export default function InternalRouteSync() {
 									size='small'
 									disabled={nextPointIndex >= points?.length}
 									onClick={() => {
-										setActiveSpot({
+										setExtraSpot({
 											point: points[currentPointIndex + 1],
 											pointIndex: currentPointIndex + 1,
 											percentage: 0,
@@ -178,7 +179,7 @@ export default function InternalRouteSync() {
 											newPoints.splice(
 												nextPointIndex,
 												0,
-												pick(activeSpot.point, ['x', 'y']),
+												pick(extraSpot.point, ['x', 'y']),
 											);
 											return newPoints;
 										});
@@ -224,6 +225,7 @@ export default function InternalRouteSync() {
 						}}
 						activeSpot={activeSpot}
 						setActiveSpot={setActiveSpot}
+						extraSpot={extraSpot}
 						RenderPoint={RouteRenderPoint}
 						RenderPath={RouteRenderPath}
 						sx={{

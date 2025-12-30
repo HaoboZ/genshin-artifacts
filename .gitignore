@@ -2,6 +2,8 @@
 
 # dependencies
 node_modules
+/.pnp
+.pnp.*
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -10,10 +12,6 @@ node_modules
 
 # testing
 /coverage
-
-# next.js
-.next/
-/out/
 
 # production
 /build
@@ -38,10 +36,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE
 .firebase
 .vscode
 .idea
 .fleet
-
-packages/next/public/maps
-packages/next/public/videos

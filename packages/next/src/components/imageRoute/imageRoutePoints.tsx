@@ -8,6 +8,7 @@ export default function ImageRoutePoints({
 	hidePoints,
 	hoverSpot,
 	activeSpot,
+	extraSpot,
 	RenderPoint = ({ point, containerSize, type }) => (
 		<circle
 			cx={point.x * containerSize.width}
@@ -24,6 +25,7 @@ export default function ImageRoutePoints({
 	hidePoints?: boolean;
 	hoverSpot: Spot;
 	activeSpot: Spot;
+	extraSpot?: Spot;
 	RenderPoint?: ComponentType<RenderPointProps>;
 }) {
 	return (
@@ -53,6 +55,15 @@ export default function ImageRoutePoints({
 					scale={scale}
 					percentage={activeSpot.percentage}
 					type='active'
+				/>
+			)}
+			{extraSpot && (
+				<RenderPoint
+					point={extraSpot.point}
+					containerSize={containerSize}
+					scale={scale}
+					percentage={extraSpot.percentage}
+					type='extra'
 				/>
 			)}
 		</Fragment>
