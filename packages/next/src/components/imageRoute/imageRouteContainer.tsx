@@ -81,12 +81,7 @@ export default function ImageRouteContainer({
 	return (
 		<Box
 			ref={containerRef}
-			sx={{
-				position: 'relative',
-				overflow: 'hidden',
-				cursor: 'crosshair',
-				...sx,
-			}}
+			sx={{ position: 'relative', overflow: 'hidden', cursor: 'crosshair', ...sx }}
 			onMouseDown={(e) => {
 				// right mouse button
 				if (e.button !== 2) return;

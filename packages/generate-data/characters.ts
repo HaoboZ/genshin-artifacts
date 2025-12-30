@@ -14,9 +14,7 @@ export async function fetchCharacters() {
 		const character = children[1].querySelector('a');
 		if (!character) continue;
 
-		if (character.title === 'Wonderland Manekin') {
-			character.title = 'Manekin';
-		}
+		if (character.title === 'Wonderland Manekin') character.title = 'Manekin';
 
 		const characterData = {
 			key: pascalCase(character.title),

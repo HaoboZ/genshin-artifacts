@@ -1,5 +1,4 @@
 'use server';
-
 import { type Point } from '@/components/imageRoute/types';
 import fs from 'fs';
 import path from 'path';

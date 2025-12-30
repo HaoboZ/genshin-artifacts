@@ -72,7 +72,7 @@ export default function Farming() {
 				RenderPath={MapRenderPath}
 				zoom={0.9}
 				disableAnimations
-				sx={{ aspectRatio: '16 / 9' }}
+				sx={{ aspectRatio: '5873 / 3314' }}
 			/>
 		</Box>
 	);
