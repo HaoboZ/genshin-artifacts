@@ -20,7 +20,7 @@ export default function PathSelect({
 					setSelectedMap(selectedMap - 1);
 				}}
 				disabled={selectedMap <= 0}>
-				Previous
+				Prev
 			</Button>
 			<Select
 				value={selectedMap}

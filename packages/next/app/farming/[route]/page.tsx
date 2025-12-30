@@ -6,6 +6,7 @@ import fetcher from '@/helpers/fetcher';
 import useEventListener from '@/hooks/useEventListener';
 import useParamState from '@/hooks/useParamState';
 import { Box, Paper, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
 import { use, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
 import PathSelect from './pathSelect';
@@ -27,14 +28,12 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
 	// calculate spots collected at current time
-	const spots = useMemo(() => {
-		let total = 0;
-		for (const point of data) {
-			if (point.marked) total += 1;
-			if (point.marked >= time) break;
-		}
-		return total;
-	}, [data, time]);
+	const spots = useMemo(
+		() =>
+			selectedRoute.maps[selectedMap].start +
+			(data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
+		[selectedRoute, selectedMap, data, time],
+	);
 
 	return (
 		<Box
@@ -61,6 +60,12 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 						alignSelf: 'start',
 						width: '50%',
 					}}>
+					<Image
+						fill
+						alt='background'
+						src={`/backgrounds/${mapName.split('/')[0]}.png`}
+						style={{ zIndex: -1, opacity: 0.5 }}
+					/>
 					<Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
 						<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
 							<Typography variant='h1'>Total: {spots}</Typography>

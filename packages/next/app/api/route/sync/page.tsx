@@ -75,10 +75,11 @@ export default function InternalRouteSync() {
 
 	// calculate spots collected at current time
 	const spots = useMemo(() => {
+		if (!points) return 0;
 		let total = 0;
-		for (const point of points) {
-			if (point.marked) total += 1;
-			if (point.marked >= time) break;
+		for (const { marked } of points) {
+			if (marked >= time) break;
+			if (marked) total++;
 		}
 		return total;
 	}, [points, time]);
