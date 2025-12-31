@@ -88,6 +88,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					time={time}
 					setTime={setTime}
 					autoplay
+					seekFrames={60}
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					sx={{

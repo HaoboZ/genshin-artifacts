@@ -25,6 +25,7 @@ export default function ImageRouteSync({
 	time,
 	setTime,
 	autoplay,
+	seekFrames,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
 	extraSpot,
@@ -37,6 +38,7 @@ export default function ImageRouteSync({
 	time: number;
 	setTime: Dispatch<SetStateAction<number>>;
 	autoplay?: boolean;
+	seekFrames?: number;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
 	extraSpot?: Spot;
@@ -111,6 +113,7 @@ export default function ImageRouteSync({
 			<VideoPlayer
 				ref={videoRef}
 				src={src}
+				seekFrames={seekFrames}
 				sx={{
 					gridColumn: 1,
 					gridRow: 1,
