@@ -29,10 +29,8 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 
 	// calculate spots collected at current time
 	const spots = useMemo(
-		() =>
-			selectedRoute.maps[selectedMap].start +
-			(data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0),
-		[selectedRoute, selectedMap, data, time],
+		() => data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0,
+		[data, time],
 	);
 
 	return (
@@ -68,10 +66,12 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					/>
 					<Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
 						<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
-							<Typography variant='h1'>Total: {spots}</Typography>
+							<Typography variant='h1'>
+								Total: {selectedRoute.maps[selectedMap].start + spots}
+							</Typography>
 						</Paper>
 						<Typography variant='h2'>
-							Spots: {selectedRoute.maps[selectedMap].spots}
+							Spots: {spots} / {selectedRoute.maps[selectedMap].spots}
 						</Typography>
 						<PathSelect
 							route={selectedRoute}

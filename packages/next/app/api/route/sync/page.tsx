@@ -74,15 +74,10 @@ export default function InternalRouteSync() {
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
 	// calculate spots collected at current time
-	const spots = useMemo(() => {
-		if (!points) return 0;
-		let total = 0;
-		for (const { marked } of points) {
-			if (marked >= time) break;
-			if (marked) total++;
-		}
-		return total;
-	}, [points, time]);
+	const spots = useMemo(
+		() => points?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0,
+		[points, time],
+	);
 
 	return (
 		<Container>
@@ -146,7 +141,8 @@ export default function InternalRouteSync() {
 								Save Points
 							</Button>
 							<Typography variant='body2' sx={{ mt: 1 }}>
-								Current Time: {time.toFixed(2)}s; Spots: {spots}
+								Current Time: {time.toFixed(2)}s; Spots: {spots} /{' '}
+								{route.maps[selectedMap].spots}
 							</Typography>
 							<Stack direction='row' spacing={1}>
 								<Button
