@@ -114,7 +114,7 @@ export default function ImageRoute({
 				<Image
 					fill
 					alt={src}
-					src={`${process.env.NEXT_PUBLIC_BLOB_URL}/maps/${src}.png`}
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
 					style={{ zIndex: -1, opacity: isLoading ? 0 : undefined }}
 					onLoad={() => setIsLoading(false)}
 				/>

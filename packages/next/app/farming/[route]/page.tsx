@@ -63,7 +63,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					<Image
 						fill
 						alt='background'
-						src={`${process.env.NEXT_PUBLIC_BLOB_URL}/backgrounds/${mapName.split('/')[0]}.png`}
+						src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
 						style={{ zIndex: -1, opacity: 0.5 }}
 					/>
 					<Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>

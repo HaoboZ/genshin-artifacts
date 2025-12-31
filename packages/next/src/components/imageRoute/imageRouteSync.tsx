@@ -57,6 +57,7 @@ export default function ImageRouteSync({
 
 	useEffect(() => {
 		setHideVideo(true);
+		setPlaying(false);
 	}, [src]);
 
 	useEventListener(videoRef.current, 'play', () => {

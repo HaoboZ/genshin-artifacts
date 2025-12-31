@@ -46,7 +46,7 @@ export default function VideoPlayer({
 			<video
 				ref={ref}
 				controls
-				src={`${process.env.NEXT_PUBLIC_BLOB_URL}/videos/${src}.mp4`}
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${src}.mp4`}
 				style={{ width: '100%', display: 'block' }}
 			/>
 			<Box

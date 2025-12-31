@@ -9,12 +9,8 @@ const nextConfig: NextConfig = {
 	images: {
 		unoptimized: true,
 		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'static.wikia.nocookie.net',
-				port: '',
-				pathname: '/gensin-impact/images/**',
-			},
+			new URL('https://static.wikia.nocookie.net/gensin-impact/images/**'),
+			new URL(`${process.env.NEXT_PUBLIC_STORAGE_URL}/**`),
 		],
 	},
 	serverExternalPackages: ['canvas'],

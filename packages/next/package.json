@@ -6,8 +6,7 @@
 		"build": "next build",
 		"test": "bun test",
 		"start": "next start",
-		"export": "next export",
-		"upload-files": "bun --env-file .env uploadFiles.ts"
+		"export": "next export"
 	},
 	"dependencies": {
 		"@base-ui-components/react": "1.0.0-rc.0",
