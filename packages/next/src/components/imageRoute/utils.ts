@@ -264,14 +264,21 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zo
 	const scaleX = (containerSize.width * zoom) / boundingBox.width;
 	const scaleY = (containerSize.height * zoom) / boundingBox.height;
 
-	const scale = Math.min(scaleX, scaleY, 3);
+	const scale = Math.max(1, Math.min(scaleX, scaleY, 3));
 
 	// calculate offset to center the bounding box
 	const containerCenterX = containerSize.width / 2;
 	const containerCenterY = containerSize.height / 2;
 
-	const offsetX = containerCenterX - boundingBox.centerX * scale;
-	const offsetY = containerCenterY - boundingBox.centerY * scale;
+	let offsetX = containerCenterX - boundingBox.centerX * scale;
+	let offsetY = containerCenterY - boundingBox.centerY * scale;
+
+	// constrain offset to never show beyond image bounds
+	const scaledWidth = containerSize.width * scale;
+	const scaledHeight = containerSize.height * scale;
+
+	offsetX = clamp(offsetX, { min: containerSize.width - scaledWidth, max: 0 });
+	offsetY = clamp(offsetY, { min: containerSize.height - scaledHeight, max: 0 });
 
 	return { scale, offset: { x: offsetX, y: offsetY } };
 }

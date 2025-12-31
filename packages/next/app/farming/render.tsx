@@ -1,7 +1,5 @@
 import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
 
-const radius = 6;
-
 export function MapRenderPoint({ point, containerSize, type, percentage }: RenderPointProps) {
 	if (type && percentage) return null;
 
@@ -9,9 +7,10 @@ export function MapRenderPoint({ point, containerSize, type, percentage }: Rende
 		<circle
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
-			r={radius}
+			r={containerSize.width / 200}
 			fillOpacity={0}
 			stroke={type === 'hover' ? 'white' : (point.data ?? 'lime')}
+			strokeWidth={containerSize.width / 1000}
 		/>
 	);
 }
@@ -26,6 +25,7 @@ export function MapRenderPath({ point1, point2, containerSize }: RenderPathProps
 	const dy = y2 - y1;
 	const length = Math.sqrt(dx * dx + dy * dy);
 
+	const radius = containerSize.width / 200;
 	if (length < radius * 2) return null;
 
 	const ux = dx / length;
@@ -38,6 +38,7 @@ export function MapRenderPath({ point1, point2, containerSize }: RenderPathProps
 			x2={x2 - ux * radius}
 			y2={y2 - uy * radius}
 			stroke={point2.data ?? 'lime'}
+			strokeWidth={containerSize.width / 1000}
 		/>
 	);
 }

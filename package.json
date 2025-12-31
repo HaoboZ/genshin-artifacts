@@ -12,7 +12,8 @@
 		"next-dev": "cd packages/next && bun run dev",
 		"next-build": "cd packages/next && bun run build",
 		"generate-data": "cd packages/generate-data && bun run start",
-		"map-capture": "cd packages/map-capture && bun run start"
+		"map-capture": "cd packages/map-capture && bun run start",
+		"worker-storage": "cd packages/worker-storage && bun run deploy"
 	},
 	"workspaces": [
 		"packages/*"
