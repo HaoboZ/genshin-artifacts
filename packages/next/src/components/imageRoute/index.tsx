@@ -1,11 +1,11 @@
-import { Box, type BoxProps } from '@mui/material';
+import { Box } from '@mui/material';
 import Image from 'next/image';
-import { type ComponentType, type Dispatch, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useControlledState from '../../hooks/useControlledState';
 import ImageRouteContainer from './imageRouteContainer';
 import ImageRoutePaths from './imageRoutePaths';
 import ImageRoutePoints from './imageRoutePoints';
-import { type Point, type RenderPathProps, type RenderPointProps, type Spot } from './types';
+import { type ImageRouteProps, type Spot } from './types';
 import { calculateOptimalZoom } from './utils';
 
 export default function ImageRoute({
@@ -17,29 +17,15 @@ export default function ImageRoute({
 	onLoaded,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
-	extraSpot,
 	RenderPoint,
 	RenderPath,
+	RenderExtra,
 	zoom,
 	disableAnimations,
 	sx,
 	children,
 	...props
-}: {
-	src: string;
-	route?: string;
-	points: Point[];
-	addPoint?: Dispatch<Point>;
-	hidePoints?: boolean;
-	onLoaded?: () => void;
-	activeSpot?: Spot;
-	setActiveSpot?: Dispatch<Spot>;
-	extraSpot?: Spot;
-	RenderPoint?: ComponentType<RenderPointProps>;
-	RenderPath?: ComponentType<RenderPathProps>;
-	zoom?: number;
-	disableAnimations?: boolean;
-} & BoxProps) {
+}: ImageRouteProps) {
 	const [containerSize, setContainerSize] = useState<DOMRect>(null);
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
@@ -126,9 +112,9 @@ export default function ImageRoute({
 							width: '100%',
 							height: '100%',
 						}}>
-						{children}
 						<ImageRoutePaths
 							containerSize={containerSize}
+							scale={scale}
 							points={points}
 							RenderPath={RenderPath}
 						/>
@@ -139,11 +125,14 @@ export default function ImageRoute({
 							hidePoints={hidePoints}
 							activeSpot={activeSpot}
 							hoverSpot={hoverSpot}
-							extraSpot={extraSpot}
 							RenderPoint={RenderPoint}
 						/>
+						{RenderExtra && (
+							<RenderExtra containerSize={containerSize} scale={scale} points={points} />
+						)}
 					</svg>
 				)}
+				{children}
 			</Box>
 		</ImageRouteContainer>
 	);

@@ -4,55 +4,40 @@ import { type Point, type Spot } from '@/components/imageRoute/types';
 import useEventListener from '@/hooks/useEventListener';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import {
-	Box,
-	Button,
-	Container,
-	Grid,
-	MenuItem,
-	Select,
-	Slider,
-	Stack,
-	Typography,
-} from '@mui/material';
+import { Box, Button, Container, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
-import { useMemo, useRef, useState } from 'react';
+import { use, useMemo, useRef, useState } from 'react';
 import { pick } from 'remeda';
-import PathSelect from '../../../farming/[route]/pathSelect';
-import { RouteMarker, RouteRenderPath, RouteRenderPoint } from '../../../farming/[route]/render';
-import { routesInfo } from '../../routes';
+import PathSelect from '../../../../farming/[route]/pathSelect';
+import {
+	RouteRenderExtra,
+	RouteRenderPath,
+	RouteRenderPoint,
+} from '../../../../farming/[route]/render';
+import { routesInfo } from '../../../routes';
 import { savePointsServer } from '../actions';
 import TimePointControls from './timePointControls';
 
-export default function InternalRouteSync() {
+export default function InternalRouteSync({ params }: { params: Promise<{ route: string }> }) {
+	const router = useRouter();
+	const { route } = use(params);
+	const selectedRoute = routesInfo[route];
+
 	const { enqueueSnackbar } = useSnackbar();
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const [selectedRoute, setSelectedRoute] = useState(0);
-	const route = routesInfo[selectedRoute];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
-	const mapName = route.maps[selectedMap].src;
+	const mapName = selectedRoute.maps[selectedMap].src;
 
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 	const [extraSpot, setExtraSpot] = useState<Spot>(null);
 
-	const [duration, setDuration] = useState(0);
-	const [playbackRate, setPlaybackRate] = useState(1);
-	const [volume, setVolume] = useState(1);
-
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
-
-	useEventListener(
-		// eslint-disable-next-line react-hooks/refs
-		videoRef.current,
-		'loadedmetadata',
-		() => setDuration(videoRef.current.duration),
-		true,
-	);
 
 	const updatePointField = (index: number, field: string, value: number) => {
 		setPoints((prevPoints) => {
@@ -70,7 +55,7 @@ export default function InternalRouteSync() {
 		});
 	};
 
-	const currentPointIndex = extraSpot?.pointIndex ?? null;
+	const currentPointIndex = extraSpot?.pointIndex ?? 0;
 	const nextPointIndex = currentPointIndex !== null ? currentPointIndex + 1 : null;
 
 	// calculate spots collected at current time
@@ -83,12 +68,9 @@ export default function InternalRouteSync() {
 		<Container>
 			<Stack direction='row' spacing={1}>
 				<Select
-					value={selectedRoute}
+					value={route}
 					onChange={({ target }) => {
-						setSelectedRoute(target.value);
-						setSelectedMap(0);
-						setPoints([]);
-						setExtraSpot(null);
+						router.push(`/api/route/${target.value}/sync`);
 					}}>
 					{routesInfo.map(({ spots, mora }, index) => (
 						<MenuItem key={index} value={index}>
@@ -97,7 +79,7 @@ export default function InternalRouteSync() {
 					))}
 				</Select>
 				<PathSelect
-					route={route}
+					route={selectedRoute}
 					selectedMap={selectedMap}
 					setSelectedMap={(selectedMap) => {
 						setSelectedMap(selectedMap);
@@ -142,7 +124,7 @@ export default function InternalRouteSync() {
 							</Button>
 							<Typography variant='body2' sx={{ mt: 1 }}>
 								Current Time: {time.toFixed(2)}s; Spots: {spots} /{' '}
-								{route.maps[selectedMap].spots}
+								{selectedRoute.maps[selectedMap].spots}
 							</Typography>
 							<Stack direction='row' spacing={1}>
 								<Button
@@ -222,9 +204,9 @@ export default function InternalRouteSync() {
 						setTime={setTime}
 						activeSpot={activeSpot}
 						setActiveSpot={setActiveSpot}
-						extraSpot={extraSpot}
 						RenderPoint={RouteRenderPoint}
 						RenderPath={RouteRenderPath}
+						RenderExtra={RouteRenderExtra}
 						sx={{
 							gridColumn: 1,
 							gridRow: 1,
@@ -232,70 +214,8 @@ export default function InternalRouteSync() {
 							alignSelf: 'start',
 							width: '50%',
 							aspectRatio: 1,
-						}}>
-						<RouteMarker />
-					</ImageRouteSync>
-					<Box
-						sx={{
-							gridColumn: 1,
-							gridRow: 1,
-							justifySelf: 'end',
-							alignSelf: 'end',
-							width: '45%',
-							p: 1,
-						}}>
-						<Stack>
-							<Stack direction='row' spacing={1} alignItems='center'>
-								<Typography variant='caption' sx={{ minWidth: 80 }}>
-									Scrub
-								</Typography>
-								<Slider
-									value={time}
-									min={0}
-									step={1 / 15}
-									max={duration || 100}
-									onChange={(_, value) => {
-										const video = videoRef.current;
-										if (!video) return;
-										video.currentTime = value;
-										setTime(value);
-									}}
-								/>
-							</Stack>
-							<Stack direction='row' spacing={1} alignItems='center'>
-								<Typography variant='caption' sx={{ minWidth: 80 }}>
-									Speed: {playbackRate.toFixed(2)}x
-								</Typography>
-								<Slider
-									value={playbackRate}
-									min={0.25}
-									max={2}
-									step={0.05}
-									onChange={(_, value) => {
-										const video = videoRef.current;
-										if (!video) return;
-										video.playbackRate = value;
-										setPlaybackRate(value);
-									}}
-								/>
-								<Typography variant='caption' sx={{ minWidth: 80 }}>
-									Volume: {volume * 100}%
-								</Typography>
-								<Slider
-									value={volume}
-									min={0}
-									max={1}
-									step={0.05}
-									onChange={(_, value) => {
-										const video = videoRef.current;
-										if (!video) return;
-										video.volume = value;
-										setVolume(value);
-									}}
-								/>
-							</Stack>
-						</Stack>
-					</Box>
+						}}
+					/>
 				</Box>
 			</Box>
 		</Container>

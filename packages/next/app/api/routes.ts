@@ -13,4 +13,5 @@ export type Map = {
 	src: string;
 	start: number;
 	spots: number;
+	text?: { x: number; y: number; text: string; size?: number }[];
 };

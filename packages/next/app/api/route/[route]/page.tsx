@@ -3,28 +3,33 @@ import { type Point } from '@/components/imageRoute/types';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Container, MenuItem, Select, Stack } from '@mui/material';
-import { useState } from 'react';
-import PathSelect from '../../farming/[route]/pathSelect';
-import { RouteMarker, RouteRenderPath, RouteRenderPoint } from '../../farming/[route]/render';
-import { routesInfo } from '../routes';
+import { useRouter } from 'next/navigation';
+import { use } from 'react';
+import PathSelect from '../../../farming/[route]/pathSelect';
+import {
+	RouteRenderExtra,
+	RouteRenderPath,
+	RouteRenderPoint,
+} from '../../../farming/[route]/render';
+import { routesInfo } from '../../routes';
 import ImageRouteEditor from './imageRouteEditor';
 
-export default function InternalRoute() {
-	const [selectedRoute, setSelectedRoute] = useState(0);
-	const route = routesInfo[selectedRoute];
+export default function InternalRoute({ params }: { params: Promise<{ route: string }> }) {
+	const router = useRouter();
+	const { route } = use(params);
+	const selectedRoute = routesInfo[route];
+
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
-	const mapName = route.maps[selectedMap].src;
+	const mapName = selectedRoute.maps[selectedMap].src;
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 
 	return (
 		<Container>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center', py: 1 }}>
 				<Select
-					value={selectedRoute}
+					value={route}
 					onChange={({ target }) => {
-						setSelectedRoute(target.value);
-						setSelectedMap(0);
-						setPoints([]);
+						router.push(`/api/route/${target.value}`);
 					}}>
 					{routesInfo.map(({ spots, mora }, index) => (
 						<MenuItem key={index} value={index}>
@@ -33,7 +38,7 @@ export default function InternalRoute() {
 					))}
 				</Select>
 				<PathSelect
-					route={route}
+					route={selectedRoute}
 					selectedMap={selectedMap}
 					setSelectedMap={(selectedMap) => {
 						setSelectedMap(selectedMap);
@@ -47,9 +52,9 @@ export default function InternalRoute() {
 				setPoints={setPoints}
 				RenderPoint={RouteRenderPoint}
 				RenderPath={RouteRenderPath}
-				sx={{ aspectRatio: 1 }}>
-				<RouteMarker />
-			</ImageRouteEditor>
+				RenderExtra={RouteRenderExtra}
+				sx={{ aspectRatio: 1 }}
+			/>
 		</Container>
 	);
 }

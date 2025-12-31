@@ -3,8 +3,8 @@ import { type Point } from '@/components/imageRoute/types';
 import useFetchState from '@/hooks/useFetchState';
 import { Container, MenuItem, Select, Stack } from '@mui/material';
 import { useState } from 'react';
-import { MapRenderPath, MapRenderPoint } from '../../../farming/render';
-import { routesInfo } from '../../routes';
+import { MapRenderPath, MapRenderPoint } from '../../../../farming/render';
+import { routesInfo } from '../../../routes';
 import ImageRouteEditor from '../imageRouteEditor';
 
 export default function InternalRouteMap() {

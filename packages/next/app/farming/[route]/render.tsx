@@ -1,4 +1,5 @@
 import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
+import { Fragment } from 'react';
 
 export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPointProps) {
 	return (
@@ -18,15 +19,17 @@ export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPo
 	);
 }
 
-export function RouteRenderPath({ point1, point2, containerSize }: RenderPathProps) {
+export function RouteRenderPath({ point1, point2, containerSize, scale }: RenderPathProps) {
 	if (point2.data === 'hidden') return null;
+	scale = scale / 4 + 0.75;
+
 	const x1 = point1.x * containerSize.width;
 	const y1 = point1.y * containerSize.height;
 	let x2 = point2.x * containerSize.width;
 	let y2 = point2.y * containerSize.height;
 
-	// scale arrow offset based on container size
-	const arrowOffset = 3;
+	// scale arrow offset based on scale
+	const arrowOffset = 3 / scale;
 
 	// shorten line for arrows to stop inside arrowhead
 	if (point2.marked) {
@@ -50,37 +53,40 @@ export function RouteRenderPath({ point1, point2, containerSize }: RenderPathPro
 			x2={x2}
 			y2={y2}
 			stroke='red'
-			strokeWidth={containerSize.width / 300}
+			strokeWidth={containerSize.width / 250 / scale}
+			strokeDasharray={point2.data === 'jump' ? '5 10' : undefined}
 			markerEnd={point2.marked && 'url(#arrowhead)'}
 		/>
 	);
 }
 
-export function RouteMarker() {
+export function RouteRenderExtra() {
 	return (
-		<defs>
-			<style jsx>{`
-				@keyframes pulse {
-					0%,
-					100% {
-						opacity: 1;
-						transform: scale(1);
+		<Fragment>
+			<defs>
+				<style jsx>{`
+					@keyframes pulse {
+						0%,
+						100% {
+							opacity: 1;
+							transform: scale(1);
+						}
+						50% {
+							opacity: 0.75;
+							transform: scale(1.5);
+						}
 					}
-					50% {
-						opacity: 0.75;
-						transform: scale(1.5);
-					}
-				}
-			`}</style>
-			<marker
-				id='arrowhead'
-				markerWidth={8}
-				markerHeight={8}
-				refX={3.3}
-				refY={2.5}
-				orient='auto'>
-				<polygon points='0 0, 5 2.5, 0 5' fill='#ff0000' />
-			</marker>
-		</defs>
+				`}</style>
+				<marker
+					id='arrowhead'
+					markerWidth={8}
+					markerHeight={8}
+					refX={3.3}
+					refY={2.5}
+					orient='auto'>
+					<polygon points='0 0, 5 2.5, 0 5' fill='#ff0000' />
+				</marker>
+			</defs>
+		</Fragment>
 	);
 }

@@ -24,8 +24,9 @@ export default function VideoPlayer({
 	const [isHovering, setIsHovering] = useState(false);
 
 	// spacebar control for play/pause
-	useEventListener(window, 'keydown', (e) => {
-		if (!ref.current || e.code !== 'Space') return;
+	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
+		if (!ref.current || e.code !== 'Space' || document.activeElement instanceof HTMLVideoElement)
+			return;
 		e.preventDefault();
 		if (ref.current.paused) {
 			ref.current.play();

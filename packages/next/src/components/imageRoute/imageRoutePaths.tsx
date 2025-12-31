@@ -3,6 +3,7 @@ import { type Point, type RenderPathProps } from './types';
 
 export default function ImageRoutePaths({
 	containerSize,
+	scale,
 	points,
 	RenderPath = ({ point1, point2, containerSize }) => {
 		const x1 = point1.x * containerSize.width;
@@ -14,6 +15,7 @@ export default function ImageRoutePaths({
 	},
 }: {
 	containerSize: DOMRect;
+	scale: number;
 	points: Point[];
 	RenderPath?: ComponentType<RenderPathProps>;
 }) {
@@ -29,6 +31,7 @@ export default function ImageRoutePaths({
 						point1={prevPoint}
 						point2={point}
 						containerSize={containerSize}
+						scale={scale}
 					/>
 				);
 			})}

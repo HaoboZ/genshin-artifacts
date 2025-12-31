@@ -1,23 +1,23 @@
 'use client';
 import { routesInfo } from '@/api/routes';
 import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
-import { type Point } from '@/components/imageRoute/types';
+import { type Point, type RenderExtraProps } from '@/components/imageRoute/types';
 import fetcher from '@/helpers/fetcher';
 import useEventListener from '@/hooks/useEventListener';
 import useParamState from '@/hooks/useParamState';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import { use, useMemo, useRef, useState } from 'react';
+import { Fragment, use, useCallback, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
 import PathSelect from './pathSelect';
-import { RouteMarker, RouteRenderPath, RouteRenderPoint } from './render';
+import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
 export default function FarmingRoute({ params }: { params: Promise<{ route: string }> }) {
 	const { route } = use(params);
+	const selectedRoute = routesInfo[+route];
 
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const selectedRoute = routesInfo[route];
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 	const [time, setTime] = useState(0);
@@ -31,6 +31,28 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const spots = useMemo(
 		() => data?.filter(({ marked }) => (!marked ? false : time >= marked)).length ?? 0,
 		[data, time],
+	);
+
+	const RenderExtra = useCallback(
+		({ containerSize }: RenderExtraProps) => {
+			return (
+				<Fragment>
+					<RouteRenderExtra />
+					{selectedRoute.maps[selectedMap].text?.map(({ x, y, text, size }, i) => (
+						<text
+							key={i}
+							x={x * containerSize.width}
+							y={y * containerSize.height}
+							fill='white'
+							fontSize={size * containerSize.width}
+							fontStyle='bold'>
+							{text}
+						</text>
+					))}
+				</Fragment>
+			);
+		},
+		[selectedRoute, selectedMap],
 	);
 
 	return (
@@ -91,6 +113,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					seekFrames={60}
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
+					RenderExtra={RenderExtra}
 					sx={{
 						gridColumn: 1,
 						gridRow: 1,
@@ -98,9 +121,8 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 						alignSelf: 'start',
 						width: '50%',
 						aspectRatio: 1,
-					}}>
-					<RouteMarker />
-				</ImageRouteSync>
+					}}
+				/>
 			</Box>
 		</Box>
 	);

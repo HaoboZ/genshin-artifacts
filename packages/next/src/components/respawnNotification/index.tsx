@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { useLocalStorage } from '@uidotdev/usehooks';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
 import AsyncButton from '../loaders/asyncButton';
 import { cancelNotification, sendNotification } from './notificationActions';
@@ -28,26 +28,28 @@ export default function RespawnNotification({
 		return () => clearInterval(intervalId);
 	}, []);
 
-	return (
-		<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
-			<AsyncButton
-				variant='contained'
-				size='small'
-				onClick={async () => {
-					const date = notificationTime();
-					const id = await sendNotification(OneSignal.User.onesignalId, {
-						title: `${item} Respawned`,
-						icon,
-						time: date.toUTCString(),
-					});
+	const hasTime = respawn && +time < respawn.time;
 
-					if (respawn?.id) await cancelNotification(respawn.id);
-					setRespawn({ id, time: +date });
-				}}>
-				{item} Notification
-			</AsyncButton>
-			{respawn && +time < respawn.time && (
-				<Fragment>
+	return (
+		<Stack spacing={1}>
+			<Stack direction='row' spacing={1}>
+				<AsyncButton
+					variant='contained'
+					size='small'
+					onClick={async () => {
+						const date = notificationTime();
+						const id = await sendNotification(OneSignal.User.onesignalId, {
+							title: `${item} Respawned`,
+							icon,
+							time: date.toUTCString(),
+						});
+
+						if (respawn?.id) await cancelNotification(respawn.id);
+						setRespawn({ id, time: +date });
+					}}>
+					{item} Notification
+				</AsyncButton>
+				{hasTime && (
 					<AsyncButton
 						variant='contained'
 						color='error'
@@ -57,8 +59,10 @@ export default function RespawnNotification({
 						}}>
 						Cancel
 					</AsyncButton>
-					<Typography>Respawn Time: {new Date(respawn.time).toLocaleString()}</Typography>
-				</Fragment>
+				)}
+			</Stack>
+			{hasTime && (
+				<Typography>Respawn Time: {new Date(respawn.time).toLocaleString()}</Typography>
 			)}
 		</Stack>
 	);

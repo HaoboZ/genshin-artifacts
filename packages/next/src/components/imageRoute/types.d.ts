@@ -1,3 +1,6 @@
+import type { BoxProps } from '@mui/material';
+import type { ComponentType, Dispatch } from 'react';
+
 export type Point = {
 	x: number;
 	y: number;
@@ -13,10 +16,26 @@ export type Spot = {
 	percentage?: number;
 };
 
+export type ImageRouteProps = {
+	src: string;
+	route?: string;
+	points: Point[];
+	addPoint?: Dispatch<Point>;
+	hidePoints?: boolean;
+	onLoaded?: () => void;
+	activeSpot?: Spot;
+	setActiveSpot?: Dispatch<Spot>;
+	RenderPoint?: ComponentType<RenderPointProps>;
+	RenderPath?: ComponentType<RenderPathProps>;
+	RenderExtra?: ComponentType<RenderExtraProps>;
+	zoom?: number;
+	disableAnimations?: boolean;
+} & BoxProps;
+
 export type RenderPointProps = {
 	point: Point;
 	containerSize: DOMRect;
-	scale?: number;
+	scale: number;
 	percentage?: number;
 	type?: string;
 };
@@ -25,4 +44,11 @@ export type RenderPathProps = {
 	point1: Point;
 	point2: Point;
 	containerSize: DOMRect;
+	scale: number;
+};
+
+export type RenderExtraProps = {
+	containerSize: DOMRect;
+	scale: number;
+	points: Point[];
 };

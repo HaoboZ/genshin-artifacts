@@ -96,35 +96,33 @@ export function getClosestPointOnPath(
 	};
 }
 
-// helper to get start time (first point defaults to 0)
-const getStart = (p: Point, idx: number) => p.start ?? (idx === 0 ? 0 : undefined);
-
 // find active spot based on time
 export function findSpotByTime(points: Point[], time: number): Spot {
-	if (!points || !points.length) return null;
+	if (!points?.length) return null;
 
-	let lastValidPoint = null;
+	let lastPoint = { point: points[0], i: 0, maxTime: 0 };
 	// iterate through points to find the spot
 	for (let i = 0; i < points.length; i++) {
 		const point = points[i];
-		const pointStart = getStart(point, i);
-		if (pointStart === undefined) continue;
 
-		const pointEnd = point.end ?? pointStart;
+		if (point.start === undefined && point.end === undefined) continue;
+
+		const minTime = point.start ?? 0;
+		const maxTime = point.end ?? point.start ?? 0;
 
 		// time is at this point
-		if (time >= pointStart && time <= pointEnd) {
+		if (minTime <= time && time <= maxTime) {
 			return { point, pointIndex: i, percentage: 0 };
 		}
 
-		if (time > pointStart) {
-			lastValidPoint = i;
+		if (time > maxTime) {
+			lastPoint = { point, i, maxTime };
 			continue;
 		}
 
-		const prevPoint = points[lastValidPoint];
-		const prevEnd = prevPoint.end ?? getStart(prevPoint, lastValidPoint);
-		const segmentPoints = points.slice(lastValidPoint, i + 1);
+		const startTime = point.start ?? point.end ?? 0;
+		const endTime = lastPoint.maxTime;
+		const segmentPoints = points.slice(lastPoint.i, i + 1);
 
 		// calculate cumulative distances
 		const distances: number[] = [0];
@@ -136,10 +134,12 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 			distances.push(totalDistance);
 		}
 
-		if (totalDistance === 0) break;
+		if (totalDistance === 0) {
+			return { point: lastPoint.point, pointIndex: lastPoint.i, percentage: 0 };
+		}
 
 		// interpolate position based on time
-		const timePercentage = (time - prevEnd) / (pointStart - prevEnd);
+		const timePercentage = (time - endTime) / (startTime - endTime);
 		const targetDistance = totalDistance * timePercentage;
 
 		// find segment containing target distance
@@ -156,55 +156,58 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 
 		return {
 			point: { x: p1.x + (p2.x - p1.x) * segT, y: p1.y + (p2.y - p1.y) * segT },
-			pointIndex: lastValidPoint + segIdx,
+			pointIndex: lastPoint.i + segIdx,
 			percentage: Math.round(segT * 1000) / 10,
 		};
 	}
 
-	// time is beyond all points, return last valid point
+	// time is beyond all points, return last point
 	return {
-		point: points[lastValidPoint],
-		pointIndex: Math.max(0, lastValidPoint - 1),
-		percentage: 100,
+		point: points[points.length - 1],
+		pointIndex: points.length - 1,
+		percentage: 0,
 	};
 }
 
 // find time based on spot
 export function findTimeBySpot(points: Point[], spot: Spot) {
-	if (!points || !points.length || !spot) return null;
+	if (!points?.length || !spot) return null;
 
 	// check if we're snapped directly to a point
 	if (spot.percentage === 100) {
-		const start = getStart(points[spot.pointIndex + 1], spot.pointIndex + 1);
-		if (start !== undefined) return start;
+		const point = points[spot.pointIndex + 1];
+		const res = point.marked ?? point.start;
+		if (res) return res;
 	} else if (spot.percentage === 0) {
-		const start = getStart(points[spot.pointIndex], spot.pointIndex);
-		if (start !== undefined) return start;
+		const point = points[spot.pointIndex];
+		return point.marked ?? point.start ?? 0;
 	}
 
 	// find timing segment boundaries in a single pass
-	let timingStartIdx = -1;
-	let timingEndIdx = -1;
+	let startIdx = 0;
+	let endIdx = points.length - 1;
 
-	for (let i = 0; i < points.length; i++) {
-		if (getStart(points[i], i) !== undefined) {
-			if (i <= spot.pointIndex) {
-				timingStartIdx = i;
-			} else {
-				timingEndIdx = i;
-				break;
-			}
+	for (let i = spot.pointIndex; i >= 0; i--) {
+		if (points[i].start ?? points[i].end) {
+			startIdx = i;
+			break;
 		}
 	}
 
-	if (timingStartIdx < 0 || timingEndIdx < 0) return null;
+	for (let i = spot.pointIndex + 1; i < points.length; i++) {
+		if (points[i].start ?? points[i].end) {
+			endIdx = i;
+			break;
+		}
+	}
 
-	const startPoint = points[timingStartIdx];
-	const startPointEnd = startPoint.end ?? getStart(startPoint, timingStartIdx);
-	const endPointStart = getStart(points[timingEndIdx], timingEndIdx);
+	const startPoint = points[startIdx];
+	const endPoint = points[endIdx];
+	const startPointTime = startPoint.end ?? startPoint.start;
+	const endPointTime = endPoint.start ?? endPoint.end;
 
 	// calculate cumulative distances along the path
-	const pathPoints = points.slice(timingStartIdx, timingEndIdx + 1);
+	const pathPoints = points.slice(startIdx, endIdx + 1);
 	const distances: number[] = [0];
 	let totalDistance = 0;
 
@@ -215,10 +218,10 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 		distances.push(totalDistance);
 	}
 
-	if (totalDistance === 0) return startPointEnd;
+	if (totalDistance === 0) return startPointTime;
 
 	// calculate distance to the spot
-	const pointIndexInPath = spot.pointIndex - timingStartIdx;
+	const pointIndexInPath = spot.pointIndex - startIdx;
 	const distanceToSegmentStart = distances[pointIndexInPath];
 
 	const segmentStart = pathPoints[pointIndexInPath];
@@ -231,7 +234,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 
 	// interpolate time based on distance ratio
 	const distanceRatio = totalDistanceToSpot / totalDistance;
-	return startPointEnd + (endPointStart - startPointEnd) * distanceRatio;
+	return startPointTime + (endPointTime - startPointTime) * distanceRatio;
 }
 
 export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom: number = 0.8) {

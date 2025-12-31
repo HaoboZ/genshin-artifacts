@@ -1,15 +1,9 @@
 'use client';
 import ImageRoute from '@/components/imageRoute';
-import {
-	type Point,
-	type RenderPathProps,
-	type RenderPointProps,
-	type Spot,
-} from '@/components/imageRoute/types';
+import { type ImageRouteProps, type Point, type Spot } from '@/components/imageRoute/types';
 import useEventListener from '@/hooks/useEventListener';
 import useHistory from '@/hooks/useHistory';
 import {
-	type BoxProps,
 	Button,
 	FormControlLabel,
 	Stack,
@@ -18,7 +12,8 @@ import {
 	ToggleButtonGroup,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { type ComponentType, type Dispatch, Fragment, type SetStateAction, useState } from 'react';
+import { type Dispatch, Fragment, type SetStateAction, useState } from 'react';
+import { pick } from 'remeda';
 import { savePointsServer } from './actions';
 
 export default function ImageRouteEditor({
@@ -29,13 +24,8 @@ export default function ImageRouteEditor({
 	sx,
 	...props
 }: {
-	src: string;
-	route?: string;
-	points: Point[];
 	setPoints: Dispatch<SetStateAction<Point[]>>;
-	RenderPoint?: ComponentType<RenderPointProps>;
-	RenderPath?: ComponentType<RenderPathProps>;
-} & BoxProps) {
+} & ImageRouteProps) {
 	const { enqueueSnackbar } = useSnackbar();
 
 	const [editMode, setEditMode] = useState<string>('add');
@@ -104,15 +94,18 @@ export default function ImageRouteEditor({
 											return [...points, point];
 										case 'relocate':
 											const newPoints = [...points];
-											newPoints[
-												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0)
-											] = point;
+											const index =
+												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0);
+											newPoints[index] = {
+												...newPoints[index],
+												...pick(point, ['x', 'y']),
+											};
 											return newPoints;
 										case 'insert':
 											return points.toSpliced(
 												activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0),
 												0,
-												point,
+												pick(point, ['x', 'y']),
 											);
 									}
 								});

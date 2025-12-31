@@ -1,6 +1,4 @@
-import { type BoxProps } from '@mui/material';
 import {
-	type ComponentType,
 	type Dispatch,
 	Fragment,
 	type RefObject,
@@ -12,7 +10,7 @@ import useControlledState from '../../hooks/useControlledState';
 import useEventListener from '../../hooks/useEventListener';
 import VideoPlayer from '../videoPlayer';
 import ImageRoute from './index';
-import { type Point, type RenderPathProps, type RenderPointProps, type Spot } from './types';
+import { type ImageRouteProps } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
 const fps = 60;
@@ -22,30 +20,22 @@ export default function ImageRouteSync({
 	src,
 	points,
 	hidePoints,
-	time,
-	setTime,
+	time: _time,
+	setTime: _setTime,
 	autoplay,
 	seekFrames,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
-	extraSpot,
 	...props
 }: {
 	videoRef: RefObject<HTMLVideoElement>;
-	src: string;
-	points: Point[];
-	hidePoints?: boolean;
-	time: number;
-	setTime: Dispatch<SetStateAction<number>>;
+	time?: number;
+	setTime?: Dispatch<SetStateAction<number>>;
 	autoplay?: boolean;
 	seekFrames?: number;
-	activeSpot?: Spot;
-	setActiveSpot?: Dispatch<Spot>;
-	extraSpot?: Spot;
-	RenderPoint?: ComponentType<RenderPointProps>;
-	RenderPath?: ComponentType<RenderPathProps>;
-} & BoxProps) {
+} & ImageRouteProps) {
 	const [hideVideo, setHideVideo] = useState(true);
+	const [time, setTime] = useControlledState(_time, _setTime);
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 	const [playing, setPlaying] = useState(false);
 
@@ -107,7 +97,6 @@ export default function ImageRouteSync({
 						videoRef.current.currentTime = calculatedTime;
 					}
 				}}
-				extraSpot={extraSpot}
 				{...props}
 			/>
 			<VideoPlayer

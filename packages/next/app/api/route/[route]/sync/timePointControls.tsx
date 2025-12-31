@@ -31,8 +31,8 @@ export default function TimePointControls({
 				<Button
 					size='small'
 					variant='contained'
-					onClick={() => updatePointField(pointIndex, 'marked', time + 7 / 60)}>
-					+ 7 frames
+					onClick={() => updatePointField(pointIndex, 'marked', +(time + 7 / 60).toFixed(6))}>
+					+ 7 Frames
 				</Button>
 				<Button
 					size='small'

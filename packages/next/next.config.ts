@@ -6,13 +6,7 @@ const nextConfig: NextConfig = {
 	headers: async () => [
 		{ source: '/api/:path*', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] },
 	],
-	images: {
-		unoptimized: true,
-		remotePatterns: [
-			new URL('https://static.wikia.nocookie.net/gensin-impact/images/**'),
-			new URL(`${process.env.NEXT_PUBLIC_STORAGE_URL}/**`),
-		],
-	},
+	images: { unoptimized: true },
 	serverExternalPackages: ['canvas'],
 };
 
