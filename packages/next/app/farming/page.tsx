@@ -7,7 +7,6 @@ import useParamState from '@/hooks/useParamState';
 import { Box, Button, MenuItem, Select, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import useSWR from 'swr';
 import { MapRenderPath, MapRenderPoint } from './render';
 
@@ -15,7 +14,6 @@ export default function Farming() {
 	const router = useRouter();
 
 	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
-	const [isSelectOpen, setIsSelectOpen] = useState(false);
 
 	const { data } = useSWR<Point[]>(`/points/route_${selectedRoute}.json`, fetcher);
 
@@ -24,22 +22,17 @@ export default function Farming() {
 			<Stack
 				direction='row'
 				sx={{
-					'position': 'absolute',
-					'top': 16,
-					'left': '50%',
-					'transform': 'translateX(-50%)',
-					'zIndex': 'drawer',
-					'opacity': isSelectOpen ? 1 : 0,
-					'transition': 'opacity 0.3s ease-in-out',
-					'&:hover': { opacity: 1 },
-					'width': 500,
+					position: 'absolute',
+					top: 16,
+					left: '50%',
+					transform: 'translateX(-50%)',
+					zIndex: 'drawer',
+					width: 400,
 				}}>
 				<Select
 					fullWidth
+					size='small'
 					value={selectedRoute}
-					open={isSelectOpen}
-					onOpen={() => setIsSelectOpen(true)}
-					onClose={() => setIsSelectOpen(false)}
 					onChange={({ target }) => {
 						setSelectedRoute(target.value);
 					}}

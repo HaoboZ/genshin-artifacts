@@ -38,15 +38,12 @@ export default function ImageRoute({
 
 	useEffect(() => {
 		setIsLoading(true);
-	}, [src]);
-
-	useEffect(() => {
 		setScale(1);
 		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
 		setIsAnimating(false);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [route]);
+	}, [src]);
 
 	useEffect(() => {
 		if (isLoading || !points) return;
@@ -62,7 +59,7 @@ export default function ImageRoute({
 
 		return () => cancelAnimationFrame(animId);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading, Boolean(points)]);
+	}, [route, isLoading, Boolean(points)]);
 
 	return (
 		<ImageRouteContainer
