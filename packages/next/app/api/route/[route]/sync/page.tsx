@@ -101,14 +101,11 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 						width: '100%',
 						maxWidth: 'calc(100vh * 16 / 9)',
 						aspectRatio: '16 / 9',
-						display: 'grid',
+						position: 'relative',
 					}}>
 					<Box
 						sx={{
-							gridColumn: 1,
-							gridRow: 1,
-							justifySelf: 'start',
-							alignSelf: 'start',
+							position: 'absolute',
 							width: '50%',
 							maxHeight: '100%',
 							overflow: 'auto',
@@ -207,14 +204,6 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 						RenderPoint={RouteRenderPoint}
 						RenderPath={RouteRenderPath}
 						RenderExtra={RouteRenderExtra}
-						sx={{
-							gridColumn: 1,
-							gridRow: 1,
-							justifySelf: 'end',
-							alignSelf: 'start',
-							width: '50%',
-							aspectRatio: 1,
-						}}
 					/>
 				</Box>
 			</Box>

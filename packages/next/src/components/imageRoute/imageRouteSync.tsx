@@ -26,6 +26,7 @@ export default function ImageRouteSync({
 	seekFrames,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
+	sx,
 	...props
 }: {
 	videoRef: RefObject<HTMLVideoElement>;
@@ -97,6 +98,7 @@ export default function ImageRouteSync({
 						videoRef.current.currentTime = calculatedTime;
 					}
 				}}
+				sx={{ position: 'absolute', width: '50%', aspectRatio: 1, right: 0, ...sx }}
 				{...props}
 			/>
 			<VideoPlayer
@@ -104,10 +106,8 @@ export default function ImageRouteSync({
 				src={src}
 				seekFrames={seekFrames}
 				sx={{
-					gridColumn: 1,
-					gridRow: 1,
-					justifySelf: 'start',
-					alignSelf: 'end',
+					position: 'absolute',
+					bottom: 0,
 					width: '55%',
 					opacity: hideVideo ? 0 : undefined,
 				}}

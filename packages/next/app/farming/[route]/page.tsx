@@ -83,7 +83,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					width: '100%',
 					maxWidth: 'calc(100vh * 16 / 9)',
 					aspectRatio: '16 / 9',
-					display: 'grid',
 					position: 'relative',
 				}}>
 				<Image
@@ -94,12 +93,8 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				/>
 				<Box
 					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'start',
-						alignSelf: 'start',
+						position: 'absolute',
 						width: '50%',
-						height: '45%',
 						transform: `scale(${scale})`,
 						transformOrigin: 'top center',
 					}}>
@@ -131,14 +126,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					RenderExtra={RenderExtra}
-					sx={{
-						gridColumn: 1,
-						gridRow: 1,
-						justifySelf: 'end',
-						alignSelf: 'start',
-						width: '50%',
-						aspectRatio: 1,
-					}}
 				/>
 			</Box>
 		</Box>

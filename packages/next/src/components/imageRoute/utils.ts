@@ -5,15 +5,13 @@ export function clampPosition(containerSize: DOMRect, x: number, y: number, curr
 	const imageWidth = containerSize.width * currentScale;
 	const imageHeight = containerSize.height * currentScale;
 
-	// calculate bounds - image must stay within container
-	const minX = containerSize.width - imageWidth;
-	const maxX = 0;
-	const minY = containerSize.height - imageHeight;
-	const maxY = 0;
+	// calculate bounds - with center origin, the offset represents the center position
+	const halfScaledWidth = (imageWidth - containerSize.width) / 2;
+	const halfScaledHeight = (imageHeight - containerSize.height) / 2;
 
 	return {
-		x: clamp(x, { min: minX, max: maxX }),
-		y: clamp(y, { min: minY, max: maxY }),
+		x: clamp(x, { min: -halfScaledWidth, max: halfScaledWidth }),
+		y: clamp(y, { min: -halfScaledHeight, max: halfScaledHeight }),
 	};
 }
 
@@ -273,15 +271,16 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zo
 	const containerCenterX = containerSize.width / 2;
 	const containerCenterY = containerSize.height / 2;
 
-	let offsetX = containerCenterX - boundingBox.centerX * scale;
-	let offsetY = containerCenterY - boundingBox.centerY * scale;
+	// we need to translate the image center by -offsetToBounding * scale
+	let offsetX = -(boundingBox.centerX - containerCenterX) * scale;
+	let offsetY = -(boundingBox.centerY - containerCenterY) * scale;
 
 	// constrain offset to never show beyond image bounds
-	const scaledWidth = containerSize.width * scale;
-	const scaledHeight = containerSize.height * scale;
+	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;
+	const halfScaledHeight = (containerSize.height * scale - containerSize.height) / 2;
 
-	offsetX = clamp(offsetX, { min: containerSize.width - scaledWidth, max: 0 });
-	offsetY = clamp(offsetY, { min: containerSize.height - scaledHeight, max: 0 });
+	offsetX = clamp(offsetX, { min: -halfScaledWidth, max: halfScaledWidth });
+	offsetY = clamp(offsetY, { min: -halfScaledHeight, max: halfScaledHeight });
 
 	return { scale, offset: { x: offsetX, y: offsetY } };
 }

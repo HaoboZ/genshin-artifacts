@@ -61,17 +61,19 @@ export default function ImageRouteContainer({
 		const mouseX = e.clientX - containerSize.x;
 		const mouseY = e.clientY - containerSize.y;
 
-		// calculate mouse position relative to image before zoom
-		const imageX = (mouseX - mapOffset.x) / scale;
-		const imageY = (mouseY - mapOffset.y) / scale;
+		// calculate mouse position relative to image center before zoom
+		const centerX = containerSize.width / 2;
+		const centerY = containerSize.height / 2;
+		const imageX = (mouseX - centerX - mapOffset.x) / scale;
+		const imageY = (mouseY - centerY - mapOffset.y) / scale;
 
 		// update scale with new bounds
 		const delta = e.deltaY > 0 ? 0.9 : 1.1;
 		const newScale = clamp(scale * delta, { min: 1, max: 8 });
 
 		// calculate new position to keep mouse point stable
-		const newX = mouseX - imageX * newScale;
-		const newY = mouseY - imageY * newScale;
+		const newX = mouseX - centerX - imageX * newScale;
+		const newY = mouseY - centerY - imageY * newScale;
 
 		setScale(newScale);
 		// clamp position to keep image within bounds
@@ -81,7 +83,7 @@ export default function ImageRouteContainer({
 	return (
 		<Box
 			ref={containerRef}
-			sx={{ position: 'relative', overflow: 'hidden', cursor: 'crosshair', ...sx }}
+			sx={{ overflow: 'hidden', cursor: 'crosshair', ...sx }}
 			onMouseDown={(e) => {
 				// right mouse button
 				if (e.button !== 2) return;
@@ -100,11 +102,15 @@ export default function ImageRouteContainer({
 				// show hover preview when addPoint is null
 				if (!snapPoint || !containerSize) return;
 
-				const mouseX =
-					(e.clientX - containerSize.x - mapOffset.x) / scale / containerSize.width;
-				const mouseY =
-					(e.clientY - containerSize.y - mapOffset.y) / scale / containerSize.height;
-				setHoverSpot(getClosestPointOnPath(points, mouseX, mouseY, 15 / containerSize.width));
+				const centerX = containerSize.width / 2;
+				const centerY = containerSize.height / 2;
+				const mouseX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
+				const mouseY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
+				const normalizedX = (mouseX + centerX) / containerSize.width;
+				const normalizedY = (mouseY + centerY) / containerSize.height;
+				setHoverSpot(
+					getClosestPointOnPath(points, normalizedX, normalizedY, 15 / containerSize.width),
+				);
 			}}
 			onMouseUp={() => setIsDragging(false)}
 			onClick={(e) => {
@@ -115,12 +121,14 @@ export default function ImageRouteContainer({
 					return;
 				}
 
-				const clickX = (e.clientX - containerSize.x - mapOffset.x) / scale;
-				const clickY = (e.clientY - containerSize.y - mapOffset.y) / scale;
+				const centerX = containerSize.width / 2;
+				const centerY = containerSize.height / 2;
+				const clickX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
+				const clickY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
 
 				const point: Point = {
-					x: clickX / containerSize.width,
-					y: clickY / containerSize.height,
+					x: (clickX + centerX) / containerSize.width,
+					y: (clickY + centerY) / containerSize.height,
 					marked: 1,
 				};
 
