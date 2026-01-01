@@ -23,6 +23,7 @@ export default function PathSelect({
 				Prev
 			</Button>
 			<Select
+				size='small'
 				value={selectedMap}
 				onChange={({ target }) => setSelectedMap(target.value)}
 				sx={{ bgcolor: 'background.paper', backdropFilter: 'blur(10px)' }}>

@@ -17,15 +17,28 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const selectedRoute = routesInfo[+route];
 
 	const videoRef = useRef<HTMLVideoElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 	const [time, setTime] = useState(0);
+	const [scale, setScale] = useState(1);
 
 	const { data } = useSWR<Point[]>(`/points/${mapName}.json`, fetcher);
 
+	// Calculate scale based on container size
+	useEventListener(
+		typeof window !== 'undefined' ? window : null,
+		'resize',
+		() => {
+			if (!containerRef.current) return;
+			setScale(containerRef.current.offsetWidth / 1000);
+		},
+		true,
+	);
+
 	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
+	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current?.currentTime));
 
 	// calculate spots collected at current time
 	const spots = useMemo(
@@ -65,6 +78,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				justifyContent: 'center',
 			}}>
 			<Box
+				ref={containerRef}
 				sx={{
 					width: '100%',
 					maxWidth: 'calc(100vh * 16 / 9)',
@@ -72,6 +86,12 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					display: 'grid',
 					position: 'relative',
 				}}>
+				<Image
+					fill
+					alt='background'
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
+					style={{ zIndex: -1, opacity: 0.5 }}
+				/>
 				<Box
 					sx={{
 						gridColumn: 1,
@@ -79,14 +99,11 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 						justifySelf: 'start',
 						alignSelf: 'start',
 						width: '50%',
+						height: '45%',
+						transform: `scale(${scale})`,
+						transformOrigin: 'top center',
 					}}>
-					<Image
-						fill
-						alt='background'
-						src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
-						style={{ zIndex: -1, opacity: 0.5 }}
-					/>
-					<Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
+					<Stack spacing={2} sx={{ py: 5, alignItems: 'center' }}>
 						<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
 							<Typography variant='h1'>
 								Total: {selectedRoute.maps[selectedMap].start + spots}
