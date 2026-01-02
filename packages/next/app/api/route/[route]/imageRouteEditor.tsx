@@ -114,7 +114,7 @@ export default function ImageRouteEditor({
 				}
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
-				sx={{ height: '90vh', justifySelf: 'center', ...sx }}
+				sx={{ height: '80vh', justifySelf: 'center', ...sx }}
 				{...props}
 			/>
 		</Fragment>

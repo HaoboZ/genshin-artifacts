@@ -4,7 +4,7 @@ import { Box, Container, Grid, Stack, TextField } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import OneSignal from 'react-onesignal';
-import Farming from './farming/page';
+import FarmingMap from './farming';
 
 const RespawnNotification = dynamic(() => import('@/components/respawnNotification'), {
 	ssr: false,
@@ -28,7 +28,7 @@ export default function Main() {
 	return (
 		<Container>
 			<PageTitle>Genshin Artifacts</PageTitle>
-			<Grid container>
+			<Grid container spacing={1}>
 				<Grid size={4}>
 					<Stack spacing={1}>
 						<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
@@ -65,35 +65,33 @@ export default function Main() {
 								return now;
 							}}
 						/>
-						<Stack spacing={1} direction='row'>
-							<TextField
-								fullWidth={false}
-								type='time'
-								slotProps={{ htmlInput: { step: 1 } }}
-								value={time}
-								onChange={({ target }) => setTime(target.value)}
-							/>
-							<RespawnNotification
-								storageKey='custom'
-								item='Custom'
-								notificationTime={() => {
-									const tomorrow = new Date();
-									tomorrow.setDate(tomorrow.getDate() + 1);
+						<TextField
+							fullWidth={false}
+							type='time'
+							slotProps={{ htmlInput: { step: 1 } }}
+							value={time}
+							onChange={({ target }) => setTime(target.value)}
+						/>
+						<RespawnNotification
+							storageKey='custom'
+							item='Custom'
+							notificationTime={() => {
+								const tomorrow = new Date();
+								tomorrow.setDate(tomorrow.getDate() + 1);
 
-									const timeParts = time.split(':');
-									const hours = parseInt(timeParts[0]);
-									const minutes = parseInt(timeParts[1]);
-									const seconds = timeParts[2] ? parseInt(timeParts[2]) : 0;
+								const timeParts = time.split(':');
+								const hours = parseInt(timeParts[0]);
+								const minutes = parseInt(timeParts[1]);
+								const seconds = timeParts[2] ? parseInt(timeParts[2]) : 0;
 
-									tomorrow.setHours(hours, minutes, seconds, 0);
-									return tomorrow;
-								}}
-							/>
-						</Stack>
+								tomorrow.setHours(hours, minutes, seconds, 0);
+								return tomorrow;
+							}}
+						/>
 					</Stack>
 				</Grid>
 				<Grid size={8}>
-					<Farming />
+					<FarmingMap />
 				</Grid>
 			</Grid>
 		</Container>

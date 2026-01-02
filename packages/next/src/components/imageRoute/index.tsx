@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import useControlledState from '../../hooks/useControlledState';
@@ -71,6 +70,7 @@ export default function ImageRoute({
 			setMapOffset={setMapOffset}
 			points={points}
 			snapPoint={!addPoint}
+			isAnimating={isAnimating}
 			setIsAnimating={setIsAnimating}
 			hoverSpot={hoverSpot}
 			setHoverSpot={setHoverSpot}
@@ -84,53 +84,42 @@ export default function ImageRoute({
 			}}
 			sx={sx}
 			{...props}>
-			<Box
-				sx={{
-					position: 'relative',
-					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,
-					transformOrigin: '50% 50%',
-					width: '100%',
-					height: '100%',
-					transition: isAnimating ? 'transform 1s ease' : 'none',
-					transitionDelay: '1s',
-				}}>
-				<Image
-					fill
-					alt={src}
-					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
-					style={{ zIndex: -1, opacity: isLoading ? 0 : undefined }}
-					onLoad={() => setIsLoading(false)}
-				/>
-				{containerSize && (
-					<svg
-						style={{
-							display: isLoading ? 'none' : undefined,
-							overflow: 'visible',
-							width: '100%',
-							height: '100%',
-						}}>
-						<ImageRoutePaths
-							containerSize={containerSize}
-							scale={scale}
-							points={points}
-							RenderPath={RenderPath}
-						/>
-						<ImageRoutePoints
-							containerSize={containerSize}
-							scale={scale}
-							points={points}
-							hidePoints={hidePoints}
-							activeSpot={activeSpot}
-							hoverSpot={hoverSpot}
-							RenderPoint={RenderPoint}
-						/>
-						{RenderExtra && (
-							<RenderExtra containerSize={containerSize} scale={scale} points={points} />
-						)}
-					</svg>
-				)}
-				{children}
-			</Box>
+			{children}
+			<Image
+				fill
+				alt={src}
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
+				style={{ zIndex: -1, objectFit: 'contain', opacity: isLoading ? 0 : undefined }}
+				onLoad={() => setIsLoading(false)}
+			/>
+			{containerSize && (
+				<svg
+					style={{
+						display: isLoading ? 'none' : undefined,
+						overflow: 'visible',
+						width: '100%',
+						height: '100%',
+					}}>
+					<ImageRoutePaths
+						containerSize={containerSize}
+						scale={scale}
+						points={points}
+						RenderPath={RenderPath}
+					/>
+					<ImageRoutePoints
+						containerSize={containerSize}
+						scale={scale}
+						points={points}
+						hidePoints={hidePoints}
+						activeSpot={activeSpot}
+						hoverSpot={hoverSpot}
+						RenderPoint={RenderPoint}
+					/>
+					{RenderExtra && (
+						<RenderExtra containerSize={containerSize} scale={scale} points={points} />
+					)}
+				</svg>
+			)}
 		</ImageRouteContainer>
 	);
 }

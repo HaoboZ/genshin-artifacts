@@ -108,7 +108,7 @@ export default function ImageRouteSync({
 				sx={{
 					position: 'absolute',
 					bottom: 0,
-					width: '55%',
+					width: '50%',
 					opacity: hideVideo ? 0 : undefined,
 				}}
 			/>

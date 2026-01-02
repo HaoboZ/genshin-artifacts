@@ -69,65 +69,50 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	);
 
 	return (
-		<Box
-			sx={{
-				width: '100%',
-				height: '100vh',
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-			}}>
+		<Box sx={{ maxWidth: '200vh', height: '100vh', position: 'relative', margin: '0 auto' }}>
+			<Image
+				fill
+				alt='background'
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
+				objectFit='cover'
+				style={{ zIndex: -1, opacity: 0.5 }}
+			/>
 			<Box
-				ref={containerRef}
 				sx={{
-					width: '100%',
-					maxWidth: 'calc(100vh * 16 / 9)',
-					aspectRatio: '16 / 9',
-					position: 'relative',
+					position: 'absolute',
+					width: '50%',
+					transform: `scale(${scale})`,
+					transformOrigin: 'top center',
 				}}>
-				<Image
-					fill
-					alt='background'
-					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
-					style={{ zIndex: -1, opacity: 0.5 }}
-				/>
-				<Box
-					sx={{
-						position: 'absolute',
-						width: '50%',
-						transform: `scale(${scale})`,
-						transformOrigin: 'top center',
-					}}>
-					<Stack spacing={2} sx={{ py: 5, alignItems: 'center' }}>
-						<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
-							<Typography variant='h1'>
-								Total: {selectedRoute.maps[selectedMap].start + spots}
-							</Typography>
-						</Paper>
-						<Typography variant='h2'>
-							Spots: {spots} / {selectedRoute.maps[selectedMap].spots}
+				<Stack spacing={2} sx={{ py: 5, alignItems: 'center' }}>
+					<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
+						<Typography variant='h1'>
+							Total: {selectedRoute.maps[selectedMap].start + spots}
 						</Typography>
-						<PathSelect
-							route={selectedRoute}
-							selectedMap={selectedMap}
-							setSelectedMap={setSelectedMap}
-						/>
-					</Stack>
-				</Box>
-				<ImageRouteSync
-					src={mapName}
-					videoRef={videoRef}
-					points={data}
-					hidePoints
-					time={time}
-					setTime={setTime}
-					autoplay
-					seekFrames={60}
-					RenderPoint={RouteRenderPoint}
-					RenderPath={RouteRenderPath}
-					RenderExtra={RenderExtra}
-				/>
+					</Paper>
+					<Typography variant='h2'>
+						Spots: {spots} / {selectedRoute.maps[selectedMap].spots}
+					</Typography>
+					<PathSelect
+						route={selectedRoute}
+						selectedMap={selectedMap}
+						setSelectedMap={setSelectedMap}
+					/>
+				</Stack>
 			</Box>
+			<ImageRouteSync
+				src={mapName}
+				videoRef={videoRef}
+				points={data}
+				hidePoints
+				time={time}
+				setTime={setTime}
+				autoplay
+				seekFrames={60}
+				RenderPoint={RouteRenderPoint}
+				RenderPath={RouteRenderPath}
+				RenderExtra={RenderExtra}
+			/>
 		</Box>
 	);
 }

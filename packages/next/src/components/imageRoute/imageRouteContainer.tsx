@@ -14,11 +14,13 @@ export default function ImageRouteContainer({
 	setMapOffset,
 	points,
 	snapPoint,
+	isAnimating,
 	setIsAnimating,
 	hoverSpot,
 	setHoverSpot,
 	setActiveSpot,
 	sx,
+	children,
 	...props
 }: {
 	containerSize: DOMRect;
@@ -29,6 +31,7 @@ export default function ImageRouteContainer({
 	setMapOffset: Dispatch<Point>;
 	points: Point[];
 	snapPoint?: boolean;
+	isAnimating: boolean;
 	setIsAnimating: Dispatch<boolean>;
 	hoverSpot: Spot;
 	setHoverSpot: Dispatch<Spot>;
@@ -138,7 +141,19 @@ export default function ImageRouteContainer({
 				setActiveSpot({ point });
 			}}
 			onContextMenu={(e) => e.preventDefault()}
-			{...props}
-		/>
+			{...props}>
+			<Box
+				sx={{
+					position: 'relative',
+					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,
+					transformOrigin: '50% 50%',
+					width: '100%',
+					height: '100%',
+					transition: isAnimating ? 'transform 1s ease' : 'none',
+					transitionDelay: '1s',
+				}}>
+				{children}
+			</Box>
+		</Box>
 	);
 }

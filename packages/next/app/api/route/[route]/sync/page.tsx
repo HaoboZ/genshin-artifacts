@@ -88,124 +88,109 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 					}}
 				/>
 			</Stack>
-			<Box
-				sx={{
-					width: '100%',
-					height: '100vh',
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}>
+			<Box sx={{ maxWidth: '200vh', height: '90vh', position: 'relative', margin: '0 auto' }}>
 				<Box
 					sx={{
-						width: '100%',
-						maxWidth: 'calc(100vh * 16 / 9)',
-						aspectRatio: '16 / 9',
-						position: 'relative',
+						position: 'absolute',
+						width: '50%',
+						maxHeight: '100%',
+						overflow: 'auto',
 					}}>
-					<Box
-						sx={{
-							position: 'absolute',
-							width: '50%',
-							maxHeight: '100%',
-							overflow: 'auto',
-						}}>
-						<Stack spacing={1} sx={{ p: 1 }}>
+					<Stack spacing={1} sx={{ p: 1 }}>
+						<Button
+							variant='contained'
+							onClick={async () => {
+								await savePointsServer(points, mapName);
+								enqueueSnackbar('Saved', { variant: 'info' });
+							}}>
+							Save Points
+						</Button>
+						<Typography variant='body2' sx={{ mt: 1 }}>
+							Current Time: {time.toFixed(2)}s; Spots: {spots} /{' '}
+							{selectedRoute.maps[selectedMap].spots}
+						</Typography>
+						<Stack direction='row' spacing={1}>
 							<Button
 								variant='contained'
-								onClick={async () => {
-									await savePointsServer(points, mapName);
-									enqueueSnackbar('Saved', { variant: 'info' });
+								size='small'
+								disabled={currentPointIndex <= 0}
+								onClick={() => {
+									setExtraSpot({
+										point: points[currentPointIndex - 1],
+										pointIndex: currentPointIndex - 1,
+										percentage: 0,
+									});
 								}}>
-								Save Points
+								Prev Point
 							</Button>
-							<Typography variant='body2' sx={{ mt: 1 }}>
-								Current Time: {time.toFixed(2)}s; Spots: {spots} /{' '}
-								{selectedRoute.maps[selectedMap].spots}
-							</Typography>
-							<Stack direction='row' spacing={1}>
-								<Button
-									variant='contained'
-									size='small'
-									disabled={currentPointIndex <= 0}
-									onClick={() => {
-										setExtraSpot({
-											point: points[currentPointIndex - 1],
-											pointIndex: currentPointIndex - 1,
-											percentage: 0,
-										});
-									}}>
-									Prev Point
-								</Button>
-								<Button
-									variant='contained'
-									size='small'
-									disabled={nextPointIndex >= points?.length}
-									onClick={() => {
-										setExtraSpot({
-											point: points[currentPointIndex + 1],
-											pointIndex: currentPointIndex + 1,
-											percentage: 0,
-										});
-									}}>
-									Next Point
-								</Button>
-								<Button
-									variant='contained'
-									size='small'
-									onClick={() => {
-										setPoints((points) => {
-											const newPoints = [...points];
-											newPoints.splice(
-												nextPointIndex,
-												0,
-												pick(extraSpot.point, ['x', 'y']),
-											);
-											return newPoints;
-										});
-									}}>
-									Duplicate
-								</Button>
-							</Stack>
-							<Grid container>
-								<TimePointControls
-									name='Current'
-									time={time}
-									point={
-										currentPointIndex !== null && currentPointIndex >= 0
-											? points?.[currentPointIndex]
-											: null
-									}
-									pointIndex={currentPointIndex}
-									updatePointField={updatePointField}
-								/>
-								<TimePointControls
-									name='Next'
-									time={time}
-									point={
-										nextPointIndex !== null && nextPointIndex < points?.length
-											? points?.[nextPointIndex]
-											: null
-									}
-									pointIndex={nextPointIndex}
-									updatePointField={updatePointField}
-								/>
-							</Grid>
+							<Button
+								variant='contained'
+								size='small'
+								disabled={nextPointIndex >= points?.length}
+								onClick={() => {
+									setExtraSpot({
+										point: points[currentPointIndex + 1],
+										pointIndex: currentPointIndex + 1,
+										percentage: 0,
+									});
+								}}>
+								Next Point
+							</Button>
+							<Button
+								variant='contained'
+								size='small'
+								onClick={() => {
+									setPoints((points) => {
+										const newPoints = [...points];
+										newPoints.splice(
+											nextPointIndex,
+											0,
+											pick(extraSpot.point, ['x', 'y']),
+										);
+										return newPoints;
+									});
+								}}>
+								Duplicate
+							</Button>
 						</Stack>
-					</Box>
-					<ImageRouteSync
-						src={mapName}
-						videoRef={videoRef}
-						points={points}
-						time={time}
-						setTime={setTime}
-						activeSpot={activeSpot}
-						setActiveSpot={setActiveSpot}
-						RenderPoint={RouteRenderPoint}
-						RenderPath={RouteRenderPath}
-						RenderExtra={RouteRenderExtra}
-					/>
+						<Grid container>
+							<TimePointControls
+								name='Current'
+								time={time}
+								point={
+									currentPointIndex !== null && currentPointIndex >= 0
+										? points?.[currentPointIndex]
+										: null
+								}
+								pointIndex={currentPointIndex}
+								updatePointField={updatePointField}
+							/>
+							<TimePointControls
+								name='Next'
+								time={time}
+								point={
+									nextPointIndex !== null && nextPointIndex < points?.length
+										? points?.[nextPointIndex]
+										: null
+								}
+								pointIndex={nextPointIndex}
+								updatePointField={updatePointField}
+							/>
+						</Grid>
+					</Stack>
 				</Box>
+				<ImageRouteSync
+					src={mapName}
+					videoRef={videoRef}
+					points={points}
+					time={time}
+					setTime={setTime}
+					activeSpot={activeSpot}
+					setActiveSpot={setActiveSpot}
+					RenderPoint={RouteRenderPoint}
+					RenderPath={RouteRenderPath}
+					RenderExtra={RouteRenderExtra}
+				/>
 			</Box>
 		</Container>
 	);
