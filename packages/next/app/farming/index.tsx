@@ -5,13 +5,13 @@ import type { Point } from '@/components/imageRoute/types';
 import RatioContainer from '@/components/ratioContainer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import { Button, MenuItem, Select, Stack } from '@mui/material';
+import { Button, MenuItem, Select, Stack, type SxProps } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MapRenderPath, MapRenderPoint } from './render';
 
-export default function FarmingMap() {
+export default function FarmingMap({ sx }: { sx?: SxProps }) {
 	const router = useRouter();
 
 	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
@@ -19,7 +19,7 @@ export default function FarmingMap() {
 	const [points] = useFetchState<Point[]>(`/points/route_${selectedRoute}.json`, []);
 
 	return (
-		<RatioContainer width={16} height={9}>
+		<RatioContainer width={16} height={9} sx={sx}>
 			<Stack
 				direction='row'
 				sx={{
@@ -28,7 +28,7 @@ export default function FarmingMap() {
 					left: '50%',
 					transform: 'translateX(-50%)',
 					zIndex: 'drawer',
-					width: 400,
+					width: 'min(100%, 400px)',
 				}}>
 				<Select
 					fullWidth
