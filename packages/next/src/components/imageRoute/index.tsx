@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import useControlledState from '../../hooks/useControlledState';
 import ImageRouteContainer from './imageRouteContainer';
@@ -8,18 +7,15 @@ import { type ImageRouteProps, type Spot } from './types';
 import { calculateOptimalZoom } from './utils';
 
 export default function ImageRoute({
-	src,
-	route = src,
 	points,
 	addPoint,
 	hidePoints,
-	onLoaded,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
 	RenderPoint,
 	RenderPath,
 	RenderExtra,
-	zoom,
+	initialZoom,
 	disableAnimations,
 	sx,
 	children,
@@ -29,36 +25,27 @@ export default function ImageRoute({
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
 
-	const [isLoading, setIsLoading] = useState(true);
 	const [isAnimating, setIsAnimating] = useState(false);
 
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
 
 	useEffect(() => {
-		setIsLoading(true);
 		setScale(1);
 		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
 		setIsAnimating(false);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [src]);
 
-	useEffect(() => {
-		if (isLoading || !points) return;
-
-		const animId = requestAnimationFrame(() => {
-			const { scale, offset } = calculateOptimalZoom(points, containerSize, zoom);
+		const animationFrame = requestAnimationFrame(() => {
+			const { scale, offset } = calculateOptimalZoom(points, containerSize, initialZoom);
 			setScale(scale);
 			setMapOffset(offset);
 			if (!disableAnimations) setIsAnimating(true);
-			setIsLoading(false);
-			onLoaded?.();
 		});
 
-		return () => cancelAnimationFrame(animId);
+		return () => cancelAnimationFrame(animationFrame);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [route, isLoading, Boolean(points)]);
+	}, [points]);
 
 	return (
 		<ImageRouteContainer
@@ -76,7 +63,7 @@ export default function ImageRoute({
 			setHoverSpot={setHoverSpot}
 			setActiveSpot={(spot) => {
 				if (addPoint) {
-					addPoint(spot.point);
+					if (spot) addPoint(spot.point);
 					setActiveSpot(null);
 				} else {
 					setActiveSpot(spot);
@@ -85,21 +72,8 @@ export default function ImageRoute({
 			sx={sx}
 			{...props}>
 			{children}
-			<Image
-				fill
-				alt={src}
-				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
-				style={{ zIndex: -1, objectFit: 'contain', opacity: isLoading ? 0 : undefined }}
-				onLoad={() => setIsLoading(false)}
-			/>
 			{containerSize && (
-				<svg
-					style={{
-						display: isLoading ? 'none' : undefined,
-						overflow: 'visible',
-						width: '100%',
-						height: '100%',
-					}}>
+				<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
 					<ImageRoutePaths
 						containerSize={containerSize}
 						scale={scale}

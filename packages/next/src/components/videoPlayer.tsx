@@ -56,12 +56,7 @@ export default function VideoPlayer({
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
 			{...props}>
-			<video
-				ref={ref}
-				controls
-				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${src}.mp4`}
-				style={{ width: '100%', display: 'block' }}
-			/>
+			<video ref={ref} controls src={src} style={{ width: '100%', display: 'block' }} />
 			<Box
 				sx={{
 					'position': 'absolute',

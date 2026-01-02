@@ -235,8 +235,8 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	return startPointTime + (endPointTime - startPointTime) * distanceRatio;
 }
 
-export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom: number = 0.8) {
-	if (!containerSize || points.length === 0) {
+export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom?: number) {
+	if (!points?.length || !zoom) {
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
 

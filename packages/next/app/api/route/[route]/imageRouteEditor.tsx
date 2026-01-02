@@ -11,6 +11,7 @@ import {
 	ToggleButton,
 	ToggleButtonGroup,
 } from '@mui/material';
+import Image from 'next/image';
 import { useSnackbar } from 'notistack';
 import { type Dispatch, Fragment, type SetStateAction, useState } from 'react';
 import { pick } from 'remeda';
@@ -24,6 +25,8 @@ export default function ImageRouteEditor({
 	sx,
 	...props
 }: {
+	src: string;
+	route?: string;
 	setPoints: Dispatch<SetStateAction<Point[]>>;
 } & ImageRouteProps) {
 	const { enqueueSnackbar } = useSnackbar();
@@ -82,8 +85,6 @@ export default function ImageRouteEditor({
 				</Button>
 			</Stack>
 			<ImageRoute
-				src={src}
-				route={route}
 				points={points}
 				addPoint={
 					editMode === 'add' || (applying && activeSpot?.pointIndex !== undefined)
@@ -114,9 +115,16 @@ export default function ImageRouteEditor({
 				}
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
-				sx={{ height: '80vh', justifySelf: 'center', ...sx }}
-				{...props}
-			/>
+				initialZoom={0.8}
+				sx={{ height: '80vh', justifySelf: 'center', opacity: points ? 1 : 0, ...sx }}
+				{...props}>
+				<Image
+					fill
+					alt={src}
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
+					style={{ zIndex: -1, objectFit: 'contain' }}
+				/>
+			</ImageRoute>
 		</Fragment>
 	);
 }

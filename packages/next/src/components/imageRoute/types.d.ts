@@ -17,18 +17,15 @@ export type Spot = {
 };
 
 export type ImageRouteProps = {
-	src: string;
-	route?: string;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
 	hidePoints?: boolean;
-	onLoaded?: () => void;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	RenderExtra?: ComponentType<RenderExtraProps>;
-	zoom?: number;
+	initialZoom?: number;
 	disableAnimations?: boolean;
 } & BoxProps;
 

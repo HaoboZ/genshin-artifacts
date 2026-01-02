@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {
 	type Dispatch,
 	Fragment,
@@ -29,6 +30,7 @@ export default function ImageRouteSync({
 	sx,
 	...props
 }: {
+	src: string;
 	videoRef: RefObject<HTMLVideoElement>;
 	time?: number;
 	setTime?: Dispatch<SetStateAction<number>>;
@@ -72,22 +74,24 @@ export default function ImageRouteSync({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [playing]);
 
+	useEffect(() => {
+		if (!points) return;
+		if (!autoplay) {
+			setHideVideo(false);
+		} else {
+			setTimeout(() => {
+				setHideVideo(false);
+				videoRef.current?.play();
+			}, 2000);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [Boolean(points)]);
+
 	return (
 		<Fragment>
 			<ImageRoute
-				src={src}
 				points={points}
 				hidePoints={hidePoints}
-				onLoaded={() => {
-					if (!autoplay) {
-						setHideVideo(false);
-					} else {
-						setTimeout(() => {
-							setHideVideo(false);
-							videoRef.current?.play();
-						}, 2000);
-					}
-				}}
 				activeSpot={activeSpot}
 				setActiveSpot={(spot) => {
 					setActiveSpot(spot);
@@ -98,12 +102,26 @@ export default function ImageRouteSync({
 						videoRef.current.currentTime = calculatedTime;
 					}
 				}}
-				sx={{ position: 'absolute', width: '50%', aspectRatio: 1, right: 0, ...sx }}
-				{...props}
-			/>
+				initialZoom={0.8}
+				sx={{
+					position: 'absolute',
+					width: '50%',
+					aspectRatio: 1,
+					right: 0,
+					opacity: points ? 1 : 0,
+					...sx,
+				}}
+				{...props}>
+				<Image
+					fill
+					alt={src}
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${src}.png`}
+					style={{ zIndex: -1, objectFit: 'contain' }}
+				/>
+			</ImageRoute>
 			<VideoPlayer
 				ref={videoRef}
-				src={src}
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${src}.mp4`}
 				seekFrames={seekFrames}
 				sx={{
 					position: 'absolute',

@@ -6,6 +6,7 @@ import RatioContainer from '@/components/ratioContainer';
 import fetcher from '@/helpers/fetcher';
 import useParamState from '@/hooks/useParamState';
 import { Button, MenuItem, Select, Stack } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
@@ -53,8 +54,6 @@ export default function FarmingMap() {
 				</Button>
 			</Stack>
 			<ImageRoute
-				src='teyvat'
-				route={selectedRoute.toString()}
 				points={data}
 				setActiveSpot={(activeSpot) => {
 					if (!activeSpot) return;
@@ -64,10 +63,16 @@ export default function FarmingMap() {
 				}}
 				RenderPoint={MapRenderPoint}
 				RenderPath={MapRenderPath}
-				zoom={0.9}
-				disableAnimations
-				sx={{ width: '100%', height: '100%' }}
-			/>
+				initialZoom={0.9}
+				// disableAnimations
+				sx={{ width: '100%', height: '100%', opacity: data ? 1 : 0 }}>
+				<Image
+					fill
+					alt='teyvat'
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/teyvat.png`}
+					style={{ zIndex: -1, objectFit: 'contain' }}
+				/>
+			</ImageRoute>
 		</RatioContainer>
 	);
 }

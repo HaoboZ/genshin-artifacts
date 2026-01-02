@@ -74,8 +74,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				fill
 				alt='background'
 				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
-				objectFit='cover'
-				style={{ zIndex: -1, opacity: 0.5 }}
+				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
 			/>
 			<Box
 				sx={{
