@@ -29,6 +29,9 @@ export default function Main() {
 		<Container>
 			<PageTitle>Genshin Artifacts</PageTitle>
 			<Grid container spacing={1} sx={{ height: 'calc(100vh - 100px)' }}>
+				<Grid size={8}>
+					<FarmingMap sx={{ alignItems: 'unset' }} />
+				</Grid>
 				<Grid size={4}>
 					<Stack spacing={1}>
 						<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
@@ -89,9 +92,6 @@ export default function Main() {
 							}}
 						/>
 					</Stack>
-				</Grid>
-				<Grid size={8}>
-					<FarmingMap sx={{ alignItems: 'unset' }} />
 				</Grid>
 			</Grid>
 		</Container>
