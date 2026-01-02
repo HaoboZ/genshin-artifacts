@@ -16,6 +16,7 @@ export default function RatioContainer({ width, height, sx, ...props }: BoxProps
 					aspectRatio: `${width} / ${height}`,
 					width: `min(100%, 100vh * ${width} / ${height})`,
 					height: `min(100%, 100vw * ${height} / ${width})`,
+					position: 'relative',
 				}}
 				{...props}
 			/>

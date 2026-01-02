@@ -1,57 +1,38 @@
 import { Box, type BoxProps } from '@mui/material';
-import { type Dispatch, useRef, useState } from 'react';
+import { type Dispatch, type RefObject, useState } from 'react';
 import { clamp } from 'remeda';
 import useEventListener from '../../hooks/useEventListener';
-import { type Point, type Spot } from './types';
-import { clampPosition, getClosestPointOnPath } from './utils';
+import { type Point } from './types';
+import { clampPosition, mouseToContainer } from './utils';
 
 export default function ImageRouteContainer({
+	containerRef,
 	containerSize,
-	setContainerSize,
 	scale,
 	setScale,
 	mapOffset,
 	setMapOffset,
-	points,
-	snapPoint,
 	isAnimating,
 	setIsAnimating,
-	hoverSpot,
-	setHoverSpot,
-	setActiveSpot,
+	onHoverRoute,
+	onClickRoute,
 	sx,
 	children,
 	...props
 }: {
+	containerRef: RefObject<HTMLDivElement>;
 	containerSize: DOMRect;
-	setContainerSize: Dispatch<DOMRect>;
 	scale: number;
 	setScale: Dispatch<number>;
 	mapOffset: Point;
 	setMapOffset: Dispatch<Point>;
-	points: Point[];
-	snapPoint?: boolean;
 	isAnimating: boolean;
 	setIsAnimating: Dispatch<boolean>;
-	hoverSpot: Spot;
-	setHoverSpot: Dispatch<Spot>;
-	setActiveSpot: Dispatch<Spot>;
+	onHoverRoute?: (point: { x: number; y: number }) => void;
+	onClickRoute?: (point: { x: number; y: number }) => void;
 } & Omit<BoxProps, 'ref'>) {
-	const containerRef = useRef<HTMLDivElement>(null);
-
 	const [isDragging, setIsDragging] = useState(false);
 	const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-
-	useEventListener(
-		typeof window !== 'undefined' ? window : null,
-		'resize',
-		() => setContainerSize(containerRef.current?.getBoundingClientRect()),
-		true,
-	);
-
-	useEventListener(typeof window !== 'undefined' ? window : null, 'scroll', () =>
-		setContainerSize(containerRef.current?.getBoundingClientRect()),
-	);
 
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(containerRef.current, 'wheel', (e) => {
@@ -60,23 +41,21 @@ export default function ImageRouteContainer({
 		// Disable animation on wheel event
 		setIsAnimating?.(false);
 
-		// get mouse position relative to container
-		const mouseX = e.clientX - containerSize.x;
-		const mouseY = e.clientY - containerSize.y;
-
 		// calculate mouse position relative to image center before zoom
 		const centerX = containerSize.width / 2;
 		const centerY = containerSize.height / 2;
-		const imageX = (mouseX - centerX - mapOffset.x) / scale;
-		const imageY = (mouseY - centerY - mapOffset.y) / scale;
+		const mouseX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
+		const mouseY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
+		const imageX = (mouseX - mapOffset.x) / scale;
+		const imageY = (mouseY - mapOffset.y) / scale;
 
 		// update scale with new bounds
 		const delta = e.deltaY > 0 ? 0.9 : 1.1;
 		const newScale = clamp(scale * delta, { min: 1, max: 8 });
 
 		// calculate new position to keep mouse point stable
-		const newX = mouseX - centerX - imageX * newScale;
-		const newY = mouseY - centerY - imageY * newScale;
+		const newX = mouseX - imageX * newScale;
+		const newY = mouseY - imageY * newScale;
 
 		setScale(newScale);
 		// clamp position to keep image within bounds
@@ -102,43 +81,13 @@ export default function ImageRouteContainer({
 					return;
 				}
 
-				// show hover preview when addPoint is null
-				if (!snapPoint || !containerSize) return;
-
-				const centerX = containerSize.width / 2;
-				const centerY = containerSize.height / 2;
-				const mouseX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
-				const mouseY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
-				const normalizedX = (mouseX + centerX) / containerSize.width;
-				const normalizedY = (mouseY + centerY) / containerSize.height;
-				setHoverSpot(
-					getClosestPointOnPath(points, normalizedX, normalizedY, 15 / containerSize.width),
-				);
+				if (!containerSize) return;
+				onHoverRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
 			}}
 			onMouseUp={() => setIsDragging(false)}
 			onClick={(e) => {
-				if (isDragging) return;
-
-				if (snapPoint) {
-					if (hoverSpot) setActiveSpot(hoverSpot);
-					return;
-				}
-
-				const centerX = containerSize.width / 2;
-				const centerY = containerSize.height / 2;
-				const clickX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
-				const clickY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
-
-				const point: Point = {
-					x: (clickX + centerX) / containerSize.width,
-					y: (clickY + centerY) / containerSize.height,
-					marked: 1,
-				};
-
-				// hold ctrl for non artifact point
-				if (e.ctrlKey) delete point.marked;
-
-				setActiveSpot({ point });
+				if (isDragging || !containerSize) return;
+				onClickRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
 			}}
 			onContextMenu={(e) => e.preventDefault()}
 			{...props}>

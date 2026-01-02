@@ -1,23 +1,13 @@
 import Image from 'next/image';
-import {
-	type Dispatch,
-	Fragment,
-	type RefObject,
-	type SetStateAction,
-	useEffect,
-	useState,
-} from 'react';
+import { type Dispatch, Fragment, type SetStateAction, useEffect, useState } from 'react';
+import { useIntervalWhen, useVideo } from 'rooks';
 import useControlledState from '../../hooks/useControlledState';
-import useEventListener from '../../hooks/useEventListener';
 import VideoPlayer from '../videoPlayer';
 import ImageRoute from './index';
 import { type ImageRouteProps } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
-const fps = 60;
-
 export default function ImageRouteSync({
-	videoRef,
 	src,
 	points,
 	hidePoints,
@@ -31,12 +21,13 @@ export default function ImageRouteSync({
 	...props
 }: {
 	src: string;
-	videoRef: RefObject<HTMLVideoElement>;
 	time?: number;
 	setTime?: Dispatch<SetStateAction<number>>;
 	autoplay?: boolean;
 	seekFrames?: number;
 } & ImageRouteProps) {
+	const [videoRef, videoState, videoControls] = useVideo();
+
 	const [hideVideo, setHideVideo] = useState(true);
 	const [time, setTime] = useControlledState(_time, _setTime);
 	const [activeSpot, setActiveSpot] = useControlledState(_activeSpot, _setActiveSpot);
@@ -55,24 +46,20 @@ export default function ImageRouteSync({
 		setPlaying(false);
 	}, [src]);
 
-	useEventListener(videoRef.current, 'play', () => {
-		setTime(videoRef.current.currentTime);
-		setPlaying(true);
-	});
-
-	useEventListener(videoRef.current, 'pause', () => {
-		setTime(videoRef.current.currentTime);
-		setPlaying(false);
-	});
+	useEffect(() => {
+		setTime(videoState.currentTime);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [videoState.currentTime]);
 
 	useEffect(() => {
-		if (!playing) return;
-		const interval = setInterval(() => {
-			setTime((time) => time + 1 / fps);
-		}, 1000 / fps);
-		return () => clearInterval(interval);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [playing]);
+		setPlaying(!videoState.isPaused);
+	}, [videoState.isPaused]);
+
+	useIntervalWhen(
+		() => setTime((time) => time + 0.016666666666666667),
+		16.666666666666667,
+		playing,
+	);
 
 	useEffect(() => {
 		if (!points) return;
@@ -81,7 +68,7 @@ export default function ImageRouteSync({
 		} else {
 			setTimeout(() => {
 				setHideVideo(false);
-				videoRef.current?.play();
+				videoControls.play();
 			}, 2000);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,7 +86,7 @@ export default function ImageRouteSync({
 					const calculatedTime = findTimeBySpot(points, spot);
 					if (calculatedTime !== null) {
 						setTime(calculatedTime);
-						videoRef.current.currentTime = calculatedTime;
+						videoControls.setCurrentTime(calculatedTime);
 					}
 				}}
 				initialZoom={0.8}
@@ -123,12 +110,7 @@ export default function ImageRouteSync({
 				ref={videoRef}
 				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${src}.mp4`}
 				seekFrames={seekFrames}
-				sx={{
-					position: 'absolute',
-					bottom: 0,
-					width: '50%',
-					opacity: hideVideo ? 0 : undefined,
-				}}
+				sx={{ position: 'absolute', bottom: 0, width: '50%', opacity: hideVideo ? 0 : 1 }}
 			/>
 		</Fragment>
 	);

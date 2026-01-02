@@ -1,18 +1,18 @@
 import { Box, CircularProgress } from '@mui/material';
 import { useNProgress } from '@tanem/react-nprogress';
 import { type ReactNode } from 'react';
-import useLoading from '../../hooks/useLoading';
+import { useDebouncedValue } from 'rooks';
 
 export default function DelayedProgress({
 	isLoading,
-	delay,
+	delay = 250,
 	children,
 }: {
 	isLoading: boolean;
 	delay?: number;
 	children?: (progress: number) => ReactNode;
 }) {
-	const isAnimating = useLoading(isLoading, delay);
+	const [isAnimating] = useDebouncedValue(isLoading, delay);
 	const { isFinished, progress } = useNProgress({ isAnimating });
 
 	return (

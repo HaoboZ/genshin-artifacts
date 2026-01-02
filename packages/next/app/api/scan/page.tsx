@@ -27,10 +27,9 @@ export default function InternalScan() {
 	}, [canvases]);
 
 	useEffect(() => {
-		if (containerRef.current && currentIndex >= 0 && canvases[currentIndex]) {
-			containerRef.current.innerHTML = '';
-			containerRef.current.appendChild(canvases[currentIndex]);
-		}
+		if (currentIndex < 0 || !canvases[currentIndex]) return;
+		containerRef.current.innerHTML = '';
+		containerRef.current.appendChild(canvases[currentIndex]);
 	}, [currentIndex, canvases]);
 
 	function addCanvas(newCanvas: HTMLCanvasElement) {

@@ -93,10 +93,10 @@ export default function BatchAddArtifactModal() {
 										}
 										detecting = false;
 									}, 1000);
-									videoRef.current.addEventListener('suspend', () => {
+									videoRef.current.onsuspend = () => {
 										clearInterval(interval);
 										setCapturing(false);
-									});
+									};
 									setCapturing(true);
 									await videoRef.current.play();
 								} catch (err) {

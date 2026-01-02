@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import useBoundingClientRect from '../../hooks/useBoundingClientRect';
 import useControlledState from '../../hooks/useControlledState';
 import ImageRouteContainer from './imageRouteContainer';
 import ImageRoutePaths from './imageRoutePaths';
 import ImageRoutePoints from './imageRoutePoints';
 import { type ImageRouteProps, type Spot } from './types';
-import { calculateOptimalZoom } from './utils';
+import { calculateOptimalZoom, getClosestPointOnPath } from './utils';
 
 export default function ImageRoute({
 	points,
@@ -21,7 +22,9 @@ export default function ImageRoute({
 	children,
 	...props
 }: ImageRouteProps) {
-	const [containerSize, setContainerSize] = useState<DOMRect>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const containerSize = useBoundingClientRect(containerRef);
+
 	const [scale, setScale] = useState(1);
 	const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
 
@@ -45,29 +48,28 @@ export default function ImageRoute({
 
 		return () => cancelAnimationFrame(animationFrame);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [points]);
+	}, [Boolean(points)]);
 
 	return (
 		<ImageRouteContainer
+			containerRef={containerRef}
 			containerSize={containerSize}
-			setContainerSize={setContainerSize}
 			scale={scale}
 			setScale={setScale}
 			mapOffset={mapOffset}
 			setMapOffset={setMapOffset}
-			points={points}
-			snapPoint={!addPoint}
 			isAnimating={isAnimating}
 			setIsAnimating={setIsAnimating}
-			hoverSpot={hoverSpot}
-			setHoverSpot={setHoverSpot}
-			setActiveSpot={(spot) => {
+			onHoverRoute={(point) => {
+				if (addPoint) return;
+				setHoverSpot(getClosestPointOnPath(points, point.x, point.y, 15 / containerSize.width));
+			}}
+			onClickRoute={(point) => {
 				if (addPoint) {
-					if (spot) addPoint(spot.point);
-					setActiveSpot(null);
-				} else {
-					setActiveSpot(spot);
+					addPoint(point);
+					return;
 				}
+				if (hoverSpot) setActiveSpot(hoverSpot);
 			}}
 			sx={sx}
 			{...props}>

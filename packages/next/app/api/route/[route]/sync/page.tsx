@@ -1,13 +1,12 @@
 'use client';
 import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
 import { type Point, type Spot } from '@/components/imageRoute/types';
-import useEventListener from '@/hooks/useEventListener';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Box, Button, Container, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
-import { use, useMemo, useRef, useState } from 'react';
+import { use, useMemo, useState } from 'react';
 import { pick } from 'remeda';
 import PathSelect from '../../../../farming/[route]/pathSelect';
 import {
@@ -26,18 +25,14 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 
 	const { enqueueSnackbar } = useSnackbar();
 
-	const videoRef = useRef<HTMLVideoElement>(null);
-
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 	const [extraSpot, setExtraSpot] = useState<Spot>(null);
-
-	// eslint-disable-next-line react-hooks/refs
-	useEventListener(videoRef.current, 'timeupdate', () => setTime(videoRef.current.currentTime));
 
 	const updatePointField = (index: number, field: string, value: number) => {
 		setPoints((prevPoints) => {
@@ -83,7 +78,6 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 					selectedMap={selectedMap}
 					setSelectedMap={(selectedMap) => {
 						setSelectedMap(selectedMap);
-						setPoints([]);
 						setExtraSpot(null);
 					}}
 				/>
@@ -181,7 +175,6 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 				</Box>
 				<ImageRouteSync
 					src={mapName}
-					videoRef={videoRef}
 					points={points}
 					time={time}
 					setTime={setTime}

@@ -3,7 +3,7 @@ import FarmingMap from './index';
 
 export default function Farming() {
 	return (
-		<Box sx={{ width: '100vw', height: '100%vh' }}>
+		<Box sx={{ width: '100vw', height: '100vh' }}>
 			<FarmingMap />
 		</Box>
 	);

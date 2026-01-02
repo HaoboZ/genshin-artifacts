@@ -21,6 +21,7 @@ export default function InternalRoute({ params }: { params: Promise<{ route: str
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
+
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 
 	return (
@@ -40,10 +41,7 @@ export default function InternalRoute({ params }: { params: Promise<{ route: str
 				<PathSelect
 					route={selectedRoute}
 					selectedMap={selectedMap}
-					setSelectedMap={(selectedMap) => {
-						setSelectedMap(selectedMap);
-						setPoints([]);
-					}}
+					setSelectedMap={setSelectedMap}
 				/>
 			</Stack>
 			<ImageRouteEditor

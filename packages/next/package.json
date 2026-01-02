@@ -21,7 +21,6 @@
 		"@mui/material-nextjs": "7.3.6",
 		"@reduxjs/toolkit": "2.11.2",
 		"@tanem/react-nprogress": "5.0.56",
-		"@uidotdev/usehooks": "2.4.1",
 		"@vercel/analytics": "1.6.1",
 		"@vercel/blob": "2.0.0",
 		"axios": "1.13.2",
@@ -39,7 +38,7 @@
 		"react-onesignal": "3.4.4",
 		"react-redux": "9.2.0",
 		"redux": "5.0.1",
-		"swr": "2.3.8",
+		"rooks": "9.5.0",
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {

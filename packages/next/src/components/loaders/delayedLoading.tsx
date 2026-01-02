@@ -1,17 +1,17 @@
 import { Box, CircularProgress } from '@mui/material';
 import { type ReactNode } from 'react';
-import useLoading from '../../hooks/useLoading';
+import { useDebouncedValue } from 'rooks';
 
 export default function DelayedLoading({
 	isLoading,
-	delay,
+	delay = 250,
 	children,
 }: {
 	isLoading?: boolean;
 	delay?: number;
 	children?: ReactNode;
 }) {
-	const loading = useLoading(isLoading, delay);
+	const [loading] = useDebouncedValue(isLoading, delay);
 
 	return (
 		<Box sx={{ opacity: loading ? 1 : 0, transition: 'opacity 0.3s' }}>

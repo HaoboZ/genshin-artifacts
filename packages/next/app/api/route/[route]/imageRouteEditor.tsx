@@ -1,7 +1,6 @@
 'use client';
 import ImageRoute from '@/components/imageRoute';
 import { type ImageRouteProps, type Point, type Spot } from '@/components/imageRoute/types';
-import useEventListener from '@/hooks/useEventListener';
 import useHistory from '@/hooks/useHistory';
 import {
 	Button,
@@ -15,6 +14,7 @@ import Image from 'next/image';
 import { useSnackbar } from 'notistack';
 import { type Dispatch, Fragment, type SetStateAction, useState } from 'react';
 import { pick } from 'remeda';
+import { useKey } from 'rooks';
 import { savePointsServer } from './actions';
 
 export default function ImageRouteEditor({
@@ -37,16 +37,15 @@ export default function ImageRouteEditor({
 
 	useHistory(points, setPoints);
 
-	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
-		if (e.key === 'Delete' && activeSpot) {
-			e.preventDefault();
-			setPoints((points) => {
-				const newPoints = [...points];
-				newPoints.splice(activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0), 1);
-				return newPoints;
-			});
-			setActiveSpot(null);
-		}
+	useKey(['Delete'], (e) => {
+		if (!activeSpot) return;
+		e.preventDefault();
+		setPoints((points) => {
+			const newPoints = [...points];
+			newPoints.splice(activeSpot.pointIndex + (activeSpot.percentage ? 1 : 0), 1);
+			return newPoints;
+		});
+		setActiveSpot(null);
 	});
 
 	return (

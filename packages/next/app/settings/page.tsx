@@ -1,12 +1,12 @@
 'use client';
 import PageTitle from '@/components/page/pageTitle';
-import useEventListener from '@/hooks/useEventListener';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { mainActions } from '@/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Container, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { prop } from 'remeda';
+import { useWindowEventListener } from 'rooks';
 
 export default function Settings() {
 	const main = useAppSelector(prop('main'));
@@ -14,22 +14,18 @@ export default function Settings() {
 	const dispatch = useAppDispatch();
 	const { enqueueSnackbar } = useSnackbar();
 
-	useEventListener(
-		typeof window !== 'undefined' ? window : null,
-		'paste',
-		({ clipboardData }: ClipboardEvent) => {
-			const item = clipboardData.items[0];
-			if (item?.type !== 'application/json') return;
-			const reader = new FileReader();
-			reader.onload = ({ target }) => {
-				const { main, ...good } = JSON.parse(target.result as string);
-				if (main) dispatch(mainActions.import(main));
-				dispatch(goodActions.import(good));
-				enqueueSnackbar('Imported');
-			};
-			reader.readAsText(item.getAsFile());
-		},
-	);
+	useWindowEventListener('paste', ({ clipboardData }: ClipboardEvent) => {
+		const item = clipboardData.items[0];
+		if (item?.type !== 'application/json') return;
+		const reader = new FileReader();
+		reader.onload = ({ target }) => {
+			const { main, ...good } = JSON.parse(target.result as string);
+			if (main) dispatch(mainActions.import(main));
+			dispatch(goodActions.import(good));
+			enqueueSnackbar('Imported');
+		};
+		reader.readAsText(item.getAsFile());
+	});
 
 	return (
 		<Container>

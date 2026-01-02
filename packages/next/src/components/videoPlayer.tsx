@@ -6,7 +6,7 @@ import {
 } from '@mui/icons-material';
 import { Box, type BoxProps, IconButton } from '@mui/material';
 import { type RefObject, useState } from 'react';
-import useEventListener from '../hooks/useEventListener';
+import { useKey } from 'rooks';
 
 const fps = 60;
 
@@ -23,22 +23,19 @@ export default function VideoPlayer({
 } & BoxProps) {
 	const [isHovering, setIsHovering] = useState(false);
 
-	// spacebar control for play/pause
-	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
-		if (!ref.current || e.code !== 'Space' || document.activeElement instanceof HTMLVideoElement)
-			return;
+	useKey(['Space'], (e) => {
+		if (document.activeElement instanceof HTMLVideoElement) return;
 		e.preventDefault();
-		if (ref.current.paused) {
-			ref.current.play();
+		const video = ref.current;
+		if (video.paused) {
+			video.play();
 		} else {
-			ref.current.pause();
+			video.pause();
 		}
 	});
 
 	const skipFrames = (frames: number) => {
 		const video = ref.current;
-		if (!video) return;
-
 		const newTime = video.currentTime + frames / fps;
 		video.currentTime = Math.max(0, Math.min(newTime, video.duration));
 	};

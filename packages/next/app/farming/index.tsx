@@ -3,13 +3,12 @@ import { routesInfo } from '@/api/routes';
 import ImageRoute from '@/components/imageRoute';
 import type { Point } from '@/components/imageRoute/types';
 import RatioContainer from '@/components/ratioContainer';
-import fetcher from '@/helpers/fetcher';
+import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Button, MenuItem, Select, Stack } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import useSWR from 'swr';
 import { MapRenderPath, MapRenderPoint } from './render';
 
 export default function FarmingMap() {
@@ -17,10 +16,10 @@ export default function FarmingMap() {
 
 	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
 
-	const { data } = useSWR<Point[]>(`/points/route_${selectedRoute}.json`, fetcher);
+	const [points] = useFetchState<Point[]>(`/points/route_${selectedRoute}.json`, []);
 
 	return (
-		<RatioContainer width={16} height={9} sx={{ position: 'relative' }}>
+		<RatioContainer width={16} height={9}>
 			<Stack
 				direction='row'
 				sx={{
@@ -54,18 +53,18 @@ export default function FarmingMap() {
 				</Button>
 			</Stack>
 			<ImageRoute
-				points={data}
+				points={points}
 				setActiveSpot={(activeSpot) => {
 					if (!activeSpot) return;
 					router.push(
-						`/farming/${selectedRoute}?map=${data[activeSpot.pointIndex].marked - 1}`,
+						`/farming/${selectedRoute}?map=${points[activeSpot.pointIndex].marked - 1}`,
 					);
 				}}
 				RenderPoint={MapRenderPoint}
 				RenderPath={MapRenderPath}
 				initialZoom={0.9}
 				// disableAnimations
-				sx={{ width: '100%', height: '100%', opacity: data ? 1 : 0 }}>
+				sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 				<Image
 					fill
 					alt='teyvat'

@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
-import useEventListener from './useEventListener';
+import { useKey, useKeys } from 'rooks';
 
 export default function useHistory<S>(state: S, setState: Dispatch<SetStateAction<S>>) {
 	const [history, setHistory] = useState<S[]>([structuredClone(state)]);
@@ -20,27 +20,25 @@ export default function useHistory<S>(state: S, setState: Dispatch<SetStateActio
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [state]);
 
-	useEventListener(typeof window !== 'undefined' ? window : null, 'keydown', (e) => {
+	useKeys(['Control', 'z'], (e) => {
+		e.preventDefault();
+		setIndex((index) => {
+			if (index <= 0) return index;
+			const newIndex = index - 1;
+			setNavigating(true);
+			setState(history[newIndex]);
+			return newIndex;
+		});
+	});
+	useKey(['y', 'Z'], (e) => {
 		if (!e.ctrlKey) return;
-
-		if (e.key === 'z') {
-			e.preventDefault();
-			setIndex((index) => {
-				if (index <= 0) return index;
-				const newIndex = index - 1;
-				setNavigating(true);
-				setState(history[newIndex]);
-				return newIndex;
-			});
-		} else if (e.key === 'y' || e.key === 'Z') {
-			e.preventDefault();
-			setIndex((index) => {
-				if (index >= history.length - 1) return index;
-				const newIndex = index + 1;
-				setNavigating(true);
-				setState(history[newIndex]);
-				return newIndex;
-			});
-		}
+		e.preventDefault();
+		setIndex((index) => {
+			if (index >= history.length - 1) return index;
+			const newIndex = index + 1;
+			setNavigating(true);
+			setState(history[newIndex]);
+			return newIndex;
+		});
 	});
 }

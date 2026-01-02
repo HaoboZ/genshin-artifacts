@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material';
-import { useLocalStorage } from '@uidotdev/usehooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import OneSignal from 'react-onesignal';
+import { useIntervalWhen, useLocalstorageState } from 'rooks';
 import AsyncButton from '../loaders/asyncButton';
 import { cancelNotification, sendNotification } from './notificationActions';
 
@@ -17,16 +17,9 @@ export default function RespawnNotification({
 	notificationTime?: () => Date;
 }) {
 	const [time, setTime] = useState(() => new Date());
+	const [respawn, setRespawn] = useLocalstorageState<{ id: string; time: number }>(storageKey);
 
-	const [respawn, setRespawn] = useLocalStorage<{ id: string; time: number }>(storageKey);
-
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			setTime(new Date());
-		}, 1000);
-
-		return () => clearInterval(intervalId);
-	}, []);
+	useIntervalWhen(() => setTime(new Date()), 1000);
 
 	const hasTime = respawn && +time < respawn.time;
 

@@ -2,7 +2,7 @@ import { Button, CircularProgress } from '@mui/material';
 import { useNProgress } from '@tanem/react-nprogress';
 import { useSnackbar } from 'notistack';
 import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
-import useLoading from '../../hooks/useLoading';
+import { useDebouncedValue } from 'rooks';
 import usePasteImage from '../../hooks/usePasteImage';
 import { type IArtifact } from '../../types/good';
 import cropBox from './cropBox';
@@ -20,7 +20,7 @@ export default function Scanner({
 }) {
 	const { enqueueSnackbar } = useSnackbar();
 	const [isLoading, setIsLoading] = useState(false);
-	const isAnimating = useLoading(isLoading);
+	const [isAnimating] = useDebouncedValue(isLoading, 250);
 	const { progress } = useNProgress({ isAnimating });
 
 	const scanFile = useCallback(async (file: File) => {
