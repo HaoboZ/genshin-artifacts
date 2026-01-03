@@ -72,7 +72,7 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 			const calculatedTime = findTimeBySpot(points, spot);
 			if (calculatedTime !== null) {
 				setTime(calculatedTime);
-				videoRef.current.currentTime = calculatedTime;
+				videoControls.setCurrentTime(calculatedTime);
 			}
 		},
 	};

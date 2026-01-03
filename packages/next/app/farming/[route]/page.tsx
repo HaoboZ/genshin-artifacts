@@ -78,7 +78,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					onClick={() => router.push(`/farming?route=${route}`)}>
 					Back
 				</Button>
-				<Stack spacing={mobile ? 1 : 2} sx={{ py: mobile ? 2 : 5, alignItems: 'center' }}>
+				<Stack spacing={mobile ? 1 : 3} sx={{ py: mobile ? 2 : 5, alignItems: 'center' }}>
 					<Paper sx={{ py: 1, borderRadius: 100, minWidth: 200, textAlign: 'center' }}>
 						<Typography variant={mobile ? 'h3' : 'h1'}>
 							Total: {selectedRoute.maps[selectedMap].start + spots}
@@ -97,7 +97,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 			<VideoPlayer
 				ref={videoRef}
 				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
-				seekFrames={60}
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
 					bottom: 0,
@@ -112,7 +111,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				setActiveSpot={setActiveSpot}
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
-					justifySelf: 'center',
+					mx: 'auto',
 					width: mobile ? '75%' : '50%',
 					aspectRatio: 1,
 					right: 0,

@@ -13,7 +13,7 @@ const fps = 60;
 export default function VideoPlayer({
 	ref,
 	src,
-	seekFrames = 1,
+	seekFrames,
 	sx,
 	...props
 }: {
@@ -60,41 +60,43 @@ export default function VideoPlayer({
 				src={src}
 				style={{ width: '100%', display: 'block' }}
 			/>
-			<Box
-				sx={{
-					'position': 'absolute',
-					'top': 0,
-					'left': 0,
-					'right': 0,
-					'bottom': 0,
-					'display': 'flex',
-					'alignItems': 'flex-end',
-					'justifyContent': 'center',
-					'gap': 1,
-					'pb': 8,
-					'pointerEvents': 'none',
-					'opacity': isHovering ? 1 : 0,
-					'transition': 'opacity 0.3s ease',
-					'& .MuiIconButton-root': {
-						'pointerEvents': 'auto',
-						'bgcolor': 'rgba(0, 0, 0, 0.6)',
-						'color': 'white',
-						'&:hover': { bgcolor: 'rgba(0, 0, 0, 0.8)' },
-					},
-				}}>
-				<IconButton onClick={() => skipFrames(-5 * seekFrames)}>
-					<FastRewindIcon />
-				</IconButton>
-				<IconButton onClick={() => skipFrames(-seekFrames)}>
-					<SkipPreviousIcon />
-				</IconButton>
-				<IconButton onClick={() => skipFrames(seekFrames)}>
-					<SkipNextIcon />
-				</IconButton>
-				<IconButton onClick={() => skipFrames(5 * seekFrames)}>
-					<FastForwardIcon />
-				</IconButton>
-			</Box>
+			{seekFrames && (
+				<Box
+					sx={{
+						'position': 'absolute',
+						'top': 0,
+						'left': 0,
+						'right': 0,
+						'bottom': 0,
+						'display': 'flex',
+						'alignItems': 'flex-end',
+						'justifyContent': 'center',
+						'gap': 1,
+						'pb': 8,
+						'pointerEvents': 'none',
+						'opacity': isHovering ? 1 : 0,
+						'transition': 'opacity 0.3s ease',
+						'& .MuiIconButton-root': {
+							'pointerEvents': 'auto',
+							'bgcolor': 'rgba(0, 0, 0, 0.6)',
+							'color': 'white',
+							'&:hover': { bgcolor: 'rgba(0, 0, 0, 0.8)' },
+						},
+					}}>
+					<IconButton onClick={() => skipFrames(-5 * seekFrames)}>
+						<FastRewindIcon />
+					</IconButton>
+					<IconButton onClick={() => skipFrames(-seekFrames)}>
+						<SkipPreviousIcon />
+					</IconButton>
+					<IconButton onClick={() => skipFrames(seekFrames)}>
+						<SkipNextIcon />
+					</IconButton>
+					<IconButton onClick={() => skipFrames(5 * seekFrames)}>
+						<FastForwardIcon />
+					</IconButton>
+				</Box>
+			)}
 		</Box>
 	);
 }
