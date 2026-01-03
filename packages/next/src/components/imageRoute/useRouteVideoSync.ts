@@ -10,7 +10,6 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 	const [hideVideo, setShowVideo] = useState(false);
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
-	const [playing, setPlaying] = useState(false);
 
 	// sync activeSpot with time
 	useEffect(() => {
@@ -21,7 +20,7 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 
 	useEffect(() => {
 		setShowVideo(false);
-		setPlaying(false);
+		videoControls.pause();
 
 		if (!points) return;
 		if (!autoplay) {
@@ -39,14 +38,10 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 		setTime(videoState.currentTime);
 	}, [videoState.currentTime]);
 
-	useEffect(() => {
-		setPlaying(!videoState.isPaused);
-	}, [videoState.isPaused]);
-
 	useIntervalWhen(
 		() => setTime((time) => time + 0.016666666666666667),
 		16.666666666666667,
-		playing,
+		!videoState.isPaused,
 	);
 
 	useEffect(() => {

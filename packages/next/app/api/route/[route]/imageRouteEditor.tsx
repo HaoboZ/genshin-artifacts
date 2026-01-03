@@ -100,6 +100,7 @@ export default function ImageRouteEditor({
 												...newPoints[index],
 												...pick(point, ['x', 'y']),
 											};
+											setActiveSpot(null);
 											return newPoints;
 										case 'insert':
 											return points.toSpliced(

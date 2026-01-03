@@ -27,7 +27,7 @@ export function MapRenderPath({ point1, point2, containerSize }: RenderPathProps
 	const length = Math.sqrt(dx * dx + dy * dy);
 
 	const radius = containerSize.width / 200;
-	if (length < radius * 2) return null;
+	if (!length || length < radius * 2) return null;
 
 	const ux = dx / length;
 	const uy = dy / length;
