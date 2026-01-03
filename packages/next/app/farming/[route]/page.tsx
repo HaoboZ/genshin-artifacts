@@ -57,7 +57,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	);
 
 	const ratio = measurements.innerWidth / measurements.innerHeight;
-	const mobile = ratio < 0.6;
+	const mobile = ratio < 0.75;
 
 	return (
 		<Box
@@ -69,7 +69,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
 				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
 			/>
-			<Box sx={{ position: 'absolute', width: mobile ? '100%' : '50%' }}>
+			<Box sx={{ position: mobile ? 'relative' : 'absolute', width: mobile ? '100%' : '50%' }}>
 				<Button
 					variant='contained'
 					color='primary'
@@ -78,13 +78,13 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					onClick={() => router.push(`/farming?route=${route}`)}>
 					Back
 				</Button>
-				<Stack spacing={{ xs: 1, sm: 2 }} sx={{ py: 5, alignItems: 'center' }}>
-					<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
-						<Typography variant='h1'>
+				<Stack spacing={mobile ? 1 : 2} sx={{ py: mobile ? 2 : 5, alignItems: 'center' }}>
+					<Paper sx={{ py: 1, borderRadius: 100, minWidth: 200, textAlign: 'center' }}>
+						<Typography variant={mobile ? 'h3' : 'h1'}>
 							Total: {selectedRoute.maps[selectedMap].start + spots}
 						</Typography>
 					</Paper>
-					<Typography variant='h2'>
+					<Typography variant={mobile ? 'h5' : 'h2'}>
 						Spots: {spots} / {selectedRoute.maps[selectedMap].spots}
 					</Typography>
 					<PathSelect
@@ -94,6 +94,16 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					/>
 				</Stack>
 			</Box>
+			<VideoPlayer
+				ref={videoRef}
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
+				seekFrames={60}
+				sx={{
+					position: mobile ? 'relative' : 'absolute',
+					bottom: 0,
+					width: ratio < 0.94 ? '100%' : '50%',
+				}}
+			/>
 			<ImageRoute
 				ref={routeRef}
 				points={points}
@@ -101,11 +111,11 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
 				sx={{
-					position: 'absolute',
-					width: mobile ? '100%' : '50%',
+					position: mobile ? 'relative' : 'absolute',
+					justifySelf: 'center',
+					width: mobile ? '75%' : '50%',
 					aspectRatio: 1,
 					right: 0,
-					top: mobile ? 200 : 0,
 				}}
 				RenderPoint={RouteRenderPoint}
 				RenderPath={RouteRenderPath}
@@ -117,12 +127,6 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					style={{ zIndex: -1, objectFit: 'contain' }}
 				/>
 			</ImageRoute>
-			<VideoPlayer
-				ref={videoRef}
-				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
-				seekFrames={60}
-				sx={{ position: 'absolute', bottom: 0, width: ratio > 0.94 ? '50%' : '100%' }}
-			/>
 		</Box>
 	);
 }
