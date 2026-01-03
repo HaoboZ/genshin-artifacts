@@ -2,7 +2,7 @@
 import { type Point } from '@/components/imageRoute/types';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import { Container, MenuItem, Select, Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { use } from 'react';
 import PathSelect from '../../../farming/[route]/pathSelect';
@@ -11,6 +11,7 @@ import {
 	RouteRenderPath,
 	RouteRenderPoint,
 } from '../../../farming/[route]/render';
+import RouteSelect from '../../../farming/routeSelect';
 import { routesInfo } from '../../routes';
 import ImageRouteEditor from './imageRouteEditor';
 
@@ -27,17 +28,12 @@ export default function InternalRoute({ params }: { params: Promise<{ route: str
 	return (
 		<Container>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center', py: 1 }}>
-				<Select
-					value={route}
+				<RouteSelect
+					value={+route}
 					onChange={({ target }) => {
 						router.push(`/api/route/${target.value}`);
-					}}>
-					{routesInfo.map(({ spots, mora }, index) => (
-						<MenuItem key={index} value={index}>
-							Spots: {spots}, Mora: {mora}
-						</MenuItem>
-					))}
-				</Select>
+					}}
+				/>
 				<PathSelect
 					route={selectedRoute}
 					selectedMap={selectedMap}

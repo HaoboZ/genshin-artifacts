@@ -5,7 +5,7 @@ import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import { Box, Button, Container, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
@@ -17,6 +17,7 @@ import {
 	RouteRenderPath,
 	RouteRenderPoint,
 } from '../../../../farming/[route]/render';
+import RouteSelect from '../../../../farming/routeSelect';
 import { routesInfo } from '../../../routes';
 import { savePointsServer } from '../actions';
 import TimePointControls from './timePointControls';
@@ -65,17 +66,12 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 	return (
 		<Container>
 			<Stack direction='row' spacing={1}>
-				<Select
-					value={route}
+				<RouteSelect
+					value={+route}
 					onChange={({ target }) => {
 						router.push(`/api/route/${target.value}/sync`);
-					}}>
-					{routesInfo.map(({ spots, mora }, index) => (
-						<MenuItem key={index} value={index}>
-							Spots: {spots}, Mora: {mora}
-						</MenuItem>
-					))}
-				</Select>
+					}}
+				/>
 				<PathSelect
 					route={selectedRoute}
 					selectedMap={selectedMap}

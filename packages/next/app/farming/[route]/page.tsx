@@ -6,6 +6,8 @@ import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -15,7 +17,10 @@ import { useMeasure } from 'rooks';
 import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
+const MapModal = dynamicModal(() => import('./mapModal'));
+
 export default function FarmingRoute({ params }: { params: Promise<{ route: string }> }) {
+	const { showModal } = useModal();
 	const router = useRouter();
 	const { route } = use(params);
 	const selectedRoute = routesInfo[+route];
@@ -109,16 +114,25 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 				hidePoints
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
+				innerChildren={
+					<Button
+						variant='contained'
+						color='primary'
+						sx={{ position: 'absolute', left: 10, top: 10 }}
+						onClick={() => showModal(MapModal, { props: { route } })}>
+						Full Map
+					</Button>
+				}
+				RenderPoint={RouteRenderPoint}
+				RenderPath={RouteRenderPath}
+				RenderExtra={RenderExtra}
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
 					mx: 'auto',
 					width: mobile ? '75%' : '50%',
 					aspectRatio: 1,
 					right: 0,
-				}}
-				RenderPoint={RouteRenderPoint}
-				RenderPath={RouteRenderPath}
-				RenderExtra={RenderExtra}>
+				}}>
 				<Image
 					fill
 					alt={mapName}

@@ -20,6 +20,7 @@ export default function ImageRoute({
 	initialZoom = 0.8,
 	disableAnimations,
 	sx,
+	innerChildren,
 	children,
 	...props
 }: ImageRouteProps) {
@@ -36,6 +37,7 @@ export default function ImageRoute({
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
 
 	useEffect(() => {
+		if (!containerSize) return;
 		setScale(1);
 		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
@@ -50,7 +52,7 @@ export default function ImageRoute({
 
 		return () => cancelAnimationFrame(animationFrame);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [Boolean(points)]);
+	}, [Boolean(points), Boolean(containerSize?.width), Boolean(containerSize?.height)]);
 
 	return (
 		<ImageRouteContainer
@@ -73,11 +75,12 @@ export default function ImageRoute({
 				}
 				if (hoverSpot) setActiveSpot(hoverSpot);
 			}}
+			innerChildren={innerChildren}
 			sx={sx}
 			{...props}>
 			{children}
 			{containerSize && (
-				<svg style={{ overflow: 'visible', width: '100%', height: '100%' }}>
+				<svg style={{ width: '100%', height: '100%' }}>
 					<ImageRoutePaths
 						containerSize={containerSize}
 						scale={scale}

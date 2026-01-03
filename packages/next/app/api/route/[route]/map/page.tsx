@@ -1,10 +1,10 @@
 'use client';
 import { type Point } from '@/components/imageRoute/types';
 import useFetchState from '@/hooks/useFetchState';
-import { Container, MenuItem, Select } from '@mui/material';
+import { Container } from '@mui/material';
 import { useState } from 'react';
 import { MapRenderPath, MapRenderPoint } from '../../../../farming/render';
-import { routesInfo } from '../../../routes';
+import RouteSelect from '../../../../farming/routeSelect';
 import ImageRouteEditor from '../imageRouteEditor';
 
 export default function InternalRouteMap() {
@@ -15,17 +15,12 @@ export default function InternalRouteMap() {
 
 	return (
 		<Container>
-			<Select
+			<RouteSelect
 				value={selectedRoute}
 				onChange={({ target }) => {
 					setSelectedRoute(target.value);
-				}}>
-				{routesInfo.map(({ spots, mora }, index) => (
-					<MenuItem key={index} value={index}>
-						Spots: {spots}, Mora: {mora}
-					</MenuItem>
-				))}
-			</Select>
+				}}
+			/>
 			<ImageRouteEditor
 				src='teyvat'
 				route={routeName}

@@ -3,6 +3,7 @@
 		"spots": 165,
 		"artifacts": 249,
 		"mora": 129538,
+		"exp": 104738,
 		"maps": [
 			{ "src": "Natlan/Colorfall Cliffs South", "start": 0, "spots": 3 },
 			{ "src": "Natlan/Easybreeze Market East", "start": 3, "spots": 7 },
@@ -52,6 +53,7 @@
 		"spots": 133,
 		"artifacts": 183,
 		"mora": 82123,
+		"exp": 76923,
 		"maps": [
 			{ "src": "Natlan/Ochkanatlan Northeast", "start": 0, "spots": 5 },
 			{ "src": "Natlan/Ochkanatlan East", "start": 5, "spots": 7 },

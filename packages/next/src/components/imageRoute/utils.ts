@@ -251,7 +251,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 }
 
 export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom?: number) {
-	if (!points?.length || !zoom) {
+	if (!points?.length || !containerSize?.width || !containerSize?.height || !zoom) {
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
 

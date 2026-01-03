@@ -1,15 +1,15 @@
 'use client';
-import { routesInfo } from '@/api/routes';
 import ImageRoute from '@/components/imageRoute';
 import type { Point } from '@/components/imageRoute/types';
 import RatioContainer from '@/components/ratioContainer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import { Button, MenuItem, Select, Stack, type SxProps } from '@mui/material';
+import { Box, Button, type SxProps } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MapRenderPath, MapRenderPoint } from './render';
+import RouteSelect from './routeSelect';
 
 export default function FarmingMap({ sx }: { sx?: SxProps }) {
 	const router = useRouter();
@@ -20,30 +20,26 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 
 	return (
 		<RatioContainer width={16} height={9} sx={sx}>
-			<Stack
-				direction='row'
+			<Box
 				sx={{
+					display: 'flex',
 					position: 'absolute',
 					top: 16,
 					left: '50%',
 					transform: 'translateX(-50%)',
 					zIndex: 'drawer',
-					width: 'min(100%, 400px)',
 				}}>
-				<Select
-					fullWidth
-					size='small'
+				<RouteSelect
 					value={selectedRoute}
 					onChange={({ target }) => {
 						setSelectedRoute(target.value);
 					}}
-					sx={{ bgcolor: 'background.paper', backdropFilter: 'blur(10px)' }}>
-					{routesInfo.map(({ spots, mora }, index) => (
-						<MenuItem key={index} value={index}>
-							Artifact Spots: {spots}, Mora: {mora}
-						</MenuItem>
-					))}
-				</Select>
+					sx={{
+						maxWidth: 'calc(100vw - 70px)',
+						bgcolor: 'background.paper',
+						backdropFilter: 'blur(10px)',
+					}}
+				/>
 				<Button
 					variant='contained'
 					component={Link}
@@ -51,7 +47,7 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 					sx={{ ml: 1, minWidth: 'fit-content' }}>
 					Go
 				</Button>
-			</Stack>
+			</Box>
 			<ImageRoute
 				points={points}
 				setActiveSpot={(activeSpot) => {

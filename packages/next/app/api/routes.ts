@@ -6,6 +6,7 @@ export type Route = {
 	spots: number;
 	artifacts: number;
 	mora: number;
+	exp: number;
 	maps: Map[];
 };
 

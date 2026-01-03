@@ -1,5 +1,5 @@
 import type { BoxProps } from '@mui/material';
-import type { ComponentType, Dispatch, RefObject } from 'react';
+import type { ComponentType, Dispatch, ReactNode, RefObject } from 'react';
 
 export type Point = {
 	x: number;
@@ -28,6 +28,7 @@ export type ImageRouteProps = {
 	RenderExtra?: ComponentType<RenderExtraProps>;
 	initialZoom?: number;
 	disableAnimations?: boolean;
+	innerChildren?: ReactNode;
 } & BoxProps;
 
 export type RenderPointProps = {

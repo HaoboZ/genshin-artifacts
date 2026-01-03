@@ -1,5 +1,5 @@
 import { Box, type BoxProps } from '@mui/material';
-import { type Dispatch, type RefObject, type TouchList, useRef } from 'react';
+import { type Dispatch, type ReactNode, type RefObject, type TouchList, useRef } from 'react';
 import { clamp } from 'remeda';
 import useEventListener from '../../hooks/useEventListener';
 import { type Point } from './types';
@@ -17,6 +17,7 @@ export default function ImageRouteContainer({
 	onHoverRoute,
 	onClickRoute,
 	sx,
+	innerChildren,
 	children,
 	...props
 }: {
@@ -30,6 +31,7 @@ export default function ImageRouteContainer({
 	setIsAnimating: Dispatch<boolean>;
 	onHoverRoute?: (point: { x: number; y: number }) => void;
 	onClickRoute?: (point: { x: number; y: number }) => void;
+	innerChildren?: ReactNode;
 } & Omit<BoxProps, 'ref'>) {
 	const isDragging = useRef(false);
 	const dragStart = useRef({ x: 0, y: 0 });
@@ -45,12 +47,14 @@ export default function ImageRouteContainer({
 	};
 
 	const performDrag = (clientX: number, clientY: number) => {
+		if (!containerSize) return;
 		const newX = clientX - dragStart.current.x;
 		const newY = clientY - dragStart.current.y;
 		setMapOffset(clampPosition(containerSize, newX, newY, scale));
 	};
 
 	const performZoom = (zoomCenter: Point, scaleDelta: number) => {
+		if (!containerSize) return;
 		setIsAnimating?.(false);
 
 		const centerX = containerSize.width / 2;
@@ -60,7 +64,7 @@ export default function ImageRouteContainer({
 		const imageX = (pointX - mapOffset.x) / scale;
 		const imageY = (pointY - mapOffset.y) / scale;
 
-		const newScale = clamp(scale * scaleDelta, { min: 1, max: 8 });
+		const newScale = clamp(scale * scaleDelta, { min: 1, max: 8 }) || 1;
 
 		const newX = pointX - imageX * newScale;
 		const newY = pointY - imageY * newScale;
@@ -190,6 +194,7 @@ export default function ImageRouteContainer({
 				}}>
 				{children}
 			</Box>
+			{innerChildren}
 		</Box>
 	);
 }

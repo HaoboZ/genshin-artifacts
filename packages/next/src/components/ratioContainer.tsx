@@ -29,6 +29,7 @@ export default function RatioContainer({
 					width: `min(100%, ${(measurements.outerHeight * width) / height}px)`,
 					height: `min(100%, ${(measurements.outerWidth * height) / width}px)`,
 					position: 'relative',
+					bgcolor: 'black',
 				}}
 				{...props}
 			/>
