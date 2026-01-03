@@ -1,9 +1,12 @@
 'use client';
-import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
+import ImageRoute from '@/components/imageRoute';
 import { type Point, type Spot } from '@/components/imageRoute/types';
+import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
+import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Box, Button, Container, Grid, MenuItem, Select, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { use, useMemo, useState } from 'react';
@@ -30,8 +33,8 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 
 	const [points, setPoints] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 
-	const [time, setTime] = useState(0);
-	const [activeSpot, setActiveSpot] = useState<Spot>(null);
+	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points);
+
 	const [extraSpot, setExtraSpot] = useState<Spot>(null);
 
 	const updatePointField = (index: number, field: string, value: number) => {
@@ -173,16 +176,32 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 						</Grid>
 					</Stack>
 				</Box>
-				<ImageRouteSync
-					src={mapName}
+				<ImageRoute
+					ref={routeRef}
 					points={points}
-					time={time}
-					setTime={setTime}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
+					sx={{
+						position: 'absolute',
+						width: '50%',
+						aspectRatio: 1,
+						right: 0,
+					}}
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
-					RenderExtra={RouteRenderExtra}
+					RenderExtra={RouteRenderExtra}>
+					<Image
+						fill
+						alt={mapName}
+						src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
+						style={{ zIndex: -1, objectFit: 'contain' }}
+					/>
+				</ImageRoute>
+				<VideoPlayer
+					ref={videoRef}
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
+					seekFrames={1}
+					sx={{ position: 'absolute', bottom: 0, width: '50%' }}
 				/>
 			</Box>
 		</Container>

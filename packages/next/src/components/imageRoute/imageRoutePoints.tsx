@@ -1,14 +1,8 @@
 import { type ComponentType, Fragment } from 'react';
 import { type Point, type RenderPointProps, type Spot } from './types';
 
-export default function ImageRoutePoints({
-	containerSize,
-	scale,
-	points,
-	hidePoints,
-	hoverSpot,
-	activeSpot,
-	RenderPoint = ({ point, containerSize, type }) => (
+function DefaultRenderPoint({ point, containerSize, type }: RenderPointProps) {
+	return (
 		<circle
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
@@ -16,7 +10,17 @@ export default function ImageRoutePoints({
 			fill={type === 'active' ? 'blue' : 'lime'}
 			fillOpacity={type ? 0.5 : 1}
 		/>
-	),
+	);
+}
+
+export default function ImageRoutePoints({
+	containerSize,
+	scale,
+	points,
+	hidePoints,
+	hoverSpot,
+	activeSpot,
+	RenderPoint = DefaultRenderPoint,
 }: {
 	containerSize: DOMRect;
 	scale: number;

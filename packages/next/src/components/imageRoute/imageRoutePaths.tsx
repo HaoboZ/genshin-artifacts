@@ -1,18 +1,20 @@
 import { type ComponentType, Fragment } from 'react';
 import { type Point, type RenderPathProps } from './types';
 
+function DefaultRenderPath({ point1, point2, containerSize }: RenderPathProps) {
+	const x1 = point1.x * containerSize.width;
+	const y1 = point1.y * containerSize.height;
+	const x2 = point2.x * containerSize.width;
+	const y2 = point2.y * containerSize.height;
+
+	return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke='white' />;
+}
+
 export default function ImageRoutePaths({
 	containerSize,
 	scale,
 	points,
-	RenderPath = ({ point1, point2, containerSize }) => {
-		const x1 = point1.x * containerSize.width;
-		const y1 = point1.y * containerSize.height;
-		const x2 = point2.x * containerSize.width;
-		const y2 = point2.y * containerSize.height;
-
-		return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke='white' />;
-	},
+	RenderPath = DefaultRenderPath,
 }: {
 	containerSize: DOMRect;
 	scale: number;

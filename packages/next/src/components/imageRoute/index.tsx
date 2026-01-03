@@ -8,6 +8,7 @@ import { type ImageRouteProps, type Spot } from './types';
 import { calculateOptimalZoom, getClosestPointOnPath } from './utils';
 
 export default function ImageRoute({
+	ref,
 	points,
 	addPoint,
 	hidePoints,
@@ -16,13 +17,14 @@ export default function ImageRoute({
 	RenderPoint,
 	RenderPath,
 	RenderExtra,
-	initialZoom,
+	initialZoom = 0.8,
 	disableAnimations,
 	sx,
 	children,
 	...props
 }: ImageRouteProps) {
-	const containerRef = useRef<HTMLDivElement>(null);
+	const internalRef = useRef<HTMLDivElement>(null);
+	const containerRef = ref ?? internalRef;
 	const containerSize = useBoundingClientRect(containerRef);
 
 	const [scale, setScale] = useState(1);

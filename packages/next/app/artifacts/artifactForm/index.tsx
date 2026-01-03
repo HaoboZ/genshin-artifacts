@@ -59,10 +59,10 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 						<SelectField
 							name='slotKey'
 							label='Type'
-							onChange={(e) => {
+							onChange={({ target }) => {
 								setFieldValue(
 									'mainStatKey',
-									artifactSlotStats[e.target.value as any].stats[0],
+									artifactSlotStats[target.value as any].stats[0],
 								);
 							}}>
 							{artifactSlotOrder.map((key) => (

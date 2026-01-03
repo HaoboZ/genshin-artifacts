@@ -114,7 +114,6 @@ export default function ImageRouteEditor({
 				}
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
-				initialZoom={0.8}
 				sx={{ height: '80vh', justifySelf: 'center', opacity: points ? 1 : 0, ...sx }}
 				{...props}>
 				<Image

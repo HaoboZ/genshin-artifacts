@@ -1,5 +1,5 @@
 import type { BoxProps } from '@mui/material';
-import type { ComponentType, Dispatch } from 'react';
+import type { ComponentType, Dispatch, RefObject } from 'react';
 
 export type Point = {
 	x: number;
@@ -17,6 +17,7 @@ export type Spot = {
 };
 
 export type ImageRouteProps = {
+	ref?: RefObject<HTMLDivElement>;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
 	hidePoints?: boolean;

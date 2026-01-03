@@ -1,15 +1,17 @@
 'use client';
 import { routesInfo } from '@/api/routes';
-import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
+import ImageRoute from '@/components/imageRoute';
 import { type Point, type RenderExtraProps } from '@/components/imageRoute/types';
+import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
+import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Fragment, use, useCallback, useMemo, useRef, useState } from 'react';
-import { useOnWindowResize } from 'rooks';
+import { Fragment, use, useCallback, useMemo } from 'react';
+import { useMeasure } from 'rooks';
 import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
@@ -18,20 +20,13 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const { route } = use(params);
 	const selectedRoute = routesInfo[+route];
 
-	const containerRef = useRef<HTMLDivElement>(null);
-
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 
 	const [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 
-	const [time, setTime] = useState(0);
-	const [scale, setScale] = useState(1);
-
-	// Calculate scale based on container size
-	useOnWindowResize(() => {
-		setScale(containerRef.current?.offsetWidth / 1000);
-	});
+	const [ref, measurements] = useMeasure();
+	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points, true);
 
 	// calculate spots collected at current time
 	const spots = useMemo(
@@ -61,22 +56,29 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 		[selectedRoute, selectedMap],
 	);
 
+	const ratio = measurements.innerWidth / measurements.innerHeight;
+	const mobile = ratio < 0.6;
+
 	return (
-		<Box sx={{ maxWidth: '200vh', height: '100vh', position: 'relative', margin: '0 auto' }}>
+		<Box
+			ref={ref}
+			sx={{ maxWidth: '200vh', height: '100vh', position: 'relative', margin: '0 auto' }}>
 			<Image
 				fill
 				alt='background'
 				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/backgrounds/${mapName.split('/')[0]}.png`}
 				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
 			/>
-			<Box
-				sx={{
-					position: 'absolute',
-					width: '50%',
-					transform: `scale(${scale})`,
-					transformOrigin: 'top center',
-				}}>
-				<Stack spacing={2} sx={{ py: 5, alignItems: 'center' }}>
+			<Box sx={{ position: 'absolute', width: mobile ? '100%' : '50%' }}>
+				<Button
+					variant='contained'
+					color='primary'
+					startIcon={<ArrowBackIcon />}
+					sx={{ position: 'absolute', left: 10, top: 10 }}
+					onClick={() => router.push(`/farming?route=${route}`)}>
+					Back
+				</Button>
+				<Stack spacing={{ xs: 1, sm: 2 }} sx={{ py: 5, alignItems: 'center' }}>
 					<Paper sx={{ py: 1, borderRadius: 100, width: 200, textAlign: 'center' }}>
 						<Typography variant='h1'>
 							Total: {selectedRoute.maps[selectedMap].start + spots}
@@ -92,25 +94,34 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					/>
 				</Stack>
 			</Box>
-			<Button
-				variant='contained'
-				color='primary'
-				startIcon={<ArrowBackIcon />}
-				sx={{ position: 'absolute', left: 20, top: 20 }}
-				onClick={() => router.push(`/farming?route=${route}`)}>
-				Back
-			</Button>
-			<ImageRouteSync
-				src={mapName}
+			<ImageRoute
+				ref={routeRef}
 				points={points}
 				hidePoints
-				time={time}
-				setTime={setTime}
-				autoplay
-				seekFrames={60}
+				activeSpot={activeSpot}
+				setActiveSpot={setActiveSpot}
+				sx={{
+					position: 'absolute',
+					width: mobile ? '100%' : '50%',
+					aspectRatio: 1,
+					right: 0,
+					top: mobile ? 200 : 0,
+				}}
 				RenderPoint={RouteRenderPoint}
 				RenderPath={RouteRenderPath}
-				RenderExtra={RenderExtra}
+				RenderExtra={RenderExtra}>
+				<Image
+					fill
+					alt={mapName}
+					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
+					style={{ zIndex: -1, objectFit: 'contain' }}
+				/>
+			</ImageRoute>
+			<VideoPlayer
+				ref={videoRef}
+				src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
+				seekFrames={60}
+				sx={{ position: 'absolute', bottom: 0, width: ratio > 0.94 ? '50%' : '100%' }}
 			/>
 		</Box>
 	);
