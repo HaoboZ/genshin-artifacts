@@ -1,5 +1,5 @@
 import { Box, type BoxProps } from '@mui/material';
-import { type Dispatch, type RefObject, useState } from 'react';
+import { type Dispatch, type RefObject, type TouchList, useRef } from 'react';
 import { clamp } from 'remeda';
 import useEventListener from '../../hooks/useEventListener';
 import { type Point } from './types';
@@ -31,65 +31,152 @@ export default function ImageRouteContainer({
 	onHoverRoute?: (point: { x: number; y: number }) => void;
 	onClickRoute?: (point: { x: number; y: number }) => void;
 } & Omit<BoxProps, 'ref'>) {
-	const [isDragging, setIsDragging] = useState(false);
-	const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+	const isDragging = useRef(false);
+	const dragStart = useRef({ x: 0, y: 0 });
+	const lastTouchDistance = useRef<number>(null);
+	const touchStartTime = useRef<number>(0);
+	const interactionStartPos = useRef<Point>(null);
+
+	const startDrag = (clientX: number, clientY: number) => {
+		isDragging.current = true;
+		interactionStartPos.current = { x: clientX, y: clientY };
+		dragStart.current = { x: clientX - mapOffset.x, y: clientY - mapOffset.y };
+		touchStartTime.current = Date.now();
+	};
+
+	const performDrag = (clientX: number, clientY: number) => {
+		const newX = clientX - dragStart.current.x;
+		const newY = clientY - dragStart.current.y;
+		setMapOffset(clampPosition(containerSize, newX, newY, scale));
+	};
+
+	const performZoom = (zoomCenter: Point, scaleDelta: number) => {
+		setIsAnimating?.(false);
+
+		const centerX = containerSize.width / 2;
+		const centerY = containerSize.height / 2;
+		const pointX = (zoomCenter.x - containerSize.x - centerX - mapOffset.x) / scale;
+		const pointY = (zoomCenter.y - containerSize.y - centerY - mapOffset.y) / scale;
+		const imageX = (pointX - mapOffset.x) / scale;
+		const imageY = (pointY - mapOffset.y) / scale;
+
+		const newScale = clamp(scale * scaleDelta, { min: 1, max: 8 });
+
+		const newX = pointX - imageX * newScale;
+		const newY = pointY - imageY * newScale;
+
+		setScale(newScale);
+		setMapOffset(clampPosition(containerSize, newX, newY, newScale));
+	};
+
+	const handleClick = (click: { x: number; y: number }) => {
+		if (!containerSize) return;
+
+		const centerX = containerSize.width / 2;
+		const centerY = containerSize.height / 2;
+		const containerPoint = {
+			x: (click.x - containerSize.x - centerX - mapOffset.x) / scale,
+			y: (click.y - containerSize.y - centerY - mapOffset.y) / scale,
+		};
+		onClickRoute?.(containerPoint);
+	};
+
+	const endDrag = () => {
+		isDragging.current = false;
+		lastTouchDistance.current = null;
+		interactionStartPos.current = null;
+	};
+
+	const getTouchDistance = (touches: TouchList) => {
+		if (touches.length < 2) return null;
+		const dx = touches[0].clientX - touches[1].clientX;
+		const dy = touches[0].clientY - touches[1].clientY;
+		return Math.sqrt(dx * dx + dy * dy);
+	};
+
+	const getTouchCenter = (touches: TouchList) => {
+		if (touches.length < 2) return null;
+		return {
+			x: (touches[0].clientX + touches[1].clientX) / 2,
+			y: (touches[0].clientY + touches[1].clientY) / 2,
+		};
+	};
 
 	// eslint-disable-next-line react-hooks/refs
 	useEventListener(containerRef.current, 'wheel', (e) => {
 		e.preventDefault();
-
-		// Disable animation on wheel event
-		setIsAnimating?.(false);
-
-		// calculate mouse position relative to image center before zoom
-		const centerX = containerSize.width / 2;
-		const centerY = containerSize.height / 2;
-		const mouseX = (e.clientX - containerSize.x - centerX - mapOffset.x) / scale;
-		const mouseY = (e.clientY - containerSize.y - centerY - mapOffset.y) / scale;
-		const imageX = (mouseX - mapOffset.x) / scale;
-		const imageY = (mouseY - mapOffset.y) / scale;
-
-		// update scale with new bounds
 		const delta = e.deltaY > 0 ? 0.9 : 1.1;
-		const newScale = clamp(scale * delta, { min: 1, max: 8 });
-
-		// calculate new position to keep mouse point stable
-		const newX = mouseX - imageX * newScale;
-		const newY = mouseY - imageY * newScale;
-
-		setScale(newScale);
-		// clamp position to keep image within bounds
-		setMapOffset(clampPosition(containerSize, newX, newY, newScale));
+		performZoom({ x: e.clientX, y: e.clientY }, delta);
 	});
 
 	return (
 		<Box
 			ref={containerRef}
-			sx={{ overflow: 'hidden', cursor: 'crosshair', ...sx }}
+			sx={{
+				overflow: 'hidden',
+				cursor: 'crosshair',
+				touchAction: 'none',
+				...sx,
+			}}
 			onMouseDown={(e) => {
-				// right mouse button
 				if (e.button !== 2) return;
 				e.preventDefault();
-				setIsDragging(true);
-				setDragStart({ x: e.clientX - mapOffset.x, y: e.clientY - mapOffset.y });
+				startDrag(e.clientX, e.clientY);
 			}}
 			onMouseMove={(e) => {
-				if (isDragging) {
-					const newX = e.clientX - dragStart.x;
-					const newY = e.clientY - dragStart.y;
-					setMapOffset(clampPosition(containerSize, newX, newY, scale));
+				if (isDragging.current) {
+					performDrag(e.clientX, e.clientY);
 					return;
 				}
 
 				if (!containerSize) return;
 				onHoverRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
 			}}
-			onMouseUp={() => setIsDragging(false)}
+			onMouseUp={endDrag}
 			onClick={(e) => {
-				if (isDragging || !containerSize) return;
+				if (isDragging.current || !containerSize) return;
 				onClickRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
 			}}
 			onContextMenu={(e) => e.preventDefault()}
+			onTouchStart={(e) => {
+				if (e.touches.length === 1) {
+					const touch = e.touches[0];
+					startDrag(touch.clientX, touch.clientY);
+				} else if (e.touches.length === 2) {
+					lastTouchDistance.current = getTouchDistance(e.touches);
+				}
+			}}
+			onTouchMove={(e) => {
+				e.preventDefault();
+
+				if (e.touches.length === 1) {
+					const touch = e.touches[0];
+					performDrag(touch.clientX, touch.clientY);
+				} else if (e.touches.length === 2) {
+					const distance = getTouchDistance(e.touches);
+					const center = getTouchCenter(e.touches);
+
+					if (distance && center && lastTouchDistance.current) {
+						const scaleDelta = distance / lastTouchDistance.current;
+						performZoom(center, scaleDelta);
+						lastTouchDistance.current = distance;
+					}
+				}
+			}}
+			onTouchEnd={(e) => {
+				if (e.touches.length === 0) {
+					const touchDuration = Date.now() - touchStartTime.current;
+					const wasTap = touchDuration < 200 && !isDragging.current;
+
+					if (wasTap && interactionStartPos.current) {
+						handleClick(interactionStartPos.current);
+					}
+
+					endDrag();
+				} else if (e.touches.length === 1) {
+					lastTouchDistance.current = null;
+				}
+			}}
 			{...props}>
 			<Box
 				sx={{

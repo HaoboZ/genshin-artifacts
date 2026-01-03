@@ -70,11 +70,10 @@ function setCommonHeaders(headers: Headers, object: R2Object) {
 	headers.set('Accept-Ranges', 'bytes');
 	headers.set('Access-Control-Allow-Origin', '*');
 
-	// Only cache images, not videos
 	if (object?.httpMetadata?.contentType) {
 		const contentType = object.httpMetadata.contentType;
 		if (contentType.startsWith('image/')) {
-			headers.set('Cache-Control', 'public, max-age=604800'); // 1 week
+			headers.set('Cache-Control', 'public, max-age=604800');
 		}
 	}
 }

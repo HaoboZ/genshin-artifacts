@@ -4,14 +4,17 @@ import ImageRouteSync from '@/components/imageRoute/imageRouteSync';
 import { type Point, type RenderExtraProps } from '@/components/imageRoute/types';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Fragment, use, useCallback, useMemo, useRef, useState } from 'react';
 import { useOnWindowResize } from 'rooks';
 import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
 export default function FarmingRoute({ params }: { params: Promise<{ route: string }> }) {
+	const router = useRouter();
 	const { route } = use(params);
 	const selectedRoute = routesInfo[+route];
 
@@ -27,7 +30,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 
 	// Calculate scale based on container size
 	useOnWindowResize(() => {
-		setScale(containerRef.current.offsetWidth / 1000);
+		setScale(containerRef.current?.offsetWidth / 1000);
 	});
 
 	// calculate spots collected at current time
@@ -89,6 +92,14 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					/>
 				</Stack>
 			</Box>
+			<Button
+				variant='contained'
+				color='primary'
+				startIcon={<ArrowBackIcon />}
+				sx={{ position: 'absolute', left: 20, top: 20 }}
+				onClick={() => router.push(`/farming?route=${route}`)}>
+				Back
+			</Button>
 			<ImageRouteSync
 				src={mapName}
 				points={points}

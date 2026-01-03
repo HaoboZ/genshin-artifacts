@@ -63,7 +63,7 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 				RenderPoint={MapRenderPoint}
 				RenderPath={MapRenderPath}
 				initialZoom={0.9}
-				// disableAnimations
+				disableAnimations
 				sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 				<Image
 					fill

@@ -8,7 +8,8 @@ export function MapRenderPoint({ point, containerSize, type, percentage }: Rende
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={containerSize.width / 200}
-			fillOpacity={0}
+			fill={type === 'hover' ? 'white' : (point.data ?? 'lime')}
+			fillOpacity={type === 'hover' ? 1 : 0}
 			stroke={type === 'hover' ? 'white' : (point.data ?? 'lime')}
 			strokeWidth={containerSize.width / 1000}
 		/>

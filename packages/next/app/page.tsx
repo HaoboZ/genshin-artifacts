@@ -28,11 +28,13 @@ export default function Main() {
 	return (
 		<Container>
 			<PageTitle>Genshin Artifacts</PageTitle>
-			<Grid container spacing={1} sx={{ height: 'calc(100vh - 100px)' }}>
-				<Grid size={8}>
+			<Grid container spacing={1}>
+				<Grid
+					size={{ xs: 12, md: 8 }}
+					sx={{ height: { xs: 'calc(100vw * 9 / 16)', md: 'calc(100vh - 100px)' } }}>
 					<FarmingMap sx={{ alignItems: 'unset' }} />
 				</Grid>
-				<Grid size={4}>
+				<Grid size={{ xs: 12, md: 4 }}>
 					<Stack spacing={1}>
 						<Box className='onesignal-customlink-container' style={{ minHeight: 'unset' }} />
 						<RespawnNotification

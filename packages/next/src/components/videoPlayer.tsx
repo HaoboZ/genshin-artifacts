@@ -53,7 +53,13 @@ export default function VideoPlayer({
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
 			{...props}>
-			<video ref={ref} controls src={src} style={{ width: '100%', display: 'block' }} />
+			<video
+				ref={ref}
+				playsInline
+				controls
+				src={src}
+				style={{ width: '100%', display: 'block' }}
+			/>
 			<Box
 				sx={{
 					'position': 'absolute',

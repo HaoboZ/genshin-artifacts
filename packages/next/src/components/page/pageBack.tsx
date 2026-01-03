@@ -49,12 +49,13 @@ export default function PageBack({
 
 	if (!routes.length) return;
 
-	if (backButton)
+	if (backButton) {
 		return (
 			<Button variant='text' startIcon={<ArrowBackIcon />} onClick={clickListener}>
 				Back
 			</Button>
 		);
+	}
 
 	if (button || backButton) {
 		const lastRoute = routes[routes.length - 2] ?? { name: homeName, href: '/' };
