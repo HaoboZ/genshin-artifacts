@@ -35,7 +35,7 @@
 		"pixelmatch": "7.1.0",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
-		"react-onesignal": "3.4.4",
+		"react-onesignal": "3.4.5",
 		"react-redux": "9.2.0",
 		"redux": "5.0.1",
 		"rooks": "9.5.0",
