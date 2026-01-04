@@ -37,7 +37,7 @@ export default function ImageRoute({
 	const [hoverSpot, setHoverSpot] = useState<Spot>(null);
 
 	useEffect(() => {
-		if (!containerSize) return;
+		if (!points || !containerSize?.width || !containerSize?.height) return;
 		setActiveSpot(null);
 		const { scale, offset } = getInitialPosition(containerSize);
 		setScale(scale);
