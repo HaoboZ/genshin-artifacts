@@ -10,14 +10,11 @@ import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { use, useCallback } from 'react';
 import PathSelect from '../../../../farming/[route]/pathSelect';
-import {
-	RouteRenderExtra,
-	RouteRenderPath,
-	RouteRenderPoint,
-} from '../../../../farming/[route]/render';
+import { RouteRenderExtra, RouteRenderPath } from '../../../../farming/[route]/render';
 import RouteSelect from '../../../../farming/routeSelect';
 import { routesInfo } from '../../../routes';
 import { savePointsServer } from '../actions';
+import { EditRouteRenderPoint } from '../renderPoint';
 
 export default function InternalRouteVideo({ params }: { params: Promise<{ route: string }> }) {
 	const { enqueueSnackbar } = useSnackbar();
@@ -79,7 +76,7 @@ export default function InternalRouteVideo({ params }: { params: Promise<{ route
 							calculateOptimalZoom(points, containerSize, 0.75)
 						}
 						sx={{ aspectRatio: 1 }}
-						RenderPoint={RouteRenderPoint}
+						RenderPoint={EditRouteRenderPoint}
 						RenderPath={RouteRenderPath}
 						RenderExtra={RouteRenderExtra}
 						RenderText={RenderText}

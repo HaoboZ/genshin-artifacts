@@ -36,7 +36,7 @@ export default function ImageRoute({
 
 	useEffect(() => {
 		if (!points || !containerSize?.width || !containerSize?.height) return;
-		setActiveSpot(null);
+		setActiveSpot({ point: points[0], pointIndex: 0, percentage: 0 });
 		const { scale, offset } = getInitialPosition(containerSize);
 		setScale(scale);
 		setMapOffset(offset);

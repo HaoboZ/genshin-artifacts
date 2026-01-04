@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 import { Fragment, use, useCallback, useMemo } from 'react';
 import { useMeasure } from 'rooks';
 import PathSelect from './pathSelect';
-import { RouteRenderExtra, RouteRenderPath } from './render';
+import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
 const MapModal = dynamicModal(() => import('./mapModal'));
 
@@ -124,7 +124,7 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					getAnimatedPosition={(containerSize) =>
 						calculateOptimalZoom(points, containerSize, 0.75)
 					}
-					RenderPoint={() => null}
+					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					RenderExtra={RenderExtra}
 					sx={{ aspectRatio: 1 }}>

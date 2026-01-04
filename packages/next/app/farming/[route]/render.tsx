@@ -2,14 +2,16 @@ import { type RenderPathProps, type RenderPointProps } from '@/components/imageR
 import { Fragment } from 'react';
 
 export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPointProps) {
+	if (!type) return null;
+
 	return (
 		<circle
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={containerSize.width / (type ? 75 : 500 * scale)}
-			fill={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type] ?? 'black'}
+			fill={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type]}
 			fillOpacity={type ? 0.5 : 1}
-			stroke={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type] ?? 'black'}
+			stroke={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type]}
 			strokeWidth={containerSize.width / 500}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,

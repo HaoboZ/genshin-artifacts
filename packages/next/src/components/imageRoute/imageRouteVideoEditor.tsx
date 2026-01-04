@@ -1,4 +1,3 @@
-import { RouteRenderPoint } from '@/app/farming/[route]/render';
 import { Save as SaveIcon } from '@mui/icons-material';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -17,6 +16,7 @@ export default function ImageRouteVideoEditor({
 	points: initialPoints,
 	savePoints,
 	RenderText,
+	RenderPoint,
 	RenderExtra,
 	...props
 }: {
@@ -60,7 +60,7 @@ export default function ImageRouteVideoEditor({
 			<Fragment>
 				{RenderExtra && <RenderExtra {...props} />}
 				{selectedSpot && (
-					<RouteRenderPoint
+					<RenderPoint
 						point={selectedSpot.point}
 						containerSize={props.containerSize}
 						scale={props.scale}
@@ -69,7 +69,7 @@ export default function ImageRouteVideoEditor({
 				)}
 			</Fragment>
 		),
-		[RenderExtra, selectedSpot],
+		[RenderPoint, RenderExtra, selectedSpot],
 	);
 
 	return (
