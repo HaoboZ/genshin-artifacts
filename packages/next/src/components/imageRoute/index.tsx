@@ -5,7 +5,7 @@ import ImageRouteContainer from './imageRouteContainer';
 import ImageRoutePaths from './imageRoutePaths';
 import ImageRoutePoints from './imageRoutePoints';
 import { type ImageRouteProps, type Spot } from './types';
-import { calculateOptimalZoom, getClosestPointOnPath } from './utils';
+import { getClosestPointOnPath } from './utils';
 
 export default function ImageRoute({
 	ref,
@@ -17,8 +17,8 @@ export default function ImageRoute({
 	RenderPoint,
 	RenderPath,
 	RenderExtra,
-	initialZoom = 0.8,
-	disableAnimations,
+	getInitialPosition = () => ({ scale: 1, offset: { x: 0, y: 0 } }),
+	getAnimatedPosition,
 	sx,
 	innerChildren,
 	children,
@@ -38,16 +38,19 @@ export default function ImageRoute({
 
 	useEffect(() => {
 		if (!containerSize) return;
-		setScale(1);
-		setMapOffset({ x: 0, y: 0 });
 		setActiveSpot(null);
+		const { scale, offset } = getInitialPosition(containerSize);
+		setScale(scale);
+		setMapOffset(offset);
 		setIsAnimating(false);
 
+		if (!getAnimatedPosition) return;
+
 		const animationFrame = requestAnimationFrame(() => {
-			const { scale, offset } = calculateOptimalZoom(points, containerSize, initialZoom);
+			const { scale, offset } = getAnimatedPosition(containerSize);
 			setScale(scale);
 			setMapOffset(offset);
-			if (!disableAnimations) setIsAnimating(true);
+			setIsAnimating(true);
 		});
 
 		return () => cancelAnimationFrame(animationFrame);

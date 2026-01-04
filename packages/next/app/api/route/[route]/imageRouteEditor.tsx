@@ -1,6 +1,7 @@
 'use client';
 import ImageRoute from '@/components/imageRoute';
 import { type ImageRouteProps, type Point, type Spot } from '@/components/imageRoute/types';
+import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import useHistory from '@/hooks/useHistory';
 import {
 	Button,
@@ -115,6 +116,9 @@ export default function ImageRouteEditor({
 				}
 				activeSpot={activeSpot}
 				setActiveSpot={setActiveSpot}
+				getAnimatedPosition={(containerSize) =>
+					calculateOptimalZoom(points, containerSize, 0.75)
+				}
 				sx={{ height: '80vh', justifySelf: 'center', opacity: points ? 1 : 0, ...sx }}
 				{...props}>
 				<Image

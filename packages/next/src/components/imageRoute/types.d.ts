@@ -26,8 +26,14 @@ export type ImageRouteProps = {
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	RenderExtra?: ComponentType<RenderExtraProps>;
-	initialZoom?: number;
-	disableAnimations?: boolean;
+	getInitialPosition?: (containerSize: DOMRect) => {
+		scale: number;
+		offset: { x: number; y: number };
+	};
+	getAnimatedPosition?: (containerSize: DOMRect) => {
+		scale: number;
+		offset: { x: number; y: number };
+	};
 	innerChildren?: ReactNode;
 } & BoxProps;
 

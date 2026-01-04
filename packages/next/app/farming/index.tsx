@@ -1,6 +1,7 @@
 'use client';
 import ImageRoute from '@/components/imageRoute';
 import type { Point } from '@/components/imageRoute/types';
+import { calculateCenterZoom, calculateOptimalZoom } from '@/components/imageRoute/utils';
 import RatioContainer from '@/components/ratioContainer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
@@ -8,7 +9,7 @@ import { Box, Button, type SxProps } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MapRenderPath, MapRenderPoint } from './render';
+import { MapRenderExtra, MapRenderPath, MapRenderPoint } from './render';
 import RouteSelect from './routeSelect';
 
 export default function FarmingMap({ sx }: { sx?: SxProps }) {
@@ -50,6 +51,7 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 			</Box>
 			<ImageRoute
 				points={points}
+				activeSpot={points && { point: points[0] }}
 				setActiveSpot={(activeSpot) => {
 					if (!activeSpot) return;
 					router.push(
@@ -58,8 +60,11 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 				}}
 				RenderPoint={MapRenderPoint}
 				RenderPath={MapRenderPath}
-				initialZoom={0.9}
-				disableAnimations
+				RenderExtra={MapRenderExtra}
+				getInitialPosition={(containerSize) => calculateOptimalZoom(points, containerSize, 0.9)}
+				getAnimatedPosition={(containerSize) =>
+					calculateCenterZoom(points[0], containerSize, 3)
+				}
 				sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 				<Image
 					fill

@@ -2,6 +2,7 @@
 import ImageRoute from '@/components/imageRoute';
 import { type Point, type Spot } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
+import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
@@ -177,6 +178,9 @@ export default function InternalRouteSync({ params }: { params: Promise<{ route:
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
+					getAnimatedPosition={(containerSize) =>
+						calculateOptimalZoom(points, containerSize, 0.75)
+					}
 					sx={{
 						position: 'absolute',
 						width: '50%',

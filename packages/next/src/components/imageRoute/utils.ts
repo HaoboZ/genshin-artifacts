@@ -118,10 +118,11 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 	for (let i = 0; i < points.length; i++) {
 		const point = points[i];
 
-		if (point.start === undefined && point.end === undefined) continue;
+		if (point.start === undefined && point.end === undefined && point.marked === undefined)
+			continue;
 
-		const minTime = point.start ?? 0;
-		const maxTime = point.end ?? point.start ?? 0;
+		const minTime = point.start ?? point.marked ?? 0;
+		const maxTime = point.end ?? point.marked ?? point.start ?? 0;
 
 		// time is at this point
 		if (minTime <= time && time <= maxTime) {
@@ -133,7 +134,7 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 			continue;
 		}
 
-		const startTime = point.start ?? point.end ?? 0;
+		const startTime = point.start ?? point.marked ?? point.end ?? 0;
 		const endTime = lastPoint.maxTime;
 		const segmentPoints = points.slice(lastPoint.i, i + 1);
 
@@ -201,14 +202,14 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	let endIdx = points.length - 1;
 
 	for (let i = spot.pointIndex; i >= 0; i--) {
-		if (points[i].start ?? points[i].end) {
+		if (points[i].start ?? points[i].marked ?? points[i].end) {
 			startIdx = i;
 			break;
 		}
 	}
 
 	for (let i = spot.pointIndex + 1; i < points.length; i++) {
-		if (points[i].start ?? points[i].end) {
+		if (points[i].start ?? points[i].marked ?? points[i].end) {
 			endIdx = i;
 			break;
 		}
@@ -216,8 +217,8 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 
 	const startPoint = points[startIdx];
 	const endPoint = points[endIdx];
-	const startPointTime = startPoint.end ?? startPoint.start;
-	const endPointTime = endPoint.start ?? endPoint.end;
+	const startPointTime = startPoint.end ?? startPoint.marked ?? startPoint.start;
+	const endPointTime = endPoint.start ?? endPoint.marked ?? endPoint.end;
 
 	// calculate cumulative distances along the path
 	const pathPoints = points.slice(startIdx, endIdx + 1);
@@ -250,11 +251,15 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	return startPointTime + (endPointTime - startPointTime) * distanceRatio;
 }
 
-export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zoom?: number) {
+export function calculateOptimalZoom(
+	points: Point[],
+	containerSize: DOMRect,
+	zoom: number,
+	maxScale: number = 2,
+) {
 	if (!points?.length || !containerSize?.width || !containerSize?.height || !zoom) {
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
-
 	// find bounding box of all points (normalized coordinates)
 	let minX = Infinity,
 		maxX = -Infinity,
@@ -280,7 +285,7 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zo
 	const scaleX = (containerSize.width * zoom) / boundingBox.width;
 	const scaleY = (containerSize.height * zoom) / boundingBox.height;
 
-	const scale = Math.max(1, Math.min(scaleX, scaleY, 3));
+	const scale = Math.max(1, Math.min(scaleX, scaleY, maxScale));
 
 	// calculate offset to center the bounding box
 	const containerCenterX = containerSize.width / 2;
@@ -289,6 +294,29 @@ export function calculateOptimalZoom(points: Point[], containerSize: DOMRect, zo
 	// we need to translate the image center by -offsetToBounding * scale
 	let offsetX = -(boundingBox.centerX - containerCenterX) * scale;
 	let offsetY = -(boundingBox.centerY - containerCenterY) * scale;
+
+	// constrain offset to never show beyond image bounds
+	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;
+	const halfScaledHeight = (containerSize.height * scale - containerSize.height) / 2;
+
+	offsetX = clamp(offsetX, { min: -halfScaledWidth, max: halfScaledWidth });
+	offsetY = clamp(offsetY, { min: -halfScaledHeight, max: halfScaledHeight });
+
+	return { scale, offset: { x: offsetX, y: offsetY } };
+}
+
+export function calculateCenterZoom(point: Point, containerSize: DOMRect, scale: number) {
+	if (!point || !containerSize?.width || !containerSize?.height || !scale) {
+		return { scale: 1, offset: { x: 0, y: 0 } };
+	}
+
+	// convert normalized point (0-1) to pixel coordinates
+	const pointX = point.x * containerSize.width;
+	const pointY = point.y * containerSize.height;
+
+	// calculate offset to center the point
+	let offsetX = (containerSize.width / 2 - pointX) * scale;
+	let offsetY = (containerSize.height / 2 - pointY) * scale;
 
 	// constrain offset to never show beyond image bounds
 	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;

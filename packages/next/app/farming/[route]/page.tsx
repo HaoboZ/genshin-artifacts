@@ -3,6 +3,7 @@ import { routesInfo } from '@/api/routes';
 import ImageRoute from '@/components/imageRoute';
 import { type Point, type RenderExtraProps } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
+import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
@@ -119,9 +120,12 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 						variant='contained'
 						color='primary'
 						sx={{ position: 'absolute', left: 10, top: 10 }}
-						onClick={() => showModal(MapModal, { props: { route } })}>
+						onClick={() => showModal(MapModal, { props: { route, map: selectedMap } })}>
 						Full Map
 					</Button>
+				}
+				getAnimatedPosition={(containerSize) =>
+					calculateOptimalZoom(points, containerSize, 0.75)
 				}
 				RenderPoint={RouteRenderPoint}
 				RenderPath={RouteRenderPath}
