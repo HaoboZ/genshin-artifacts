@@ -17,7 +17,6 @@ export default function ImageRouteContainer({
 	onHoverRoute,
 	onClickRoute,
 	sx,
-	innerChildren,
 	children,
 	...props
 }: {
@@ -120,6 +119,7 @@ export default function ImageRouteContainer({
 				overflow: 'hidden',
 				cursor: 'crosshair',
 				touchAction: 'none',
+				bgcolor: 'black',
 				...sx,
 			}}
 			onMouseDown={(e) => {
@@ -194,7 +194,6 @@ export default function ImageRouteContainer({
 				}}>
 				{children}
 			</Box>
-			{innerChildren}
 		</Box>
 	);
 }

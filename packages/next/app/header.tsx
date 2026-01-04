@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
 	const pathname = usePathname();
 
-	if (pathname.startsWith('/farming')) return null;
+	if (pathname.startsWith('/farming') || pathname.startsWith('/api')) return null;
 
 	return (
 		<header>

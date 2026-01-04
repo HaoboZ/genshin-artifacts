@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 import { Fragment, use, useCallback, useMemo } from 'react';
 import { useMeasure } from 'rooks';
 import PathSelect from './pathSelect';
-import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
+import { RouteRenderExtra, RouteRenderPath } from './render';
 
 const MapModal = dynamicModal(() => import('./mapModal'));
 
@@ -109,41 +109,40 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					width: ratio < 0.94 ? '100%' : '50%',
 				}}
 			/>
-			<ImageRoute
-				ref={routeRef}
-				points={points}
-				hidePoints
-				activeSpot={activeSpot}
-				setActiveSpot={setActiveSpot}
-				innerChildren={
-					<Button
-						variant='contained'
-						color='primary'
-						sx={{ position: 'absolute', left: 10, top: 10 }}
-						onClick={() => showModal(MapModal, { props: { route, map: selectedMap } })}>
-						Full Map
-					</Button>
-				}
-				getAnimatedPosition={(containerSize) =>
-					calculateOptimalZoom(points, containerSize, 0.75)
-				}
-				RenderPoint={RouteRenderPoint}
-				RenderPath={RouteRenderPath}
-				RenderExtra={RenderExtra}
+			<Box
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
 					mx: 'auto',
 					width: mobile ? '75%' : '50%',
-					aspectRatio: 1,
 					right: 0,
 				}}>
-				<Image
-					fill
-					alt={mapName}
-					src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
-					style={{ zIndex: -1, objectFit: 'contain' }}
-				/>
-			</ImageRoute>
+				<ImageRoute
+					ref={routeRef}
+					points={points}
+					activeSpot={activeSpot}
+					setActiveSpot={setActiveSpot}
+					getAnimatedPosition={(containerSize) =>
+						calculateOptimalZoom(points, containerSize, 0.75)
+					}
+					RenderPoint={() => null}
+					RenderPath={RouteRenderPath}
+					RenderExtra={RenderExtra}
+					sx={{ aspectRatio: 1 }}>
+					<Image
+						fill
+						alt={mapName}
+						src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
+						style={{ zIndex: -1, objectFit: 'contain' }}
+					/>
+				</ImageRoute>
+				<Button
+					variant='contained'
+					color='primary'
+					sx={{ position: 'absolute', left: 10, top: 10 }}
+					onClick={() => showModal(MapModal, { props: { route, map: selectedMap } })}>
+					Full Map
+				</Button>
+			</Box>
 		</Box>
 	);
 }

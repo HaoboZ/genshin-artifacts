@@ -53,7 +53,7 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 				points={points}
 				activeSpot={points && { point: points[0] }}
 				setActiveSpot={(activeSpot) => {
-					if (!activeSpot) return;
+					if (!activeSpot || activeSpot.percentage) return;
 					router.push(
 						`/farming/${selectedRoute}?map=${points[activeSpot.pointIndex].marked - 1}`,
 					);

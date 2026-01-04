@@ -37,7 +37,7 @@ export default function MapModal({ route, map }: { route: number; map: number })
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={(activeSpot) => {
-						if (!activeSpot) return;
+						if (!activeSpot || activeSpot.percentage) return;
 						router.push(`/farming/${route}?map=${points[activeSpot.pointIndex].marked - 1}`);
 						closeModal();
 					}}

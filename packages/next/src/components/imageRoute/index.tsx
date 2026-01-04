@@ -11,7 +11,6 @@ export default function ImageRoute({
 	ref,
 	points,
 	addPoint,
-	hidePoints,
 	activeSpot: _activeSpot,
 	setActiveSpot: _setActiveSpot,
 	RenderPoint,
@@ -20,7 +19,6 @@ export default function ImageRoute({
 	getInitialPosition = () => ({ scale: 1, offset: { x: 0, y: 0 } }),
 	getAnimatedPosition,
 	sx,
-	innerChildren,
 	children,
 	...props
 }: ImageRouteProps) {
@@ -72,13 +70,9 @@ export default function ImageRoute({
 				setHoverSpot(getClosestPointOnPath(points, point.x, point.y, 15 / containerSize.width));
 			}}
 			onClickRoute={(point) => {
-				if (addPoint) {
-					addPoint(point);
-					return;
-				}
+				addPoint?.(point);
 				if (hoverSpot) setActiveSpot(hoverSpot);
 			}}
-			innerChildren={innerChildren}
 			sx={sx}
 			{...props}>
 			{children}
@@ -94,7 +88,6 @@ export default function ImageRoute({
 						containerSize={containerSize}
 						scale={scale}
 						points={points}
-						hidePoints={hidePoints}
 						activeSpot={activeSpot}
 						hoverSpot={hoverSpot}
 						RenderPoint={RenderPoint}

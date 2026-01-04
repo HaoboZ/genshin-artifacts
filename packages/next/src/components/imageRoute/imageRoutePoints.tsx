@@ -17,7 +17,6 @@ export default function ImageRoutePoints({
 	containerSize,
 	scale,
 	points,
-	hidePoints,
 	hoverSpot,
 	activeSpot,
 	RenderPoint = DefaultRenderPoint,
@@ -25,22 +24,20 @@ export default function ImageRoutePoints({
 	containerSize: DOMRect;
 	scale: number;
 	points: Point[];
-	hidePoints?: boolean;
 	hoverSpot: Spot;
 	activeSpot: Spot;
 	RenderPoint?: ComponentType<RenderPointProps>;
 }) {
 	return (
 		<Fragment>
-			{!hidePoints &&
-				points?.map((point, i) => (
-					<RenderPoint
-						key={`point-${i}`}
-						point={point}
-						containerSize={containerSize}
-						scale={scale}
-					/>
-				))}
+			{points?.map((point, i) => (
+				<RenderPoint
+					key={`point-${i}`}
+					point={point}
+					containerSize={containerSize}
+					scale={scale}
+				/>
+			))}
 			{hoverSpot && (
 				<RenderPoint
 					point={hoverSpot.point}

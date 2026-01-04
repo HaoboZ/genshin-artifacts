@@ -20,7 +20,6 @@ export type ImageRouteProps = {
 	ref?: RefObject<HTMLDivElement>;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
-	hidePoints?: boolean;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
 	RenderPoint?: ComponentType<RenderPointProps>;
