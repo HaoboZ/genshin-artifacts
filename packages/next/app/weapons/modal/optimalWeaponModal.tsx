@@ -55,7 +55,12 @@ export default function OptimalWeaponModal() {
 
 				const currentWeapon = weapons.find(({ location }) => location === character.key);
 				if (currentWeapon) {
-					if (tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)) continue;
+					if (
+						(currentWeapon.level !== 1 || weapon.level === 1) &&
+						tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)
+					) {
+						continue;
+					}
 					currentWeapon.location = '';
 				}
 				weapon.location = character.key;
