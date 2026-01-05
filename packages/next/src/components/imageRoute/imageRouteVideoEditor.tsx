@@ -64,7 +64,7 @@ export default function ImageRouteVideoEditor({
 						point={selectedSpot.point}
 						containerSize={props.containerSize}
 						scale={props.scale}
-						type='extra'
+						type='selected'
 					/>
 				)}
 			</Fragment>
@@ -110,6 +110,7 @@ export default function ImageRouteVideoEditor({
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
+					RenderPoint={RenderPoint}
 					RenderExtra={RenderExtraSelected}
 					{...props}>
 					<Image fill alt={alt} src={imageSrc} style={{ zIndex: -1, objectFit: 'contain' }} />

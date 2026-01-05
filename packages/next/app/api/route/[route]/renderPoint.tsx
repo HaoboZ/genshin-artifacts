@@ -6,9 +6,9 @@ export function EditRouteRenderPoint({ point, containerSize, scale, type }: Rend
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={containerSize.width / (type ? 75 : 500 * scale)}
-			fill={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type] ?? 'black'}
+			fill={{ active: 'blue', hover: 'lime', selected: 'yellow' }[type] ?? 'black'}
 			fillOpacity={type ? 0.5 : 1}
-			stroke={{ active: 'blue', hover: 'lime', extra: 'yellow' }[type] ?? 'black'}
+			stroke={{ active: 'blue', hover: 'lime', selected: 'yellow' }[type] ?? 'black'}
 			strokeWidth={containerSize.width / 500}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,
