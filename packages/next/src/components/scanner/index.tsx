@@ -21,7 +21,7 @@ export default function Scanner({
 	const { enqueueSnackbar } = useSnackbar();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAnimating] = useDebouncedValue(isLoading, 250);
-	const { progress } = useNProgress({ isAnimating });
+	const { progress, isFinished } = useNProgress({ isAnimating });
 
 	const scanFile = useCallback(async (file: File) => {
 		try {
@@ -53,9 +53,9 @@ export default function Scanner({
 	return (
 		<Button
 			component='label'
-			loading={Boolean(progress)}
+			loading={!isFinished}
 			variant='contained'
-			loadingIndicator={<CircularProgress variant='determinate' value={progress * 11} />}>
+			loadingIndicator={<CircularProgress variant='determinate' value={progress * 100} />}>
 			Paste or Upload File
 			<input
 				hidden

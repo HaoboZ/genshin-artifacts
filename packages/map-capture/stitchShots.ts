@@ -35,7 +35,7 @@ export default async function stitchShots(
 	const canvasWidth = Math.ceil(coordWidth / unitsPerPixelX);
 	const canvasHeight = Math.ceil(coordHeight / unitsPerPixelY);
 
-	console.log(`Canvas size: ${canvasWidth}x${canvasHeight}`);
+	console.info(`Canvas size: ${canvasWidth}x${canvasHeight}`);
 
 	// create composites array - position each shot based on its actual coordinates
 	const composites = shots.map(({ buffer, centerX, centerY }) => {

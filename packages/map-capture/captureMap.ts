@@ -16,7 +16,7 @@ export default async function captureMap(
 	const stepPx = viewport.width * stepRatio;
 	const stepPy = viewport.height * stepRatio;
 
-	console.log(`Using step sizes: ${stepPx}px x ${stepPy}px`);
+	console.info(`Using step sizes: ${stepPx}px x ${stepPy}px`);
 
 	// create folder if saving
 	if (saveToDisk) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -40,7 +40,7 @@ export default async function captureMap(
 			if (lastX !== null && Math.abs(center.x - lastX) < 0.5) break;
 			lastX = center.x;
 
-			console.log(`col: ${colIndex}, row: ${rowIndex}`);
+			console.info(`col: ${colIndex}, row: ${rowIndex}`);
 
 			const buffer = (await page.screenshot()) as Buffer;
 
@@ -71,7 +71,7 @@ export default async function captureMap(
 		rowIndex++;
 	}
 
-	console.log(`Captured ${shots.length} shots in ${rowIndex + 1} rows`);
+	console.info(`Captured ${shots.length} shots in ${rowIndex + 1} rows`);
 
 	return shots;
 }

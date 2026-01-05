@@ -16,17 +16,17 @@ const run = {
 
 (async () => {
 	try {
-		if (run.elements) console.log('Elements');
+		if (run.elements) console.info('Elements');
 		const elements = run.elements && (await fetchElements());
-		if (run.characters) console.log('Characters');
+		if (run.characters) console.info('Characters');
 		const characters = run.characters && (await fetchCharacters());
-		if (run.characters || run.talents) console.log('Talents');
+		if (run.characters || run.talents) console.info('Talents');
 		const talents = (run.characters || run.talents) && (await fetchTalents(characters));
-		if (run.characters || run.weekly) console.log('Weekly');
+		if (run.characters || run.weekly) console.info('Weekly');
 		const weekly = (run.characters || run.weekly) && (await fetchWeekly(characters));
-		if (run.artifacts) console.log('Artifacts');
+		if (run.artifacts) console.info('Artifacts');
 		const artifacts = run.artifacts && (await fetchArtifacts());
-		if (run.weapons) console.log('Weapons');
+		if (run.weapons) console.info('Weapons');
 		const weapons = run.weapons && (await fetchWeapons());
 
 		if (run.elements) writeElements(elements);
@@ -35,7 +35,7 @@ const run = {
 		if (run.weekly) writeWeekly(weekly);
 		if (run.artifacts) writeArtifacts(artifacts);
 		if (run.weapons) writeWeapons(weapons);
-		console.log('Completed');
+		console.info('Completed');
 	} catch (error) {
 		console.error('An error has occurred ', error);
 	}

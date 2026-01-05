@@ -18,7 +18,7 @@ export default async function measureUnits(page: Page, stepRatio = 0.75) {
 	const afterY = getCenterFromUrl(page.url())!;
 	const unitsPerPixelY = Math.abs(afterY.y - afterX.y) / stepPy;
 
-	console.log(
+	console.info(
 		`Units per pixel - X: ${unitsPerPixelX.toFixed(6)}, Y: ${unitsPerPixelY.toFixed(6)}`,
 	);
 

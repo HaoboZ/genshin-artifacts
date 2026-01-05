@@ -87,7 +87,7 @@ function parseRange(range: string, fileSize: number): R2Range {
 
 	const match = range.match(/bytes=(\d+)-(\d*)/);
 	if (!match) {
-		console.log('No match for range pattern');
+		console.info('No match for range pattern');
 		return null;
 	}
 

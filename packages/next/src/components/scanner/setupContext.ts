@@ -1,5 +1,5 @@
 export default function setupContext(canvas: HTMLCanvasElement, newCanvas?: HTMLCanvasElement) {
-	const context = (newCanvas || canvas).getContext('2d');
+	const context = (newCanvas || canvas).getContext('2d', { willReadFrequently: true });
 	if (newCanvas) {
 		newCanvas.width = canvas.width;
 		newCanvas.height = canvas.height;
