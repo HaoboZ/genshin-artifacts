@@ -13,7 +13,7 @@ import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Fragment, use, useCallback, useMemo } from 'react';
+import { Fragment, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useMeasure } from 'rooks';
 import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
@@ -29,10 +29,20 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 
-	const [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+	let [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
 
 	const [ref, measurements] = useMeasure();
+	const imageRef = useRef<HTMLImageElement>(null);
+
+	const [isLoaded, setIsLoaded] = useState(false);
+	if (!isLoaded) points = null;
+
 	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points, true);
+
+	useEffect(() => {
+		if (!imageRef.current) return;
+		setIsLoaded(imageRef.current.complete);
+	}, [imageRef]);
 
 	// calculate spots collected at current time
 	const spots = useMemo(
@@ -131,8 +141,10 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 					<Image
 						fill
 						alt={mapName}
+						ref={imageRef}
 						src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
 						style={{ zIndex: -1, objectFit: 'contain' }}
+						onLoad={() => setIsLoaded(true)}
 					/>
 				</ImageRoute>
 				<Button
