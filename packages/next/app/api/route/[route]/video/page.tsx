@@ -49,7 +49,7 @@ export default function InternalRouteVideo({ params }: { params: Promise<{ route
 					<RouteSelect
 						value={+route}
 						onChange={({ target }) => {
-							router.push(`/api/route/${target.value}/sync`);
+							router.push(`/api/route/${target.value}/video`);
 						}}
 					/>
 				</Grid>
@@ -68,7 +68,7 @@ export default function InternalRouteVideo({ params }: { params: Promise<{ route
 						imageSrc={`${process.env.NEXT_PUBLIC_STORAGE_URL}/maps/${mapName}.png`}
 						videoSrc={`${process.env.NEXT_PUBLIC_STORAGE_URL}/videos/${mapName}.mp4`}
 						points={points}
-						savePoints={async () => {
+						savePoints={async (points) => {
 							await savePointsServer(points, mapName);
 							enqueueSnackbar('Saved', { variant: 'info' });
 						}}

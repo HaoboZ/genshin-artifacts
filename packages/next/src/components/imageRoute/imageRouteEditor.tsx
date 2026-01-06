@@ -67,8 +67,8 @@ export default function ImageRouteEditor({
 				}
 				activeSpot={activeSpot}
 				setActiveSpot={(activeSpot) => {
-					if (activeSpot?.percentage) return;
-					setActiveSpot(activeSpot);
+					const pointIndex = Math.min(activeSpot.pointIndex + 1, points.length - 1);
+					setActiveSpot({ point: points[pointIndex], pointIndex, percentage: 0 });
 				}}
 				{...props}>
 				<Image fill alt={alt} src={imageSrc} style={{ zIndex: -1, objectFit: 'contain' }} />
