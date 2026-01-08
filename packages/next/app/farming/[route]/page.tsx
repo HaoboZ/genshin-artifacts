@@ -29,7 +29,10 @@ export default function FarmingRoute({ params }: { params: Promise<{ route: stri
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 
-	let [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+	let [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/${mapName}.json`,
+		[],
+	);
 
 	const [ref, measurements] = useMeasure();
 	const imageRef = useRef<HTMLImageElement>(null);

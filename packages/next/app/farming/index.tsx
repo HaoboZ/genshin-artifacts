@@ -17,7 +17,10 @@ export default function FarmingMap({ sx }: { sx?: SxProps }) {
 
 	const [selectedRoute, setSelectedRoute] = useParamState('route', 0);
 
-	const [points] = useFetchState<Point[]>(`/points/route_${selectedRoute}.json`, []);
+	const [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/route_${selectedRoute}.json`,
+		[],
+	);
 
 	return (
 		<RatioContainer width={16} height={9} sx={sx}>

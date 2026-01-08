@@ -25,7 +25,10 @@ export default function InternalRoute({ params }: { params: Promise<{ route: str
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const mapName = selectedRoute.maps[selectedMap].src;
 
-	const [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+	const [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/${mapName}.json`,
+		[],
+	);
 	if (!points) return null;
 
 	return (

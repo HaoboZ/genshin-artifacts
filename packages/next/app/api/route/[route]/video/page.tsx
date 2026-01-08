@@ -39,7 +39,10 @@ export default function InternalRouteVideo({ params }: { params: Promise<{ route
 		[selectedRoute, selectedMap],
 	);
 
-	const [points] = useFetchState<Point[]>(`/points/${mapName}.json`, []);
+	const [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/${mapName}.json`,
+		[],
+	);
 	if (!points) return null;
 
 	return (

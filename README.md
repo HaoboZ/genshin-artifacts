@@ -8,7 +8,7 @@ First, run the development server:
 
 ```bash
 bun i
-bun dev
+bun next-dev
 ```
 
 Open [localhost](http://localhost:3000) with your browser to see the result.

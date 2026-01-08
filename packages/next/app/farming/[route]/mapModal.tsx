@@ -20,7 +20,10 @@ export default function MapModal({ route, map }: { route: number; map: number })
 	const router = useRouter();
 	const { closeModal } = useModalControls();
 
-	const [points] = useFetchState<Point[]>(`/points/route_${route}.json`, []);
+	const [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/route_${route}.json`,
+		[],
+	);
 
 	const [ref, measurements] = useMeasure();
 

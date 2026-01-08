@@ -17,7 +17,10 @@ export default function InternalRouteMap() {
 	const [selectedRoute, setSelectedRoute] = useState(0);
 	const routeName = `route_${selectedRoute}`;
 
-	const [points] = useFetchState<Point[]>(`/points/${routeName}.json`, []);
+	const [points] = useFetchState<Point[]>(
+		`${process.env.NEXT_PUBLIC_STORAGE_URL}/points/${routeName}.json`,
+		[],
+	);
 	if (!points) return null;
 
 	return (
