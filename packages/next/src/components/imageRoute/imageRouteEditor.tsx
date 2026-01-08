@@ -66,8 +66,8 @@ export default function ImageRouteEditor({
 						: undefined
 				}
 				activeSpot={activeSpot}
-				setActiveSpot={(activeSpot) => {
-					const pointIndex = Math.min(activeSpot.pointIndex + 1, points.length - 1);
+				setActiveSpot={({ percentage, pointIndex }) => {
+					pointIndex += percentage ? 1 : 0;
 					setActiveSpot({ point: points[pointIndex], pointIndex, percentage: 0 });
 				}}
 				{...props}>

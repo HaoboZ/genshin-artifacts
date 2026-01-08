@@ -1,3 +1,7 @@
+declare const caches: {
+	default: Cache;
+};
+
 export default {
 	async fetch(request, env) {
 		const key = decodeURIComponent(new URL(request.url).pathname.slice(1));
@@ -22,7 +26,14 @@ export default {
 				return new Response(null, { status: 200, headers });
 			}
 
+			// for non-range requests, use Cloudflare cache
 			if (!rangeHeader) {
+				const cache = caches.default;
+				const cacheKey = new Request(request.url, { method: 'GET' });
+
+				const cachedResponse = await cache.match(cacheKey);
+				if (cachedResponse) return cachedResponse;
+
 				const object = await env.MY_BUCKET.get(key);
 				if (!object) return new Response('Not Found', { status: 404 });
 
@@ -30,9 +41,13 @@ export default {
 				setCommonHeaders(headers, object);
 				headers.set('Content-Length', fileSize.toString());
 				headers.set('Access-Control-Expose-Headers', 'Accept-Ranges, Content-Length');
-				return new Response(object.body, { status: 200, headers });
+
+				const response = new Response(object.body, { status: 200, headers });
+				await cache.put(cacheKey, response.clone());
+				return response;
 			}
 
+			// handle range requests (not cached)
 			const parsedRange = parseRange(rangeHeader, fileSize);
 			if (!parsedRange) {
 				return new Response('Invalid Range', {
