@@ -69,7 +69,7 @@ export default function ImageRoute({
 				setHoverSpot(getClosestPointOnPath(points, point.x, point.y, 15 / containerSize.width));
 			}}
 			onClickRoute={(point) => {
-				addPoint?.(point);
+				if (addPoint) return addPoint(point);
 				if (hoverSpot) setActiveSpot(hoverSpot);
 			}}
 			sx={sx}

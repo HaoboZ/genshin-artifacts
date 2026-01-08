@@ -45,6 +45,7 @@ export default function ImageRouteEditor({
 					editMode === 'add' || activeSpot?.pointIndex !== undefined
 						? (point) => {
 								point.marked = 1;
+								setActiveSpot(null);
 								setPoints((points) => {
 									switch (editMode) {
 										case 'add':
@@ -55,10 +56,8 @@ export default function ImageRouteEditor({
 												...newPoints[activeSpot.pointIndex],
 												...pick(point, ['x', 'y']),
 											};
-											setActiveSpot(null);
 											return newPoints;
 										case 'insert':
-											setActiveSpot(null);
 											return points.toSpliced(activeSpot.pointIndex, 0, point);
 									}
 								});
