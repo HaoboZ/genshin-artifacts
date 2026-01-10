@@ -59,10 +59,10 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 						<SelectField
 							name='slotKey'
 							label='Type'
-							onChange={({ target }) => {
+							onChange={(e) => {
 								setFieldValue(
 									'mainStatKey',
-									artifactSlotStats[target.value as any].stats[0],
+									artifactSlotStats[e.target.value as any].stats[0],
 								);
 							}}>
 							{artifactSlotOrder.map((key) => (
@@ -88,13 +88,13 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 						<SelectField
 							name='rarity'
 							label='Rarity'
-							onChange={({ target }) => {
-								setFieldValue('rarity', +target.value);
+							onChange={(e) => {
+								setFieldValue('rarity', +e.target.value);
 								setFieldValue(
 									'level',
 									clamp(values.level, {
 										min: 0,
-										max: +target.value * 4,
+										max: +e.target.value * 4,
 									}),
 								);
 							}}>
@@ -110,10 +110,10 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							name='level'
 							label='Level'
 							type='number'
-							onChange={({ target }) => {
+							onChange={(e) => {
 								setFieldValue(
 									'level',
-									clamp(+target.value, { min: 0, max: artifactSet.rarity * 4 }),
+									clamp(+e.target.value, { min: 0, max: artifactSet.rarity * 4 }),
 								);
 							}}
 						/>
@@ -128,10 +128,14 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 									<SelectField
 										name={`substats.${index}.key`}
 										value={values.substats[index]?.key ?? ''}
-										onChange={({ target }) => {
+										onChange={(e) => {
 											const substats = [...values.substats];
-											if (!target.value) substats.splice(index, 1);
-											else substats[index] = { key: target.value as StatKey, value: 0 };
+											if (!e.target.value) substats.splice(index, 1);
+											else
+												substats[index] = {
+													key: e.target.value as StatKey,
+													value: 0,
+												};
 											setFieldValue('substats', substats);
 											return false;
 										}}>
@@ -149,12 +153,12 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 											<InputField
 												name={`substats.${index}.value`}
 												type='number'
-												onChange={({ target }) => {
+												onChange={(e) => {
 													const substats = [...values.substats];
 													const { key } = values.substats[index];
 													substats[index] = {
 														key,
-														value: clamp(+target.value, {
+														value: clamp(+e.target.value, {
 															min: 0,
 															max: statsMax[key],
 														}),
@@ -168,11 +172,8 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 											<Checkbox
 												key={index}
 												checked={!values.substats[index]?.unactivated}
-												onChange={({ target }) => {
-													setFieldValue(
-														`substats.${index}.unactivated`,
-														!target.checked,
-													);
+												onChange={(_, checked) => {
+													setFieldValue(`substats.${index}.unactivated`, !checked);
 												}}
 											/>
 										</Grid>

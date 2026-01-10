@@ -1,7 +1,7 @@
 export default async function fileToCanvas(file: File, canvas?: HTMLCanvasElement) {
 	return new Promise<HTMLCanvasElement>((resolve, reject) => {
 		const reader = new FileReader();
-		reader.onload = ({ target }) => {
+		reader.onload = (e) => {
 			const img = new Image();
 			img.onload = async () => {
 				if (!canvas) canvas = document.createElement('canvas');
@@ -12,7 +12,7 @@ export default async function fileToCanvas(file: File, canvas?: HTMLCanvasElemen
 				resolve(canvas);
 			};
 			img.onerror = reject;
-			img.src = target.result as string;
+			img.src = e.target.result as string;
 		};
 		reader.readAsDataURL(file);
 	});

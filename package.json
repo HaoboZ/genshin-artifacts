@@ -13,7 +13,7 @@
 		"next-build": "cd packages/next && bun run build",
 		"generate-data": "cd packages/generate-data && bun run start",
 		"map-capture": "cd packages/map-capture && bun run start",
-		"worker-storage": "cd packages/worker-storage && bun run deploy"
+		"route-storage": "cd packages/route-storage && bun run deploy"
 	},
 	"workspaces": [
 		"packages/*"

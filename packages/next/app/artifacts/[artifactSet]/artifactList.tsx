@@ -131,8 +131,8 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 						control={
 							<Switch
 								checked={deleteMode}
-								onChange={({ target }) => {
-									setDeleteMode(target.checked);
+								onChange={(_, checked) => {
+									setDeleteMode(checked);
 									setMarked([]);
 								}}
 							/>

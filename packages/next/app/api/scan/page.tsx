@@ -51,10 +51,10 @@ export default function InternalScan() {
 								hidden
 								type='file'
 								accept='image/*'
-								onChange={async ({ target }) => {
-									if (!target.files) return;
+								onChange={async (e) => {
+									if (!e.target.files) return;
 									const canvas = document.createElement('canvas');
-									await fileToCanvas(target.files[0], canvas);
+									await fileToCanvas(e.target.files[0], canvas);
 									Object.assign(canvas.style, { height: '500px' });
 									setCanvases([canvas]);
 								}}

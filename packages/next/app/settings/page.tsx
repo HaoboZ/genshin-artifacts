@@ -18,8 +18,8 @@ export default function Settings() {
 		const item = clipboardData.items[0];
 		if (item?.type !== 'application/json') return;
 		const reader = new FileReader();
-		reader.onload = ({ target }) => {
-			const { main, ...good } = JSON.parse(target.result as string);
+		reader.onload = (e) => {
+			const { main, ...good } = JSON.parse(e.target.result as string);
 			if (main) dispatch(mainActions.import(main));
 			dispatch(goodActions.import(good));
 			enqueueSnackbar('Imported');
@@ -38,16 +38,16 @@ export default function Settings() {
 							hidden
 							type='file'
 							accept='application/json'
-							onChange={({ target }) => {
-								if (!target.files) return;
+							onChange={(e) => {
+								if (!e.target.files) return;
 								const reader = new FileReader();
-								reader.onload = ({ target }) => {
-									const { main, ...good } = JSON.parse(target.result as string);
+								reader.onload = (e) => {
+									const { main, ...good } = JSON.parse(e.target.result as string);
 									if (main) dispatch(mainActions.import(main));
 									dispatch(goodActions.import(good));
 									enqueueSnackbar('Imported');
 								};
-								reader.readAsText(target.files[0]);
+								reader.readAsText(e.target.files[0]);
 							}}
 						/>
 					</Button>

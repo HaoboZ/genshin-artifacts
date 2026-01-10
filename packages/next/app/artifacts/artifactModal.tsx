@@ -86,7 +86,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 						<Switch
 							sx={{ ml: 0 }}
 							checked={checked}
-							onChange={({ target }) => setChecked(target.checked)}
+							onChange={(_, checked) => setChecked(checked)}
 						/>
 					}
 					label='All Tiered Sets'

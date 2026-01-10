@@ -114,7 +114,7 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 								<Switch
 									sx={{ ml: 0 }}
 									checked={checked}
-									onChange={({ target }) => setChecked(target.checked)}
+									onChange={(_, checked) => setChecked(checked)}
 								/>
 							}
 							label='All Characters'

@@ -1,4 +1,4 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 import { isEmpty } from 'remeda';
 
@@ -32,8 +32,6 @@ export default function useParamState<T>(
 	initialState: T,
 	serializer?: Serializer<T>,
 ): [T, (value: T) => void] {
-	const router = useRouter();
-	const pathname = usePathname();
 	const searchParams = useSearchParams();
 
 	const { serialize, deserialize } = serializer ?? getSerializer(initialState);
@@ -61,6 +59,6 @@ export default function useParamState<T>(
 
 	return [
 		currentValue,
-		(value) => router.push(`${pathname}${createQueryString(value)}`, { scroll: false }),
+		(value) => window.history.pushState(null, '', `?${createQueryString(value)}`),
 	];
 }

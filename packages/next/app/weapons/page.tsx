@@ -44,7 +44,7 @@ export default function Weapons() {
 						<TextField
 							placeholder='Search'
 							value={search}
-							onChange={({ target }) => setSearch(target.value)}
+							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</Grid>
 					{weapons.map((weapon) => (

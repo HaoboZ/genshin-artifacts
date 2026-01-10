@@ -56,17 +56,16 @@ export default function ImageRouteContainer({
 		if (!containerSize) return;
 		setIsAnimating?.(false);
 
+		const newScale = clamp(scale * scaleDelta, { min: 1, max: 16 }) || 1;
+
+		const mouseX = zoomCenter.x - containerSize.left;
+		const mouseY = zoomCenter.y - containerSize.top;
 		const centerX = containerSize.width / 2;
 		const centerY = containerSize.height / 2;
-		const pointX = (zoomCenter.x - containerSize.x - centerX - mapOffset.x) / scale;
-		const pointY = (zoomCenter.y - containerSize.y - centerY - mapOffset.y) / scale;
-		const imageX = (pointX - mapOffset.x) / scale;
-		const imageY = (pointY - mapOffset.y) / scale;
-
-		const newScale = clamp(scale * scaleDelta, { min: 1, max: 8 }) || 1;
-
-		const newX = pointX - imageX * newScale;
-		const newY = pointY - imageY * newScale;
+		const imagePointX = (mouseX - centerX - mapOffset.x) / scale;
+		const imagePointY = (mouseY - centerY - mapOffset.y) / scale;
+		const newX = mouseX - centerX - imagePointX * newScale;
+		const newY = mouseY - centerY - imagePointY * newScale;
 
 		setScale(newScale);
 		setMapOffset(clampPosition(containerSize, newX, newY, newScale));

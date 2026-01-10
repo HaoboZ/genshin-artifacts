@@ -6,5 +6,6 @@ export default async function ArtifactSetPage({
 }: {
 	params: Promise<{ artifactSet: ArtifactSetKey }>;
 }) {
-	return <ArtifactSet artifactSet={(await params).artifactSet} />;
+	const { artifactSet } = await params;
+	return <ArtifactSet artifactSet={artifactSet} />;
 }

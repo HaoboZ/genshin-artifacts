@@ -61,9 +61,9 @@ export default function Scanner({
 				hidden
 				type='file'
 				accept='image/*'
-				onChange={({ target }) => {
-					if (!target.files) return;
-					scanFile(target.files[0]);
+				onChange={(e) => {
+					if (!e.target.files) return;
+					scanFile(e.target.files[0]);
 				}}
 			/>
 		</Button>

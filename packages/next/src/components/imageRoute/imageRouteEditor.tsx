@@ -1,8 +1,7 @@
 'use client';
-import { Save as SaveIcon } from '@mui/icons-material';
 import { Box, Button, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { pick } from 'remeda';
 import { useKey } from 'rooks';
 import useHistory from '../../hooks/useHistory';
@@ -12,15 +11,14 @@ import { type ImageRouteProps, type Point, type Spot } from './types';
 export default function ImageRouteEditor({
 	imageSrc,
 	alt,
-	points: initialPoints,
-	savePoints,
+	points,
+	setPoints,
 	...props
 }: {
 	imageSrc: string;
 	alt: string;
-	savePoints: (points: Point[]) => void;
+	setPoints: Dispatch<SetStateAction<Point[]>>;
 } & ImageRouteProps) {
-	const [points, setPoints] = useState<Point[]>(initialPoints);
 	const [editMode, setEditMode] = useState<string>('add');
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
@@ -73,13 +71,6 @@ export default function ImageRouteEditor({
 				<Image fill alt={alt} src={imageSrc} style={{ zIndex: -1, objectFit: 'contain' }} />
 			</ImageRoute>
 			<Stack direction='row' spacing={1} sx={{ position: 'absolute', top: 10, left: 10 }}>
-				<Button
-					size='small'
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					onClick={() => savePoints(points)}>
-					<SaveIcon />
-				</Button>
 				<Button
 					size='small'
 					variant='contained'

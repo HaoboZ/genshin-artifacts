@@ -7,7 +7,7 @@ export type Point = {
 	marked?: number;
 	start?: number;
 	end?: number;
-	data?: string;
+	type?: string;
 };
 
 export type Spot = {
@@ -25,6 +25,7 @@ export type ImageRouteProps = {
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	RenderExtra?: ComponentType<RenderExtraProps>;
+	deps?: string;
 	getInitialPosition?: (containerSize: DOMRect) => {
 		scale: number;
 		offset: { x: number; y: number };

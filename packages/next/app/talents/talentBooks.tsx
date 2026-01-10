@@ -38,9 +38,7 @@ export default function TalentBooks() {
 		<PageSection title='Talent Books'>
 			<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 				<FormControlLabel
-					control={
-						<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
-					}
+					control={<Checkbox checked={owned} onChange={(_, checked) => setOwned(checked)} />}
 					label='Owned'
 				/>
 				<Dropdown button={`Farmable (${farmableDays[farmable]})`}>

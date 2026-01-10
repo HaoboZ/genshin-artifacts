@@ -3,7 +3,7 @@ import { useIntervalWhen, useVideo } from 'rooks';
 import { type Point, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
-export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
+export default function useRouteVideoSync(points: Point[], autoplay?: string) {
 	const routeRef = useRef<HTMLDivElement>(null);
 	const [videoRef, videoState, videoControls] = useVideo();
 
@@ -20,6 +20,7 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 
 	useEffect(() => {
 		setShowVideo(false);
+		setTime(0);
 		videoControls.pause();
 
 		if (!points) return;
@@ -32,7 +33,7 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 			}, 2000);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [Boolean(points)]);
+	}, [Boolean(points), autoplay]);
 
 	useEffect(() => {
 		setTime(videoState.currentTime);

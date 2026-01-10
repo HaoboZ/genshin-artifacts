@@ -5,7 +5,9 @@
 # production
 /build
 
-/public/maps
+/public/images
+/public/routes
+
 /public/points
+/public/maps
 /public/videos
-/public/backgrounds

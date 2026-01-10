@@ -1,16 +1,20 @@
 import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
 
+function getColor(type: string) {
+	return { extend: 'red', scan: 'blue' }[type] ?? 'lime';
+}
+
 export function MapRenderPoint({ point, containerSize, type, percentage }: RenderPointProps) {
-	if (type && percentage) return null;
+	if (!point || (type && percentage)) return null;
 
 	return (
 		<circle
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={containerSize.width / 200}
-			fill={{ hover: 'white', active: 'black' }[type] ?? point.data ?? 'lime'}
+			fill={{ hover: 'white', active: 'black' }[type] ?? getColor(point.type)}
 			fillOpacity={type === 'hover' ? 1 : 0}
-			stroke={{ hover: 'white', active: 'black' }[type] ?? point.data ?? 'lime'}
+			stroke={{ hover: 'white', active: 'black' }[type] ?? getColor(point.type)}
 			strokeWidth={containerSize.width / 1000}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,
@@ -42,7 +46,7 @@ export function MapRenderPath({ point1, point2, containerSize }: RenderPathProps
 			y1={y1 + uy * radius}
 			x2={x2 - ux * radius}
 			y2={y2 - uy * radius}
-			stroke={point2.data ?? 'lime'}
+			stroke={getColor(point2.type)}
 			strokeWidth={containerSize.width / 1000}
 		/>
 	);

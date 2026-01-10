@@ -1,17 +1,15 @@
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import { Breadcrumbs, Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import { capitalCase } from 'change-case';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type MouseEventHandler, useMemo } from 'react';
-import PageLink from './pageLink';
 
 export type PageBackProps = {
 	confirm?: boolean;
 	onClickAction?: MouseEventHandler<HTMLElement>;
 	pathMap?: Record<number, boolean | string>;
 	homeName?: string;
-	button?: boolean;
 	backButton?: boolean;
 };
 
@@ -20,7 +18,6 @@ export default function PageBack({
 	onClickAction,
 	pathMap,
 	homeName = 'Home',
-	button,
 	backButton,
 }: PageBackProps) {
 	const router = useRouter();
@@ -57,34 +54,15 @@ export default function PageBack({
 		);
 	}
 
-	if (button || backButton) {
-		const lastRoute = routes[routes.length - 2] ?? { name: homeName, href: '/' };
-		return (
-			<Button
-				variant='text'
-				startIcon={<ArrowBackIcon />}
-				component={Link}
-				href={lastRoute.href}
-				onClick={clickListener}>
-				{lastRoute.name}
-			</Button>
-		);
-	} else {
-		return (
-			<Breadcrumbs sx={{ pt: 1 }}>
-				<PageLink href='/' onClick={clickListener}>
-					{homeName}
-				</PageLink>
-				{routes.map(({ href, name }, index) => {
-					if (routes.length - 1 === index) return <Typography key={index}>{name}</Typography>;
-					else
-						return (
-							<PageLink key={index} href={href} onClick={clickListener}>
-								{name}
-							</PageLink>
-						);
-				})}
-			</Breadcrumbs>
-		);
-	}
+	const lastRoute = routes[routes.length - 2] ?? { name: homeName, href: '/' };
+	return (
+		<Button
+			variant='text'
+			startIcon={<ArrowBackIcon />}
+			component={Link}
+			href={lastRoute.href}
+			onClick={clickListener}>
+			{lastRoute.name}
+		</Button>
+	);
 }

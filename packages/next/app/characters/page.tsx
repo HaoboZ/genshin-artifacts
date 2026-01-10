@@ -27,16 +27,10 @@ export default function Characters() {
 				<RarityFilter hide3 rarity={rarity} setRarity={setRarity} />
 			</Stack>
 			<FormControlLabel
-				control={
-					<Checkbox checked={owned} onChange={({ target }) => setOwned(target.checked)} />
-				}
+				control={<Checkbox checked={owned} onChange={(_, checked) => setOwned(checked)} />}
 				label='Owned'
 			/>
-			<TextField
-				label='Search'
-				value={search}
-				onChange={({ target }) => setSearch(target.value)}
-			/>
+			<TextField label='Search' value={search} onChange={(e) => setSearch(e.target.value)} />
 			<PageSection
 				actions={
 					<FormControlLabel
@@ -44,7 +38,7 @@ export default function Characters() {
 							<Switch
 								checked={editMode}
 								disabled={Boolean(element || weaponType || rarity || search)}
-								onChange={({ target }) => setEditMode(target.checked)}
+								onChange={(_, checked) => setEditMode(checked)}
 							/>
 						}
 						label='Edit Mode'

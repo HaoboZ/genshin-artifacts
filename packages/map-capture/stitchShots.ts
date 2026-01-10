@@ -7,9 +7,7 @@ export default async function stitchShots(
 	unitsPerPixelX: number,
 	unitsPerPixelY: number,
 ) {
-	if (shots.length === 0) {
-		throw new Error('No shots provided');
-	}
+	if (shots.length === 0) throw Error('No shots provided');
 
 	// get dimensions of a single shot
 	const firstShot = await sharp(shots[0].buffer).metadata();

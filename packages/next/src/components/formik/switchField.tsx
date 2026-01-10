@@ -15,9 +15,9 @@ export default function SwitchField({
 				{...field}
 				checked={field.value}
 				{...props}
-				onChange={(e) => {
+				onChange={(e, checked) => {
 					// @ts-expect-error onChange return
-					if (props.onChange?.(e) !== false) helpers.setValue(e.target.checked);
+					if (props.onChange?.(e, checked) !== false) helpers.setValue(checked);
 				}}
 			/>
 		</FormControl>

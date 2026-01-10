@@ -16,6 +16,7 @@ export default function ImageRoute({
 	RenderPoint,
 	RenderPath,
 	RenderExtra,
+	deps,
 	getInitialPosition = () => ({ scale: 1, offset: { x: 0, y: 0 } }),
 	getAnimatedPosition,
 	sx,
@@ -52,7 +53,7 @@ export default function ImageRoute({
 
 		return () => cancelAnimationFrame(animationFrame);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [Boolean(points), Boolean(containerSize?.width), Boolean(containerSize?.height)]);
+	}, [deps, Boolean(points), Boolean(containerSize?.width), Boolean(containerSize?.height)]);
 
 	return (
 		<ImageRouteContainer

@@ -1,7 +1,13 @@
-import { Save as SaveIcon } from '@mui/icons-material';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import { type ComponentType, Fragment, useCallback, useState } from 'react';
+import {
+	type ComponentType,
+	type Dispatch,
+	Fragment,
+	type SetStateAction,
+	useCallback,
+	useState,
+} from 'react';
 import { pick } from 'remeda';
 import VideoPlayer from '../videoPlayer';
 import ImageRoute from './index';
@@ -13,8 +19,8 @@ export default function ImageRouteVideoEditor({
 	alt,
 	imageSrc,
 	videoSrc,
-	points: initialPoints,
-	savePoints,
+	points,
+	setPoints,
 	RenderText,
 	RenderPoint,
 	RenderExtra,
@@ -23,11 +29,9 @@ export default function ImageRouteVideoEditor({
 	alt: string;
 	imageSrc: string;
 	videoSrc: string;
-	savePoints: (points: Point[]) => void;
+	setPoints: Dispatch<SetStateAction<Point[]>>;
 	RenderText?: ComponentType<{ points: Point[]; time: number }>;
 } & ImageRouteProps) {
-	const [points, setPoints] = useState<Point[]>(initialPoints);
-
 	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points);
 
 	const [selectedSpot, setSelectedSpot] = useState<Spot>(() => ({
@@ -59,7 +63,7 @@ export default function ImageRouteVideoEditor({
 		(props: RenderExtraProps) => (
 			<Fragment>
 				{RenderExtra && <RenderExtra {...props} />}
-				{selectedSpot && (
+				{selectedSpot?.point && (
 					<RenderPoint
 						point={selectedSpot.point}
 						containerSize={props.containerSize}
@@ -116,13 +120,6 @@ export default function ImageRouteVideoEditor({
 					<Image fill alt={alt} src={imageSrc} style={{ zIndex: -1, objectFit: 'contain' }} />
 				</ImageRoute>
 				<Stack direction='row' spacing={1} sx={{ position: 'absolute', top: 10, left: 10 }}>
-					<Button
-						size='small'
-						variant='contained'
-						sx={{ minWidth: 'unset' }}
-						onClick={() => savePoints(points)}>
-						<SaveIcon />
-					</Button>
 					<Button
 						variant='contained'
 						size='small'
