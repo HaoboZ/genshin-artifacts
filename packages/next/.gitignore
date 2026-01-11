@@ -6,8 +6,4 @@
 /build
 
 /public/images
-/public/routes
-
-/public/points
-/public/maps
-/public/videos
+/public/backup

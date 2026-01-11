@@ -29,7 +29,7 @@ export async function handlePut(
 	const parts = pathname.split('/');
 	if (parts[1] !== 'maps' || !parts[2]) return error('Not found', 404);
 
-	const mapId = parts[2];
+	const mapId = parts[2].slice(0, -5);
 	const contentType = request.headers.get('Content-Type') || '';
 
 	const mapExists = await env.BUCKET.head(`maps/${mapId}.json`);
@@ -57,10 +57,10 @@ async function uploadMedia(
 	const mapData = await getMap(env, mapId);
 
 	const type = contentType.startsWith('image/') ? 'image' : 'video';
-	const key = `assets/${nanoid()}.${ext}`;
+	const key = `${nanoid()}.${ext}`;
 
 	const body = await request.arrayBuffer();
-	await env.BUCKET.put(key, body, { httpMetadata: { contentType } });
+	await env.BUCKET.put(`assets/${key}`, body, { httpMetadata: { contentType } });
 	await env.BUCKET.delete(mapData[type]);
 	mapData[type] = key;
 	await env.BUCKET.put(`maps/${mapId}.json`, JSON.stringify(mapData), {
@@ -69,7 +69,7 @@ async function uploadMedia(
 
 	invalidateCache(ctx, request.url, [key]);
 
-	return json({ success: true, key, url: `/data/${key}` });
+	return json({ success: true, key, url: `/assets/${key}` });
 }
 
 async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: ExecutionContext) {
@@ -95,12 +95,12 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 
 		const contentType = ALLOWED_EXTENSIONS[ext];
 		const type = contentType.startsWith('image/') ? 'image' : 'video';
-		const key = `assets/${nanoid()}.${ext}`;
+		const key = `${nanoid()}.${ext}`;
 
 		uploads.push(
 			value.arrayBuffer().then(async (buffer) => {
-				await env.BUCKET.put(key, buffer, { httpMetadata: { contentType } });
-				uploaded.push({ key, url: `/data/${key}` });
+				await env.BUCKET.put(`assets/${key}`, buffer, { httpMetadata: { contentType } });
+				uploaded.push({ key, url: `/assets/${key}` });
 				await env.BUCKET.delete(mapData[type]);
 				mapData[type] = key;
 			}),
