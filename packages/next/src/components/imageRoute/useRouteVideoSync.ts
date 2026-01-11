@@ -35,7 +35,7 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 			}, 2000);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [points]);
+	}, [Boolean(points)]);
 
 	useEffect(() => {
 		if (!showVideo) return;
