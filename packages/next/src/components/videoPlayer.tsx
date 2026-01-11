@@ -40,6 +40,18 @@ export default function VideoPlayer({
 		video.currentTime = Math.max(0, Math.min(newTime, video.duration));
 	};
 
+	useKey(['ArrowRight'], (e) => {
+		if (!seekFrames) return;
+		e.preventDefault();
+		skipFrames(seekFrames);
+	});
+
+	useKey(['ArrowLeft'], (e) => {
+		if (!seekFrames) return;
+		e.preventDefault();
+		skipFrames(-seekFrames);
+	});
+
 	return (
 		<Box
 			sx={{
@@ -83,7 +95,7 @@ export default function VideoPlayer({
 							'&:hover': { bgcolor: 'rgba(0, 0, 0, 0.8)' },
 						},
 					}}>
-					<IconButton onClick={() => skipFrames(-5 * seekFrames)}>
+					<IconButton onClick={() => skipFrames(-7 * seekFrames)}>
 						<FastRewindIcon />
 					</IconButton>
 					<IconButton onClick={() => skipFrames(-seekFrames)}>
@@ -92,7 +104,7 @@ export default function VideoPlayer({
 					<IconButton onClick={() => skipFrames(seekFrames)}>
 						<SkipNextIcon />
 					</IconButton>
-					<IconButton onClick={() => skipFrames(5 * seekFrames)}>
+					<IconButton onClick={() => skipFrames(7 * seekFrames)}>
 						<FastForwardIcon />
 					</IconButton>
 				</Box>
