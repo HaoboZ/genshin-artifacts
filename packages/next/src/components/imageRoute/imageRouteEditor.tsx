@@ -42,7 +42,7 @@ export default function ImageRouteEditor({
 				addPoint={
 					editMode === 'add' || activeSpot?.pointIndex !== undefined
 						? (point) => {
-								point.marked = 1;
+								point.marked = 999;
 								setActiveSpot(null);
 								setPoints((points) => {
 									switch (editMode) {
