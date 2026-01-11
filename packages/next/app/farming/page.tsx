@@ -4,6 +4,8 @@ import { Box } from '@mui/material';
 import { prop, sortBy } from 'remeda';
 import WorldMap from './worldMap';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Farming() {
 	const routesData = await fetchRouteData<RouteData[]>(`routes.json`);
 
