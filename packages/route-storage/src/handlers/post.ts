@@ -1,4 +1,4 @@
-import { omit } from 'remeda';
+import { pick } from 'remeda';
 import { type MapData, type RouteData } from '../types';
 import { error, json, parseId } from '../utils';
 
@@ -32,7 +32,17 @@ async function createRoute(request: Request, env: Env, id: string) {
 			throw error('Invalid route data: requires name and maps array');
 		}
 
-		const routeData: RouteData = { id, ...omit(body, ['mapsData']) };
+		const routeData: RouteData = { id, ...body, mapsData: [] };
+
+		for (const mapId of routeData.maps) {
+			const mapFile = await env.BUCKET.get(`maps/${mapId}.json`);
+			if (mapFile) {
+				routeData.mapsData.push(
+					pick((await mapFile.json()) as any, ['x', 'y', 'name', 'type', 'spots']) as any,
+				);
+			}
+		}
+
 		await env.BUCKET.put(`routes/${id}.json`, JSON.stringify(routeData), {
 			httpMetadata: { contentType: 'application/json' },
 		});

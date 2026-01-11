@@ -51,13 +51,13 @@ export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 	useEffect(() => {
 		if (!videoRef.current) return;
 		videoRef.current.style.opacity = showVideo ? '1' : '0';
-	}, [showVideo, videoRef]);
+	}, [showVideo, videoRef.current]);
 
 	useEffect(() => {
 		if (!routeRef.current) return;
 		routeRef.current.style.opacity = points ? '1' : '0';
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [Boolean(points), routeRef]);
+	}, [Boolean(points), routeRef.current]);
 
 	return {
 		routeRef,

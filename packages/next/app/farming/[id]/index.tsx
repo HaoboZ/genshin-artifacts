@@ -1,10 +1,11 @@
 'use client';
-import { type RouteData } from '@/api/routes/types';
+import { type MapData, type RouteData } from '@/api/routes/types';
 import ImageRoute from '@/components/imageRoute';
-import { type RenderExtraProps } from '@/components/imageRoute/types';
+import { type Point, type RenderExtraProps } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import VideoPlayer from '@/components/videoPlayer';
+import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
@@ -25,10 +26,12 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const router = useRouter();
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
-	const mapData = routeData.mapsData[selectedMap];
+	const [mapData] = useFetchState<MapData>(
+		`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${routeData.maps[selectedMap]}.json`,
+	);
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [points, setPoints] = useState(mapData.points);
+	const [points, setPoints] = useState<Point[]>(null);
 
 	const [ref, measurements] = useMeasure();
 	const imageRef = useRef<HTMLImageElement>(null);
@@ -37,10 +40,10 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	useEffect(() => {
 		setIsLoaded(false);
 		setPoints(null);
-	}, [mapData.image]);
+	}, [mapData?.image]);
 
 	useEffect(() => {
-		if (!isLoaded) return;
+		if (!mapData || !isLoaded) return;
 		setPoints(mapData.points);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded]);
@@ -79,6 +82,8 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	const ratio = measurements.innerWidth / measurements.innerHeight;
 	const mobile = ratio < 0.75;
+
+	if (!mapData) return null;
 
 	return (
 		<Box

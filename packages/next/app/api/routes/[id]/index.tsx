@@ -26,7 +26,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { filter, indexBy, map, pick, pipe, prop, sortBy } from 'remeda';
+import { filter, map, pick, pipe, prop, sortBy } from 'remeda';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../../../farming/render';
 import { type MapData, type RouteData } from '../types';
 import RouteControls from './controls';
@@ -43,6 +43,7 @@ export default function Route({ routeData }: { routeData: RouteData }) {
 
 	const filteredItems = useMemo(() => {
 		if (!mapsData) return [];
+
 		return pipe(
 			mapsData,
 			filter((item) => {
@@ -63,17 +64,12 @@ export default function Route({ routeData }: { routeData: RouteData }) {
 	}, [mapsData, routeMaps, search, owner]);
 
 	const points = useMemo(() => {
-		if (!mapsData) return [];
-		const mapKeys = indexBy(mapsData, prop('id'));
-
 		return pipe(
-			routeMaps,
-			map((id) => mapKeys[id]),
-			filter(Boolean),
+			routeData.mapsData,
 			filter(({ x, y }) => x !== undefined && y !== undefined),
 			map((data, index) => ({ ...pick(data, ['x', 'y', 'type']), marked: index + 1 })),
 		) as Point[];
-	}, [mapsData, routeMaps]);
+	}, [routeData]);
 
 	return (
 		<Container sx={{ pt: 1 }}>

@@ -8,7 +8,7 @@ export type RouteData = {
 	id: string;
 	name: string;
 	maps: string[];
-	mapsData?: MapData[];
+	mapsData?: any[];
 };
 
 export type MapData = {

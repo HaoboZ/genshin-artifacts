@@ -55,17 +55,7 @@ async function getRoute(env: Env, id: string) {
 	const routeFile = await env.BUCKET.get(`routes/${id}.json`);
 	if (!routeFile) throw error('Route not found', 404);
 
-	const route = await routeFile.json<RouteData>();
-
-	const mapsData: MapData[] = [];
-	for (const mapId of route.maps) {
-		const mapFile = await env.BUCKET.get(`maps/${mapId}.json`);
-		if (mapFile) {
-			mapsData.push(await mapFile.json<MapData>());
-		}
-	}
-
-	return { ...route, mapsData } as RouteData;
+	return await routeFile.json<RouteData>();
 }
 
 async function getAllMaps(env: Env) {
