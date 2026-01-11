@@ -83,8 +83,6 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const ratio = measurements.innerWidth / measurements.innerHeight;
 	const mobile = ratio < 0.75;
 
-	if (!mapData) return null;
-
 	return (
 		<Box
 			ref={ref}
@@ -92,10 +90,15 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 			<Image
 				fill
 				alt='background'
-				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${mapData.background}`}
+				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}`}
 				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
 			/>
-			<Box sx={{ position: mobile ? 'relative' : 'absolute', width: mobile ? '100%' : '50%' }}>
+
+			<Box
+				sx={{
+					position: mobile ? 'relative' : 'absolute',
+					width: mobile ? '100%' : '50%',
+				}}>
 				<Button
 					variant='contained'
 					color='primary'
@@ -120,52 +123,56 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					/>
 				</Stack>
 			</Box>
-			<VideoPlayer
-				ref={videoRef}
-				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-				sx={{
-					position: mobile ? 'relative' : 'absolute',
-					bottom: 0,
-					width: ratio < 0.94 ? '100%' : '50%',
-				}}
-			/>
-			<Box
-				sx={{
-					position: mobile ? 'relative' : 'absolute',
-					mx: 'auto',
-					width: mobile ? '75%' : '50%',
-					right: 0,
-				}}>
-				<ImageRoute
-					ref={routeRef}
-					points={points}
-					activeSpot={activeSpot}
-					setActiveSpot={setActiveSpot}
-					getAnimatedPosition={(containerSize) =>
-						calculateOptimalZoom(points, containerSize, 0.75)
-					}
-					RenderPoint={RouteRenderPoint}
-					RenderPath={RouteRenderPath}
-					RenderExtra={RenderExtra}
-					deps={mapData.id}
-					sx={{ aspectRatio: 1 }}>
-					<Image
-						fill
-						alt={mapData.name}
-						ref={imageRef}
-						src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
-						style={{ zIndex: -1, objectFit: 'contain', opacity: points ? 1 : 0 }}
-						onLoad={() => setIsLoaded(true)}
+			{mapData && (
+				<Fragment>
+					<VideoPlayer
+						ref={videoRef}
+						src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
+						sx={{
+							position: mobile ? 'relative' : 'absolute',
+							bottom: 0,
+							width: ratio < 0.94 ? '100%' : '50%',
+						}}
 					/>
-				</ImageRoute>
-				<Button
-					variant='contained'
-					color='primary'
-					sx={{ position: 'absolute', left: 10, top: 10 }}
-					onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
-					Full Map
-				</Button>
-			</Box>
+					<Box
+						sx={{
+							position: mobile ? 'relative' : 'absolute',
+							mx: 'auto',
+							width: mobile ? '75%' : '50%',
+							right: 0,
+						}}>
+						<ImageRoute
+							ref={routeRef}
+							points={points}
+							activeSpot={activeSpot}
+							setActiveSpot={setActiveSpot}
+							getAnimatedPosition={(containerSize) =>
+								calculateOptimalZoom(points, containerSize, 0.75)
+							}
+							RenderPoint={RouteRenderPoint}
+							RenderPath={RouteRenderPath}
+							RenderExtra={RenderExtra}
+							deps={mapData.id}
+							sx={{ aspectRatio: 1 }}>
+							<Image
+								fill
+								alt={mapData.name}
+								ref={imageRef}
+								src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
+								style={{ zIndex: -1, objectFit: 'contain', opacity: points ? 1 : 0 }}
+								onLoad={() => setIsLoaded(true)}
+							/>
+						</ImageRoute>
+						<Button
+							variant='contained'
+							color='primary'
+							sx={{ position: 'absolute', left: 10, top: 10 }}
+							onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
+							Full Map
+						</Button>
+					</Box>
+				</Fragment>
+			)}
 		</Box>
 	);
 }

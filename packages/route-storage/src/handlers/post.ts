@@ -38,7 +38,7 @@ async function createRoute(request: Request, env: Env, id: string) {
 			const mapFile = await env.BUCKET.get(`maps/${mapId}.json`);
 			if (mapFile) {
 				routeData.mapsData.push(
-					pick((await mapFile.json()) as any, ['x', 'y', 'name', 'type', 'spots']) as any,
+					pick(await mapFile.json<any>(), ['x', 'y', 'name', 'type', 'spots', 'background']),
 				);
 			}
 		}
