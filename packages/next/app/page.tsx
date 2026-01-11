@@ -1,15 +1,13 @@
+import { fetchRouteData } from '@/api/routes/fetchRouteData';
 import type { RouteData } from '@/api/routes/types';
 import PageTitle from '@/components/page/pageTitle';
 import { Container, Grid } from '@mui/material';
-import axios from 'axios';
 import { prop, sortBy } from 'remeda';
 import WorldMap from './farming/worldMap';
 import Notifications from './notifications';
 
 export default async function MainPage() {
-	const { data } = await axios.get<RouteData[]>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes.json`,
-	);
+	const routesData = await fetchRouteData<RouteData[]>(`routes.json`);
 
 	return (
 		<Container>
@@ -18,7 +16,7 @@ export default async function MainPage() {
 				<Grid
 					size={{ xs: 12, md: 8 }}
 					sx={{ height: { xs: 'calc(100vw * 9 / 16)', md: 'calc(100vh - 100px)' } }}>
-					<WorldMap routesData={sortBy(data, prop('name'))} top />
+					<WorldMap routesData={sortBy(routesData, prop('name'))} top />
 				</Grid>
 				<Grid size={{ xs: 12, md: 4 }}>
 					<Notifications />

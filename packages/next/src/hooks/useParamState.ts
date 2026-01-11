@@ -59,6 +59,6 @@ export default function useParamState<T>(
 
 	return [
 		currentValue,
-		(value) => window.history.pushState(null, '', `?${createQueryString(value)}`),
+		(value) => window.history.pushState(null, '', `${createQueryString(value)}`),
 	];
 }

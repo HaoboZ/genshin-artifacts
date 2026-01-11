@@ -3,11 +3,11 @@ import { useIntervalWhen, useVideo } from 'rooks';
 import { type Point, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
-export default function useRouteVideoSync(points: Point[], autoplay?: string) {
+export default function useRouteVideoSync(points: Point[], autoplay?: boolean) {
 	const routeRef = useRef<HTMLDivElement>(null);
 	const [videoRef, videoState, videoControls] = useVideo();
 
-	const [hideVideo, setShowVideo] = useState(false);
+	const [showVideo, setShowVideo] = useState(false);
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
@@ -20,8 +20,9 @@ export default function useRouteVideoSync(points: Point[], autoplay?: string) {
 
 	useEffect(() => {
 		setShowVideo(false);
-		setTime(0);
 		videoControls.pause();
+		videoControls.setCurrentTime(0);
+		setTime(0);
 
 		if (!points) return;
 		if (!autoplay) {
@@ -30,25 +31,27 @@ export default function useRouteVideoSync(points: Point[], autoplay?: string) {
 			setTimeout(() => {
 				setShowVideo(true);
 				videoControls.play();
+				videoControls.setCurrentTime(0);
 			}, 2000);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [Boolean(points), autoplay]);
+	}, [points]);
 
 	useEffect(() => {
+		if (!showVideo) return;
 		setTime(videoState.currentTime);
-	}, [videoState.currentTime]);
+	}, [showVideo, videoState.currentTime]);
 
 	useIntervalWhen(
 		() => setTime((time) => time + 0.016666666666666667),
 		16.666666666666667,
-		!videoState.isPaused,
+		showVideo && !videoRef.current?.paused,
 	);
 
 	useEffect(() => {
 		if (!videoRef.current) return;
-		videoRef.current.style.opacity = hideVideo ? '1' : '0';
-	}, [hideVideo, videoRef]);
+		videoRef.current.style.opacity = showVideo ? '1' : '0';
+	}, [showVideo, videoRef]);
 
 	useEffect(() => {
 		if (!routeRef.current) return;

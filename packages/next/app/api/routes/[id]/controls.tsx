@@ -22,6 +22,7 @@ export default function RouteControls({
 	maps: string[];
 }) {
 	const router = useRouter();
+
 	const { showModal } = useModal();
 	const { enqueueSnackbar } = useSnackbar();
 

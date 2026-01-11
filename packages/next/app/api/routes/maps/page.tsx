@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { fetchRouteData } from '../fetchRouteData';
+import type { MapData } from '../types';
 import MapList from './index';
 
 export default async function MapListPage() {
-	const { data } = await axios.get(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps.json`);
-
-	return <MapList items={data} />;
+	const mapsData = await fetchRouteData<MapData[]>(`maps.json`);
+	return <MapList items={mapsData} />;
 }

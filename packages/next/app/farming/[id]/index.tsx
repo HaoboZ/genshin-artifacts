@@ -28,19 +28,22 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const mapData = routeData.mapsData[selectedMap];
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const points = isLoaded ? mapData.points : null;
+	const [points, setPoints] = useState(mapData.points);
 
 	const [ref, measurements] = useMeasure();
 	const imageRef = useRef<HTMLImageElement>(null);
-	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(
-		points,
-		mapData.id,
-	);
+	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points, true);
 
 	useEffect(() => {
-		if (!imageRef.current) return;
-		setIsLoaded(imageRef.current.complete);
-	}, [imageRef]);
+		setIsLoaded(false);
+		setPoints(null);
+	}, [mapData.image]);
+
+	useEffect(() => {
+		if (!isLoaded) return;
+		setPoints(mapData.points);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLoaded]);
 
 	const [spots, totalSpots] = useMemo(() => {
 		return [
@@ -146,7 +149,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 						alt={mapData.name}
 						ref={imageRef}
 						src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
-						style={{ zIndex: -1, objectFit: 'contain' }}
+						style={{ zIndex: -1, objectFit: 'contain', opacity: points ? 1 : 0 }}
 						onLoad={() => setIsLoaded(true)}
 					/>
 				</ImageRoute>
