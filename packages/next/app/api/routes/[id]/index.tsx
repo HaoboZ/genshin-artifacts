@@ -64,12 +64,15 @@ export default function Route({ routeData }: { routeData: RouteData }) {
 	}, [mapsData, routeMaps, search, owner]);
 
 	const points = useMemo(() => {
+		if (!mapsData) return routeData.mapsData as Point[];
+
 		return pipe(
-			routeData.mapsData,
+			routeMaps,
+			map((id) => mapsData.find((map) => map.id === id)),
 			filter(({ x, y }) => x !== undefined && y !== undefined),
 			map((data, index) => ({ ...pick(data, ['x', 'y', 'type']), marked: index + 1 })),
 		) as Point[];
-	}, [routeData]);
+	}, [routeData, mapsData, routeMaps]);
 
 	return (
 		<Container sx={{ pt: 1 }}>

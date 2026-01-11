@@ -96,7 +96,7 @@ export default function RouteControls({
 				</Button>
 			</Grid>
 			<Grid>
-				<Button component={Link} href={`/farming/${routeData.id}`} variant='contained'>
+				<Button component={Link} href={`/farming?route=${routeData.id}`} variant='contained'>
 					View
 				</Button>
 			</Grid>
