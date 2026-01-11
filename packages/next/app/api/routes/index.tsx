@@ -74,6 +74,7 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 								{filteredItems.map((item) => (
 									<ListItem
 										key={item.id}
+										dense
 										secondaryAction={
 											<IconButton
 												onClick={async () => {

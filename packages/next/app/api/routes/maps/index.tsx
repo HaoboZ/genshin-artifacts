@@ -83,6 +83,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 								{filteredItems.map((item) => (
 									<ListItem
 										key={item.id}
+										dense
 										secondaryAction={
 											<Fragment>
 												{item.video && (

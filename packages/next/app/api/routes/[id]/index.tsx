@@ -147,6 +147,7 @@ export default function Route({ routeData }: { routeData: RouteData }) {
 												return (
 													<ListItem
 														key={item.id}
+														dense
 														secondaryAction={
 															<IconButton onClick={() => setEditingMap(item.id)}>
 																{item.x ? (
@@ -176,7 +177,9 @@ export default function Route({ routeData }: { routeData: RouteData }) {
 															<ListItemIcon>
 																{index === -1 ? '' : index + 1}
 															</ListItemIcon>
-															<ListItemText>{item.name}</ListItemText>
+															<ListItemText secondary={`Spots: ${item.spots ?? 0}`}>
+																{item.name}
+															</ListItemText>
 														</ListItemButton>
 													</ListItem>
 												);
