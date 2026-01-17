@@ -16,7 +16,17 @@ export const artifactSlotImages = {
 	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
 };
 
-export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {};
+export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {
+	// '': {
+	// 	key: 'Traveler',
+	// 	role: 'DPS',
+	// 	weapon: [],
+	// 	group: 0,
+	// 	artifact: [''],
+	// 	mainStat: { sands: '', goblet: '', circlet: '' },
+	// 	subStat: [],
+	// },
+};
 
 export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
 
