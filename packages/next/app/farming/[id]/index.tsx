@@ -40,7 +40,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		setPoints(null);
 		setIsLoaded(false);
 		videoRef.current.style.opacity = '0';
-	}, [mapData?.image, videoRef]);
+	}, [selectedMap, videoRef]);
 
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
@@ -61,10 +61,11 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	useEffect(() => {
 		routeRef.current.style.opacity = points ? '1' : '0';
 		if (!points) return;
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			videoRef.current.style.opacity = '1';
 			videoRef.current.play();
 		}, 2000);
+		return () => clearTimeout(timeout);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 

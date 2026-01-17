@@ -38,7 +38,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 	useEffect(() => {
 		setIsLoaded(false);
 		setPoints(null);
-	}, [mapData?.image]);
+	}, [selectedMap]);
 
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
@@ -59,9 +59,8 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 	useEffect(() => {
 		videoRef.current.style.opacity = routeRef.current.style.opacity = points ? '1' : '0';
 		if (!points) return;
-		setTimeout(() => {
-			videoRef.current.play();
-		}, 2000);
+		const timeout = setTimeout(() => videoRef.current.play(), 2000);
+		return () => clearTimeout(timeout);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
@@ -101,7 +100,15 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 				<Button
 					variant='contained'
 					color='primary'
-					sx={{ position: 'absolute', top: 0, mt: 2, ml: 2 }}
+					sx={{
+						position: 'absolute',
+						top: 0,
+						mt: '5%',
+						ml: '5%',
+						scale: 'min(1, calc(100vh / 720px), calc(100vw / 1280px))',
+						transformOrigin: 'top left',
+						width: 'max-content',
+					}}
 					onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
 					Full Map
 				</Button>
@@ -113,11 +120,13 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 					sx={{
 						position: 'absolute',
 						left: '25%',
-						width: '40%',
+						scale: 'min(1, calc(100vh / 720px), calc(100vw / 1280px))',
+						transformOrigin: 'top left',
+						width: 'calc(40% / min(1, calc(100vh / 720px), calc(100vw / 1280px)))',
 						alignItems: 'center',
 						justifyContent: 'center',
-						mt: 2,
-						ml: 2,
+						mt: '1%',
+						ml: '1%',
 					}}>
 					<Grid>
 						<Button
