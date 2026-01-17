@@ -3,7 +3,7 @@ import { type MapData, type RouteData } from '@/api/routes/types';
 import ImageRoute from '@/components/imageRoute';
 import { type Point } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
-import { calculateOptimalZoom } from '@/components/imageRoute/utils';
+import { calculateCenterZoom, findSpotByTime } from '@/components/imageRoute/utils';
 import RatioContainer from '@/components/ratioContainer';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
@@ -59,7 +59,9 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 	useEffect(() => {
 		videoRef.current.style.opacity = routeRef.current.style.opacity = points ? '1' : '0';
 		if (!points) return;
-		setTimeout(() => videoRef.current.play(), 2000);
+		setTimeout(() => {
+			videoRef.current.play();
+		}, 2000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
@@ -76,9 +78,11 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={setActiveSpot}
-					getAnimatedPosition={(containerSize) =>
-						calculateOptimalZoom(points, containerSize, 0.75)
-					}
+					followActiveSpot
+					getAnimatedPosition={(containerSize) => {
+						const { point } = findSpotByTime(points, time);
+						return calculateCenterZoom(point, containerSize, 3);
+					}}
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					RenderExtra={RouteRenderExtra(mapData?.text)}

@@ -34,4 +34,7 @@ export type MaterialKey =
 	| 'ErodedScaleFeather' // Eroded Scale-Feather
 	| 'AscendedSampleKnight' // Ascended Sample: Knight
 	| 'AscendedSampleRook' // Ascended Sample: Rook
-	| 'AscendedSampleQueen'; // Ascended Sample: Queen
+	| 'AscendedSampleQueen' // Ascended Sample: Queen
+	| 'MaskOfTheVirtuousDoctor' // Mask of the Virtuous Doctor
+	| 'MadmansRestraint' // Madman's Restraint
+	| 'ElixirOfTheHeretic'; // Elixir of the Heretic

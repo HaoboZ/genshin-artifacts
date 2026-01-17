@@ -238,5 +238,25 @@
 				"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Ascended_Sample_Queen.png"
 			}
 		]
+	},
+	{
+		"name": "The Doctor",
+		"items": [
+			{
+				"key": "MaskOfTheVirtuousDoctor",
+				"name": "Mask of the Virtuous Doctor",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Mask_of_the_Virtuous_Doctor.png"
+			},
+			{
+				"key": "MadmansRestraint",
+				"name": "Madman's Restraint",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Madman%27s_Restraint.png"
+			},
+			{
+				"key": "ElixirOfTheHeretic",
+				"name": "Elixir of the Heretic",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d1/Item_Elixir_of_the_Heretic.png"
+			}
+		]
 	}
 ]

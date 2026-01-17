@@ -694,7 +694,8 @@ export const builds: Record<CharacterKey, Build> = {
 		],
 		group: 0,
 		artifact: [
-			['GildedDreams', 'SilkenMoonsSerenade'],
+			'AubadeOfMorningstarAndMoon',
+			['SilkenMoonsSerenade', 'GildedDreams'],
 			'ThunderingFury',
 			['EmblemOfSeveredFate', 'GoldenTroupe', 'TenacityOfTheMillelith'],
 		],
@@ -952,6 +953,7 @@ export const builds: Record<CharacterKey, Build> = {
 		role: 'DPS',
 		weapon: [
 			'ReliquaryOfTruth',
+			'NocturnesCurtainCall',
 			'NightweaversLookingGlass',
 			['SunnyMorningSleepIn', 'StarcallersWatch'],
 			[
@@ -1251,6 +1253,25 @@ export const builds: Record<CharacterKey, Build> = {
 			circlet: ['critRD_', 'hp_', 'eleMas'],
 		},
 		subStat: ['critRD_', ['eleMas', 'hp_'], 'hp'],
+	},
+	Columbina: {
+		key: 'Columbina',
+		role: 'Support',
+		weapon: [
+			'NocturnesCurtainCall',
+			'ReliquaryOfTruth',
+			'PrototypeAmber',
+			'FavoniusCodex',
+			'WaveridingWhirl',
+		],
+		group: 0,
+		artifact: ['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'],
+		mainStat: {
+			sands: ['hp_', 'enerRech_'],
+			goblet: 'hydro_dmg_',
+			circlet: ['critRD_', 'hp_'],
+		},
+		subStat: ['hp_', 'enerRech_', 'hp', 'critRD_', 'eleMas'],
 	},
 	// Cryo
 	Diona: {

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useIntervalWhen, useVideo } from 'rooks';
+import { useVideo } from 'rooks';
 import { type Point, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 
 export default function useRouteVideoSync(points: Point[]) {
 	const routeRef = useRef<HTMLDivElement>(null);
 	const [videoRef, videoState, videoControls] = useVideo();
+	const animationFrameRef = useRef<number>(null);
 
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
@@ -25,14 +26,23 @@ export default function useRouteVideoSync(points: Point[]) {
 	}, [Boolean(points)]);
 
 	useEffect(() => {
-		setTime(videoState.currentTime);
-	}, [videoState.currentTime]);
+		const updateTime = () => {
+			if (videoRef.current && !videoState.isPaused) {
+				setTime(videoRef.current.currentTime);
+			}
+			animationFrameRef.current = requestAnimationFrame(updateTime);
+		};
 
-	useIntervalWhen(
-		() => setTime((time) => time + 0.016666666666666667),
-		16.666666666666667,
-		!videoState.isPaused,
-	);
+		if (!videoState.isPaused) {
+			animationFrameRef.current = requestAnimationFrame(updateTime);
+		}
+
+		return () => {
+			if (animationFrameRef.current) {
+				cancelAnimationFrame(animationFrameRef.current);
+			}
+		};
+	}, [videoRef, videoState.isPaused]);
 
 	return {
 		routeRef,

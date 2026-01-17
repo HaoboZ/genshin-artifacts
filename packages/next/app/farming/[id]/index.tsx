@@ -32,15 +32,15 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [points, setPoints] = useState<Point[]>(null);
-	const [showVideo, setShowVideo] = useState(false);
 
 	const [ref, measurements] = useMeasure();
 	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points);
 
 	useEffect(() => {
-		setIsLoaded(false);
 		setPoints(null);
-	}, [mapData?.image]);
+		setIsLoaded(false);
+		videoRef.current.style.opacity = '0';
+	}, [mapData?.image, videoRef]);
 
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
@@ -62,15 +62,11 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		routeRef.current.style.opacity = points ? '1' : '0';
 		if (!points) return;
 		setTimeout(() => {
-			setShowVideo(true);
+			videoRef.current.style.opacity = '1';
 			videoRef.current.play();
 		}, 2000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
-
-	useEffect(() => {
-		videoRef.current.style.opacity = showVideo ? '1' : '0';
-	}, [showVideo, videoRef]);
 
 	const ratio = measurements.innerWidth / measurements.innerHeight;
 	const mobile = ratio < 0.75;

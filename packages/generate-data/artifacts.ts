@@ -41,7 +41,7 @@ export async function fetchArtifacts() {
 
 		const key = pascalCase(name.replaceAll("'", ''));
 		const bonus = [
-			...artifact.children[3].textContent.matchAll(/\d Piece: (.*?)(?=\d Piece:|$)/gs),
+			...artifact.children[3].textContent.matchAll(/\d-Piece: (.*?)(?=\d-Piece:|$)/gs),
 		];
 		const images = [...artifact.children[2].querySelectorAll('img')].toReversed();
 		artifacts.push({

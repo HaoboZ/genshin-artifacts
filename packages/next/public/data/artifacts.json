@@ -1,4 +1,32 @@
 {
+	"AubadeOfMorningstarAndMoon": {
+		"key": "AubadeOfMorningstarAndMoon",
+		"name": "Aubade of Morningstar and Moon",
+		"rarity": 5,
+		"effect2Pc": "Increases Elemental Mastery by 80.",
+		"effect4Pc": "When the equipping character is off-field, Lunar Reaction DMG is increased by 20%. When the party's Moonsign Level is at least Ascendant Gleam, Lunar Reaction DMG will be further increased by 40%. This effect will disappear after the equipping character is active for 3s.",
+		"group": 24,
+		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Item_Moonlit_Offering%27s_Opulent_Dream.png",
+		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/b/bc/Item_Moonlit_Offering%27s_Parting_Light.png",
+		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Item_Moonlit_Offering%27s_Final_Hour.png",
+		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Moonlit_Offering%27s_Libation.png",
+		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Item_Moonlit_Offering%27s_Silver_Crown.png",
+		"order": 0
+	},
+	"ADayCarvedFromRisingWinds": {
+		"key": "ADayCarvedFromRisingWinds",
+		"name": "A Day Carved From Rising Winds",
+		"rarity": 5,
+		"effect2Pc": "ATK +18%.",
+		"effect4Pc": "After a Normal Attack, Charged Attack, Elemental Skill or Elemental Burst hits an opponent, gain the Blessing of Pastoral Winds effect for 6s: ATK is increased by 25%. If the equipping character has completed Witch's Homework, Blessing of Pastoral Winds will be upgraded to Resolve of Pastoral Winds, which also increases the CRIT Rate of the equipping character by an additional 20%. This effect can be triggered even when the character is off-field.",
+		"group": 24,
+		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Windborne_Flower%27s_Spruchdichtung.png",
+		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Item_Dawn%27s_Brilliant_Oath.png",
+		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Item_A_Note_in_Spring%27s_Leich.png",
+		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Item_Heldenepos%27s_Unspoken_Tale.png",
+		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Minnesang_of_Love_and_Lament.png",
+		"order": 1
+	},
 	"SilkenMoonsSerenade": {
 		"key": "SilkenMoonsSerenade",
 		"name": "Silken Moon's Serenade",
@@ -11,7 +39,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Item_Frost_Devotee%27s_Delirium.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Joyous_Glory_of_the_Pure.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Item_Holy_Crown_of_the_Believer.png",
-		"order": 0
+		"order": 2
 	},
 	"NightOfTheSkysUnveiling": {
 		"key": "NightOfTheSkysUnveiling",
@@ -25,35 +53,35 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/15/Item_Revelation%27s_Toll.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Item_Vessel_of_Plenty.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Crown_of_the_Befallen.png",
-		"order": 1
-	},
-	"LongNightsOath": {
-		"key": "LongNightsOath",
-		"name": "Long Night's Oath",
-		"rarity": 5,
-		"effect2Pc": "Plunging Attack DMG increased by 25%.",
-		"effect4Pc": "After the equipping character's Plunging Attack/Charged Attack/Elemental Skill hits an opponent, they will gain 1/2/2 stack(s) of \"Radiance Everlasting.\" Plunging Attacks, Charged Attacks or Elemental Skills can each trigger this effect once every 1s. Radiance Everlasting: Plunging Attacks deal 15%. increased DMG for 6s. Max 5 stacks. Each stack's duration is counted independently.",
-		"group": 22,
-		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Lightkeeper%27s_Pledge.png",
-		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Nightingale%27s_Tail_Feather.png",
-		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/bc/Item_Undying_One%27s_Mourning_Bell.png",
-		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Item_A_Horn_Unwinded.png",
-		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Item_Dyed_Tassel.png",
-		"order": 2
+		"order": 3
 	},
 	"FinaleOfTheDeepGalleries": {
 		"key": "FinaleOfTheDeepGalleries",
 		"name": "Finale of the Deep Galleries",
 		"rarity": 5,
 		"effect2Pc": "Cryo DMG Bonus +15%",
-		"effect4Pc": "When the equipping Character has 0 Elemental Energy, Normal Attack DMG is increased by 60% and Elemental Burst DMG is increased by 60%. After the equipping character deals Normal Attack DMG, the aforementioned Elemental Burst effect will stop applying for 6s. After the equipping character deals Elemental Burst DMG, the aforementioned Normal Attack effect will stop applying for 6s. This effect can trigger even if the equipping character is off the field.",
+		"effect4Pc": "When the equipping character has 0 Elemental Energy, Normal Attack DMG is increased by 60% and Elemental Burst DMG is increased by 60%. After the equipping character deals Normal Attack DMG, the aforementioned Elemental Burst effect will stop applying for 6s. After the equipping character deals Elemental Burst DMG, the aforementioned Normal Attack effect will stop applying for 6s. This effect can trigger even if the equipping character is off the field.",
 		"group": 22,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Deep_Gallery%27s_Echoing_Song.png",
 		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/7/75/Item_Deep_Gallery%27s_Distant_Pact.png",
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Deep_Gallery%27s_Moment_of_Oblivion.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Item_Deep_Gallery%27s_Bestowed_Banquet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Deep_Gallery%27s_Lost_Crown.png",
-		"order": 3
+		"order": 4
+	},
+	"LongNightsOath": {
+		"key": "LongNightsOath",
+		"name": "Long Night's Oath",
+		"rarity": 5,
+		"effect2Pc": "Plunging Attack DMG increased by 25%.",
+		"effect4Pc": "After the equipping character's Plunging Attack/Charged Attack/Elemental Skill hits an opponent, they will gain 1/2/2 stack(s) of \"Radiance Everlasting.\" Plunging Attacks, Charged Attacks or Elemental Skills can each trigger this effect once every 1s. Radiance Everlasting: Plunging Attacks deal 15% increased DMG for 6s. Max 5 stacks. Each stack's duration is counted independently.",
+		"group": 22,
+		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Lightkeeper%27s_Pledge.png",
+		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Nightingale%27s_Tail_Feather.png",
+		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/bc/Item_Undying_One%27s_Mourning_Bell.png",
+		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Item_A_Horn_Unwinded.png",
+		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Item_Dyed_Tassel.png",
+		"order": 5
 	},
 	"ObsidianCodex": {
 		"key": "ObsidianCodex",
@@ -67,7 +95,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Myths_of_the_Night_Realm.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Pre-Banquet_of_the_Contenders.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Crown_of_the_Saints.png",
-		"order": 4
+		"order": 6
 	},
 	"ScrollOfTheHeroOfCinderCity": {
 		"key": "ScrollOfTheHeroOfCinderCity",
@@ -81,13 +109,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/3e/Item_Mystic%27s_Gold_Dial.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Wandering_Scholar%27s_Claw_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Demon-Warrior%27s_Feather_Mask.png",
-		"order": 5
+		"order": 7
 	},
 	"UnfinishedReverie": {
 		"key": "UnfinishedReverie",
 		"name": "Unfinished Reverie",
 		"rarity": 5,
-		"effect2Pc": "ATK +18%",
+		"effect2Pc": "ATK +18%.",
 		"effect4Pc": "After leaving combat for 3s, DMG dealt increased by 50%. In combat, if no Burning opponents are nearby for more than 6s, this DMG Bonus will decrease by 10% per second until it reaches 0%. When a Burning opponent exists, it will increase by 10% instead until it reaches 50%. This effect still triggers if the equipping character is off-field.",
 		"group": 20,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Item_Dark_Fruit_of_Bright_Flowers.png",
@@ -95,13 +123,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png",
-		"order": 6
+		"order": 8
 	},
 	"FragmentOfHarmonicWhimsy": {
 		"key": "FragmentOfHarmonicWhimsy",
 		"name": "Fragment of Harmonic Whimsy",
 		"rarity": 5,
-		"effect2Pc": "ATK +18%",
+		"effect2Pc": "ATK +18%.",
 		"effect4Pc": "When the value of a Bond of Life increases or decreases, this character deals 18% increased DMG for 6s. Max 3 stacks.",
 		"group": 20,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Harmonious_Symphony_Prelude.png",
@@ -109,13 +137,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Item_The_Grand_Jape_of_the_Turning_of_Fate.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Ichor_Shower_Rhapsody.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Whimsical_Dance_of_the_Withered.png",
-		"order": 7
+		"order": 9
 	},
 	"NighttimeWhispersInTheEchoingWoods": {
 		"key": "NighttimeWhispersInTheEchoingWoods",
 		"name": "Nighttime Whispers in the Echoing Woods",
 		"rarity": 5,
-		"effect2Pc": "ATK +18%",
+		"effect2Pc": "ATK +18%.",
 		"effect4Pc": "After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.",
 		"group": 19,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Selfless_Floral_Accessory.png",
@@ -123,13 +151,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Item_Faithful_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Item_Magnanimous_Ink_Bottle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Item_Compassionate_Ladies%27_Hat.png",
-		"order": 8
+		"order": 10
 	},
 	"SongOfDaysPast": {
 		"key": "SongOfDaysPast",
 		"name": "Song of Days Past",
 		"rarity": 5,
-		"effect2Pc": "Healing Bonus +15%",
+		"effect2Pc": "Healing Bonus +15%.",
 		"effect4Pc": "When the equipping character heals a party member, the Yearning effect will be created for 6s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the \"Waves of Days Past\" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The \"Waves of Days Past\" effect is removed after it has taken effect 5 times or after 10s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.",
 		"group": 19,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Forgotten_Oath_of_Days_Past.png",
@@ -137,7 +165,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Echoing_Sound_From_Days_Past.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Item_Promised_Dream_of_Days_Past.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/db/Item_Poetry_of_Days_Past.png",
-		"order": 9
+		"order": 11
 	},
 	"GoldenTroupe": {
 		"key": "GoldenTroupe",
@@ -151,7 +179,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Golden_Era%27s_Prelude.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Item_Golden_Night%27s_Bustle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Golden_Troupe%27s_Reward.png",
-		"order": 10
+		"order": 12
 	},
 	"MarechausseeHunter": {
 		"key": "MarechausseeHunter",
@@ -165,7 +193,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Moment_of_Judgment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Item_Forgotten_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Item_Veteran%27s_Visage.png",
-		"order": 11
+		"order": 13
 	},
 	"VourukashasGlow": {
 		"key": "VourukashasGlow",
@@ -179,7 +207,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Item_Ancient_Abscission.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Feast_of_Boundless_Joy.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Heart_of_Khvarena%27s_Brilliance.png",
-		"order": 12
+		"order": 14
 	},
 	"NymphsDream": {
 		"key": "NymphsDream",
@@ -193,7 +221,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Nymph%27s_Constancy.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Heroes%27_Tea_Party.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Fell_Dragon%27s_Monocle.png",
-		"order": 13
+		"order": 15
 	},
 	"FlowerOfParadiseLost": {
 		"key": "FlowerOfParadiseLost",
@@ -207,7 +235,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_A_Moment_Congealed.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Item_Secret-Keeper%27s_Magic_Bottle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Amethyst_Crown.png",
-		"order": 14
+		"order": 16
 	},
 	"DesertPavilionChronicle": {
 		"key": "DesertPavilionChronicle",
@@ -221,7 +249,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Item_Timepiece_of_the_Lost_Path.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Defender_of_the_Enchanting_Dream.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Legacy_of_the_Desert_High-Born.png",
-		"order": 15
+		"order": 17
 	},
 	"GildedDreams": {
 		"key": "GildedDreams",
@@ -235,13 +263,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_The_Sunken_Years.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Honeyed_Final_Feast.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Shadow_of_the_Sand_King.png",
-		"order": 16
+		"order": 18
 	},
 	"DeepwoodMemories": {
 		"key": "DeepwoodMemories",
 		"name": "Deepwood Memories",
 		"rarity": 5,
-		"effect2Pc": "Dendro DMG Bonus +15%",
+		"effect2Pc": "Dendro DMG Bonus +15%.",
 		"effect4Pc": "After Elemental Skills or Bursts hit opponents, the targets' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.",
 		"group": 15,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Item_Labyrinth_Wayfarer.png",
@@ -249,7 +277,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Item_A_Time_of_Insight.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Lamp_of_the_Lost.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Laurel_Coronet.png",
-		"order": 17
+		"order": 19
 	},
 	"EchoesOfAnOffering": {
 		"key": "EchoesOfAnOffering",
@@ -263,21 +291,21 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Item_Symbol_of_Felicitation.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/89/Item_Chalice_of_the_Font.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Flowing_Rings.png",
-		"order": 18
+		"order": 20
 	},
 	"VermillionHereafter": {
 		"key": "VermillionHereafter",
 		"name": "Vermillion Hereafter",
 		"rarity": 5,
 		"effect2Pc": "ATK +18%.",
-		"effect4Pc": "After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.",
+		"effect4Pc": "After using an Elemental Burst, this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character's HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.",
 		"group": 14,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/1/11/Item_Flowering_Life.png",
 		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Feather_of_Nascent_Light.png",
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/12/Item_Solar_Relic.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Item_Moment_of_the_Pact.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Item_Thundering_Poise.png",
-		"order": 19
+		"order": 21
 	},
 	"OceanHuedClam": {
 		"key": "OceanHuedClam",
@@ -291,7 +319,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Cowry_of_Parting.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Pearl_Cage.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/60/Item_Crown_of_Watatsumi.png",
-		"order": 20
+		"order": 22
 	},
 	"HuskOfOpulentDreams": {
 		"key": "HuskOfOpulentDreams",
@@ -305,7 +333,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Song_of_Life.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Calabash_of_Awakening.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/84/Item_Skeletal_Hat.png",
-		"order": 21
+		"order": 23
 	},
 	"EmblemOfSeveredFate": {
 		"key": "EmblemOfSeveredFate",
@@ -319,13 +347,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Storm_Cage.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Item_Scarlet_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Ornate_Kabuto.png",
-		"order": 22
+		"order": 24
 	},
 	"ShimenawasReminiscence": {
 		"key": "ShimenawasReminiscence",
 		"name": "Shimenawa's Reminiscence",
 		"rarity": 5,
-		"effect2Pc": "ATK +18%",
+		"effect2Pc": "ATK +18%.",
 		"effect4Pc": "When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.",
 		"group": 12,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/c/c2/Item_Entangling_Bloom.png",
@@ -333,13 +361,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Morning_Dew%27s_Moment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Hopeful_Heart.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Capricious_Visage.png",
-		"order": 23
+		"order": 25
 	},
 	"PaleFlame": {
 		"key": "PaleFlame",
 		"name": "Pale Flame",
 		"rarity": 5,
-		"effect2Pc": "Physical DMG Bonus +25%",
+		"effect2Pc": "Physical DMG Bonus +25%.",
 		"effect4Pc": "When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.",
 		"group": 11,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Stainless_Bloom.png",
@@ -347,7 +375,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Item_Moment_of_Cessation.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Surpassing_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Mocking_Mask.png",
-		"order": 24
+		"order": 26
 	},
 	"TenacityOfTheMillelith": {
 		"key": "TenacityOfTheMillelith",
@@ -361,7 +389,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Orichalceous_Time-Dial.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Noble%27s_Pledging_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Item_General%27s_Ancient_Helm.png",
-		"order": 25
+		"order": 27
 	},
 	"HeartOfDepth": {
 		"key": "HeartOfDepth",
@@ -375,7 +403,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Item_Copper_Compass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Goblet_of_Thundering_Deep.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Wine-Stained_Tricorne.png",
-		"order": 26
+		"order": 28
 	},
 	"BlizzardStrayer": {
 		"key": "BlizzardStrayer",
@@ -389,7 +417,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Item_Frozen_Homeland%27s_Demise.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Frost-Weaved_Dignity.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Item_Broken_Rime%27s_Echo.png",
-		"order": 27
+		"order": 29
 	},
 	"CrimsonWitchOfFlames": {
 		"key": "CrimsonWitchOfFlames",
@@ -403,7 +431,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Witch%27s_End_Time.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Witch%27s_Heart_Flames.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Witch%27s_Scorching_Hat.png",
-		"order": 28
+		"order": 30
 	},
 	"Lavawalker": {
 		"key": "Lavawalker",
@@ -417,7 +445,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Item_Lavawalker%27s_Torment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Lavawalker%27s_Epiphany.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Lavawalker%27s_Wisdom.png",
-		"order": 29
+		"order": 31
 	},
 	"ThunderingFury": {
 		"key": "ThunderingFury",
@@ -431,7 +459,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Hourglass_of_Thunder.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Omen_of_Thunderstorm.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Thunder_Summoner%27s_Crown.png",
-		"order": 30
+		"order": 32
 	},
 	"Thundersoother": {
 		"key": "Thundersoother",
@@ -445,7 +473,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Hour_of_Soothing_Thunder.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Thundersoother%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Thundersoother%27s_Diadem.png",
-		"order": 31
+		"order": 33
 	},
 	"RetracingBolide": {
 		"key": "RetracingBolide",
@@ -459,13 +487,13 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Item_Summer_Night%27s_Moment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Summer_Night%27s_Waterballoon.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_Summer_Night%27s_Mask.png",
-		"order": 32
+		"order": 34
 	},
 	"ArchaicPetra": {
 		"key": "ArchaicPetra",
 		"name": "Archaic Petra",
 		"rarity": 5,
-		"effect2Pc": "Geo DMG Bonus +15%",
+		"effect2Pc": "Geo DMG Bonus +15%.",
 		"effect4Pc": "Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.",
 		"group": 7,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Flower_of_Creviced_Cliff.png",
@@ -473,7 +501,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Sundial_of_Enduring_Jade.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Goblet_of_Chiseled_Crag.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Mask_of_Solitude_Basalt.png",
-		"order": 33
+		"order": 35
 	},
 	"ViridescentVenerer": {
 		"key": "ViridescentVenerer",
@@ -487,7 +515,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Viridescent_Venerer%27s_Determination.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Viridescent_Venerer%27s_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Item_Viridescent_Venerer%27s_Diadem.png",
-		"order": 34
+		"order": 36
 	},
 	"MaidenBeloved": {
 		"key": "MaidenBeloved",
@@ -501,7 +529,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Maiden%27s_Passing_Youth.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Maiden%27s_Fleeting_Leisure.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Maiden%27s_Fading_Beauty.png",
-		"order": 35
+		"order": 37
 	},
 	"BloodstainedChivalry": {
 		"key": "BloodstainedChivalry",
@@ -515,7 +543,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8c/Item_Bloodstained_Final_Hour.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Bloodstained_Chevalier%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Bloodstained_Iron_Mask.png",
-		"order": 36
+		"order": 38
 	},
 	"NoblesseOblige": {
 		"key": "NoblesseOblige",
@@ -529,7 +557,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Item_Royal_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Royal_Silver_Urn.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Item_Royal_Masque.png",
-		"order": 37
+		"order": 39
 	},
 	"WanderersTroupe": {
 		"key": "WanderersTroupe",
@@ -543,7 +571,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Concert%27s_Final_Hour.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Wanderer%27s_String-Kettle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/81/Item_Conductor%27s_Top_Hat.png",
-		"order": 38
+		"order": 40
 	},
 	"GladiatorsFinale": {
 		"key": "GladiatorsFinale",
@@ -557,7 +585,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Gladiator%27s_Longing.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Item_Gladiator%27s_Intoxication.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Item_Gladiator%27s_Triumphus.png",
-		"order": 39
+		"order": 41
 	},
 	"PrayersToSpringtime": {
 		"key": "PrayersToSpringtime",
@@ -566,7 +594,7 @@
 		"effect2Pc": "Affected by Cryo for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png",
-		"order": 40
+		"order": 42
 	},
 	"PrayersForIllumination": {
 		"key": "PrayersForIllumination",
@@ -575,7 +603,7 @@
 		"effect2Pc": "Affected by Pyro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png",
-		"order": 41
+		"order": 43
 	},
 	"PrayersForDestiny": {
 		"key": "PrayersForDestiny",
@@ -584,7 +612,7 @@
 		"effect2Pc": "Affected by Hydro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png",
-		"order": 42
+		"order": 44
 	},
 	"PrayersForWisdom": {
 		"key": "PrayersForWisdom",
@@ -593,7 +621,7 @@
 		"effect2Pc": "Affected by Electro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png",
-		"order": 43
+		"order": 45
 	},
 	"Scholar": {
 		"key": "Scholar",
@@ -607,7 +635,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Scholar%27s_Clock.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Scholar%27s_Ink_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Scholar%27s_Lens.png",
-		"order": 44
+		"order": 46
 	},
 	"Gambler": {
 		"key": "Gambler",
@@ -621,7 +649,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Item_Gambler%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Gambler%27s_Dice_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Gambler%27s_Earrings.png",
-		"order": 45
+		"order": 47
 	},
 	"MartialArtist": {
 		"key": "MartialArtist",
@@ -635,7 +663,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Martial_Artist%27s_Water_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Item_Martial_Artist%27s_Wine_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Item_Martial_Artist%27s_Bandana.png",
-		"order": 46
+		"order": 48
 	},
 	"BraveHeart": {
 		"key": "BraveHeart",
@@ -649,7 +677,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Fortitude_of_the_Brave.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Item_Outset_of_the_Brave.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Crown_of_the_Brave.png",
-		"order": 47
+		"order": 49
 	},
 	"DefendersWill": {
 		"key": "DefendersWill",
@@ -663,7 +691,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Guardian%27s_Clock.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Guardian%27s_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Guardian%27s_Band.png",
-		"order": 48
+		"order": 50
 	},
 	"TheExile": {
 		"key": "TheExile",
@@ -677,7 +705,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Exile%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Exile%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Exile%27s_Circlet.png",
-		"order": 49
+		"order": 51
 	},
 	"Instructor": {
 		"key": "Instructor",
@@ -691,7 +719,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Instructor%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Instructor%27s_Tea_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Instructor%27s_Cap.png",
-		"order": 50
+		"order": 52
 	},
 	"Berserker": {
 		"key": "Berserker",
@@ -705,7 +733,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Berserker%27s_Timepiece.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Berserker%27s_Bone_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Item_Berserker%27s_Battle_Mask.png",
-		"order": 51
+		"order": 53
 	},
 	"TinyMiracle": {
 		"key": "TinyMiracle",
@@ -719,7 +747,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiny_Miracle%27s_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Tiny_Miracle%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/7/73/Item_Tiny_Miracle%27s_Earrings.png",
-		"order": 52
+		"order": 54
 	},
 	"ResolutionOfSojourner": {
 		"key": "ResolutionOfSojourner",
@@ -733,7 +761,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Sundial_of_the_Sojourner.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Goblet_of_the_Sojourner.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Crown_of_Parting.png",
-		"order": 53
+		"order": 55
 	},
 	"TravelingDoctor": {
 		"key": "TravelingDoctor",
@@ -747,7 +775,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Traveling_Doctor%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Traveling_Doctor%27s_Medicine_Pot.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Traveling_Doctor%27s_Handkerchief.png",
-		"order": 54
+		"order": 56
 	},
 	"LuckyDog": {
 		"key": "LuckyDog",
@@ -761,7 +789,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Lucky_Dog%27s_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Lucky_Dog%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Lucky_Dog%27s_Silver_Circlet.png",
-		"order": 55
+		"order": 57
 	},
 	"Adventurer": {
 		"key": "Adventurer",
@@ -775,6 +803,6 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Adventurer%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Adventurer%27s_Golden_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Adventurer%27s_Bandana.png",
-		"order": 56
+		"order": 58
 	}
 }

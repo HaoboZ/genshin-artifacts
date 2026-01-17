@@ -35,7 +35,7 @@ export function RouteRenderPath({ point1, point2, containerSize, scale }: Render
 	let y2 = point2.y * containerSize.height;
 
 	// scale arrow offset based on scale
-	const arrowOffset = 3 / scale;
+	const arrowOffset = (0.0075 / scale) * containerSize.width;
 
 	// shorten line for arrows to stop inside arrowhead
 	if (point2.marked) {

@@ -22,17 +22,18 @@ export type ImageRouteProps = {
 	addPoint?: Dispatch<Point>;
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
+	followActiveSpot?: boolean;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	RenderExtra?: ComponentType<RenderExtraProps>;
 	deps?: string;
 	getInitialPosition?: (containerSize: DOMRect) => {
-		scale: number;
-		offset: { x: number; y: number };
+		scale?: number;
+		offset?: { x: number; y: number };
 	};
 	getAnimatedPosition?: (containerSize: DOMRect) => {
-		scale: number;
-		offset: { x: number; y: number };
+		scale?: number;
+		offset?: { x: number; y: number };
 	};
 	innerChildren?: ReactNode;
 } & BoxProps;

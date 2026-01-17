@@ -19,6 +19,7 @@ export type CharacterKey =
 	| 'Citlali' // Citlali
 	| 'Clorinde' // Clorinde
 	| 'Collei' // Collei
+	| 'Columbina' // Columbina
 	| 'Cyno' // Cyno
 	| 'Dahlia' // Dahlia
 	| 'Dehya' // Dehya

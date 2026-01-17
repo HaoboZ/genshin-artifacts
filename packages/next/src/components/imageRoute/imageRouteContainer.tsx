@@ -13,7 +13,6 @@ export default function ImageRouteContainer({
 	mapOffset,
 	setMapOffset,
 	isAnimating,
-	setIsAnimating,
 	onHoverRoute,
 	onClickRoute,
 	sx,
@@ -27,7 +26,6 @@ export default function ImageRouteContainer({
 	mapOffset: Point;
 	setMapOffset: Dispatch<Point>;
 	isAnimating: boolean;
-	setIsAnimating: Dispatch<boolean>;
 	onHoverRoute?: (point: { x: number; y: number }) => void;
 	onClickRoute?: (point: { x: number; y: number }) => void;
 	innerChildren?: ReactNode;
@@ -54,7 +52,6 @@ export default function ImageRouteContainer({
 
 	const performZoom = (zoomCenter: Point, scaleDelta: number) => {
 		if (!containerSize) return;
-		setIsAnimating?.(false);
 
 		const newScale = clamp(scale * scaleDelta, { min: 1, max: 16 }) || 1;
 

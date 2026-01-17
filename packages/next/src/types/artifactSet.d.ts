@@ -1,8 +1,10 @@
 export type ArtifactSetKey =
+	| 'AubadeOfMorningstarAndMoon' // Aubade of Morningstar and Moon
+	| 'ADayCarvedFromRisingWinds' // A Day Carved From Rising Winds
 	| 'SilkenMoonsSerenade' // Silken Moon's Serenade
 	| 'NightOfTheSkysUnveiling' // Night of the Sky's Unveiling
-	| 'LongNightsOath' // Long Night's Oath
 	| 'FinaleOfTheDeepGalleries' // Finale of the Deep Galleries
+	| 'LongNightsOath' // Long Night's Oath
 	| 'ObsidianCodex' // Obsidian Codex
 	| 'ScrollOfTheHeroOfCinderCity' // Scroll of the Hero of Cinder City
 	| 'UnfinishedReverie' // Unfinished Reverie

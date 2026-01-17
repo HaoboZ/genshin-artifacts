@@ -7,6 +7,7 @@ export type WeaponKey =
 	| 'HaranGeppakuFutsu' // Haran Geppaku Futsu
 	| 'KeyOfKhajNisut' // Key of Khaj-Nisut
 	| 'LightOfFoliarIncision' // Light of Foliar Incision
+	| 'LightbearingMoonshard' // Lightbearing Moonshard
 	| 'MistsplitterReforged' // Mistsplitter Reforged
 	| 'PeakPatrolSong' // Peak Patrol Song
 	| 'PrimordialJadeCutter' // Primordial Jade Cutter
@@ -140,6 +141,7 @@ export type WeaponKey =
 	| 'LostPrayerToTheSacredWinds' // Lost Prayer to the Sacred Winds
 	| 'MemoryOfDust' // Memory of Dust
 	| 'NightweaversLookingGlass' // Nightweaver's Looking Glass
+	| 'NocturnesCurtainCall' // Nocturne's Curtain Call
 	| 'ReliquaryOfTruth' // Reliquary of Truth
 	| 'SkywardAtlas' // Skyward Atlas
 	| 'StarcallersWatch' // Starcaller's Watch

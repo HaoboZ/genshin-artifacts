@@ -199,6 +199,16 @@
 		"talentMaterial": "Praxis",
 		"weeklyMaterial": "TearsOfTheCalamitousGod"
 	},
+	"Columbina": {
+		"key": "Columbina",
+		"name": "Columbina",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Columbina_Icon.png",
+		"talentMaterial": "Moonlight",
+		"weeklyMaterial": "MaskOfTheVirtuousDoctor"
+	},
 	"Cyno": {
 		"key": "Cyno",
 		"name": "Cyno",

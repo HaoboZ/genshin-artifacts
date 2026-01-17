@@ -79,6 +79,16 @@
 		"stat": "CRIT DMG 88.2%",
 		"ability": "CRIT Rate is increased by 4~8%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by 120~240% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s."
 	},
+	"LightbearingMoonshard": {
+		"key": "LightbearingMoonshard",
+		"name": "Lightbearing Moonshard",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Weapon_Lightbearing_Moonshard.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 0,
+		"stat": "None",
+		"ability": "None"
+	},
 	"MistsplitterReforged": {
 		"key": "MistsplitterReforged",
 		"name": "Mistsplitter Reforged",
@@ -657,7 +667,7 @@
 		"weaponType": "Claymore",
 		"atk": 510,
 		"stat": "Elemental Mastery 165",
-		"ability": "When Electro-Charged, Lunar-Charged, Bloom, or Lunar-Bloom is triggered, restore 12~24 Elemental Energy and increase Elemental Mastery by 60~120 for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
+		"ability": "When Electro-Charged, Lunar-Charged, Bloom, Lunar-Bloom, Crystallize or Lunar-Crystallize is triggered, restore 12~24 Elemental Energy and increase Elemental Mastery by 60~120 for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field."
 	},
 	"ForestRegalia": {
 		"key": "ForestRegalia",
@@ -1408,6 +1418,16 @@
 		"atk": 565,
 		"stat": "Elemental Mastery 265",
 		"ability": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 60~120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 60~120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 120~240%, their Hyperbloom and Burgeon DMG is increased by 80~160%, and their Lunar-Bloom DMG is increased by 40~80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field."
+	},
+	"NocturnesCurtainCall": {
+		"key": "NocturnesCurtainCall",
+		"name": "Nocturne's Curtain Call",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Weapon_Nocturne%27s_Curtain_Call.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "Max HP increases by 10~18%.When triggering Lunar reactions or inflicting Lunar Reaction DMG on opponents, the equipping character will recover 14~18 Energy, and receive the Bountiful Sea's Sacred Wine effect for 12s: Max HP increases by an additional 14~22%, CRIT DMG from Lunar Reaction DMG increases by 60~140%.The Energy recovery effect can be triggered at most once every 18s, and can be triggered even when the equipping character is off-field."
 	},
 	"ReliquaryOfTruth": {
 		"key": "ReliquaryOfTruth",

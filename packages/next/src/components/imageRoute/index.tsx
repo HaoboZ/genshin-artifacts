@@ -5,7 +5,7 @@ import ImageRouteContainer from './imageRouteContainer';
 import ImageRoutePaths from './imageRoutePaths';
 import ImageRoutePoints from './imageRoutePoints';
 import { type ImageRouteProps, type Spot } from './types';
-import { getClosestPointOnPath } from './utils';
+import { calculateCenterZoom, getClosestPointOnPath } from './utils';
 
 export default function ImageRoute({
 	ref,
@@ -19,6 +19,7 @@ export default function ImageRoute({
 	deps,
 	getInitialPosition = () => ({ scale: 1, offset: { x: 0, y: 0 } }),
 	getAnimatedPosition,
+	followActiveSpot,
 	sx,
 	children,
 	...props
@@ -38,22 +39,37 @@ export default function ImageRoute({
 	useEffect(() => {
 		if (!points || !containerSize?.width || !containerSize?.height) return;
 		const { scale, offset } = getInitialPosition(containerSize);
-		setScale(scale);
-		setMapOffset(offset);
+		if (scale) setScale(scale);
+		if (offset) setMapOffset(offset);
 		setIsAnimating(false);
 
 		if (!getAnimatedPosition) return;
 
 		const animationFrame = requestAnimationFrame(() => {
 			const { scale, offset } = getAnimatedPosition(containerSize);
-			setScale(scale);
-			setMapOffset(offset);
+			if (scale) setScale(scale);
+			if (offset) setMapOffset(offset);
 			setIsAnimating(true);
 		});
+		const timeout = setTimeout(() => setIsAnimating(false), 2000);
 
-		return () => cancelAnimationFrame(animationFrame);
+		return () => {
+			cancelAnimationFrame(animationFrame);
+			clearTimeout(timeout);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [deps, Boolean(points), Boolean(containerSize?.width), Boolean(containerSize?.height)]);
+	}, [deps, Boolean(points)]);
+
+	useEffect(() => {
+		if (!followActiveSpot || !activeSpot || !containerSize?.width || !containerSize?.height)
+			return;
+
+		requestAnimationFrame(() => {
+			const { offset } = calculateCenterZoom(activeSpot.point, containerSize, scale);
+			setMapOffset(offset);
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [followActiveSpot, activeSpot?.point.x, activeSpot?.point.y]);
 
 	return (
 		<ImageRouteContainer
@@ -64,7 +80,6 @@ export default function ImageRoute({
 			mapOffset={mapOffset}
 			setMapOffset={setMapOffset}
 			isAnimating={isAnimating}
-			setIsAnimating={setIsAnimating}
 			onHoverRoute={(point) => {
 				if (addPoint) return;
 				setHoverSpot(getClosestPointOnPath(points, point.x, point.y, 15 / containerSize.width));
