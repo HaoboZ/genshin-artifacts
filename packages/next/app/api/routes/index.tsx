@@ -1,5 +1,6 @@
 'use client';
 import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import {
 	Button,
@@ -20,8 +21,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
-import AddRouteModal from './addRouteModal';
 import { type RouteData } from './types';
+
+const AddRouteModal = dynamicModal(() => import('./addRouteModal'));
 
 export default function RouteList({ items }: { items: RouteData[] }) {
 	const router = useRouter();

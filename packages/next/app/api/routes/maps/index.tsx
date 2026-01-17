@@ -1,6 +1,7 @@
 'use client';
 import PageBack from '@/components/page/pageBack';
 import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
 import {
 	Add as AddIcon,
 	Delete as DeleteIcon,
@@ -26,7 +27,8 @@ import { useRouter } from 'next/navigation';
 import { Fragment, useMemo, useState } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
 import { type MapData } from '../types';
-import AddMapModal from './addMapModal';
+
+const AddMapModal = dynamicModal(() => import('./addMapModal'));
 
 export default function MapList({ items }: { items: MapData[] }) {
 	const router = useRouter();

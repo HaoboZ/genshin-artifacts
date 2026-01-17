@@ -4,24 +4,24 @@ import ImageRoute from '@/components/imageRoute';
 import { type Point } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import { calculateOptimalZoom } from '@/components/imageRoute/utils';
+import RatioContainer from '@/components/ratioContainer';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { prop, sumBy } from 'remeda';
-import { useMeasure } from 'rooks';
-import PathSelect from './pathSelect';
-import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
+import PathSelect from '../pathSelect';
+import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '../render';
 
-const MapModal = dynamicModal(() => import('./mapModal'));
+const MapModal = dynamicModal(() => import('../mapModal'));
 
-export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
+export default function FarmingRouteAlt({ routeData }: { routeData: RouteData }) {
 	const { showModal } = useModal();
 	const router = useRouter();
 
@@ -32,9 +32,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [points, setPoints] = useState<Point[]>(null);
-	const [showVideo, setShowVideo] = useState(false);
 
-	const [ref, measurements] = useMeasure();
 	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points);
 
 	useEffect(() => {
@@ -59,77 +57,20 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	}, [routeData, selectedMap, points, time]);
 
 	useEffect(() => {
-		routeRef.current.style.opacity = points ? '1' : '0';
+		videoRef.current.style.opacity = routeRef.current.style.opacity = points ? '1' : '0';
 		if (!points) return;
-		setTimeout(() => {
-			setShowVideo(true);
-			videoRef.current.play();
-		}, 2000);
+		setTimeout(() => videoRef.current.play(), 2000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
-	useEffect(() => {
-		videoRef.current.style.opacity = showVideo ? '1' : '0';
-	}, [showVideo, videoRef]);
-
-	const ratio = measurements.innerWidth / measurements.innerHeight;
-	const mobile = ratio < 0.75;
-
 	return (
-		<Box
-			ref={ref}
-			sx={{ maxWidth: '200vh', height: '100vh', position: 'relative', margin: '0 auto' }}>
-			<Image
-				fill
-				alt='background'
-				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}`}
-				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
-			/>
-			<Box
-				sx={{
-					position: mobile ? 'relative' : 'absolute',
-					width: mobile ? '100%' : '50%',
-				}}>
-				<Button
-					variant='contained'
-					color='primary'
-					startIcon={<ArrowBackIcon />}
-					sx={{ position: 'absolute', ml: 2, mt: 2 }}
-					onClick={() => router.push(`/farming?route=${routeData.id}`)}>
-					Back
-				</Button>
-				<Stack spacing={mobile ? 1 : 3} sx={{ py: mobile ? 2 : 5, alignItems: 'center' }}>
-					<Paper sx={{ py: 1, borderRadius: 100, minWidth: 200, textAlign: 'center' }}>
-						<Typography variant={mobile ? 'h3' : 'h1'}>
-							Total: {totalSpots + spots}
-						</Typography>
-					</Paper>
-					<Typography variant={mobile ? 'h5' : 'h2'}>
-						Spots: {spots} / {routeData.mapsData[selectedMap].spots}
-					</Typography>
-					<PathSelect
-						route={routeData}
-						selectedMap={selectedMap}
-						setSelectedMap={setSelectedMap}
-					/>
-				</Stack>
-			</Box>
+		<RatioContainer width={16} height={9} sx={{ height: '100vh' }}>
 			<VideoPlayer
 				ref={videoRef}
 				src={mapData ? `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}` : null}
-				sx={{
-					position: mobile ? 'relative' : 'absolute',
-					bottom: 0,
-					width: ratio < 0.94 ? '100%' : '50%',
-				}}
+				sx={{ position: 'absolute', width: '100%' }}
 			/>
-			<Box
-				sx={{
-					position: mobile ? 'relative' : 'absolute',
-					mx: 'auto',
-					width: mobile ? '75%' : '50%',
-					right: 0,
-				}}>
+			<Box sx={{ position: 'absolute', mx: 'auto', width: '25%', left: 0 }}>
 				<ImageRoute
 					ref={routeRef}
 					points={points}
@@ -161,6 +102,46 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					Full Map
 				</Button>
 			</Box>
-		</Box>
+			{mapData && (
+				<Grid
+					container
+					spacing={2}
+					sx={{
+						position: 'absolute',
+						left: '25%',
+						width: '40%',
+						alignItems: 'center',
+						justifyContent: 'center',
+						mt: 2,
+						ml: 2,
+					}}>
+					<Grid>
+						<Button
+							variant='contained'
+							color='primary'
+							startIcon={<ArrowBackIcon />}
+							onClick={() => router.push(`/farming?route=${routeData.id}`)}>
+							Back
+						</Button>
+					</Grid>
+					<Grid
+						size='grow'
+						component={Paper}
+						sx={{ py: 1, borderRadius: 100, minWidth: 200, textAlign: 'center' }}>
+						<Typography variant='h1'>
+							Total: {totalSpots + spots} /{' '}
+							{totalSpots + routeData.mapsData[selectedMap].spots}
+						</Typography>
+					</Grid>
+					<Grid>
+						<PathSelect
+							route={routeData}
+							selectedMap={selectedMap}
+							setSelectedMap={setSelectedMap}
+						/>
+					</Grid>
+				</Grid>
+			)}
+		</RatioContainer>
 	);
 }

@@ -70,6 +70,13 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 					sx={{ ml: 1, minWidth: 'fit-content' }}>
 					Go
 				</Button>
+				<Button
+					variant='contained'
+					component={Link}
+					href={`/farming/${selectedRoute}/alt`}
+					sx={{ ml: 1, minWidth: 'fit-content' }}>
+					Alt
+				</Button>
 			</Box>
 			<ImageRoute
 				points={points}

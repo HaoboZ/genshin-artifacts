@@ -43,7 +43,7 @@ export default function Map({ mapData }: { mapData: MapData }) {
 								}
 								RenderPoint={EditRouteRenderPoint}
 								RenderPath={RouteRenderPath}
-								RenderExtra={RouteRenderExtra}
+								RenderExtra={RouteRenderExtra(mapData?.text)}
 							/>
 						</RatioContainer>
 					) : (

@@ -49,7 +49,7 @@ export default function MapVideo({ mapData }: { mapData: MapData }) {
 								sx={{ aspectRatio: 1 }}
 								RenderPoint={EditRouteRenderPoint}
 								RenderPath={RouteRenderPath}
-								RenderExtra={RouteRenderExtra}
+								RenderExtra={RouteRenderExtra(mapData?.text)}
 								RenderText={RenderText}
 							/>
 						</RatioContainer>

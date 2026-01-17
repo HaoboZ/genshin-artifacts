@@ -1,4 +1,8 @@
-import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
+import {
+	type RenderExtraProps,
+	type RenderPathProps,
+	type RenderPointProps,
+} from '@/components/imageRoute/types';
 import { Fragment } from 'react';
 
 export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPointProps) {
@@ -62,8 +66,10 @@ export function RouteRenderPath({ point1, point2, containerSize, scale }: Render
 	);
 }
 
-export function RouteRenderExtra() {
-	return (
+export function RouteRenderExtra(
+	text: { text: string; x: number; y: number; fontSize?: number }[],
+) {
+	return ({ containerSize }: RenderExtraProps) => (
 		<Fragment>
 			<defs>
 				<style jsx>{`
@@ -89,6 +95,17 @@ export function RouteRenderExtra() {
 					<polygon points='0 0, 5 2.5, 0 5' fill='#ff0000' />
 				</marker>
 			</defs>
+			{text?.map(({ text, x, y, fontSize = 0.025 }, i) => (
+				<text
+					key={i}
+					x={x * containerSize.width}
+					y={y * containerSize.height}
+					fill='white'
+					fontSize={fontSize * containerSize.width}
+					fontStyle='bold'>
+					{text}
+				</text>
+			))}
 		</Fragment>
 	);
 }

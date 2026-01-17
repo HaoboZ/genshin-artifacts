@@ -2,6 +2,7 @@ import { type Point } from '@/components/imageRoute/types';
 import AsyncButton from '@/components/loaders/asyncButton';
 import PageBack from '@/components/page/pageBack';
 import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
 import { Edit as EditIcon, Save as SaveIcon } from '@mui/icons-material';
 import { Grid, TextField } from '@mui/material';
 import axios from 'axios';
@@ -12,8 +13,9 @@ import { Fragment, useState } from 'react';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
 import UploadFile from '../../auth/uploadFile';
-import EditJsonModal from '../../editJsonModal';
 import { type MapData } from '../../types';
+
+const EditJsonModal = dynamicModal(() => import('../../editJsonModal'));
 
 export default function MapControls({ mapData, points }: { mapData: MapData; points: Point[] }) {
 	const router = useRouter();
