@@ -1261,21 +1261,15 @@ export const builds: Record<CharacterKey, Build> = {
 	Columbina: {
 		key: 'Columbina',
 		role: 'Support',
-		weapon: [
-			'NocturnesCurtainCall',
-			'ReliquaryOfTruth',
-			'PrototypeAmber',
-			'FavoniusCodex',
-			'WaveridingWhirl',
-		],
+		weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
 		group: 0,
-		artifact: ['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'],
+		artifact: [['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'], 'NightOfTheSkysUnveiling'],
 		mainStat: {
 			sands: ['hp_', 'enerRech_'],
-			goblet: 'hydro_dmg_',
-			circlet: ['critRD_', 'hp_'],
+			goblet: 'hp_',
+			circlet: 'critRD_',
 		},
-		subStat: ['hp_', 'enerRech_', 'hp', 'critRD_', 'eleMas'],
+		subStat: ['enerRech_', 'critRD_', 'hp_', 'eleMas'],
 	},
 	// Cryo
 	Diona: {
