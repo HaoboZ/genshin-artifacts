@@ -11,7 +11,7 @@ import { useAppSelector } from '@/store/hooks';
 import { type ArtifactSetKey } from '@/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import {
 	entries,
 	filter,
@@ -124,11 +124,18 @@ export default function ArtifactSetFarmModal() {
 										sx={{ height: 100 / setGroups.length }}
 										key={artifactSet}
 										artifactSet={artifactSetsInfo[artifactSet]}
-										tooltip={slots.map(([slot, stats]) => (
-											<Typography key={slot} variant='body2'>
-												{capitalCase(slot)}: {stats}
-											</Typography>
-										))}>
+										tooltip={
+											<Fragment>
+												<Typography variant='subtitle2'>
+													{artifactSetsInfo[artifactSet].name}
+												</Typography>
+												{slots.map(([slot, stats]) => (
+													<Typography key={slot} variant='body2'>
+														{capitalCase(slot)}: {stats}
+													</Typography>
+												))}
+											</Fragment>
+										}>
 										<OverlayText>
 											{mainStat} / {total}
 										</OverlayText>
