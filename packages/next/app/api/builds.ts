@@ -1,35 +1,41 @@
 import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
+import { flat } from 'remeda';
 
 // https://tinyurl.com/genshinbuilds
-// 12/27/25
-export const builds: Record<CharacterKey, Build> = {
+// 1/24/26
+export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
-		role: 'DPS',
-		weapon: ['SwordOfNarzissenkreuz'],
-		group: 0,
-		artifact: ['GladiatorsFinale'],
-		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+		role: 'Pyro - Buff Support',
+		weapon: [
+			'FavoniusSword',
+			'PeakPatrolSong',
+			['FreedomSworn', 'KeyOfKhajNisut'],
+			'SacrificialSword',
+		],
+		group: 1,
+		artifact: ['ScrollOfTheHeroOfCinderCity'],
+		mainStat: { sands: 'enerRech_', goblet: 'pyro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_', 'def_'],
 	},
 	Manekin: {
 		key: 'Manekin',
 		role: 'DPS',
 		weapon: ['TravelersHandySword'],
 		group: 0,
-		artifact: ['BloodstainedChivalry'],
-		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
+		artifact: ['GladiatorsFinale'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
 	},
 	Manekina: {
 		key: 'Manekina',
 		role: 'DPS',
 		weapon: ['DarkIronSword'],
 		group: 0,
-		artifact: ['EchoesOfAnOffering'],
-		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
+		artifact: ['BloodstainedChivalry'],
+		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
 	// Pyro
 	Amber: {
@@ -1127,31 +1133,42 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'hp_'] },
 		subStat: ['enerRech_', 'hp_', 'atk_', 'hp'],
 	},
-	KamisatoAyato: {
-		key: 'KamisatoAyato',
-		role: 'DPS',
-		weapon: [
-			['HaranGeppakuFutsu', 'PrimordialJadeCutter'],
-			'MistsplitterReforged',
-			'LightOfFoliarIncision',
-			'TheBlackSword',
-			['SkywardBlade', 'SplendorOfTranquilWaters'],
-			'SummitShaper',
-			['FinaleOfTheDeep', 'KagotsurubeIsshin'],
-			'LionsRoar',
-			['HarbingerOfDawn', 'TheFlute', 'SwordOfNarzissenkreuz'],
-		],
-		group: 0,
-		artifact: [
-			['HeartOfDepth', 'GladiatorsFinale', 'NymphsDream'],
-			'BlizzardStrayer',
-			'ThunderingFury',
-			'EchoesOfAnOffering',
-			'MarechausseeHunter',
-		],
-		mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
-	},
+	KamisatoAyato: [
+		{
+			key: 'KamisatoAyato',
+			role: 'DPS',
+			weapon: [
+				['HaranGeppakuFutsu', 'PrimordialJadeCutter'],
+				'MistsplitterReforged',
+				'LightOfFoliarIncision',
+				'TheBlackSword',
+				['SkywardBlade', 'SplendorOfTranquilWaters'],
+				'SummitShaper',
+				['FinaleOfTheDeep', 'KagotsurubeIsshin'],
+				'LionsRoar',
+				['HarbingerOfDawn', 'TheFlute', 'SwordOfNarzissenkreuz'],
+			],
+			group: 0,
+			artifact: [
+				['HeartOfDepth', 'GladiatorsFinale', 'NymphsDream'],
+				'BlizzardStrayer',
+				'ThunderingFury',
+				'EchoesOfAnOffering',
+				'MarechausseeHunter',
+			],
+			mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
+			subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
+		},
+		{
+			key: 'KamisatoAyato',
+			role: 'DPS',
+			weapon: [],
+			group: 0,
+			artifact: ['EchoesOfAnOffering'],
+			mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
+			subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
+		},
+	],
 	Yelan: {
 		key: 'Yelan',
 		role: 'Off-Field DPS',
@@ -1258,19 +1275,37 @@ export const builds: Record<CharacterKey, Build> = {
 		},
 		subStat: ['critRD_', ['eleMas', 'hp_'], 'hp'],
 	},
-	Columbina: {
-		key: 'Columbina',
-		role: 'Support',
-		weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
-		group: 0,
-		artifact: [['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'], 'NightOfTheSkysUnveiling'],
-		mainStat: {
-			sands: ['hp_', 'enerRech_'],
-			goblet: 'hp_',
-			circlet: 'critRD_',
+	Columbina: [
+		{
+			key: 'Columbina',
+			role: 'Support',
+			weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
+			group: 0,
+			artifact: [
+				['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'],
+				'NightOfTheSkysUnveiling',
+			],
+			mainStat: {
+				sands: ['hp_', 'enerRech_'],
+				goblet: 'hp_',
+				circlet: 'critRD_',
+			},
+			subStat: ['enerRech_', 'critRD_', 'hp_', 'eleMas'],
 		},
-		subStat: ['enerRech_', 'critRD_', 'hp_', 'eleMas'],
-	},
+		{
+			key: 'Columbina',
+			role: 'Support',
+			weapon: [],
+			group: 1,
+			artifact: ['SilkenMoonsSerenade'],
+			mainStat: {
+				sands: ['hp_', 'enerRech_'],
+				goblet: 'hp_',
+				circlet: 'critRD_',
+			},
+			subStat: ['enerRech_', 'critRD_', 'hp_', 'eleMas'],
+		},
+	],
 	// Cryo
 	Diona: {
 		key: 'Diona',
@@ -1460,27 +1495,44 @@ export const builds: Record<CharacterKey, Build> = {
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: ['heal_', 'atk_'] },
 		subStat: ['atk_', 'enerRech_', 'atk', 'critRate_', 'def_'],
 	},
-	Ganyu: {
-		key: 'Ganyu',
-		role: 'Melt DPS',
-		weapon: [
-			['AstralVulturesCrimsonPlumage', 'HuntersPath'],
-			['TheFirstGreatMagic', 'AquaSimulacra'],
-			'AmosBow',
-			['PolarStar', 'SkywardHarp', 'ThunderingPulse'],
-			'FlowerWreathedFeathers',
-			['Hamayumi', 'ScionOfTheBlazingSun'],
-			'PrototypeCrescent',
-		],
-		group: 0,
-		artifact: [
-			['WanderersTroupe'],
-			['ShimenawasReminiscence', 'GildedDreams'],
-			'UnfinishedReverie',
-		],
-		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'eleMas', 'atk_'],
-	},
+	Ganyu: [
+		{
+			key: 'Ganyu',
+			role: 'Melt DPS',
+			weapon: [
+				['AstralVulturesCrimsonPlumage', 'HuntersPath'],
+				['TheFirstGreatMagic', 'AquaSimulacra'],
+				'AmosBow',
+				['PolarStar', 'SkywardHarp', 'ThunderingPulse'],
+				'FlowerWreathedFeathers',
+				['Hamayumi', 'ScionOfTheBlazingSun'],
+				'PrototypeCrescent',
+			],
+			group: 0,
+			artifact: [
+				['WanderersTroupe'],
+				['ShimenawasReminiscence', 'GildedDreams'],
+				'UnfinishedReverie',
+			],
+			mainStat: { sands: ['eleMas', 'atk_'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
+			subStat: ['critRD_', 'eleMas', 'atk_'],
+		},
+		{
+			key: 'Ganyu',
+			role: 'Freeze DPS',
+			weapon: [
+				'PolarStar',
+				['TheFirstGreatMagic', 'AstralVulturesCrimsonPlumage', 'AquaSimulacra'],
+				['ThunderingPulse', 'SkywardHarp'],
+				['AmosBow', 'SongOfStillness'],
+				['PrototypeCrescent', 'MouunsMoon'],
+			],
+			group: 0,
+			artifact: ['BlizzardStrayer', 'MarechausseeHunter'],
+			mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
+			subStat: ['critRD_', 'atk_', 'enerRech_'],
+		},
+	],
 	Eula: {
 		key: 'Eula',
 		role: 'DPS',
@@ -1812,29 +1864,52 @@ export const builds: Record<CharacterKey, Build> = {
 		},
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
 	},
-	Venti: {
-		key: 'Venti',
-		role: 'Off-Field DPS',
-		weapon: [
-			'TheDaybreakChronicles',
-			'PolarStar',
-			'AstralVulturesCrimsonPlumage',
-			['HuntersPath', 'TheFirstGreatMagic', 'AquaSimulacra', 'SkywardHarp'],
-			'ThunderingPulse',
-			['MouunsMoon', 'SongOfStillness', 'TheStringless', 'AlleyHunter'],
-		],
-		group: 0,
-		artifact: [
-			'ViridescentVenerer',
-			'ADayCarvedFromRisingWinds',
-			'NoblesseOblige',
-			'ScrollOfTheHeroOfCinderCity',
-			'GildedDreams',
-			'EmblemOfSeveredFate',
-		],
-		mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
-	},
+	Venti: [
+		{
+			key: 'Venti',
+			role: 'Off-Field DPS',
+			weapon: [
+				'TheDaybreakChronicles',
+				'PolarStar',
+				'AstralVulturesCrimsonPlumage',
+				['HuntersPath', 'TheFirstGreatMagic', 'AquaSimulacra', 'SkywardHarp'],
+				'ThunderingPulse',
+				['MouunsMoon', 'SongOfStillness', 'TheStringless', 'AlleyHunter'],
+			],
+			group: 0,
+			artifact: [
+				'ViridescentVenerer',
+				'ADayCarvedFromRisingWinds',
+				'NoblesseOblige',
+				'ScrollOfTheHeroOfCinderCity',
+				'GildedDreams',
+				'EmblemOfSeveredFate',
+			],
+			mainStat: { sands: 'atk_', goblet: ['anemo_dmg_', 'atk_'], circlet: 'critRD_' },
+			subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
+		},
+		{
+			key: 'Venti',
+			role: 'On-Field DPS',
+			weapon: [
+				'TheDaybreakChronicles',
+				'PolarStar',
+				['ThunderingPulse', 'HuntersPath', 'SkywardHarp', 'AquaSimulacra'],
+				['AstralVulturesCrimsonPlumage', 'TheFirstGreatMagic'],
+				'AmosBow',
+				['Slingshot', 'SongOfStillness', 'TheViridescentHunt', 'Rust', 'MouunsMoon'],
+			],
+			group: 1,
+			artifact: [
+				'ADayCarvedFromRisingWinds',
+				'DesertPavilionChronicle',
+				'EchoesOfAnOffering',
+				'ViridescentVenerer',
+			],
+			mainStat: { sands: 'atk_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
+			subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
+		},
+	],
 	Xiao: {
 		key: 'Xiao',
 		role: 'DPS',
@@ -2156,3 +2231,5 @@ export const builds: Record<CharacterKey, Build> = {
 		subStat: ['enerRech_', 'def_', 'def', 'critRate_'],
 	},
 };
+
+export const buildsList = flat(Object.values(builds));

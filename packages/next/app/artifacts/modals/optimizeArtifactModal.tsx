@@ -1,6 +1,6 @@
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
-import makeArray from '@/helpers/makeArray';
+import getFirst from '@/helpers/getFirst';
 import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
@@ -32,7 +32,7 @@ export default function OptimizeArtifactModal() {
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
 		const result: {
 			artifact: IArtifact;
-			character: Build & ICharacter;
+			character: ICharacter & { build: Build };
 			selected: boolean;
 		}[] = [];
 		const artifactsClone = structuredClone(artifacts);
@@ -53,10 +53,10 @@ export default function OptimizeArtifactModal() {
 					filter(
 						({ slotKey, setKey, mainStatKey }) =>
 							slotKey === slot &&
-							setKey === makeArray(character.artifact[0])[0] &&
-							statArrMatch(character.mainStat[slotKey], mainStatKey, true),
+							setKey === getFirst(character.build.artifact) &&
+							statArrMatch(character.build.mainStat[slotKey], mainStatKey, true),
 					),
-					sortBy([(artifact) => weightedPercent(character, artifact), 'desc']),
+					sortBy([(artifact) => weightedPercent(character.build, artifact), 'desc']),
 				);
 
 				for (const artifact of tieredArtifacts) {

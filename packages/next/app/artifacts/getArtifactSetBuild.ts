@@ -1,4 +1,4 @@
-import { missingArtifactSets } from '@/api/artifacts';
+import getFirst from '@/helpers/getFirst';
 import makeArray from '@/helpers/makeArray';
 import { type Build } from '@/types/data';
 import { type ArtifactSetKey, type StatKey } from '@/types/good';
@@ -7,17 +7,10 @@ import { groupBy, map, pipe, prop, reduce, take } from 'remeda';
 export default function getArtifactSetBuild(
 	characterBuilds: Build[],
 	artifactSet: ArtifactSetKey,
-	group?: number,
 ): Build {
 	const filteredBuilds = characterBuilds.filter(
-		({ artifact }) => makeArray(artifact[0])[0] === artifactSet,
+		({ artifact }) => getFirst(artifact) === artifactSet,
 	);
-
-	const builds = filteredBuilds.length
-		? filteredBuilds
-		: group
-			? []
-			: [missingArtifactSets[artifactSet]].filter(Boolean);
 
 	return {
 		key: 'Traveler',
@@ -25,20 +18,20 @@ export default function getArtifactSetBuild(
 		weapon: [],
 		group: 0,
 		artifact: [artifactSet],
-		mainStat: builds.reduce(
+		mainStat: filteredBuilds.reduce(
 			(acc, { mainStat }) => {
-				const sandStat = makeArray(mainStat.sands)[0];
+				const sandStat = getFirst(mainStat.sands);
 				acc.sands[0].push(sandStat);
-				const gobletStat = makeArray(mainStat.goblet)[0];
+				const gobletStat = getFirst(mainStat.goblet);
 				acc.goblet[0].push(gobletStat);
-				const circletStat = makeArray(mainStat.circlet)[0];
+				const circletStat = getFirst(mainStat.circlet);
 				acc.circlet[0].push(circletStat);
 				return acc;
 			},
 			{ sands: [[]], goblet: [[]], circlet: [[]] },
 		) as any,
 		subStat: pipe(
-			builds,
+			filteredBuilds,
 			reduce(
 				(res, { subStat }) => {
 					subStat.forEach((statArr, index) =>

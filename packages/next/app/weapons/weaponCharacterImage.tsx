@@ -2,6 +2,7 @@ import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
 import { type IWeapon } from '@/types/good';
 import { type AvatarProps, Box } from '@mui/material';
 import { useMemo } from 'react';
@@ -15,7 +16,7 @@ export default function WeaponCharacterImage({
 	...props
 }: { weapon: IWeapon; size?: number } & AvatarProps) {
 	const character = charactersInfo[weapon.location];
-	const build = builds[weapon.location];
+	const build = getFirst(builds[weapon.location]);
 
 	const percent = useMemo(() => {
 		if (!build) return 0;

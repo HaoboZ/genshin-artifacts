@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { differenceWith, pick, prop, uniqueBy } from 'remeda';
 import { type PartialDeep } from 'type-fest';
-import { type Build } from '../../types/data';
 import {
 	type CharacterKey,
 	type IArtifact,
@@ -118,7 +117,7 @@ const goodSlice = createSlice({
 		},
 		optimizeArtifacts(
 			state,
-			{ payload }: PayloadAction<{ artifact: IArtifact; character: Build }[]>,
+			{ payload }: PayloadAction<{ artifact: IArtifact; character: ICharacter }[]>,
 		) {
 			state.artifacts = [...state.artifacts];
 			for (const { artifact, character } of payload) {
@@ -187,7 +186,10 @@ const goodSlice = createSlice({
 				};
 			state.weapons[weaponAIndex] = { ...weaponA, location: characterA };
 		},
-		optimizeWeapons(state, { payload }: PayloadAction<{ weapon: IWeapon; character: Build }[]>) {
+		optimizeWeapons(
+			state,
+			{ payload }: PayloadAction<{ weapon: IWeapon; character: ICharacter }[]>,
+		) {
 			state.weapons = [...state.weapons];
 			for (const { weapon, character } of payload) {
 				let weaponAIndex = state.weapons.findIndex(({ id }) => id === weapon.id);

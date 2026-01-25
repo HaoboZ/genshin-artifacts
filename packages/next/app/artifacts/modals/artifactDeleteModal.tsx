@@ -1,7 +1,5 @@
-import { missingArtifactSets } from '@/api/artifacts';
-import { builds } from '@/api/builds';
 import PercentBar from '@/components/stats/percentBar';
-import { maxPotentialPercents } from '@/helpers/stats';
+import { maxPotentialPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -19,8 +17,6 @@ import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
 import ArtifactStatCard from '../artifactStatCard';
-
-const buildArr = [...Object.values(builds), ...Object.values(missingArtifactSets)];
 
 export default function ArtifactDeleteModal() {
 	const { closeModal } = useModalControls();
@@ -43,7 +39,7 @@ export default function ArtifactDeleteModal() {
 			filter(({ lock, location, level }) => lock && !location && !level),
 			map((artifact) => ({
 				...artifact,
-				potential: maxPotentialPercents(buildArr, artifact),
+				potential: maxPotentialPercent(artifact),
 			})),
 			filter(
 				({ potential, setKey, slotKey }) =>

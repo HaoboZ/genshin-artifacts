@@ -1,6 +1,6 @@
 import data from '@/public/data/artifacts.json';
 import { useAppSelector } from '@/store/hooks';
-import { type Build, type DArtifact } from '@/types/data';
+import { type DArtifact } from '@/types/data';
 import { type ArtifactSetKey, type SlotKey } from '@/types/good';
 import { useMemo } from 'react';
 import { filter, pipe, prop, sortBy } from 'remeda';
@@ -14,18 +14,6 @@ export const artifactSlotImages = {
 	goblet:
 		'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Icon_Goblet_of_Eonothem.png',
 	circlet: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png',
-};
-
-export const missingArtifactSets: Partial<Record<ArtifactSetKey, Build>> = {
-	// '': {
-	// 	key: 'Traveler',
-	// 	role: 'DPS',
-	// 	weapon: [],
-	// 	group: 0,
-	// 	artifact: [''],
-	// 	mainStat: { sands: '', goblet: '', circlet: '' },
-	// 	subStat: [],
-	// },
 };
 
 export const artifactSlotOrder: SlotKey[] = ['flower', 'plume', 'sands', 'goblet', 'circlet'];

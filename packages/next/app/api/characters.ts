@@ -1,8 +1,8 @@
-import makeArray from '@/helpers/makeArray';
+import getFirst from '@/helpers/getFirst';
 import data from '@/public/data/characters.json';
 import { useAppSelector } from '@/store/hooks';
-import { type DCharacter } from '@/types/data';
-import { type ArtifactSetKey, type CharacterKey } from '@/types/good';
+import { type Build, type DCharacter } from '@/types/data';
+import { type ArtifactSetKey, type CharacterKey, type ICharacter } from '@/types/good';
 import { useMemo } from 'react';
 import { filter, map, pipe, prop, sortBy, values } from 'remeda';
 import { builds } from './builds';
@@ -15,7 +15,7 @@ export function useCharacters({
 }: {
 	artifactSet?: ArtifactSetKey;
 	owned?: boolean;
-} = {}) {
+} = {}): (DCharacter & ICharacter & { build: Build })[] {
 	const priority = useAppSelector(prop('main', 'priority'));
 	const characters = useAppSelector(prop('good', 'characters'));
 
@@ -27,12 +27,12 @@ export function useCharacters({
 			map((character) => ({
 				...character,
 				...characters.find(({ key }) => character.key === key),
-				...builds[character.key],
+				build: getFirst(builds[character.key]),
 			})),
 			filter(
 				(character) =>
 					(owned ? character.level : true) &&
-					(!artifactSet || makeArray(character.artifact[0])[0] === artifactSet),
+					(!artifactSet || getFirst(character.build.artifact) === artifactSet),
 			),
 			sortBy([({ level }) => Boolean(level), 'desc'], ({ key }) => {
 				const index = priorityIndex.indexOf(key);

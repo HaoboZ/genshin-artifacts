@@ -7,6 +7,7 @@ import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
 import PercentBar from '@/components/stats/percentBar';
+import getFirst from '@/helpers/getFirst';
 import { weightedPercent } from '@/helpers/stats';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
@@ -51,7 +52,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 		);
 	}, [artifacts, characterData.key]);
 
-	const build = builds[characterData.key];
+	const build = getFirst(builds[characterData.key]);
 
 	return (
 		<Container>

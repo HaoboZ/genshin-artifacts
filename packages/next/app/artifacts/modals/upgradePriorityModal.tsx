@@ -1,9 +1,8 @@
-import { missingArtifactSets } from '@/api/artifacts';
-import { builds } from '@/api/builds';
+import { buildsList } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import PageLink from '@/components/page/pageLink';
 import PercentBar from '@/components/stats/percentBar';
-import makeArray from '@/helpers/makeArray';
+import getFirst from '@/helpers/getFirst';
 import { matchingSubStats, potentialPercent } from '@/helpers/stats';
 import { useModal } from '@/providers/modal';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
@@ -25,10 +24,7 @@ export default function UpgradePriorityModal() {
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
 
 	const artifactsFiltered = useMemo(() => {
-		const artifactBuilds = groupBy(
-			[...Object.values(builds), ...Object.values(missingArtifactSets)],
-			({ artifact }) => makeArray(artifact[0])[0],
-		);
+		const artifactBuilds = groupBy(buildsList, ({ artifact }) => getFirst(artifact));
 		const equippedArtifacts = groupBy(artifacts, prop('location'));
 
 		return pipe(

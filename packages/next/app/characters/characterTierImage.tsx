@@ -3,6 +3,7 @@ import { charactersInfo } from '@/api/characters';
 import OverlayText from '@/components/overlayText';
 import PercentBar, { combinePercents } from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
 import { weightedPercent } from '@/helpers/stats';
 import { type CharacterKey, type IGOOD } from '@/types/good';
 import { Fragment, useMemo } from 'react';
@@ -15,7 +16,7 @@ export default function CharacterTierImage({
 	good: IGOOD;
 	characterKey: CharacterKey;
 }) {
-	const build = builds[characterKey];
+	const build = getFirst(builds[characterKey]);
 	const character = good.characters.find(({ key }) => key === characterKey);
 
 	const percent = useMemo(() => {

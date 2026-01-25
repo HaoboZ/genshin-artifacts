@@ -79,8 +79,8 @@ export default function CharacterArtifactModal({
 					label='All in Best Set'
 				/>
 				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
-					{artifactsSorted.map(({ statRollPercent, ...artifact }, index) => (
-						<Grid key={index} size={{ xs: 6, md: 4 }}>
+					{artifactsSorted.map(({ statRollPercent, ...artifact }) => (
+						<Grid key={artifact.id} size={{ xs: 6, md: 4 }}>
 							<ArtifactStatCard
 								artifact={artifact}
 								sx={{ ':hover': { cursor: 'pointer' } }}

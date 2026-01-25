@@ -1,7 +1,9 @@
-import { charactersInfo, useCharacters } from '@/api/characters';
+import { buildsList } from '@/api/builds';
+import { charactersInfo } from '@/api/characters';
 import { statName } from '@/api/stats';
 import PageLink from '@/components/page/pageLink';
 import StatChipArray from '@/components/stats/statChipArray';
+import getFirst from '@/helpers/getFirst';
 import makeArray from '@/helpers/makeArray';
 import useParamState from '@/hooks/useParamState';
 import { type ArtifactSetKey, type SlotKey } from '@/types/good';
@@ -18,13 +20,15 @@ export default function BestInSlot({
 	group: number;
 	artifactSet: ArtifactSetKey;
 }) {
-	const characters = useCharacters({ artifactSet }).filter((x) => x.group === group);
+	const builds = buildsList.filter(
+		(build) => getFirst(build.artifact) === artifactSet && build.group === group,
+	);
 
 	const [slot] = useParamState<SlotKey>('slot', null);
 
-	const { mainStat, subStat, role } = useMemo(
-		() => getArtifactSetBuild(characters, artifactSet, group),
-		[characters, artifactSet, group],
+	const { mainStat, subStat } = useMemo(
+		() => getArtifactSetBuild(builds, artifactSet),
+		[builds, artifactSet],
 	);
 
 	if (!mainStat.sands[0].length) return null;
@@ -32,19 +36,19 @@ export default function BestInSlot({
 	return (
 		<Stack spacing={1}>
 			<Stack direction='row' spacing={1}>
-				{characters.map(({ key, level, mainStat, subStat }) => (
+				{builds.map(({ key, mainStat, subStat, role }) => (
 					<PageLink key={key} href={`/characters/${key}`}>
 						<CharacterImage
 							character={charactersInfo[key]}
 							size={50}
-							sx={{ border: level ? 0 : 1, borderColor: 'red' }}
+							sx={{ border: key ? 0 : 1, borderColor: 'red' }}
 							tooltip={
 								<Fragment>
 									<Typography variant='h6'>{role}</Typography>
 									<Typography>
-										{statName[makeArray(mainStat.sands)[0]]} -{' '}
-										{statName[makeArray(mainStat.goblet)[0]]} -{' '}
-										{statName[makeArray(mainStat.circlet)[0]]}
+										{statName[getFirst(mainStat.sands)]} -{' '}
+										{statName[getFirst(mainStat.goblet)]} -{' '}
+										{statName[getFirst(mainStat.circlet)]}
 									</Typography>
 									<Typography>
 										{subStat

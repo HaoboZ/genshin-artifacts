@@ -1,12 +1,12 @@
-import { artifactSetsInfo, missingArtifactSets, useArtifacts } from '@/api/artifacts';
-import { builds } from '@/api/builds';
+import { artifactSetsInfo, useArtifacts } from '@/api/artifacts';
+import { buildsList } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { statName } from '@/api/stats';
 import OverflowTypography from '@/components/overflowTypography';
 import PercentBar from '@/components/stats/percentBar';
 import SubStatBar from '@/components/stats/subStatBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
-import makeArray from '@/helpers/makeArray';
+import getFirst from '@/helpers/getFirst';
 import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
@@ -38,12 +38,12 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 
 	const charactersTiered = useMemo(() => {
 		return pipe(
-			[...Object.values(builds), ...Object.values(missingArtifactSets)],
+			buildsList,
 			filter(
 				(build) =>
 					(checked
 						? arrDeepIndex(build.artifact, artifact.setKey) !== -1
-						: makeArray(build.artifact[0])[0] === artifact.setKey) &&
+						: getFirst(build.artifact) === artifact.setKey) &&
 					statArrMatch(build.mainStat[artifact.slotKey], artifact.mainStatKey),
 			),
 			map((build) => ({

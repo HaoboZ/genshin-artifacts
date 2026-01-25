@@ -3,7 +3,7 @@ import { artifactSetsInfo } from '@/api/artifacts';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
-import makeArray from '@/helpers/makeArray';
+import getFirst from '@/helpers/getFirst';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { useAppSelector } from '@/store/hooks';
@@ -15,7 +15,7 @@ import ArtifactSetImage from './artifactSetImage';
 
 const AddArtifactModal = dynamicModal(() => import('./artifactForm/addArtifactModal'));
 const ArtifactDeleteModal = dynamicModal(() => import('./modals/artifactDeleteModal'));
-const ArtifactSetFarmModal = dynamicModal(() => import('./modals/artifactSetFarmModal'));
+const ArtifactSetFarmModal = dynamicModal(() => import('./modals/artifactFarmModal'));
 const BatchAddArtifactModal = dynamicModal(() => import('./artifactForm/batchAddArtifactModal'));
 const OptimizeArtifactModal = dynamicModal(() => import('./modals/optimizeArtifactModal'));
 const UpgradePriorityModal = dynamicModal(() => import('./modals/upgradePriorityModal'));
@@ -24,6 +24,7 @@ export default function Artifacts() {
 	const { showModal } = useModal();
 	const characters = useCharacters();
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
+	const artifactSets = sortBy(Object.values(artifactSetsInfo), prop('order'));
 
 	return (
 		<PageSection
@@ -44,9 +45,9 @@ export default function Artifacts() {
 				<Button onClick={() => showModal(ArtifactSetFarmModal)}>Farm</Button>
 				<Button onClick={() => showModal(ArtifactDeleteModal)}>Delete</Button>
 			</ButtonGroup>
-			{sortBy(Object.values(artifactSetsInfo), prop('order')).map((artifactSet) => {
+			{artifactSets.map((artifactSet) => {
 				const charactersFiltered = characters.filter(
-					({ artifact }) => makeArray(artifact[0])[0] === artifactSet.key,
+					({ build }) => getFirst(build.artifact) === artifactSet.key,
 				);
 				const artifactsFiltered = artifacts.filter(({ setKey }) => setKey === artifactSet.key);
 				const artifactsEquipped = artifactsFiltered.filter(({ location }) =>

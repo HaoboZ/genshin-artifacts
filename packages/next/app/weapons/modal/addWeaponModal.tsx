@@ -1,4 +1,4 @@
-import { builds } from '@/api/builds';
+import { buildsList } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/stats/percentBar';
@@ -7,7 +7,6 @@ import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
-import { type Build } from '@/types/data';
 import { type IWeapon, type WeaponKey } from '@/types/good';
 import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
 import { Formik } from 'formik';
@@ -29,8 +28,7 @@ export default function AddWeaponModal() {
 		const priorityIndex = Object.values(priority).flat();
 
 		return pipe(
-			builds,
-			Object.values<Build>,
+			buildsList,
 			filter(({ key }) => charactersInfo[key].weaponType === weaponsInfo[weapon].weaponType),
 			map((build) => ({
 				build,

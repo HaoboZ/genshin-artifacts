@@ -2,12 +2,13 @@ import { builds } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type Build } from '@/types/data';
-import { type IWeapon } from '@/types/good';
+import { type ICharacter, type IWeapon } from '@/types/good';
 import {
 	Button,
 	DialogActions,
@@ -23,7 +24,12 @@ import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
 
-type GiveWeapon = { weapon: IWeapon; tier: number; character: Build; selected: boolean };
+type GiveWeapon = {
+	weapon: IWeapon;
+	tier: number;
+	character: ICharacter & { build: Build };
+	selected: boolean;
+};
 
 export default function OptimalWeaponModal() {
 	const dispatch = useAppDispatch();
@@ -37,12 +43,12 @@ export default function OptimalWeaponModal() {
 		const result: GiveWeapon[] = [];
 
 		for (let i = 0; i < characters.length; i++) {
-			const character = builds[characters[i].key];
+			const character = characters[i];
 			const tieredWeapons = pipe(
 				weapons,
 				map((weapon) => ({
 					weapon,
-					tier: arrDeepIndex(builds[character.key].weapon, weapon.key),
+					tier: arrDeepIndex(character.build.weapon, weapon.key),
 				})),
 				filter(({ tier }) => tier !== -1),
 				sortBy(({ weapon }) => (weapon.level > 1 ? 0 : 1), prop('tier')),
@@ -57,7 +63,7 @@ export default function OptimalWeaponModal() {
 				if (currentWeapon) {
 					if (
 						(currentWeapon.level !== 1 || weapon.level === 1) &&
-						tier === arrDeepIndex(builds[character.key].weapon, currentWeapon.key)
+						tier === arrDeepIndex(getFirst(builds[character.key]).weapon, currentWeapon.key)
 					) {
 						continue;
 					}
@@ -98,7 +104,7 @@ export default function OptimalWeaponModal() {
 										<WeaponImage weapon={weapon} />
 									</Grid>
 									<Grid size='grow'>
-										<PercentBar p={1 - tier / character.weapon.length} />
+										<PercentBar p={1 - tier / character.build.weapon.length} />
 									</Grid>
 								</Grid>
 							</ListItemText>

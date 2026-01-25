@@ -1,16 +1,12 @@
 'use client';
-import {
-	artifactSetsInfo,
-	artifactSlotOrder,
-	missingArtifactSets,
-	useArtifacts,
-} from '@/api/artifacts';
+import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import Dropdown from '@/components/dropdown';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PercentBar from '@/components/stats/percentBar';
-import { maxPotentialPercents, potentialPercent, weightedPercent } from '@/helpers/stats';
+import makeArray from '@/helpers/makeArray';
+import { maxPotentialPercent, maxWeightedPercent } from '@/helpers/stats';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
@@ -77,23 +73,18 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 			),
 			map((artifact) => ({
 				...artifact,
-				statRollPercent: weightedPercent(builds[artifact.location], artifact),
-				potential: artifact.location
-					? potentialPercent(builds[artifact.location], artifact)
-					: maxPotentialPercents(
-							[...Object.values(builds), ...Object.values(missingArtifactSets)],
-							artifact,
-						),
+				statRollPercent: maxWeightedPercent(
+					artifact,
+					artifact.location ? makeArray(builds[artifact.location]) : undefined,
+				),
+				potential: maxPotentialPercent(
+					artifact,
+					artifact.location ? makeArray(builds[artifact.location]) : undefined,
+				),
 			})),
 			sortBy(
 				[
-					prop(
-						{
-							potential: 'potential',
-							stats: 'statRollPercent',
-							level: 'level',
-						}[sortType],
-					),
+					prop({ potential: 'potential', stats: 'statRollPercent', level: 'level' }[sortType]),
 					sortDir ? 'asc' : 'desc',
 				],
 				({ slotKey }) => artifactSlotOrder.indexOf(slotKey),
@@ -205,11 +196,11 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				Great: {greatCount} / Good: {goodCount}
 			</Typography>
 			<Grid container spacing={1}>
-				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }, index) => {
+				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }) => {
 					const isMarked = marked.find(({ id }) => artifact.id === id);
 
 					return (
-						<Grid key={index} size={{ xs: 6, sm: 4, md: 3 }}>
+						<Grid key={artifact.id} size={{ xs: 6, sm: 4, md: 3 }}>
 							<ArtifactStatCard
 								artifact={artifact}
 								sx={{
