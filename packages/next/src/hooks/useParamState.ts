@@ -1,5 +1,5 @@
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useMemo } from 'react';
+import { type Dispatch, useCallback, useMemo } from 'react';
 import { isEmpty } from 'remeda';
 
 type Serializer<T> = {
@@ -14,15 +14,10 @@ function getSerializer<T>(initialState: T): Serializer<T> {
 				serialize: (v) => String(v),
 				deserialize: (v) => Number(v) as T,
 			};
-		case 'string':
+		default:
 			return {
 				serialize: (v) => v as string,
 				deserialize: (v) => v as T,
-			};
-		default:
-			return {
-				serialize: (v) => JSON.stringify(v),
-				deserialize: (v) => JSON.parse(v),
 			};
 	}
 }
@@ -31,7 +26,7 @@ export default function useParamState<T>(
 	key: string,
 	initialState: T,
 	serializer?: Serializer<T>,
-): [T, (value: T) => void] {
+): [T, Dispatch<T>] {
 	const searchParams = useSearchParams();
 
 	const { serialize, deserialize } = serializer ?? getSerializer(initialState);
@@ -44,7 +39,7 @@ export default function useParamState<T>(
 			} else {
 				obj[key] = serialize(value);
 			}
-			if (isEmpty(obj)) return '';
+			if (isEmpty(obj)) return '?';
 			return `?${new URLSearchParams(obj).toString()}`;
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps

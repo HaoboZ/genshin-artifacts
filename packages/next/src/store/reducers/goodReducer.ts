@@ -74,9 +74,16 @@ const goodSlice = createSlice({
 		},
 		addArtifact(state, { payload }: PayloadAction<IArtifact>) {
 			const oldArtifact = state.artifacts.find(
-				({ location, slotKey }) => location === payload.location && slotKey === payload.slotKey,
+				({ location, slotKey, buildIndex }) =>
+					location === payload.location &&
+					slotKey === payload.slotKey &&
+					buildIndex === payload.buildIndex,
 			);
-			if (oldArtifact) oldArtifact.location = '';
+			if (oldArtifact) {
+				oldArtifact.location = '';
+				payload.buildIndex = oldArtifact.buildIndex;
+				delete oldArtifact.buildIndex;
+			}
 			state.artifacts = [...state.artifacts, payload];
 		},
 		addArtifacts(state, { payload }: PayloadAction<IArtifact[]>) {
@@ -85,10 +92,16 @@ const goodSlice = createSlice({
 			);
 			state.artifacts.forEach((artifact) => {
 				const oldArtifact = state.artifacts.find(
-					({ location, slotKey }) =>
-						location === artifact.location && slotKey === artifact.slotKey,
+					({ location, slotKey, buildIndex }) =>
+						location === artifact.location &&
+						slotKey === artifact.slotKey &&
+						buildIndex === artifact.buildIndex,
 				);
-				if (oldArtifact.id !== artifact.id) oldArtifact.location = '';
+				if (oldArtifact.id !== artifact.id) {
+					oldArtifact.location = '';
+					artifact.buildIndex = oldArtifact.buildIndex;
+					delete oldArtifact.buildIndex;
+				}
 			});
 		},
 		editArtifact(state, { payload }: PayloadAction<IArtifact>) {
@@ -97,57 +110,61 @@ const goodSlice = createSlice({
 			);
 		},
 		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
+			state.artifacts = [...state.artifacts];
 			const characterA = payload[0];
 			const artifactA = payload[1];
 			const characterB = artifactA.location;
 			let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifactA.id);
 			if (artifactAIndex === -1) artifactAIndex = state.artifacts.length;
-			const artifactBIndex = state.artifacts.findIndex(
-				({ location, slotKey }) => location === characterA && slotKey === artifactA.slotKey,
+			const artifactB = state.artifacts.find(
+				({ location, slotKey, buildIndex }) =>
+					location === characterA &&
+					slotKey === artifactA.slotKey &&
+					buildIndex === artifactA.buildIndex,
 			);
 
-			state.artifacts = [...state.artifacts];
-			if (artifactBIndex) {
-				state.artifacts[artifactBIndex] = {
-					...state.artifacts[artifactBIndex],
-					location: characterB || '',
-				};
+			if (artifactB) {
+				artifactB.location = characterB || '';
+				artifactA.buildIndex = artifactB.buildIndex;
+				delete artifactB.buildIndex;
 			}
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
 		},
 		optimizeArtifacts(
 			state,
-			{ payload }: PayloadAction<{ artifact: IArtifact; character: ICharacter }[]>,
+			{
+				payload,
+			}: PayloadAction<{ artifact: IArtifact; character: CharacterKey; buildIndex?: number }[]>,
 		) {
 			state.artifacts = [...state.artifacts];
-			for (const { artifact, character } of payload) {
+			for (const { artifact, character, buildIndex } of payload) {
 				let artifactAIndex = state.artifacts.findIndex(({ id }) => id === artifact.id);
 				const artifactA = state.artifacts[artifactAIndex];
+				artifactA.buildIndex = buildIndex;
 				const characterB = artifactA.location;
 				if (artifactAIndex === -1) artifactAIndex = state.artifacts.length;
-				const artifactBIndex = state.artifacts.findIndex(
-					({ location, slotKey }) =>
-						location === character.key && slotKey === artifactA.slotKey,
+				const artifactB = state.artifacts.find(
+					({ location, slotKey, buildIndex }) =>
+						location === character &&
+						slotKey === artifactA.slotKey &&
+						buildIndex === artifactA.buildIndex,
 				);
 
-				if (artifactBIndex) {
-					state.artifacts[artifactBIndex] = {
-						...state.artifacts[artifactBIndex],
-						location: characterB || '',
-					};
+				if (artifactB) {
+					artifactB.location = characterB || '';
+					artifactA.buildIndex = artifactB.buildIndex;
+					delete artifactB.buildIndex;
 				}
-				state.artifacts[artifactAIndex] = { ...artifactA, location: character.key };
+				state.artifacts[artifactAIndex] = { ...artifactA, location: character };
 			}
 			return state;
 		},
 		removeArtifact(state, { payload }: PayloadAction<string>) {
 			const index = state.artifacts.findIndex(({ id }) => id === payload);
-			state.artifacts = [...state.artifacts];
 			if (index !== -1) {
-				state.artifacts[index] = {
-					...state.artifacts[index],
-					location: '',
-				};
+				state.artifacts = [...state.artifacts];
+				state.artifacts[index].location = '';
+				delete state.artifacts[index].buildIndex;
 			}
 		},
 		deleteArtifact(state, { payload }: PayloadAction<string>) {

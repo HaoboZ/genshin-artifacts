@@ -9,7 +9,7 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { type Dispatch, type ReactNode, useEffect, useMemo, useState } from 'react';
 import { mapValues, prop } from 'remeda';
 import SortableContainer from './sortableContainer';
 import SortableItem from './sortableItem';
@@ -23,7 +23,7 @@ export default function MultiSortable<Item>({
 	children = (lists) => Object.values(lists),
 }: {
 	groups: Record<string, Item[]>;
-	setGroups: (groups: Record<string, Item[]>) => void;
+	setGroups: Dispatch<Record<string, Item[]>>;
 	renderItems: (items: ReactNode, ref, group: string) => ReactNode;
 	renderItem: (item: Item, containerProps, handleProps) => ReactNode;
 	dependencies?: any[];

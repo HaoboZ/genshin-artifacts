@@ -1,13 +1,14 @@
 import { elementsInfo } from '@/api/elements';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
+import { type Dispatch } from 'react';
 
 export default function ElementFilter({
 	element,
 	setElement,
 }: {
 	element: string;
-	setElement: (element: string) => void;
+	setElement: Dispatch<string>;
 }) {
 	return (
 		<ToggleButtonGroup

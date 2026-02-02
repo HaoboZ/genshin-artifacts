@@ -1,32 +1,20 @@
 'use client';
-import { artifactSlotOrder } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
 import FormattedTextField from '@/components/formattedTextField';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
-import PercentBar from '@/components/stats/percentBar';
-import getFirst from '@/helpers/getFirst';
-import { weightedPercent } from '@/helpers/stats';
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
+import makeArray from '@/helpers/makeArray';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type DCharacter } from '@/types/data';
 import { Container, Grid, Stack, Switch } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
-import { useMemo } from 'react';
-import { clamp, indexBy, prop } from 'remeda';
-import ArtifactStatCard from '../../artifacts/artifactStatCard';
+import { clamp } from 'remeda';
 import CharacterImage from '../characterImage';
 import CharacterBuild from './characterBuild';
-import WeaponCard from './weaponCard';
-
-const CharacterOptimizeModal = dynamicModal(() => import('./characterOptimizeModal'));
-const CharacterArtifactModal = dynamicModal(() => import('./characterArtifactModal'));
-const CharacterWeaponModal = dynamicModal(() => import('./characterWeaponModal'));
 
 const talents = [
 	['auto', 'Auto Attack'],
@@ -36,23 +24,10 @@ const talents = [
 
 export default function Character({ characterData }: { characterData: DCharacter }) {
 	const dispatch = useAppDispatch();
-	const { showModal } = useModal();
 
 	const character = useAppSelector(({ good }) =>
 		good.characters.find(({ key }) => key === characterData.key),
 	);
-	const weapon = useAppSelector(({ good }) =>
-		good.weapons.find(({ location }) => location === characterData.key),
-	);
-	const artifacts = useAppSelector(prop('good', 'artifacts'));
-	const artifactsIndexed = useMemo(() => {
-		return indexBy(
-			artifacts.filter(({ location }) => location === characterData.key),
-			prop('slotKey'),
-		);
-	}, [artifacts, characterData.key]);
-
-	const build = getFirst(builds[characterData.key]);
 
 	return (
 		<Container>
@@ -80,6 +55,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 					/>
 				</Stack>
 			</PageTitle>
+
 			<Stack direction='row' spacing={1}>
 				<CharacterImage character={characterData} />
 				{character && (
@@ -113,7 +89,6 @@ export default function Character({ characterData }: { characterData: DCharacter
 					</Stack>
 				)}
 			</Stack>
-			<CharacterBuild build={build} />
 			{character && (
 				<PageSection title='Talents'>
 					<Grid container spacing={1}>
@@ -138,61 +113,9 @@ export default function Character({ characterData }: { characterData: DCharacter
 					</Grid>
 				</PageSection>
 			)}
-			<PageSection
-				title='Equipped'
-				actions={[
-					{
-						name: 'Optimize',
-						onClick: () => {
-							showModal(CharacterOptimizeModal, {
-								props: {
-									build,
-									weapon,
-									artifactsIndexed,
-								},
-							});
-						},
-					},
-				]}>
-				<Grid container spacing={1}>
-					<Grid size={{ xs: 6, sm: 4 }}>
-						{character && (
-							<WeaponCard
-								build={build}
-								weapon={weapon}
-								sx={{ ':hover': { cursor: 'pointer' } }}
-								onClick={() => {
-									showModal(CharacterWeaponModal, { props: { build, weapon } });
-								}}
-							/>
-						)}
-					</Grid>
-					{artifactSlotOrder.map((slot) => {
-						const artifact = artifactsIndexed[slot];
-
-						return (
-							<Grid key={slot} size={{ xs: 6, sm: 4 }}>
-								<ArtifactStatCard
-									hideCharacter
-									artifact={artifact}
-									slot={slot}
-									sx={{ ':hover': { cursor: 'pointer' } }}
-									onClick={() => {
-										showModal(CharacterArtifactModal, {
-											props: { build, slot, artifact },
-										});
-									}}>
-									{artifact && (
-										<Grid size={12}>
-											<PercentBar p={weightedPercent(build, artifact)} />
-										</Grid>
-									)}
-								</ArtifactStatCard>
-							</Grid>
-						);
-					})}
-				</Grid>
-			</PageSection>
+			{makeArray(builds[characterData.key]).map((build, index) => (
+				<CharacterBuild key={index} character={character} build={build} />
+			))}
 		</Container>
 	);
 }

@@ -1,9 +1,8 @@
 import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
-import { flat } from 'remeda';
 
 // https://tinyurl.com/genshinbuilds
-// 1/24/26
+// 2/1/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -697,10 +696,10 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'SymphonistOfScents',
 			['LumidouceElegy', 'StaffOfHoma'],
 			'BloodsoakedRuins',
-			['CalamityQueller', 'SacrificersStaff'],
+			'CalamityQueller',
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance', 'Deathmatch'],
-			['EngulfingLightning', 'MissiveWindspear', 'BalladOfTheFjords'],
-			['VortexVanquisher', 'ProspectorsShovel', 'SkywardSpine'],
+			['EngulfingLightning', 'BalladOfTheFjords'],
+			['VortexVanquisher', 'ProspectorsShovel', 'SacrificersStaff', 'SkywardSpine'],
 		],
 		group: 1,
 		artifact: [
@@ -1167,6 +1166,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			artifact: ['EchoesOfAnOffering'],
 			mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 			subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
+			buildIndex: 1,
 		},
 	],
 	Yelan: {
@@ -1304,6 +1304,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 				circlet: 'critRD_',
 			},
 			subStat: ['enerRech_', 'critRD_', 'hp_', 'eleMas'],
+			buildIndex: 1,
 		},
 	],
 	// Cryo
@@ -1531,6 +1532,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			artifact: ['BlizzardStrayer', 'MarechausseeHunter'],
 			mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
 			subStat: ['critRD_', 'atk_', 'enerRech_'],
+			buildIndex: 1,
 		},
 	],
 	Eula: {
@@ -1908,6 +1910,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			],
 			mainStat: { sands: 'atk_', goblet: 'anemo_dmg_', circlet: 'critRD_' },
 			subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
+			buildIndex: 1,
 		},
 	],
 	Xiao: {
@@ -2232,4 +2235,4 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	},
 };
 
-export const buildsList = flat(Object.values(builds));
+export const buildsList = Object.values(builds).flat();

@@ -2,6 +2,7 @@ import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
 import { statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
@@ -51,7 +52,7 @@ export default function CharacterOptimizeModal({
 						filter(
 							({ slotKey, setKey, mainStatKey }) =>
 								slotKey === slot &&
-								arrDeepIndex(build.artifact, setKey) === 0 &&
+								getFirst(build.artifact) === setKey &&
 								statArrMatch(build.mainStat[slot], mainStatKey),
 						),
 						map((artifact) => ({

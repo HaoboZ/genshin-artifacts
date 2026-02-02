@@ -96,7 +96,7 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 					{charactersTiered.map(({ build, statRollPercent }) => {
 						const currentArtifact = artifacts.find(
-							(artifact) => artifact.location === build.key,
+							({ location, buildIndex }) => location === build.key && !buildIndex,
 						);
 						return (
 							<Grid key={build.key} container size={{ xs: 6, md: 4 }}>

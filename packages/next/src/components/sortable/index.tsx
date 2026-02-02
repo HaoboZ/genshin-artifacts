@@ -9,7 +9,7 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { type Dispatch, type ReactNode, useEffect, useMemo, useState } from 'react';
 import { prop } from 'remeda';
 import SortableItem from './sortableItem';
 
@@ -20,7 +20,7 @@ export default function Sortable<Item>({
 	dependencies = [],
 }: {
 	items: Item[];
-	setItems: (items: Item[]) => void;
+	setItems: Dispatch<Item[]>;
 	renderItem: (item: Item, containerProps, handleProps) => ReactNode;
 	dependencies?: any[];
 }) {

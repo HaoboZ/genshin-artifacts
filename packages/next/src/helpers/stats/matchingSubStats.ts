@@ -1,4 +1,4 @@
-import { flat, sumBy } from 'remeda';
+import { sumBy } from 'remeda';
 import { type Build } from '../../types/data';
 import { type IArtifact } from '../../types/good';
 import isMainStat from './isMainStat';
@@ -8,7 +8,7 @@ export function matchingSubStats(build: Build, artifact: IArtifact) {
 	if (!isMainStat(build, artifact, true)) return [0, 1];
 
 	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
-	const buildSubstats = flat(build.subStat);
+	const buildSubstats = build.subStat.flat();
 
 	return [
 		sumBy(substats, ({ key }) => (statArrMatch(buildSubstats, key) ? 1 : 0)),

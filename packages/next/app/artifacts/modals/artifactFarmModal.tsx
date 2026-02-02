@@ -10,9 +10,9 @@ import DialogWrapper from '@/providers/modal/dialogWrapper';
 import { useAppSelector } from '@/store/hooks';
 import { type ArtifactSetKey, type IArtifact } from '@/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
-import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
 import {
+	capitalize,
 	entries,
 	fromKeys,
 	groupBy,
@@ -81,14 +81,14 @@ export default function ArtifactFarmModal() {
 				slots: pipe(
 					slots,
 					pickBy((set) => set.size > 0),
-					mapValues((slots) =>
-						pipe(
+					mapValues((slots) => {
+						return pipe(
 							slots,
 							Array.from<string>,
 							map((stat) => statName[stat]),
 							join(', '),
-						),
-					),
+						);
+					}),
 					entries(),
 				),
 			})),
@@ -104,7 +104,17 @@ export default function ArtifactFarmModal() {
 	}, [artifacts]);
 
 	const lowPotential = useMemo(() => {
-		const artifactsIndexed = groupBy<IArtifact>(artifacts, prop('location'));
+		const artifactsIndexed = pipe(
+			artifacts,
+			groupBy<IArtifact>(prop('setKey')),
+			mapValues((artifacts) =>
+				pipe(
+					artifacts,
+					groupBy(prop('slotKey')),
+					mapValues((artifacts) => sortBy(artifacts, [prop('rarity'), 'desc'])),
+				),
+			),
+		);
 
 		const incompleteArtifactSets: Record<ArtifactSetKey, { bad: number; total: number }> =
 			mapValues(artifactSetsInfo, () => ({ bad: 0, total: 0 }));
@@ -113,11 +123,10 @@ export default function ArtifactFarmModal() {
 			const setKey = getFirst(build.artifact);
 			for (const slotKey of artifactSlotOrder) {
 				incompleteArtifactSets[setKey].total++;
-				const artifact = artifactsIndexed[build.key]?.find(
-					(artifact) => artifact.slotKey === slotKey,
-				);
-				const potential = potentialPercent(build, artifact);
-				if (potential < 0.3) incompleteArtifactSets[setKey].bad++;
+				const artifacts = artifactsIndexed[setKey][slotKey];
+				const potential = artifacts?.map((artifact) => potentialPercent(build, artifact)) ?? [];
+
+				if (Math.max(...potential, 0) < 0.3) incompleteArtifactSets[setKey].bad++;
 			}
 		}
 
@@ -151,7 +160,7 @@ export default function ArtifactFarmModal() {
 												</Typography>
 												{slots.map(([slot, stats]) => (
 													<Typography key={slot} variant='body2'>
-														{capitalCase(slot)}: {Array.from(stats)}
+														{capitalize(slot)}: {Array.from(stats)}
 													</Typography>
 												))}
 											</Fragment>

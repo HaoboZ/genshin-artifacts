@@ -12,7 +12,7 @@ import RarityFilter from './rarityFilter';
 export default function Characters() {
 	const [element, setElement] = useParamState('element', null);
 	const [weaponType, setWeaponType] = useParamState('weapon', null);
-	const [rarity, setRarity] = useParamState('rarity', null);
+	const [rarity, setRarity] = useParamState('rarity', 0);
 
 	const [search, setSearch] = useState('');
 	const [editMode, setEditMode] = useState(false);

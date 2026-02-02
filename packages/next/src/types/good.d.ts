@@ -10,7 +10,6 @@ export interface IGOOD {
 	artifacts?: IArtifact[];
 	weapons?: IWeapon[];
 	materials?: Optional<Record<MaterialKey, number>>;
-	astralMark?: boolean;
 }
 
 export interface IArtifact {
@@ -27,6 +26,7 @@ export interface IArtifact {
 	astralMark?: boolean; // Favorite star in-game
 	elixirCrafted?: boolean; // Flag for if the artifact was created using Sanctifying Elixir. This guarantees the main stat + 2 additional rolls on the first 2 substats
 	unactivatedSubstats?: ISubstat[]; // Unactivated substat(s). Once a substat is activated, it should be moved to `substats` instead
+	buildIndex?: number;
 }
 
 export interface ISubstat {

@@ -22,13 +22,13 @@ export default function ArtifactSetFilter() {
 			<Grid>
 				<ButtonGroup>
 					<Button sx={{ height: 50 }} component={Link} href='/artifacts'>
-						All
+						Sets
 					</Button>
 					<Button
 						sx={{ height: 50 }}
 						component={Link}
 						href={{ pathname: '/artifacts/all', query } as any}>
-						Unused
+						All
 					</Button>
 				</ButtonGroup>
 			</Grid>

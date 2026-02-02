@@ -31,8 +31,10 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 
 export function maxPotentialPercent(artifact: IArtifact, builds: Build[] = buildsList) {
 	const setKey = artifact.setKey;
-	return builds
-		.filter(({ artifact }) => getFirst(artifact) === setKey)
-		.map((build) => potentialPercent(build, artifact))
-		.reduce((a, b) => (a > b ? a : b), 0);
+	return Math.max(
+		...builds
+			.filter(({ artifact }) => getFirst(artifact) === setKey)
+			.map((build) => potentialPercent(build, artifact)),
+		0,
+	);
 }

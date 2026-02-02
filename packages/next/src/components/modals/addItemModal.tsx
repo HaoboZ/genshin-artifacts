@@ -3,6 +3,7 @@ import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
+import { capitalize } from 'remeda';
 
 export default function AddItemModal({
 	title,
@@ -24,7 +25,7 @@ export default function AddItemModal({
 	const validateFields = () => {
 		for (const field of requiredFields) {
 			if (!data[field]) {
-				throw Error(`Missing ${field.charAt(0).toUpperCase() + field.slice(1)}`);
+				throw Error(`Missing ${capitalize(field)}`);
 			}
 		}
 	};

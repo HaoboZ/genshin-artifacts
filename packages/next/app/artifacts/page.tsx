@@ -1,5 +1,6 @@
 'use client';
 import { artifactSetsInfo } from '@/api/artifacts';
+import { buildsList } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
@@ -46,13 +47,10 @@ export default function Artifacts() {
 				<Button onClick={() => showModal(ArtifactDeleteModal)}>Delete</Button>
 			</ButtonGroup>
 			{artifactSets.map((artifactSet) => {
-				const charactersFiltered = characters.filter(
-					({ build }) => getFirst(build.artifact) === artifactSet.key,
-				);
+				const charactersFiltered = buildsList
+					.filter(({ artifact }) => getFirst(artifact) === artifactSet.key)
+					.map(prop('key'));
 				const artifactsFiltered = artifacts.filter(({ setKey }) => setKey === artifactSet.key);
-				const artifactsEquipped = artifactsFiltered.filter(({ location }) =>
-					charactersFiltered.some(({ key }) => location === key),
-				).length;
 
 				return (
 					<Stack key={artifactSet.key} direction='row' sx={{ alignItems: 'center' }}>
@@ -64,18 +62,19 @@ export default function Artifacts() {
 							// @ts-expect-error link
 							href={`/artifacts/${artifactSet.key}`}
 						/>
-						{charactersFiltered.map(({ key, level }) => (
-							<PageLink key={key} href={`/characters/${key}`}>
-								<CharacterImage
-									character={charactersInfo[key]}
-									size={50}
-									sx={{ border: level ? 0 : 1, borderColor: 'red' }}
-								/>
-							</PageLink>
-						))}
+						{characters
+							.filter(({ key }) => charactersFiltered.includes(key))
+							.map(({ key, level }) => (
+								<PageLink key={key} href={`/characters/${key}`}>
+									<CharacterImage
+										character={charactersInfo[key]}
+										size={50}
+										sx={{ border: level ? 0 : 1, borderColor: 'red' }}
+									/>
+								</PageLink>
+							))}
 						<Typography sx={{ ml: 1 }}>
-							{artifactsEquipped} / {charactersFiltered.length * 5} Wanted /{' '}
-							{artifactsFiltered.length} Total
+							{charactersFiltered.length * 5} Wanted / {artifactsFiltered.length} Total
 						</Typography>
 					</Stack>
 				);

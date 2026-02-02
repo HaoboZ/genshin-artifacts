@@ -2,13 +2,14 @@ import { artifactSlotImages, artifactSlotOrder } from '@/api/artifacts';
 import { type SlotKey } from '@/types/good';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
+import { type Dispatch } from 'react';
 
 export default function SlotFilter({
 	slot,
 	setSlot,
 }: {
 	slot: SlotKey;
-	setSlot: (slot: SlotKey) => void;
+	setSlot: Dispatch<SlotKey>;
 }) {
 	return (
 		<ToggleButtonGroup

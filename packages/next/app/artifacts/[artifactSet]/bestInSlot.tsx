@@ -1,5 +1,5 @@
 import { buildsList } from '@/api/builds';
-import { charactersInfo } from '@/api/characters';
+import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
 import PageLink from '@/components/page/pageLink';
 import StatChipArray from '@/components/stats/statChipArray';
@@ -8,8 +8,8 @@ import makeArray from '@/helpers/makeArray';
 import useParamState from '@/hooks/useParamState';
 import { type ArtifactSetKey, type SlotKey } from '@/types/good';
 import { Stack, Typography } from '@mui/material';
-import { capitalCase } from 'change-case';
 import { Fragment, useMemo } from 'react';
+import { capitalize, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import getArtifactSetBuild from '../getArtifactSetBuild';
 
@@ -20,11 +20,20 @@ export default function BestInSlot({
 	group: number;
 	artifactSet: ArtifactSetKey;
 }) {
-	const builds = buildsList.filter(
-		(build) => getFirst(build.artifact) === artifactSet && build.group === group,
-	);
+	const characters = useCharacters();
 
 	const [slot] = useParamState<SlotKey>('slot', null);
+
+	const builds = useMemo(
+		() =>
+			sortBy(
+				buildsList.filter(
+					(build) => getFirst(build.artifact) === artifactSet && build.group === group,
+				),
+				({ key }) => characters.findIndex((character) => character.key === key),
+			),
+		[artifactSet, group, characters],
+	);
 
 	const { mainStat, subStat } = useMemo(
 		() => getArtifactSetBuild(builds, artifactSet),
@@ -72,7 +81,7 @@ export default function BestInSlot({
 				return (
 					<StatChipArray
 						key={slotType}
-						name={capitalCase(slotType)}
+						name={capitalize(slotType)}
 						arr={Object.entries(
 							mainStat[slotType][0].reduce((acc, curr) => {
 								acc[curr] = (acc[curr] || 0) + 1;

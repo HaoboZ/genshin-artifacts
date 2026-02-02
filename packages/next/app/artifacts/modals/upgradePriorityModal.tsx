@@ -41,12 +41,13 @@ export default function UpgradePriorityModal() {
 							return {
 								build,
 								matching,
-								maxMatching: matching[0] === 4 || matching[0] === matching[1],
+								maxMatching: matching[0] === 4 || matching[0] >= matching[1],
 								potential: potentialPercent(build, artifact),
 								currentPotential: potentialPercent(
 									build,
 									equippedArtifacts[build.key]?.find(
-										({ slotKey }) => artifact.slotKey === slotKey,
+										({ slotKey, buildIndex }) =>
+											artifact.slotKey === slotKey && !buildIndex,
 									),
 								),
 							};
@@ -84,17 +85,16 @@ export default function UpgradePriorityModal() {
 									Potential: %p ({artifact.matching[0]}/{artifact.matching[1]})
 								</PercentBar>
 							</ListItemText>
-							{artifact.build?.weapon.length !== 0 &&
-								artifact.build.key !== artifact.location && (
-									<Box sx={{ ml: 1 }}>
-										<PageLink
-											href={`/characters/${artifact.build.key}`}
-											onClick={() => closeModal()}>
-											<CharacterImage character={charactersInfo[artifact.build.key]} />
-											<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
-										</PageLink>
-									</Box>
-								)}
+							{artifact.build.key !== artifact.location && (
+								<Box sx={{ ml: 1 }}>
+									<PageLink
+										href={`/characters/${artifact.build.key}`}
+										onClick={() => closeModal()}>
+										<CharacterImage character={charactersInfo[artifact.build.key]} />
+										<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
+									</PageLink>
+								</Box>
+							)}
 						</ListItem>
 					))}
 				</List>

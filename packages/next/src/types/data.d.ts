@@ -56,4 +56,5 @@ export interface Build {
 		circlet: StatKey | StatKey[];
 	};
 	subStat: (StatKey | StatKey[])[];
+	buildIndex?: number;
 }

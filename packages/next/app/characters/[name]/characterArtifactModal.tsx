@@ -9,9 +9,8 @@ import { goodActions } from '@/store/reducers/goodReducer';
 import { type Build } from '@/types/data';
 import { type IArtifact, type SlotKey } from '@/types/good';
 import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
-import { capitalCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
-import { filter, map, pipe, prop, sortBy } from 'remeda';
+import { capitalize, filter, map, pipe, prop, sortBy } from 'remeda';
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactStatCard from '../../artifacts/artifactStatCard';
 
@@ -53,7 +52,7 @@ export default function CharacterArtifactModal({
 	return (
 		<DialogWrapper>
 			<DialogTitle>
-				{capitalCase(slot)} for {charactersInfo[build.key].name}
+				{capitalize(slot)} for {charactersInfo[build.key].name}
 			</DialogTitle>
 			<Box sx={{ px: 3 }}>
 				{artifact && (

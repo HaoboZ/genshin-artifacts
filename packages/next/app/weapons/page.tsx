@@ -20,7 +20,7 @@ export default function Weapons() {
 	const { showModal } = useModal();
 
 	const [type, setType] = useParamState<WeaponType>('type', null);
-	const [rarity, setRarity] = useParamState('rarity', null);
+	const [rarity, setRarity] = useParamState('rarity', 0);
 
 	const [search, setSearch] = useState('');
 

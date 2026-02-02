@@ -27,13 +27,14 @@ import {
 	IconButton,
 	ListItemIcon,
 	MenuItem,
+	Pagination,
 	Stack,
 	Switch,
 	Typography,
 } from '@mui/material';
 import { capitalCase, pascalSnakeCase } from 'change-case';
 import { useMemo, useState } from 'react';
-import { filter, map, pipe, prop, sortBy } from 'remeda';
+import { capitalize, chunk, filter, map, pipe, prop, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatCard from '../artifactStatCard';
 import SlotFilter from './slotFilter';
@@ -46,16 +47,17 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 
 	const setInfo = artifactSetsInfo[artifactSet];
 
+	const [page, setPage] = useState(0);
 	const [deleteMode, setDeleteMode] = useState(false);
 	const [marked, setMarked] = useState([]);
 	const [{ sortDir, sortType }, setSort] = useState({ sortDir: false, sortType: 'potential' });
 	const [filtered, setFiltered] = useState({
 		equipped: artifactSet ? 0 : 2,
 		locked: 0,
-		maxLevel: 0,
+		maxLevel: artifactSet ? 0 : 1,
 	});
 	const [slot, setSlot] = useParamState<SlotKey>('slot', null);
-	const [rarity, setRarity] = useParamState('rarity', null);
+	const [rarity, setRarity] = useParamState('rarity', 0);
 
 	const artifacts = useArtifacts({ artifactSet, rarity: +rarity, slot });
 	const artifactsSorted = useMemo(() => {
@@ -68,7 +70,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 						: true) &&
 					(filtered.locked ? Boolean(+artifact.lock - filtered.locked + 1) : true) &&
 					(filtered.maxLevel
-						? Boolean(+(artifact.level === 20) - filtered.maxLevel + 1)
+						? Boolean(+(artifact.level === artifact.rarity * 4) - filtered.maxLevel + 1)
 						: true),
 			),
 			map((artifact) => ({
@@ -102,6 +104,8 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 		],
 		[artifactsSorted],
 	);
+
+	const artifactPages = chunk(artifactsSorted, 50);
 
 	return (
 		<PageSection
@@ -161,10 +165,10 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 					<IconButton onClick={() => setSort({ sortDir: !sortDir, sortType })}>
 						{sortDir ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
 					</IconButton>
-					<Dropdown button={capitalCase(sortType)}>
+					<Dropdown button={capitalize(sortType)}>
 						{['potential', 'stats', 'level'].map((sortType) => (
 							<MenuItem key={sortType} onClick={() => setSort({ sortDir, sortType })}>
-								{capitalCase(sortType)}
+								{capitalize(sortType)}
 							</MenuItem>
 						))}
 					</Dropdown>
@@ -176,6 +180,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 								key={filterType}
 								onClick={() => {
 									filtered[filterType] = (filtered[filterType] + 1) % 3;
+									setPage(0);
 									setFiltered({ ...filtered });
 								}}>
 								<ListItemIcon>
@@ -189,14 +194,26 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 						))}
 					</Dropdown>
 				</Badge>
-				<SlotFilter slot={slot} setSlot={setSlot} />
-				<RarityFilter rarity={rarity} setRarity={setRarity} />
+				<SlotFilter
+					slot={slot}
+					setSlot={(slot) => {
+						setPage(0);
+						setSlot(slot);
+					}}
+				/>
+				<RarityFilter
+					rarity={rarity}
+					setRarity={(rarity) => {
+						setPage(0);
+						setRarity(rarity);
+					}}
+				/>
 			</Stack>
 			<Typography>
 				Great: {greatCount} / Good: {goodCount}
 			</Typography>
 			<Grid container spacing={1}>
-				{artifactsSorted.map(({ statRollPercent, potential, ...artifact }) => {
+				{artifactPages[page]?.map(({ statRollPercent, potential, ...artifact }) => {
 					const isMarked = marked.find(({ id }) => artifact.id === id);
 
 					return (
@@ -237,6 +254,12 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 					);
 				})}
 			</Grid>
+			<Pagination
+				sx={{ my: 1, justifySelf: 'center' }}
+				count={artifactPages.length}
+				page={page + 1}
+				onChange={(_, page) => setPage(page - 1)}
+			/>
 		</PageSection>
 	);
 }

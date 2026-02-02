@@ -1,13 +1,13 @@
 import { artifactSlotOrder } from '@/api/artifacts';
+import { buildsList } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import getFirst from '@/helpers/getFirst';
-import { statArrMatch, weightedPercent } from '@/helpers/stats';
+import { weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
-import { type Build } from '@/types/data';
-import { type IArtifact, type ICharacter } from '@/types/good';
+import { type CharacterKey, type IArtifact } from '@/types/good';
 import {
 	Button,
 	DialogActions,
@@ -19,7 +19,7 @@ import {
 	ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
-import { filter, groupBy, indexBy, pipe, prop, sortBy } from 'remeda';
+import { filter, firstBy, groupBy, isNot, map, mapValues, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
 
@@ -32,51 +32,64 @@ export default function OptimizeArtifactModal() {
 	const [giveArtifacts, setGiveArtifacts] = useState(() => {
 		const result: {
 			artifact: IArtifact;
-			character: ICharacter & { build: Build };
+			character: CharacterKey;
+			buildIndex?: number;
 			selected: boolean;
 		}[] = [];
-		const artifactsClone = structuredClone(artifacts);
-		const equippedArtifacts = groupBy<IArtifact>(artifacts, prop('location'));
 
-		for (let i = 0; i < characters.length; i++) {
-			const character = characters[i];
-			const characterArtifacts = indexBy(
-				equippedArtifacts[character.key] ?? [],
-				prop('slotKey'),
-			);
-			for (const slot of artifactSlotOrder) {
-				// skip marked slots
-				if (characterArtifacts[slot]?.astralMark) continue;
+		const artifactsIndexed = pipe(
+			structuredClone(artifacts),
+			groupBy<IArtifact>(prop('setKey')),
+			mapValues((artifacts) =>
+				pipe(
+					artifacts,
+					groupBy(prop('slotKey')),
+					mapValues((artifacts) => sortBy(artifacts, [prop('rarity'), 'desc'])),
+				),
+			),
+		);
+		const buildsSorted = sortBy(
+			buildsList,
+			({ buildIndex }) => buildIndex ?? 0,
+			({ key }) => characters.findIndex((character) => character.key === key),
+		);
 
-				const tieredArtifacts = pipe(
-					artifactsClone,
-					filter(
-						({ slotKey, setKey, mainStatKey }) =>
-							slotKey === slot &&
-							setKey === getFirst(character.build.artifact) &&
-							statArrMatch(character.build.mainStat[slotKey], mainStatKey, true),
-					),
-					sortBy([(artifact) => weightedPercent(character.build, artifact), 'desc']),
+		for (const build of buildsSorted) {
+			const setKey = getFirst(build.artifact);
+			for (const slotKey of artifactSlotOrder) {
+				const filteredArtifacts = artifactsIndexed[setKey]?.[slotKey];
+				if (!filteredArtifacts?.length) continue;
+
+				const currentArtifact = filteredArtifacts.find(
+					(artifact) =>
+						artifact.location === build.key &&
+						artifact.slotKey === slotKey &&
+						artifact.buildIndex === build.buildIndex,
 				);
+				if (currentArtifact?.astralMark) continue;
 
-				for (const artifact of tieredArtifacts) {
-					if (artifact.location === character.key) break;
-					const currentLocation = characters.findIndex(({ key }) => key === artifact.location);
-					// astralMarked artifacts are skipped
-					if (artifact.astralMark) continue;
-					if (currentLocation !== -1 && currentLocation < i) continue;
-					const currentArtifact = artifactsClone.find(
-						({ slotKey, location }) => slotKey === slot && location === character.key,
-					);
-					if (currentArtifact) currentArtifact.location = '';
-					artifact.location = character.key;
-					result.push({
-						artifact: artifacts.find(({ id }) => id === artifact.id),
-						character,
-						selected: true,
-					});
-					break;
+				const { artifact, weight } = pipe(
+					filteredArtifacts,
+					filter(isNot(prop('astralMark'))),
+					map((artifact) => ({ artifact, weight: weightedPercent(build, artifact) })),
+					firstBy([prop('weight'), 'desc']),
+				);
+				if (!weight) continue;
+
+				if (currentArtifact?.id === artifact.id) {
+					filteredArtifacts.splice(filteredArtifacts.indexOf(artifact), 1);
+					continue;
 				}
+
+				if (currentArtifact) currentArtifact.location = '';
+				filteredArtifacts.splice(filteredArtifacts.indexOf(artifact), 1);
+				artifact.location = build.key;
+				result.push({
+					artifact: artifacts.find(({ id }) => id === artifact.id),
+					character: build.key,
+					buildIndex: build.buildIndex,
+					selected: true,
+				});
 			}
 		}
 
@@ -107,10 +120,7 @@ export default function OptimizeArtifactModal() {
 								/>
 							</ListItemText>
 							<ListItemAvatar sx={{ pl: 2 }}>
-								<CharacterImage
-									character={charactersInfo[character.key]}
-									sx={{ border: character.level ? 0 : 2, borderColor: 'red' }}
-								/>
+								<CharacterImage character={charactersInfo[character]} />
 							</ListItemAvatar>
 						</ListItem>
 					))}

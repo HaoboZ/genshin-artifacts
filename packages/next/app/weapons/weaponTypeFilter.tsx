@@ -1,6 +1,7 @@
 import { weaponImages, type WeaponType } from '@/api/weapons';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
+import { type Dispatch } from 'react';
 
 export const weaponsTypes: WeaponType[] = ['Sword', 'Claymore', 'Polearm', 'Catalyst', 'Bow'];
 
@@ -9,7 +10,7 @@ export default function WeaponTypeFilter({
 	setWeaponType,
 }: {
 	weaponType: WeaponType;
-	setWeaponType: (weaponType: WeaponType) => void;
+	setWeaponType: Dispatch<WeaponType>;
 }) {
 	return (
 		<ToggleButtonGroup
