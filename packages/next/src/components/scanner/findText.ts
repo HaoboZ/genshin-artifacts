@@ -81,7 +81,7 @@ export default async function findText(canvas: HTMLCanvasElement, newCanvas?: HT
 		);
 		drawBox(context, data.blocks[0].bbox);
 		const text = data.text.toLowerCase();
-		artifact.slotKey = artifactSlotOrder.find((slot) => text.includes(slot));
+		artifact.slotKey = artifactSlotOrder.find((slot) => text.includes(slot)) ?? 'flower';
 		await Promise.all(
 			textAreas.map(({ item, area }) =>
 				scheduler
