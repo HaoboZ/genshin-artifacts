@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
 import { indexBy, prop } from 'remeda';
+import fetchPage from '../fetchPage';
 
 const artifactLocation = {
 	// 4
@@ -27,8 +26,7 @@ const artifactLocation = {
 };
 
 export async function fetchArtifacts() {
-	const { data } = await axios.get('https://genshin-impact.fandom.com/wiki/Artifact/Sets');
-	const dom = new JSDOM(data);
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Artifact/Sets');
 
 	const artifacts = [];
 	let group = 8;

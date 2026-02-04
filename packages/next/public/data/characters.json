@@ -419,6 +419,16 @@
 		"talentMaterial": "Conflict",
 		"weeklyMaterial": "AscendedSampleRook"
 	},
+	"Illuga": {
+		"key": "Illuga",
+		"name": "Illuga",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Geo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Illuga_Icon.png",
+		"talentMaterial": "Elysium",
+		"weeklyMaterial": "ErodedHorn"
+	},
 	"Ineffa": {
 		"key": "Ineffa",
 		"name": "Ineffa",
@@ -1102,5 +1112,15 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Zhongli_Icon.png",
 		"talentMaterial": "Gold",
 		"weeklyMaterial": "TuskOfMonocerosCaeli"
+	},
+	"Zibai": {
+		"key": "Zibai",
+		"name": "Zibai",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Geo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/22/Zibai_Icon.png",
+		"talentMaterial": "Gold",
+		"weeklyMaterial": "AscendedSampleQueen"
 	}
 }

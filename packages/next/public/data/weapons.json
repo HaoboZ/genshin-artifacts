@@ -85,9 +85,9 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Weapon_Lightbearing_Moonshard.png",
 		"rarity": 5,
 		"weaponType": "Sword",
-		"atk": 0,
-		"stat": "None",
-		"ability": "None"
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "Increases DEF by 20~40%. DMG inflicted by Lunar-Crystallize reactions increases by 64~128% for 5s after the equipping character uses an Elemental Skill."
 	},
 	"MistsplitterReforged": {
 		"key": "MistsplitterReforged",
@@ -597,7 +597,7 @@
 		"weaponType": "Claymore",
 		"atk": 674,
 		"stat": "CRIT Rate 22.1%",
-		"ability": "Increases ATK by 20~40%. When characters in your party obtain Elemental Shards from Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by 18~36%. The Seal lasts for 15s, and the equipped may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG."
+		"ability": "Increases ATK by 20~40%. When characters in your party obtain Elemental Shards from Crystallize or trigger Lunar-Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by 18~36%. The Seal lasts for 15s, and the equipped may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG. Up to 1 Seal may be obtained every second through the Lunar-Crystallize reaction."
 	},
 	"WolfsGravestone": {
 		"key": "WolfsGravestone",
@@ -677,7 +677,7 @@
 		"weaponType": "Claymore",
 		"atk": 565,
 		"stat": "Energy Recharge 30.6%",
-		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Lunar-Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
 	},
 	"FruitfulHook": {
 		"key": "FruitfulHook",
@@ -1187,7 +1187,7 @@
 		"weaponType": "Polearm",
 		"atk": 565,
 		"stat": "Elemental Mastery 110",
-		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 16~32% ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field."
+		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Lunar-Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 16~32% ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field."
 	},
 	"MountainBracingBolt": {
 		"key": "MountainBracingBolt",

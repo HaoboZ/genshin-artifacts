@@ -41,6 +41,7 @@ export type CharacterKey =
 	| 'HuTao' // Hu Tao
 	| 'Iansan' // Iansan
 	| 'Ifa' // Ifa
+	| 'Illuga' // Illuga
 	| 'Ineffa' // Ineffa
 	| 'Jahoda' // Jahoda
 	| 'Jean' // Jean
@@ -109,4 +110,5 @@ export type CharacterKey =
 	| 'Yoimiya' // Yoimiya
 	| 'YumemizukiMizuki' // Yumemizuki Mizuki
 	| 'YunJin' // Yun Jin
-	| 'Zhongli'; // Zhongli
+	| 'Zhongli' // Zhongli
+	| 'Zibai'; // Zibai

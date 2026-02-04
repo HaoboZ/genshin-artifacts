@@ -2,12 +2,12 @@
 	"name": "@genshin-artifacts/generate-data",
 	"private": true,
 	"scripts": {
-		"start": "bun ./index.ts"
+		"start": "npx tsx ./index.ts"
 	},
 	"dependencies": {
-		"axios": "1.13.4",
 		"change-case": "5.4.4",
-		"jsdom": "27.4.0"
+		"jsdom": "27.4.0",
+		"playwright": "1.58.1"
 	},
 	"devDependencies": {
 		"@types/jsdom": "27.0.0"

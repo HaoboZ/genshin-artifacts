@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
 import { mapToObj } from 'remeda';
+import fetchPage from '../fetchPage';
 
 export async function fetchElements() {
-	const { data } = await axios.get('https://genshin-impact.fandom.com/wiki/Element');
-	const dom = new JSDOM(data);
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Element');
 
 	const elementItems = dom.window.document.getElementsByClassName('wikia-gallery-item');
 	return mapToObj(Array.from(elementItems), ({ children }) => [

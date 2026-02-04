@@ -1,17 +1,14 @@
-import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
+import fetchPage from '../fetchPage';
 
 export async function fetchWeekly(characters) {
-	const { data } = await axios.get(
+	const dom = await fetchPage(
 		'https://genshin-impact.fandom.com/wiki/Character_Level-Up_Material',
 	);
-	const dom = new JSDOM(data);
 
 	const weekly = [];
 	const bosses = dom.window.document.getElementsByClassName('wikitable')[1];
-
 	for (const boss of bosses.querySelectorAll('td[rowspan="3"]')) {
 		const matContainer = [
 			boss.nextElementSibling,

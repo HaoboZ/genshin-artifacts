@@ -1,12 +1,8 @@
-import axios from 'axios';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
+import fetchPage from '../fetchPage';
 
 export async function fetchTalents(characters) {
-	const { data } = await axios.get(
-		'https://genshin-impact.fandom.com/wiki/Character_Talent_Material',
-	);
-	const dom = new JSDOM(data);
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Character_Talent_Material');
 
 	const talents = [];
 	const nations = dom.window.document.getElementsByClassName('wikitable alternating-colors-table');

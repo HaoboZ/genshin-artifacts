@@ -1,12 +1,10 @@
-import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
 import { indexBy, pick, prop } from 'remeda';
+import fetchPage from '../fetchPage';
 
 export async function fetchCharacters() {
-	const { data } = await axios.get('https://genshin-impact.fandom.com/wiki/Character/List');
-	const dom = new JSDOM(data);
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Character/List');
 
 	const characters = [];
 	for (const { children } of dom.window.document.querySelector('.mw-parser-output tbody')

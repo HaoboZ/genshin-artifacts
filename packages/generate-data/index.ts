@@ -1,13 +1,13 @@
-import { fetchArtifacts, writeArtifacts } from './artifacts';
-import { fetchCharacters, writeCharacters } from './characters';
-import { fetchElements, writeElements } from './elements';
-import { fetchTalents, writeTalents } from './talents';
-import { fetchWeapons, writeWeapons } from './weapons';
-import { fetchWeekly, writeWeekly } from './weekly';
+import { fetchArtifacts, writeArtifacts } from './data/artifacts';
+import { fetchCharacters, writeCharacters } from './data/characters';
+import { fetchElements, writeElements } from './data/elements';
+import { fetchTalents, writeTalents } from './data/talents';
+import { fetchWeapons, writeWeapons } from './data/weapons';
+import { fetchWeekly, writeWeekly } from './data/weekly';
 
 const run = {
 	elements: false,
-	characters: false,
+	characters: true,
 	talents: false,
 	weekly: false,
 	artifacts: false,

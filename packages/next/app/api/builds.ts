@@ -2132,6 +2132,15 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		},
 		subStat: ['enerRech_', 'critRD_', 'def_'],
 	},
+	Illuga: {
+		key: 'Illuga',
+		role: 'Buff Support',
+		weapon: ['FavoniusLance', 'DragonsBane', 'KitainCrossSpear', 'StaffOfTheScarletSands'],
+		group: 0,
+		artifact: ['SilkenMoonsSerenade'],
+		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
+		subStat: ['eleMas', 'enerRech_', 'def_'],
+	},
 	Zhongli: {
 		key: 'Zhongli',
 		role: 'Shield Support',
@@ -2232,6 +2241,24 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			circlet: ['def_', 'heal_', 'critRate_'],
 		},
 		subStat: ['enerRech_', 'def_', 'def', 'critRate_'],
+	},
+	Zibai: {
+		key: 'Zibai',
+		role: 'DPS',
+		weapon: [
+			'LightbearingMoonshard',
+			'UrakuMisugiri',
+			'LightOfFoliarIncision',
+			'PeakPatrolSong',
+			'HarbingerOfDawn',
+			'FluteOfEzpitzal',
+			'Absolution',
+			'CinnabarSpindle',
+		],
+		group: 1,
+		artifact: ['NightOfTheSkysUnveiling'],
+		mainStat: { sands: 'def_', goblet: 'def_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'def_', 'eleMas', 'enerRech_'],
 	},
 };
 

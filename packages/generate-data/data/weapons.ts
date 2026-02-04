@@ -1,17 +1,12 @@
-import axios from 'axios';
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
 import { indexBy, prop } from 'remeda';
+import fetchPage from '../fetchPage';
 
 export async function fetchWeapons() {
-	const { data } = await axios.get(
-		'https://genshin-impact.fandom.com/wiki/Weapon/List/By_Weapon_Type',
-	);
-	const dom = new JSDOM(data);
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Weapon/List/By_Weapon_Type');
 
 	const weapons = [];
-
 	for (const weaponTypeTable of dom.window.document.querySelectorAll('.article-table')) {
 		const weaponType = weaponTypeTable.previousElementSibling.querySelector('a').title;
 		for (const { children } of weaponTypeTable.querySelectorAll('tr')) {
