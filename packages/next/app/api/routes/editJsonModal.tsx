@@ -13,7 +13,7 @@ export default function EditJsonModal({
 }) {
 	const { closeModal } = useModalControls();
 
-	const [jsonContent, setJsonContent] = useState(JSON.stringify(data, null, 2));
+	const [jsonContent, setJsonContent] = useState(JSON.stringify(data, null, '\t'));
 
 	return (
 		<DialogWrapper>

@@ -55,7 +55,7 @@ export default function Settings() {
 						onClick={() => {
 							const a = document.createElement('a');
 							a.href = URL.createObjectURL(
-								new Blob([JSON.stringify({ main, ...good }, null, 2)], {
+								new Blob([JSON.stringify({ main, ...good }, null, '\t')], {
 									type: 'text/plain',
 								}),
 							);

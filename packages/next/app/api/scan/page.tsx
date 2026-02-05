@@ -164,7 +164,7 @@ export default function InternalScan() {
 					</Stack>
 					<Stack spacing={1} direction='row'>
 						<Box ref={containerRef} />
-						<pre>{JSON.stringify(artifact, null, 2)}</pre>
+						<pre>{JSON.stringify(artifact, null, '\t')}</pre>
 					</Stack>
 					<Box>
 						<canvas ref={savedCanvasRef} style={{ height: 500 }} />
