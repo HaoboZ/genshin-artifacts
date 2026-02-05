@@ -2,7 +2,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 2/1/26
+// 2/4/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -2135,11 +2135,11 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	Illuga: {
 		key: 'Illuga',
 		role: 'Buff Support',
-		weapon: ['FavoniusLance', 'DragonsBane', 'KitainCrossSpear', 'StaffOfTheScarletSands'],
+		weapon: ['FavoniusLance', 'DragonsBane', 'KitainCrossSpear', 'EngulfingLightning'],
 		group: 0,
 		artifact: ['SilkenMoonsSerenade'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_', 'def_'],
+		subStat: ['enerRech_', 'eleMas', 'critRate_'],
 	},
 	Zhongli: {
 		key: 'Zhongli',
