@@ -6,7 +6,7 @@
 		"start": "npx tsx ./index.ts"
 	},
 	"dependencies": {
-		"playwright": "1.58.1",
+		"playwright": "1.58.2",
 		"sharp": "0.34.5"
 	}
 }
