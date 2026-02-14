@@ -7,15 +7,14 @@ export default async function handleDelete(
 	pathname: string,
 	ctx: ExecutionContext,
 ) {
-	const cache = caches.default;
 	const origin = new URL(request.url).origin;
 
 	const routeId = parseId(pathname, 'routes');
 	if (routeId) {
 		const result = json(await deleteRoute(env, routeId));
 		// Invalidate cache for routes list and the specific route
-		await cache.delete(new Request(`${origin}/routes.json`));
-		await cache.delete(new Request(`${origin}/routes/${routeId}.json`));
+		await caches.default.delete(new Request(`${origin}/routes.json`));
+		await caches.default.delete(new Request(`${origin}/routes/${routeId}.json`));
 		return result;
 	}
 
@@ -23,8 +22,8 @@ export default async function handleDelete(
 	if (mapId) {
 		const result = json(await deleteMap(request, env, mapId, ctx));
 		// Invalidate cache for maps list and the specific map
-		await cache.delete(new Request(`${origin}/maps.json`));
-		await cache.delete(new Request(`${origin}/maps/${mapId}.json`));
+		await caches.default.delete(new Request(`${origin}/maps.json`));
+		await caches.default.delete(new Request(`${origin}/maps/${mapId}.json`));
 		return result;
 	}
 

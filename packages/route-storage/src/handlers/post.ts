@@ -3,22 +3,21 @@ import { type MapData, type RouteData } from '../types';
 import { error, json, parseId } from '../utils';
 
 export default async function handlePost(request: Request, env: Env, pathname: string) {
-	const cache = caches.default;
 	const origin = new URL(request.url).origin;
 
 	const routeId = parseId(pathname, 'routes');
 	if (routeId) {
 		const result = json(await createRoute(request, env, routeId), 201);
-		await cache.delete(new Request(`${origin}/routes.json`));
-		await cache.delete(new Request(`${origin}/routes/${routeId}.json`));
+		await caches.default.delete(new Request(`${origin}/routes.json`));
+		await caches.default.delete(new Request(`${origin}/routes/${routeId}.json`));
 		return result;
 	}
 
 	const mapId = parseId(pathname, 'maps');
 	if (mapId) {
 		const result = json(await createMap(request, env, mapId), 201);
-		await cache.delete(new Request(`${origin}/maps.json`));
-		await cache.delete(new Request(`${origin}/maps/${mapId}.json`));
+		await caches.default.delete(new Request(`${origin}/maps.json`));
+		await caches.default.delete(new Request(`${origin}/maps/${mapId}.json`));
 		return result;
 	}
 

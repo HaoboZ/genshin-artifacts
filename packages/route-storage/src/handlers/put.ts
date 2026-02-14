@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { prop } from 'remeda';
 import { error, invalidateCache, json } from '../utils';
 import { getMap } from './get';
 
@@ -113,11 +114,7 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 	});
 
 	if (uploaded.length > 0) {
-		invalidateCache(
-			ctx,
-			request.url,
-			uploaded.map(({ key }) => key),
-		);
+		invalidateCache(ctx, request.url, uploaded.map(prop('key')));
 	}
 
 	return json({

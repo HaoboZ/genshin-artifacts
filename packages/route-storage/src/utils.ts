@@ -16,9 +16,10 @@ export function parseId(pathname: string, prefix: string) {
 }
 
 export function invalidateCache(ctx: ExecutionContext, requestUrl: string, keys: string[]) {
-	const cache = caches.default;
 	const url = new URL(requestUrl);
 	ctx.waitUntil(
-		Promise.all(keys.map((key) => cache.delete(new Request(`${url.origin}/data/${key}`)))),
+		Promise.all(
+			keys.map((key) => caches.default.delete(new Request(`${url.origin}/data/${key}`))),
+		),
 	);
 }

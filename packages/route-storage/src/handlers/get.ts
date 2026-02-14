@@ -1,12 +1,10 @@
+import { prop } from 'remeda';
 import { type MapData, type RouteData } from '../types';
 import { error, json, parseId } from '../utils';
 
 export default async function handleGet(request: Request, env: Env, pathname: string) {
-	const cache = caches.default;
-	const origin = new URL(request.url).origin;
-	const cacheKey = new Request(origin, request);
 	if (!request.headers.get('Range')) {
-		const cached = await cache.match(cacheKey);
+		const cached = await caches.default.match(request.url);
 		if (cached) return cached;
 	}
 
@@ -26,14 +24,13 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 
 	if (response) {
 		response.headers.set('Cache-Control', 'public, max-age=3600');
-		const cloned = response.clone();
-		cache.put(cacheKey, cloned);
+		caches.default.put(request.url, response.clone());
 		return response;
 	}
 
 	if (pathname.startsWith('/assets/') || pathname.startsWith('/images/')) {
 		const key = pathname.slice(1);
-		return await getData(request, env, key, cacheKey);
+		return await getData(request, env, key);
 	}
 
 	return error('Not found', 404);
@@ -41,7 +38,7 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 
 async function getAllRoutes(env: Env) {
 	const list = await env.BUCKET.list({ prefix: 'routes/' });
-	const jsonKeys = list.objects.map(({ key }) => key);
+	const jsonKeys = list.objects.map(prop('key'));
 
 	const routes: RouteData[] = [];
 	for (const key of jsonKeys) {
@@ -60,7 +57,7 @@ async function getRoute(env: Env, id: string) {
 
 async function getAllMaps(env: Env) {
 	const list = await env.BUCKET.list({ prefix: 'maps/' });
-	const jsonKeys = list.objects.map(({ key }) => key);
+	const jsonKeys = list.objects.map(prop('key'));
 
 	const maps: MapData[] = [];
 	for (const key of jsonKeys) {
@@ -79,7 +76,7 @@ export async function getMap(env: Env, id: string) {
 	return await file.json<MapData>();
 }
 
-async function getData(request: Request, env: Env, key: string, cacheKey: Request) {
+async function getData(request: Request, env: Env, key: string) {
 	const rangeHeader = request.headers.get('Range');
 
 	const options: R2GetOptions = {};
@@ -121,9 +118,7 @@ async function getData(request: Request, env: Env, key: string, cacheKey: Reques
 	const response = new Response(object.body, { headers });
 
 	if (!rangeHeader) {
-		const cloned = response.clone();
-		const cache = caches.default;
-		cache.put(cacheKey, cloned);
+		caches.default.put(request.url, response.clone());
 	}
 
 	return response;
