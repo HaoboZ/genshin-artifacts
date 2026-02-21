@@ -2,7 +2,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 2/4/26
+// 2/21/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -23,18 +23,18 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'DPS',
 		weapon: ['TravelersHandySword'],
 		group: 0,
-		artifact: ['GladiatorsFinale'],
-		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+		artifact: ['BloodstainedChivalry'],
+		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_'],
 	},
 	Manekina: {
 		key: 'Manekina',
 		role: 'DPS',
 		weapon: ['DarkIronSword'],
 		group: 0,
-		artifact: ['BloodstainedChivalry'],
-		mainStat: { sands: 'atk_', goblet: 'physical_dmg_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
+		artifact: ['GladiatorsFinale'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
 	},
 	// Pyro
 	Amber: {
@@ -2249,16 +2249,14 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'LightbearingMoonshard',
 			'UrakuMisugiri',
 			'LightOfFoliarIncision',
-			'PeakPatrolSong',
 			'HarbingerOfDawn',
-			'FluteOfEzpitzal',
-			'Absolution',
-			'CinnabarSpindle',
+			'PeakPatrolSong',
+			['SplendorOfTranquilWaters', 'HaranGeppakuFutsu', 'AthameArtis', 'FluteOfEzpitzal'],
 		],
 		group: 1,
-		artifact: ['NightOfTheSkysUnveiling'],
+		artifact: ['NightOfTheSkysUnveiling', 'HuskOfOpulentDreams'],
 		mainStat: { sands: 'def_', goblet: 'def_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'def_', 'eleMas', 'enerRech_'],
+		subStat: ['critRD_', 'def_', 'enerRech_', 'eleMas'],
 	},
 };
 
