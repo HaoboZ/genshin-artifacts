@@ -22,7 +22,7 @@
 		"@reduxjs/toolkit": "2.11.2",
 		"@tanem/react-nprogress": "6.0.0",
 		"@vercel/analytics": "1.6.1",
-		"@vercel/blob": "2.2.0",
+		"@vercel/blob": "2.3.0",
 		"axios": "1.13.5",
 		"change-case": "5.4.4",
 		"dayjs": "1.11.19",
