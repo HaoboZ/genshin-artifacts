@@ -1,4 +1,4 @@
-import { error, invalidateCache, json, parseId } from '../utils';
+import { error, invalidateCache, json, parseId, toAssetKey } from '../utils';
 import { getMap } from './get';
 
 export default async function handleDelete(
@@ -43,7 +43,7 @@ async function deleteRoute(env: Env, id: string) {
 async function deleteMap(request: Request, env: Env, id: string, ctx: ExecutionContext) {
 	const { image, video } = await getMap(env, id);
 
-	const keys = [image, video, `maps/${id}.json`].filter(Boolean);
+	const keys = [toAssetKey(image), toAssetKey(video), `maps/${id}.json`].filter(Boolean);
 	await env.BUCKET.delete(keys);
 
 	invalidateCache(ctx, request.url, keys);

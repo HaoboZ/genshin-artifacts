@@ -5,3 +5,5 @@
 .env*
 !.env.example
 .wrangler/
+
+backups

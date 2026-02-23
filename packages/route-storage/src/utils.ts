@@ -23,3 +23,9 @@ export function invalidateCache(ctx: ExecutionContext, requestUrl: string, keys:
 		),
 	);
 }
+
+export function toAssetKey(key?: string) {
+	if (!key) return undefined;
+	if (key.startsWith('assets/')) return key;
+	return `assets/${key}`;
+}

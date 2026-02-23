@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { prop } from 'remeda';
-import { error, invalidateCache, json } from '../utils';
+import { error, invalidateCache, json, toAssetKey } from '../utils';
 import { getMap } from './get';
 
 const ALLOWED_EXTENSIONS = {
@@ -30,11 +30,11 @@ export async function handlePut(
 	const parts = pathname.split('/');
 	if (parts[1] !== 'maps' || !parts[2]) return error('Not found', 404);
 
-	const mapId = parts[2].slice(0, -5);
 	const contentType = request.headers.get('Content-Type') || '';
 
-	const mapExists = await env.BUCKET.head(`maps/${mapId}.json`);
+	const mapExists = await env.BUCKET.head(`maps/${parts[2]}`);
 	if (!mapExists) return error('Map not found. Create the map first.', 404);
+	const mapId = parts[2].slice(0, -5);
 
 	if (contentType.startsWith('multipart/form-data')) {
 		return await uploadMultipart(request, env, mapId, ctx);
@@ -62,7 +62,7 @@ async function uploadMedia(
 
 	const body = await request.arrayBuffer();
 	await env.BUCKET.put(`assets/${key}`, body, { httpMetadata: { contentType } });
-	await env.BUCKET.delete(mapData[type]);
+	await env.BUCKET.delete(toAssetKey(mapData[type]));
 	mapData[type] = key;
 	await env.BUCKET.put(`maps/${mapId}.json`, JSON.stringify(mapData), {
 		httpMetadata: { contentType: 'application/json' },
@@ -102,7 +102,7 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 			value.arrayBuffer().then(async (buffer) => {
 				await env.BUCKET.put(`assets/${key}`, buffer, { httpMetadata: { contentType } });
 				uploaded.push({ key, url: `/assets/${key}` });
-				await env.BUCKET.delete(mapData[type]);
+				await env.BUCKET.delete(toAssetKey(mapData[type]));
 				mapData[type] = key;
 			}),
 		);

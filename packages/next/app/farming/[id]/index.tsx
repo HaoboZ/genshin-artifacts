@@ -5,6 +5,7 @@ import { type Point } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import VideoPlayer from '@/components/videoPlayer';
+import useEventListener from '@/hooks/useEventListener';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
@@ -20,6 +21,8 @@ import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
 const MapModal = dynamicModal(() => import('./mapModal'));
+
+const recording = false;
 
 export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const { showModal } = useModal();
@@ -69,6 +72,14 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
+	// autoplay
+	useEventListener(videoRef.current, 'ended', () => {
+		if (!recording) return;
+		setTimeout(() => {
+			setSelectedMap(selectedMap + 1);
+		}, 1000);
+	});
+
 	const ratio = measurements.innerWidth / measurements.innerHeight;
 	const mobile = ratio < 0.75;
 
@@ -87,15 +98,24 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					position: mobile ? 'relative' : 'absolute',
 					width: mobile ? '100%' : '50%',
 				}}>
-				<Button
-					variant='contained'
-					color='primary'
-					startIcon={<ArrowBackIcon />}
-					sx={{ position: 'absolute', ml: 2, mt: 2 }}
-					onClick={() => router.push(`/farming?route=${routeData.id}`)}>
-					Back
-				</Button>
-				<Stack spacing={mobile ? 1 : 3} sx={{ py: mobile ? 2 : 5, alignItems: 'center' }}>
+				{!recording && (
+					<Button
+						variant='contained'
+						color='primary'
+						startIcon={<ArrowBackIcon />}
+						sx={{ position: 'absolute', ml: 2, mt: 2 }}
+						onClick={() => router.push(`/farming?route=${routeData.id}`)}>
+						Back
+					</Button>
+				)}
+				<Stack
+					spacing={mobile ? 1 : 3}
+					sx={{
+						py: mobile ? 2 : 0,
+						height: mobile ? undefined : '45vh',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}>
 					<Paper sx={{ py: 1, borderRadius: 100, minWidth: 200, textAlign: 'center' }}>
 						<Typography variant={mobile ? 'h3' : 'h1'}>
 							Total: {totalSpots + spots}
@@ -150,13 +170,15 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 						/>
 					)}
 				</ImageRoute>
-				<Button
-					variant='contained'
-					color='primary'
-					sx={{ position: 'absolute', top: 0, mt: 2, ml: 2 }}
-					onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
-					Full Map
-				</Button>
+				{!recording && (
+					<Button
+						variant='contained'
+						color='primary'
+						sx={{ position: 'absolute', top: 0, mt: 2, ml: 2 }}
+						onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
+						Full Map
+					</Button>
+				)}
 			</Box>
 		</Box>
 	);
