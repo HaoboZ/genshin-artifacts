@@ -6,8 +6,8 @@
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"cf-typegen": "wrangler types",
-		"r2:backup": "./scripts/r2-backup-sync.sh backup",
-		"r2:sync:push": "./scripts/r2-backup-sync.sh push"
+		"r2:backup": "node ./scripts/r2-backup-sync.mjs backup",
+		"r2:sync:push": "node ./scripts/r2-backup-sync.mjs push"
 	},
 	"dependencies": {
 		"nanoid": "5.1.6"
