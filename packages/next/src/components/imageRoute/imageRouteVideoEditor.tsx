@@ -32,7 +32,8 @@ export default function ImageRouteVideoEditor({
 	setPoints: Dispatch<SetStateAction<Point[]>>;
 	RenderText?: ComponentType<{ points: Point[]; time: number }>;
 } & ImageRouteProps) {
-	const { routeRef, videoRef, time, activeSpot, setActiveSpot } = useRouteVideoSync(points);
+	const { routeRef, videoRef, time, setTime, activeSpot, setActiveSpot } =
+		useRouteVideoSync(points);
 
 	const [selectedSpot, setSelectedSpot] = useState<Spot>(() => ({
 		point: points[0],
@@ -164,6 +165,7 @@ export default function ImageRouteVideoEditor({
 				ref={videoRef}
 				src={videoSrc}
 				seekFrames={1}
+				setTime={setTime}
 				sx={{ position: 'absolute', bottom: 0, width: '50%' }}
 			/>
 		</Box>
