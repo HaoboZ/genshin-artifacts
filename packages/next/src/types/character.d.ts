@@ -92,6 +92,7 @@ export type CharacterKey =
 	| 'Tighnari' // Tighnari
 	| 'Traveler' // Traveler
 	| 'Varesa' // Varesa
+	| 'Varka' // Varka
 	| 'Venti' // Venti
 	| 'Wanderer' // Wanderer
 	| 'Manekina' // Manekina

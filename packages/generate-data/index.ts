@@ -7,7 +7,7 @@ import { fetchWeekly, writeWeekly } from './data/weekly';
 
 const run = {
 	elements: false,
-	characters: true,
+	characters: false,
 	talents: false,
 	weekly: false,
 	artifacts: false,

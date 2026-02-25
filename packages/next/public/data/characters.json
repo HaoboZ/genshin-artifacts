@@ -927,6 +927,16 @@
 		"talentMaterial": "Conflict",
 		"weeklyMaterial": "ErodedScaleFeather"
 	},
+	"Varka": {
+		"key": "Varka",
+		"name": "Varka",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Anemo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Varka_Icon.png",
+		"talentMaterial": "Freedom",
+		"weeklyMaterial": "AscendedSampleRook"
+	},
 	"Venti": {
 		"key": "Venti",
 		"name": "Venti",

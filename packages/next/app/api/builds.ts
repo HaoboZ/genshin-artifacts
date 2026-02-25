@@ -2042,6 +2042,23 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'critRate_'],
 	},
+	Varka: {
+		key: 'Varka',
+		role: 'DPS',
+		weapon: [
+			'GestOfTheMightyWolf',
+			'AThousandBlazingSuns',
+			'RedhornStonethresher',
+			'WolfsGravestone',
+			'SerpentSpine',
+			'TidalShadow',
+			'BlackcliffSlasher',
+		],
+		group: 0,
+		artifact: ['ADayCarvedFromRisingWinds'],
+		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+	},
 	// Geo
 	Ningguang: {
 		key: 'Ningguang',

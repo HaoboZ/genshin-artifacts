@@ -54,6 +54,7 @@ export type WeaponKey =
 	| 'AThousandBlazingSuns' // A Thousand Blazing Suns
 	| 'BeaconOfTheReedSea' // Beacon of the Reed Sea
 	| 'FangOfTheMountainKing' // Fang of the Mountain King
+	| 'GestOfTheMightyWolf' // Gest of the Mighty Wolf
 	| 'RedhornStonethresher' // Redhorn Stonethresher
 	| 'SkywardPride' // Skyward Pride
 	| 'SongOfBrokenPines' // Song of Broken Pines

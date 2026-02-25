@@ -549,6 +549,16 @@
 		"stat": "CRIT Rate 11.0%",
 		"ability": "Gain 1 stack of Canopy's Favor after hitting an opponent with an Elemental Skill. This can be triggered once every 0.5s. After a nearby party member triggers a Burning or Burgeon reaction, the equipping character will gain 3 stacks. This effect can be triggered once every 2s and can be triggered even when the triggering party member is off-field. Canopy's Favor: Elemental Skill and Burst DMG is increased by 10~20% for 6s. Max 6 stacks. Each stack is counted independently."
 	},
+	"GestOfTheMightyWolf": {
+		"key": "GestOfTheMightyWolf",
+		"name": "Gest of the Mighty Wolf",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Weapon_Gest_of_the_Mighty_Wolf.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "Increase ATK SPD by 10%. Every time the equipping character's Normal Attack(s) hit opponent(s), when they cast their Elemental Skill, or when they begin their Charged Attack(s), gain 1/2/2 stacks of Four Winds' Hymn respectively: DMG dealt is increased by 7.5~15.5%, for 4s. Max 4 stacks. This effect can be triggered once every 0.01s.Additionally, when the team has the \"Hexerei: Secret Rite\" effect, each stack of Four Winds' Hymn will increase the CRIT DMG of the equipping character by 7.5~15.5%."
+	},
 	"RedhornStonethresher": {
 		"key": "RedhornStonethresher",
 		"name": "Redhorn Stonethresher",
