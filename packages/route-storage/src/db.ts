@@ -384,16 +384,28 @@ function mapRowToMapData(row: MapRow): MapData {
 	};
 }
 
-function normalizeMapType(value: unknown) {
+function normalizeMapType(value: unknown): MapData['type'] | undefined {
 	if (typeof value !== 'string') return undefined;
 	const type = value.toLowerCase();
 	if (type === 'normal' || type === 'extend' || type === 'scan') return type;
 	return undefined;
 }
 
-function normalizeBackground(value: unknown) {
+function normalizeBackground(value: unknown): MapData['background'] | undefined {
 	if (typeof value !== 'string') return undefined;
-	return value.replace(/\.png$/i, '').toLowerCase();
+	const background = value.replace(/\.png$/i, '').toLowerCase();
+	if (
+		background === 'mondstadt' ||
+		background === 'liyue' ||
+		background === 'inazuma' ||
+		background === 'sumeru' ||
+		background === 'fontaine' ||
+		background === 'natlan' ||
+		background === 'snezhnaya'
+	) {
+		return background;
+	}
+	return undefined;
 }
 
 function parseJson<T>(value: string, fallback: T) {

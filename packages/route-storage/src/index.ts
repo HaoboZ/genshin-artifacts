@@ -1,17 +1,14 @@
 import { requireAuth } from './auth';
-import handleDelete from './handlers/delete';
-import handleGet from './handlers/get';
-import handlePost from './handlers/post';
-import { handlePut } from './handlers/put';
-import { error } from './utils';
+import { handleAssetRequest } from './handlers/assets';
+import { handleMapsEndpoint } from './handlers/maps';
+import { handleRoutesEndpoint } from './handlers/routes';
+import { error, normalizeResourcePath } from './utils';
 
 export default {
 	async fetch(request, env, ctx) {
-		const url = new URL(request.url);
-		const pathname = url.pathname;
-		const method = request.method;
+		const normalizedPath = normalizeResourcePath(new URL(request.url).pathname);
 
-		if (method === 'OPTIONS') {
+		if (request.method === 'OPTIONS') {
 			return new Response(null, {
 				headers: {
 					'Access-Control-Allow-Origin': '*',
@@ -29,28 +26,23 @@ export default {
 
 		try {
 			let response: Response;
-
-			switch (request.method) {
-				case 'GET':
-					response = await handleGet(request, env, pathname);
-					break;
-				case 'POST':
-					response = await handlePost(request, env, pathname);
-					break;
-				case 'PUT':
-					response = await handlePut(request, env, pathname, ctx);
-					break;
-				case 'DELETE':
-					response = await handleDelete(request, env, pathname, ctx);
-					break;
-				default:
-					response = error('Method Not Allowed', 405);
+			if (normalizedPath.startsWith('/routes')) {
+				response = await handleRoutesEndpoint(request, env, normalizedPath);
+			} else if (normalizedPath.startsWith('/maps')) {
+				response = await handleMapsEndpoint(request, env, normalizedPath, ctx);
+			} else if (
+				normalizedPath.startsWith('/assets/') ||
+				normalizedPath.startsWith('/images/')
+			) {
+				response = await handleAssetRequest(request, env, normalizedPath);
+			} else {
+				response = error('Not found', 404);
 			}
 
 			return addCors(response);
-		} catch (error) {
-			if (error instanceof Response) return error;
-			console.error('ERROR:', error);
+		} catch (errorResponse) {
+			if (errorResponse instanceof Response) return addCors(errorResponse);
+			console.error('ERROR:', errorResponse);
 			return addCors(error('Internal server error', 500));
 		}
 	},

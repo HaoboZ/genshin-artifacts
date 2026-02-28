@@ -1,15 +1,14 @@
 import { nanoid } from 'nanoid';
 import { prop } from 'remeda';
-import { getMapFromDb, saveMapToDb, saveRouteToDb } from '../db';
-import { type MapData, type RouteData } from '../types';
 import {
-	error,
-	invalidateCache,
-	invalidateResourceCache,
-	json,
-	normalizeResourcePath,
-	toAssetKey,
-} from '../utils';
+	deleteMapFromDb,
+	getAllMapsFromDb,
+	getMapFromDb,
+	getRouteIdsByMapId,
+	saveMapToDb,
+} from '../db';
+import { type MapData } from '../types';
+import { error, invalidateCache, invalidateResourceCache, json, toAssetKey } from '../utils';
 
 const ALLOWED_EXTENSIONS = {
 	png: 'image/png',
@@ -29,92 +28,105 @@ const CONTENT_TYPE_TO_EXT = {
 	'video/webm': 'webm',
 };
 
-export async function handlePut(
+export async function handleMapsEndpoint(
 	request: Request,
 	env: Env,
 	pathname: string,
 	ctx: ExecutionContext,
 ) {
-	const normalizedPath = normalizeResourcePath(pathname);
 	const origin = new URL(request.url).origin;
+	const mapId = getMapId(pathname);
 
-	if (normalizedPath === '/routes') {
-		const routeData = await createRoute(request, env);
-		await invalidateResourceCache(origin, 'routes', routeData.id);
-		return json(routeData, 201);
-	}
+	if (!mapId) {
+		if (request.method === 'GET') {
+			const cached = await caches.default.match(request.url);
+			if (cached) return cached;
 
-	if (normalizedPath === '/maps') {
-		const mapData = await createMap(request, env);
-		await invalidateResourceCache(origin, 'maps', mapData.id);
-		return json(mapData, 201);
-	}
-
-	const mapId = getId(normalizedPath, 'maps');
-	if (!mapId) return error('Not found', 404);
-
-	const contentType = request.headers.get('Content-Type') || '';
-	try {
-		await getMapFromDb(env, mapId);
-	} catch {
-		return error('Map not found. Create the map first.', 404);
-	}
-
-	if (contentType.startsWith('multipart/form-data')) {
-		const result = await uploadMultipart(request, env, mapId, ctx);
-		await invalidateResourceCache(origin, 'maps', mapId);
-		return result;
-	}
-
-	const result = await uploadMedia(request, env, mapId, contentType, ctx);
-	await invalidateResourceCache(origin, 'maps', mapId);
-	return result;
-}
-
-async function createRoute(request: Request, env: Env) {
-	try {
-		const body = await request.json<RouteData>();
-		if (!body?.name || !Array.isArray(body.maps)) {
-			throw error('Invalid route data: requires name and maps array');
+			const response = json(await getAllMapsFromDb(env));
+			response.headers.set('Cache-Control', 'public, max-age=3600');
+			await caches.default.put(request.url, response.clone());
+			return response;
 		}
 
-		const routeData: RouteData = {
-			id: body.id || nanoid(),
-			name: body.name,
-			owner: body.owner,
-			maps: body.maps.map(String),
-		};
-		await saveRouteToDb(env, routeData);
-		return routeData;
-	} catch (cause) {
-		if (cause instanceof Response) throw cause;
-		throw error('Invalid JSON body');
+		if (request.method === 'PUT') {
+			const mapData = await parseMapBody(request, nanoid());
+			await saveMapToDb(env, mapData);
+			await invalidateResourceCache(origin, 'maps', mapData.id);
+			return json(mapData, 201);
+		}
+
+		return error('Method Not Allowed', 405);
 	}
+
+	if (request.method === 'GET') {
+		const cached = await caches.default.match(request.url);
+		if (cached) return cached;
+
+		const response = json(await getMapFromDb(env, mapId));
+		response.headers.set('Cache-Control', 'public, max-age=3600');
+		await caches.default.put(request.url, response.clone());
+		return response;
+	}
+
+	if (request.method === 'POST') {
+		const mapData = await parseMapBody(request, mapId);
+		await saveMapToDb(env, mapData);
+		await invalidateResourceCache(origin, 'maps', mapId);
+		await invalidateRelatedRoutes(env, origin, mapId);
+		return json(mapData);
+	}
+
+	if (request.method === 'PUT') {
+		const existingMap = await getMapFromDb(env, mapId);
+		const contentType = request.headers.get('Content-Type') || '';
+		const response = contentType.startsWith('multipart/form-data')
+			? await uploadMultipart(request, env, existingMap, ctx)
+			: await uploadMedia(request, env, existingMap, contentType, ctx);
+		await invalidateResourceCache(origin, 'maps', mapId);
+		return response;
+	}
+
+	if (request.method === 'DELETE') {
+		const impactedRouteIds = await getRouteIdsByMapId(env, mapId);
+		const { image, video } = await getMapFromDb(env, mapId);
+		const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
+		if (assetKeys.length) await env.BUCKET.delete(assetKeys);
+		await deleteMapFromDb(env, mapId);
+		invalidateCache(ctx, request.url, [...assetKeys, `maps/${mapId}`]);
+
+		await invalidateResourceCache(origin, 'maps', mapId);
+		await Promise.all(
+			impactedRouteIds.map((id) => invalidateResourceCache(origin, 'routes', id)),
+		);
+		return json({ success: true, deleted: [...assetKeys, `maps/${mapId}`] });
+	}
+
+	return error('Method Not Allowed', 405);
 }
 
-async function createMap(request: Request, env: Env) {
+async function parseMapBody(request: Request, id: string) {
 	try {
 		const body = await request.json<MapData>();
 		if (!body?.name || !Array.isArray(body.points)) {
 			throw error('Invalid map data: requires name and points array');
 		}
 
-		const mapData: MapData = {
-			...body,
-			id: body.id || nanoid(),
-		};
-		await saveMapToDb(env, mapData);
-		return mapData;
+		return { ...body, id };
 	} catch (cause) {
 		if (cause instanceof Response) throw cause;
 		throw error('Invalid JSON body');
 	}
 }
 
+async function invalidateRelatedRoutes(env: Env, origin: string, mapId: string) {
+	const routeIds = await getRouteIdsByMapId(env, mapId);
+	await Promise.all(routeIds.map((id) => invalidateResourceCache(origin, 'routes', id)));
+}
+
 async function uploadMedia(
 	request: Request,
 	env: Env,
-	mapId: string,
+	mapData: MapData,
 	contentType: string,
 	ctx: ExecutionContext,
 ) {
@@ -123,11 +135,8 @@ async function uploadMedia(
 		return error(`Invalid content type. Allowed: ${Object.keys(CONTENT_TYPE_TO_EXT).join(', ')}`);
 	}
 
-	const mapData = await getMapFromDb(env, mapId);
-
 	const type = contentType.startsWith('image/') ? 'image' : 'video';
 	const key = `${nanoid()}.${ext}`;
-
 	const body = await request.arrayBuffer();
 	await env.BUCKET.put(`assets/${key}`, body, { httpMetadata: { contentType } });
 	await env.BUCKET.delete(toAssetKey(mapData[type]));
@@ -135,17 +144,18 @@ async function uploadMedia(
 	await saveMapToDb(env, mapData);
 
 	invalidateCache(ctx, request.url, [key]);
-
 	return json({ success: true, key, url: `/assets/${key}` });
 }
 
-async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: ExecutionContext) {
+async function uploadMultipart(
+	request: Request,
+	env: Env,
+	mapData: MapData,
+	ctx: ExecutionContext,
+) {
 	const formData = await request.formData();
 	const uploaded: { key: string; url: string }[] = [];
 	const errors: string[] = [];
-
-	const mapData = await getMapFromDb(env, mapId);
-
 	const uploads: Promise<void>[] = [];
 
 	for (const [name, value] of formData.entries()) {
@@ -200,8 +210,8 @@ function getExtension(filename: string, mimeType: string) {
 	return CONTENT_TYPE_TO_EXT[mimeType];
 }
 
-function getId(pathname: string, resource: 'routes' | 'maps') {
+function getMapId(pathname: string) {
 	const parts = pathname.split('/').filter(Boolean);
-	if (parts[0] !== resource || !parts[1] || parts.length !== 2) return null;
-	return parts[1];
+	if (parts[0] !== 'maps' || parts.length > 2) return null;
+	return parts[1] ?? null;
 }
