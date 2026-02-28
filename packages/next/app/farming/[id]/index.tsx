@@ -90,7 +90,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 			<Image
 				fill
 				alt='background'
-				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}`}
+				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${String(routeData.mapsData[selectedMap].background ?? 'teyvat').replace(/\.png$/i, '')}.png`}
 				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
 			/>
 			<Box

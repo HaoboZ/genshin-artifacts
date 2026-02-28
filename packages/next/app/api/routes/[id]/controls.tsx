@@ -93,7 +93,7 @@ export default function RouteControls({
 				<TextField label='Name' value={name} onChange={(e) => setName(e.target.value)} />
 			</Grid>
 			<Grid>
-				<Button component={Link} href='/api/routes/maps' variant='contained'>
+				<Button component={Link} href='/api/maps' variant='contained'>
 					Add Maps
 				</Button>
 			</Grid>

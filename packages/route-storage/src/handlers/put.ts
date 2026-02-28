@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { prop } from 'remeda';
+import { getMapFromDb, saveMapToDb } from '../db';
 import { error, invalidateCache, json, toAssetKey } from '../utils';
-import { getMap } from './get';
 
 const ALLOWED_EXTENSIONS = {
 	png: 'image/png',
@@ -32,9 +32,12 @@ export async function handlePut(
 
 	const contentType = request.headers.get('Content-Type') || '';
 
-	const mapExists = await env.BUCKET.head(`maps/${parts[2]}`);
-	if (!mapExists) return error('Map not found. Create the map first.', 404);
 	const mapId = parts[2].slice(0, -5);
+	try {
+		await getMapFromDb(env, mapId);
+	} catch {
+		return error('Map not found. Create the map first.', 404);
+	}
 
 	if (contentType.startsWith('multipart/form-data')) {
 		return await uploadMultipart(request, env, mapId, ctx);
@@ -55,7 +58,7 @@ async function uploadMedia(
 		return error(`Invalid content type. Allowed: ${Object.keys(CONTENT_TYPE_TO_EXT).join(', ')}`);
 	}
 
-	const mapData = await getMap(env, mapId);
+	const mapData = await getMapFromDb(env, mapId);
 
 	const type = contentType.startsWith('image/') ? 'image' : 'video';
 	const key = `${nanoid()}.${ext}`;
@@ -64,9 +67,7 @@ async function uploadMedia(
 	await env.BUCKET.put(`assets/${key}`, body, { httpMetadata: { contentType } });
 	await env.BUCKET.delete(toAssetKey(mapData[type]));
 	mapData[type] = key;
-	await env.BUCKET.put(`maps/${mapId}.json`, JSON.stringify(mapData), {
-		httpMetadata: { contentType: 'application/json' },
-	});
+	await saveMapToDb(env, mapData);
 
 	invalidateCache(ctx, request.url, [key]);
 
@@ -78,7 +79,7 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 	const uploaded: { key: string; url: string }[] = [];
 	const errors: string[] = [];
 
-	const mapData = await getMap(env, mapId);
+	const mapData = await getMapFromDb(env, mapId);
 
 	const uploads: Promise<void>[] = [];
 
@@ -109,9 +110,7 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 	}
 
 	await Promise.all(uploads);
-	await env.BUCKET.put(`maps/${mapId}.json`, JSON.stringify(mapData), {
-		httpMetadata: { contentType: 'application/json' },
-	});
+	await saveMapToDb(env, mapData);
 
 	if (uploaded.length > 0) {
 		invalidateCache(ctx, request.url, uploaded.map(prop('key')));

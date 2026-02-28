@@ -9,6 +9,7 @@ declare namespace Cloudflare {
 	interface Env {
 		AUTH_TOKEN: 'SECRET';
 		BUCKET: R2Bucket;
+		DB: D1Database;
 	}
 }
 

@@ -1,3 +1,4 @@
+import { deleteMapFromDb, deleteRouteFromDb } from '../db';
 import { error, invalidateCache, json, parseId, toAssetKey } from '../utils';
 import { getMap } from './get';
 
@@ -31,22 +32,18 @@ export default async function handleDelete(
 }
 
 async function deleteRoute(env: Env, id: string) {
-	const key = `routes/${id}.json`;
-	const exists = await env.BUCKET.head(key);
-
-	if (!exists) throw error('Route not found', 404);
-
-	await env.BUCKET.delete(key);
-	return { success: true, deleted: key };
+	await deleteRouteFromDb(env, id);
+	return { success: true, deleted: `routes/${id}.json` };
 }
 
 async function deleteMap(request: Request, env: Env, id: string, ctx: ExecutionContext) {
 	const { image, video } = await getMap(env, id);
 
-	const keys = [toAssetKey(image), toAssetKey(video), `maps/${id}.json`].filter(Boolean);
-	await env.BUCKET.delete(keys);
+	const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
+	if (assetKeys.length) await env.BUCKET.delete(assetKeys);
+	await deleteMapFromDb(env, id);
 
-	invalidateCache(ctx, request.url, keys);
+	invalidateCache(ctx, request.url, [...assetKeys, `maps/${id}.json`]);
 
-	return { success: true, deleted: keys };
+	return { success: true, deleted: [...assetKeys, `maps/${id}.json`] };
 }

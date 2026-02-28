@@ -1,5 +1,5 @@
-import { fetchRouteData } from '../../../fetchRouteData';
-import type { MapData } from '../../../types';
+import { fetchRouteData } from '../../../routes/fetchRouteData';
+import type { MapData } from '../../../routes/types';
 import MapVideo from './index';
 
 export const dynamic = 'force-dynamic';
