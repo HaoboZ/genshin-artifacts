@@ -1,7 +1,9 @@
 import { getAllMapsFromDb, getAllRoutesFromDb, getMapFromDb, getRouteFromDb } from '../db';
-import { error, json, parseId } from '../utils';
+import { error, json, normalizeResourcePath } from '../utils';
 
 export default async function handleGet(request: Request, env: Env, pathname: string) {
+	const normalizedPath = normalizeResourcePath(pathname);
+
 	if (!request.headers.get('Range')) {
 		const cached = await caches.default.match(request.url);
 		if (cached) return cached;
@@ -9,15 +11,21 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 
 	let response: Response;
 
-	if (pathname === '/routes.json') response = json(await getAllRoutesFromDb(env));
+	if (normalizedPath === '/routes') {
+		response = json(await getAllRoutesFromDb(env));
+	}
+
 	if (!response) {
-		const routeId = parseId(pathname, 'routes');
+		const routeId = getId(normalizedPath, 'routes');
 		if (routeId) response = json(await getRouteFromDb(env, routeId));
 	}
 
-	if (pathname === '/maps.json') response = json(await getAllMapsFromDb(env));
+	if (!response && normalizedPath === '/maps') {
+		response = json(await getAllMapsFromDb(env));
+	}
+
 	if (!response) {
-		const mapId = parseId(pathname, 'maps');
+		const mapId = getId(normalizedPath, 'maps');
 		if (mapId) response = json(await getMapFromDb(env, mapId));
 	}
 
@@ -27,16 +35,12 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 		return response;
 	}
 
-	if (pathname.startsWith('/assets/') || pathname.startsWith('/images/')) {
-		const key = pathname.slice(1);
+	if (normalizedPath.startsWith('/assets/') || normalizedPath.startsWith('/images/')) {
+		const key = normalizedPath.slice(1);
 		return await getData(request, env, key);
 	}
 
 	return error('Not found', 404);
-}
-
-export async function getMap(env: Env, id: string) {
-	return getMapFromDb(env, id);
 }
 
 async function getData(request: Request, env: Env, key: string) {
@@ -85,4 +89,10 @@ async function getData(request: Request, env: Env, key: string) {
 	}
 
 	return response;
+}
+
+function getId(pathname: string, resource: 'routes' | 'maps') {
+	const parts = pathname.split('/').filter(Boolean);
+	if (parts[0] !== resource || !parts[1] || parts.length !== 2) return null;
+	return parts[1];
 }

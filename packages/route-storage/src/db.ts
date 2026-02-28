@@ -122,6 +122,16 @@ export async function saveRouteToDb(env: Env, routeData: RouteData) {
 	);
 }
 
+export async function getRouteIdsByMapId(env: Env, mapId: string) {
+	await ensureSchema(env);
+	const result = await env.DB.prepare(
+		'SELECT route_id FROM route_maps WHERE map_id = ? ORDER BY route_id',
+	)
+		.bind(mapId)
+		.all<{ route_id: string }>();
+	return result.results.map((row) => row.route_id);
+}
+
 export async function deleteRouteFromDb(env: Env, id: string) {
 	await ensureSchema(env);
 	const result = await env.DB.prepare('DELETE FROM routes WHERE id = ?').bind(id).run();

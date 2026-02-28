@@ -20,12 +20,12 @@ if (!sourceUrl) {
 
 console.log(`Fetching route/map payloads from ${sourceUrl} ...`);
 const [routes, maps] = await Promise.all([
-	fetchJson(`${sourceUrl}/routes.json`),
-	fetchJson(`${sourceUrl}/maps.json`),
+	fetchJson(`${sourceUrl}/routes`),
+	fetchJson(`${sourceUrl}/maps`),
 ]);
 
 if (!Array.isArray(routes) || !Array.isArray(maps)) {
-	throw new Error('Expected /routes.json and /maps.json to return JSON arrays');
+	throw new Error('Expected /routes and /maps to return JSON arrays');
 }
 
 const sql = buildSql(routes, maps);

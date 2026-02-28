@@ -9,10 +9,23 @@ export function error(message: string, status = 400) {
 	return json({ error: message }, status);
 }
 
-export function parseId(pathname: string, prefix: string) {
-	const parts = pathname.split('/');
-	if (parts[1] !== prefix) return null;
-	return parts[2].slice(0, -5);
+export function normalizeResourcePath(pathname: string) {
+	if (!pathname.endsWith('.json')) return pathname;
+	return pathname.slice(0, -5);
+}
+
+export async function invalidateResourceCache(
+	origin: string,
+	resource: 'routes' | 'maps',
+	id?: string,
+) {
+	const keys = [
+		`${origin}/${resource}`,
+		`${origin}/${resource}.json`,
+		id ? `${origin}/${resource}/${id}` : null,
+		id ? `${origin}/${resource}/${id}.json` : null,
+	].filter(Boolean) as string[];
+	await Promise.all(keys.map((key) => caches.default.delete(new Request(key))));
 }
 
 export function invalidateCache(ctx: ExecutionContext, requestUrl: string, keys: string[]) {

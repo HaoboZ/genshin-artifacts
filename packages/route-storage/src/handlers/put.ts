@@ -1,7 +1,15 @@
 import { nanoid } from 'nanoid';
 import { prop } from 'remeda';
-import { getMapFromDb, saveMapToDb } from '../db';
-import { error, invalidateCache, json, toAssetKey } from '../utils';
+import { getMapFromDb, saveMapToDb, saveRouteToDb } from '../db';
+import { type MapData, type RouteData } from '../types';
+import {
+	error,
+	invalidateCache,
+	invalidateResourceCache,
+	json,
+	normalizeResourcePath,
+	toAssetKey,
+} from '../utils';
 
 const ALLOWED_EXTENSIONS = {
 	png: 'image/png',
@@ -27,12 +35,25 @@ export async function handlePut(
 	pathname: string,
 	ctx: ExecutionContext,
 ) {
-	const parts = pathname.split('/');
-	if (parts[1] !== 'maps' || !parts[2]) return error('Not found', 404);
+	const normalizedPath = normalizeResourcePath(pathname);
+	const origin = new URL(request.url).origin;
+
+	if (normalizedPath === '/routes') {
+		const routeData = await createRoute(request, env);
+		await invalidateResourceCache(origin, 'routes', routeData.id);
+		return json(routeData, 201);
+	}
+
+	if (normalizedPath === '/maps') {
+		const mapData = await createMap(request, env);
+		await invalidateResourceCache(origin, 'maps', mapData.id);
+		return json(mapData, 201);
+	}
+
+	const mapId = getId(normalizedPath, 'maps');
+	if (!mapId) return error('Not found', 404);
 
 	const contentType = request.headers.get('Content-Type') || '';
-
-	const mapId = parts[2].slice(0, -5);
 	try {
 		await getMapFromDb(env, mapId);
 	} catch {
@@ -40,10 +61,54 @@ export async function handlePut(
 	}
 
 	if (contentType.startsWith('multipart/form-data')) {
-		return await uploadMultipart(request, env, mapId, ctx);
+		const result = await uploadMultipart(request, env, mapId, ctx);
+		await invalidateResourceCache(origin, 'maps', mapId);
+		return result;
 	}
 
-	return await uploadMedia(request, env, mapId, contentType, ctx);
+	const result = await uploadMedia(request, env, mapId, contentType, ctx);
+	await invalidateResourceCache(origin, 'maps', mapId);
+	return result;
+}
+
+async function createRoute(request: Request, env: Env) {
+	try {
+		const body = await request.json<RouteData>();
+		if (!body?.name || !Array.isArray(body.maps)) {
+			throw error('Invalid route data: requires name and maps array');
+		}
+
+		const routeData: RouteData = {
+			id: body.id || nanoid(),
+			name: body.name,
+			owner: body.owner,
+			maps: body.maps.map(String),
+		};
+		await saveRouteToDb(env, routeData);
+		return routeData;
+	} catch (cause) {
+		if (cause instanceof Response) throw cause;
+		throw error('Invalid JSON body');
+	}
+}
+
+async function createMap(request: Request, env: Env) {
+	try {
+		const body = await request.json<MapData>();
+		if (!body?.name || !Array.isArray(body.points)) {
+			throw error('Invalid map data: requires name and points array');
+		}
+
+		const mapData: MapData = {
+			...body,
+			id: body.id || nanoid(),
+		};
+		await saveMapToDb(env, mapData);
+		return mapData;
+	} catch (cause) {
+		if (cause instanceof Response) throw cause;
+		throw error('Invalid JSON body');
+	}
 }
 
 async function uploadMedia(
@@ -95,13 +160,15 @@ async function uploadMultipart(request: Request, env: Env, mapId: string, ctx: E
 			continue;
 		}
 
-		const contentType = ALLOWED_EXTENSIONS[ext];
-		const type = contentType.startsWith('image/') ? 'image' : 'video';
+		const mappedType = ALLOWED_EXTENSIONS[ext];
+		const type = mappedType.startsWith('image/') ? 'image' : 'video';
 		const key = `${nanoid()}.${ext}`;
 
 		uploads.push(
 			value.arrayBuffer().then(async (buffer) => {
-				await env.BUCKET.put(`assets/${key}`, buffer, { httpMetadata: { contentType } });
+				await env.BUCKET.put(`assets/${key}`, buffer, {
+					httpMetadata: { contentType: mappedType },
+				});
 				uploaded.push({ key, url: `/assets/${key}` });
 				await env.BUCKET.delete(toAssetKey(mapData[type]));
 				mapData[type] = key;
@@ -131,4 +198,10 @@ function getExtension(filename: string, mimeType: string) {
 	}
 
 	return CONTENT_TYPE_TO_EXT[mimeType];
+}
+
+function getId(pathname: string, resource: 'routes' | 'maps') {
+	const parts = pathname.split('/').filter(Boolean);
+	if (parts[0] !== resource || !parts[1] || parts.length !== 2) return null;
+	return parts[1];
 }

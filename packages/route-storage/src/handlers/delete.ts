@@ -1,6 +1,13 @@
-import { deleteMapFromDb, deleteRouteFromDb } from '../db';
-import { error, invalidateCache, json, parseId, toAssetKey } from '../utils';
-import { getMap } from './get';
+import { deleteMapFromDb, deleteRouteFromDb, getRouteIdsByMapId } from '../db';
+import {
+	error,
+	invalidateCache,
+	invalidateResourceCache,
+	json,
+	normalizeResourcePath,
+	toAssetKey,
+} from '../utils';
+import { getMapFromDb } from '../db';
 
 export default async function handleDelete(
 	request: Request,
@@ -8,23 +15,24 @@ export default async function handleDelete(
 	pathname: string,
 	ctx: ExecutionContext,
 ) {
+	const normalizedPath = normalizeResourcePath(pathname);
 	const origin = new URL(request.url).origin;
 
-	const routeId = parseId(pathname, 'routes');
+	const routeId = getId(normalizedPath, 'routes');
 	if (routeId) {
 		const result = json(await deleteRoute(env, routeId));
-		// Invalidate cache for routes list and the specific route
-		await caches.default.delete(new Request(`${origin}/routes.json`));
-		await caches.default.delete(new Request(`${origin}/routes/${routeId}.json`));
+		await invalidateResourceCache(origin, 'routes', routeId);
 		return result;
 	}
 
-	const mapId = parseId(pathname, 'maps');
+	const mapId = getId(normalizedPath, 'maps');
 	if (mapId) {
+		const impactedRouteIds = await getRouteIdsByMapId(env, mapId);
 		const result = json(await deleteMap(request, env, mapId, ctx));
-		// Invalidate cache for maps list and the specific map
-		await caches.default.delete(new Request(`${origin}/maps.json`));
-		await caches.default.delete(new Request(`${origin}/maps/${mapId}.json`));
+		await invalidateResourceCache(origin, 'maps', mapId);
+		await Promise.all(
+			impactedRouteIds.map((id) => invalidateResourceCache(origin, 'routes', id)),
+		);
 		return result;
 	}
 
@@ -33,17 +41,23 @@ export default async function handleDelete(
 
 async function deleteRoute(env: Env, id: string) {
 	await deleteRouteFromDb(env, id);
-	return { success: true, deleted: `routes/${id}.json` };
+	return { success: true, deleted: `routes/${id}` };
 }
 
 async function deleteMap(request: Request, env: Env, id: string, ctx: ExecutionContext) {
-	const { image, video } = await getMap(env, id);
+	const { image, video } = await getMapFromDb(env, id);
 
 	const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
 	if (assetKeys.length) await env.BUCKET.delete(assetKeys);
 	await deleteMapFromDb(env, id);
 
-	invalidateCache(ctx, request.url, [...assetKeys, `maps/${id}.json`]);
+	invalidateCache(ctx, request.url, [...assetKeys, `maps/${id}`]);
 
-	return { success: true, deleted: [...assetKeys, `maps/${id}.json`] };
+	return { success: true, deleted: [...assetKeys, `maps/${id}`] };
+}
+
+function getId(pathname: string, resource: 'routes' | 'maps') {
+	const parts = pathname.split('/').filter(Boolean);
+	if (parts[0] !== resource || !parts[1] || parts.length !== 2) return null;
+	return parts[1];
 }
