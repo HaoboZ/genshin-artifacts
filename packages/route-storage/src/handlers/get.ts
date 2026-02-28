@@ -1,5 +1,4 @@
-import { prop } from 'remeda';
-import { type MapData, type RouteData } from '../types';
+import { getAllMapsFromDb, getAllRoutesFromDb, getMapFromDb, getRouteFromDb } from '../db';
 import { error, json, parseId } from '../utils';
 
 export default async function handleGet(request: Request, env: Env, pathname: string) {
@@ -10,16 +9,16 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 
 	let response: Response;
 
-	if (pathname === '/routes.json') response = json(await getAllRoutes(env));
+	if (pathname === '/routes.json') response = json(await getAllRoutesFromDb(env));
 	if (!response) {
 		const routeId = parseId(pathname, 'routes');
-		if (routeId) response = json(await getRoute(env, routeId));
+		if (routeId) response = json(await getRouteFromDb(env, routeId));
 	}
 
-	if (pathname === '/maps.json') response = json(await getAllMaps(env));
+	if (pathname === '/maps.json') response = json(await getAllMapsFromDb(env));
 	if (!response) {
 		const mapId = parseId(pathname, 'maps');
-		if (mapId) response = json(await getMap(env, mapId));
+		if (mapId) response = json(await getMapFromDb(env, mapId));
 	}
 
 	if (response) {
@@ -36,44 +35,8 @@ export default async function handleGet(request: Request, env: Env, pathname: st
 	return error('Not found', 404);
 }
 
-async function getAllRoutes(env: Env) {
-	const list = await env.BUCKET.list({ prefix: 'routes/' });
-	const jsonKeys = list.objects.map(prop('key'));
-
-	const routes: RouteData[] = [];
-	for (const key of jsonKeys) {
-		const file = await env.BUCKET.get(key);
-		if (file) routes.push(await file.json<RouteData>());
-	}
-	return routes;
-}
-
-async function getRoute(env: Env, id: string) {
-	const routeFile = await env.BUCKET.get(`routes/${id}.json`);
-	if (!routeFile) throw error('Route not found', 404);
-
-	return await routeFile.json<RouteData>();
-}
-
-async function getAllMaps(env: Env) {
-	const list = await env.BUCKET.list({ prefix: 'maps/' });
-	const jsonKeys = list.objects.map(prop('key'));
-
-	const maps: MapData[] = [];
-	for (const key of jsonKeys) {
-		const file = await env.BUCKET.get(key);
-		if (file) {
-			maps.push(await file.json<MapData>());
-		}
-	}
-	return maps;
-}
-
 export async function getMap(env: Env, id: string) {
-	const file = await env.BUCKET.get(`maps/${id}.json`);
-	if (!file) throw error('Map not found', 404);
-
-	return await file.json<MapData>();
+	return getMapFromDb(env, id);
 }
 
 async function getData(request: Request, env: Env, key: string) {

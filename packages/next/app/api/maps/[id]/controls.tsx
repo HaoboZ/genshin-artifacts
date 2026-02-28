@@ -12,10 +12,10 @@ import { useSnackbar } from 'notistack';
 import { Fragment, useState } from 'react';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
-import UploadFile from '../../auth/uploadFile';
-import { type MapData } from '../../types';
+import UploadFile from '../../routes/auth/uploadFile';
+import { type MapData } from '../../routes/types';
 
-const EditJsonModal = dynamicModal(() => import('../../editJsonModal'));
+const EditJsonModal = dynamicModal(() => import('../../routes/editJsonModal'));
 
 export default function MapControls({ mapData, points }: { mapData: MapData; points: Point[] }) {
 	const router = useRouter();

@@ -1,4 +1,5 @@
 import { pick } from 'remeda';
+import { getMapFromDb, saveMapToDb, saveRouteToDb } from '../db';
 import { type MapData, type RouteData } from '../types';
 import { error, json, parseId } from '../utils';
 
@@ -34,17 +35,17 @@ async function createRoute(request: Request, env: Env, id: string) {
 		const routeData: RouteData = { id, ...body, mapsData: [] };
 
 		for (const mapId of routeData.maps) {
-			const mapFile = await env.BUCKET.get(`maps/${mapId}.json`);
-			if (mapFile) {
+			try {
+				const mapData = await getMapFromDb(env, mapId);
 				routeData.mapsData.push(
-					pick(await mapFile.json<any>(), ['x', 'y', 'name', 'type', 'spots', 'background']),
+					pick(mapData as any, ['x', 'y', 'name', 'type', 'spots', 'background']),
 				);
+			} catch {
+				// Ignore missing map IDs; this matches previous behavior.
 			}
 		}
 
-		await env.BUCKET.put(`routes/${id}.json`, JSON.stringify(routeData), {
-			httpMetadata: { contentType: 'application/json' },
-		});
+		await saveRouteToDb(env, routeData);
 
 		return routeData;
 	} catch {
@@ -60,9 +61,7 @@ export async function createMap(request: Request, env: Env, id: string) {
 		}
 
 		const mapData: MapData = { id, ...body };
-		await env.BUCKET.put(`maps/${id}.json`, JSON.stringify(mapData), {
-			httpMetadata: { contentType: 'application/json' },
-		});
+		await saveMapToDb(env, mapData);
 
 		return mapData;
 	} catch {

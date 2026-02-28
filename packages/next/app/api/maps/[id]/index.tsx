@@ -7,8 +7,8 @@ import RatioContainer from '@/components/ratioContainer';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
-import { RouteRenderExtra, RouteRenderPath } from '../../../../farming/[id]/render';
-import { type MapData } from '../../types';
+import { RouteRenderExtra, RouteRenderPath } from '../../../farming/[id]/render';
+import { type MapData } from '../../routes/types';
 import { EditRouteRenderPoint } from '../renderPoint';
 import MapControls from './controls';
 
@@ -23,7 +23,7 @@ export default function Map({ mapData }: { mapData: MapData }) {
 					<Grid>
 						<Button
 							component={Link}
-							href={`/api/routes/maps/${mapData.id}/video`}
+							href={`/api/maps/${mapData.id}/video`}
 							variant='contained'>
 							Video Sync
 						</Button>

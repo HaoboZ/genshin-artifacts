@@ -7,8 +7,8 @@ import RatioContainer from '@/components/ratioContainer';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
-import { RouteRenderExtra, RouteRenderPath } from '../../../../../farming/[id]/render';
-import { type MapData } from '../../../types';
+import { RouteRenderExtra, RouteRenderPath } from '../../../../farming/[id]/render';
+import { type MapData } from '../../../routes/types';
 import { EditRouteRenderPoint } from '../../renderPoint';
 import MapControls from '../controls';
 
@@ -26,10 +26,7 @@ export default function MapVideo({ mapData }: { mapData: MapData }) {
 				<MapControls mapData={mapData} points={points} />
 				{mapData.image && (
 					<Grid>
-						<Button
-							component={Link}
-							href={`/api/routes/maps/${mapData.id}`}
-							variant='contained'>
+						<Button component={Link} href={`/api/maps/${mapData.id}`} variant='contained'>
 							Point Edit
 						</Button>
 					</Grid>

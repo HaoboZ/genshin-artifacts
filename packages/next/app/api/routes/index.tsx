@@ -69,6 +69,12 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 						Authenticate
 					</Button>
 				</Grid>
+
+				<Grid>
+					<Button component={Link} href='/api/maps' variant='contained'>
+						Maps
+					</Button>
+				</Grid>
 				<Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>
 					{filteredItems.length ? (
 						<Paper sx={{ width: 400 }}>
