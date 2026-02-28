@@ -65,6 +65,7 @@ async function parseRouteBody(request: Request, id: string) {
 			id,
 			name: body.name,
 			owner: body.owner,
+			notes: body.notes,
 			maps: body.maps.map(String),
 		} satisfies RouteData;
 	} catch (cause) {

@@ -1,12 +1,19 @@
 import { type MapData, type RouteData } from './types';
 import { error } from './utils';
 
-type RouteRow = { id: string; name: string; owner: string | null; data?: string | null };
+type RouteRow = {
+	id: string;
+	name: string;
+	owner: string | null;
+	notes: string | null;
+	data?: string | null;
+};
 type RouteMapRow = { route_id: string; map_id: string; sort_order: number };
 type MapRow = {
 	id: string;
 	name: string;
 	owner: string | null;
+	notes: string | null;
 	type: string | null;
 	text: string | null;
 	background: string | null;
@@ -40,7 +47,7 @@ export async function getAllRoutesFromDb(env: Env) {
 	await ensureSchema(env);
 
 	const routes = await env.DB.prepare(
-		'SELECT id, name, owner FROM routes ORDER BY name, id',
+		'SELECT id, name, owner, notes FROM routes ORDER BY name, id',
 	).all<RouteRow>();
 	const routeMaps = await env.DB.prepare(
 		'SELECT route_id, map_id, sort_order FROM route_maps ORDER BY route_id, sort_order, map_id',
@@ -57,6 +64,7 @@ export async function getAllRoutesFromDb(env: Env) {
 		id: route.id,
 		name: route.name,
 		owner: route.owner ?? undefined,
+		notes: route.notes ?? undefined,
 		maps: mapsByRoute.get(route.id) ?? [],
 	}));
 }
@@ -64,7 +72,7 @@ export async function getAllRoutesFromDb(env: Env) {
 export async function getRouteFromDb(env: Env, id: string) {
 	await ensureSchema(env);
 
-	const route = await env.DB.prepare('SELECT id, name, owner FROM routes WHERE id = ?')
+	const route = await env.DB.prepare('SELECT id, name, owner, notes FROM routes WHERE id = ?')
 		.bind(id)
 		.first<RouteRow>();
 	if (!route) throw error('Route not found', 404);
@@ -89,6 +97,7 @@ export async function getRouteFromDb(env: Env, id: string) {
 		id: route.id,
 		name: route.name,
 		owner: route.owner ?? undefined,
+		notes: route.notes ?? undefined,
 		maps: mapIds,
 		mapsData,
 	} satisfies RouteData;
@@ -99,13 +108,14 @@ export async function saveRouteToDb(env: Env, routeData: RouteData) {
 
 	await env.DB.batch([
 		env.DB.prepare(
-			`INSERT INTO routes (id, name, owner, updated_at)
-			 VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+			`INSERT INTO routes (id, name, owner, notes, updated_at)
+			 VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
 			 ON CONFLICT(id) DO UPDATE SET
 				name = excluded.name,
 				owner = excluded.owner,
+				notes = excluded.notes,
 				updated_at = CURRENT_TIMESTAMP`,
-		).bind(routeData.id, routeData.name, routeData.owner ?? null),
+		).bind(routeData.id, routeData.name, routeData.owner ?? null, routeData.notes ?? null),
 		env.DB.prepare('DELETE FROM route_maps WHERE route_id = ?').bind(routeData.id),
 	]);
 
@@ -141,7 +151,7 @@ export async function deleteRouteFromDb(env: Env, id: string) {
 export async function getAllMapsFromDb(env: Env) {
 	await ensureSchema(env);
 	const result = await env.DB.prepare(
-		`SELECT id, name, owner, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points
+		`SELECT id, name, owner, notes, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points
 		 FROM maps
 		 ORDER BY name, id`,
 	).all<MapRow>();
@@ -151,7 +161,7 @@ export async function getAllMapsFromDb(env: Env) {
 export async function getMapFromDb(env: Env, id: string) {
 	await ensureSchema(env);
 	const row = await env.DB.prepare(
-		`SELECT id, name, owner, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points
+		`SELECT id, name, owner, notes, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points
 		 FROM maps WHERE id = ?`,
 	)
 		.bind(id)
@@ -165,12 +175,13 @@ export async function saveMapToDb(env: Env, mapData: MapData) {
 
 	await env.DB.prepare(
 		`INSERT INTO maps (
-			id, name, owner, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points, updated_at
+			id, name, owner, notes, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points, updated_at
 		)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
 		ON CONFLICT(id) DO UPDATE SET
 			name = excluded.name,
 			owner = excluded.owner,
+			notes = excluded.notes,
 			type = excluded.type,
 			text = excluded.text,
 			background = excluded.background,
@@ -190,6 +201,7 @@ export async function saveMapToDb(env: Env, mapData: MapData) {
 			mapData.id,
 			mapData.name,
 			mapData.owner ?? null,
+			mapData.notes ?? null,
 			normalizeMapType(mapData.type) ?? null,
 			mapData.text ? JSON.stringify(mapData.text) : null,
 			normalizeBackground(mapData.background) ?? null,
@@ -220,12 +232,14 @@ async function createOrMigrateSchema(env: Env) {
 			id TEXT PRIMARY KEY,
 			name TEXT NOT NULL,
 			owner TEXT,
+			notes TEXT,
 			updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 		);
 		CREATE TABLE IF NOT EXISTS maps (
 			id TEXT PRIMARY KEY,
 			name TEXT NOT NULL,
 			owner TEXT,
+			notes TEXT,
 			type TEXT CHECK (type IN ('normal','extend','scan') OR type IS NULL),
 			text TEXT,
 			background TEXT CHECK (background IN ('mondstadt','liyue','inazuma','sumeru','fontaine','natlan','snezhnaya') OR background IS NULL),
@@ -253,6 +267,13 @@ async function createOrMigrateSchema(env: Env) {
 		CREATE INDEX IF NOT EXISTS idx_route_maps_map ON route_maps(map_id);
 	`);
 
+	if (!(await hasColumn(env, 'routes', 'notes'))) {
+		await env.DB.exec('ALTER TABLE routes ADD COLUMN notes TEXT');
+	}
+	if (!(await hasColumn(env, 'maps', 'notes'))) {
+		await env.DB.exec('ALTER TABLE maps ADD COLUMN notes TEXT');
+	}
+
 	await migrateLegacyRouteRows(env);
 	await migrateLegacyMapRows(env);
 }
@@ -266,6 +287,9 @@ async function migrateLegacyRouteRows(env: Env) {
 	if (!(await hasColumn(env, 'routes', 'owner'))) {
 		await env.DB.exec('ALTER TABLE routes ADD COLUMN owner TEXT');
 	}
+	if (!(await hasColumn(env, 'routes', 'notes'))) {
+		await env.DB.exec('ALTER TABLE routes ADD COLUMN notes TEXT');
+	}
 
 	const routes = await env.DB.prepare('SELECT id, data FROM routes').all<{
 		id: string;
@@ -276,12 +300,13 @@ async function migrateLegacyRouteRows(env: Env) {
 		const legacy = parseJson<Record<string, unknown>>(row.data, {});
 		const name = String(legacy.name ?? '').trim();
 		const owner = legacy.owner ? String(legacy.owner) : null;
+		const notes = legacy.notes ? String(legacy.notes) : null;
 		const maps = Array.isArray(legacy.maps) ? legacy.maps.map(String) : [];
 
 		await env.DB.prepare(
-			'UPDATE routes SET name = ?, owner = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
+			'UPDATE routes SET name = ?, owner = ?, notes = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
 		)
-			.bind(name || row.id, owner, row.id)
+			.bind(name || row.id, owner, notes, row.id)
 			.run();
 
 		await env.DB.prepare('DELETE FROM route_maps WHERE route_id = ?').bind(row.id).run();
@@ -304,6 +329,7 @@ async function migrateLegacyMapRows(env: Env) {
 	for (const [column, type] of [
 		['name', 'TEXT'],
 		['owner', 'TEXT'],
+		['notes', 'TEXT'],
 		['type', 'TEXT'],
 		['text', 'TEXT'],
 		['background', 'TEXT'],
@@ -333,12 +359,13 @@ async function migrateLegacyMapRows(env: Env) {
 
 		await env.DB.prepare(
 			`UPDATE maps SET
-				name = ?, owner = ?, type = ?, text = ?, background = ?, spots = ?, time = ?, count = ?, mora = ?, efficiency = ?, x = ?, y = ?, image = ?, video = ?, points = ?, updated_at = CURRENT_TIMESTAMP
+				name = ?, owner = ?, notes = ?, type = ?, text = ?, background = ?, spots = ?, time = ?, count = ?, mora = ?, efficiency = ?, x = ?, y = ?, image = ?, video = ?, points = ?, updated_at = CURRENT_TIMESTAMP
 			 WHERE id = ?`,
 		)
 			.bind(
 				String(legacy.name ?? row.id),
 				legacy.owner ? String(legacy.owner) : null,
+				legacy.notes ? String(legacy.notes) : null,
 				normalizeMapType(legacy.type) ?? null,
 				legacy.text ? JSON.stringify(legacy.text) : null,
 				normalizeBackground(legacy.background) ?? null,
@@ -368,6 +395,7 @@ function mapRowToMapData(row: MapRow): MapData {
 		id: row.id,
 		name: row.name,
 		owner: row.owner ?? undefined,
+		notes: row.notes ?? undefined,
 		type: normalizeMapType(row.type) ?? undefined,
 		text: row.text ? parseJson<MapData['text']>(row.text, []) : undefined,
 		background: normalizeBackground(row.background) ?? undefined,

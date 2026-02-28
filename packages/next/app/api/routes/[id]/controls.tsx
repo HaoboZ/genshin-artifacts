@@ -29,8 +29,12 @@ export default function RouteControls({
 	const { enqueueSnackbar } = useSnackbar();
 
 	const [name, setName] = useState(routeData.name ?? '');
+	const [notes, setNotes] = useState(routeData.notes ?? '');
 
-	const changed = name !== routeData.name || !isDeepEqual(maps, routeData.maps);
+	const changed =
+		name !== routeData.name ||
+		notes !== (routeData.notes ?? '') ||
+		!isDeepEqual(maps, routeData.maps);
 
 	useWindowEventListener('beforeunload', (e: BeforeUnloadEvent) => {
 		if (changed) e.preventDefault();
@@ -39,7 +43,7 @@ export default function RouteControls({
 	async function saveData() {
 		await axios.post(
 			`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${routeData.id}.json`,
-			{ ...routeData, name, maps },
+			{ ...routeData, name, notes: notes || undefined, maps },
 			{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
 		);
 		router.refresh();
@@ -91,6 +95,15 @@ export default function RouteControls({
 			</Grid>
 			<Grid>
 				<TextField label='Name' value={name} onChange={(e) => setName(e.target.value)} />
+			</Grid>
+			<Grid>
+				<TextField
+					label='Notes'
+					value={notes}
+					onChange={(e) => setNotes(e.target.value)}
+					multiline
+					minRows={2}
+				/>
 			</Grid>
 			<Grid>
 				<Button component={Link} href='/api/maps' variant='contained'>

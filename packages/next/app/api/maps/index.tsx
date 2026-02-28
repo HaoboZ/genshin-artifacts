@@ -27,6 +27,7 @@ const MapMetadataModal = dynamicModal(() => import('./mapMetadataModal'));
 type SortKey =
 	| 'name'
 	| 'owner'
+	| 'notes'
 	| 'type'
 	| 'background'
 	| 'spots'
@@ -90,6 +91,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 						<TableRow>
 							{header('Name', 'name')}
 							{header('Owner', 'owner')}
+							{header('Notes', 'notes')}
 							{header('Type', 'type')}
 							{header('Background', 'background')}
 							{header('Spots', 'spots')}
@@ -114,6 +116,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 									</MuiLink>
 								</TableCell>
 								<TableCell>{item.owner ?? '-'}</TableCell>
+								<TableCell>{item.notes ?? '-'}</TableCell>
 								<TableCell>{item.type ?? '-'}</TableCell>
 								<TableCell>{item.background ?? '-'}</TableCell>
 								<TableCell>{item.spots ?? 0}</TableCell>

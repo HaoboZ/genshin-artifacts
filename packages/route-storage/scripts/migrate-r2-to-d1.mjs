@@ -74,14 +74,14 @@ function buildSql(routes, maps) {
 		const type = normalizeMapType(map.type);
 		const background = normalizeBackground(map.background);
 		statements.push(
-			`INSERT INTO maps (id, name, owner, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points, updated_at) VALUES (${sqlValue(map.id)}, ${sqlValue(map.name)}, ${sqlValue(map.owner)}, ${sqlValue(type)}, ${sqlValue(text)}, ${sqlValue(background)}, ${sqlValue(map.spots)}, ${sqlValue(map.time)}, ${sqlValue(map.count)}, ${sqlValue(map.mora)}, ${sqlValue(map.efficiency)}, ${sqlValue(map.x)}, ${sqlValue(map.y)}, ${sqlValue(map.image)}, ${sqlValue(map.video)}, ${sqlValue(points)}, CURRENT_TIMESTAMP);`,
+			`INSERT INTO maps (id, name, owner, notes, type, text, background, spots, time, count, mora, efficiency, x, y, image, video, points, updated_at) VALUES (${sqlValue(map.id)}, ${sqlValue(map.name)}, ${sqlValue(map.owner)}, ${sqlValue(map.notes)}, ${sqlValue(type)}, ${sqlValue(text)}, ${sqlValue(background)}, ${sqlValue(map.spots)}, ${sqlValue(map.time)}, ${sqlValue(map.count)}, ${sqlValue(map.mora)}, ${sqlValue(map.efficiency)}, ${sqlValue(map.x)}, ${sqlValue(map.y)}, ${sqlValue(map.image)}, ${sqlValue(map.video)}, ${sqlValue(points)}, CURRENT_TIMESTAMP);`,
 		);
 	}
 
 	for (const route of routes) {
 		const routeMaps = Array.isArray(route.maps) ? route.maps : [];
 		statements.push(
-			`INSERT INTO routes (id, name, owner, updated_at) VALUES (${sqlValue(route.id)}, ${sqlValue(route.name)}, ${sqlValue(route.owner)}, CURRENT_TIMESTAMP);`,
+			`INSERT INTO routes (id, name, owner, notes, updated_at) VALUES (${sqlValue(route.id)}, ${sqlValue(route.name)}, ${sqlValue(route.owner)}, ${sqlValue(route.notes)}, CURRENT_TIMESTAMP);`,
 		);
 		routeMaps.forEach((mapId, index) => {
 			statements.push(

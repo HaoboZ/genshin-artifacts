@@ -21,6 +21,7 @@ export default function AddMapModal() {
 	const { closeModal } = useModalControls();
 	const [name, setName] = useState('');
 	const [owner, setOwner] = useState('');
+	const [notes, setNotes] = useState('');
 	const [file, setFile] = useState<File>();
 	const [x, setX] = useState<number>();
 	const [y, setY] = useState<number>();
@@ -44,6 +45,16 @@ export default function AddMapModal() {
 							label='Owner'
 							value={owner}
 							onChange={(e) => setOwner(e.target.value)}
+						/>
+					</Grid>
+					<Grid size={12}>
+						<TextField
+							fullWidth
+							label='Notes'
+							value={notes}
+							onChange={(e) => setNotes(e.target.value)}
+							multiline
+							minRows={2}
 						/>
 					</Grid>
 					<Grid size={6}>
@@ -107,10 +118,10 @@ export default function AddMapModal() {
 							throw Error('Missing Name, Map Image, or Coordinates');
 						}
 
-						const id = await createMap(name, owner);
+						const id = await createMap(name, owner, notes);
 						await axios.post(
 							`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${id}.json`,
-							{ id, name, owner, points: [], x, y },
+							{ id, name, owner, notes, points: [], x, y },
 							{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
 						);
 						await axios.put(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${id}.json`, file, {

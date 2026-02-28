@@ -101,7 +101,7 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 										}
 										disablePadding>
 										<ListItemButton component={Link} href={`/api/routes/${item.id}`}>
-											<ListItemText>{item.name}</ListItemText>
+											<ListItemText primary={item.name} secondary={item.notes} />
 										</ListItemButton>
 									</ListItem>
 								))}

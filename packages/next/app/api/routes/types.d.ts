@@ -15,6 +15,7 @@ export type RouteData = {
 	id: string;
 	name: string;
 	owner?: string;
+	notes?: string;
 	maps: string[];
 	mapsData?: MapData[];
 };
@@ -23,6 +24,7 @@ export type MapData = {
 	id: string;
 	name: string;
 	owner?: string;
+	notes?: string;
 	type?: MapType;
 	text?: { text: string; x: number; y: number; fontSize?: number }[];
 	background?: BackgroundType;

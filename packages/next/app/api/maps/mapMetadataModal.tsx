@@ -36,6 +36,7 @@ export default function MapMetadataModal({
 
 	const [name, setName] = useState(mapData.name ?? '');
 	const [owner, setOwner] = useState(mapData.owner ?? '');
+	const [notes, setNotes] = useState(mapData.notes ?? '');
 	const [type, setType] = useState<MapType>(mapData.type ?? 'normal');
 	const [background, setBackground] = useState<BackgroundType>(mapData.background ?? 'mondstadt');
 	const [spots, setSpots] = useState<number>(mapData.spots ?? 0);
@@ -65,6 +66,16 @@ export default function MapMetadataModal({
 							label='Owner'
 							value={owner}
 							onChange={(e) => setOwner(e.target.value)}
+						/>
+					</Grid>
+					<Grid size={12}>
+						<TextField
+							fullWidth
+							label='Notes'
+							value={notes}
+							onChange={(e) => setNotes(e.target.value)}
+							multiline
+							minRows={2}
 						/>
 					</Grid>
 					<Grid size={6}>
@@ -171,6 +182,7 @@ export default function MapMetadataModal({
 							...mapData,
 							name,
 							owner: owner || undefined,
+							notes: notes || undefined,
 							type,
 							background,
 							spots,

@@ -11,9 +11,10 @@ export default function AddRouteModal() {
 			fields={[
 				{ label: 'Name', key: 'name' },
 				{ label: 'Owner', key: 'owner' },
+				{ label: 'Notes', key: 'notes' },
 			]}
-			onSubmit={async ({ name, owner }) => {
-				const id = await createRoute(name, owner);
+			onSubmit={async ({ name, owner, notes }) => {
+				const id = await createRoute(name, owner, notes);
 				router.push(`/api/routes/${id}`);
 			}}
 		/>
