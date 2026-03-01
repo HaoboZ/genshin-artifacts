@@ -1,9 +1,10 @@
 'use client';
 
+import FormattedTextField from '@/components/formattedTextField';
 import ImageRoute from '@/components/imageRoute';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
-import { Edit as EditIcon } from '@mui/icons-material';
+import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
 	Box,
 	Container,
@@ -181,25 +182,45 @@ export default function Route({
 									const inRoute = index !== -1;
 
 									return (
-										<TableRow
-											key={item.id}
-											hover
-											selected={inRoute}
-											onClick={() => {
-												setRouteMaps((data) =>
-													inRoute
-														? data.filter((id) => id !== item.id)
-														: [...data, item.id],
-												);
-											}}
-											sx={{ cursor: 'pointer' }}>
-											<TableCell>{inRoute ? index + 1 : '-'}</TableCell>
+										<TableRow key={item.id} hover selected={inRoute}>
+											<TableCell>
+												<FormattedTextField
+													size='small'
+													value={inRoute ? String(index) : ''}
+													placeholder='-'
+													slotProps={{ htmlInput: { inputMode: 'numeric' } }}
+													onBlur={(e) => {
+														const parsedOrder = Number.parseInt(
+															e.target.value.trim(),
+															10,
+														);
+														if (Number.isNaN(parsedOrder)) return;
+
+														setRouteMaps((data) => {
+															const withoutCurrent = data.filter(
+																(mapId) => mapId !== item.id,
+															);
+															const clampedOrder = Math.min(
+																Math.max(parsedOrder, 0),
+																withoutCurrent.length,
+															);
+															withoutCurrent.splice(clampedOrder, 0, item.id);
+															return withoutCurrent;
+														});
+													}}
+													onKeyDown={(e) => {
+														if (e.key === 'Enter') {
+															(e.target as HTMLInputElement).blur();
+														}
+													}}
+													sx={{ width: 64 }}
+												/>
+											</TableCell>
 											<TableCell>
 												<MuiLink
 													component={Link}
 													href={`/api/maps/${item.id}`}
-													underline='hover'
-													onClick={(e) => e.stopPropagation()}>
+													underline='hover'>
 													{item.name}
 												</MuiLink>
 											</TableCell>
@@ -216,14 +237,36 @@ export default function Route({
 											<TableCell>{item.time ?? 0}</TableCell>
 											<TableCell>{item.efficiency ?? 0}</TableCell>
 											<TableCell>
-												<IconButton
-													size='small'
-													onClick={(e) => {
-														e.stopPropagation();
-														showModal(EditMapDataModal, { props: { mapData: item } });
-													}}>
-													<EditIcon fontSize='small' />
-												</IconButton>
+												<Box sx={{ display: 'flex' }}>
+													{inRoute ? (
+														<IconButton
+															size='small'
+															onClick={() => {
+																setRouteMaps((data) =>
+																	data.filter((id) => id !== item.id),
+																);
+															}}>
+															<DeleteIcon fontSize='small' />
+														</IconButton>
+													) : (
+														<IconButton
+															size='small'
+															onClick={() => {
+																setRouteMaps((data) => [...data, item.id]);
+															}}>
+															<AddIcon fontSize='small' />
+														</IconButton>
+													)}
+													<IconButton
+														size='small'
+														onClick={() =>
+															showModal(EditMapDataModal, {
+																props: { mapData: item },
+															})
+														}>
+														<EditIcon fontSize='small' />
+													</IconButton>
+												</Box>
 											</TableCell>
 										</TableRow>
 									);
