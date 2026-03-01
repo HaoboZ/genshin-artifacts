@@ -1,0 +1,8 @@
+{
+	"extends": "../../tsconfig",
+	"compilerOptions": {
+		"moduleResolution": "bundler"
+	},
+	"include": ["**/*.*ts", "**/*.*js"],
+	"exclude": ["node_modules"]
+}

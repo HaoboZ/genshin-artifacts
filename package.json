@@ -13,7 +13,8 @@
 		"next-build": "cd packages/next && bun run build",
 		"generate-data": "cd packages/generate-data && bun run start",
 		"map-capture": "cd packages/map-capture && bun run start",
-		"route-storage": "cd packages/route-storage && bun run deploy"
+		"routes-worker": "cd packages/routes-worker && bun run deploy",
+		"typecheck": "tsc -p packages/next --noEmit && bunx tsc -p packages/routes-worker --noEmit"
 	},
 	"workspaces": [
 		"packages/*"

@@ -4,6 +4,7 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
+	Box,
 	Button,
 	Container,
 	IconButton,
@@ -25,14 +26,24 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy } from 'remeda';
-import { type RouteData } from './types';
+import { type MapData } from '../routes/types';
+import { formatLabel } from './formUtils';
 
-const AddRouteDataModal = dynamicModal(() => import('./addRouteDataModal'));
-const EditRouteDataModal = dynamicModal(() => import('./editRouteDataModal'));
+const AddMapDataModal = dynamicModal(() => import('./addMapDataModal'));
+const EditMapDataModal = dynamicModal(() => import('./editMapDataModal'));
 
-type SortKey = 'name' | 'owner' | 'notes' | 'maps';
+type SortKey =
+	| 'name'
+	| 'owner'
+	| 'notes'
+	| 'type'
+	| 'background'
+	| 'spots'
+	| 'mora'
+	| 'time'
+	| 'efficiency';
 
-export default function RouteList({ items }: { items: RouteData[] }) {
+export default function MapList({ items }: { items: MapData[] }) {
 	const router = useRouter();
 	const { showModal } = useModal();
 	const [sortKey, setSortKey] = useState<SortKey>('name');
@@ -43,15 +54,21 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 		const query = search.trim().toLowerCase();
 		if (!query) return items;
 		return items.filter((item) => {
-			return [item.name, '', item.notes ?? '', ''].some((value) =>
+			const location = item.background ? formatLabel(item.background) : 'No Location';
+			const type = item.type ? formatLabel(item.type) : 'Normal';
+			return [item.name, location, item.notes ?? '', type].some((value) =>
 				value.toLowerCase().includes(query),
 			);
 		});
 	}, [items, search]);
 
 	const sortedItems = useMemo(() => {
+		const numericSortKeys: SortKey[] = ['spots', 'mora', 'time', 'efficiency'];
 		return sortBy(filteredItems, [
-			(item) => (sortKey === 'maps' ? (item.maps?.length ?? 0) : String(item[sortKey] ?? '')),
+			(item) =>
+				numericSortKeys.includes(sortKey)
+					? Number(item[sortKey] ?? 0)
+					: String(item[sortKey] ?? ''),
 			direction,
 		]);
 	}, [filteredItems, sortKey, direction]);
@@ -79,20 +96,23 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 				<Button
 					variant='contained'
 					startIcon={<AddIcon />}
-					onClick={() => showModal(AddRouteDataModal)}>
-					Add Route
+					onClick={() => showModal(AddMapDataModal)}>
+					Add Map
 				</Button>
 				<TextField
 					fullWidth={false}
 					size='small'
 					label='Search'
-					placeholder='Name, Notes'
+					placeholder='Name, Location, Notes, Type'
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
 					sx={{ minWidth: 300 }}
 				/>
-				<Button component={Link} href='/api/maps' variant='contained'>
-					Maps
+				<Button component={Link} href='/api/maps/auth' variant='contained'>
+					Authorize
+				</Button>
+				<Button component={Link} href='/api/routes' variant='contained'>
+					Routes
 				</Button>
 			</Paper>
 			<TableContainer component={Paper}>
@@ -100,9 +120,14 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 					<TableHead>
 						<TableRow>
 							{header('Name', 'name')}
+							{header('Location', 'background')}
 							{header('Owner', 'owner')}
 							{header('Notes', 'notes')}
-							{header('Maps', 'maps')}
+							{header('Type', 'type')}
+							{header('Spots', 'spots')}
+							{header('Mora', 'mora')}
+							{header('Time', 'time')}
+							{header('Efficiency', 'efficiency')}
 							<TableCell>Actions</TableCell>
 						</TableRow>
 					</TableHead>
@@ -112,44 +137,53 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 								<TableCell>
 									<MuiLink
 										component={Link}
-										href={`/api/routes/${item.id}`}
+										href={`/api/maps/${item.id}`}
 										underline='hover'>
 										{item.name}
 									</MuiLink>
 								</TableCell>
+								<TableCell>
+									{item.background ? formatLabel(item.background) : 'No Location'}
+								</TableCell>
 								<TableCell>{item.owner ?? '-'}</TableCell>
 								<TableCell>{item.notes ?? '-'}</TableCell>
-								<TableCell>{item.maps?.length ?? 0}</TableCell>
+								<TableCell>{item.type ? formatLabel(item.type) : 'Normal'}</TableCell>
+								<TableCell>{item.spots ?? 0}</TableCell>
+								<TableCell>{item.mora ?? 0}</TableCell>
+								<TableCell>{item.time ?? 0}</TableCell>
+								<TableCell>{item.efficiency ?? 0}</TableCell>
 								<TableCell>
-									<IconButton
-										size='small'
-										onClick={() => {
-											showModal(EditRouteDataModal, { props: { routeData: item } });
-										}}>
-										<EditIcon fontSize='small' />
-									</IconButton>
-									<IconButton
-										size='small'
-										onClick={async () => {
-											await axios.delete(
-												`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${item.id}`,
-												{
-													headers: {
-														Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}`,
+									<Box sx={{ display: 'flex' }}>
+										<IconButton
+											size='small'
+											onClick={() => {
+												showModal(EditMapDataModal, { props: { mapData: item } });
+											}}>
+											<EditIcon fontSize='small' />
+										</IconButton>
+										<IconButton
+											size='small'
+											onClick={async () => {
+												await axios.delete(
+													`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${item.id}`,
+													{
+														headers: {
+															Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}`,
+														},
 													},
-												},
-											);
-											router.refresh();
-										}}>
-										<DeleteIcon fontSize='small' color='error' />
-									</IconButton>
+												);
+												router.refresh();
+											}}>
+											<DeleteIcon fontSize='small' color='error' />
+										</IconButton>
+									</Box>
 								</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
 				</Table>
 			</TableContainer>
-			{!sortedItems.length && <Typography sx={{ mt: 1 }}>No routes found.</Typography>}
+			{!sortedItems.length && <Typography sx={{ mt: 1 }}>No maps found.</Typography>}
 		</Container>
 	);
 }

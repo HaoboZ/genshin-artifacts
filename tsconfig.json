@@ -17,6 +17,13 @@
 		"strictNullChecks": false,
 		"target": "esnext"
 	},
-	"include": ["**/*.*ts", "**/*.tsx", "**/*.*js", "**/*.jsx"],
-	"exclude": ["node_modules", "out"]
+	"include": [],
+	"references": [
+		{
+			"path": "./packages/next"
+		},
+		{
+			"path": "./packages/routes-worker"
+		}
+	]
 }

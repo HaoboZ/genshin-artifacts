@@ -1,0 +1,17 @@
+{
+	"name": "routes-worker",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"nanoid": "5.1.6"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "0.12.18",
+		"wrangler": "4.69.0"
+	}
+}

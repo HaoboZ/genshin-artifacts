@@ -27,7 +27,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const [mapData] = useFetchState<MapData>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${routeData.maps[selectedMap]}.json`,
+		`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${routeData.maps[selectedMap]}`,
 	);
 
 	const [isLoaded, setIsLoaded] = useState(false);

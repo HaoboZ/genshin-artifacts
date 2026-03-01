@@ -5,6 +5,6 @@ import type { RouteData } from './types';
 export const dynamic = 'force-dynamic';
 
 export default async function RouteListPage() {
-	const routesData = await fetchRouteData<RouteData[]>(`routes.json`);
+	const routesData = await fetchRouteData<RouteData[]>('routes');
 	return <RouteList items={routesData} />;
 }

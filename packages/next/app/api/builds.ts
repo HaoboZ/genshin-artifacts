@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 

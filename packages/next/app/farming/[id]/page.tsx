@@ -4,6 +4,6 @@ import FarmingRoute from './index';
 
 export default async function FarmingRoutePage({ params }: { params: Promise<{ id: string }> }) {
 	const { id } = await params;
-	const routeData = await fetchRouteData<RouteData>(`routes/${id}.json`);
+	const routeData = await fetchRouteData<RouteData>(`routes/${id}`);
 	return <FarmingRoute routeData={routeData} />;
 }

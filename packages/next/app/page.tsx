@@ -7,7 +7,7 @@ import WorldMap from './farming/worldMap';
 import Notifications from './notifications';
 
 export default async function MainPage() {
-	const routesData = await fetchRouteData<RouteData[]>(`routes.json`);
+	const routesData = await fetchRouteData<RouteData[]>('routes');
 
 	return (
 		<Container>

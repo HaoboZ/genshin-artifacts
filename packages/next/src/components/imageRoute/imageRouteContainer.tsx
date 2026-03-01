@@ -55,8 +55,9 @@ export default function ImageRouteContainer({
 
 		const newScale = clamp(scale * scaleDelta, { min: 1, max: 16 }) || 1;
 
-		const mouseX = zoomCenter.x - containerSize.left;
-		const mouseY = zoomCenter.y - containerSize.top;
+		const liveRect = containerRef.current?.getBoundingClientRect() ?? containerSize;
+		const mouseX = zoomCenter.x - liveRect.left;
+		const mouseY = zoomCenter.y - liveRect.top;
 		const centerX = containerSize.width / 2;
 		const centerY = containerSize.height / 2;
 		const imagePointX = (mouseX - centerX - mapOffset.x) / scale;
@@ -70,14 +71,10 @@ export default function ImageRouteContainer({
 
 	const handleClick = (click: { x: number; y: number }) => {
 		if (!containerSize) return;
-
-		const centerX = containerSize.width / 2;
-		const centerY = containerSize.height / 2;
-		const containerPoint = {
-			x: (click.x - containerSize.x - centerX - mapOffset.x) / scale,
-			y: (click.y - containerSize.y - centerY - mapOffset.y) / scale,
-		};
-		onClickRoute?.(containerPoint);
+		const liveRect = containerRef.current?.getBoundingClientRect() ?? containerSize;
+		onClickRoute?.(
+			mouseToContainer({ clientX: click.x, clientY: click.y }, liveRect, mapOffset, scale),
+		);
 	};
 
 	const endDrag = () => {
@@ -130,12 +127,14 @@ export default function ImageRouteContainer({
 				}
 
 				if (!containerSize) return;
-				onHoverRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
+				const liveRect = e.currentTarget.getBoundingClientRect();
+				onHoverRoute?.(mouseToContainer(e, liveRect, mapOffset, scale));
 			}}
 			onMouseUp={endDrag}
 			onClick={(e) => {
 				if (isDragging.current || !containerSize) return;
-				onClickRoute?.(mouseToContainer(e, containerSize, mapOffset, scale));
+				const liveRect = e.currentTarget.getBoundingClientRect();
+				onClickRoute?.(mouseToContainer(e, liveRect, mapOffset, scale));
 			}}
 			onContextMenu={(e) => e.preventDefault()}
 			onTouchStart={(e) => {

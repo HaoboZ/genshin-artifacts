@@ -14,15 +14,13 @@ import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from './render';
 
-const routes = ['n9HJqwqbsmkqR9ZpKK_tE', 'I4mrpd4FRvCdz-5VrUG7G'];
-
 export default function WorldMap({ routesData, top }: { routesData: RouteData[]; top?: boolean }) {
 	const router = useRouter();
 
-	const [selectedRoute, setSelectedRoute] = useParamState('route', routes[0]);
+	const [selectedRoute, setSelectedRoute] = useParamState('route', routesData[0].id);
 
 	const [routeData] = useFetchState<RouteData>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${selectedRoute}.json`,
+		`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${selectedRoute}`,
 	);
 
 	const points = useMemo(() => {
@@ -57,9 +55,9 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 						bgcolor: 'background.paper',
 						backdropFilter: 'blur(10px)',
 					}}>
-					{routes.map((id) => (
+					{routesData.map(({ id, name }) => (
 						<MenuItem key={id} value={id}>
-							{routesData.find((route) => route.id === id).name}
+							{name}
 						</MenuItem>
 					))}
 				</Select>
