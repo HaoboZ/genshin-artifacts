@@ -8,31 +8,24 @@ import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/ico
 import {
 	Box,
 	Container,
+	FormControlLabel,
 	Grid,
 	IconButton,
-	Link as MuiLink,
 	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
+	Switch,
 	TextField,
 	Typography,
 } from '@mui/material';
+import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { filter, indexBy, pipe, prop, sortBy } from 'remeda';
+import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../../../farming/render';
-import { formatLabel } from '../../maps/formUtils';
+import { CALC_EFFICIENCY_SECONDS } from '../../maps/formUtils';
 import { type MapData, type RouteData } from '../types';
 import RouteControls from './controls';
 
 const EditMapDataModal = dynamicModal(() => import('../../maps/editMapDataModal'));
-
 type SortKey =
 	| 'name'
 	| 'owner'
@@ -43,6 +36,7 @@ type SortKey =
 	| 'mora'
 	| 'time'
 	| 'efficiency';
+type RouteMapRow = MapData & { order?: number; actions?: never };
 
 export default function Route({
 	routeData,
@@ -52,10 +46,12 @@ export default function Route({
 	mapsData: MapData[];
 }) {
 	const { showModal } = useModal();
+
 	const [routeMaps, setRouteMaps] = useState<string[]>(routeData.maps);
 	const [sortKey, setSortKey] = useState<SortKey>('name');
 	const [direction, setDirection] = useState<'asc' | 'desc'>('asc');
 	const [search, setSearch] = useState('');
+	const [moraOnly, setMoraOnly] = useState(false);
 
 	const routeMapData = useMemo(
 		() =>
@@ -76,6 +72,10 @@ export default function Route({
 		() => routeMapData.reduce((sum, item) => sum + (item.spots ?? 0), 0),
 		[routeMapData],
 	);
+	const totalTime = useMemo(
+		() => routeMapData.reduce((sum, item) => sum + (item.time ?? 0) + CALC_EFFICIENCY_SECONDS, 0),
+		[routeMapData],
+	);
 
 	const sortedMaps = useMemo(() => {
 		const query = search.trim().toLowerCase();
@@ -88,12 +88,16 @@ export default function Route({
 		return pipe(
 			mapsData,
 			filter((item) => {
-				if (!query) return true;
-				const location = item.background ? formatLabel(item.background) : 'No Location';
-				const type = item.type ? formatLabel(item.type) : 'Normal';
-				return [item.name, location, item.notes ?? '', type].some((value) =>
-					value.toLowerCase().includes(query),
-				);
+				const location = toTitleCase(item.background || 'None');
+				const type = toTitleCase(item.type || '');
+				const matchesSearch =
+					!query ||
+					[item.name, location, item.notes ?? '', type].some((value) =>
+						value.toLowerCase().includes(query),
+					);
+				const matchesSpotsMora =
+					!moraOnly || Number(item.spots ?? 0) === Number(item.mora ?? 0);
+				return matchesSearch && matchesSpotsMora;
 			}),
 			sortBy(
 				(item) => routeOrderMap[item.id]?.index ?? Number.MAX_VALUE,
@@ -106,24 +110,142 @@ export default function Route({
 				],
 			),
 		);
-	}, [mapsData, routeMapData, search, sortKey, direction]);
+	}, [mapsData, routeMapData, search, sortKey, direction, moraOnly]);
 
-	const header = (label: string, key: SortKey) => (
-		<TableCell>
-			<TableSortLabel
-				active={sortKey === key}
-				direction={sortKey === key ? direction : 'asc'}
-				onClick={() => {
-					if (sortKey === key) setDirection((v) => (v === 'asc' ? 'desc' : 'asc'));
-					else {
-						setSortKey(key);
-						setDirection('asc');
-					}
-				}}>
-				{label}
-			</TableSortLabel>
-		</TableCell>
-	);
+	const handleSortModelChange = (model: GridSortModel) => {
+		if (!model.length) {
+			setSortKey('name');
+			setDirection('asc');
+			return;
+		}
+		const { field, sort } = model[0];
+		if (!sort) return;
+		setSortKey(field as SortKey);
+		setDirection(sort);
+	};
+
+	const columns: GridColDef<RouteMapRow>[] = [
+		{
+			field: 'order',
+			headerName: 'Order',
+			width: 75,
+			sortable: false,
+			filterable: false,
+			renderCell: ({ row }) => {
+				const index = routeMaps.indexOf(row.id);
+				return (
+					<FormattedTextField
+						size='small'
+						value={index !== -1 ? String(index) : ''}
+						placeholder='-'
+						slotProps={{ htmlInput: { inputMode: 'numeric' } }}
+						sx={{ '.MuiInputBase-input': { py: 0.7 } }}
+						onBlur={(e) => {
+							const parsedOrder = Number.parseInt(e.target.value.trim(), 10);
+							if (Number.isNaN(parsedOrder)) return;
+
+							setRouteMaps((data) => {
+								const withoutCurrent = data.filter((mapId) => mapId !== row.id);
+								const clampedOrder = Math.min(
+									Math.max(parsedOrder, 0),
+									withoutCurrent.length,
+								);
+								withoutCurrent.splice(clampedOrder, 0, row.id);
+								return withoutCurrent;
+							});
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								(e.target as HTMLInputElement).blur();
+							}
+						}}
+					/>
+				);
+			},
+		},
+		{ field: 'name', headerName: 'Name', flex: 2, minWidth: 150, sortable: true },
+		{
+			field: 'background',
+			headerName: 'Location',
+			flex: 1,
+			minWidth: 100,
+			sortable: true,
+			valueGetter: (value) => toTitleCase(value || 'None'),
+		},
+		{ field: 'owner', headerName: 'Owner', flex: 1, minWidth: 100, sortable: true },
+		{ field: 'notes', headerName: 'Notes', flex: 2, minWidth: 100, sortable: true },
+		{
+			field: 'type',
+			headerName: 'Type',
+			flex: 1,
+			minWidth: 100,
+			sortable: true,
+			valueGetter: (value) => toTitleCase(value || ''),
+		},
+		{
+			field: 'spots',
+			headerName: 'Spots',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'mora',
+			headerName: 'Mora',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'time',
+			headerName: 'Time',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'efficiency',
+			headerName: 'Efficiency',
+			width: 100,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value: number) => (value ?? 0).toFixed(2),
+		},
+		{
+			field: 'actions',
+			headerName: 'Actions',
+			width: 100,
+			sortable: false,
+			filterable: false,
+			renderCell: ({ row }) => (
+				<Box sx={{ display: 'flex', gap: 0.5 }}>
+					{routeMaps.includes(row.id) ? (
+						<IconButton
+							size='small'
+							onClick={() => setRouteMaps((data) => data.filter((id) => id !== row.id))}>
+							<DeleteIcon fontSize='small' />
+						</IconButton>
+					) : (
+						<IconButton
+							size='small'
+							onClick={() => setRouteMaps((data) => [...data, row.id])}>
+							<AddIcon fontSize='small' />
+						</IconButton>
+					)}
+					<IconButton
+						size='small'
+						onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
+						<EditIcon fontSize='small' />
+					</IconButton>
+				</Box>
+			),
+		},
+	];
+
+	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
 		<Container sx={{ pt: 1 }}>
@@ -146,8 +268,10 @@ export default function Route({
 				</Grid>
 				<Grid size={12}>
 					<Paper sx={{ p: 1, mb: 1 }}>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-							<Typography variant='subtitle1'>Total: {totalSpots} Spots</Typography>
+						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+							<Typography variant='subtitle1'>
+								Total: {totalSpots} spots, {(totalTime / 60).toFixed(2)} min
+							</Typography>
 							<TextField
 								fullWidth={false}
 								size='small'
@@ -157,123 +281,29 @@ export default function Route({
 								onChange={(e) => setSearch(e.target.value)}
 								sx={{ minWidth: 300 }}
 							/>
+							<FormControlLabel
+								control={
+									<Switch
+										size='small'
+										checked={moraOnly}
+										onChange={(event) => setMoraOnly(event.target.checked)}
+									/>
+								}
+								label='Mora Only'
+								sx={{ pl: 1 }}
+							/>
 						</Box>
 					</Paper>
-					<TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 104px)' }}>
-						<Table size='small' stickyHeader>
-							<TableHead>
-								<TableRow>
-									<TableCell>Order</TableCell>
-									{header('Name', 'name')}
-									{header('Location', 'background')}
-									{header('Owner', 'owner')}
-									{header('Notes', 'notes')}
-									{header('Type', 'type')}
-									{header('Spots', 'spots')}
-									{header('Mora', 'mora')}
-									{header('Time', 'time')}
-									{header('Efficiency', 'efficiency')}
-									<TableCell>Actions</TableCell>
-								</TableRow>
-							</TableHead>
-							<TableBody>
-								{sortedMaps.map((item) => {
-									const index = routeMaps.indexOf(item.id);
-									const inRoute = index !== -1;
-
-									return (
-										<TableRow key={item.id} hover selected={inRoute}>
-											<TableCell>
-												<FormattedTextField
-													size='small'
-													value={inRoute ? String(index) : ''}
-													placeholder='-'
-													slotProps={{ htmlInput: { inputMode: 'numeric' } }}
-													onBlur={(e) => {
-														const parsedOrder = Number.parseInt(
-															e.target.value.trim(),
-															10,
-														);
-														if (Number.isNaN(parsedOrder)) return;
-
-														setRouteMaps((data) => {
-															const withoutCurrent = data.filter(
-																(mapId) => mapId !== item.id,
-															);
-															const clampedOrder = Math.min(
-																Math.max(parsedOrder, 0),
-																withoutCurrent.length,
-															);
-															withoutCurrent.splice(clampedOrder, 0, item.id);
-															return withoutCurrent;
-														});
-													}}
-													onKeyDown={(e) => {
-														if (e.key === 'Enter') {
-															(e.target as HTMLInputElement).blur();
-														}
-													}}
-													sx={{ width: 64 }}
-												/>
-											</TableCell>
-											<TableCell>
-												<MuiLink
-													component={Link}
-													href={`/api/maps/${item.id}`}
-													underline='hover'>
-													{item.name}
-												</MuiLink>
-											</TableCell>
-											<TableCell>
-												{item.background ? formatLabel(item.background) : 'No Location'}
-											</TableCell>
-											<TableCell>{item.owner ?? '-'}</TableCell>
-											<TableCell>{item.notes ?? '-'}</TableCell>
-											<TableCell>
-												{item.type ? formatLabel(item.type) : 'Normal'}
-											</TableCell>
-											<TableCell>{item.spots ?? 0}</TableCell>
-											<TableCell>{item.mora ?? 0}</TableCell>
-											<TableCell>{item.time ?? 0}</TableCell>
-											<TableCell>{item.efficiency ?? 0}</TableCell>
-											<TableCell>
-												<Box sx={{ display: 'flex' }}>
-													{inRoute ? (
-														<IconButton
-															size='small'
-															onClick={() => {
-																setRouteMaps((data) =>
-																	data.filter((id) => id !== item.id),
-																);
-															}}>
-															<DeleteIcon fontSize='small' />
-														</IconButton>
-													) : (
-														<IconButton
-															size='small'
-															onClick={() => {
-																setRouteMaps((data) => [...data, item.id]);
-															}}>
-															<AddIcon fontSize='small' />
-														</IconButton>
-													)}
-													<IconButton
-														size='small'
-														onClick={() =>
-															showModal(EditMapDataModal, {
-																props: { mapData: item },
-															})
-														}>
-														<EditIcon fontSize='small' />
-													</IconButton>
-												</Box>
-											</TableCell>
-										</TableRow>
-									);
-								})}
-							</TableBody>
-						</Table>
-					</TableContainer>
+					<DataGrid
+						rows={sortedMaps}
+						columns={columns}
+						density='compact'
+						disableRowSelectionOnClick
+						disableColumnMenu
+						sortingMode='server'
+						sortModel={sortModel}
+						onSortModelChange={handleSortModelChange}
+					/>
 				</Grid>
 			</Grid>
 		</Container>

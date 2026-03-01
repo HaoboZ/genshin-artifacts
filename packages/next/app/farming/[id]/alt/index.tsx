@@ -68,7 +68,11 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 		<RatioContainer width={16} height={9} sx={{ height: '100vh' }}>
 			<VideoPlayer
 				ref={videoRef}
-				src={mapData ? `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}` : null}
+				src={
+					mapData?.video
+						? `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`
+						: null
+				}
 				sx={{ position: 'absolute', width: '100%' }}
 			/>
 			<Box sx={{ position: 'absolute', mx: 'auto', width: '25%', left: 0 }}>
@@ -79,8 +83,8 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 					setActiveSpot={setActiveSpot}
 					followActiveSpot
 					getAnimatedPosition={(containerSize) => {
-						const { point } = findSpotByTime(points, time);
-						return calculateCenterZoom(point, containerSize, 3);
+						const spot = findSpotByTime(points, time);
+						return calculateCenterZoom(spot?.point, containerSize, 3);
 					}}
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}

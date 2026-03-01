@@ -7,27 +7,20 @@ import {
 	Box,
 	Button,
 	Container,
+	FormControlLabel,
 	IconButton,
-	Link as MuiLink,
 	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
+	Switch,
 	TextField,
-	Typography,
 } from '@mui/material';
+import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
-import { sortBy } from 'remeda';
+import { sortBy, toTitleCase } from 'remeda';
 import { type MapData } from '../routes/types';
-import { formatLabel } from './formUtils';
 
 const AddMapDataModal = dynamicModal(() => import('./addMapDataModal'));
 const EditMapDataModal = dynamicModal(() => import('./editMapDataModal'));
@@ -42,25 +35,31 @@ type SortKey =
 	| 'mora'
 	| 'time'
 	| 'efficiency';
+type MapRow = MapData & { actions?: never };
 
 export default function MapList({ items }: { items: MapData[] }) {
 	const router = useRouter();
 	const { showModal } = useModal();
+
 	const [sortKey, setSortKey] = useState<SortKey>('name');
 	const [direction, setDirection] = useState<'asc' | 'desc'>('asc');
 	const [search, setSearch] = useState('');
+	const [moraOnly, setMoraOnly] = useState(false);
 
 	const filteredItems = useMemo(() => {
 		const query = search.trim().toLowerCase();
-		if (!query) return items;
 		return items.filter((item) => {
-			const location = item.background ? formatLabel(item.background) : 'No Location';
-			const type = item.type ? formatLabel(item.type) : 'Normal';
-			return [item.name, location, item.notes ?? '', type].some((value) =>
-				value.toLowerCase().includes(query),
-			);
+			const location = toTitleCase(item.background || 'None');
+			const type = toTitleCase(item.type || '');
+			const matchesSearch =
+				!query ||
+				[item.name, location, item.notes ?? '', type].some((value) =>
+					value.toLowerCase().includes(query),
+				);
+			const matchesSpotsMora = !moraOnly || Number(item.spots ?? 0) === Number(item.mora ?? 0);
+			return matchesSearch && matchesSpotsMora;
 		});
-	}, [items, search]);
+	}, [items, search, moraOnly]);
 
 	const sortedItems = useMemo(() => {
 		const numericSortKeys: SortKey[] = ['spots', 'mora', 'time', 'efficiency'];
@@ -73,26 +72,103 @@ export default function MapList({ items }: { items: MapData[] }) {
 		]);
 	}, [filteredItems, sortKey, direction]);
 
-	const header = (label: string, key: SortKey) => (
-		<TableCell>
-			<TableSortLabel
-				active={sortKey === key}
-				direction={sortKey === key ? direction : 'asc'}
-				onClick={() => {
-					if (sortKey === key) setDirection((v) => (v === 'asc' ? 'desc' : 'asc'));
-					else {
-						setSortKey(key);
-						setDirection('asc');
-					}
-				}}>
-				{label}
-			</TableSortLabel>
-		</TableCell>
-	);
+	const handleSortModelChange = (model: GridSortModel) => {
+		if (!model.length) {
+			setSortKey('name');
+			setDirection('asc');
+			return;
+		}
+		const { field, sort } = model[0];
+		if (!sort) return;
+		setSortKey(field as SortKey);
+		setDirection(sort);
+	};
+
+	const columns: GridColDef<MapRow>[] = [
+		{ field: 'name', headerName: 'Name', flex: 2, minWidth: 200, sortable: true },
+		{
+			field: 'background',
+			headerName: 'Location',
+			flex: 1,
+			minWidth: 100,
+			sortable: true,
+			valueGetter: (value) => toTitleCase(value || 'None'),
+		},
+		{ field: 'owner', headerName: 'Owner', flex: 1, minWidth: 100, sortable: true },
+		{ field: 'notes', headerName: 'Notes', flex: 2, minWidth: 100, sortable: true },
+		{
+			field: 'type',
+			headerName: 'Type',
+			flex: 1,
+			minWidth: 100,
+			sortable: true,
+			valueGetter: (value) => toTitleCase(value || ''),
+		},
+		{
+			field: 'spots',
+			headerName: 'Spots',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'mora',
+			headerName: 'Mora',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'time',
+			headerName: 'Time',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value) => value ?? 0,
+		},
+		{
+			field: 'efficiency',
+			headerName: 'Efficiency',
+			width: 100,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value: number) => (value ?? 0).toFixed(2),
+		},
+		{
+			field: 'actions',
+			headerName: 'Actions',
+			width: 100,
+			sortable: false,
+			filterable: false,
+			renderCell: ({ row }) => (
+				<Box sx={{ display: 'flex', gap: 0.5 }}>
+					<IconButton
+						size='small'
+						onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
+						<EditIcon fontSize='small' />
+					</IconButton>
+					<IconButton
+						size='small'
+						onClick={async () => {
+							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
+								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
+							});
+							router.refresh();
+						}}>
+						<DeleteIcon fontSize='small' color='error' />
+					</IconButton>
+				</Box>
+			),
+		},
+	];
+
+	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
 		<Container sx={{ pt: 1 }}>
-			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1 }}>
+			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 				<Button
 					variant='contained'
 					startIcon={<AddIcon />}
@@ -108,6 +184,17 @@ export default function MapList({ items }: { items: MapData[] }) {
 					onChange={(e) => setSearch(e.target.value)}
 					sx={{ minWidth: 300 }}
 				/>
+				<FormControlLabel
+					control={
+						<Switch
+							size='small'
+							checked={moraOnly}
+							onChange={(event) => setMoraOnly(event.target.checked)}
+						/>
+					}
+					label='Mora Only'
+					sx={{ pl: 1 }}
+				/>
 				<Button component={Link} href='/api/maps/auth' variant='contained'>
 					Authorize
 				</Button>
@@ -115,75 +202,18 @@ export default function MapList({ items }: { items: MapData[] }) {
 					Routes
 				</Button>
 			</Paper>
-			<TableContainer component={Paper}>
-				<Table size='small'>
-					<TableHead>
-						<TableRow>
-							{header('Name', 'name')}
-							{header('Location', 'background')}
-							{header('Owner', 'owner')}
-							{header('Notes', 'notes')}
-							{header('Type', 'type')}
-							{header('Spots', 'spots')}
-							{header('Mora', 'mora')}
-							{header('Time', 'time')}
-							{header('Efficiency', 'efficiency')}
-							<TableCell>Actions</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{sortedItems.map((item) => (
-							<TableRow key={item.id}>
-								<TableCell>
-									<MuiLink
-										component={Link}
-										href={`/api/maps/${item.id}`}
-										underline='hover'>
-										{item.name}
-									</MuiLink>
-								</TableCell>
-								<TableCell>
-									{item.background ? formatLabel(item.background) : 'No Location'}
-								</TableCell>
-								<TableCell>{item.owner ?? '-'}</TableCell>
-								<TableCell>{item.notes ?? '-'}</TableCell>
-								<TableCell>{item.type ? formatLabel(item.type) : 'Normal'}</TableCell>
-								<TableCell>{item.spots ?? 0}</TableCell>
-								<TableCell>{item.mora ?? 0}</TableCell>
-								<TableCell>{item.time ?? 0}</TableCell>
-								<TableCell>{item.efficiency ?? 0}</TableCell>
-								<TableCell>
-									<Box sx={{ display: 'flex' }}>
-										<IconButton
-											size='small'
-											onClick={() => {
-												showModal(EditMapDataModal, { props: { mapData: item } });
-											}}>
-											<EditIcon fontSize='small' />
-										</IconButton>
-										<IconButton
-											size='small'
-											onClick={async () => {
-												await axios.delete(
-													`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${item.id}`,
-													{
-														headers: {
-															Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}`,
-														},
-													},
-												);
-												router.refresh();
-											}}>
-											<DeleteIcon fontSize='small' color='error' />
-										</IconButton>
-									</Box>
-								</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			{!sortedItems.length && <Typography sx={{ mt: 1 }}>No maps found.</Typography>}
+			<DataGrid
+				rows={sortedItems}
+				columns={columns}
+				density='compact'
+				disableRowSelectionOnClick
+				disableColumnMenu
+				sortingMode='server'
+				sortModel={sortModel}
+				onSortModelChange={handleSortModelChange}
+				onRowClick={({ row }) => router.push(`/api/maps/${row.id}`)}
+				sx={{ 'border': 0, '.MuiDataGrid-row:hover': { cursor: 'pointer' } }}
+			/>
 		</Container>
 	);
 }

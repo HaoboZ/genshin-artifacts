@@ -3,22 +3,8 @@
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
-import {
-	Button,
-	Container,
-	IconButton,
-	Link as MuiLink,
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Box, Button, Container, IconButton, Paper, TextField } from '@mui/material';
+import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
@@ -31,6 +17,7 @@ const AddRouteDataModal = dynamicModal(() => import('./addRouteDataModal'));
 const EditRouteDataModal = dynamicModal(() => import('./editRouteDataModal'));
 
 type SortKey = 'name' | 'owner' | 'notes' | 'maps';
+type RouteRow = RouteData & { actions?: never };
 
 export default function RouteList({ items }: { items: RouteData[] }) {
 	const router = useRouter();
@@ -56,26 +43,63 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 		]);
 	}, [filteredItems, sortKey, direction]);
 
-	const header = (label: string, key: SortKey) => (
-		<TableCell>
-			<TableSortLabel
-				active={sortKey === key}
-				direction={sortKey === key ? direction : 'asc'}
-				onClick={() => {
-					if (sortKey === key) setDirection((v) => (v === 'asc' ? 'desc' : 'asc'));
-					else {
-						setSortKey(key);
-						setDirection('asc');
-					}
-				}}>
-				{label}
-			</TableSortLabel>
-		</TableCell>
-	);
+	const handleSortModelChange = (model: GridSortModel) => {
+		if (!model.length) {
+			setSortKey('name');
+			setDirection('asc');
+			return;
+		}
+		const { field, sort } = model[0];
+		if (!sort) return;
+		setSortKey(field as SortKey);
+		setDirection(sort);
+	};
+
+	const columns: GridColDef<RouteRow>[] = [
+		{ field: 'name', headerName: 'Name', flex: 2, minWidth: 200, sortable: true },
+		{ field: 'owner', headerName: 'Owner', flex: 1, minWidth: 150, sortable: true },
+		{ field: 'notes', headerName: 'Notes', flex: 2, minWidth: 250, sortable: true },
+		{
+			field: 'maps',
+			headerName: 'Maps',
+			width: 100,
+			type: 'number',
+			sortable: true,
+			valueGetter: (value: string[]) => value?.length ?? 0,
+		},
+		{
+			field: 'actions',
+			headerName: 'Actions',
+			width: 100,
+			sortable: false,
+			filterable: false,
+			renderCell: ({ row }) => (
+				<Box sx={{ display: 'flex', gap: 0.5 }}>
+					<IconButton
+						size='small'
+						onClick={() => showModal(EditRouteDataModal, { props: { routeData: row } })}>
+						<EditIcon fontSize='small' />
+					</IconButton>
+					<IconButton
+						size='small'
+						onClick={async () => {
+							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${row.id}`, {
+								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
+							});
+							router.refresh();
+						}}>
+						<DeleteIcon fontSize='small' color='error' />
+					</IconButton>
+				</Box>
+			),
+		},
+	];
+
+	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
 		<Container sx={{ pt: 1 }}>
-			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1 }}>
+			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 				<Button
 					variant='contained'
 					startIcon={<AddIcon />}
@@ -95,61 +119,18 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 					Maps
 				</Button>
 			</Paper>
-			<TableContainer component={Paper}>
-				<Table size='small'>
-					<TableHead>
-						<TableRow>
-							{header('Name', 'name')}
-							{header('Owner', 'owner')}
-							{header('Notes', 'notes')}
-							{header('Maps', 'maps')}
-							<TableCell>Actions</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{sortedItems.map((item) => (
-							<TableRow key={item.id}>
-								<TableCell>
-									<MuiLink
-										component={Link}
-										href={`/api/routes/${item.id}`}
-										underline='hover'>
-										{item.name}
-									</MuiLink>
-								</TableCell>
-								<TableCell>{item.owner ?? '-'}</TableCell>
-								<TableCell>{item.notes ?? '-'}</TableCell>
-								<TableCell>{item.maps?.length ?? 0}</TableCell>
-								<TableCell>
-									<IconButton
-										size='small'
-										onClick={() => {
-											showModal(EditRouteDataModal, { props: { routeData: item } });
-										}}>
-										<EditIcon fontSize='small' />
-									</IconButton>
-									<IconButton
-										size='small'
-										onClick={async () => {
-											await axios.delete(
-												`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${item.id}`,
-												{
-													headers: {
-														Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}`,
-													},
-												},
-											);
-											router.refresh();
-										}}>
-										<DeleteIcon fontSize='small' color='error' />
-									</IconButton>
-								</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			{!sortedItems.length && <Typography sx={{ mt: 1 }}>No routes found.</Typography>}
+			<DataGrid
+				rows={sortedItems}
+				columns={columns}
+				density='compact'
+				disableRowSelectionOnClick
+				disableColumnMenu
+				sortingMode='server'
+				sortModel={sortModel}
+				onSortModelChange={handleSortModelChange}
+				onRowClick={({ row }) => router.push(`/api/routes/${row.id}`)}
+				sx={{ 'border': 0, '.MuiDataGrid-row:hover': { cursor: 'pointer' } }}
+			/>
 		</Container>
 	);
 }

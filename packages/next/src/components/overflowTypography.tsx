@@ -1,6 +1,6 @@
 import type { TooltipProps, TypographyProps } from '@mui/material';
 import { Tooltip, Typography } from '@mui/material';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useOnWindowResize } from 'rooks';
 
 export default function OverflowTypography({
@@ -14,6 +14,10 @@ export default function OverflowTypography({
 	useOnWindowResize(() => {
 		setOverFlowed(contentRef.current.scrollWidth > contentRef.current.clientWidth);
 	});
+
+	useEffect(() => {
+		setOverFlowed(contentRef.current.scrollWidth > contentRef.current.clientWidth);
+	}, []);
 
 	return (
 		<Tooltip

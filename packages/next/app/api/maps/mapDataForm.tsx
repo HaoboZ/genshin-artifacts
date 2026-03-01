@@ -11,8 +11,9 @@ import {
 import { useFormikContext } from 'formik';
 import Image from 'next/image';
 import { useMemo } from 'react';
+import { toTitleCase } from 'remeda';
 import { type BackgroundType, type MapType } from '../routes/types';
-import { formatLabel, LOCATION_TYPES, MAP_TYPES } from './formUtils';
+import { LOCATION_TYPES, MAP_TYPES } from './formUtils';
 import RelocateMapPicker from './relocateMapPicker';
 
 export type MapDataFormValues = {
@@ -86,7 +87,7 @@ export default function MapDataForm({
 							onChange={handleChange}>
 							{MAP_TYPES.map((value) => (
 								<MenuItem key={value} value={value}>
-									{formatLabel(value)}
+									{toTitleCase(value)}
 								</MenuItem>
 							))}
 						</TextField>
@@ -101,7 +102,7 @@ export default function MapDataForm({
 							onChange={handleChange}>
 							{LOCATION_TYPES.map((value) => (
 								<MenuItem key={value} value={value}>
-									{value === 'none' ? 'No Location' : formatLabel(value)}
+									{toTitleCase(value)}
 								</MenuItem>
 							))}
 						</TextField>

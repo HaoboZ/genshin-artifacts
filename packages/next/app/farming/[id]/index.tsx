@@ -87,12 +87,14 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		<Box
 			ref={ref}
 			sx={{ maxWidth: '200vh', height: '100vh', position: 'relative', margin: '0 auto' }}>
-			<Image
-				fill
-				alt='background'
-				src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${String(routeData.mapsData[selectedMap].background ?? 'teyvat').replace(/\.png$/i, '')}.png`}
-				style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
-			/>
+			{routeData.mapsData[selectedMap].background && (
+				<Image
+					fill
+					alt='background'
+					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}.png`}
+					style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
+				/>
+			)}
 			<Box
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
@@ -133,7 +135,11 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 			</Box>
 			<VideoPlayer
 				ref={videoRef}
-				src={mapData ? `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}` : null}
+				src={
+					mapData?.video
+						? `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`
+						: null
+				}
 				sx={{
 					position: mobile ? 'relative' : 'absolute',
 					bottom: 0,

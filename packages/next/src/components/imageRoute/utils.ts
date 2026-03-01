@@ -292,17 +292,10 @@ export function calculateOptimalZoom(
 	const containerCenterY = containerSize.height / 2;
 
 	// we need to translate the image center by -offsetToBounding * scale
-	let offsetX = -(boundingBox.centerX - containerCenterX) * scale;
-	let offsetY = -(boundingBox.centerY - containerCenterY) * scale;
+	const offsetX = -(boundingBox.centerX - containerCenterX) * scale;
+	const offsetY = -(boundingBox.centerY - containerCenterY) * scale;
 
-	// constrain offset to never show beyond image bounds
-	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;
-	const halfScaledHeight = (containerSize.height * scale - containerSize.height) / 2;
-
-	offsetX = clamp(offsetX, { min: -halfScaledWidth, max: halfScaledWidth });
-	offsetY = clamp(offsetY, { min: -halfScaledHeight, max: halfScaledHeight });
-
-	return { scale, offset: { x: offsetX, y: offsetY } };
+	return offsetToZoom(offsetX, offsetY, containerSize, scale);
 }
 
 export function calculateCenterZoom(point: Point, containerSize: DOMRect, scale: number) {
@@ -315,9 +308,13 @@ export function calculateCenterZoom(point: Point, containerSize: DOMRect, scale:
 	const pointY = point.y * containerSize.height;
 
 	// calculate offset to center the point
-	let offsetX = (containerSize.width / 2 - pointX) * scale;
-	let offsetY = (containerSize.height / 2 - pointY) * scale;
+	const offsetX = (containerSize.width / 2 - pointX) * scale;
+	const offsetY = (containerSize.height / 2 - pointY) * scale;
 
+	return offsetToZoom(offsetX, offsetY, containerSize, scale);
+}
+
+function offsetToZoom(offsetX: number, offsetY: number, containerSize: DOMRect, scale: number) {
 	// constrain offset to never show beyond image bounds
 	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;
 	const halfScaledHeight = (containerSize.height * scale - containerSize.height) / 2;

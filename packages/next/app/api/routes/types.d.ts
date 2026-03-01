@@ -11,7 +11,7 @@ export type BackgroundType =
 	| 'snezhnaya'
 	| 'nod_krai';
 
-export type MapType = 'normal' | 'extend' | 'scan';
+export type MapType = 'none' | 'extend' | 'scan';
 
 export type RouteData = {
 	id: string;

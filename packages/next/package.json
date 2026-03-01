@@ -19,6 +19,7 @@
 		"@mui/icons-material": "7.3.8",
 		"@mui/material": "7.3.8",
 		"@mui/material-nextjs": "7.3.8",
+		"@mui/x-data-grid": "^8.27.3",
 		"@reduxjs/toolkit": "2.11.2",
 		"@tanem/react-nprogress": "6.0.0",
 		"@vercel/analytics": "1.6.1",
