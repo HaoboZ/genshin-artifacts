@@ -8,7 +8,6 @@ export type BackgroundType =
 	| 'sumeru'
 	| 'fontaine'
 	| 'natlan'
-	| 'snezhnaya'
 	| 'nod_krai';
 
 export type MapType = 'none' | 'extend' | 'scan';

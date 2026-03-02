@@ -10,7 +10,6 @@ export const LOCATION_TYPES: BackgroundType[] = [
 	'sumeru',
 	'fontaine',
 	'natlan',
-	'snezhnaya',
 	'nod_krai',
 ];
 

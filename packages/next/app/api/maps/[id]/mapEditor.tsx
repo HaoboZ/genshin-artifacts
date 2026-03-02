@@ -2,7 +2,6 @@ import FormattedTextField from '@/components/formattedTextField';
 import ImageRoute from '@/components/imageRoute';
 import type { Point, Spot } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
-import { calculateOptimalZoom } from '@/components/imageRoute/utils';
 import VideoPlayer from '@/components/videoPlayer';
 import useHistory from '@/hooks/useHistory';
 import {
@@ -106,15 +105,6 @@ export default function MapEditor({
 		i === selectedPointIndex ? { ...point, extra: 'hover' } : point,
 	);
 
-	const updateMapTextPosition = (textIndex: number, field: 'x' | 'y', value: number) => {
-		setMapData((prev) => {
-			const nextText = [...(prev.text ?? [])];
-			if (!nextText[textIndex]) return prev;
-			nextText[textIndex] = { ...nextText[textIndex], [field]: value };
-			return { ...prev, text: nextText };
-		});
-	};
-
 	return (
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
@@ -131,28 +121,26 @@ export default function MapEditor({
 							addPoint={(point) => {
 								const newPoint = pick(point, ['x', 'y']);
 								if (placingTextIndex !== null) {
-									updateMapTextPosition(placingTextIndex, 'x', newPoint.x);
-									updateMapTextPosition(placingTextIndex, 'y', newPoint.y);
 									setMapData((prev) => {
-										const nextText = [...(prev.text ?? [])];
-										if (!nextText[placingTextIndex]) return prev;
-										nextText[placingTextIndex] = {
-											...nextText[placingTextIndex],
+										if (!prev.text[placingTextIndex]) return prev;
+										prev.text[placingTextIndex] = {
+											...prev.text[placingTextIndex],
 											...newPoint,
 										};
-										return { ...prev, text: nextText };
+										return { ...prev };
 									});
 									setPlacingTextIndex(null);
 									return;
 								}
-								if (!selectedPoint) return;
 								setPoints((prev) => {
 									if (isCtrlPressed) {
+										if (!selectedPoint) return;
 										const newPoints = [...prev];
 										newPoints[selectedPointIndex] = { ...selectedPoint, ...newPoint };
 										return newPoints;
 									}
 									if (isShiftPressed) {
+										if (!selectedPoint) return;
 										const insertIndex = selectedPointIndex + 1;
 										return [
 											...prev.slice(0, insertIndex),
@@ -171,9 +159,6 @@ export default function MapEditor({
 							RenderPoint={RouteRenderPoint}
 							RenderPath={RouteRenderPath}
 							RenderExtra={RouteRenderExtra(mapData.text)}
-							getInitialPosition={(containerSize) =>
-								calculateOptimalZoom(points, containerSize, 0.75)
-							}
 							sx={{ aspectRatio: 1 }}>
 							<Image
 								fill

@@ -228,7 +228,7 @@ function normalizeBackground(value: unknown): BackgroundType | undefined {
 	if (typeof value !== 'string') return undefined;
 	const background = value.replace(/\.png$/i, '').toLowerCase();
 	if (
-		['mondstadt', 'liyue', 'inazuma', 'sumeru', 'fontaine', 'natlan', 'snezhnaya'].includes(
+		['mondstadt', 'liyue', 'inazuma', 'sumeru', 'fontaine', 'natlan', 'nod_krai'].includes(
 			background,
 		)
 	) {
