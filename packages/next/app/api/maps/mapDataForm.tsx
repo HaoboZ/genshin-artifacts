@@ -25,18 +25,12 @@ export type MapDataFormValues = {
 	spots: number;
 	time: number;
 	mora: number;
-	x: number | null;
-	y: number | null;
+	x?: number;
+	y?: number;
 	file?: File;
 };
 
-export default function MapDataForm({
-	requireFile,
-	showResetCoordinates,
-}: {
-	requireFile: boolean;
-	showResetCoordinates?: boolean;
-}) {
+export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
 	const { values, setFieldValue, handleChange, submitForm } =
 		useFormikContext<MapDataFormValues>();
 	const preview = useMemo(
@@ -170,19 +164,17 @@ export default function MapDataForm({
 								setFieldValue('y', point.y);
 							}}
 						/>
-						{showResetCoordinates && (
-							<Box sx={{ position: 'absolute', top: 8, left: 8 }}>
-								<Button
-									variant='contained'
-									color='warning'
-									onClick={() => {
-										setFieldValue('x', undefined);
-										setFieldValue('y', undefined);
-									}}>
-									Reset X/Y
-								</Button>
-							</Box>
-						)}
+						<Box sx={{ position: 'absolute', top: 8, left: 8 }}>
+							<Button
+								variant='contained'
+								color='warning'
+								onClick={() => {
+									setFieldValue('x', undefined);
+									setFieldValue('y', undefined);
+								}}>
+								Reset X/Y
+							</Button>
+						</Box>
 					</Grid>
 				</Grid>
 			</DialogContent>

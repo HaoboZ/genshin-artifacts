@@ -72,7 +72,7 @@ export default function EditMapDataModal({ mapData }: { mapData: MapData }) {
 					router.refresh();
 					closeModal();
 				}}>
-				<MapDataForm requireFile={false} showResetCoordinates />
+				<MapDataForm requireFile={false} />
 			</Formik>
 		</DialogWrapper>
 	);
