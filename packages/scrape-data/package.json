@@ -1,5 +1,5 @@
 {
-	"name": "@genshin-artifacts/generate-data",
+	"name": "@genshin-artifacts/scrape-data",
 	"private": true,
 	"scripts": {
 		"start": "npx tsx ./index.ts"

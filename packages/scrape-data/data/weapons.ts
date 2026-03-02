@@ -21,7 +21,6 @@ export async function fetchWeapons() {
 					.querySelector('img')
 					.getAttribute('data-src')
 					.replace(/(\.png).*$/, '$1'),
-				// image2: images[1],
 				rarity: +children[2].querySelector('img').alt[0],
 				weaponType,
 				atk: +(children[3].textContent.match(/\d+/)?.[0] ?? 0),

@@ -5,7 +5,7 @@ export function clampPosition(containerSize: DOMRect, x: number, y: number, curr
 	const imageWidth = containerSize.width * currentScale;
 	const imageHeight = containerSize.height * currentScale;
 
-	// calculate bounds - with center origin, the offset represents the center position
+	// Calculate bounds - with center origin, the offset represents the center position
 	const halfScaledWidth = (imageWidth - containerSize.width) / 2;
 	const halfScaledHeight = (imageHeight - containerSize.height) / 2;
 
@@ -30,7 +30,7 @@ export function mouseToContainer(
 	return { x: normalizedX, y: normalizedY };
 }
 
-// calculate closest point on path with segment info and snapping
+// Calculate closest point on path with segment info and snapping
 export function getClosestPointOnPath(
 	points: Point[],
 	mouseX: number,
@@ -44,7 +44,7 @@ export function getClosestPointOnPath(
 	let closestPointIndex = -1;
 	let segmentPercentage = 0;
 
-	// check each segment
+	// Check each segment
 	for (let i = 1; i < points.length; i++) {
 		const x1 = points[i - 1].x;
 		const y1 = points[i - 1].y;
@@ -53,25 +53,25 @@ export function getClosestPointOnPath(
 
 		const segmentLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 2;
 
-		// vector from start to end of segment
+		// Vector from start to end of segment
 		const dx = x2 - x1;
 		const dy = y2 - y1;
 
-		// vector from start to mouse
+		// Vector from start to mouse
 		const mx = mouseX - x1;
 		const my = mouseY - y1;
 
-		// project mouse onto segment
+		// Project mouse onto segment
 		const t = clamp((mx * dx + my * dy) / segmentLength, {
 			min: 0,
 			max: 1,
 		});
 
-		// closest point on this segment
+		// Closest point on this segment
 		let px = x1 + t * dx;
 		let py = y1 + t * dy;
 
-		// check if we should snap to start point
+		// Check if we should snap to start point
 		const distToStart = Math.sqrt((mouseX - x1) ** 2 + (mouseY - y1) ** 2);
 		const distToEnd = Math.sqrt((mouseX - x2) ** 2 + (mouseY - y2) ** 2);
 
@@ -89,7 +89,7 @@ export function getClosestPointOnPath(
 			snappedT = 0;
 		}
 
-		// distance from mouse to closest point
+		// Distance from mouse to closest point
 		const dist = Math.sqrt((mouseX - px) ** 2 + (mouseY - py) ** 2);
 
 		if (dist < minDistance) {
@@ -109,12 +109,12 @@ export function getClosestPointOnPath(
 	};
 }
 
-// find active spot based on time
+// Find active spot based on time
 export function findSpotByTime(points: Point[], time: number): Spot {
 	if (!points?.length) return null;
 
 	let lastPoint = { point: points[0], i: 0, maxTime: 0 };
-	// iterate through points to find the spot
+	// Iterate through points to find the spot
 	for (let i = 0; i < points.length; i++) {
 		const point = points[i];
 
@@ -124,7 +124,7 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		const minTime = point.start ?? point.marked ?? 0;
 		const maxTime = point.end ?? point.marked ?? point.start ?? 0;
 
-		// time is at this point
+		// Time is at this point
 		if (minTime <= time && time <= maxTime) {
 			return { point, pointIndex: i, percentage: 0 };
 		}
@@ -138,7 +138,7 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		const endTime = lastPoint.maxTime;
 		const segmentPoints = points.slice(lastPoint.i, i + 1);
 
-		// calculate cumulative distances
+		// Calculate cumulative distances
 		const distances: number[] = [0];
 		let totalDistance = 0;
 		for (let j = 1; j < segmentPoints.length; j++) {
@@ -152,15 +152,15 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 			return { point: lastPoint.point, pointIndex: lastPoint.i, percentage: 0 };
 		}
 
-		// interpolate position based on time
+		// Interpolate position based on time
 		const timePercentage = (time - endTime) / (startTime - endTime);
 		const targetDistance = totalDistance * timePercentage;
 
-		// find segment containing target distance
+		// Find segment containing target distance
 		let segIdx = distances.findIndex((d, idx) => idx > 0 && targetDistance <= d) - 1;
 		if (segIdx < 0) segIdx = distances.length - 2;
 
-		// interpolate within segment
+		// Interpolate within segment
 		const segStart = distances[segIdx];
 		const segEnd = distances[segIdx + 1];
 		const segT = (targetDistance - segStart) / (segEnd - segStart);
@@ -175,7 +175,7 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 		};
 	}
 
-	// time is beyond all points, return last point
+	// Time is beyond all points, return last point
 	return {
 		point: points[points.length - 1],
 		pointIndex: points.length - 1,
@@ -183,11 +183,11 @@ export function findSpotByTime(points: Point[], time: number): Spot {
 	};
 }
 
-// find time based on spot
+// Find time based on spot
 export function findTimeBySpot(points: Point[], spot: Spot) {
 	if (!points?.length || !spot) return null;
 
-	// check if we're snapped directly to a point
+	// Check if we're snapped directly to a point
 	if (spot.percentage === 100) {
 		const point = points[spot.pointIndex + 1];
 		const res = point.marked ?? point.start;
@@ -197,7 +197,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 		return point.marked ?? point.start ?? 0;
 	}
 
-	// find timing segment boundaries in a single pass
+	// Find timing segment boundaries in a single pass
 	let startIdx = 0;
 	let endIdx = points.length - 1;
 
@@ -220,7 +220,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 	const startPointTime = startPoint.end ?? startPoint.marked ?? startPoint.start;
 	const endPointTime = endPoint.start ?? endPoint.marked ?? endPoint.end;
 
-	// calculate cumulative distances along the path
+	// Calculate cumulative distances along the path
 	const pathPoints = points.slice(startIdx, endIdx + 1);
 	const distances: number[] = [0];
 	let totalDistance = 0;
@@ -234,7 +234,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 
 	if (totalDistance === 0) return startPointTime;
 
-	// calculate distance to the spot
+	// Calculate distance to the spot
 	const pointIndexInPath = spot.pointIndex - startIdx;
 	const distanceToSegmentStart = distances[pointIndexInPath];
 
@@ -246,7 +246,7 @@ export function findTimeBySpot(points: Point[], spot: Spot) {
 
 	const totalDistanceToSpot = distanceToSegmentStart + segmentLength * (spot.percentage / 100);
 
-	// interpolate time based on distance ratio
+	// Interpolate time based on distance ratio
 	const distanceRatio = totalDistanceToSpot / totalDistance;
 	return startPointTime + (endPointTime - startPointTime) * distanceRatio;
 }
@@ -260,7 +260,7 @@ export function calculateOptimalZoom(
 	if (!points?.length || !containerSize?.width || !containerSize?.height || !zoom) {
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
-	// find bounding box of all points (normalized coordinates)
+	// Find bounding box of all points (normalized coordinates)
 	let minX = Infinity,
 		maxX = -Infinity,
 		minY = Infinity,
@@ -273,7 +273,7 @@ export function calculateOptimalZoom(
 		maxY = Math.max(maxY, point.y);
 	}
 
-	// convert to pixel coordinates
+	// Convert to pixel coordinates
 	const boundingBox = {
 		width: (maxX - minX) * containerSize.width,
 		height: (maxY - minY) * containerSize.height,
@@ -281,17 +281,17 @@ export function calculateOptimalZoom(
 		centerY: ((minY + maxY) / 2) * containerSize.height,
 	};
 
-	// calculate scale to fit bounding box with some padding
+	// Calculate scale to fit bounding box with some padding
 	const scaleX = (containerSize.width * zoom) / boundingBox.width;
 	const scaleY = (containerSize.height * zoom) / boundingBox.height;
 
 	const scale = Math.max(1, Math.min(scaleX, scaleY, maxScale));
 
-	// calculate offset to center the bounding box
+	// Calculate offset to center the bounding box
 	const containerCenterX = containerSize.width / 2;
 	const containerCenterY = containerSize.height / 2;
 
-	// we need to translate the image center by -offsetToBounding * scale
+	// We need to translate the image center by -offsetToBounding * scale
 	const offsetX = -(boundingBox.centerX - containerCenterX) * scale;
 	const offsetY = -(boundingBox.centerY - containerCenterY) * scale;
 
@@ -303,11 +303,11 @@ export function calculateCenterZoom(point: Point, containerSize: DOMRect, scale:
 		return { scale: 1, offset: { x: 0, y: 0 } };
 	}
 
-	// convert normalized point (0-1) to pixel coordinates
+	// Convert normalized point (0-1) to pixel coordinates
 	const pointX = point.x * containerSize.width;
 	const pointY = point.y * containerSize.height;
 
-	// calculate offset to center the point
+	// Calculate offset to center the point
 	const offsetX = (containerSize.width / 2 - pointX) * scale;
 	const offsetY = (containerSize.height / 2 - pointY) * scale;
 
@@ -315,7 +315,7 @@ export function calculateCenterZoom(point: Point, containerSize: DOMRect, scale:
 }
 
 function offsetToZoom(offsetX: number, offsetY: number, containerSize: DOMRect, scale: number) {
-	// constrain offset to never show beyond image bounds
+	// Constrain offset to never show beyond image bounds
 	const halfScaledWidth = (containerSize.width * scale - containerSize.width) / 2;
 	const halfScaledHeight = (containerSize.height * scale - containerSize.height) / 2;
 

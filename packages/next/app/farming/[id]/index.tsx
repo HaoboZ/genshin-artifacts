@@ -72,7 +72,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
-	// autoplay
+	// Autoplay
 	useEventListener(videoRef.current, 'ended', () => {
 		if (!recording) return;
 		setTimeout(() => {

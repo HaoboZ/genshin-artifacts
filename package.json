@@ -10,10 +10,9 @@
 	"scripts": {
 		"prepare": "husky",
 		"next-dev": "cd packages/next && bun run dev",
-		"next-build": "cd packages/next && bun run build",
-		"generate-data": "cd packages/generate-data && bun run start",
-		"map-capture": "cd packages/map-capture && bun run start",
-		"routes-worker": "cd packages/routes-worker && bun run deploy"
+		"routes-worker": "cd packages/routes-worker && bun run deploy",
+		"scrape-data": "cd packages/scrape-data && bun run start",
+		"map-capture": "cd packages/map-capture && bun run start"
 	},
 	"workspaces": [
 		"packages/*"

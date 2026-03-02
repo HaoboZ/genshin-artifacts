@@ -124,7 +124,6 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 				columns={columns}
 				density='compact'
 				disableRowSelectionOnClick
-				disableColumnMenu
 				sortingMode='server'
 				sortModel={sortModel}
 				onSortModelChange={handleSortModelChange}

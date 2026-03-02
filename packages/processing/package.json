@@ -1,0 +1,16 @@
+{
+	"name": "@genshin-artifacts/processing",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"image": "npx tsx ./image.ts",
+		"video": "npx tsx ./video.ts"
+	},
+	"dependencies": {
+		"fluent-ffmpeg": "2.1.3",
+		"sharp": "0.34.5"
+	},
+	"devDependencies": {
+		"@types/fluent-ffmpeg": "2.1.28"
+	}
+}

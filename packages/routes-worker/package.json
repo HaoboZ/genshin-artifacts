@@ -1,5 +1,5 @@
 {
-	"name": "routes-worker",
+	"name": "@genshin-artifacts/routes-worker",
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",

@@ -1,12 +1,12 @@
-import captureMap from './captureMap';
-import measureUnits from './measureUnits';
-import processAndSave from './processAndSave';
-import setupBrowser from './setupBrowser';
-import stitchShots from './stitchShots';
+import captureMap from './src/captureMap';
+import measureUnits from './src/measureUnits';
+import processAndSave from './src/processAndSave';
+import setupBrowser from './src/setupBrowser';
+import stitchShots from './src/stitchShots';
 
 const { browser, page } = await setupBrowser(1280, 720);
 const { unitsPerPixelX, unitsPerPixelY } = await measureUnits(page);
 const shots = await captureMap(page);
-const buffer = await stitchShots(shots, unitsPerPixelX, unitsPerPixelY);
-await processAndSave(buffer, '../next/public/images/teyvat.png');
+const image = await stitchShots(shots, unitsPerPixelX, unitsPerPixelY);
+await processAndSave(image, 'output/teyvat.png');
 await browser.close();

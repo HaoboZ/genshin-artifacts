@@ -24,6 +24,15 @@
 		},
 		{
 			"path": "./packages/routes-worker"
+		},
+		{
+			"path": "./packages/scrape-data"
+		},
+		{
+			"path": "./packages/map-capture"
+		},
+		{
+			"path": "./packages/processing"
 		}
 	]
 }

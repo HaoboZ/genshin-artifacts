@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 
-// fetches the url data into the initial state
+// Fetches the url data into the initial state
 export default function useFetchState<S>(
 	url: string,
 	defaultState?: S,

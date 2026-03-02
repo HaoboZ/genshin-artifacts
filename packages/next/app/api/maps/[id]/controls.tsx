@@ -12,8 +12,8 @@ import { useSnackbar } from 'notistack';
 import { Fragment } from 'react';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
-import UploadFile from '../../routes/auth/uploadFile';
 import { type MapData } from '../../routes/types';
+import UploadFile from './uploadFile';
 
 const EditJsonModal = dynamicModal(() => import('../../routes/editJsonModal'));
 const EditMapDataModal = dynamicModal(() => import('../editMapDataModal'));

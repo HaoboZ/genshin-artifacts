@@ -11,7 +11,7 @@ export default function useRouteVideoSync(points: Point[]) {
 	const [time, setTime] = useState(0);
 	const [activeSpot, setActiveSpot] = useState<Spot>(null);
 
-	// sync activeSpot with time
+	// Sync activeSpot with time
 	useEffect(() => {
 		const spot = findSpotByTime(points, time);
 		if (!spot) return;

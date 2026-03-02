@@ -45,7 +45,7 @@ export function writeWeekly(weekly) {
 		items.map(({ name, key }) => `\n\t| '${key}' // ${name}`),
 	);
 
-	// add semicolon to the last union entry
+	// Add semicolon to the last union entry
 	entries[entries.length - 1] = entries[entries.length - 1].replace(/^(\n\t\| '[^']+')/, '$1;');
 
 	writeFileSync(

@@ -195,19 +195,17 @@ export default function MapList({ items }: { items: MapData[] }) {
 					label='Mora Only'
 					sx={{ pl: 1 }}
 				/>
-				<Button component={Link} href='/api/maps/auth' variant='contained'>
-					Authorize
-				</Button>
 				<Button component={Link} href='/api/routes' variant='contained'>
 					Routes
+				</Button>
+				<Button component={Link} href='/api/maps/auth' variant='contained'>
+					Authorize
 				</Button>
 			</Paper>
 			<DataGrid
 				rows={sortedItems}
 				columns={columns}
 				density='compact'
-				disableRowSelectionOnClick
-				disableColumnMenu
 				sortingMode='server'
 				sortModel={sortModel}
 				onSortModelChange={handleSortModelChange}

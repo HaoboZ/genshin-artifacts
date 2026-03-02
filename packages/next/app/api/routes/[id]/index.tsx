@@ -299,7 +299,6 @@ export default function Route({
 						columns={columns}
 						density='compact'
 						disableRowSelectionOnClick
-						disableColumnMenu
 						sortingMode='server'
 						sortModel={sortModel}
 						onSortModelChange={handleSortModelChange}
