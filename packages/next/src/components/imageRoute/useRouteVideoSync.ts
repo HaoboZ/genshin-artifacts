@@ -44,6 +44,10 @@ export default function useRouteVideoSync(points: Point[]) {
 		};
 	}, [videoRef, videoState.isPaused]);
 
+	useEffect(() => {
+		if (videoState.isPaused) setTime(videoState.currentTime);
+	}, [videoState]);
+
 	return {
 		routeRef,
 		videoRef,

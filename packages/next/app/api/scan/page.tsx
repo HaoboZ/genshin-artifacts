@@ -44,7 +44,7 @@ export default function InternalScan() {
 			<Script src='https://docs.opencv.org/4.x/opencv.js' />
 			<PageSection>
 				<Stack spacing={1}>
-					<Stack spacing={1} direction='row' useFlexGap sx={{ flexWrap: 'wrap' }}>
+					<Stack direction='row' spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
 						<Button component='label' variant='contained'>
 							Upload
 							<input
@@ -94,7 +94,7 @@ export default function InternalScan() {
 							Compare
 						</Button>
 					</Stack>
-					<Stack spacing={1} direction='row' useFlexGap sx={{ flexWrap: 'wrap' }}>
+					<Stack direction='row' spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
 						<Button
 							variant='contained'
 							onClick={() => {
@@ -162,7 +162,7 @@ export default function InternalScan() {
 							Rarity
 						</Button>
 					</Stack>
-					<Stack spacing={1} direction='row'>
+					<Stack direction='row' spacing={1}>
 						<Box ref={containerRef} />
 						<pre>{JSON.stringify(artifact, null, '\t')}</pre>
 					</Stack>

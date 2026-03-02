@@ -4,19 +4,19 @@ import { ensureOutputDir, processPath, resolveOutputPath, SUPPORTED_EXTENSIONS }
 const [, , ...args] = process.argv;
 
 if (args.length === 0) {
-	console.log('Usage: node index.ts <image file | directory>');
+	console.info('Usage: node index.ts <image file | directory>');
 	process.exit(1);
 }
 
 const OUTPUT_DIR = 'output/image';
 await processPath(args.join(' '), OUTPUT_DIR, SUPPORTED_EXTENSIONS.image, processImageFile);
-console.log(`\nCropping complete. Files saved in ${OUTPUT_DIR}.`);
+console.info(`\nCropping complete. Files saved in ${OUTPUT_DIR}.`);
 
 async function processImageFile(inputFile: string, inputPath: string, outputDir: string) {
 	const outputFile = resolveOutputPath(inputFile, inputPath, outputDir);
 	await ensureOutputDir(outputFile);
 
-	console.log(`Cropping image: ${inputFile} -> ${outputFile}`);
+	console.info(`Cropping image: ${inputFile} -> ${outputFile}`);
 
 	try {
 		const image = sharp(inputFile);
@@ -31,7 +31,7 @@ async function processImageFile(inputFile: string, inputPath: string, outputDir:
 			.png()
 			.toFile(outputFile);
 
-		console.log(`  Done: ${outputFile}`);
+		console.info(`  Done: ${outputFile}`);
 	} catch (err) {
 		console.error(`  Error processing ${inputFile}: ${(err as Error).message}`);
 	}

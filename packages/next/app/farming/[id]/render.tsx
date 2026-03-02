@@ -5,21 +5,25 @@ import {
 } from '@/components/imageRoute/types';
 import { Fragment } from 'react';
 
-export function RouteRenderPoint({ point, containerSize, scale, type }: RenderPointProps) {
-	if (!type) return null;
+function getColor(type: string) {
+	return { active: 'blue', hover: 'lime' }[type];
+}
+
+export function RouteRenderPoint({ point, containerSize, type }: RenderPointProps) {
+	if (!type && !point.extra) return null;
 
 	return (
 		<circle
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
-			r={containerSize.width / (type ? 75 : 500 * scale)}
-			fill={{ active: 'blue', hover: 'lime' }[type]}
-			fillOpacity={type ? 0.5 : 1}
-			stroke={{ active: 'blue', hover: 'lime' }[type]}
+			r={containerSize.width / 75}
+			fill={getColor(type ?? point.extra)}
+			fillOpacity={0.5}
+			stroke={getColor(type ?? point.extra)}
 			strokeWidth={containerSize.width / 500}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,
-				animation: type === 'active' ? 'pulse 2s ease-in-out infinite' : undefined,
+				animation: 'pulse 2s ease-in-out infinite',
 			}}
 		/>
 	);

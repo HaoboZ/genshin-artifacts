@@ -14,14 +14,13 @@ export default function RelocateMapPicker({
 	onChange: (point: Point) => void;
 }) {
 	return (
-		<Grid size={12} sx={{ aspectRatio: '16 / 9' }}>
+		<Grid size={12}>
 			<ImageRoute
 				points={x !== undefined && y !== undefined ? [{ x, y }] : []}
 				addPoint={onChange}
 				RenderPoint={MapRenderPoint}
-				RenderPath={() => null}
 				RenderExtra={MapRenderExtra}
-				sx={{ width: '100%', height: '100%' }}>
+				sx={{ aspectRatio: '16 / 9' }}>
 				<Image
 					fill
 					alt='teyvat'

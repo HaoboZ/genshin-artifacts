@@ -3,27 +3,33 @@ import AsyncButton from '@/components/loaders/asyncButton';
 import PageBack from '@/components/page/pageBack';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
-import { Edit as EditIcon, Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+import { Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
+import { Paper, Stack } from '@mui/material';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
-import { Fragment } from 'react';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
 import { type MapData } from '../../routes/types';
 import UploadFile from './uploadFile';
 
-const EditJsonModal = dynamicModal(() => import('../../routes/editJsonModal'));
 const EditMapDataModal = dynamicModal(() => import('../editMapDataModal'));
 
-export default function MapControls({ mapData, points }: { mapData: MapData; points: Point[] }) {
+export default function MapControls({
+	mapData,
+	originalMapData,
+	points,
+}: {
+	mapData: MapData;
+	originalMapData: MapData;
+	points: Point[];
+}) {
 	const router = useRouter();
 	const { enqueueSnackbar } = useSnackbar();
 	const { showModal } = useModal();
 
-	const changed = !isDeepEqual(points, mapData.points);
+	const changed = !isDeepEqual(originalMapData, { ...mapData, points });
 
 	useWindowEventListener('beforeunload', (e: BeforeUnloadEvent) => {
 		if (changed) e.preventDefault();
@@ -45,64 +51,34 @@ export default function MapControls({ mapData, points }: { mapData: MapData; poi
 	});
 
 	return (
-		<Fragment>
-			<Grid>
-				<PageBack backButton />
-			</Grid>
-			<Grid>
-				<AsyncButton
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					disabled={!changed}
-					onClick={saveData}>
-					<SaveIcon />
-				</AsyncButton>
-			</Grid>
-			<Grid>
-				<AsyncButton
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					onClick={() => {
-						showModal(EditMapDataModal, { props: { mapData: { ...mapData, points } } });
-					}}>
-					<TuneIcon />
-				</AsyncButton>
-			</Grid>
-			<Grid>
-				<AsyncButton
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					onClick={() => {
-						showModal(EditJsonModal, {
-							props: {
-								data: mapData,
-								onUpload: async (data: any) => {
-									await axios.post(
-										`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-										data,
-										{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
-									);
-									router.refresh();
-								},
-							},
-						});
-					}}>
-					<EditIcon />
-				</AsyncButton>
-			</Grid>
-			<Grid>
-				<UploadFile
-					multiple
-					onUpload={async (formData) => {
-						await axios.put(
-							`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-							formData,
-							{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
-						);
-						router.refresh();
-					}}
-				/>
-			</Grid>
-		</Fragment>
+		<Stack direction='row' spacing={1} component={Paper} sx={{ p: 1, alignItems: 'center' }}>
+			<PageBack backButton />
+			<AsyncButton
+				variant='contained'
+				sx={{ minWidth: 'unset' }}
+				disabled={!changed}
+				onClick={saveData}>
+				<SaveIcon />
+			</AsyncButton>
+			<AsyncButton
+				variant='contained'
+				sx={{ minWidth: 'unset' }}
+				onClick={() => {
+					showModal(EditMapDataModal, { props: { mapData: { ...mapData, points } } });
+				}}>
+				<TuneIcon />
+			</AsyncButton>
+			<UploadFile
+				multiple
+				onUpload={async (formData) => {
+					await axios.put(
+						`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
+						formData,
+						{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
+					);
+					router.refresh();
+				}}
+			/>
+		</Stack>
 	);
 }

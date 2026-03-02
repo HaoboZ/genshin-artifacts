@@ -6,10 +6,9 @@ import {
 	calculateOptimalZoom,
 	findSpotByTime,
 } from '@/components/imageRoute/utils';
-import RatioContainer from '@/components/ratioContainer';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
-import { DialogTitle } from '@mui/material';
+import { DialogContent, DialogTitle } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
@@ -47,7 +46,7 @@ export default function MapModal({
 	return (
 		<DialogWrapper>
 			<DialogTitle ref={ref}>Teyvat Map</DialogTitle>
-			<RatioContainer width={16} height={9} sx={{ height: (measurements.outerWidth / 16) * 9 }}>
+			<DialogContent sx={{ aspectRatio: '16 / 9' }}>
 				<ImageRoute
 					points={points}
 					activeSpot={activeSpot}
@@ -75,7 +74,7 @@ export default function MapModal({
 						style={{ zIndex: -1, objectFit: 'contain' }}
 					/>
 				</ImageRoute>
-			</RatioContainer>
+			</DialogContent>
 		</DialogWrapper>
 	);
 }

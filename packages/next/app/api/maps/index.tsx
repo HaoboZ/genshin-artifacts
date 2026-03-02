@@ -4,12 +4,12 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
-	Box,
 	Button,
 	Container,
 	FormControlLabel,
 	IconButton,
 	Paper,
+	Stack,
 	Switch,
 	TextField,
 } from '@mui/material';
@@ -104,37 +104,16 @@ export default function MapList({ items }: { items: MapData[] }) {
 			sortable: true,
 			valueGetter: (value) => toTitleCase(value || ''),
 		},
-		{
-			field: 'spots',
-			headerName: 'Spots',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
-		{
-			field: 'mora',
-			headerName: 'Mora',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
-		{
-			field: 'time',
-			headerName: 'Time',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
+		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
+		{ field: 'mora', headerName: 'Mora', width: 75, type: 'number', sortable: true },
+		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
 		{
 			field: 'efficiency',
 			headerName: 'Efficiency',
 			width: 100,
 			type: 'number',
 			sortable: true,
-			valueGetter: (value: number) => (value ?? 0).toFixed(2),
+			valueGetter: (value: number) => value.toFixed(2),
 		},
 		{
 			field: 'actions',
@@ -143,15 +122,19 @@ export default function MapList({ items }: { items: MapData[] }) {
 			sortable: false,
 			filterable: false,
 			renderCell: ({ row }) => (
-				<Box sx={{ display: 'flex', gap: 0.5 }}>
+				<Stack direction='row' spacing={0.5}>
 					<IconButton
 						size='small'
-						onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
+						onClick={(e) => {
+							e.stopPropagation();
+							showModal(EditMapDataModal, { props: { mapData: row } });
+						}}>
 						<EditIcon fontSize='small' />
 					</IconButton>
 					<IconButton
 						size='small'
-						onClick={async () => {
+						onClick={async (e) => {
+							e.stopPropagation();
 							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
 								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
 							});
@@ -159,7 +142,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 						}}>
 						<DeleteIcon fontSize='small' color='error' />
 					</IconButton>
-				</Box>
+				</Stack>
 			),
 		},
 	];
@@ -167,8 +150,12 @@ export default function MapList({ items }: { items: MapData[] }) {
 	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
-		<Container sx={{ pt: 1 }}>
-			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+		<Container>
+			<Stack
+				direction='row'
+				spacing={1}
+				component={Paper}
+				sx={{ p: 1, mb: 1, alignItems: 'center' }}>
 				<Button
 					variant='contained'
 					startIcon={<AddIcon />}
@@ -193,7 +180,6 @@ export default function MapList({ items }: { items: MapData[] }) {
 						/>
 					}
 					label='Mora Only'
-					sx={{ pl: 1 }}
 				/>
 				<Button component={Link} href='/api/routes' variant='contained'>
 					Routes
@@ -201,7 +187,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 				<Button component={Link} href='/api/maps/auth' variant='contained'>
 					Authorize
 				</Button>
-			</Paper>
+			</Stack>
 			<DataGrid
 				rows={sortedItems}
 				columns={columns}

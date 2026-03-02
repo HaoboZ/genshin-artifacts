@@ -6,12 +6,12 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
-	Box,
 	Container,
 	FormControlLabel,
 	Grid,
 	IconButton,
 	Paper,
+	Stack,
 	Switch,
 	TextField,
 	Typography,
@@ -69,11 +69,11 @@ export default function Route({
 		[routeMapData],
 	);
 	const totalSpots = useMemo(
-		() => routeMapData.reduce((sum, item) => sum + (item.spots ?? 0), 0),
+		() => routeMapData.reduce((sum, item) => sum + item.spots, 0),
 		[routeMapData],
 	);
 	const totalTime = useMemo(
-		() => routeMapData.reduce((sum, item) => sum + (item.time ?? 0) + CALC_EFFICIENCY_SECONDS, 0),
+		() => routeMapData.reduce((sum, item) => sum + item.time + CALC_EFFICIENCY_SECONDS, 0),
 		[routeMapData],
 	);
 
@@ -95,8 +95,7 @@ export default function Route({
 					[item.name, location, item.notes ?? '', type].some((value) =>
 						value.toLowerCase().includes(query),
 					);
-				const matchesSpotsMora =
-					!moraOnly || Number(item.spots ?? 0) === Number(item.mora ?? 0);
+				const matchesSpotsMora = !moraOnly || (item.spots && item.spots === item.mora);
 				return matchesSearch && matchesSpotsMora;
 			}),
 			sortBy(
@@ -182,37 +181,16 @@ export default function Route({
 			sortable: true,
 			valueGetter: (value) => toTitleCase(value || ''),
 		},
-		{
-			field: 'spots',
-			headerName: 'Spots',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
-		{
-			field: 'mora',
-			headerName: 'Mora',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
-		{
-			field: 'time',
-			headerName: 'Time',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			valueGetter: (value) => value ?? 0,
-		},
+		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
+		{ field: 'mora', headerName: 'Mora', width: 75, type: 'number', sortable: true },
+		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
 		{
 			field: 'efficiency',
 			headerName: 'Efficiency',
 			width: 100,
 			type: 'number',
 			sortable: true,
-			valueGetter: (value: number) => (value ?? 0).toFixed(2),
+			valueGetter: (value: number) => value.toFixed(2),
 		},
 		{
 			field: 'actions',
@@ -221,7 +199,7 @@ export default function Route({
 			sortable: false,
 			filterable: false,
 			renderCell: ({ row }) => (
-				<Box sx={{ display: 'flex', gap: 0.5 }}>
+				<Stack direction='row' spacing={0.5}>
 					{routeMaps.includes(row.id) ? (
 						<IconButton
 							size='small'
@@ -240,7 +218,7 @@ export default function Route({
 						onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
 						<EditIcon fontSize='small' />
 					</IconButton>
-				</Box>
+				</Stack>
 			),
 		},
 	];
@@ -248,16 +226,18 @@ export default function Route({
 	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
-		<Container sx={{ pt: 1 }}>
-			<Grid container spacing={1} sx={{ justifyContent: 'center' }}>
-				<RouteControls routeData={routeData} maps={routeMaps} />
-				<Grid size={12} sx={{ aspectRatio: '16 / 9' }}>
+		<Container>
+			<Grid container spacing={1}>
+				<Grid size={12}>
+					<RouteControls routeData={routeData} maps={routeMaps} />
+				</Grid>
+				<Grid size={12}>
 					<ImageRoute
 						points={points}
 						RenderPoint={MapRenderPoint}
 						RenderPath={MapRenderPath}
 						RenderExtra={MapRenderExtra}
-						sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
+						sx={{ aspectRatio: '16 / 9', opacity: points ? 1 : 0 }}>
 						<Image
 							fill
 							alt='teyvat'
@@ -267,33 +247,37 @@ export default function Route({
 					</ImageRoute>
 				</Grid>
 				<Grid size={12}>
-					<Paper sx={{ p: 1, mb: 1 }}>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-							<Typography variant='subtitle1'>
-								Total: {totalSpots} spots, {(totalTime / 60).toFixed(2)} min
-							</Typography>
-							<TextField
-								fullWidth={false}
-								size='small'
-								label='Search'
-								placeholder='Name, Location, Notes, Type'
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
-								sx={{ minWidth: 300 }}
-							/>
-							<FormControlLabel
-								control={
-									<Switch
-										size='small'
-										checked={moraOnly}
-										onChange={(event) => setMoraOnly(event.target.checked)}
-									/>
-								}
-								label='Mora Only'
-								sx={{ pl: 1 }}
-							/>
-						</Box>
-					</Paper>
+					<Stack
+						direction='row'
+						spacing={1}
+						component={Paper}
+						sx={{ p: 1, alignItems: 'center' }}>
+						<Typography variant='subtitle1'>
+							Total: {totalSpots} spots, {Math.floor(totalTime / 60)}:
+							{Math.floor(totalTime % 60)} min
+						</Typography>
+						<TextField
+							fullWidth={false}
+							size='small'
+							label='Search'
+							placeholder='Name, Location, Notes, Type'
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+							sx={{ minWidth: 300 }}
+						/>
+						<FormControlLabel
+							control={
+								<Switch
+									size='small'
+									checked={moraOnly}
+									onChange={(event) => setMoraOnly(event.target.checked)}
+								/>
+							}
+							label='Mora Only'
+						/>
+					</Stack>
+				</Grid>
+				<Grid size={12}>
 					<DataGrid
 						rows={sortedMaps}
 						columns={columns}

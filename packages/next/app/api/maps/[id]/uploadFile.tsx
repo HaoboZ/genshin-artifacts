@@ -1,21 +1,18 @@
 import useAsyncLoading from '@/components/loaders/useAsyncLoading';
 import { Button } from '@mui/material';
-import { type ReactNode } from 'react';
 
 export default function UploadFile({
 	onUpload,
 	multiple,
-	children,
 }: {
 	onUpload: (data: FormData | File) => Promise<void>;
 	multiple?: boolean;
-	children?: ReactNode;
 }) {
 	const [loading, onChangeLoading] = useAsyncLoading();
 
 	return (
 		<Button component='label' variant='contained' loading={loading}>
-			{children ?? 'Upload Asset'}
+			Upload Image/Video
 			<input
 				hidden
 				type='file'

@@ -8,6 +8,7 @@ export type Point = {
 	start?: number;
 	end?: number;
 	type?: string;
+	extra?: string;
 };
 
 export type Spot = {

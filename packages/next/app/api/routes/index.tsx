@@ -3,7 +3,7 @@
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
-import { Box, Button, Container, IconButton, Paper, TextField } from '@mui/material';
+import { Button, Container, IconButton, Paper, Stack, TextField } from '@mui/material';
 import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -74,15 +74,19 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 			sortable: false,
 			filterable: false,
 			renderCell: ({ row }) => (
-				<Box sx={{ display: 'flex', gap: 0.5 }}>
+				<Stack direction='row' spacing={0.5}>
 					<IconButton
 						size='small'
-						onClick={() => showModal(EditRouteDataModal, { props: { routeData: row } })}>
+						onClick={(e) => {
+							e.stopPropagation();
+							showModal(EditRouteDataModal, { props: { routeData: row } });
+						}}>
 						<EditIcon fontSize='small' />
 					</IconButton>
 					<IconButton
 						size='small'
-						onClick={async () => {
+						onClick={async (e) => {
+							e.stopPropagation();
 							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${row.id}`, {
 								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
 							});
@@ -90,7 +94,7 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 						}}>
 						<DeleteIcon fontSize='small' color='error' />
 					</IconButton>
-				</Box>
+				</Stack>
 			),
 		},
 	];
@@ -98,8 +102,12 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
 
 	return (
-		<Container sx={{ pt: 1 }}>
-			<Paper sx={{ p: 1, mb: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+		<Container>
+			<Stack
+				direction='row'
+				spacing={1}
+				component={Paper}
+				sx={{ p: 1, mb: 1, alignItems: 'center' }}>
 				<Button
 					variant='contained'
 					startIcon={<AddIcon />}
@@ -118,7 +126,7 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 				<Button component={Link} href='/api/maps' variant='contained'>
 					Maps
 				</Button>
-			</Paper>
+			</Stack>
 			<DataGrid
 				rows={sortedItems}
 				columns={columns}

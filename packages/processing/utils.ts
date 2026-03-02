@@ -55,7 +55,7 @@ export async function processPath(
 		const files = await globFiles(inputPath, extensions);
 
 		if (files.length === 0) {
-			console.log(`No supported files found in ${inputPath}`);
+			console.info(`No supported files found in ${inputPath}`);
 			return;
 		}
 

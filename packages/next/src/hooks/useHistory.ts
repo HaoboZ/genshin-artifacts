@@ -1,10 +1,10 @@
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { useKey, useKeys } from 'rooks';
 
-export default function useHistory<S>(state: S, setState: Dispatch<SetStateAction<S>>) {
+export default function useHistory<S>(state: S, setState?: Dispatch<SetStateAction<S>>) {
 	const [history, setHistory] = useState<S[]>([structuredClone(state)]);
 	const [index, setIndex] = useState(0);
-	const [navigating, setNavigating] = useState(false);
+	const [navigating, setNavigating] = useState(true);
 
 	useEffect(() => {
 		if (navigating) {
@@ -26,7 +26,7 @@ export default function useHistory<S>(state: S, setState: Dispatch<SetStateActio
 			if (index <= 0) return index;
 			const newIndex = index - 1;
 			setNavigating(true);
-			setState(history[newIndex]);
+			setState?.(history[newIndex]);
 			return newIndex;
 		});
 	});
@@ -37,7 +37,7 @@ export default function useHistory<S>(state: S, setState: Dispatch<SetStateActio
 			if (index >= history.length - 1) return index;
 			const newIndex = index + 1;
 			setNavigating(true);
-			setState(history[newIndex]);
+			setState?.(history[newIndex]);
 			return newIndex;
 		});
 	});

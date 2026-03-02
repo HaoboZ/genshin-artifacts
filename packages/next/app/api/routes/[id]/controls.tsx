@@ -3,13 +3,12 @@ import PageBack from '@/components/page/pageBack';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
-import { Button, Grid } from '@mui/material';
+import { Button, Paper, Stack } from '@mui/material';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
-import { Fragment } from 'react';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
 import { type RouteData } from '../types';
@@ -49,34 +48,26 @@ export default function RouteControls({
 	});
 
 	return (
-		<Fragment>
-			<Grid>
-				<PageBack />
-			</Grid>
-			<Grid>
-				<AsyncButton
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					disabled={!changed}
-					onClick={saveData}>
-					<SaveIcon />
-				</AsyncButton>
-			</Grid>
-			<Grid>
-				<AsyncButton
-					variant='contained'
-					sx={{ minWidth: 'unset' }}
-					onClick={() => {
-						showModal(EditRouteDataModal, { props: { routeData: { ...routeData, maps } } });
-					}}>
-					<TuneIcon />
-				</AsyncButton>
-			</Grid>
-			<Grid>
-				<Button component={Link} href={`/farming?route=${routeData.id}`} variant='contained'>
-					View
-				</Button>
-			</Grid>
-		</Fragment>
+		<Stack direction='row' spacing={1} component={Paper} sx={{ p: 1, alignItems: 'center' }}>
+			<PageBack backButton />
+			<AsyncButton
+				variant='contained'
+				sx={{ minWidth: 'unset' }}
+				disabled={!changed}
+				onClick={saveData}>
+				<SaveIcon />
+			</AsyncButton>
+			<AsyncButton
+				variant='contained'
+				sx={{ minWidth: 'unset' }}
+				onClick={() => {
+					showModal(EditRouteDataModal, { props: { routeData: { ...routeData, maps } } });
+				}}>
+				<TuneIcon />
+			</AsyncButton>
+			<Button component={Link} href={`/farming?route=${routeData.id}`} variant='contained'>
+				View
+			</Button>
+		</Stack>
 	);
 }

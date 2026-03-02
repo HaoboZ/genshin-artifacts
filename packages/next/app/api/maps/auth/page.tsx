@@ -1,7 +1,7 @@
 'use client';
 
 import PageBack from '@/components/page/pageBack';
-import { Box, Button, Container, TextField } from '@mui/material';
+import { Button, Container, Stack, TextField } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
@@ -12,8 +12,8 @@ export default function Home() {
 
 	return (
 		<Container maxWidth='sm'>
-			<PageBack />
-			<Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', gap: 2 }}>
+			<PageBack backButton />
+			<Stack spacing={1} sx={{ mt: 8 }}>
 				<TextField
 					label='AUTH_TOKEN'
 					variant='outlined'
@@ -30,7 +30,7 @@ export default function Home() {
 					fullWidth>
 					Save Token
 				</Button>
-			</Box>
+			</Stack>
 		</Container>
 	);
 }

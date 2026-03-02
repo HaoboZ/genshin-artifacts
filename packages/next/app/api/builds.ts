@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 2/21/26
+// 3/2/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -180,6 +180,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'Gaming',
 		role: 'DPS',
 		weapon: [
+			'GestOfTheMightyWolf',
 			['SerpentSpine', 'RedhornStonethresher', 'AThousandBlazingSuns', 'Verdict'],
 			'BeaconOfTheReedSea',
 			['FruitfulHook', 'WolfsGravestone', 'Rainslasher'],
@@ -695,8 +696,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		weapon: [
 			'FracturedHalo',
 			'StaffOfTheScarletSands',
-			'SymphonistOfScents',
-			['LumidouceElegy', 'StaffOfHoma'],
+			['LumidouceElegy', 'SymphonistOfScents', 'StaffOfHoma'],
 			'BloodsoakedRuins',
 			'CalamityQueller',
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance', 'Deathmatch'],
@@ -1903,7 +1903,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 				'AmosBow',
 				['Slingshot', 'SongOfStillness', 'TheViridescentHunt', 'Rust', 'MouunsMoon'],
 			],
-			group: 1,
+			group: 0,
 			artifact: [
 				'ADayCarvedFromRisingWinds',
 				'DesertPavilionChronicle',
@@ -2049,17 +2049,24 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'DPS',
 		weapon: [
 			'GestOfTheMightyWolf',
-			'AThousandBlazingSuns',
+			['BeaconOfTheReedSea', 'AThousandBlazingSuns'],
 			'RedhornStonethresher',
-			'WolfsGravestone',
-			'SerpentSpine',
-			'TidalShadow',
-			'BlackcliffSlasher',
+			'Verdict',
+			'SongOfBrokenPines',
+			['SerpentSpine', 'WolfsGravestone'],
+			['FangOfTheMountainKing', 'TheUnforged'],
+			['TidalShadow', 'TalkingStick', 'BlackcliffSlasher'],
+			'UltimateOverlordsMegaMagicSword',
 		],
-		group: 0,
-		artifact: ['ADayCarvedFromRisingWinds'],
+		group: 1,
+		artifact: [
+			'ADayCarvedFromRisingWinds',
+			'ShimenawasReminiscence',
+			'DesertPavilionChronicle',
+			'GladiatorsFinale',
+		],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_', 'eleMas'],
+		subStat: ['critRD_', 'atk_'],
 	},
 	// Geo
 	Ningguang: {

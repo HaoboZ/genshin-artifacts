@@ -1,7 +1,7 @@
 import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
 
 function getColor(type: string) {
-	return { extend: 'red', scan: 'blue' }[type] ?? 'lime';
+	return { hover: 'white', active: 'black', extend: 'red', scan: 'blue' }[type] ?? 'lime';
 }
 
 export function MapRenderPoint({ point, containerSize, type, percentage }: RenderPointProps) {
@@ -12,9 +12,9 @@ export function MapRenderPoint({ point, containerSize, type, percentage }: Rende
 			cx={point.x * containerSize.width}
 			cy={point.y * containerSize.height}
 			r={containerSize.width / 200}
-			fill={{ hover: 'white', active: 'black' }[type] ?? getColor(point.type)}
+			fill={getColor(type ?? point.type)}
 			fillOpacity={type === 'hover' ? 1 : 0}
-			stroke={{ hover: 'white', active: 'black' }[type] ?? getColor(point.type)}
+			stroke={getColor(type ?? point.type)}
 			strokeWidth={containerSize.width / 1000}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,

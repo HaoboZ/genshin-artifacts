@@ -94,7 +94,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 					{mapData && (
 						<Image
 							fill
-							alt={mapData?.name ?? 'Map'}
+							alt={mapData.name ?? 'Map'}
 							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
 							style={{ zIndex: -1, objectFit: 'contain', opacity: points ? 1 : 0 }}
 							onLoad={() => setIsLoaded(true)}
