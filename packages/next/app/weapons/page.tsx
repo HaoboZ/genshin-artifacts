@@ -14,7 +14,7 @@ import WeaponTypeFilter from './weaponTypeFilter';
 
 const AddWeaponModal = dynamicModal(() => import('./modal/addWeaponModal'));
 const EditWeaponModal = dynamicModal(() => import('./modal/editWeaponModal'));
-const OptimalWeaponModal = dynamicModal(() => import('./modal/optimalWeaponModal'));
+const OptimalWeaponModal = dynamicModal(() => import('./modal/optimizeWeaponModal'));
 
 export default function Weapons() {
 	const { showModal } = useModal();

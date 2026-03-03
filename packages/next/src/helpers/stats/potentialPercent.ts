@@ -1,3 +1,4 @@
+import { artifactSetsInfo } from '@/api/artifacts';
 import { buildsList } from '@/api/builds';
 import { statsAverage, statsMax } from '@/api/stats';
 import { sumBy } from 'remeda';
@@ -18,15 +19,16 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 
 	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
 
-	return (
-		sumBy(
-			substats,
-			({ key, value }) =>
-				((value + statsAverage[key][artifact.rarity] * (rolls / 4)) *
-					weightedMultiplier(build.subStat, key)) /
-				statsMax[key],
-		) / getMaxStat(build.subStat, artifact.mainStatKey)
+	const stats = sumBy(
+		substats,
+		({ key, value }) =>
+			((value + statsAverage[key][artifact.rarity] * (rolls / 4)) *
+				weightedMultiplier(build.subStat, key)) /
+			statsMax[key],
 	);
+	const rarityMultiplier = artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75;
+
+	return 0.01 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
 }
 
 export function maxPotentialPercent(artifact: IArtifact, builds: Build[] = buildsList) {

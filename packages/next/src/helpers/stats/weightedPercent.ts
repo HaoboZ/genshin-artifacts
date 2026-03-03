@@ -14,14 +14,13 @@ export function weightedPercent(build: Build, artifact: IArtifact) {
 
 	const substats = [...artifact.substats, ...(artifact.unactivatedSubstats ?? [])];
 
-	return (
-		(sumBy(
-			substats,
-			({ key, value }) => (value * weightedMultiplier(build.subStat, key)) / statsMax[key],
-		) /
-			getMaxStat(build.subStat, artifact.mainStatKey)) *
-		(artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75)
+	const stats = sumBy(
+		substats,
+		({ key, value }) => (value * weightedMultiplier(build.subStat, key)) / statsMax[key],
 	);
+	const rarityMultiplier = artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75;
+
+	return 0.01 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
 }
 
 export function maxWeightedPercent(artifact: IArtifact, builds: Build[] = buildsList) {

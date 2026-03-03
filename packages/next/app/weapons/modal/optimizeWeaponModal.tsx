@@ -31,7 +31,7 @@ type GiveWeapon = {
 	selected: boolean;
 };
 
-export default function OptimalWeaponModal() {
+export default function OptimizeWeaponModal() {
 	const dispatch = useAppDispatch();
 	const storedWeapons = useAppSelector(prop('good', 'weapons'));
 	const { closeModal } = useModalControls();
