@@ -17,7 +17,10 @@ import { MapRenderExtra, MapRenderPath, MapRenderPoint } from './render';
 export default function WorldMap({ routesData, top }: { routesData: RouteData[]; top?: boolean }) {
 	const router = useRouter();
 
-	const [selectedRoute, setSelectedRoute] = useParamState('route', routesData[0].id);
+	const [selectedRoute, setSelectedRoute] = useParamState(
+		'route',
+		routesData.find(({ owner }) => owner === 'main').id,
+	);
 
 	const [routeData] = useFetchState<RouteData>(
 		`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${selectedRoute}`,

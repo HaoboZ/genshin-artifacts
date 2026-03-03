@@ -126,7 +126,7 @@ export default function ArtifactFarmModal() {
 				const artifacts = artifactsIndexed[setKey][slotKey];
 				const potential = artifacts?.map((artifact) => potentialPercent(build, artifact)) ?? [];
 
-				if (Math.max(...potential, 0) < 0.3) incompleteArtifactSets[setKey].bad++;
+				if (Math.max(...potential, 0) < 0.4) incompleteArtifactSets[setKey].bad++;
 			}
 		}
 

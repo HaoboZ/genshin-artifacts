@@ -18,9 +18,10 @@ export function weightedPercent(build: Build, artifact: IArtifact) {
 		substats,
 		({ key, value }) => (value * weightedMultiplier(build.subStat, key)) / statsMax[key],
 	);
-	const rarityMultiplier = artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 1 : 0.75;
+	const rarityMultiplier =
+		artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 0.75 : 0.5;
 
-	return 0.01 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
+	return 0.25 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
 }
 
 export function maxWeightedPercent(artifact: IArtifact, builds: Build[] = buildsList) {

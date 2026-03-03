@@ -97,10 +97,11 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 	const [greatCount, goodCount] = useMemo(
 		() => [
 			artifactsSorted.filter(
-				({ location, statRollPercent }) => location && statRollPercent > 0.6,
+				({ location, statRollPercent }) => location && statRollPercent > 0.7,
 			).length,
-			artifactsSorted.filter(({ location, statRollPercent }) => location && statRollPercent)
-				.length,
+			artifactsSorted.filter(
+				({ location, statRollPercent }) => location && statRollPercent > 0.4,
+			).length,
 		],
 		[artifactsSorted],
 	);
@@ -224,8 +225,8 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 									':hover': { cursor: 'pointer' },
 									'border': isMarked
 										? '1px solid red'
-										: artifact.location
-											? statRollPercent > 0.6
+										: artifact.location && statRollPercent > 0.4
+											? statRollPercent > 0.7
 												? '1px solid green'
 												: '1px solid blue'
 											: '1px solid transparent',
