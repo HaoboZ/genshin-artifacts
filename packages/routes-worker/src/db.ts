@@ -1,4 +1,11 @@
-import { type BackgroundType, type MapData, type MapType, type RouteData } from './types';
+import {
+	type BackgroundType,
+	type MapData,
+	type MapType,
+	type Point,
+	type RouteData,
+	type Text,
+} from './types';
 import { error } from './utils';
 
 type RouteRow = {
@@ -203,7 +210,7 @@ function mapRowToMapData(row: MapRow): MapData {
 		owner: row.owner ?? undefined,
 		notes: row.notes ?? undefined,
 		type: normalizeMapType(row.type) ?? undefined,
-		text: row.text ? parseJson<MapData['text']>(row.text, []) : undefined,
+		text: row.text ? parseJson<Text[]>(row.text, []) : undefined,
 		background: normalizeBackground(row.background) ?? undefined,
 		spots: row.spots ?? 0,
 		mora: row.mora ?? 0,
@@ -213,7 +220,7 @@ function mapRowToMapData(row: MapRow): MapData {
 		y: row.y ?? undefined,
 		image: row.image ?? undefined,
 		video: row.video ?? undefined,
-		points: parseJson<MapData['points']>(row.points, []),
+		points: parseJson<Point[]>(row.points, []),
 	};
 }
 

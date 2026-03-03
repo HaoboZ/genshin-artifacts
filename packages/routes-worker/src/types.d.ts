@@ -22,13 +22,20 @@ export type Point = {
 	marked?: number;
 };
 
+export type Text = {
+	text: string;
+	x: number;
+	y: number;
+	fontSize?: number;
+};
+
 export type MapData = {
 	id: string;
 	name: string;
 	owner?: string;
 	notes?: string;
 	type?: MapType;
-	text?: { text: string; x: number; y: number; fontSize?: number }[];
+	text?: Text[];
 	background?: BackgroundType;
 	spots?: number;
 	mora?: number;

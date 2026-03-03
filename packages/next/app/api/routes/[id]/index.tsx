@@ -16,7 +16,7 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
+import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
@@ -68,14 +68,22 @@ export default function Route({
 				.map((item) => ({ x: item.x!, y: item.y!, type: item.type })),
 		[routeMapData],
 	);
-	const totalSpots = useMemo(
-		() => routeMapData.reduce((sum, item) => sum + item.spots, 0),
-		[routeMapData],
-	);
-	const totalTime = useMemo(
-		() => routeMapData.reduce((sum, item) => sum + item.time + CALC_EFFICIENCY_SECONDS, 0),
-		[routeMapData],
-	);
+	const [spots, mora] = useMemo(() => {
+		return [
+			routeMapData.reduce((sum, item) => sum + item.spots, 0),
+			routeMapData.reduce((sum, item) => sum + item.mora, 0),
+		];
+	}, [routeMapData]);
+
+	const time = useMemo(() => {
+		const totalTime = routeMapData.reduce(
+			(sum, item) => sum + item.time + CALC_EFFICIENCY_SECONDS,
+			0,
+		);
+		const min = Math.floor(totalTime / 60);
+		const sec = Math.floor(totalTime % 60);
+		return `${min}:${sec.toString().padStart(2, '0')}`;
+	}, [routeMapData]);
 
 	const sortedMaps = useMemo(() => {
 		const query = search.trim().toLowerCase();
@@ -110,18 +118,6 @@ export default function Route({
 			),
 		);
 	}, [mapsData, routeMapData, search, sortKey, direction, moraOnly]);
-
-	const handleSortModelChange = (model: GridSortModel) => {
-		if (!model.length) {
-			setSortKey('name');
-			setDirection('asc');
-			return;
-		}
-		const { field, sort } = model[0];
-		if (!sort) return;
-		setSortKey(field as SortKey);
-		setDirection(sort);
-	};
 
 	const columns: GridColDef<RouteMapRow>[] = [
 		{
@@ -223,8 +219,6 @@ export default function Route({
 		},
 	];
 
-	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
-
 	return (
 		<Container>
 			<Grid container spacing={1}>
@@ -253,8 +247,7 @@ export default function Route({
 						component={Paper}
 						sx={{ p: 1, alignItems: 'center' }}>
 						<Typography variant='subtitle1'>
-							Total: {totalSpots} spots, {Math.floor(totalTime / 60)}:
-							{Math.floor(totalTime % 60)} min
+							Total: {spots} spots, {mora} mora, {time} min
 						</Typography>
 						<TextField
 							fullWidth={false}
@@ -284,8 +277,18 @@ export default function Route({
 						density='compact'
 						disableRowSelectionOnClick
 						sortingMode='server'
-						sortModel={sortModel}
-						onSortModelChange={handleSortModelChange}
+						sortModel={[{ field: sortKey, sort: direction }]}
+						onSortModelChange={(model) => {
+							if (!model.length) {
+								setSortKey('name');
+								setDirection('asc');
+								return;
+							}
+							const { field, sort } = model[0];
+							if (!sort) return;
+							setSortKey(field as SortKey);
+							setDirection(sort);
+						}}
 					/>
 				</Grid>
 			</Grid>

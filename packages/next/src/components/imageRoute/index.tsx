@@ -61,7 +61,12 @@ export default function ImageRoute({
 	}, [deps, Boolean(points)]);
 
 	useEffect(() => {
-		if (!followActiveSpot || !activeSpot || !containerSize?.width || !containerSize?.height)
+		if (
+			!followActiveSpot ||
+			!activeSpot?.point ||
+			!containerSize?.width ||
+			!containerSize?.height
+		)
 			return;
 
 		requestAnimationFrame(() => {
@@ -69,7 +74,7 @@ export default function ImageRoute({
 			setMapOffset(offset);
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [followActiveSpot, activeSpot?.point.x, activeSpot?.point.y]);
+	}, [followActiveSpot, activeSpot?.point]);
 
 	return (
 		<ImageRouteContainer

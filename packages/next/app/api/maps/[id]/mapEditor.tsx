@@ -29,16 +29,18 @@ import {
 } from 'react';
 import { pick } from 'remeda';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '../../../farming/[id]/render';
-import { type MapData } from '../../routes/types';
+import { type MapData, type Text } from '../../routes/types';
 
 export default function MapEditor({
 	mapData,
-	setMapData,
+	text,
+	setText,
 	points,
 	setPoints,
 }: {
 	mapData: MapData;
-	setMapData: Dispatch<SetStateAction<MapData>>;
+	text: Text[];
+	setText: Dispatch<SetStateAction<Text[]>>;
 	points: Point[];
 	setPoints: Dispatch<SetStateAction<Point[]>>;
 }) {
@@ -121,13 +123,14 @@ export default function MapEditor({
 							addPoint={(point) => {
 								const newPoint = pick(point, ['x', 'y']);
 								if (placingTextIndex !== null) {
-									setMapData((prev) => {
-										if (!prev.text[placingTextIndex]) return prev;
-										prev.text[placingTextIndex] = {
-											...prev.text[placingTextIndex],
+									setText((prev) => {
+										if (!prev[placingTextIndex]) return prev;
+										const next = [...prev];
+										next[placingTextIndex] = {
+											...next[placingTextIndex],
 											...newPoint,
 										};
-										return { ...prev };
+										return next;
 									});
 									setPlacingTextIndex(null);
 									return;
@@ -158,7 +161,7 @@ export default function MapEditor({
 							}}
 							RenderPoint={RouteRenderPoint}
 							RenderPath={RouteRenderPath}
-							RenderExtra={RouteRenderExtra(mapData.text)}
+							RenderExtra={RouteRenderExtra(text)}
 							sx={{ aspectRatio: 1 }}>
 							<Image
 								fill
@@ -168,24 +171,21 @@ export default function MapEditor({
 							/>
 						</ImageRoute>
 					</Paper>
-					<Paper sx={{ p: 1 }}>
-						<Typography variant='subtitle2'>
-							Points: {points.length}, Marked: {markedCount}
-						</Typography>
-						<List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
-							{points.map((point, index) => (
-								<ListItemButton
-									key={index}
-									selected={selectedPointIndex === index}
-									onClick={() => setSelectedPointIndex(index)}>
-									<Typography variant='body2'>
-										#{index + 1} ({point.x.toFixed(3)}, {point.y.toFixed(3)})
-										{point.marked !== undefined ? ` @ ${point.marked.toFixed(2)}s` : ''}
-									</Typography>
-								</ListItemButton>
-							))}
-						</List>
-					</Paper>
+					{mapData.video && (
+						<Paper sx={{ p: 1 }}>
+							<Box sx={{ mt: 1 }}>
+								<Typography variant='body2' sx={{ mb: 0.5 }}>
+									Video Time: {time.toFixed(2)}s
+								</Typography>
+								<VideoPlayer
+									ref={videoRef}
+									src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
+									seekFrames={1}
+									setTime={setTime}
+								/>
+							</Box>
+						</Paper>
+					)}
 				</Stack>
 			</Grid>
 			<Grid size={{ xs: 12, sm: 6 }}>
@@ -303,7 +303,25 @@ export default function MapEditor({
 										<MenuItem value='hidden'>Hidden</MenuItem>
 									</TextField>
 								</Grid>
-								<Grid size={12}>
+								<Grid size={6}>
+									<Button
+										size='small'
+										variant='outlined'
+										fullWidth
+										onClick={() => {
+											if (!selectedPoint) return;
+											const duplicateIndex = selectedPointIndex + 1;
+											setPoints((prev) => [
+												...prev.slice(0, duplicateIndex),
+												{ ...selectedPoint },
+												...prev.slice(duplicateIndex),
+											]);
+											setSelectedPointIndex(duplicateIndex);
+										}}>
+										Duplicate Point
+									</Button>
+								</Grid>
+								<Grid size={6}>
 									<Button
 										color='error'
 										size='small'
@@ -318,39 +336,42 @@ export default function MapEditor({
 							<Typography variant='body2'>Select a point to edit.</Typography>
 						)}
 					</Paper>
-					{mapData.video && (
-						<Paper sx={{ p: 1 }}>
-							<Box sx={{ mt: 1 }}>
-								<Typography variant='body2' sx={{ mb: 0.5 }}>
-									Video Time: {time.toFixed(2)}s
-								</Typography>
-								<VideoPlayer
-									ref={videoRef}
-									src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-									seekFrames={1}
-									setTime={setTime}
-								/>
-							</Box>
-						</Paper>
-					)}
+					<Paper sx={{ p: 1 }}>
+						<Typography variant='subtitle2'>
+							Points: {points.length}, Marked: {markedCount}
+						</Typography>
+						<List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
+							{points.map((point, index) => (
+								<ListItemButton
+									key={index}
+									selected={selectedPointIndex === index}
+									onClick={() => setSelectedPointIndex(index)}>
+									<Typography variant='body2'>
+										#{index + 1} ({point.x.toFixed(3)}, {point.y.toFixed(3)})
+										{point.marked !== undefined ? ` @ ${point.marked.toFixed(2)}s` : ''}
+									</Typography>
+								</ListItemButton>
+							))}
+						</List>
+					</Paper>
 					<Paper sx={{ p: 1 }}>
 						<Stack spacing={1}>
 							<Typography variant='subtitle2'>Map Text</Typography>
-							{(mapData.text ?? []).map((item, index) => (
+							{text?.map((item, index) => (
 								<Stack key={index} direction='row' spacing={1}>
 									<TextField
 										size='small'
 										label={`Text ${index + 1}`}
 										value={item.text}
 										onChange={(e: ChangeEvent<HTMLInputElement>) => {
-											setMapData((prev) => {
-												const nextText = [...(prev.text ?? [])];
-												if (!nextText[index]) return prev;
-												nextText[index] = {
-													...nextText[index],
+											setText((prev) => {
+												if (!prev[index]) return prev;
+												const next = [...prev];
+												next[index] = {
+													...next[index],
 													text: e.target.value,
 												};
-												return { ...prev, text: nextText };
+												return next;
 											});
 										}}
 										sx={{ flex: 1 }}
@@ -361,16 +382,16 @@ export default function MapEditor({
 										type='number'
 										value={item.fontSize ? item.fontSize * 1000 : ''}
 										onChange={(e: ChangeEvent<HTMLInputElement>) => {
-											setMapData((prev) => {
-												const nextText = [...(prev.text ?? [])];
-												if (!nextText[index]) return prev;
-												nextText[index] = {
-													...nextText[index],
+											setText((prev) => {
+												if (!prev[index]) return prev;
+												const next = [...prev];
+												next[index] = {
+													...next[index],
 													fontSize: e.target.value
 														? +e.target.value / 1000
 														: undefined,
 												};
-												return { ...prev, text: nextText };
+												return next;
 											});
 										}}
 										sx={{ width: 75 }}
@@ -393,10 +414,7 @@ export default function MapEditor({
 												if (prev === index) return null;
 												return prev > index ? prev - 1 : prev;
 											});
-											setMapData((prev) => ({
-												...prev,
-												text: (prev.text ?? []).filter((_, i) => i !== index),
-											}));
+											setText((prev) => prev.filter((_, i) => i !== index));
 										}}>
 										Remove
 									</Button>
@@ -406,10 +424,7 @@ export default function MapEditor({
 								size='small'
 								variant='outlined'
 								onClick={() => {
-									setMapData((prev) => ({
-										...prev,
-										text: [...(prev.text ?? []), { x: 0.5, y: 0.5, text: 'Text' }],
-									}));
+									setText((prev) => [...prev, { x: 0.5, y: 0.5, text: 'Text' }]);
 								}}>
 								Add Text
 							</Button>

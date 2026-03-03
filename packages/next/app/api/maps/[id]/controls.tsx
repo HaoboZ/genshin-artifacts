@@ -11,25 +11,25 @@ import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
-import { type MapData } from '../../routes/types';
+import { type MapData, type Text } from '../../routes/types';
 import UploadFile from './uploadFile';
 
 const EditMapDataModal = dynamicModal(() => import('../editMapDataModal'));
 
 export default function MapControls({
 	mapData,
-	originalMapData,
+	text,
 	points,
 }: {
 	mapData: MapData;
-	originalMapData: MapData;
+	text: Text[];
 	points: Point[];
 }) {
 	const router = useRouter();
 	const { enqueueSnackbar } = useSnackbar();
 	const { showModal } = useModal();
 
-	const changed = !isDeepEqual(originalMapData, { ...mapData, points });
+	const changed = !isDeepEqual(mapData.text, text) || !isDeepEqual(mapData.points, points);
 
 	useWindowEventListener('beforeunload', (e: BeforeUnloadEvent) => {
 		if (changed) e.preventDefault();
@@ -38,7 +38,7 @@ export default function MapControls({
 	async function saveData() {
 		await axios.post(
 			`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-			{ ...mapData, points },
+			{ ...mapData, text, points },
 			{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
 		);
 		router.refresh();
@@ -64,7 +64,9 @@ export default function MapControls({
 				variant='contained'
 				sx={{ minWidth: 'unset' }}
 				onClick={() => {
-					showModal(EditMapDataModal, { props: { mapData: { ...mapData, points } } });
+					showModal(EditMapDataModal, {
+						props: { mapData: { ...mapData, text, points } },
+					});
 				}}>
 				<TuneIcon />
 			</AsyncButton>

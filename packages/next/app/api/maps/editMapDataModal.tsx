@@ -24,8 +24,8 @@ export default function EditMapDataModal({ mapData }: { mapData: MapData }) {
 			spots: mapData.spots ?? 0,
 			time: mapData.time ?? 0,
 			mora: mapData.mora ?? 0,
-			x: mapData.x ?? undefined,
-			y: mapData.y ?? undefined,
+			x: mapData.x,
+			y: mapData.y,
 			file: undefined,
 		}),
 		[mapData],
@@ -50,8 +50,8 @@ export default function EditMapDataModal({ mapData }: { mapData: MapData }) {
 						time: values.time,
 						mora: values.mora,
 						efficiency: calcEfficiency(values.spots, values.time),
-						x: values.x ?? undefined,
-						y: values.y ?? undefined,
+						x: values.x,
+						y: values.y,
 					};
 
 					await axios.post(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`, data, {

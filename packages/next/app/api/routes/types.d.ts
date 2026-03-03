@@ -27,7 +27,7 @@ export type MapData = {
 	owner?: string;
 	notes?: string;
 	type?: MapType;
-	text?: { text: string; x: number; y: number; fontSize?: number }[];
+	text?: Text[];
 	background?: BackgroundType;
 	spots?: number;
 	time?: number;
@@ -38,4 +38,11 @@ export type MapData = {
 	image?: string;
 	video?: string;
 	points: Point[];
+};
+
+export type Text = {
+	text: string;
+	x: number;
+	y: number;
+	fontSize?: number;
 };

@@ -3,24 +3,25 @@
 import type { Point } from '@/components/imageRoute/types';
 import { Container, Grid } from '@mui/material';
 import { useState } from 'react';
-import type { MapData } from '../../routes/types';
+import { type MapData, type Text } from '../../routes/types';
 import MapControls from './controls';
 import MapEditor from './mapEditor';
 
 export default function Map({ mapData }: { mapData: MapData }) {
-	const [editableMapData, setEditableMapData] = useState<MapData>(mapData);
+	const [text, setText] = useState<Text[]>(mapData.text);
 	const [points, setPoints] = useState<Point[]>(mapData.points);
 
 	return (
 		<Container>
 			<Grid container spacing={1}>
 				<Grid size={12}>
-					<MapControls mapData={editableMapData} originalMapData={mapData} points={points} />
+					<MapControls mapData={mapData} text={text} points={points} />
 				</Grid>
-				{editableMapData.image && (
+				{mapData.image && (
 					<MapEditor
-						mapData={editableMapData}
-						setMapData={setEditableMapData}
+						mapData={mapData}
+						text={text}
+						setText={setText}
 						points={points}
 						setPoints={setPoints}
 					/>
