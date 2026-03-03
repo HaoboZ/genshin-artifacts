@@ -185,7 +185,6 @@ export default function ImageRouteContainer({
 					width: '100%',
 					height: '100%',
 					transition: isAnimating ? 'transform 1s ease' : 'none',
-					transitionDelay: '1s',
 				}}>
 				{children}
 			</Box>

@@ -13,7 +13,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
-import { useMeasure } from 'rooks';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../render';
 
 export default function MapModal({
@@ -28,15 +27,12 @@ export default function MapModal({
 
 	const points = useMemo(() => {
 		if (!routeData) return null;
-
 		return pipe(
 			routeData?.mapsData,
 			filter(({ x, y }) => x !== undefined && y !== undefined),
 			map((data, index) => ({ ...pick(data, ['x', 'y', 'type']), marked: index + 1 })),
 		) as Point[];
 	}, [routeData]);
-
-	const [ref, measurements] = useMeasure();
 
 	const activeSpot = useMemo(() => {
 		if (!points) return null;
@@ -45,7 +41,7 @@ export default function MapModal({
 
 	return (
 		<DialogWrapper>
-			<DialogTitle ref={ref}>Teyvat Map</DialogTitle>
+			<DialogTitle>Teyvat Map</DialogTitle>
 			<DialogContent sx={{ aspectRatio: '16 / 9' }}>
 				<ImageRoute
 					points={points}
@@ -64,7 +60,7 @@ export default function MapModal({
 						calculateOptimalZoom(points, containerSize, 0.9)
 					}
 					getAnimatedPosition={(containerSize) =>
-						calculateCenterZoom(activeSpot.point, containerSize, 5)
+						calculateCenterZoom(activeSpot.point, containerSize, 2)
 					}
 					sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 					<Image

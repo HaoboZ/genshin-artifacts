@@ -126,6 +126,9 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 				<Button component={Link} href='/api/maps' variant='contained'>
 					Maps
 				</Button>
+				<Button component={Link} href='/api/routes/auth' variant='contained'>
+					Authorize
+				</Button>
 			</Stack>
 			<DataGrid
 				rows={sortedItems}

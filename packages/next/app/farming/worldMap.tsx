@@ -25,7 +25,6 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 
 	const points = useMemo(() => {
 		if (!routeData) return null;
-
 		return pipe(
 			routeData?.mapsData,
 			filter(({ x, y }) => x !== undefined && y !== undefined),

@@ -17,7 +17,7 @@ export default function useAsyncLoading(): [
 					setLoading(true);
 					return await func(...args);
 				} catch (e) {
-					const error = e?.response?.data || e?.message || e;
+					const error = e?.response?.data?.error || e?.message || e;
 					console.error(error);
 					enqueueSnackbar(error, { variant: 'error' });
 				} finally {

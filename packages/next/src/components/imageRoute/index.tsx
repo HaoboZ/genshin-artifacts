@@ -45,20 +45,17 @@ export default function ImageRoute({
 
 		if (!getAnimatedPosition) return;
 
-		const animationFrame = requestAnimationFrame(() => {
+		const animationFrame = setTimeout(() => {
 			const { scale, offset } = getAnimatedPosition(containerSize);
 			if (scale) setScale(scale);
 			if (offset) setMapOffset(offset);
 			setIsAnimating(true);
-		});
-		const timeout = setTimeout(() => setIsAnimating(false), 2000);
+			setTimeout(() => setIsAnimating(false), 2000);
+		}, 1000);
 
-		return () => {
-			cancelAnimationFrame(animationFrame);
-			clearTimeout(timeout);
-		};
+		return () => clearTimeout(animationFrame);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [deps, Boolean(points)]);
+	}, [deps, Boolean(points), Boolean(containerSize)]);
 
 	useEffect(() => {
 		if (
