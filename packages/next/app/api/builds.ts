@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/2/26
+// 3/3/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -706,9 +706,8 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		group: 1,
 		artifact: [
 			'AubadeOfMorningstarAndMoon',
-			'SilkenMoonsSerenade',
-			'GildedDreams',
-			'TenacityOfTheMillelith',
+			['GildedDreams', 'ADayCarvedFromRisingWinds'],
+			['SilkenMoonsSerenade', 'TenacityOfTheMillelith'],
 		],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
@@ -722,7 +721,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['FracturedHalo', 'StaffOfHoma'],
 			['SymphonistOfScents', 'PrimordialJadeWingedSpear', 'LumidouceElegy'],
 			'CrimsonMoonsSemblance',
-			['VortexVanquisher', 'Deathmatch', 'BalladOfTheFjords'],
+			['VortexVanquisher', 'Deathmatch', 'BalladOfTheFjords', 'CalamityQueller'],
 			[
 				'ProspectorsShovel',
 				'MissiveWindspear',

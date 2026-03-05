@@ -113,7 +113,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 			width: 100,
 			type: 'number',
 			sortable: true,
-			valueGetter: (value: number) => value.toFixed(2),
+			renderCell: ({ value }) => value.toFixed(3),
 		},
 		{
 			field: 'actions',
@@ -184,7 +184,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 				<Button component={Link} href='/api/routes' variant='contained'>
 					Routes
 				</Button>
-				<Button component={Link} href='/api/maps/auth' variant='contained'>
+				<Button component={Link} href='/api/routes/auth' variant='contained'>
 					Authorize
 				</Button>
 			</Stack>

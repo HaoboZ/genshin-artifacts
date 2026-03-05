@@ -186,7 +186,7 @@ export default function Route({
 			width: 100,
 			type: 'number',
 			sortable: true,
-			valueGetter: (value: number) => value.toFixed(2),
+			renderCell: ({ value }) => value.toFixed(3),
 		},
 		{
 			field: 'actions',
