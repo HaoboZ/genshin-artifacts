@@ -1,5 +1,4 @@
-import AsyncButton from '@/components/loaders/asyncButton';
-import { DialogActions, DialogContent, Grid, TextField } from '@mui/material';
+import { Button, DialogActions, DialogContent, Grid, TextField } from '@mui/material';
 import { Form, useFormikContext } from 'formik';
 
 export type RouteDataFormValues = {
@@ -9,7 +8,7 @@ export type RouteDataFormValues = {
 };
 
 export default function RouteDataForm() {
-	const { values, handleChange } = useFormikContext<RouteDataFormValues>();
+	const { values, handleChange, isSubmitting } = useFormikContext<RouteDataFormValues>();
 
 	return (
 		<Form>
@@ -47,9 +46,9 @@ export default function RouteDataForm() {
 				</Grid>
 			</DialogContent>
 			<DialogActions>
-				<AsyncButton type='submit' variant='contained'>
+				<Button type='submit' variant='contained' loading={isSubmitting}>
 					Submit
-				</AsyncButton>
+				</Button>
 			</DialogActions>
 		</Form>
 	);

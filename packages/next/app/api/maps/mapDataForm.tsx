@@ -1,6 +1,5 @@
 import InputField from '@/components/formik/inputField';
 import SelectField from '@/components/formik/selectField';
-import AsyncButton from '@/components/loaders/asyncButton';
 import NumberSpinner from '@/components/numberSpinner';
 import {
 	Box,
@@ -37,7 +36,7 @@ export type MapDataFormValues = {
 };
 
 export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
-	const { values, setFieldValue } = useFormikContext<MapDataFormValues>();
+	const { values, setFieldValue, isSubmitting } = useFormikContext<MapDataFormValues>();
 
 	const preview = useMemo(
 		() => (values.file ? URL.createObjectURL(values.file) : ''),
@@ -162,9 +161,9 @@ export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
 				</Grid>
 			</DialogContent>
 			<DialogActions>
-				<AsyncButton type='submit' variant='contained'>
+				<Button type='submit' variant='contained' loading={isSubmitting}>
 					Submit
-				</AsyncButton>
+				</Button>
 			</DialogActions>
 		</Form>
 	);
