@@ -14,7 +14,7 @@ import {
 	Stack,
 	Typography,
 } from '@mui/material';
-import { useFormikContext } from 'formik';
+import { Form, useFormikContext } from 'formik';
 import { Fragment, type ReactNode } from 'react';
 import WeaponImage from './weaponImage';
 
@@ -27,12 +27,12 @@ export default function WeaponForm({
 }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
-	const { handleSubmit, values } = useFormikContext<IWeapon>();
+	const { values } = useFormikContext<IWeapon>();
 
 	const weapon = weaponsInfo[values.key];
 
 	return (
-		<Fragment>
+		<Form>
 			<DialogContent>
 				<Stack spacing={1}>
 					{values.key && (
@@ -76,13 +76,10 @@ export default function WeaponForm({
 						Delete
 					</Button>
 				)}
-				<Button
-					disabled={!values.key}
-					variant='contained'
-					onClick={(e) => handleSubmit(e as any)}>
+				<Button type='submit' disabled={!values.key} variant='contained'>
 					Save
 				</Button>
 			</DialogActions>
-		</Fragment>
+		</Form>
 	);
 }

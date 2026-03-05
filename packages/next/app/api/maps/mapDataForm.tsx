@@ -1,14 +1,20 @@
+import InputField from '@/components/formik/inputField';
+import SelectField from '@/components/formik/selectField';
 import AsyncButton from '@/components/loaders/asyncButton';
+import NumberSpinner from '@/components/numberSpinner';
 import {
 	Box,
 	Button,
 	DialogActions,
 	DialogContent,
+	FormControl,
+	FormLabel,
 	Grid,
 	MenuItem,
+	Stack,
 	TextField,
 } from '@mui/material';
-import { useFormikContext } from 'formik';
+import { Form, useFormikContext } from 'formik';
 import Image from 'next/image';
 import { useMemo } from 'react';
 import { toTitleCase } from 'remeda';
@@ -31,86 +37,56 @@ export type MapDataFormValues = {
 };
 
 export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
-	const { values, setFieldValue, handleChange, submitForm } =
-		useFormikContext<MapDataFormValues>();
+	const { values, setFieldValue } = useFormikContext<MapDataFormValues>();
+
 	const preview = useMemo(
 		() => (values.file ? URL.createObjectURL(values.file) : ''),
 		[values.file],
 	);
 
 	return (
-		<>
+		<Form>
 			<DialogContent>
 				<Grid container spacing={1} sx={{ pt: 1 }}>
-					<Grid size={6}>
-						<TextField
-							fullWidth
-							label='Name'
-							name='name'
-							value={values.name}
-							onChange={handleChange}
-						/>
+					<Grid size={{ xs: 12, sm: 6 }}>
+						<InputField name='name' label='Name' />
 					</Grid>
-					<Grid size={6}>
-						<TextField
-							fullWidth
-							label='Owner'
-							name='owner'
-							value={values.owner}
-							onChange={handleChange}
-						/>
+					<Grid size={{ xs: 12, sm: 6 }}>
+						<InputField name='owner' label='Owner' />
 					</Grid>
 					<Grid size={12}>
-						<TextField
-							fullWidth
-							label='Notes'
-							name='notes'
-							value={values.notes}
-							onChange={handleChange}
-							multiline
-							minRows={2}
-						/>
+						<InputField name='notes' label='Notes' multiline minRows={2} />
 					</Grid>
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							select
-							label='Type'
-							name='type'
-							value={values.type}
-							onChange={handleChange}>
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<SelectField label='Type' name='type'>
 							{MAP_TYPES.map((value) => (
 								<MenuItem key={value} value={value}>
 									{toTitleCase(value)}
 								</MenuItem>
 							))}
-						</TextField>
+						</SelectField>
 					</Grid>
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							select
-							label='Location'
-							name='location'
-							value={values.location}
-							onChange={handleChange}>
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<SelectField label='Location' name='location'>
 							{LOCATION_TYPES.map((value) => (
 								<MenuItem key={value} value={value}>
 									{toTitleCase(value)}
 								</MenuItem>
 							))}
-						</TextField>
+						</SelectField>
 					</Grid>
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							type='file'
-							required={requireFile}
-							slotProps={{ htmlInput: { accept: 'image/*' } }}
-							onChange={(e) =>
-								setFieldValue('file', (e.target as HTMLInputElement).files?.[0])
-							}
-						/>
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<FormControl>
+							<FormLabel>Map</FormLabel>
+							<TextField
+								type='file'
+								required={requireFile}
+								slotProps={{ htmlInput: { accept: 'image/*' } }}
+								onChange={(e) =>
+									setFieldValue('file', (e.target as HTMLInputElement).files?.[0])
+								}
+							/>
+						</FormControl>
 					</Grid>
 					{preview && (
 						<Grid size={12}>
@@ -124,32 +100,39 @@ export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
 							/>
 						</Grid>
 					)}
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							type='number'
-							label='Spots'
-							name='spots'
-							value={values.spots}
-							onChange={(e) => setFieldValue('spots', +e.target.value)}
-						/>
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<Stack direction='row'>
+							<FormControl>
+								<FormLabel>Spots</FormLabel>
+								<NumberSpinner
+									size='small'
+									min={0}
+									value={values.spots}
+									onValueChange={(amount) => {
+										setFieldValue('spots', amount);
+									}}
+								/>
+							</FormControl>
+						</Stack>
 					</Grid>
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							type='number'
-							label='Mora'
-							name='mora'
-							value={values.mora}
-							onChange={(e) => setFieldValue('mora', +e.target.value)}
-						/>
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<FormControl>
+							<FormLabel>Mora Spots</FormLabel>
+							<NumberSpinner
+								size='small'
+								min={0}
+								value={values.mora}
+								onValueChange={(amount) => {
+									setFieldValue('mora', amount);
+								}}
+							/>
+						</FormControl>
 					</Grid>
-					<Grid size={4}>
-						<TextField
-							fullWidth
-							type='number'
+					<Grid size={{ xs: 6, sm: 4 }}>
+						<InputField
 							label='Time'
 							name='time'
+							type='number'
 							slotProps={{ htmlInput: { step: '0.1' } }}
 							value={values.time}
 							onChange={(e) => setFieldValue('time', +e.target.value)}
@@ -179,10 +162,10 @@ export default function MapDataForm({ requireFile }: { requireFile: boolean }) {
 				</Grid>
 			</DialogContent>
 			<DialogActions>
-				<AsyncButton variant='contained' onClick={submitForm}>
+				<AsyncButton type='submit' variant='contained'>
 					Submit
 				</AsyncButton>
 			</DialogActions>
-		</>
+		</Form>
 	);
 }

@@ -135,6 +135,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 						size='small'
 						onClick={async (e) => {
 							e.stopPropagation();
+							if (!confirm(`Delete map "${row.name}"? This cannot be undone.`)) return;
 							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
 								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
 							});

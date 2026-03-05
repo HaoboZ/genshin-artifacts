@@ -14,24 +14,26 @@ import {
 	FormControlLabel,
 	Grid,
 	MenuItem,
+	Stack,
 	TextField,
 } from '@mui/material';
-import { useFormikContext } from 'formik';
+import { Form, useFormikContext } from 'formik';
 import { Fragment, type ReactNode } from 'react';
 import { clamp } from 'remeda';
 import ArtifactImage from '../artifactImage';
 
 export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNode }) {
-	const { handleSubmit, values, setValues, setFieldValue } = useFormikContext<IArtifact>();
+	const { values, setValues, setFieldValue } = useFormikContext<IArtifact>();
 
 	const artifactSet = artifactSetsInfo[values.setKey];
 
 	return (
-		<Fragment>
+		<Form>
 			<DialogContent sx={{ pb: 0 }}>
 				<Grid container spacing={1} sx={{ my: 1 }}>
-					<Grid size={6}>
+					<Grid size={{ xs: 12, sm: 6 }} sx={{ display: 'flex', alignItems: 'center' }}>
 						<AutocompleteField
+							fullWidth
 							autoHighlight
 							disableClearable
 							name='setKey'
@@ -44,18 +46,22 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							}}
 						/>
 					</Grid>
-					<Grid size={1.5} sx={{ display: 'flex', alignItems: 'center' }}>
-						<FormControlLabel control={<SwitchField name='lock' />} label='Locked' />
+					<Grid size={{ xs: 6, sm: 3 }} sx={{ display: 'flex', alignItems: 'center', pl: 2 }}>
+						<Stack>
+							<FormControlLabel
+								control={<SwitchField size='small' name='lock' />}
+								label='Locked'
+							/>
+							<FormControlLabel
+								control={<SwitchField size='small' name='astralMark' />}
+								label='Marked'
+							/>
+						</Stack>
 					</Grid>
-					<Grid size={1.5} sx={{ display: 'flex', alignItems: 'center' }}>
-						<FormControlLabel control={<SwitchField name='astralMark' />} label='Marked' />
-					</Grid>
-					<Grid
-						size={3}
-						sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+					<Grid size={{ xs: 6, sm: 3 }} sx={{ display: 'flex', alignItems: 'center' }}>
 						<Scanner setArtifact={setValues} />
 					</Grid>
-					<Grid size={3}>
+					<Grid size={{ xs: 6, sm: 3 }}>
 						<SelectField
 							name='slotKey'
 							label='Type'
@@ -72,7 +78,7 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							))}
 						</SelectField>
 					</Grid>
-					<Grid size={3}>
+					<Grid size={{ xs: 6, sm: 3 }}>
 						<SelectField
 							name='mainStatKey'
 							label='Main Stat'
@@ -84,7 +90,7 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							))}
 						</SelectField>
 					</Grid>
-					<Grid size={3}>
+					<Grid size={{ xs: 6, sm: 3 }}>
 						<SelectField
 							name='rarity'
 							label='Rarity'
@@ -105,7 +111,7 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							))}
 						</SelectField>
 					</Grid>
-					<Grid size={3}>
+					<Grid size={{ xs: 6, sm: 3 }}>
 						<InputField
 							name='level'
 							label='Level'
@@ -186,10 +192,10 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 			</DialogContent>
 			<DialogActions>
 				{deleteButton}
-				<Button variant='contained' onClick={(e) => handleSubmit(e as any)}>
+				<Button type='submit' variant='contained'>
 					Save
 				</Button>
 			</DialogActions>
-		</Fragment>
+		</Form>
 	);
 }

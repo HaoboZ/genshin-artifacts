@@ -62,7 +62,7 @@ async function verifySource() {
 
 async function pullLocal() {
 	mkdirSync(LOCAL_BACKUP_DIR, { recursive: true });
-	console.log(`Backing up live R2 to local directory: ${sourcePath} -> ${LOCAL_BACKUP_DIR}`);
+	console.info(`Backing up live R2 to local directory: ${sourcePath} -> ${LOCAL_BACKUP_DIR}`);
 	await run('rclone', [
 		'sync',
 		sourcePath,
@@ -78,7 +78,7 @@ async function pushLocal() {
 		process.exit(1);
 	}
 
-	console.log(`Pushing local backup to live R2: ${LOCAL_BACKUP_DIR} -> ${sourcePath}`);
+	console.info(`Pushing local backup to live R2: ${LOCAL_BACKUP_DIR} -> ${sourcePath}`);
 	await run('rclone', [
 		'sync',
 		LOCAL_BACKUP_DIR,
@@ -90,7 +90,7 @@ async function pushLocal() {
 
 async function main() {
 	if (ACTION === '--help' || ACTION === '-h') {
-		console.log(HELP_TEXT);
+		console.info(HELP_TEXT);
 		return;
 	}
 
@@ -99,13 +99,13 @@ async function main() {
 
 	if (ACTION === 'pull') {
 		await pullLocal();
-		console.log('Done.');
+		console.info('Done.');
 		return;
 	}
 
 	if (ACTION === 'push') {
 		await pushLocal();
-		console.log('Done.');
+		console.info('Done.');
 		return;
 	}
 

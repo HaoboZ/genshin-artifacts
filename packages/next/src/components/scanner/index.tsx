@@ -52,6 +52,7 @@ export default function Scanner({
 
 	return (
 		<Button
+			fullWidth
 			component='label'
 			loading={!isFinished}
 			variant='contained'
