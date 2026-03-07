@@ -24,7 +24,7 @@
 		"@next/eslint-plugin-next": "16.1.6",
 		"@types/eslint": "9.6.1",
 		"@types/node": "25.3.3",
-		"eslint": "9.39.3",
+		"eslint": "10.0.3",
 		"eslint-config-next": "16.1.6",
 		"eslint-config-prettier": "10.1.8",
 		"husky": "9.1.7",
