@@ -178,7 +178,14 @@ export default function Route({
 			valueGetter: (value) => toTitleCase(value || ''),
 		},
 		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
-		{ field: 'mora', headerName: 'Mora', width: 75, type: 'number', sortable: true },
+		{
+			field: 'mora',
+			headerName: 'Mora',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			cellClassName: ({ value, row }) => (value === row.spots ? 'mora-match' : ''),
+		},
 		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
 		{
 			field: 'efficiency',
@@ -186,7 +193,12 @@ export default function Route({
 			width: 100,
 			type: 'number',
 			sortable: true,
-			renderCell: ({ value }) => value.toFixed(3),
+			renderCell: ({ value }) => {
+				const ratio = Math.min(Math.max(value / 0.25, 0), 1);
+				const red = Math.round(255 * (1 - ratio));
+				const green = Math.round(255 * ratio);
+				return <span style={{ color: `rgb(${red}, ${green}, 0)` }}>{value.toFixed(3)}</span>;
+			},
 		},
 		{
 			field: 'actions',
@@ -289,6 +301,7 @@ export default function Route({
 							setSortKey(field as SortKey);
 							setDirection(sort);
 						}}
+						sx={{ '.mora-match': { color: '#ffeb3b' } }}
 					/>
 				</Grid>
 			</Grid>

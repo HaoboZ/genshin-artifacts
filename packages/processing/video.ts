@@ -18,7 +18,7 @@ async function processVideoFile(inputFile: string, inputPath: string, outputDir:
 
 	console.info(`Converting video: ${inputFile} -> ${outputFile}`);
 
-	return new Promise<void>((resolve) => {
+	return new Promise<void>((resolve, reject) => {
 		ffmpeg(inputFile)
 			.videoFilter('scale=-2:720')
 			.videoCodec('libx265')
@@ -37,7 +37,7 @@ async function processVideoFile(inputFile: string, inputPath: string, outputDir:
 			})
 			.on('error', (err) => {
 				console.error(`\nError converting ${inputFile}: ${err.message}`);
-				resolve();
+				reject();
 			})
 			.run();
 	});

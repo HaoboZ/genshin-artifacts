@@ -85,7 +85,14 @@ export default function MapList({ items }: { items: MapData[] }) {
 	};
 
 	const columns: GridColDef<MapRow>[] = [
-		{ field: 'name', headerName: 'Name', flex: 2, minWidth: 200, sortable: true },
+		{
+			field: 'name',
+			headerName: 'Name',
+			flex: 2,
+			minWidth: 200,
+			sortable: true,
+			cellClassName: ({ row }) => (!row.video ? 'no-video' : ''),
+		},
 		{
 			field: 'background',
 			headerName: 'Location',
@@ -105,7 +112,14 @@ export default function MapList({ items }: { items: MapData[] }) {
 			valueGetter: (value) => toTitleCase(value || ''),
 		},
 		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
-		{ field: 'mora', headerName: 'Mora', width: 75, type: 'number', sortable: true },
+		{
+			field: 'mora',
+			headerName: 'Mora',
+			width: 75,
+			type: 'number',
+			sortable: true,
+			cellClassName: ({ value, row }) => (value === row.spots ? 'mora-match' : ''),
+		},
 		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
 		{
 			field: 'efficiency',
@@ -113,7 +127,12 @@ export default function MapList({ items }: { items: MapData[] }) {
 			width: 100,
 			type: 'number',
 			sortable: true,
-			renderCell: ({ value }) => value.toFixed(3),
+			renderCell: ({ value }) => {
+				const ratio = Math.min(Math.max(value / 0.25, 0), 1);
+				const red = Math.round(255 * (1 - ratio));
+				const green = Math.round(255 * ratio);
+				return <span style={{ color: `rgb(${red}, ${green}, 0)` }}>{value.toFixed(3)}</span>;
+			},
 		},
 		{
 			field: 'actions',
@@ -197,7 +216,12 @@ export default function MapList({ items }: { items: MapData[] }) {
 				sortModel={sortModel}
 				onSortModelChange={handleSortModelChange}
 				onRowClick={({ row }) => router.push(`/api/maps/${row.id}`)}
-				sx={{ 'border': 0, '.MuiDataGrid-row:hover': { cursor: 'pointer' } }}
+				sx={{
+					'border': 0,
+					'.MuiDataGrid-row:hover': { cursor: 'pointer' },
+					'.mora-match': { color: 'yellow' },
+					'.no-video': { color: 'red' },
+				}}
 			/>
 		</Container>
 	);

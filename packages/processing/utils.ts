@@ -17,7 +17,7 @@ export async function getPathStat(inputPath: string): Promise<Stats> {
 }
 
 export async function globFiles(dir: string, extensions: readonly string[]): Promise<string[]> {
-	const patterns = extensions.map((ext) => `**/*${ext}`);
+	const patterns = extensions.map((ext) => `*${ext}`);
 	const results = await Promise.all(
 		patterns.map((pattern) => Array.fromAsync(fs.glob(pattern, { cwd: dir }))),
 	);

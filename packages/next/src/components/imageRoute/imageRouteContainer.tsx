@@ -31,6 +31,7 @@ export default function ImageRouteContainer({
 	innerChildren?: ReactNode;
 } & Omit<BoxProps, 'ref'>) {
 	const isDragging = useRef(false);
+	const hasMoved = useRef(false);
 	const dragStart = useRef({ x: 0, y: 0 });
 	const lastTouchDistance = useRef<number>(null);
 	const touchStartTime = useRef<number>(0);
@@ -38,6 +39,7 @@ export default function ImageRouteContainer({
 
 	const startDrag = (clientX: number, clientY: number) => {
 		isDragging.current = true;
+		hasMoved.current = false;
 		interactionStartPos.current = { x: clientX, y: clientY };
 		dragStart.current = { x: clientX - mapOffset.x, y: clientY - mapOffset.y };
 		touchStartTime.current = Date.now();
@@ -45,6 +47,7 @@ export default function ImageRouteContainer({
 
 	const performDrag = (clientX: number, clientY: number) => {
 		if (!containerSize) return;
+		hasMoved.current = true;
 		const newX = clientX - dragStart.current.x;
 		const newY = clientY - dragStart.current.y;
 		setMapOffset(clampPosition(containerSize, newX, newY, scale));
@@ -116,8 +119,8 @@ export default function ImageRouteContainer({
 				...sx,
 			}}
 			onMouseDown={(e) => {
-				if (e.button !== 2) return;
-				e.preventDefault();
+				if (e.button !== 0 && e.button !== 2) return;
+				if (e.button === 2) e.preventDefault();
 				startDrag(e.clientX, e.clientY);
 			}}
 			onMouseMove={(e) => {
@@ -132,7 +135,11 @@ export default function ImageRouteContainer({
 			}}
 			onMouseUp={endDrag}
 			onClick={(e) => {
-				if (isDragging.current || !containerSize) return;
+				if (hasMoved.current) {
+					hasMoved.current = false;
+					return;
+				}
+				if (!containerSize) return;
 				const liveRect = e.currentTarget.getBoundingClientRect();
 				onClickRoute?.(mouseToContainer(e, liveRect, mapOffset, scale));
 			}}

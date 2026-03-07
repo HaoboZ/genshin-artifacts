@@ -2,7 +2,7 @@
 	"name": "@genshin-artifacts/scrape-data",
 	"private": true,
 	"scripts": {
-		"start": "npx tsx ./index.ts"
+		"start": "tsx ./index.ts"
 	},
 	"dependencies": {
 		"change-case": "5.4.4",
@@ -10,6 +10,7 @@
 		"playwright": "1.58.2"
 	},
 	"devDependencies": {
-		"@types/jsdom": "28.0.0"
+		"@types/jsdom": "28.0.0",
+		"tsx": "4.21.0"
 	}
 }
