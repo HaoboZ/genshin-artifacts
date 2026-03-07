@@ -111,6 +111,21 @@ export default function MapEditor({
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
 				<Stack spacing={1}>
+					{mapData.video && (
+						<Paper sx={{ p: 1 }}>
+							<Box sx={{ mt: 1 }}>
+								<Typography variant='body2' sx={{ mb: 0.5 }}>
+									Video Time: {time.toFixed(2)}s
+								</Typography>
+								<VideoPlayer
+									ref={videoRef}
+									src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
+									seekFrames={1}
+									setTime={setTime}
+								/>
+							</Box>
+						</Paper>
+					)}
 					<Paper sx={{ p: 1 }}>
 						<Typography variant='subtitle2' sx={{ mb: 1 }}>
 							{placingTextIndex !== null
@@ -171,21 +186,6 @@ export default function MapEditor({
 							/>
 						</ImageRoute>
 					</Paper>
-					{mapData.video && (
-						<Paper sx={{ p: 1 }}>
-							<Box sx={{ mt: 1 }}>
-								<Typography variant='body2' sx={{ mb: 0.5 }}>
-									Video Time: {time.toFixed(2)}s
-								</Typography>
-								<VideoPlayer
-									ref={videoRef}
-									src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-									seekFrames={1}
-									setTime={setTime}
-								/>
-							</Box>
-						</Paper>
-					)}
 				</Stack>
 			</Grid>
 			<Grid size={{ xs: 12, sm: 6 }}>
