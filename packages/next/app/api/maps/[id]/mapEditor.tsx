@@ -4,14 +4,16 @@ import type { Point, Spot } from '@/components/imageRoute/types';
 import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import VideoPlayer from '@/components/videoPlayer';
 import useHistory from '@/hooks/useHistory';
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import {
-	Box,
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
 	Button,
 	Grid,
 	List,
 	ListItemButton,
 	MenuItem,
-	Paper,
 	Stack,
 	TextField,
 	Typography,
@@ -110,23 +112,33 @@ export default function MapEditor({
 	return (
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
-				<Stack spacing={1}>
-					{mapData.video && (
-						<Paper sx={{ p: 1 }}>
-							<Box sx={{ mt: 1 }}>
-								<Typography variant='body2' sx={{ mb: 0.5 }}>
-									Video Time: {time.toFixed(2)}s
-								</Typography>
-								<VideoPlayer
-									ref={videoRef}
-									src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-									seekFrames={1}
-									setTime={setTime}
-								/>
-							</Box>
-						</Paper>
-					)}
-					<Paper sx={{ p: 1 }}>
+				{mapData.video && (
+					<Accordion defaultExpanded>
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon />}
+							slotProps={{ content: { component: 'h3' } }}>
+							Video
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography variant='body2' sx={{ mb: 0.5 }}>
+								Video Time: {time.toFixed(2)}s
+							</Typography>
+							<VideoPlayer
+								ref={videoRef}
+								src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
+								seekFrames={1}
+								setTime={setTime}
+							/>
+						</AccordionDetails>
+					</Accordion>
+				)}
+				<Accordion defaultExpanded>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						slotProps={{ content: { component: 'h3' } }}>
+						Image
+					</AccordionSummary>
+					<AccordionDetails>
 						<Typography variant='subtitle2' sx={{ mb: 1 }}>
 							{placingTextIndex !== null
 								? `Click map to set text #${placingTextIndex + 1} position`
@@ -185,15 +197,17 @@ export default function MapEditor({
 								style={{ zIndex: -1, objectFit: 'contain', pointerEvents: 'none' }}
 							/>
 						</ImageRoute>
-					</Paper>
-				</Stack>
+					</AccordionDetails>
+				</Accordion>
 			</Grid>
 			<Grid size={{ xs: 12, sm: 6 }}>
-				<Stack spacing={1}>
-					<Paper sx={{ p: 1 }}>
-						<Typography variant='subtitle2' sx={{ mb: 1 }}>
-							Point Editor
-						</Typography>
+				<Accordion defaultExpanded>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						slotProps={{ content: { component: 'h3' } }}>
+						Point Editor
+					</AccordionSummary>
+					<AccordionDetails>
 						{selectedPoint ? (
 							<Grid container spacing={1}>
 								<Grid size={6}>
@@ -335,11 +349,15 @@ export default function MapEditor({
 						) : (
 							<Typography variant='body2'>Select a point to edit.</Typography>
 						)}
-					</Paper>
-					<Paper sx={{ p: 1 }}>
-						<Typography variant='subtitle2'>
-							Points: {points.length}, Marked: {markedCount}
-						</Typography>
+					</AccordionDetails>
+				</Accordion>
+				<Accordion defaultExpanded>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						slotProps={{ content: { component: 'h3' } }}>
+						Points: {points.length}, Marked: {markedCount}
+					</AccordionSummary>
+					<AccordionDetails>
 						<List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
 							{points.map((point, index) => (
 								<ListItemButton
@@ -353,10 +371,16 @@ export default function MapEditor({
 								</ListItemButton>
 							))}
 						</List>
-					</Paper>
-					<Paper sx={{ p: 1 }}>
+					</AccordionDetails>
+				</Accordion>
+				<Accordion defaultExpanded>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						slotProps={{ content: { component: 'h3' } }}>
+						Image Text
+					</AccordionSummary>
+					<AccordionDetails>
 						<Stack spacing={1}>
-							<Typography variant='subtitle2'>Map Text</Typography>
 							{text?.map((item, index) => (
 								<Stack key={index} direction='row' spacing={1}>
 									<TextField
@@ -429,8 +453,8 @@ export default function MapEditor({
 								Add Text
 							</Button>
 						</Stack>
-					</Paper>
-				</Stack>
+					</AccordionDetails>
+				</Accordion>
 			</Grid>
 		</Fragment>
 	);
