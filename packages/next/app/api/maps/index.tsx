@@ -13,7 +13,7 @@ import {
 	Switch,
 	TextField,
 } from '@mui/material';
-import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
+import { DataGrid, type GridSortModel } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
@@ -21,21 +21,10 @@ import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy, toTitleCase } from 'remeda';
 import { type MapData } from '../routes/types';
+import { mapColumns, type SortKey } from './columns';
 
 const AddMapDataModal = dynamicModal(() => import('./addMapDataModal'));
 const EditMapDataModal = dynamicModal(() => import('./editMapDataModal'));
-
-type SortKey =
-	| 'name'
-	| 'owner'
-	| 'notes'
-	| 'type'
-	| 'background'
-	| 'spots'
-	| 'mora'
-	| 'time'
-	| 'efficiency';
-type MapRow = MapData & { actions?: never };
 
 export default function MapList({ items }: { items: MapData[] }) {
 	const router = useRouter();
@@ -84,90 +73,43 @@ export default function MapList({ items }: { items: MapData[] }) {
 		setDirection(sort);
 	};
 
-	const columns: GridColDef<MapRow>[] = [
-		{
-			field: 'name',
-			headerName: 'Name',
-			flex: 2,
-			minWidth: 200,
-			sortable: true,
-			cellClassName: ({ row }) => (!row.video ? 'no-video' : ''),
-		},
-		{
-			field: 'background',
-			headerName: 'Location',
-			flex: 1,
-			minWidth: 100,
-			sortable: true,
-			valueGetter: (value) => toTitleCase(value || 'None'),
-		},
-		{ field: 'owner', headerName: 'Owner', flex: 1, minWidth: 100, sortable: true },
-		{ field: 'notes', headerName: 'Notes', flex: 2, minWidth: 100, sortable: true },
-		{
-			field: 'type',
-			headerName: 'Type',
-			flex: 1,
-			minWidth: 100,
-			sortable: true,
-			valueGetter: (value) => toTitleCase(value || ''),
-		},
-		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
-		{
-			field: 'mora',
-			headerName: 'Mora',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			cellClassName: ({ value, row }) => (value === row.spots ? 'mora-match' : ''),
-		},
-		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
-		{
-			field: 'efficiency',
-			headerName: 'Efficiency',
-			width: 100,
-			type: 'number',
-			sortable: true,
-			renderCell: ({ value }) => {
-				const ratio = Math.min(Math.max(value / 0.25, 0), 1);
-				const red = Math.round(255 * (1 - ratio));
-				const green = Math.round(255 * ratio);
-				return <span style={{ color: `rgb(${red}, ${green}, 0)` }}>{value.toFixed(3)}</span>;
+	const columns = useMemo(() => {
+		return [
+			...mapColumns,
+			{
+				field: 'actions',
+				headerName: 'Actions',
+				width: 100,
+				sortable: false,
+				filterable: false,
+				renderCell: ({ row }) => (
+					<Stack direction='row' spacing={0.5}>
+						<IconButton
+							size='small'
+							onClick={(e) => {
+								e.stopPropagation();
+								showModal(EditMapDataModal, { props: { mapData: row } });
+							}}>
+							<EditIcon fontSize='small' />
+						</IconButton>
+						<IconButton
+							size='small'
+							onClick={async (e) => {
+								e.stopPropagation();
+								if (!confirm(`Delete map "${row.name}"? This cannot be undone.`)) return;
+								await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
+									headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
+								});
+								router.refresh();
+							}}>
+							<DeleteIcon fontSize='small' color='error' />
+						</IconButton>
+					</Stack>
+				),
 			},
-		},
-		{
-			field: 'actions',
-			headerName: 'Actions',
-			width: 100,
-			sortable: false,
-			filterable: false,
-			renderCell: ({ row }) => (
-				<Stack direction='row' spacing={0.5}>
-					<IconButton
-						size='small'
-						onClick={(e) => {
-							e.stopPropagation();
-							showModal(EditMapDataModal, { props: { mapData: row } });
-						}}>
-						<EditIcon fontSize='small' />
-					</IconButton>
-					<IconButton
-						size='small'
-						onClick={async (e) => {
-							e.stopPropagation();
-							if (!confirm(`Delete map "${row.name}"? This cannot be undone.`)) return;
-							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
-								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
-							});
-							router.refresh();
-						}}>
-						<DeleteIcon fontSize='small' color='error' />
-					</IconButton>
-				</Stack>
-			),
-		},
-	];
-
-	const sortModel: GridSortModel = [{ field: sortKey, sort: direction }];
+		];
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<Container>
@@ -213,7 +155,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 				columns={columns}
 				density='compact'
 				sortingMode='server'
-				sortModel={sortModel}
+				sortModel={[{ field: sortKey, sort: direction }]}
 				onSortModelChange={handleSortModelChange}
 				onRowClick={({ row }) => router.push(`/api/maps/${row.id}`)}
 				sx={{

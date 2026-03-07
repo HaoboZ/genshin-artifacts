@@ -365,8 +365,10 @@ export default function MapEditor({
 									selected={selectedPointIndex === index}
 									onClick={() => setSelectedPointIndex(index)}>
 									<Typography variant='body2'>
-										#{index + 1} ({point.x.toFixed(3)}, {point.y.toFixed(3)})
-										{point.marked !== undefined ? ` @ ${point.marked.toFixed(2)}s` : ''}
+										#{index + 1}{' '}
+										{point.start !== undefined ? `${point.start.toFixed(2)}s` : '―'} →{' '}
+										{point.marked !== undefined ? `${point.marked.toFixed(2)}s` : '―'} →{' '}
+										{point.end !== undefined ? `${point.end.toFixed(2)}s` : '―'}
 									</Typography>
 								</ListItemButton>
 							))}

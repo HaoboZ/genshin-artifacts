@@ -16,27 +16,17 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../../../farming/render';
+import { mapColumns, type SortKey } from '../../maps/columns';
 import { CALC_EFFICIENCY_SECONDS } from '../../maps/formUtils';
 import { type MapData, type RouteData } from '../types';
 import RouteControls from './controls';
 
 const EditMapDataModal = dynamicModal(() => import('../../maps/editMapDataModal'));
-type SortKey =
-	| 'name'
-	| 'owner'
-	| 'notes'
-	| 'type'
-	| 'background'
-	| 'spots'
-	| 'mora'
-	| 'time'
-	| 'efficiency';
-type RouteMapRow = MapData & { order?: number; actions?: never };
 
 export default function Route({
 	routeData,
@@ -119,117 +109,79 @@ export default function Route({
 		);
 	}, [mapsData, routeMapData, search, sortKey, direction, moraOnly]);
 
-	const columns: GridColDef<RouteMapRow>[] = [
-		{
-			field: 'order',
-			headerName: 'Order',
-			width: 75,
-			sortable: false,
-			filterable: false,
-			renderCell: ({ row }) => {
-				const index = routeMaps.indexOf(row.id);
-				return (
-					<FormattedTextField
-						size='small'
-						value={index !== -1 ? String(index) : ''}
-						placeholder='-'
-						slotProps={{ htmlInput: { inputMode: 'numeric' } }}
-						sx={{ '.MuiInputBase-input': { py: 0.7 } }}
-						onBlur={(e) => {
-							const parsedOrder = Number.parseInt(e.target.value.trim(), 10);
-							if (Number.isNaN(parsedOrder)) return;
+	const columns = useMemo(() => {
+		return [
+			{
+				field: 'order',
+				headerName: 'Order',
+				width: 75,
+				sortable: false,
+				filterable: false,
+				renderCell: ({ row }) => {
+					const index = routeMaps.indexOf(row.id);
+					return (
+						<FormattedTextField
+							size='small'
+							value={index !== -1 ? String(index) : ''}
+							placeholder='-'
+							slotProps={{ htmlInput: { inputMode: 'numeric' } }}
+							sx={{ '.MuiInputBase-input': { py: 0.7 } }}
+							onBlur={(e) => {
+								const parsedOrder = Number.parseInt(e.target.value.trim(), 10);
+								if (Number.isNaN(parsedOrder)) return;
 
-							setRouteMaps((data) => {
-								const withoutCurrent = data.filter((mapId) => mapId !== row.id);
-								const clampedOrder = Math.min(
-									Math.max(parsedOrder, 0),
-									withoutCurrent.length,
-								);
-								withoutCurrent.splice(clampedOrder, 0, row.id);
-								return withoutCurrent;
-							});
-						}}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								(e.target as HTMLInputElement).blur();
-							}
-						}}
-					/>
-				);
+								setRouteMaps((data) => {
+									const withoutCurrent = data.filter((mapId) => mapId !== row.id);
+									const clampedOrder = Math.min(
+										Math.max(parsedOrder, 0),
+										withoutCurrent.length,
+									);
+									withoutCurrent.splice(clampedOrder, 0, row.id);
+									return withoutCurrent;
+								});
+							}}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									(e.target as HTMLInputElement).blur();
+								}
+							}}
+						/>
+					);
+				},
 			},
-		},
-		{ field: 'name', headerName: 'Name', flex: 2, minWidth: 150, sortable: true },
-		{
-			field: 'background',
-			headerName: 'Location',
-			flex: 1,
-			minWidth: 100,
-			sortable: true,
-			valueGetter: (value) => toTitleCase(value || 'None'),
-		},
-		{ field: 'owner', headerName: 'Owner', flex: 1, minWidth: 100, sortable: true },
-		{ field: 'notes', headerName: 'Notes', flex: 2, minWidth: 100, sortable: true },
-		{
-			field: 'type',
-			headerName: 'Type',
-			flex: 1,
-			minWidth: 100,
-			sortable: true,
-			valueGetter: (value) => toTitleCase(value || ''),
-		},
-		{ field: 'spots', headerName: 'Spots', width: 75, type: 'number', sortable: true },
-		{
-			field: 'mora',
-			headerName: 'Mora',
-			width: 75,
-			type: 'number',
-			sortable: true,
-			cellClassName: ({ value, row }) => (value === row.spots ? 'mora-match' : ''),
-		},
-		{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
-		{
-			field: 'efficiency',
-			headerName: 'Efficiency',
-			width: 100,
-			type: 'number',
-			sortable: true,
-			renderCell: ({ value }) => {
-				const ratio = Math.min(Math.max(value / 0.25, 0), 1);
-				const red = Math.round(255 * (1 - ratio));
-				const green = Math.round(255 * ratio);
-				return <span style={{ color: `rgb(${red}, ${green}, 0)` }}>{value.toFixed(3)}</span>;
-			},
-		},
-		{
-			field: 'actions',
-			headerName: 'Actions',
-			width: 100,
-			sortable: false,
-			filterable: false,
-			renderCell: ({ row }) => (
-				<Stack direction='row' spacing={0.5}>
-					{routeMaps.includes(row.id) ? (
+			...mapColumns,
+			{
+				field: 'actions',
+				headerName: 'Actions',
+				width: 100,
+				sortable: false,
+				filterable: false,
+				renderCell: ({ row }) => (
+					<Stack direction='row' spacing={0.5}>
+						{routeMaps.includes(row.id) ? (
+							<IconButton
+								size='small'
+								onClick={() => setRouteMaps((data) => data.filter((id) => id !== row.id))}>
+								<DeleteIcon fontSize='small' />
+							</IconButton>
+						) : (
+							<IconButton
+								size='small'
+								onClick={() => setRouteMaps((data) => [...data, row.id])}>
+								<AddIcon fontSize='small' />
+							</IconButton>
+						)}
 						<IconButton
 							size='small'
-							onClick={() => setRouteMaps((data) => data.filter((id) => id !== row.id))}>
-							<DeleteIcon fontSize='small' />
+							onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
+							<EditIcon fontSize='small' />
 						</IconButton>
-					) : (
-						<IconButton
-							size='small'
-							onClick={() => setRouteMaps((data) => [...data, row.id])}>
-							<AddIcon fontSize='small' />
-						</IconButton>
-					)}
-					<IconButton
-						size='small'
-						onClick={() => showModal(EditMapDataModal, { props: { mapData: row } })}>
-						<EditIcon fontSize='small' />
-					</IconButton>
-				</Stack>
-			),
-		},
-	];
+					</Stack>
+				),
+			},
+		];
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [routeMaps]);
 
 	return (
 		<Container>
