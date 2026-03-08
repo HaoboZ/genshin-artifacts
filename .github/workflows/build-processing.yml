@@ -10,8 +10,10 @@ on:
    workflow_dispatch:
 
 jobs:
-   build-processing-exe:
+   build-processing:
       runs-on: windows-latest
+      permissions:
+         contents: write
       
       steps:
          -  name: Checkout repository
@@ -31,3 +33,13 @@ jobs:
             with:
                name: processing-exe
                path: packages/processing/dist/processing.exe
+         
+         -  name: Create or update release
+            if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
+            uses: ncipollo/release-action@v1
+            with:
+               tag: processing-${{ github.sha }}
+               name: Processing ${{ github.sha }}
+               artifacts: packages/processing/dist/processing.exe
+               allowUpdates: true
+               artifactErrorsFailBuild: true
