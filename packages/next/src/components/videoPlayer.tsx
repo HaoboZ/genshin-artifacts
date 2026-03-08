@@ -5,7 +5,7 @@ import {
 	SkipPrevious as SkipPreviousIcon,
 } from '@mui/icons-material';
 import { Box, type BoxProps, IconButton } from '@mui/material';
-import { type Dispatch, type RefObject, useState } from 'react';
+import { type RefObject, useState } from 'react';
 import { useKey } from 'rooks';
 
 const fps = 60;
@@ -14,14 +14,12 @@ export default function VideoPlayer({
 	ref,
 	src,
 	seekFrames,
-	setTime,
 	sx,
 	...props
 }: {
 	ref: RefObject<HTMLVideoElement>;
 	src: string;
 	seekFrames?: number;
-	setTime?: Dispatch<number>;
 } & BoxProps) {
 	const [isHovering, setIsHovering] = useState(false);
 
@@ -40,7 +38,6 @@ export default function VideoPlayer({
 		const video = ref.current;
 		const newTime = video.currentTime + frames / fps;
 		video.currentTime = Math.max(0, Math.min(newTime, video.duration));
-		setTime(video.currentTime);
 	};
 
 	useKey(['ArrowRight'], (e) => {

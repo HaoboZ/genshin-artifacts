@@ -52,7 +52,10 @@ export default function useRouteVideoSync(points: Point[]) {
 		routeRef,
 		videoRef,
 		time,
-		setTime,
+		setTime: (time: number) => {
+			videoRef.current.currentTime = time;
+			setTime(time);
+		},
 		activeSpot,
 		setActiveSpot: (spot: Spot) => {
 			setActiveSpot(spot);

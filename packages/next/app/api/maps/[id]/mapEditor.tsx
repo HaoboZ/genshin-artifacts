@@ -124,7 +124,6 @@ export default function MapEditor({
 							ref={videoRef}
 							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
 							seekFrames={1}
-							setTime={setTime}
 						/>
 					</AccordionDetails>
 				</Accordion>
