@@ -12,6 +12,7 @@ import {
 	Button,
 	Grid,
 	List,
+	ListItem,
 	ListItemButton,
 	MenuItem,
 	Stack,
@@ -112,26 +113,21 @@ export default function MapEditor({
 	return (
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
-				{mapData.video && (
-					<Accordion defaultExpanded>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
-							slotProps={{ content: { component: 'h3' } }}>
-							Video
-						</AccordionSummary>
-						<AccordionDetails>
-							<Typography variant='body2' sx={{ mb: 0.5 }}>
-								Video Time: {time.toFixed(2)}s
-							</Typography>
-							<VideoPlayer
-								ref={videoRef}
-								src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-								seekFrames={1}
-								setTime={setTime}
-							/>
-						</AccordionDetails>
-					</Accordion>
-				)}
+				<Accordion defaultExpanded sx={{ display: mapData.video ? undefined : 'none' }}>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						slotProps={{ content: { component: 'h3' } }}>
+						Video: {time.toFixed(2)}s
+					</AccordionSummary>
+					<AccordionDetails>
+						<VideoPlayer
+							ref={videoRef}
+							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
+							seekFrames={1}
+							setTime={setTime}
+						/>
+					</AccordionDetails>
+				</Accordion>
 				<Accordion defaultExpanded>
 					<AccordionSummary
 						expandIcon={<ExpandMoreIcon />}
@@ -236,12 +232,12 @@ export default function MapEditor({
 								<Grid size={4}>
 									<FormattedTextField
 										size='small'
-										label='Marked'
+										label='Start'
 										type='number'
-										value={selectedPoint.marked ?? ''}
+										value={selectedPoint.start ?? ''}
 										onChange={(e: ChangeEvent<HTMLInputElement>) => {
 											updateSelectedPoint(
-												'marked',
+												'start',
 												e.target.value ? +e.target.value : undefined,
 											);
 										}}
@@ -250,12 +246,12 @@ export default function MapEditor({
 								<Grid size={4}>
 									<FormattedTextField
 										size='small'
-										label='Start'
+										label='Marked'
 										type='number'
-										value={selectedPoint.start ?? ''}
+										value={selectedPoint.marked ?? ''}
 										onChange={(e: ChangeEvent<HTMLInputElement>) => {
 											updateSelectedPoint(
-												'start',
+												'marked',
 												e.target.value ? +e.target.value : undefined,
 											);
 										}}
@@ -280,7 +276,7 @@ export default function MapEditor({
 										size='small'
 										variant='outlined'
 										fullWidth
-										onClick={() => updateSelectedPoint('marked', time)}>
+										onClick={() => updateSelectedPoint('start', time)}>
 										Set
 									</Button>
 								</Grid>
@@ -289,7 +285,7 @@ export default function MapEditor({
 										size='small'
 										variant='outlined'
 										fullWidth
-										onClick={() => updateSelectedPoint('start', time)}>
+										onClick={() => updateSelectedPoint('marked', time)}>
 										Set
 									</Button>
 								</Grid>
@@ -359,19 +355,33 @@ export default function MapEditor({
 					</AccordionSummary>
 					<AccordionDetails>
 						<List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
-							{points.map((point, index) => (
-								<ListItemButton
-									key={index}
-									selected={selectedPointIndex === index}
-									onClick={() => setSelectedPointIndex(index)}>
-									<Typography variant='body2'>
-										#{index + 1}{' '}
-										{point.start !== undefined ? `${point.start.toFixed(2)}s` : '―'} →{' '}
-										{point.marked !== undefined ? `${point.marked.toFixed(2)}s` : '―'} →{' '}
-										{point.end !== undefined ? `${point.end.toFixed(2)}s` : '―'}
-									</Typography>
-								</ListItemButton>
-							))}
+							{points.map((point, index) => {
+								const time = point.marked ?? point.start ?? point.end;
+
+								return (
+									<ListItem
+										key={index}
+										sx={{ p: 0 }}
+										secondaryAction={
+											<Button
+												size='small'
+												variant='outlined'
+												disabled={time === undefined}
+												onClick={() => setTime(time)}>
+												Go
+											</Button>
+										}>
+										<ListItemButton
+											selected={selectedPointIndex === index}
+											onClick={() => setSelectedPointIndex(index)}>
+											#{index + 1}{' '}
+											{point.start !== undefined ? `${point.start.toFixed(2)}s` : '―'} →{' '}
+											{point.marked !== undefined ? `${point.marked.toFixed(2)}s` : '―'}{' '}
+											→ {point.end !== undefined ? `${point.end.toFixed(2)}s` : '―'}
+										</ListItemButton>
+									</ListItem>
+								);
+							})}
 						</List>
 					</AccordionDetails>
 				</Accordion>
