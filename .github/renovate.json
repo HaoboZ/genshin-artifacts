@@ -8,7 +8,14 @@
 			"matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
 			"groupName": "all non-major dependencies",
 			"groupSlug": "all-minor-patch",
-			"bumpVersion": "patch",
+			"bumpVersions": [
+				{
+					"name": "root-package-version",
+					"filePatterns": ["/^package\\.json$/"],
+					"matchStrings": ["\"version\"\\s*:\\s*\"(?<version>\\d+\\.\\d+\\.\\d+)\""],
+					"bumpType": "patch"
+				}
+			],
 			"automerge": true,
 			"automergeSchedule": ["before 4am on Monday"],
 			"automergeType": "branch"
