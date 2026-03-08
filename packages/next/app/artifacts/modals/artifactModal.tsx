@@ -24,9 +24,9 @@ import {
 } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
-import CharacterImage from '../characters/characterImage';
-import ArtifactActions from './artifactActions';
-import ArtifactImage from './artifactImage';
+import CharacterImage from '../../characters/characterImage';
+import ArtifactActions from '../artifactActions';
+import ArtifactImage from '../artifactImage';
 
 export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 	const dispatch = useAppDispatch();

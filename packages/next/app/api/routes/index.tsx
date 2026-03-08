@@ -5,12 +5,11 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import { Button, Container, IconButton, Paper, Stack, TextField } from '@mui/material';
 import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy } from 'remeda';
+import { deleteRoute } from './actions';
 import { type RouteData } from './types';
 
 const AddRouteDataModal = dynamicModal(() => import('./addRouteDataModal'));
@@ -88,9 +87,7 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 						onClick={async (e) => {
 							e.stopPropagation();
 							if (!confirm(`Delete route "${row.name}"? This cannot be undone.`)) return;
-							await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${row.id}`, {
-								headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
-							});
+							await deleteRoute(row.id);
 							router.refresh();
 						}}>
 						<DeleteIcon fontSize='small' color='error' />

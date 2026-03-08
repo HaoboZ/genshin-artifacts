@@ -21,7 +21,7 @@ export async function handleRoutesEndpoint(request: Request, env: Env, pathname:
 		return response;
 	}
 
-	if (request.method === 'PUT') {
+	if (request.method === 'POST') {
 		const routeData = await parseRouteBody(request, nanoid());
 		await saveRouteToDb(env, routeData);
 		await invalidateResourceCache(origin, 'routes', routeData.id);

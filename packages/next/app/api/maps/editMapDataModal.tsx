@@ -1,79 +1,24 @@
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { DialogTitle } from '@mui/material';
-import axios from 'axios';
-import { Formik } from 'formik';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { useMemo } from 'react';
 import { type MapData } from '../routes/types';
-import { calcEfficiency } from './formUtils';
-import MapDataForm, { type MapDataFormValues } from './mapDataForm';
+import MapDataForm from './mapDataForm';
 
 export default function EditMapDataModal({ mapData }: { mapData: MapData }) {
 	const router = useRouter();
 	const { closeModal } = useModalControls();
 
-	const initialValues: MapDataFormValues = useMemo(
-		() => ({
-			name: mapData.name ?? '',
-			owner: mapData.owner ?? '',
-			notes: mapData.notes ?? '',
-			type: mapData.type ?? 'none',
-			location: mapData.background ?? 'none',
-			spots: mapData.spots ?? 0,
-			time: mapData.time ?? 0,
-			mora: mapData.mora ?? 0,
-			x: mapData.x,
-			y: mapData.y,
-			file: undefined,
-		}),
-		[mapData],
-	);
-
 	return (
 		<DialogWrapper maxWidth='md'>
 			<DialogTitle>Edit Map Details</DialogTitle>
-			<Formik<MapDataFormValues>
-				initialValues={initialValues}
-				onSubmit={async (values) => {
-					if (!values.name) throw Error('Missing Name');
-
-					const data: MapData = {
-						...mapData,
-						name: values.name,
-						owner: values.owner || undefined,
-						notes: values.notes || undefined,
-						type: values.type === 'none' ? undefined : values.type,
-						background: values.location === 'none' ? undefined : values.location,
-						spots: values.spots,
-						time: values.time,
-						mora: values.mora,
-						efficiency: calcEfficiency(values.spots, values.time),
-						x: values.x,
-						y: values.y,
-					};
-
-					await axios.post(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`, data, {
-						headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
-					});
-					if (values.file) {
-						await axios.put(
-							`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-							values.file,
-							{
-								headers: {
-									'Authorization': `Bearer ${Cookies.get('AUTH_TOKEN')}`,
-									'Content-Type': values.file.type,
-								},
-							},
-						);
-					}
+			<MapDataForm
+				initialValues={mapData}
+				onSubmit={async () => {
 					router.refresh();
 					closeModal();
-				}}>
-				<MapDataForm requireFile={false} />
-			</Formik>
+				}}
+			/>
 		</DialogWrapper>
 	);
 }

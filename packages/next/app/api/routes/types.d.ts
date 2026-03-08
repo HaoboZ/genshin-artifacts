@@ -37,7 +37,7 @@ export type MapData = {
 	y?: number | null;
 	image?: string;
 	video?: string;
-	points: Point[];
+	points?: Point[];
 };
 
 export type Text = {

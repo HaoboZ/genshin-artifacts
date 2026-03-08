@@ -26,7 +26,7 @@ export async function handleMapsEndpoint(
 		return response;
 	}
 
-	if (request.method === 'PUT') {
+	if (request.method === 'POST') {
 		const mapData = await parseMapBody(request, nanoid());
 		await saveMapToDb(env, mapData);
 		await invalidateResourceCache(origin, 'maps', mapData.id);

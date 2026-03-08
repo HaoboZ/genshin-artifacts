@@ -7,13 +7,13 @@ import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
 import { DialogTitle } from '@mui/material';
-import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { omit, partition, prop } from 'remeda';
-import ArtifactForm from './index';
+import ArtifactForm from '../artifactForm';
 
-const ArtifactModal = dynamicModal(() => import('../artifactModal'));
+const ArtifactModal = dynamicModal(() => import('./artifactModal'));
 
 export default function AddArtifactModal() {
 	const dispatch = useAppDispatch();
@@ -24,7 +24,6 @@ export default function AddArtifactModal() {
 		const { rarity } = artifactSetsInfo.GladiatorsFinale;
 
 		return {
-			id: nanoid(),
 			setKey: 'GladiatorsFinale',
 			slotKey: 'flower',
 			mainStatKey: 'hp',
@@ -36,29 +35,31 @@ export default function AddArtifactModal() {
 			astralMark: false,
 		};
 	}, []);
+	const methods = useForm<IArtifact>({ defaultValues: initialValues });
 
 	return (
 		<DialogWrapper>
 			<DialogTitle>Add Artifact</DialogTitle>
-			<Formik<IArtifact>
-				initialValues={initialValues}
-				onSubmit={(artifact) => {
-					const [unactivatedSubstats, substats] = partition(
-						artifact.substats,
-						prop('unactivated'),
-					);
-					dispatch(
-						goodActions.addArtifact({
-							...artifact,
-							substats: substats.map(omit(['unactivated'])),
-							unactivatedSubstats: unactivatedSubstats?.map(omit(['unactivated'])),
-						}),
-					);
-					closeModal();
-					showModal(ArtifactModal, { props: { artifact } });
-				}}>
-				<ArtifactForm />
-			</Formik>
+			<FormProvider {...methods}>
+				<ArtifactForm
+					onSubmit={(artifact) => {
+						const [unactivatedSubstats, substats] = partition(
+							artifact.substats,
+							prop('unactivated'),
+						);
+						dispatch(
+							goodActions.addArtifact({
+								id: nanoid(),
+								...artifact,
+								substats: substats.map(omit(['unactivated'])),
+								unactivatedSubstats: unactivatedSubstats?.map(omit(['unactivated'])),
+							}),
+						);
+						closeModal();
+						showModal(ArtifactModal, { props: { artifact } });
+					}}
+				/>
+			</FormProvider>
 		</DialogWrapper>
 	);
 }

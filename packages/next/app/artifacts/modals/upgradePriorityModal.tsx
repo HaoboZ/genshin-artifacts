@@ -16,7 +16,7 @@ import { filter, groupBy, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
 
-const EditArtifactModal = dynamicModal(() => import('../artifactForm/editArtifactModal'));
+const EditArtifactModal = dynamicModal(() => import('./editArtifactModal'));
 
 export default function UpgradePriorityModal() {
 	const { showModal } = useModal();

@@ -21,8 +21,8 @@ import {
 	Typography,
 } from '@mui/material';
 import { pascalSnakeCase } from 'change-case';
-import { Formik } from 'formik';
 import { Fragment, useMemo, useState } from 'react';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
@@ -34,8 +34,10 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 	const weapons = useAppSelector(prop('good', 'weapons'));
 	const priority = useAppSelector(prop('main', 'priority'));
 	const { closeModal } = useModalControls();
+	const methods = useForm<IWeapon>({ defaultValues: weapon });
 
 	const [checked, setChecked] = useState(false);
+	const values = useWatch({ control: methods.control });
 
 	const characters = useMemo(() => {
 		const priorityIndex = Object.values(priority).flat();
@@ -78,87 +80,77 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 					{weaponsInfo[weapon.key].name}
 				</PageLink>
 			</DialogTitle>
-			<Formik<IWeapon>
-				initialValues={weapon}
-				onSubmit={(values) => {
-					dispatch(goodActions.giveWeapon([values.location, weapon]));
-					dispatch(goodActions.editWeapon(values));
-					closeModal();
-				}}>
-				{({ values, setFieldValue }) => {
-					const build = getFirst(builds[values.location]);
-
-					return (
-						<WeaponForm deleteButton>
-							{values.location && (
-								<Fragment>
-									<Box>
-										<Button
-											variant='outlined'
-											color='error'
-											onClick={() => setFieldValue('location', '')}>
-											Remove
-										</Button>
-									</Box>
-									<Stack direction='row' spacing={1}>
-										<CharacterImage character={charactersInfo[values.location]} />
-										<Box>
-											<Typography sx={{ my: 0.5 }}>{build.role}</Typography>
-											<CharacterWeaponTier build={build} />
-										</Box>
-									</Stack>
-								</Fragment>
-							)}
-							<FormControlLabel
-								control={
-									<Switch
-										sx={{ ml: 0 }}
-										checked={checked}
-										onChange={(_, checked) => setChecked(checked)}
-									/>
-								}
-								label='All Characters'
+			<FormProvider {...methods}>
+				<WeaponForm
+					deleteButton
+					onSubmit={(formValues) => {
+						dispatch(goodActions.giveWeapon([formValues.location, weapon]));
+						dispatch(goodActions.editWeapon(formValues));
+						closeModal();
+					}}>
+					{values.location && (
+						<Fragment>
+							<Box>
+								<Button
+									variant='outlined'
+									color='error'
+									onClick={() => (methods.setValue as any)('location', '')}>
+									Remove
+								</Button>
+							</Box>
+							<Stack direction='row' spacing={1}>
+								<CharacterImage character={charactersInfo[values.location]} />
+								<Box>
+									<Typography sx={{ my: 0.5 }}>
+										{getFirst(builds[values.location]).role}
+									</Typography>
+									<CharacterWeaponTier build={getFirst(builds[values.location])} />
+								</Box>
+							</Stack>
+						</Fragment>
+					)}
+					<FormControlLabel
+						control={
+							<Switch
+								sx={{ ml: 0 }}
+								checked={checked}
+								onChange={(_, checked) => setChecked(checked)}
 							/>
-							<Grid container spacing={1}>
-								{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
-									<Grid key={index}>
-										<CharacterImage
-											character={charactersInfo[build.key]}
-											sx={{
-												':hover': { cursor: 'pointer' },
-												'border': build.key === values.location ? 2 : 0,
-												'borderColor': 'blue',
-											}}
-											onClick={() => setFieldValue('location', build.key)}>
-											{oldWeapon && (
-												<WeaponImage
-													hideStats
-													weapon={oldWeapon}
-													size={50}
-													sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
-												/>
-											)}
-										</CharacterImage>
-										<PercentBar p={1 - buildIndex / build.weapon.length}>
-											New %p
-										</PercentBar>
-										{oldWeapon && (
-											<PercentBar
-												p={
-													oldTierIndex !== -1
-														? 1 - oldTierIndex / build.weapon.length
-														: 0
-												}>
-												Current %p
-											</PercentBar>
-										)}
-									</Grid>
-								))}
+						}
+						label='All Characters'
+					/>
+					<Grid container spacing={1}>
+						{characters.map(({ build, buildIndex, oldWeapon, oldTierIndex }, index) => (
+							<Grid key={index}>
+								<CharacterImage
+									character={charactersInfo[build.key]}
+									sx={{
+										':hover': { cursor: 'pointer' },
+										'border': build.key === values.location ? 2 : 0,
+										'borderColor': 'blue',
+									}}
+									onClick={() => (methods.setValue as any)('location', build.key)}>
+									{oldWeapon && (
+										<WeaponImage
+											hideStats
+											weapon={oldWeapon}
+											size={50}
+											sx={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}
+										/>
+									)}
+								</CharacterImage>
+								<PercentBar p={1 - buildIndex / build.weapon.length}>New %p</PercentBar>
+								{oldWeapon && (
+									<PercentBar
+										p={oldTierIndex !== -1 ? 1 - oldTierIndex / build.weapon.length : 0}>
+										Current %p
+									</PercentBar>
+								)}
 							</Grid>
-						</WeaponForm>
-					);
-				}}
-			</Formik>
+						))}
+					</Grid>
+				</WeaponForm>
+			</FormProvider>
 		</DialogWrapper>
 	);
 }

@@ -1,6 +1,6 @@
 import { weaponsInfo } from '@/api/weapons';
-import InputField from '@/components/formik/inputField';
-import SwitchField from '@/components/formik/switchField';
+import InputField from '@/components/form/inputField';
+import SwitchField from '@/components/form/switchField';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
@@ -14,31 +14,34 @@ import {
 	Stack,
 	Typography,
 } from '@mui/material';
-import { Form, useFormikContext } from 'formik';
 import { Fragment, type ReactNode } from 'react';
+import { type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
 import WeaponImage from './weaponImage';
 
 export default function WeaponForm({
 	deleteButton,
 	children,
+	onSubmit,
 }: {
 	deleteButton?: boolean;
 	children?: ReactNode;
+	onSubmit: SubmitHandler<IWeapon>;
 }) {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
-	const { values } = useFormikContext<IWeapon>();
+	const { control, handleSubmit } = useFormContext<IWeapon>();
+	const values = useWatch({ control });
 
 	const weapon = weaponsInfo[values.key];
 
 	return (
-		<Form>
+		<form onSubmit={handleSubmit(onSubmit)}>
 			<DialogContent>
 				<Stack spacing={1}>
 					{values.key && (
 						<Stack spacing={1} direction='row'>
 							<Stack>
-								<WeaponImage hideStats weapon={values} />
+								<WeaponImage hideStats weapon={values as IWeapon} />
 								<FormControlLabel control={<SwitchField name='lock' />} label='Locked' />
 							</Stack>
 							<Box>
@@ -80,6 +83,6 @@ export default function WeaponForm({
 					Save
 				</Button>
 			</DialogActions>
-		</Form>
+		</form>
 	);
 }

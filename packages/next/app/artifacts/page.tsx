@@ -14,10 +14,10 @@ import { prop, sortBy } from 'remeda';
 import CharacterImage from '../characters/characterImage';
 import ArtifactSetImage from './artifactSetImage';
 
-const AddArtifactModal = dynamicModal(() => import('./artifactForm/addArtifactModal'));
+const AddArtifactModal = dynamicModal(() => import('./modals/addArtifactModal'));
 const ArtifactDeleteModal = dynamicModal(() => import('./modals/artifactDeleteModal'));
 const ArtifactSetFarmModal = dynamicModal(() => import('./modals/artifactFarmModal'));
-const BatchAddArtifactModal = dynamicModal(() => import('./artifactForm/batchAddArtifactModal'));
+const BatchAddArtifactModal = dynamicModal(() => import('./modals/batchAddArtifactModal'));
 const OptimizeArtifactModal = dynamicModal(() => import('./modals/optimizeArtifactModal'));
 const UpgradePriorityModal = dynamicModal(() => import('./modals/upgradePriorityModal'));
 

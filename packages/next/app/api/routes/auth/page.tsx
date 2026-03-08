@@ -2,9 +2,9 @@
 
 import PageBack from '@/components/page/pageBack';
 import { Button, Container, Stack, TextField } from '@mui/material';
-import Cookies from 'js-cookie';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
+import { saveAuthToken } from './actions';
 
 export default function Home() {
 	const { enqueueSnackbar } = useSnackbar();
@@ -23,8 +23,8 @@ export default function Home() {
 				/>
 				<Button
 					variant='contained'
-					onClick={() => {
-						Cookies.set('AUTH_TOKEN', token, { expires: 7 });
+					onClick={async () => {
+						await saveAuthToken(token);
 						enqueueSnackbar('Success');
 					}}
 					fullWidth>

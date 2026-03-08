@@ -4,11 +4,11 @@ import { store } from '@/store';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
-import { Button, DialogTitle } from '@mui/material';
-import { Formik } from 'formik';
+import { DialogTitle } from '@mui/material';
 import { useMemo } from 'react';
-import { omit, partition } from 'remeda';
-import ArtifactForm from './index';
+import { FormProvider, useForm } from 'react-hook-form';
+import { omit, partition, prop } from 'remeda';
+import ArtifactForm from '../artifactForm';
 
 export default function EditArtifactModal({ id }: { id: string }) {
 	const dispatch = useAppDispatch();
@@ -27,44 +27,32 @@ export default function EditArtifactModal({ id }: { id: string }) {
 			],
 		};
 	}, [id]);
+	const methods = useForm<IArtifact>({ defaultValues: initialValues });
 
 	return (
 		<DialogWrapper>
 			<DialogTitle>Edit Artifact</DialogTitle>
-			<Formik<IArtifact>
-				initialValues={initialValues}
-				onSubmit={(artifact) => {
-					const [unactivatedSubstats, substats] = partition(
-						artifact.substats,
-						(substat) => substat.unactivated,
-					);
-
-					dispatch(
-						goodActions.editArtifact({
-							...artifact,
-							substats: substats.map(omit(['unactivated'])),
-							unactivatedSubstats: unactivatedSubstats.length
-								? unactivatedSubstats.map(omit(['unactivated']))
-								: undefined,
-						}),
-					);
-					closeModal();
-				}}>
+			<FormProvider {...methods}>
 				<ArtifactForm
-					deleteButton={
-						<Button
-							variant='contained'
-							color='error'
-							onClick={() => {
-								if (!confirm('Delete this artifact?')) return;
-								dispatch(goodActions.deleteArtifact(id));
-								closeModal();
-							}}>
-							Delete
-						</Button>
-					}
+					onSubmit={(artifact) => {
+						const [unactivatedSubstats, substats] = partition(
+							artifact.substats,
+							prop('unactivated'),
+						);
+
+						dispatch(
+							goodActions.editArtifact({
+								...artifact,
+								substats: substats.map(omit(['unactivated'])),
+								unactivatedSubstats: unactivatedSubstats.length
+									? unactivatedSubstats.map(omit(['unactivated']))
+									: undefined,
+							}),
+						);
+						closeModal();
+					}}
 				/>
-			</Formik>
+			</FormProvider>
 		</DialogWrapper>
 	);
 }

@@ -14,13 +14,12 @@ import {
 	TextField,
 } from '@mui/material';
 import { DataGrid, type GridSortModel } from '@mui/x-data-grid';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy, toTitleCase } from 'remeda';
 import { type MapData } from '../routes/types';
+import { deleteMap } from './actions';
 import { mapColumns, type SortKey } from './columns';
 
 const AddMapDataModal = dynamicModal(() => import('./addMapDataModal'));
@@ -97,9 +96,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 							onClick={async (e) => {
 								e.stopPropagation();
 								if (!confirm(`Delete map "${row.name}"? This cannot be undone.`)) return;
-								await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${row.id}`, {
-									headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` },
-								});
+								await deleteMap(row.id);
 								router.refresh();
 							}}>
 							<DeleteIcon fontSize='small' color='error' />

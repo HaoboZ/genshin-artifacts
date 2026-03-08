@@ -9,9 +9,9 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IWeapon, type WeaponKey } from '@/types/good';
 import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
-import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import WeaponForm from '../weaponForm';
@@ -20,8 +20,18 @@ export default function AddWeaponModal() {
 	const dispatch = useAppDispatch();
 	const priority = useAppSelector(prop('main', 'priority'));
 	const { closeModal } = useModalControls();
+	const methods = useForm<IWeapon>({
+		defaultValues: {
+			key: '',
+			level: 1,
+			ascension: 0,
+			refinement: 1,
+			location: '',
+			lock: false,
+		},
+	});
 
-	const [weapon, setWeapon] = useState<WeaponKey>(null);
+	const weapon = useWatch({ control: methods.control, name: 'key' }) as WeaponKey;
 
 	const characters = useMemo(() => {
 		if (!weapon) return [];
@@ -45,46 +55,35 @@ export default function AddWeaponModal() {
 	return (
 		<DialogWrapper>
 			<DialogTitle>Add Weapon</DialogTitle>
-			<Formik<IWeapon>
-				initialValues={{
-					id: nanoid(),
-					key: '',
-					level: 1,
-					ascension: 0,
-					refinement: 1,
-					location: '',
-					lock: false,
-				}}
-				onSubmit={(weapon) => {
-					dispatch(goodActions.addWeapon(weapon));
-					closeModal();
-				}}>
-				{({ setFieldValue }) => (
-					<WeaponForm>
-						<Autocomplete
-							fullWidth
-							autoHighlight
-							sx={{ pt: 1 }}
-							renderInput={(params) => <TextField {...params} label='Select Weapon' />}
-							options={Object.keys(weaponsInfo)}
-							getOptionLabel={(key) => weaponsInfo[key].name}
-							value={weapon as any}
-							onChange={(_, value) => {
-								setWeapon(value);
-								setFieldValue('key', value);
-							}}
-						/>
-						<Grid container spacing={1}>
-							{characters.map(({ build, buildIndex }, index) => (
-								<Grid key={index}>
-									<CharacterImage character={charactersInfo[build.key]} />
-									<PercentBar p={1 - buildIndex / build.weapon.length} />
-								</Grid>
-							))}
-						</Grid>
-					</WeaponForm>
-				)}
-			</Formik>
+			<FormProvider {...methods}>
+				<WeaponForm
+					onSubmit={(formWeapon) => {
+						formWeapon.id = nanoid();
+						dispatch(goodActions.addWeapon(formWeapon));
+						closeModal();
+					}}>
+					<Autocomplete
+						fullWidth
+						autoHighlight
+						sx={{ pt: 1 }}
+						renderInput={(params) => <TextField {...params} label='Select Weapon' />}
+						options={Object.keys(weaponsInfo)}
+						getOptionLabel={(key) => weaponsInfo[key].name}
+						value={weapon as any}
+						onChange={(_, value) => {
+							(methods.setValue as any)('key', value ?? '');
+						}}
+					/>
+					<Grid container spacing={1}>
+						{characters.map(({ build, buildIndex }, index) => (
+							<Grid key={index}>
+								<CharacterImage character={charactersInfo[build.key]} />
+								<PercentBar p={1 - buildIndex / build.weapon.length} />
+							</Grid>
+						))}
+					</Grid>
+				</WeaponForm>
+			</FormProvider>
 		</DialogWrapper>
 	);
 }

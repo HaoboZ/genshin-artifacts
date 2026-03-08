@@ -39,7 +39,7 @@ import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatCard from '../artifactStatCard';
 import SlotFilter from './slotFilter';
 
-const ArtifactModal = dynamicModal(() => import('../artifactModal'));
+const ArtifactModal = dynamicModal(() => import('../modals/artifactModal'));
 
 export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSetKey }) {
 	const dispatch = useAppDispatch();

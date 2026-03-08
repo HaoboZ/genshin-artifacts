@@ -5,14 +5,16 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
+export type NumberSpinnerProps = BaseNumberField.Root.Props & {
+	size?: 'small' | 'medium';
+	error?: boolean;
+};
+
 export default function NumberSpinner({
 	error,
 	size = 'medium',
 	...baseProps
-}: BaseNumberField.Root.Props & {
-	size?: 'small' | 'medium';
-	error?: boolean;
-}) {
+}: NumberSpinnerProps) {
 	return (
 		<BaseNumberField.Root
 			{...baseProps}

@@ -8,8 +8,8 @@ import { Fragment } from 'react';
 import ArtifactList from './artifactList';
 import BestInSlot from './bestInSlot';
 
-const AddArtifactModal = dynamicModal(() => import('../artifactForm/addArtifactModal'));
-const BatchAddArtifactModal = dynamicModal(() => import('../artifactForm/batchAddArtifactModal'));
+const AddArtifactModal = dynamicModal(() => import('../modals/addArtifactModal'));
+const BatchAddArtifactModal = dynamicModal(() => import('../modals/batchAddArtifactModal'));
 
 export default function ArtifactSet({ artifactSet }: { artifactSet: ArtifactSetKey }) {
 	const { showModal } = useModal();

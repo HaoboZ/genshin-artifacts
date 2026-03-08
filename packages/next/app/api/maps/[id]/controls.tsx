@@ -5,12 +5,11 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
 import { Paper, Stack } from '@mui/material';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
+import { addFile, upsertMap } from '../actions';
 import { type MapData, type Text } from '../../routes/types';
 import UploadFile from './uploadFile';
 
@@ -36,11 +35,7 @@ export default function MapControls({
 	});
 
 	async function saveData() {
-		await axios.post(
-			`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-			{ ...mapData, text, points },
-			{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
-		);
+		await upsertMap({ ...mapData, text, points });
 		router.refresh();
 		enqueueSnackbar('Saved', { variant: 'info' });
 	}
@@ -73,11 +68,7 @@ export default function MapControls({
 			<UploadFile
 				multiple
 				onUpload={async (formData) => {
-					await axios.put(
-						`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${mapData.id}`,
-						formData,
-						{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
-					);
+					await addFile(mapData.id, formData);
 					router.refresh();
 				}}
 			/>

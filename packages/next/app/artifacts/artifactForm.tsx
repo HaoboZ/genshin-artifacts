@@ -1,34 +1,53 @@
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import { artifactSlotStats, statName, statsMax, subStats } from '@/api/stats';
-import AutocompleteField from '@/components/formik/autocompleteField';
-import InputField from '@/components/formik/inputField';
-import SelectField from '@/components/formik/selectField';
-import SwitchField from '@/components/formik/switchField';
+import AutocompleteField from '@/components/form/autocompleteField';
+import InputField from '@/components/form/inputField';
+import SelectField from '@/components/form/selectField';
+import SwitchField from '@/components/form/switchField';
 import Scanner from '@/components/scanner';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
 import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/types/good';
 import {
 	Button,
 	Checkbox,
 	DialogActions,
 	DialogContent,
+	FormControl,
 	FormControlLabel,
 	Grid,
+	InputLabel,
 	MenuItem,
+	Select,
 	Stack,
 	TextField,
 } from '@mui/material';
-import { Form, useFormikContext } from 'formik';
-import { Fragment, type ReactNode } from 'react';
+import { type Dispatch, Fragment, type SetStateAction } from 'react';
+import { type FieldPath, type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
 import { clamp } from 'remeda';
-import ArtifactImage from '../artifactImage';
+import ArtifactImage from './artifactImage';
 
-export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNode }) {
-	const { values, setValues, setFieldValue } = useFormikContext<IArtifact>();
+export default function ArtifactForm({ onSubmit }: { onSubmit: SubmitHandler<IArtifact> }) {
+	const dispatch = useAppDispatch();
+	const { closeModal } = useModalControls();
+	const { control, setValue, handleSubmit, reset, getValues } = useFormContext<IArtifact>();
+	const values = useWatch({ control }) as IArtifact;
+	const setArtifactValue: <FieldName extends FieldPath<IArtifact>>(
+		name: FieldName,
+		value: IArtifact[FieldName],
+	) => void = setValue;
+
+	const setValues: Dispatch<SetStateAction<IArtifact>> = (value) => {
+		const previous = getValues();
+		const next = typeof value === 'function' ? value(previous) : value;
+		reset(next);
+	};
 
 	const artifactSet = artifactSetsInfo[values.setKey];
 
 	return (
-		<Form>
+		<form onSubmit={handleSubmit(onSubmit)}>
 			<DialogContent sx={{ pb: 0 }}>
 				<Grid container spacing={1} sx={{ my: 1 }}>
 					<Grid size={{ xs: 12, sm: 6 }} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -42,7 +61,8 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							getOptionLabel={(set) => artifactSetsInfo[set].name}
 							onChange={(_, value) => {
 								const { rarity } = artifactSetsInfo[value as any as ArtifactSetKey];
-								setValues((artifact) => ({ ...artifact, rarity, level: rarity * 4 }));
+								setArtifactValue('rarity', rarity);
+								setArtifactValue('level', rarity * 4);
 							}}
 						/>
 					</Grid>
@@ -66,10 +86,8 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							name='slotKey'
 							label='Type'
 							onChange={(e) => {
-								setFieldValue(
-									'mainStatKey',
-									artifactSlotStats[e.target.value as any].stats[0],
-								);
+								const nextSlot = e.target.value as keyof typeof artifactSlotStats;
+								setArtifactValue('mainStatKey', artifactSlotStats[nextSlot].stats[0]);
 							}}>
 							{artifactSlotOrder.map((key) => (
 								<MenuItem key={key} value={key}>
@@ -95,13 +113,10 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							name='rarity'
 							label='Rarity'
 							onChange={(e) => {
-								setFieldValue('rarity', +e.target.value);
-								setFieldValue(
+								setArtifactValue('rarity', +e.target.value);
+								setArtifactValue(
 									'level',
-									clamp(values.level, {
-										min: 0,
-										max: +e.target.value * 4,
-									}),
+									clamp(values.level, { min: 0, max: +e.target.value * 4 }),
 								);
 							}}>
 							{[artifactSet.rarity, artifactSet.rarity - 1].map((rarity) => (
@@ -117,7 +132,7 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 							label='Level'
 							type='number'
 							onChange={(e) => {
-								setFieldValue(
+								setArtifactValue(
 									'level',
 									clamp(+e.target.value, { min: 0, max: artifactSet.rarity * 4 }),
 								);
@@ -128,21 +143,18 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 						<ArtifactImage artifact={values} />
 					</Grid>
 					<Grid container size='grow'>
-						{[...Array(Math.min(values.substats.length + 1, 4))].map((_, index) => (
+						{values.substats.slice(0, 4).map((substat, index) => (
 							<Fragment key={index}>
 								<Grid size={7}>
 									<SelectField
 										name={`substats.${index}.key`}
-										value={values.substats[index]?.key ?? ''}
+										value={substat.key}
 										onChange={(e) => {
 											const substats = [...values.substats];
 											if (!e.target.value) substats.splice(index, 1);
 											else
-												substats[index] = {
-													key: e.target.value as StatKey,
-													value: 0,
-												};
-											setFieldValue('substats', substats);
+												substats[index] = { key: e.target.value as StatKey, value: 0 };
+											setArtifactValue('substats', substats);
 											return false;
 										}}>
 										<MenuItem value=''>None</MenuItem>
@@ -153,49 +165,80 @@ export default function ArtifactForm({ deleteButton }: { deleteButton?: ReactNod
 										))}
 									</SelectField>
 								</Grid>
-								{values.substats[index] && (
-									<Fragment>
-										<Grid size={4}>
-											<InputField
-												name={`substats.${index}.value`}
-												type='number'
-												onChange={(e) => {
-													const substats = [...values.substats];
-													const { key } = values.substats[index];
-													substats[index] = {
-														key,
-														value: clamp(+e.target.value, {
-															min: 0,
-															max: statsMax[key],
-														}),
-													};
-													setFieldValue('substats', substats);
-													return false;
-												}}
-											/>
-										</Grid>
-										<Grid size={1}>
-											<Checkbox
-												key={index}
-												checked={!values.substats[index]?.unactivated}
-												onChange={(_, checked) => {
-													setFieldValue(`substats.${index}.unactivated`, !checked);
-												}}
-											/>
-										</Grid>
-									</Fragment>
-								)}
+								<Grid size={4}>
+									<InputField
+										name={`substats.${index}.value`}
+										type='number'
+										onChange={(e) => {
+											const substats = [...values.substats];
+											const { key } = values.substats[index];
+											substats[index] = {
+												key,
+												value: clamp(+e.target.value, {
+													min: 0,
+													max: statsMax[key],
+												}),
+											};
+											setArtifactValue('substats', substats);
+											return false;
+										}}
+									/>
+								</Grid>
+								<Grid size={1}>
+									<Checkbox
+										key={index}
+										checked={!values.substats[index]?.unactivated}
+										onChange={(_, checked) => {
+											setArtifactValue(`substats.${index}.unactivated`, !checked);
+										}}
+									/>
+								</Grid>
 							</Fragment>
 						))}
+						{values.substats.length < 4 && (
+							<Grid size={7}>
+								<FormControl fullWidth size='small'>
+									<InputLabel>Sub Stat</InputLabel>
+									<Select
+										label='Sub Stat'
+										value=''
+										onChange={(e) => {
+											if (!e.target.value) return;
+											setArtifactValue('substats', [
+												...values.substats,
+												{ key: e.target.value as StatKey, value: 0 },
+											]);
+										}}>
+										<MenuItem value=''>None</MenuItem>
+										{subStats.map((subStat) => (
+											<MenuItem key={subStat} value={subStat}>
+												{statName[subStat]}
+											</MenuItem>
+										))}
+									</Select>
+								</FormControl>
+							</Grid>
+						)}
 					</Grid>
 				</Grid>
 			</DialogContent>
 			<DialogActions>
-				{deleteButton}
+				{values.id && (
+					<Button
+						variant='contained'
+						color='error'
+						onClick={() => {
+							if (!confirm('Delete this artifact?')) return;
+							dispatch(goodActions.deleteArtifact(values.id));
+							closeModal();
+						}}>
+						Delete
+					</Button>
+				)}
 				<Button type='submit' variant='contained'>
 					Save
 				</Button>
 			</DialogActions>
-		</Form>
+		</form>
 	);
 }

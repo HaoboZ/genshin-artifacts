@@ -4,13 +4,12 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
 import { Button, Paper, Stack } from '@mui/material';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
+import { upsertRoute } from '../actions';
 import { type RouteData } from '../types';
 
 const EditRouteDataModal = dynamicModal(() => import('../editRouteDataModal'));
@@ -33,11 +32,7 @@ export default function RouteControls({
 	});
 
 	async function saveData() {
-		await axios.post(
-			`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${routeData.id}`,
-			{ ...routeData, maps },
-			{ headers: { Authorization: `Bearer ${Cookies.get('AUTH_TOKEN')}` } },
-		);
+		await upsertRoute({ ...routeData, maps });
 		router.refresh();
 		enqueueSnackbar('Saved', { variant: 'info' });
 	}

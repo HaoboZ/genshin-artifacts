@@ -7,7 +7,7 @@ import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
 import { Button, ButtonGroup } from '@mui/material';
 
-const EditArtifactModal = dynamicModal(() => import('./artifactForm/editArtifactModal'));
+const EditArtifactModal = dynamicModal(() => import('./modals/editArtifactModal'));
 
 export default function ArtifactActions({ artifact }: { artifact: IArtifact }) {
 	const { showModal } = useModal();
