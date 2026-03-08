@@ -82,7 +82,7 @@ export default function MapEditor({
 		const onKeyDown = (e: KeyboardEvent) => {
 			if (e.key === 'Shift') setIsShiftPressed(true);
 			if (e.key === 'Control') setIsCtrlPressed(true);
-			const target = e.target as HTMLElement | null;
+			const target = e.target as HTMLElement;
 			const isTypingTarget = ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName);
 			if (e.key === 'Delete' && !isTypingTarget) {
 				e.preventDefault();

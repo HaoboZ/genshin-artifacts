@@ -1,0 +1,33 @@
+name: Build Processing
+
+on:
+   push:
+      paths:
+         - "packages/processing/**"
+   pull_request:
+      paths:
+         - "packages/processing/**"
+   workflow_dispatch:
+
+jobs:
+   build-processing-exe:
+      runs-on: windows-latest
+      
+      steps:
+         -  name: Checkout repository
+            uses: actions/checkout@v4
+         
+         -  name: Setup Bun
+            uses: oven-sh/setup-bun@v2
+         
+         -  name: Install dependencies
+            run: bun install
+         
+         -  name: Build processing executable
+            run: bun run --cwd packages/processing build
+         
+         -  name: Upload processing executable
+            uses: actions/upload-artifact@v4
+            with:
+               name: processing-exe
+               path: packages/processing/dist/processing.exe

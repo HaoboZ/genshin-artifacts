@@ -24,7 +24,10 @@ export default function VideoPlayer({
 	const [isHovering, setIsHovering] = useState(false);
 
 	useKey(['Space'], (e) => {
-		if (document.activeElement instanceof HTMLVideoElement) return;
+		const target = e.target as HTMLElement;
+		const isTypingTarget = ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName);
+		if (isTypingTarget || document.activeElement instanceof HTMLVideoElement) return;
+
 		e.preventDefault();
 		const video = ref.current;
 		if (video.paused) {
