@@ -1,4 +1,4 @@
-import { NumberField as BaseNumberField } from '@base-ui-components/react';
+import { NumberField as BaseNumberField } from '@base-ui/react';
 import { Add as AddIcon, Remove as RemoveIcon } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';

@@ -460,7 +460,7 @@ export default function MapEditor({
 								size='small'
 								variant='outlined'
 								onClick={() => {
-									setText((prev) => [...prev, { x: 0.5, y: 0.5, text: 'Text' }]);
+									setText((prev) => [...(prev ?? []), { x: 0.5, y: 0.5, text: 'Text' }]);
 								}}>
 								Add Text
 							</Button>
