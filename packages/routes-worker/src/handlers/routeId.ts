@@ -28,28 +28,28 @@ export async function handleRouteIdEndpoint(
 	routeId: string,
 	origin: string,
 ) {
-	if (request.method === 'GET') {
-		const cached = await caches.default.match(request.url);
-		if (cached) return cached;
+	switch (request.method) {
+		case 'GET': {
+			const cached = await caches.default.match(request.url);
+			if (cached) return cached;
 
-		const response = json(await getRouteFromDb(env, routeId));
-		response.headers.set('Cache-Control', 'public, max-age=3600');
-		await caches.default.put(request.url, response.clone());
-		return response;
+			const response = json(await getRouteFromDb(env, routeId));
+			response.headers.set('Cache-Control', 'public, max-age=3600');
+			await caches.default.put(request.url, response.clone());
+			return response;
+		}
+		case 'POST': {
+			const routeData = await parseRouteBody(request, routeId);
+			await saveRouteToDb(env, routeData);
+			await invalidateResourceCache(origin, 'routes', routeId);
+			return json(routeData);
+		}
+		case 'DELETE': {
+			await deleteRouteFromDb(env, routeId);
+			await invalidateResourceCache(origin, 'routes', routeId);
+			return json({ success: true, deleted: `routes/${routeId}` });
+		}
+		default:
+			return error('Method Not Allowed', 405);
 	}
-
-	if (request.method === 'POST') {
-		const routeData = await parseRouteBody(request, routeId);
-		await saveRouteToDb(env, routeData);
-		await invalidateResourceCache(origin, 'routes', routeId);
-		return json(routeData);
-	}
-
-	if (request.method === 'DELETE') {
-		await deleteRouteFromDb(env, routeId);
-		await invalidateResourceCache(origin, 'routes', routeId);
-		return json({ success: true, deleted: `routes/${routeId}` });
-	}
-
-	return error('Method Not Allowed', 405);
 }

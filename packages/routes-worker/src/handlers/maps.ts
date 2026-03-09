@@ -12,28 +12,27 @@ export async function handleMapsEndpoint(
 	const origin = new URL(request.url).origin;
 	const mapId = getMapId(pathname);
 
-	if (mapId) {
-		return handleMapIdEndpoint(request, env, mapId, origin, ctx);
+	if (mapId) return handleMapIdEndpoint(request, env, mapId, origin, ctx);
+
+	switch (request.method) {
+		case 'GET': {
+			const cached = await caches.default.match(request.url);
+			if (cached) return cached;
+
+			const response = json(await getAllMapsFromDb(env));
+			response.headers.set('Cache-Control', 'public, max-age=3600');
+			await caches.default.put(request.url, response.clone());
+			return response;
+		}
+		case 'POST': {
+			const mapData = await parseMapBody(request, nanoid());
+			await saveMapToDb(env, mapData);
+			await invalidateResourceCache(origin, 'maps', mapData.id);
+			return json(mapData, 201);
+		}
+		default:
+			return error('Method Not Allowed', 405);
 	}
-
-	if (request.method === 'GET') {
-		const cached = await caches.default.match(request.url);
-		if (cached) return cached;
-
-		const response = json(await getAllMapsFromDb(env));
-		response.headers.set('Cache-Control', 'public, max-age=3600');
-		await caches.default.put(request.url, response.clone());
-		return response;
-	}
-
-	if (request.method === 'POST') {
-		const mapData = await parseMapBody(request, nanoid());
-		await saveMapToDb(env, mapData);
-		await invalidateResourceCache(origin, 'maps', mapData.id);
-		return json(mapData, 201);
-	}
-
-	return error('Method Not Allowed', 405);
 }
 
 function getMapId(pathname: string) {

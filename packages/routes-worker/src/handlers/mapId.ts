@@ -29,50 +29,49 @@ export async function handleMapIdEndpoint(
 	origin: string,
 	ctx: ExecutionContext,
 ) {
-	if (request.method === 'GET') {
-		const cached = await caches.default.match(request.url);
-		if (cached) return cached;
+	switch (request.method) {
+		case 'GET': {
+			const cached = await caches.default.match(request.url);
+			if (cached) return cached;
 
-		const response = json(await getMapFromDb(env, mapId));
-		response.headers.set('Cache-Control', 'public, max-age=3600');
-		await caches.default.put(request.url, response.clone());
-		return response;
+			const response = json(await getMapFromDb(env, mapId));
+			response.headers.set('Cache-Control', 'public, max-age=3600');
+			await caches.default.put(request.url, response.clone());
+			return response;
+		}
+		case 'POST': {
+			const mapData = await parseMapBody(request, mapId);
+			await saveMapToDb(env, mapData);
+			await invalidateResourceCache(origin, 'maps', mapId);
+			await invalidateRelatedRoutes(env, origin, mapId);
+			return json(mapData);
+		}
+		case 'PUT': {
+			const existingMap = await getMapFromDb(env, mapId);
+			const contentType = request.headers.get('Content-Type') || '';
+			const response = contentType.startsWith('multipart/form-data')
+				? await uploadMultipart(request, env, existingMap, ctx)
+				: await uploadMedia(request, env, existingMap, contentType, ctx);
+			await invalidateResourceCache(origin, 'maps', mapId);
+			return response;
+		}
+		case 'DELETE': {
+			const impactedRouteIds = await getRouteIdsByMapId(env, mapId);
+			const { image, video } = await getMapFromDb(env, mapId);
+			const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
+			if (assetKeys.length) await env.BUCKET.delete(assetKeys);
+			await deleteMapFromDb(env, mapId);
+			invalidateCache(ctx, origin, [...assetKeys, `maps/${mapId}`]);
+
+			await invalidateResourceCache(origin, 'maps', mapId);
+			await Promise.all(
+				impactedRouteIds.map((id) => invalidateResourceCache(origin, 'routes', id)),
+			);
+			return json({ success: true, deleted: [...assetKeys, `maps/${mapId}`] });
+		}
+		default:
+			return error('Method Not Allowed', 405);
 	}
-
-	if (request.method === 'POST') {
-		const mapData = await parseMapBody(request, mapId);
-		await saveMapToDb(env, mapData);
-		await invalidateResourceCache(origin, 'maps', mapId);
-		await invalidateRelatedRoutes(env, origin, mapId);
-		return json(mapData);
-	}
-
-	if (request.method === 'PUT') {
-		const existingMap = await getMapFromDb(env, mapId);
-		const contentType = request.headers.get('Content-Type') || '';
-		const response = contentType.startsWith('multipart/form-data')
-			? await uploadMultipart(request, env, existingMap, ctx)
-			: await uploadMedia(request, env, existingMap, contentType, ctx);
-		await invalidateResourceCache(origin, 'maps', mapId);
-		return response;
-	}
-
-	if (request.method === 'DELETE') {
-		const impactedRouteIds = await getRouteIdsByMapId(env, mapId);
-		const { image, video } = await getMapFromDb(env, mapId);
-		const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
-		if (assetKeys.length) await env.BUCKET.delete(assetKeys);
-		await deleteMapFromDb(env, mapId);
-		invalidateCache(ctx, origin, [...assetKeys, `maps/${mapId}`]);
-
-		await invalidateResourceCache(origin, 'maps', mapId);
-		await Promise.all(
-			impactedRouteIds.map((id) => invalidateResourceCache(origin, 'routes', id)),
-		);
-		return json({ success: true, deleted: [...assetKeys, `maps/${mapId}`] });
-	}
-
-	return error('Method Not Allowed', 405);
 }
 
 export async function parseMapBody(request: Request, id: string) {
