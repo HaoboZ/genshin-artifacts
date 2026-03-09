@@ -1,4 +1,5 @@
 'use client';
+
 import PageTitle from '@/components/page/pageTitle';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';

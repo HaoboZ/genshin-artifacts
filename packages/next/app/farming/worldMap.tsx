@@ -1,4 +1,5 @@
 'use client';
+
 import { type RouteData } from '@/api/routes/types';
 import ImageRoute from '@/components/imageRoute';
 import { type Point } from '@/components/imageRoute/types';
@@ -37,47 +38,49 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 
 	return (
 		<RatioContainer width={16} height={9} sx={top ? { alignItems: 'unset' } : undefined}>
-			<Box
-				sx={{
-					display: 'flex',
-					position: 'absolute',
-					top: 16,
-					left: '50%',
-					transform: 'translateX(-50%)',
-					zIndex: 'drawer',
-				}}>
-				<Select
-					size='small'
-					value={selectedRoute}
-					onChange={(e) => {
-						setSelectedRoute(e.target.value);
-					}}
+			{!process.env.RECORDING && (
+				<Box
 					sx={{
-						maxWidth: 'calc(100vw - 70px)',
-						bgcolor: 'background.paper',
-						backdropFilter: 'blur(10px)',
+						display: 'flex',
+						position: 'absolute',
+						top: 16,
+						left: '50%',
+						transform: 'translateX(-50%)',
+						zIndex: 'drawer',
 					}}>
-					{routesData.map(({ id, name }) => (
-						<MenuItem key={id} value={id}>
-							{name}
-						</MenuItem>
-					))}
-				</Select>
-				<Button
-					variant='contained'
-					component={Link}
-					href={`/farming/${selectedRoute}`}
-					sx={{ ml: 1, minWidth: 'fit-content' }}>
-					Go
-				</Button>
-				<Button
-					variant='contained'
-					component={Link}
-					href={`/farming/${selectedRoute}/alt`}
-					sx={{ ml: 1, minWidth: 'fit-content' }}>
-					Alt
-				</Button>
-			</Box>
+					<Select
+						size='small'
+						value={selectedRoute}
+						onChange={(e) => {
+							setSelectedRoute(e.target.value);
+						}}
+						sx={{
+							maxWidth: 'calc(100vw - 70px)',
+							bgcolor: 'background.paper',
+							backdropFilter: 'blur(10px)',
+						}}>
+						{routesData.map(({ id, name }) => (
+							<MenuItem key={id} value={id}>
+								{name}
+							</MenuItem>
+						))}
+					</Select>
+					<Button
+						variant='contained'
+						component={Link}
+						href={`/farming/${selectedRoute}`}
+						sx={{ ml: 1, minWidth: 'fit-content' }}>
+						Go
+					</Button>
+					<Button
+						variant='contained'
+						component={Link}
+						href={`/farming/${selectedRoute}/alt`}
+						sx={{ ml: 1, minWidth: 'fit-content' }}>
+						Alt
+					</Button>
+				</Box>
+			)}
 			<ImageRoute
 				points={points}
 				activeSpot={points && { point: points[0] }}

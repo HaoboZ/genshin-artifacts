@@ -1,4 +1,5 @@
 'use client';
+
 import { type MapData, type RouteData } from '@/api/routes/types';
 import ImageRoute from '@/components/imageRoute';
 import { type Point } from '@/components/imageRoute/types';
@@ -21,8 +22,6 @@ import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 
 const MapModal = dynamicModal(() => import('./mapModal'));
-
-const recording = false;
 
 export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const { showModal } = useModal();
@@ -74,7 +73,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	// Autoplay
 	useEventListener(videoRef.current, 'ended', () => {
-		if (!recording) return;
+		if (!process.env.RECORDING) return;
 		setTimeout(() => {
 			setSelectedMap(selectedMap + 1);
 		}, 1000);
@@ -100,7 +99,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					position: mobile ? 'relative' : 'absolute',
 					width: mobile ? '100%' : '50%',
 				}}>
-				{!recording && (
+				{!process.env.RECORDING && (
 					<Button
 						variant='contained'
 						color='primary'
@@ -176,7 +175,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 						/>
 					)}
 				</ImageRoute>
-				{!recording && (
+				{!process.env.RECORDING && (
 					<Button
 						variant='contained'
 						color='primary'

@@ -1,4 +1,5 @@
 'use client';
+
 import PageSection from '@/components/page/pageSection';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';

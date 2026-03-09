@@ -1,4 +1,5 @@
 'use client';
+
 import { useWeapons, type WeaponType } from '@/api/weapons';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';

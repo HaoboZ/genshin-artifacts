@@ -1,4 +1,5 @@
 'use client';
+
 import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
 import { builds } from '@/api/builds';
 import Dropdown from '@/components/dropdown';

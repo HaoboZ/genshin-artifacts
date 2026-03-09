@@ -1,4 +1,5 @@
 'use client';
+
 import { artifactSetsInfo } from '@/api/artifacts';
 import { Button, ButtonGroup, Grid } from '@mui/material';
 import Link from 'next/link';

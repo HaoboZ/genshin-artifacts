@@ -1,4 +1,5 @@
 'use client';
+
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
 import cropBox from '@/components/scanner/cropBox';

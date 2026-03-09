@@ -1,4 +1,5 @@
 'use client';
+
 import { type MapData, type RouteData } from '@/api/routes/types';
 import ImageRoute from '@/components/imageRoute';
 import { type Point } from '@/components/imageRoute/types';

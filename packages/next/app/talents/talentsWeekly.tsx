@@ -1,4 +1,5 @@
 'use client';
+
 import { useCharacters } from '@/api/characters';
 import { weeklyInfo, weeklyRequirement } from '@/api/talents';
 import NumberSpinner from '@/components/numberSpinner';

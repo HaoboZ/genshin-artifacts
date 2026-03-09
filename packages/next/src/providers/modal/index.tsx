@@ -1,4 +1,5 @@
 'use client';
+
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
 import { type ComponentType, createContext, type ReactNode, useContext, useState } from 'react';

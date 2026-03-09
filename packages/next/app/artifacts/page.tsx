@@ -1,4 +1,5 @@
 'use client';
+
 import { artifactSetsInfo } from '@/api/artifacts';
 import { buildsList } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
