@@ -1,5 +1,6 @@
 import { type RouteData } from '@/api/routes/types';
 import { Box, Button, MenuItem, Select, Stack } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
 import { type Dispatch } from 'react';
 
 export default function PathSelect({
@@ -11,6 +12,8 @@ export default function PathSelect({
 	selectedMap: number;
 	setSelectedMap: Dispatch<number>;
 }) {
+	const searchParams = useSearchParams();
+
 	return (
 		<Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 1 }}>
 			<Select
@@ -24,7 +27,13 @@ export default function PathSelect({
 					</MenuItem>
 				))}
 			</Select>
-			<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
+			<Stack
+				direction='row'
+				spacing={1}
+				sx={{
+					display: searchParams.has('recording') ? 'none' : undefined,
+					alignItems: 'center',
+				}}>
 				<Button
 					variant='contained'
 					onClick={() => {

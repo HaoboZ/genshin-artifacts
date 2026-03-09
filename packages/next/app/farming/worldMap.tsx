@@ -10,13 +10,14 @@ import useParamState from '@/hooks/useParamState';
 import { Box, Button, MenuItem, Select } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from './render';
 
 export default function WorldMap({ routesData, top }: { routesData: RouteData[]; top?: boolean }) {
 	const router = useRouter();
+	const searchParams = useSearchParams();
 
 	const [selectedRoute, setSelectedRoute] = useParamState(
 		'route',
@@ -38,49 +39,47 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 
 	return (
 		<RatioContainer width={16} height={9} sx={top ? { alignItems: 'unset' } : undefined}>
-			{!process.env.RECORDING && (
-				<Box
+			<Box
+				sx={{
+					display: searchParams.has('recording') ? 'none' : 'flex',
+					position: 'absolute',
+					top: 16,
+					left: '50%',
+					transform: 'translateX(-50%)',
+					zIndex: 'drawer',
+				}}>
+				<Select
+					size='small'
+					value={selectedRoute}
+					onChange={(e) => {
+						setSelectedRoute(e.target.value);
+					}}
 					sx={{
-						display: 'flex',
-						position: 'absolute',
-						top: 16,
-						left: '50%',
-						transform: 'translateX(-50%)',
-						zIndex: 'drawer',
+						maxWidth: 'calc(100vw - 70px)',
+						bgcolor: 'background.paper',
+						backdropFilter: 'blur(10px)',
 					}}>
-					<Select
-						size='small'
-						value={selectedRoute}
-						onChange={(e) => {
-							setSelectedRoute(e.target.value);
-						}}
-						sx={{
-							maxWidth: 'calc(100vw - 70px)',
-							bgcolor: 'background.paper',
-							backdropFilter: 'blur(10px)',
-						}}>
-						{routesData.map(({ id, name }) => (
-							<MenuItem key={id} value={id}>
-								{name}
-							</MenuItem>
-						))}
-					</Select>
-					<Button
-						variant='contained'
-						component={Link}
-						href={`/farming/${selectedRoute}`}
-						sx={{ ml: 1, minWidth: 'fit-content' }}>
-						Go
-					</Button>
-					<Button
-						variant='contained'
-						component={Link}
-						href={`/farming/${selectedRoute}/alt`}
-						sx={{ ml: 1, minWidth: 'fit-content' }}>
-						Alt
-					</Button>
-				</Box>
-			)}
+					{routesData.map(({ id, name }) => (
+						<MenuItem key={id} value={id}>
+							{name}
+						</MenuItem>
+					))}
+				</Select>
+				<Button
+					variant='contained'
+					component={Link}
+					href={`/farming/${selectedRoute}`}
+					sx={{ ml: 1, minWidth: 'fit-content' }}>
+					Go
+				</Button>
+				<Button
+					variant='contained'
+					component={Link}
+					href={`/farming/${selectedRoute}/alt`}
+					sx={{ ml: 1, minWidth: 'fit-content' }}>
+					Alt
+				</Button>
+			</Box>
 			<ImageRoute
 				points={points}
 				activeSpot={points && { point: points[0] }}
@@ -94,8 +93,11 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 				RenderPath={MapRenderPath}
 				RenderExtra={MapRenderExtra}
 				getInitialPosition={(containerSize) => calculateOptimalZoom(points, containerSize, 0.9)}
-				getAnimatedPosition={(containerSize) =>
-					calculateCenterZoom(points[0], containerSize, 3)
+				getAnimatedPosition={
+					!searchParams.has('recording') &&
+					((containerSize) => {
+						return calculateCenterZoom(points[0], containerSize, 3);
+					})
 				}
 				sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 				<Image

@@ -1,10 +1,13 @@
 import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
+import { useSearchParams } from 'next/navigation';
 
 function getColor(type: string) {
 	return { hover: 'white', active: 'black', extend: 'red', scan: 'blue' }[type] ?? 'lime';
 }
 
 export function MapRenderPoint({ point, containerSize, type, percentage }: RenderPointProps) {
+	const searchParams = useSearchParams();
+
 	if (!point || (type && percentage)) return null;
 
 	return (
@@ -18,7 +21,10 @@ export function MapRenderPoint({ point, containerSize, type, percentage }: Rende
 			strokeWidth={containerSize.width / 1000}
 			style={{
 				transformOrigin: `${point.x * containerSize.width}px ${point.y * containerSize.height}px`,
-				animation: type === 'active' ? 'pulse 2s ease-in-out infinite' : undefined,
+				animation:
+					!searchParams.has('recording') && type === 'active'
+						? 'pulse 2s ease-in-out infinite'
+						: undefined,
 			}}
 		/>
 	);

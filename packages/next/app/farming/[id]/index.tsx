@@ -14,7 +14,7 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { prop, sumBy } from 'remeda';
 import { useMeasure } from 'rooks';
@@ -26,6 +26,7 @@ const MapModal = dynamicModal(() => import('./mapModal'));
 export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	const { showModal } = useModal();
 	const router = useRouter();
+	const searchParams = useSearchParams();
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const [mapData] = useFetchState<MapData>(
@@ -73,7 +74,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	// Autoplay
 	useEventListener(videoRef.current, 'ended', () => {
-		if (!process.env.RECORDING) return;
+		if (!searchParams.has('recording')) return;
 		setTimeout(() => {
 			setSelectedMap(selectedMap + 1);
 		}, 1000);
@@ -99,16 +100,19 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					position: mobile ? 'relative' : 'absolute',
 					width: mobile ? '100%' : '50%',
 				}}>
-				{!process.env.RECORDING && (
-					<Button
-						variant='contained'
-						color='primary'
-						startIcon={<ArrowBackIcon />}
-						sx={{ position: 'absolute', ml: 2, mt: 2 }}
-						onClick={() => router.push(`/farming?route=${routeData.id}`)}>
-						Back
-					</Button>
-				)}
+				<Button
+					variant='contained'
+					color='primary'
+					startIcon={<ArrowBackIcon />}
+					sx={{
+						display: searchParams.has('recording') ? 'none' : undefined,
+						position: 'absolute',
+						ml: 2,
+						mt: 2,
+					}}
+					onClick={() => router.push(`/farming?route=${routeData.id}`)}>
+					Back
+				</Button>
 				<Stack
 					spacing={mobile ? 1 : 3}
 					sx={{
@@ -175,15 +179,19 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 						/>
 					)}
 				</ImageRoute>
-				{!process.env.RECORDING && (
-					<Button
-						variant='contained'
-						color='primary'
-						sx={{ position: 'absolute', top: 0, mt: 2, ml: 2 }}
-						onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
-						Full Map
-					</Button>
-				)}
+				<Button
+					variant='contained'
+					color='primary'
+					sx={{
+						display: searchParams.has('recording') ? 'none' : undefined,
+						position: 'absolute',
+						top: 0,
+						mt: 2,
+						ml: 2,
+					}}
+					onClick={() => showModal(MapModal, { props: { routeData, selectedMap } })}>
+					Full Map
+				</Button>
 			</Box>
 		</Box>
 	);
