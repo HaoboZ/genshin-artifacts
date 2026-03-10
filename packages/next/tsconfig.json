@@ -1,8 +1,6 @@
 {
 	"extends": "../../tsconfig",
 	"compilerOptions": {
-		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "esnext"],
 		"paths": {
 			"@/app/*": ["./app/*"],
 			"@/public/*": ["./public/*"],
@@ -24,5 +22,6 @@
 		"**/*.tsx",
 		"**/*.*js",
 		"**/*.jsx"
-	]
+	],
+	"exclude": ["node_modules", ".next"]
 }
