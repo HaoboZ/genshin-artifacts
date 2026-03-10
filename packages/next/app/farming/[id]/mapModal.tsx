@@ -1,14 +1,14 @@
 import { type RouteData } from '@/api/routes/types';
-import ImageRoute from '@/components/imageRoute';
-import type { Point } from '@/components/imageRoute/types';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+import { DialogContent, DialogTitle } from '@mui/material';
 import {
 	calculateCenterZoom,
 	calculateOptimalZoom,
 	findSpotByTime,
-} from '@/components/imageRoute/utils';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
-import { DialogContent, DialogTitle } from '@mui/material';
+	ImageRoute,
+	type Point,
+} from 'image-map-route';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';

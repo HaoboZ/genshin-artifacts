@@ -1,7 +1,4 @@
 import FormattedTextField from '@/components/formattedTextField';
-import ImageRoute from '@/components/imageRoute';
-import type { Point, Spot } from '@/components/imageRoute/types';
-import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
 import VideoPlayer from '@/components/videoPlayer';
 import useHistory from '@/hooks/useHistory';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
@@ -19,6 +16,7 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
+import { ImageRoute, type Point, type Spot, useRouteVideoSync } from 'image-map-route';
 import Image from 'next/image';
 import {
 	type ChangeEvent,
@@ -142,7 +140,7 @@ export default function MapEditor({
 						<ImageRoute
 							ref={routeRef}
 							points={mappedPoints}
-							addPoint={(point) => {
+							addPoint={(point: Point) => {
 								const newPoint = pick(point, ['x', 'y']);
 								if (placingTextIndex !== null) {
 									setText((prev) => {

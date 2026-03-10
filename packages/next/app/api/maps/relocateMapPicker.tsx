@@ -1,6 +1,5 @@
-import ImageRoute from '@/components/imageRoute';
-import type { Point } from '@/components/imageRoute/types';
 import { Grid } from '@mui/material';
+import { ImageRoute, type Point } from 'image-map-route';
 import Image from 'next/image';
 import { MapRenderExtra, MapRenderPoint } from '../../farming/render';
 

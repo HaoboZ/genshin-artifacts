@@ -1,5 +1,11 @@
-import type { BoxProps } from '@mui/material';
-import type { ComponentType, Dispatch, ReactNode, RefObject } from 'react';
+import type {
+	ComponentType,
+	CSSProperties,
+	Dispatch,
+	HTMLAttributes,
+	ReactNode,
+	RefObject,
+} from 'react';
 
 export type Point = {
 	x: number;
@@ -17,7 +23,7 @@ export type Spot = {
 	percentage?: number;
 };
 
-export type ImageRouteProps = {
+export type MapImageRouteProps = {
 	ref?: RefObject<HTMLDivElement>;
 	points: Point[];
 	addPoint?: Dispatch<Point>;
@@ -37,7 +43,8 @@ export type ImageRouteProps = {
 		offset?: { x: number; y: number };
 	};
 	innerChildren?: ReactNode;
-} & BoxProps;
+	sx?: CSSProperties;
+} & HTMLAttributes<HTMLDivElement>;
 
 export type RenderPointProps = {
 	point: Point;

@@ -1,13 +1,11 @@
 'use client';
 
 import { type RouteData } from '@/api/routes/types';
-import ImageRoute from '@/components/imageRoute';
-import { type Point } from '@/components/imageRoute/types';
-import { calculateCenterZoom, calculateOptimalZoom } from '@/components/imageRoute/utils';
 import RatioContainer from '@/components/ratioContainer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Box, Button, MenuItem, Select } from '@mui/material';
+import { calculateCenterZoom, calculateOptimalZoom, ImageRoute, type Point } from 'image-map-route';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';

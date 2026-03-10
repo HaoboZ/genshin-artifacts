@@ -13,7 +13,7 @@ function DefaultRenderPoint({ point, containerSize, type }: RenderPointProps) {
 	);
 }
 
-export default function ImageRoutePoints({
+export default function ImageMapRoutePoints({
 	containerSize,
 	scale,
 	points,

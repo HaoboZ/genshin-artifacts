@@ -1,10 +1,6 @@
 'use client';
 
 import { type MapData, type RouteData } from '@/api/routes/types';
-import ImageRoute from '@/components/imageRoute';
-import { type Point } from '@/components/imageRoute/types';
-import useRouteVideoSync from '@/components/imageRoute/useRouteVideoSync';
-import { calculateCenterZoom, findSpotByTime } from '@/components/imageRoute/utils';
 import RatioContainer from '@/components/ratioContainer';
 import VideoPlayer from '@/components/videoPlayer';
 import useFetchState from '@/hooks/useFetchState';
@@ -13,6 +9,13 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
+import {
+	calculateCenterZoom,
+	findSpotByTime,
+	ImageRoute,
+	type Point,
+	useRouteVideoSync,
+} from 'image-map-route';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';

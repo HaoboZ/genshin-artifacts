@@ -1,4 +1,4 @@
-import type { Point } from '@/components/imageRoute/types';
+import type { Point } from 'image-map-route';
 
 export type BackgroundType =
 	| 'none'

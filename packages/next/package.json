@@ -3,12 +3,14 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"prebuild": "npm --workspace image-map-route run build",
 		"build": "next build",
 		"test": "bun test",
 		"start": "next start",
 		"export": "next export"
 	},
 	"dependencies": {
+		"image-map-route": "workspace:*",
 		"@base-ui/react": "1.2.0",
 		"@dnd-kit/core": "6.3.1",
 		"@dnd-kit/sortable": "10.0.0",

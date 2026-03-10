@@ -1,7 +1,6 @@
 'use client';
 
 import FormattedTextField from '@/components/formattedTextField';
-import ImageRoute from '@/components/imageRoute';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
@@ -17,6 +16,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import { ImageRoute } from 'image-map-route';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';

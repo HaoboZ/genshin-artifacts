@@ -8,7 +8,7 @@
 		"jsx": "preserve",
 		"lib": ["esnext"],
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"noEmit": true,
 		"noImplicitAny": false,
 		"resolveJsonModule": true,
@@ -20,19 +20,22 @@
 	"include": [],
 	"references": [
 		{
+			"path": "./packages/image-map-route"
+		},
+		{
+			"path": "./packages/map-capture"
+		},
+		{
 			"path": "./packages/next"
+		},
+		{
+			"path": "./packages/processing"
 		},
 		{
 			"path": "./packages/routes-worker"
 		},
 		{
 			"path": "./packages/scrape-data"
-		},
-		{
-			"path": "./packages/map-capture"
-		},
-		{
-			"path": "./packages/processing"
 		}
 	]
 }

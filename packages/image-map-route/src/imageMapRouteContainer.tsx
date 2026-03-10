@@ -1,11 +1,18 @@
-import { Box, type BoxProps } from '@mui/material';
-import { type Dispatch, type ReactNode, type RefObject, type TouchList, useRef } from 'react';
+import type {
+	CSSProperties,
+	Dispatch,
+	HTMLAttributes,
+	ReactNode,
+	RefObject,
+	TouchList,
+} from 'react';
+import { useEffect, useRef } from 'react';
 import { clamp } from 'remeda';
-import useEventListener from '../../hooks/useEventListener';
 import { type Point } from './types';
-import { clampPosition, mouseToContainer } from './utils';
+import { clampPosition } from './utils/clampPosition';
+import { mouseToContainer } from './utils/mouseToContainer';
 
-export default function ImageRouteContainer({
+export default function ImageMapRouteContainer({
 	containerRef,
 	containerSize,
 	scale,
@@ -29,13 +36,15 @@ export default function ImageRouteContainer({
 	onHoverRoute?: (point: { x: number; y: number }) => void;
 	onClickRoute?: (point: { x: number; y: number }) => void;
 	innerChildren?: ReactNode;
-} & Omit<BoxProps, 'ref'>) {
+	sx?: CSSProperties;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'ref'>) {
 	const isDragging = useRef(false);
 	const hasMoved = useRef(false);
 	const dragStart = useRef({ x: 0, y: 0 });
 	const lastTouchDistance = useRef<number>(null);
 	const touchStartTime = useRef<number>(0);
 	const interactionStartPos = useRef<Point>(null);
+	const { style, ...restProps } = props;
 
 	const startDrag = (clientX: number, clientY: number) => {
 		isDragging.current = true;
@@ -101,23 +110,34 @@ export default function ImageRouteContainer({
 		};
 	};
 
-	// eslint-disable-next-line react-hooks/refs
-	useEventListener(containerRef.current, 'wheel', (e) => {
-		e.preventDefault();
-		const delta = e.deltaY > 0 ? 0.9 : 1.1;
-		performZoom({ x: e.clientX, y: e.clientY }, delta);
-	});
+	useEffect(() => {
+		const element = containerRef.current;
+		if (!element) return;
+
+		const handleWheel = (e: WheelEvent) => {
+			e.preventDefault();
+			const delta = e.deltaY > 0 ? 0.9 : 1.1;
+			performZoom({ x: e.clientX, y: e.clientY }, delta);
+		};
+
+		element.addEventListener('wheel', handleWheel, { passive: false });
+		return () => element.removeEventListener('wheel', handleWheel);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [containerRef, containerSize, scale, mapOffset]);
+
+	const outerStyle: CSSProperties = {
+		overflow: 'hidden',
+		cursor: 'crosshair',
+		touchAction: 'none',
+		backgroundColor: 'black',
+		...sx,
+		...style,
+	};
 
 	return (
-		<Box
+		<div
 			ref={containerRef}
-			sx={{
-				overflow: 'hidden',
-				cursor: 'crosshair',
-				touchAction: 'none',
-				bgcolor: 'black',
-				...sx,
-			}}
+			style={outerStyle}
 			onMouseDown={(e) => {
 				if (e.button !== 0 && e.button !== 2) return;
 				if (e.button === 2) e.preventDefault();
@@ -183,9 +203,9 @@ export default function ImageRouteContainer({
 					lastTouchDistance.current = null;
 				}
 			}}
-			{...props}>
-			<Box
-				sx={{
+			{...restProps}>
+			<div
+				style={{
 					position: 'relative',
 					transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${scale})`,
 					transformOrigin: '50% 50%',
@@ -194,7 +214,7 @@ export default function ImageRouteContainer({
 					transition: isAnimating ? 'transform 1s ease' : 'none',
 				}}>
 				{children}
-			</Box>
-		</Box>
+			</div>
+		</div>
 	);
 }

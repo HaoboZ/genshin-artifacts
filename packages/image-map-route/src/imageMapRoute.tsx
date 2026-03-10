@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import useBoundingClientRect from '../../hooks/useBoundingClientRect';
-import useControlledState from '../../hooks/useControlledState';
-import ImageRouteContainer from './imageRouteContainer';
-import ImageRoutePaths from './imageRoutePaths';
-import ImageRoutePoints from './imageRoutePoints';
-import { type ImageRouteProps, type Spot } from './types';
-import { calculateCenterZoom, getClosestPointOnPath } from './utils';
+import useBoundingClientRect from './hooks/useBoundingClientRect';
+import useControlledState from './hooks/useControlledState';
+import ImageMapRouteContainer from './imageMapRouteContainer';
+import ImageMapRoutePaths from './imageMapRoutePaths';
+import ImageMapRoutePoints from './imageMapRoutePoints';
+import { type MapImageRouteProps, type Spot } from './types';
+import { calculateCenterZoom } from './utils';
+import { getClosestPointOnPath } from './utils/getClosestPointOnPath';
 
-export default function ImageRoute({
+export default function ImageMapRoute({
 	ref,
 	points,
 	addPoint,
@@ -23,7 +24,7 @@ export default function ImageRoute({
 	sx,
 	children,
 	...props
-}: ImageRouteProps) {
+}: MapImageRouteProps) {
 	const internalRef = useRef<HTMLDivElement>(null);
 	const containerRef = ref ?? internalRef;
 	const containerSize = useBoundingClientRect(containerRef);
@@ -74,7 +75,7 @@ export default function ImageRoute({
 	}, [followActiveSpot, activeSpot?.point]);
 
 	return (
-		<ImageRouteContainer
+		<ImageMapRouteContainer
 			containerRef={containerRef}
 			containerSize={containerSize}
 			scale={scale}
@@ -95,13 +96,13 @@ export default function ImageRoute({
 			{children}
 			{containerSize && (
 				<svg style={{ width: '100%', height: '100%' }}>
-					<ImageRoutePaths
+					<ImageMapRoutePaths
 						containerSize={containerSize}
 						scale={scale}
 						points={points}
 						RenderPath={RenderPath}
 					/>
-					<ImageRoutePoints
+					<ImageMapRoutePoints
 						containerSize={containerSize}
 						scale={scale}
 						points={points}
@@ -114,6 +115,6 @@ export default function ImageRoute({
 					)}
 				</svg>
 			)}
-		</ImageRouteContainer>
+		</ImageMapRouteContainer>
 	);
 }

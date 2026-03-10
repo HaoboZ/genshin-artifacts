@@ -1,4 +1,4 @@
-import { type RenderPathProps, type RenderPointProps } from '@/components/imageRoute/types';
+import { type RenderPathProps, type RenderPointProps } from 'image-map-route';
 import { useSearchParams } from 'next/navigation';
 
 function getColor(type: string) {

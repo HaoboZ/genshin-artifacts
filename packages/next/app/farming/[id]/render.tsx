@@ -2,7 +2,7 @@ import {
 	type RenderExtraProps,
 	type RenderPathProps,
 	type RenderPointProps,
-} from '@/components/imageRoute/types';
+} from 'image-map-route';
 import { Fragment } from 'react';
 
 function getColor(type: string) {

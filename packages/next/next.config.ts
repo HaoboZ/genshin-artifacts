@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
 	],
 	images: { unoptimized: true },
 	serverExternalPackages: ['canvas'],
+	transpilePackages: ['image-map-route'],
 };
 
 export default pipe(
