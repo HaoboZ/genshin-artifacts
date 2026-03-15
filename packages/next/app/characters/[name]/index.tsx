@@ -56,7 +56,6 @@ export default function Character({ characterData }: { characterData: DCharacter
 					/>
 				</Stack>
 			</PageTitle>
-
 			<Stack direction='row' spacing={1}>
 				<CharacterImage character={characterData} />
 				{character && (

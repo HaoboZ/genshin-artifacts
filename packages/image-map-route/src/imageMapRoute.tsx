@@ -21,7 +21,6 @@ export default function ImageMapRoute({
 	getInitialPosition = () => ({ scale: 1, offset: { x: 0, y: 0 } }),
 	getAnimatedPosition,
 	followActiveSpot,
-	sx,
 	children,
 	...props
 }: MapImageRouteProps) {
@@ -91,11 +90,10 @@ export default function ImageMapRoute({
 				if (addPoint) return addPoint(point);
 				if (hoverSpot) setActiveSpot(hoverSpot);
 			}}
-			sx={sx}
 			{...props}>
 			{children}
 			{containerSize && (
-				<svg style={{ width: '100%', height: '100%' }}>
+				<svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }}>
 					<ImageMapRoutePaths
 						containerSize={containerSize}
 						scale={scale}

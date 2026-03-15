@@ -86,7 +86,9 @@ export default function CharacterArtifactModal({
 								onClick={() => {
 									if (!confirm(`Give this artifact to ${charactersInfo[build.key].name}?`))
 										return;
-									dispatch(goodActions.giveArtifact([build.key, artifact]));
+									dispatch(
+										goodActions.giveArtifact([build.key, artifact, build.buildIndex]),
+									);
 									closeModal();
 								}}>
 								<Grid size={12}>

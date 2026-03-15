@@ -97,12 +97,12 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 						return calculateCenterZoom(points[0], containerSize, 3);
 					})
 				}
-				sx={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
+				style={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
 				<Image
 					fill
 					alt='teyvat'
 					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
-					style={{ zIndex: -1, objectFit: 'contain' }}
+					style={{ objectFit: 'contain' }}
 				/>
 			</ImageRoute>
 		</RatioContainer>

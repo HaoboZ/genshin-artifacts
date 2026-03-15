@@ -7,7 +7,8 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
 	const pathname = usePathname();
 
-	if (pathname.startsWith('/farming') || pathname.startsWith('/api')) return null;
+	if (['/farming', '/api', '/imageMapRoute'].some((prefix) => pathname.startsWith(prefix)))
+		return null;
 
 	return (
 		<header>

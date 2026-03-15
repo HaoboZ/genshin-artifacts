@@ -17,7 +17,6 @@ import {
 	Typography,
 } from '@mui/material';
 import { ImageRoute, type Point, type Spot, useRouteVideoSync } from 'image-map-route';
-import Image from 'next/image';
 import {
 	type ChangeEvent,
 	type Dispatch,
@@ -108,6 +107,14 @@ export default function MapEditor({
 		i === selectedPointIndex ? { ...point, extra: 'hover' } : point,
 	);
 
+	const resolveAssetUrl = (value?: string) => {
+		if (!value) return undefined;
+		if (value.startsWith('http') || value.startsWith('blob:') || value.startsWith('data:')) {
+			return value;
+		}
+		return `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${value}`;
+	};
+
 	return (
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
@@ -118,14 +125,10 @@ export default function MapEditor({
 						Video: {time.toFixed(2)}s
 					</AccordionSummary>
 					<AccordionDetails>
-						<VideoPlayer
-							ref={videoRef}
-							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.video}`}
-							seekFrames={1}
-						/>
+						<VideoPlayer ref={videoRef} src={resolveAssetUrl(mapData.video)} seekFrames={1} />
 					</AccordionDetails>
 				</Accordion>
-				<Accordion defaultExpanded>
+				<Accordion defaultExpanded sx={{ display: mapData.image ? undefined : 'none' }}>
 					<AccordionSummary
 						expandIcon={<ExpandMoreIcon />}
 						slotProps={{ content: { component: 'h3' } }}>
@@ -181,13 +184,11 @@ export default function MapEditor({
 							}}
 							RenderPoint={RouteRenderPoint}
 							RenderPath={RouteRenderPath}
-							RenderExtra={RouteRenderExtra(text)}
-							sx={{ aspectRatio: 1 }}>
-							<Image
-								fill
+							RenderExtra={RouteRenderExtra(text)}>
+							<img
 								alt={mapData.name}
-								src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
-								style={{ zIndex: -1, objectFit: 'contain', pointerEvents: 'none' }}
+								src={resolveAssetUrl(mapData.image)}
+								style={{ width: '100%', objectFit: 'contain', pointerEvents: 'none' }}
 							/>
 						</ImageRoute>
 					</AccordionDetails>

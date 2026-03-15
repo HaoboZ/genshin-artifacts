@@ -24,9 +24,11 @@ export default function PageSection({
 					alignItems: 'center',
 					px: { xs: 1, sm: 0 },
 				}}>
-				<Typography variant='h4' sx={{ py: 1 }} {...titleProps}>
-					{title}
-				</Typography>
+				{title && (
+					<Typography variant='h4' sx={{ py: 1 }} {...titleProps}>
+						{title}
+					</Typography>
+				)}
 				{Array.isArray(actions) ? <PageActions items={actions} max={max} /> : actions}
 			</Box>
 			<Divider sx={{ mb: 1 }} />

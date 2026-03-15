@@ -115,7 +115,13 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 												)
 											)
 												return;
-											dispatch(goodActions.giveArtifact([build.key, artifact]));
+											dispatch(
+												goodActions.giveArtifact([
+													build.key,
+													artifact,
+													build.buildIndex,
+												]),
+											);
 											closeModal();
 										}}>
 										{currentArtifact && (

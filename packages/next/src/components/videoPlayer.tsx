@@ -59,6 +59,7 @@ export default function VideoPlayer({
 		<Box
 			sx={{
 				'position': 'relative',
+				'lineHeight': 0,
 				'& video::-webkit-media-controls, & video::-webkit-media-controls-enclosure': {
 					opacity: isHovering ? 1 : 0,
 					transition: 'opacity 0.3s ease',
@@ -68,13 +69,7 @@ export default function VideoPlayer({
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
 			{...props}>
-			<video
-				ref={ref}
-				playsInline
-				controls
-				src={src}
-				style={{ width: '100%', display: 'block' }}
-			/>
+			<video ref={ref} playsInline controls src={src} style={{ width: '100%' }} />
 			{seekFrames && (
 				<Box
 					sx={{

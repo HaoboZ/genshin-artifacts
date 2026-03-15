@@ -1,11 +1,4 @@
-import type {
-	ComponentType,
-	CSSProperties,
-	Dispatch,
-	HTMLAttributes,
-	ReactNode,
-	RefObject,
-} from 'react';
+import type { ComponentType, Dispatch, HTMLAttributes, ReactNode, RefObject } from 'react';
 
 export type Point = {
 	x: number;
@@ -43,7 +36,6 @@ export type MapImageRouteProps = {
 		offset?: { x: number; y: number };
 	};
 	innerChildren?: ReactNode;
-	sx?: CSSProperties;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type RenderPointProps = {

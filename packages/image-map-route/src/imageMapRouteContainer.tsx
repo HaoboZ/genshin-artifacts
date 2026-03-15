@@ -1,11 +1,4 @@
-import type {
-	CSSProperties,
-	Dispatch,
-	HTMLAttributes,
-	ReactNode,
-	RefObject,
-	TouchList,
-} from 'react';
+import type { Dispatch, HTMLAttributes, ReactNode, RefObject, TouchList } from 'react';
 import { useEffect, useRef } from 'react';
 import { clamp } from 'remeda';
 import { type Point } from './types';
@@ -22,7 +15,6 @@ export default function ImageMapRouteContainer({
 	isAnimating,
 	onHoverRoute,
 	onClickRoute,
-	sx,
 	children,
 	...props
 }: {
@@ -36,7 +28,6 @@ export default function ImageMapRouteContainer({
 	onHoverRoute?: (point: { x: number; y: number }) => void;
 	onClickRoute?: (point: { x: number; y: number }) => void;
 	innerChildren?: ReactNode;
-	sx?: CSSProperties;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'ref'>) {
 	const isDragging = useRef(false);
 	const hasMoved = useRef(false);
@@ -125,19 +116,16 @@ export default function ImageMapRouteContainer({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [containerRef, containerSize, scale, mapOffset]);
 
-	const outerStyle: CSSProperties = {
-		overflow: 'hidden',
-		cursor: 'crosshair',
-		touchAction: 'none',
-		backgroundColor: 'black',
-		...sx,
-		...style,
-	};
-
 	return (
 		<div
 			ref={containerRef}
-			style={outerStyle}
+			style={{
+				overflow: 'hidden',
+				cursor: 'crosshair',
+				touchAction: 'none',
+				backgroundColor: 'black',
+				...style,
+			}}
 			onMouseDown={(e) => {
 				if (e.button !== 0 && e.button !== 2) return;
 				if (e.button === 2) e.preventDefault();
@@ -211,6 +199,7 @@ export default function ImageMapRouteContainer({
 					transformOrigin: '50% 50%',
 					width: '100%',
 					height: '100%',
+					lineHeight: 0,
 					transition: isAnimating ? 'transform 1s ease' : 'none',
 				}}>
 				{children}

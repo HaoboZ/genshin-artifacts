@@ -109,7 +109,7 @@ const goodSlice = createSlice({
 				artifact.id === payload.id ? payload : artifact,
 			);
 		},
-		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact]>) {
+		giveArtifact(state, { payload }: PayloadAction<[CharacterKey, IArtifact, number]>) {
 			state.artifacts = [...state.artifacts];
 			const characterA = payload[0];
 			const artifactA = payload[1];
@@ -125,7 +125,7 @@ const goodSlice = createSlice({
 
 			if (artifactB) {
 				artifactB.location = characterB || '';
-				artifactA.buildIndex = artifactB.buildIndex;
+				artifactA.buildIndex = payload[2] ?? artifactB.buildIndex;
 				delete artifactB.buildIndex;
 			}
 			state.artifacts[artifactAIndex] = { ...artifactA, location: characterA };
@@ -152,7 +152,6 @@ const goodSlice = createSlice({
 
 				if (artifactB) {
 					artifactB.location = characterB || '';
-					artifactA.buildIndex = artifactB.buildIndex;
 					delete artifactB.buildIndex;
 				}
 				state.artifacts[artifactAIndex] = { ...artifactA, location: character };

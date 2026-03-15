@@ -200,7 +200,7 @@ export default function Route({
 							fill
 							alt='teyvat'
 							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
-							style={{ zIndex: -1, objectFit: 'contain' }}
+							style={{ objectFit: 'contain' }}
 						/>
 					</ImageRoute>
 				</Grid>

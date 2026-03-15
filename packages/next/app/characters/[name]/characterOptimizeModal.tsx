@@ -143,7 +143,9 @@ export default function CharacterOptimizeModal({
 						}
 						for (const [artifact, newArtifact] of Object.values(artifactsSorted)) {
 							if (artifact?.id !== newArtifact?.id) {
-								dispatch(goodActions.giveArtifact([build.key, newArtifact]));
+								dispatch(
+									goodActions.giveArtifact([build.key, newArtifact, build.buildIndex]),
+								);
 							}
 						}
 						closeModal();

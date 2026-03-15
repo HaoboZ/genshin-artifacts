@@ -89,7 +89,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					fill
 					alt='background'
 					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}.png`}
-					style={{ zIndex: -1, objectFit: 'cover', opacity: 0.5 }}
+					style={{ objectFit: 'cover', opacity: 0.5 }}
 				/>
 			)}
 			<Box
@@ -164,14 +164,13 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					RenderExtra={RouteRenderExtra(mapData?.text)}
-					deps={mapData?.id}
-					sx={{ aspectRatio: 1 }}>
+					deps={mapData?.id}>
 					{mapData && (
 						<Image
 							fill
 							alt={mapData?.name ?? 'Map'}
 							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${mapData.image}`}
-							style={{ zIndex: -1, objectFit: 'contain', opacity: points ? 1 : 0 }}
+							style={{ objectFit: 'contain', opacity: points ? 1 : 0 }}
 							onLoad={() => setIsLoaded(true)}
 						/>
 					)}
