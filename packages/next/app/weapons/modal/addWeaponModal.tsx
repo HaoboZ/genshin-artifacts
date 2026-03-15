@@ -68,7 +68,7 @@ export default function AddWeaponModal() {
 						sx={{ pt: 1 }}
 						renderInput={(params) => <TextField {...params} label='Select Weapon' />}
 						options={Object.keys(weaponsInfo)}
-						getOptionLabel={(key) => weaponsInfo[key].name}
+						getOptionLabel={(key) => weaponsInfo[key]?.name ?? ''}
 						value={weapon as any}
 						onChange={(_, value) => {
 							(methods.setValue as any)('key', value ?? '');
