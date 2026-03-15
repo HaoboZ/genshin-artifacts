@@ -195,7 +195,7 @@ export default function Route({
 						RenderPoint={MapRenderPoint}
 						RenderPath={MapRenderPath}
 						RenderExtra={MapRenderExtra}
-						sx={{ aspectRatio: '16 / 9', opacity: points ? 1 : 0 }}>
+						style={{ aspectRatio: '16 / 9', opacity: points ? 1 : 0 }}>
 						<Image
 							fill
 							alt='teyvat'

@@ -19,7 +19,7 @@ export default function RelocateMapPicker({
 				addPoint={onChange}
 				RenderPoint={MapRenderPoint}
 				RenderExtra={MapRenderExtra}
-				sx={{ aspectRatio: '16 / 9' }}>
+				style={{ aspectRatio: '16 / 9' }}>
 				<Image
 					fill
 					alt='teyvat'
