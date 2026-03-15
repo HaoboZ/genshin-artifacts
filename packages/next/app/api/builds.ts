@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/3/26
+// 3/14/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -441,17 +441,28 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	},
 	Razor: {
 		key: 'Razor',
-		role: 'Hyperbloom/Reaction DPS',
+		role: 'DPS',
 		weapon: [
-			['MailedFlower', 'MakhairaAquamarine'],
-			['Rainslasher', 'BloodtaintedGreatsword'],
-			'FavoniusGreatsword',
-			'ForestRegalia',
+			'GestOfTheMightyWolf',
+			'AThousandBlazingSuns',
+			['BeaconOfTheReedSea', 'Verdict', 'RedhornStonethresher'],
+			'FangOfTheMountainKing',
+			'SongOfBrokenPines',
+			['TalkingStick', 'SerpentSpine'],
+			['SkywardSpine', 'WolfsGravestone'],
+			'TheUnforged',
+			['TidalShadow', 'BlackcliffSlasher', 'Akuoumaru'],
+			'EarthShaker',
+			'PrototypeArchaic',
 		],
 		group: 1,
-		artifact: [['GildedDreams', 'FlowerOfParadiseLost'], 'ThunderingFury'],
-		mainStat: { sands: 'eleMas', goblet: 'eleMas', circlet: 'eleMas' },
-		subStat: ['eleMas', 'enerRech_', 'critRate_'],
+		artifact: [
+			'ADayCarvedFromRisingWinds',
+			['EchoesOfAnOffering', 'EmblemOfSeveredFate', 'ThunderingFury', 'GladiatorsFinale'],
+			'MarechausseeHunter',
+		],
+		mainStat: { sands: 'atk_', goblet: 'electro_dmg_', circlet: 'critRD_' },
+		subStat: ['enerRech_', 'critRD_', 'atk_'],
 	},
 	KujouSara: {
 		key: 'KujouSara',
@@ -616,7 +627,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'HakushinRing',
 			'MappaMare',
 		],
-		group: 0,
+		group: 1,
 		artifact: [
 			['GildedDreams', 'EmblemOfSeveredFate', 'GoldenTroupe'],
 			'Thundersoother',
@@ -710,7 +721,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['SilkenMoonsSerenade', 'TenacityOfTheMillelith'],
 		],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['enerRech_', 'critRD_', ['atk_', 'eleMas']],
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Flins: {
 		key: 'Flins',
@@ -733,7 +744,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		group: 1,
 		artifact: ['NightOfTheSkysUnveiling', 'GildedDreams'],
 		mainStat: { sands: 'atk_', goblet: 'atk_', circlet: 'critRD_' },
-		subStat: ['critRD_', 'enerRech_', ['atk_', 'eleMas']],
+		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
 	// Dendro
 	Collei: {
@@ -2057,7 +2068,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['TidalShadow', 'TalkingStick', 'BlackcliffSlasher'],
 			'UltimateOverlordsMegaMagicSword',
 		],
-		group: 1,
+		group: 0,
 		artifact: [
 			'ADayCarvedFromRisingWinds',
 			'ShimenawasReminiscence',
