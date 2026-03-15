@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"image-map-route": "workspace:*",
-		"@base-ui/react": "1.2.0",
+		"@base-ui/react": "1.3.0",
 		"@dnd-kit/core": "6.3.1",
 		"@dnd-kit/sortable": "10.0.0",
 		"@dnd-kit/utilities": "3.2.2",
@@ -24,14 +24,14 @@
 		"@mui/material-nextjs": "7.3.9",
 		"@mui/x-data-grid": "^8.27.3",
 		"@reduxjs/toolkit": "2.11.2",
-		"@tanem/react-nprogress": "6.0.2",
+		"@tanem/react-nprogress": "6.0.3",
 		"@vercel/analytics": "2.0.1",
 		"@vercel/blob": "2.3.1",
 		"axios": "1.13.6",
 		"change-case": "5.4.4",
-		"dayjs": "1.11.19",
+		"dayjs": "1.11.20",
 		"events": "3.3.0",
-		"nanoid": "5.1.6",
+		"nanoid": "5.1.7",
 		"next": "16.1.6",
 		"notistack": "3.0.2",
 		"object-hash": "3.0.0",
@@ -53,6 +53,6 @@
 		"@types/react": "19.2.14",
 		"@types/react-redux": "7.1.34",
 		"mirada": "0.0.15",
-		"sass": "1.97.3"
+		"sass": "1.98.0"
 	}
 }
