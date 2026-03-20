@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/14/26
+// 3/19/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -385,6 +385,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'Fischl',
 		role: 'Off-Field DPS',
 		weapon: [
+			'TheDaybreakChronicles',
 			'PolarStar',
 			['AquaSimulacra', 'ThunderingPulse', 'HuntersPath'],
 			['TheFirstGreatMagic', 'SkywardHarp'],
@@ -942,6 +943,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'DPS',
 		weapon: [
 			'FangOfTheMountainKing',
+			'GestOfTheMightyWolf',
 			['AThousandBlazingSuns', 'BeaconOfTheReedSea'],
 			'SerpentSpine',
 			'Verdict',
@@ -1688,7 +1690,11 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['TamayurateiNoOhanashi', 'MountainBracingBolt', 'WavebreakersFin'],
 		],
 		group: 1,
-		artifact: ['GoldenTroupe', 'BlizzardStrayer', 'TenacityOfTheMillelith'],
+		artifact: [
+			'GoldenTroupe',
+			'BlizzardStrayer',
+			['TenacityOfTheMillelith', 'ScrollOfTheHeroOfCinderCity'],
+		],
 		mainStat: {
 			sands: ['atk_', 'enerRech_'],
 			goblet: ['cryo_dmg_', 'atk_'],
