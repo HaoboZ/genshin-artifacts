@@ -13,7 +13,7 @@
 		"nanoid": "5.1.7"
 	},
 	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "0.13.0",
-		"wrangler": "4.73.0"
+		"@cloudflare/vitest-pool-workers": "0.13.3",
+		"wrangler": "4.76.0"
 	}
 }

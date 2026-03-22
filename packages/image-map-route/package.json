@@ -22,7 +22,7 @@
 	},
 	"dependencies": {
 		"remeda": "2.33.6",
-		"rooks": "9.5.0"
+		"rooks": "9.7.0"
 	},
 	"peerDependencies": {
 		"react": ">=18"
