@@ -60,6 +60,18 @@ export default function Notifications() {
 					return now;
 				}}
 			/>
+			<RespawnNotification
+				storageKey='parametric-transformer'
+				item='Parametric Transformer'
+				icon='/icons/materials.png'
+				notificationTime={() => {
+					const now = new Date();
+					now.setDate(now.getDate() + 6);
+					now.setHours(now.getHours() + 22);
+					now.setMinutes(now.getMinutes() + 2);
+					return now;
+				}}
+			/>
 			<TextField
 				fullWidth={false}
 				type='time'

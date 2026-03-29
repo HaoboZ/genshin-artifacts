@@ -1,0 +1,66 @@
+name: Publish Image Map Route
+
+on:
+   workflow_dispatch:
+
+jobs:
+   publish:
+      runs-on: ubuntu-latest
+      permissions:
+         contents: read
+      
+      steps:
+         -  name: Checkout repository
+            uses: actions/checkout@v6
+            with:
+               fetch-depth: 2
+         
+         -  name: Detect minor version change
+            id: version_check
+            run: |
+               $current = (Get-Content packages/image-map-route/package.json | ConvertFrom-Json).version
+               $prevRaw = git show HEAD^:packages/image-map-route/package.json 2>$null
+               if (-not $prevRaw) {
+                 'doPatch=true' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+                 exit 0
+               }
+               $prev = ($prevRaw | ConvertFrom-Json).version
+               $currentParts = $current -split '\.'
+               $prevParts = $prev -split '\.'
+               if ($currentParts.Length -lt 2 -or $prevParts.Length -lt 2) {
+                 'doPatch=true' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+                 exit 0
+               }
+               if ($currentParts[1] -eq $prevParts[1]) {
+                 'doPatch=true' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+               } else {
+                 'doPatch=false' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+               }
+            shell: pwsh
+         
+         -  name: Setup Node
+            uses: actions/setup-node@v6
+            with:
+               node-version: 24
+               registry-url: "https://registry.npmjs.org"
+         
+         -  name: Setup Bun
+            uses: oven-sh/setup-bun@v2
+         
+         -  name: Install dependencies
+            run: bun install
+         
+         -  name: Bump patch version
+            if: steps.version_check.outputs.doPatch == 'true'
+            run: npm version patch --no-git-tag-version
+            working-directory: packages/image-map-route
+         
+         -  name: Build image-map-route
+            run: bun run build
+            working-directory: packages/image-map-route
+         
+         -  name: Publish to npm
+            run: npm publish --access public
+            working-directory: packages/image-map-route
+            env:
+               NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
