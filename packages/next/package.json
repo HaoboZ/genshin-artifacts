@@ -26,8 +26,8 @@
 		"@reduxjs/toolkit": "2.11.2",
 		"@tanem/react-nprogress": "6.0.3",
 		"@vercel/analytics": "2.0.1",
-		"@vercel/blob": "2.3.1",
-		"axios": "1.13.6",
+		"@vercel/blob": "2.3.2",
+		"axios": "1.14.0",
 		"change-case": "5.4.4",
 		"dayjs": "1.11.20",
 		"events": "3.3.0",
@@ -42,7 +42,7 @@
 		"react-onesignal": "3.5.1",
 		"react-redux": "9.2.0",
 		"redux": "5.0.1",
-		"rooks": "9.7.0",
+		"rooks": "9.8.0",
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {
