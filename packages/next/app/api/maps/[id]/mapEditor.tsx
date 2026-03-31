@@ -16,7 +16,13 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import { ImageRoute, type Point, type Spot, useRouteVideoSync } from 'image-map-route';
+import {
+	ImageMapRoute,
+	type Point,
+	type Spot,
+	useRouteVideoSync,
+	useRouteYoutubeSync,
+} from 'image-map-route';
 import {
 	type ChangeEvent,
 	type Dispatch,
@@ -30,6 +36,29 @@ import {
 import { pick } from 'remeda';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '../../../farming/[id]/render';
 import { type MapData, type Text } from '../../routes/types';
+
+function extractYoutubeVideoId(url: string) {
+	const parsed = new URL(url);
+	if (parsed.hostname === 'youtu.be') {
+		return parsed.pathname.replace('/', '');
+	}
+	if (parsed.hostname.endsWith('youtube.com')) {
+		if (parsed.pathname.startsWith('/embed/')) {
+			return parsed.pathname.replace('/embed/', '');
+		}
+		return parsed.searchParams.get('v');
+	}
+	return null;
+}
+
+declare global {
+	interface Window {
+		YT?: {
+			Player?: new (elementId: string, options: unknown) => unknown;
+		};
+		onYouTubeIframeAPIReady?: () => void;
+	}
+}
 
 export default function MapEditor({
 	mapData,
@@ -45,12 +74,17 @@ export default function MapEditor({
 	setPoints: Dispatch<SetStateAction<Point[]>>;
 }) {
 	const [selectedPointIndex, setSelectedPointIndex] = useState(0);
-	const [placingTextIndex, setPlacingTextIndex] = useState<number | null>(null);
+	const [placingTextIndex, setPlacingTextIndex] = useState<number>(null);
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [isCtrlPressed, setIsCtrlPressed] = useState(false);
 
-	const { routeRef, videoRef, time, setTime, activeSpot, setActiveSpot } =
-		useRouteVideoSync(points);
+	const videoSync = useRouteVideoSync(points);
+	const youtubeSync = useRouteYoutubeSync(points);
+	const isYoutubeVideo = Boolean(mapData.video?.startsWith('https'));
+
+	const { routeRef, time, setTime, activeSpot, setActiveSpot } = isYoutubeVideo
+		? youtubeSync
+		: videoSync;
 
 	useHistory(points, setPoints);
 
@@ -115,6 +149,38 @@ export default function MapEditor({
 		return `${process.env.NEXT_PUBLIC_ROUTE_URL}/assets/${value}`;
 	};
 
+	useEffect(() => {
+		if (!isYoutubeVideo || !mapData.video) return;
+
+		const videoId = extractYoutubeVideoId(mapData.video);
+		if (!videoId) return;
+
+		const createPlayer = () => {
+			new window.YT.Player('map-editor-yt-player', {
+				height: 'auto',
+				width: '100%',
+				videoId,
+				events: {
+					onReady: youtubeSync.onPlayerReady,
+					onStateChange: youtubeSync.onPlayerStateChange,
+				},
+			});
+		};
+
+		if (window.YT?.Player) return createPlayer();
+
+		const existingScript = document.querySelector(
+			'script[src="https://www.youtube.com/iframe_api"]',
+		);
+		if (!existingScript) {
+			const tag = document.createElement('script');
+			tag.src = 'https://www.youtube.com/iframe_api';
+			document.body.appendChild(tag);
+		}
+
+		window.onYouTubeIframeAPIReady = createPlayer;
+	}, [isYoutubeVideo, mapData.video, youtubeSync.onPlayerReady, youtubeSync.onPlayerStateChange]);
+
 	return (
 		<Fragment>
 			<Grid size={{ xs: 12, sm: 6 }}>
@@ -125,7 +191,15 @@ export default function MapEditor({
 						Video: {time.toFixed(2)}s
 					</AccordionSummary>
 					<AccordionDetails>
-						<VideoPlayer ref={videoRef} src={resolveAssetUrl(mapData.video)} seekFrames={1} />
+						{isYoutubeVideo ? (
+							<div id='map-editor-yt-player' style={{ aspectRatio: '16 / 9' }} />
+						) : (
+							<VideoPlayer
+								ref={videoSync.videoRef}
+								src={resolveAssetUrl(mapData.video)}
+								seekFrames={1}
+							/>
+						)}
 					</AccordionDetails>
 				</Accordion>
 				<Accordion defaultExpanded sx={{ display: mapData.image ? undefined : 'none' }}>
@@ -140,7 +214,7 @@ export default function MapEditor({
 								? `Click map to set text #${placingTextIndex + 1} position`
 								: 'Click: add | Shift + Click: insert | Ctrl + Click: move'}
 						</Typography>
-						<ImageRoute
+						<ImageMapRoute
 							ref={routeRef}
 							points={mappedPoints}
 							addPoint={(point: Point) => {
@@ -190,7 +264,7 @@ export default function MapEditor({
 								src={resolveAssetUrl(mapData.image)}
 								style={{ width: '100%', objectFit: 'contain', pointerEvents: 'none' }}
 							/>
-						</ImageRoute>
+						</ImageMapRoute>
 					</AccordionDetails>
 				</Accordion>
 			</Grid>

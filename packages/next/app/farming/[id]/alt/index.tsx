@@ -12,7 +12,7 @@ import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import {
 	calculateCenterZoom,
 	findSpotByTime,
-	ImageRoute,
+	ImageMapRoute,
 	type Point,
 	useRouteVideoSync,
 } from 'image-map-route';
@@ -80,7 +80,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 				sx={{ position: 'absolute', width: '100%' }}
 			/>
 			<Box sx={{ position: 'absolute', mx: 'auto', width: '25%', left: 0 }}>
-				<ImageRoute
+				<ImageMapRoute
 					ref={routeRef}
 					points={points}
 					activeSpot={activeSpot}
@@ -104,7 +104,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 							onLoad={() => setIsLoaded(true)}
 						/>
 					)}
-				</ImageRoute>
+				</ImageMapRoute>
 				<Button
 					variant='contained'
 					color='primary'

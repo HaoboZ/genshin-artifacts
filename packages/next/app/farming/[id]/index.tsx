@@ -9,7 +9,12 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
-import { calculateOptimalZoom, ImageRoute, type Point, useRouteVideoSync } from 'image-map-route';
+import {
+	calculateOptimalZoom,
+	ImageMapRoute,
+	type Point,
+	useRouteVideoSync,
+} from 'image-map-route';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -153,7 +158,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					width: mobile ? '75%' : '50%',
 					right: 0,
 				}}>
-				<ImageRoute
+				<ImageMapRoute
 					ref={routeRef}
 					points={points}
 					activeSpot={activeSpot}
@@ -164,6 +169,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 					RenderPoint={RouteRenderPoint}
 					RenderPath={RouteRenderPath}
 					RenderExtra={RouteRenderExtra(mapData?.text)}
+					style={{ aspectRatio: 1 }}
 					deps={mapData?.id}>
 					{mapData && (
 						<Image
@@ -174,7 +180,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 							onLoad={() => setIsLoaded(true)}
 						/>
 					)}
-				</ImageRoute>
+				</ImageMapRoute>
 				<Button
 					variant='contained'
 					color='primary'

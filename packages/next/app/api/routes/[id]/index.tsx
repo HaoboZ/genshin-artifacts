@@ -16,7 +16,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { ImageRoute } from 'image-map-route';
+import { ImageMapRoute } from 'image-map-route';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
@@ -190,7 +190,7 @@ export default function Route({
 					<RouteControls routeData={routeData} maps={routeMaps} />
 				</Grid>
 				<Grid size={12}>
-					<ImageRoute
+					<ImageMapRoute
 						points={points}
 						RenderPoint={MapRenderPoint}
 						RenderPath={MapRenderPath}
@@ -202,7 +202,7 @@ export default function Route({
 							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
 							style={{ objectFit: 'contain' }}
 						/>
-					</ImageRoute>
+					</ImageMapRoute>
 				</Grid>
 				<Grid size={12}>
 					<Stack

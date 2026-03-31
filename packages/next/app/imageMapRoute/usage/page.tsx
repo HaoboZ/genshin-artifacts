@@ -24,6 +24,7 @@ import {
 const sideMenuItems = [
 	{ id: 'ImageMapRoute', label: 'ImageMapRoute' },
 	{ id: 'useRouteVideoSync', label: 'useRouteVideoSync' },
+	{ id: 'useRouteYoutubeSync', label: 'useRouteYoutubeSync' },
 	{ id: 'calculateCenterZoom', label: 'calculateCenterZoom' },
 	{ id: 'calculateOptimalZoom', label: 'calculateOptimalZoom' },
 	{ id: 'findSpotByTime', label: 'findSpotByTime' },
@@ -88,12 +89,35 @@ const hookParams = [
 ];
 
 const hookReturns = [
-	{ name: 'routeRef', type: 'RefObject<HTMLDivElement>', description: 'Attach to ImageRoute.' },
+	{ name: 'routeRef', type: 'RefObject<HTMLDivElement>', description: 'Attach to ImageMapRoute.' },
 	{ name: 'videoRef', type: 'RefObject<HTMLVideoElement>', description: 'Attach to video.' },
 	{ name: 'time', type: 'number', description: 'Current playback time.' },
 	{ name: 'setTime', type: '(time: number) => void', description: 'Seek to a time.' },
 	{ name: 'activeSpot', type: 'Spot', description: 'Current active spot.' },
 	{ name: 'setActiveSpot', type: '(spot: Spot) => void', description: 'Set active spot.' },
+];
+
+const youtubeHookReturns = [
+	{ name: 'routeRef', type: 'RefObject<HTMLDivElement>', description: 'Attach to ImageMapRoute.' },
+	{
+		name: 'playerRef',
+		type: 'RefObject<YoutubePlayer>',
+		description: 'Assign the YouTube player instance on ready.',
+	},
+	{ name: 'time', type: 'number', description: 'Current playback time.' },
+	{ name: 'setTime', type: '(time: number) => void', description: 'Seek to a time.' },
+	{ name: 'activeSpot', type: 'Spot', description: 'Current active spot.' },
+	{ name: 'setActiveSpot', type: '(spot: Spot) => void', description: 'Set active spot.' },
+	{
+		name: 'onPlayerReady',
+		type: '(event) => void',
+		description: 'Assigns the player from the IFrame API ready event.',
+	},
+	{
+		name: 'onPlayerStateChange',
+		type: '(event) => void',
+		description: 'Tracks play/pause state from the IFrame API.',
+	},
 ];
 
 const utilParams = {
@@ -153,8 +177,29 @@ const utilReturns = {
 	],
 };
 
-const componentImportSnippet = `import { ImageRoute } from 'image-map-route';`;
+const componentImportSnippet = `import { ImageMapRoute } from 'image-map-route';`;
 const hookImportSnippet = `import { useRouteVideoSync } from 'image-map-route';`;
+const hookYoutubeImportSnippet = `import { useRouteYoutubeSync } from 'image-map-route';`;
+const hookYoutubeExampleSnippet = `const { onPlayerReady, onPlayerStateChange } = useRouteYoutubeSync(points);
+
+useEffect(() => {
+	const createPlayer = () => {
+		new window.YT.Player('yt-player', {
+			height: '360',
+			width: '640',
+			videoId,
+			events: { onReady: onPlayerReady, onStateChange: onPlayerStateChange },
+		});
+	};
+
+	if (window.YT?.Player) return createPlayer();
+
+	const tag = document.createElement('script');
+	tag.src = 'https://www.youtube.com/iframe_api';
+	document.body.appendChild(tag);
+	window.onYouTubeIframeAPIReady = createPlayer;
+}, [videoId, onPlayerReady, onPlayerStateChange]);
+`;
 const utilsImportSnippet = `import {
 	calculateCenterZoom,
 	calculateOptimalZoom,
@@ -215,17 +260,15 @@ export default function ImageMapRouteUsage() {
 					</Box>
 					<Accordion id='ImageMapRoute' sx={{ scrollMarginTop: 80, mt: 1 }}>
 						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-							<Typography variant='h6'>ImageRoute</Typography>
+							<Typography variant='h6'>ImageMapRoute</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
-							<Typography color='text.secondary'>
-								Props for the main component (aliases: ImageRoute / ImageMapRoute).
-							</Typography>
+							<Typography color='text.secondary'>Props for the main component.</Typography>
 							<CodeSnippet>{componentImportSnippet}</CodeSnippet>
 							<ParamTable rows={componentProps} />
 						</AccordionDetails>
 					</Accordion>
-					<Accordion id='useRouteVideoSync' sx={{ scrollMarginTop: 80, mb: 1 }}>
+					<Accordion id='useRouteVideoSync' sx={{ scrollMarginTop: 80 }}>
 						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 							<Typography variant='h6'>useRouteVideoSync</Typography>
 						</AccordionSummary>
@@ -237,6 +280,22 @@ export default function ImageMapRouteUsage() {
 							<ParamTable rows={hookParams} />
 							<Typography variant='subtitle2'>Returns</Typography>
 							<ParamTable rows={hookReturns} />
+						</AccordionDetails>
+					</Accordion>
+					<Accordion id='useRouteYoutubeSync' sx={{ scrollMarginTop: 80, mb: 1 }}>
+						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+							<Typography variant='h6'>useRouteYoutubeSync</Typography>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography color='text.secondary'>
+								Hook inputs for syncing a route with a YouTube player instance.
+							</Typography>
+							<CodeSnippet>{hookYoutubeImportSnippet}</CodeSnippet>
+							<ParamTable rows={hookParams} />
+							<Typography variant='subtitle2'>Returns</Typography>
+							<ParamTable rows={youtubeHookReturns} />
+							<Typography variant='subtitle2'>Example</Typography>
+							<CodeSnippet>{hookYoutubeExampleSnippet}</CodeSnippet>
 						</AccordionDetails>
 					</Accordion>
 					<Box>

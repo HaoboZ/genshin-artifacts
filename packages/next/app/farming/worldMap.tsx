@@ -5,7 +5,12 @@ import RatioContainer from '@/components/ratioContainer';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 import { Box, Button, MenuItem, Select } from '@mui/material';
-import { calculateCenterZoom, calculateOptimalZoom, ImageRoute, type Point } from 'image-map-route';
+import {
+	calculateCenterZoom,
+	calculateOptimalZoom,
+	ImageMapRoute,
+	type Point,
+} from 'image-map-route';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -78,7 +83,7 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 					Alt
 				</Button>
 			</Box>
-			<ImageRoute
+			<ImageMapRoute
 				points={points}
 				activeSpot={points && { point: points[0] }}
 				setActiveSpot={(activeSpot) => {
@@ -104,7 +109,7 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
 					style={{ objectFit: 'contain' }}
 				/>
-			</ImageRoute>
+			</ImageMapRoute>
 		</RatioContainer>
 	);
 }

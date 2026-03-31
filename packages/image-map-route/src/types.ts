@@ -16,7 +16,7 @@ export type Spot = {
 	percentage?: number;
 };
 
-export type MapImageRouteProps = {
+export type ImageMapRouteProps = {
 	ref?: RefObject<HTMLDivElement>;
 	points: Point[];
 	addPoint?: Dispatch<Point>;

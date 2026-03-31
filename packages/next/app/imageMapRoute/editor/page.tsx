@@ -11,8 +11,8 @@ import MapEditor from '../../api/maps/[id]/mapEditor';
 export default function ImageMapRouteEditor() {
 	const [text, setText] = useState<Text[]>([]);
 	const [points, setPoints] = useState<Point[]>([]);
-	const [imageUrl, setImageUrl] = useState<string | null>(null);
-	const [videoUrl, setVideoUrl] = useState<string | null>(null);
+	const [imageUrl, setImageUrl] = useState<string>(null);
+	const [videoUrl, setVideoUrl] = useState<string>(null);
 
 	const mapData = useMemo<MapData>(
 		() => ({
@@ -42,12 +42,8 @@ export default function ImageMapRouteEditor() {
 				<Button
 					variant='outlined'
 					onClick={() => {
-						const nextUrl = window.prompt('Enter MP4 video URL');
+						const nextUrl = window.prompt('Enter video URL');
 						if (!nextUrl) return;
-						if (!nextUrl.toLowerCase().endsWith('.mp4')) {
-							window.alert('Video URL must end with .mp4');
-							return;
-						}
 						setVideoUrl(nextUrl);
 					}}>
 					Set Video URL

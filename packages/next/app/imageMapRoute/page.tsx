@@ -5,7 +5,7 @@ import PageSection from '@/components/page/pageSection';
 import PageSidebar from '@/components/page/pageSidebar';
 import PageTitle from '@/components/page/pageTitle';
 import { Box, Container, Stack, Typography } from '@mui/material';
-import { ImageRoute } from 'image-map-route';
+import { ImageMapRoute } from 'image-map-route';
 
 const installSnippet = `npm i image-map-route
 # or
@@ -22,7 +22,7 @@ const features = [
 	'Utility helpers for zooming and handling of points.',
 ];
 
-const exampleSnippet = `import { ImageRoute } from 'image-map-route';
+const exampleSnippet = `import { ImageMapRoute } from 'image-map-route';
 
 const points = [
 	{ x: 0.08, y: 0.5 },
@@ -38,13 +38,13 @@ const points = [
 
 export default function Demo() {
 	return (
-		<ImageRoute points={points}>
+		<ImageMapRoute points={points}>
 			<img
 				src='https://upload.wikimedia.org/wikipedia/commons/c/c5/AmFBfield.svg'
 				alt='Field'
 				style={{ width: '100%' }}
 			/>
-		</ImageRoute>
+		</ImageMapRoute>
 	);
 }`;
 
@@ -79,7 +79,7 @@ export default function ImageMapRouteHome() {
 					</Typography>
 					<CodeSnippet>{exampleSnippet}</CodeSnippet>
 					<Box sx={{ mt: 2 }}>
-						<ImageRoute
+						<ImageMapRoute
 							points={[
 								{ x: 0.08, y: 0.5 },
 								{ x: 0.18, y: 0.42 },
@@ -96,7 +96,7 @@ export default function ImageMapRouteHome() {
 								alt='Field'
 								style={{ width: '100%' }}
 							/>
-						</ImageRoute>
+						</ImageMapRoute>
 					</Box>
 				</PageSidebar>
 			</PageSection>

@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { ImageRoute, type Point } from 'image-map-route';
+import { ImageMapRoute, type Point } from 'image-map-route';
 import Image from 'next/image';
 import { MapRenderExtra, MapRenderPoint } from '../../farming/render';
 
@@ -14,7 +14,7 @@ export default function RelocateMapPicker({
 }) {
 	return (
 		<Grid size={12}>
-			<ImageRoute
+			<ImageMapRoute
 				points={x !== undefined && y !== undefined ? [{ x, y }] : []}
 				addPoint={onChange}
 				RenderPoint={MapRenderPoint}
@@ -26,7 +26,7 @@ export default function RelocateMapPicker({
 					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
 					style={{ objectFit: 'contain' }}
 				/>
-			</ImageRoute>
+			</ImageMapRoute>
 		</Grid>
 	);
 }

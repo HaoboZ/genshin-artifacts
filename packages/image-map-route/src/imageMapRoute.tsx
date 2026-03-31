@@ -4,7 +4,7 @@ import useControlledState from './hooks/useControlledState';
 import ImageMapRouteContainer from './imageMapRouteContainer';
 import ImageMapRoutePaths from './imageMapRoutePaths';
 import ImageMapRoutePoints from './imageMapRoutePoints';
-import { type MapImageRouteProps, type Spot } from './types';
+import { type ImageMapRouteProps, type Spot } from './types';
 import { calculateCenterZoom } from './utils';
 import { getClosestPointOnPath } from './utils/getClosestPointOnPath';
 
@@ -23,7 +23,7 @@ export default function ImageMapRoute({
 	followActiveSpot,
 	children,
 	...props
-}: MapImageRouteProps) {
+}: ImageMapRouteProps) {
 	const internalRef = useRef<HTMLDivElement>(null);
 	const containerRef = ref ?? internalRef;
 	const containerSize = useBoundingClientRect(containerRef);

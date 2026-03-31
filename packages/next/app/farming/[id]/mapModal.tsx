@@ -6,7 +6,7 @@ import {
 	calculateCenterZoom,
 	calculateOptimalZoom,
 	findSpotByTime,
-	ImageRoute,
+	ImageMapRoute,
 	type Point,
 } from 'image-map-route';
 import Image from 'next/image';
@@ -43,7 +43,7 @@ export default function MapModal({
 		<DialogWrapper>
 			<DialogTitle>Teyvat Map</DialogTitle>
 			<DialogContent sx={{ aspectRatio: '16 / 9' }}>
-				<ImageRoute
+				<ImageMapRoute
 					points={points}
 					activeSpot={activeSpot}
 					setActiveSpot={(activeSpot) => {
@@ -69,7 +69,7 @@ export default function MapModal({
 						src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
 						style={{ objectFit: 'contain' }}
 					/>
-				</ImageRoute>
+				</ImageMapRoute>
 			</DialogContent>
 		</DialogWrapper>
 	);
