@@ -25,7 +25,7 @@ jobs:
             uses: oven-sh/setup-bun@v2
          
          -  name: Install dependencies
-            run: bun install
+            run: bun install --filter image-map-route
          
          -  name: Build image-map-route
             run: bun run build
