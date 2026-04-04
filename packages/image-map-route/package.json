@@ -24,7 +24,7 @@
 		"prepack": "npm run build"
 	},
 	"dependencies": {
-		"remeda": "2.33.6",
+		"remeda": "2.33.7",
 		"rooks": "9.8.0"
 	},
 	"peerDependencies": {
