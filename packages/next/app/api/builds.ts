@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 3/19/26
+// 4/4/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -44,7 +44,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'Buff Support',
 		weapon: ['ElegyForTheEnd', 'FavoniusWarbow', 'SacrificialBow', 'TheViridescentHunt'],
 		group: 0,
-		artifact: ['NoblesseOblige', 'Instructor', 'TheExile'],
+		artifact: ['NoblesseOblige', 'Instructor', 'ScrollOfTheHeroOfCinderCity', 'TheExile'],
 		mainStat: { sands: ['enerRech_', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'enerRech_', 'atk_', 'eleMas'],
 	},
@@ -53,7 +53,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			'StaffOfTheScarletSands',
-			['LumidouceElegy', 'StaffOfHoma', 'EngulfingLightning'],
+			['LumidouceElegy', 'FracturedHalo', 'StaffOfHoma', 'EngulfingLightning'],
 			[
 				'PrimordialJadeWingedSpear',
 				'SymphonistOfScents',
@@ -291,9 +291,8 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		group: 0,
 		artifact: [
 			'TenacityOfTheMillelith',
+			'ScrollOfTheHeroOfCinderCity',
 			'Instructor',
-			'OceanHuedClam',
-			'MaidenBeloved',
 			'DeepwoodMemories',
 		],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
@@ -1048,7 +1047,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'BlackTassel',
 		],
 		group: 0,
-		artifact: ['ScrollOfTheHeroOfCinderCity', 'EmblemOfSeveredFate'],
+		artifact: ['ScrollOfTheHeroOfCinderCity', 'EmblemOfSeveredFate', 'Instructor'],
 		mainStat: {
 			sands: ['enerRech_', 'hp_'],
 			goblet: ['hp_', 'hydro_dmg_'],
@@ -1124,7 +1123,11 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'WineAndSong',
 		],
 		group: 0,
-		artifact: ['NoblesseOblige', 'Instructor', 'TenacityOfTheMillelith'],
+		artifact: [
+			'NoblesseOblige',
+			'Instructor',
+			['TenacityOfTheMillelith', 'ScrollOfTheHeroOfCinderCity'],
+		],
 		mainStat: {
 			sands: ['enerRech_', 'atk_'],
 			goblet: ['hydro_dmg_', 'atk_'],
@@ -1142,7 +1145,12 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'SacrificialFragments',
 		],
 		group: 0,
-		artifact: [['OceanHuedClam', 'TenacityOfTheMillelith'], 'MaidenBeloved'],
+		artifact: [
+			['OceanHuedClam', 'TenacityOfTheMillelith'],
+			'ScrollOfTheHeroOfCinderCity',
+			'SongOfDaysPast',
+			'MaidenBeloved',
+		],
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'hp_'] },
 		subStat: ['enerRech_', 'hp_', 'atk_', 'hp'],
 	},
@@ -1265,7 +1273,10 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['SequenceOfSolitude', 'RecurveBow', 'FavoniusWarbow', 'ElegyForTheEnd', 'SacrificialBow'],
 		],
 		group: 0,
-		artifact: [['SongOfDaysPast', 'OceanHuedClam'], 'TenacityOfTheMillelith'],
+		artifact: [
+			['SongOfDaysPast', 'OceanHuedClam', 'ScrollOfTheHeroOfCinderCity'],
+			'TenacityOfTheMillelith',
+		],
 		mainStat: { sands: 'hp_', goblet: 'hp_', circlet: ['hp_', 'critRate_'] },
 		subStat: ['hp_', 'hp', 'critRate_'],
 	},
@@ -1382,7 +1393,12 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['SkywardBlade', 'FavoniusSword'],
 		],
 		group: 0,
-		artifact: ['EmblemOfSeveredFate', 'GildedDreams', 'NoblesseOblige', 'Instructor'],
+		artifact: [
+			'EmblemOfSeveredFate',
+			'GildedDreams',
+			['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+			'Instructor',
+		],
 		mainStat: {
 			sands: ['enerRech_', 'atk_', 'eleMas'],
 			goblet: 'cryo_dmg_',
@@ -1448,7 +1464,14 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'BlackTassel',
 		],
 		group: 1,
-		artifact: ['NoblesseOblige', 'OceanHuedClam', 'MaidenBeloved', 'TheExile'],
+		artifact: [
+			'NoblesseOblige',
+			'OceanHuedClam',
+			'SongOfDaysPast',
+			'MaidenBeloved',
+			'ScrollOfTheHeroOfCinderCity',
+			'TheExile',
+		],
 		mainStat: { sands: ['enerRech_', 'hp_'], goblet: 'hp_', circlet: ['heal_', 'critRate_'] },
 		subStat: ['enerRech_', 'critRate_', 'hp_', 'hp'],
 	},
@@ -1478,7 +1501,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		group: 0,
 		artifact: [
 			['NoblesseOblige', 'TenacityOfTheMillelith'],
-			'OceanHuedClam',
+			['OceanHuedClam', 'ScrollOfTheHeroOfCinderCity', 'SongOfDaysPast'],
 			'MaidenBeloved',
 			'BlizzardStrayer',
 		],
@@ -1603,7 +1626,11 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'Slingshot',
 		],
 		group: 0,
-		artifact: ['BlizzardStrayer', 'EmblemOfSeveredFate', 'NoblesseOblige'],
+		artifact: [
+			'BlizzardStrayer',
+			'EmblemOfSeveredFate',
+			['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+		],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'cryo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
@@ -1676,7 +1703,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'SymphonistOfScents',
 			'EngulfingLightning',
 			'CalamityQueller',
-			'StaffOfHoma',
+			['StaffOfHoma', 'FracturedHalo'],
 			'LumidouceElegy',
 			[
 				'StaffOfTheScarletSands',
@@ -1685,6 +1712,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 				'Deathmatch',
 				'FavoniusLance',
 				'SkywardSpine',
+				'SacrificersStaff',
 			],
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance', 'ProspectorsDrill'],
 			['TamayurateiNoOhanashi', 'MountainBracingBolt', 'WavebreakersFin'],
@@ -2127,7 +2155,12 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'Buff Support',
 		weapon: ['FavoniusWarbow', 'SnareHook', 'SacrificialBow', 'ElegyForTheEnd'],
 		group: 0,
-		artifact: ['TheExile', 'NoblesseOblige', 'Instructor'],
+		artifact: [
+			'TheExile',
+			['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
+			'Instructor',
+			'SilkenMoonsSerenade',
+		],
 		mainStat: {
 			sands: 'enerRech_',
 			goblet: ['geo_dmg_', 'def_'],
@@ -2144,7 +2177,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['TheCatch', 'PrototypeStarglitter', 'KitainCrossSpear'],
 		],
 		group: 1,
-		artifact: ['HuskOfOpulentDreams', 'NoblesseOblige'],
+		artifact: ['HuskOfOpulentDreams', ['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity']],
 		mainStat: {
 			sands: ['def_', 'enerRech_'],
 			goblet: 'def_',
