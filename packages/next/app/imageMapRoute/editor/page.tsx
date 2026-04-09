@@ -29,7 +29,7 @@ export default function ImageMapRouteEditor() {
 	return (
 		<Container>
 			<PageTitle>Editor</PageTitle>
-			<Stack direction='row' spacing={1} flexWrap='wrap' useFlexGap sx={{ mb: 2 }}>
+			<Stack direction='row' spacing={1} useFlexGap sx={{ flexWrap: 'wrap', mb: 2 }}>
 				<Button
 					variant='outlined'
 					onClick={() => {

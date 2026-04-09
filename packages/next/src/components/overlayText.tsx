@@ -14,7 +14,6 @@ export default function OverlayText({
 }) {
 	return (
 		<Typography
-			fontSize={size}
 			sx={{
 				position: 'absolute',
 				top: bottom ? undefined : 0,
@@ -23,6 +22,7 @@ export default function OverlayText({
 				right: right ? 1 : undefined,
 				color: 'black',
 				bgcolor: 'white',
+				fontSize: size,
 				borderRadius: 1,
 				opacity: 0.75,
 			}}>

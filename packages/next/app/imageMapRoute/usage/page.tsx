@@ -226,7 +226,7 @@ function ParamTable({
 					{rows.map((row) => (
 						<TableRow key={row.name}>
 							<TableCell>
-								<Typography component='span' fontWeight={600}>
+								<Typography component='span' sx={{ fontWeight: 600 }}>
 									{row.name}
 								</Typography>
 							</TableCell>
