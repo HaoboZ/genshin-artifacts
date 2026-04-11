@@ -1,6 +1,7 @@
 {
 	"name": "@genshin-artifacts/scrape-data",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"start": "tsx ./index.ts"
 	},

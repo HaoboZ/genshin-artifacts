@@ -60,6 +60,7 @@ export type CharacterKey =
 	| 'LanYan' // Lan Yan
 	| 'Lauma' // Lauma
 	| 'Layla' // Layla
+	| 'Linnea' // Linnea
 	| 'Lisa' // Lisa
 	| 'Lynette' // Lynette
 	| 'Lyney' // Lyney

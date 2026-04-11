@@ -609,6 +609,16 @@
 		"talentMaterial": "Ingenuity",
 		"weeklyMaterial": "MirrorOfMushin"
 	},
+	"Linnea": {
+		"key": "Linnea",
+		"name": "Linnea",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"element": "Geo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a9/Linnea_Icon.png",
+		"talentMaterial": "Vagrancy",
+		"weeklyMaterial": "ElixirOfTheHeretic"
+	},
 	"Lisa": {
 		"key": "Lisa",
 		"name": "Lisa",

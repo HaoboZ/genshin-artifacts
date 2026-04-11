@@ -357,7 +357,7 @@
 		"weaponType": "Sword",
 		"atk": 440,
 		"stat": "ATK 35.2%",
-		"ability": "Effective only on the following platform:\"PlayStation Network\"Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s.Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66."
+		"ability": "Effective only on the following platform:\"PlayStation Network\"Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66."
 	},
 	"SwordOfNarzissenkreuz": {
 		"key": "SwordOfNarzissenkreuz",
@@ -1437,7 +1437,7 @@
 		"weaponType": "Catalyst",
 		"atk": 542,
 		"stat": "CRIT DMG 88.2%",
-		"ability": "Max HP increases by 10~18%.When triggering Lunar reactions or inflicting Lunar Reaction DMG on opponents, the equipping character will recover 14~18 Energy, and receive the Bountiful Sea's Sacred Wine effect for 12s: Max HP increases by an additional 14~22%, CRIT DMG from Lunar Reaction DMG increases by 60~140%.The Energy recovery effect can be triggered at most once every 18s, and can be triggered even when the equipping character is off-field."
+		"ability": "Max HP increases by 10~18%. When triggering Lunar reactions or inflicting Lunar Reaction DMG on opponents, the equipping character will recover 14~18 Energy, and receive the Bountiful Sea's Sacred Wine effect for 12s: Max HP increases by an additional 14~22%, CRIT DMG from Lunar Reaction DMG increases by 60~140%. The Energy recovery effect can be triggered at most once every 18s, and can be triggered even when the equipping character is off-field."
 	},
 	"ReliquaryOfTruth": {
 		"key": "ReliquaryOfTruth",
@@ -1737,7 +1737,7 @@
 		"weaponType": "Catalyst",
 		"atk": 510,
 		"stat": "CRIT DMG 55.1%",
-		"ability": "When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.Recitative: ATK is increased by 60~120%.Aria: Increases all Elemental DMG by 48~96%.Interlude: Elemental Mastery is increased by 240~480."
+		"ability": "When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s. Recitative: ATK is increased by 60~120%. Aria: Increases all Elemental DMG by 48~96%. Interlude: Elemental Mastery is increased by 240~480."
 	},
 	"WanderingEvenstar": {
 		"key": "WanderingEvenstar",
@@ -1879,6 +1879,16 @@
 		"stat": "Energy Recharge 55.1%",
 		"ability": "A part of the \"Millennial Movement\" that wanders amidst the winds.Increases Elemental Mastery by 60~120.When the Elemental Skills or Elemental Bursts of the character wielding this weapon hit opponents, that character gains a Sigil of Remembrance. This effect can be triggered once every 0.2s and can be triggered even if said character is not on the field.When you possess 4 Sigils of Remembrance, all of them will be consumed and all nearby party members will obtain the \"Millennial Movement: Farewell Song\" effect for 12s.\"Millennial Movement: Farewell Song\" increases Elemental Mastery by 100~200 and increases ATK by 20~40%. Once this effect is triggered, you will not gain Sigils of Remembrance for 20s.Of the many effects of the \"Millennial Movement,\" buffs of the same type will not stack."
 	},
+	"GoldenFrostboundOath": {
+		"key": "GoldenFrostboundOath",
+		"name": "Golden Frostbound Oath",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Weapon_Golden_Frostbound_Oath.png",
+		"rarity": 5,
+		"weaponType": "Bow",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "Increases DEF by 16~32%. When the equipping character's Elemental Skill or Lunar-Crystallize attack(s) hits enemies, gain the Frost Fae's Favor effect for 6s: Geo DMG inflicted by the equipping character increases by 40~80%, Lunar-Crystallize Reaction DMG increases by 40~80%.While this effect is active, if there are Moondrifts near the equipping character, all other nearby party members Will gain the Frost Fae's Mischief effect: Geo DMG dealt increases by 20~40% and Lunar-Crystallize Reaction DMG increases by 20~40%. This effect can be triggered even when the equipping character is off-field."
+	},
 	"HuntersPath": {
 		"key": "HuntersPath",
 		"name": "Hunter's Path",
@@ -1937,7 +1947,7 @@
 		"weaponType": "Bow",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "DMG dealt by Charged Attacks increased by 16~32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 16/32/48~32/64/96. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 4/7/10~12/15/18."
+		"ability": "DMG dealt by Charged Attacks increased by 16~32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 16/32/48~32/64/96%. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 4/7/10~12/15/18%."
 	},
 	"ThunderingPulse": {
 		"key": "ThunderingPulse",

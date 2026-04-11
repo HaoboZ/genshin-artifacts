@@ -2333,6 +2333,26 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		mainStat: { sands: 'def_', goblet: 'def_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'enerRech_', 'eleMas'],
 	},
+	Linnea: {
+		key: 'Linnea',
+		role: 'Off-Field DPS',
+		weapon: [
+			'GoldenFrostboundOath',
+			['ElegyForTheEnd', 'AquaSimulacra', 'HuntersPath'],
+			[
+				'Slingshot',
+				'AstralVulturesCrimsonPlumage',
+				'TheFirstGreatMagic',
+				'ThunderingPulse',
+				'SkywardHarp',
+				'PolarStar',
+			],
+		],
+		group: 1,
+		artifact: ['AubadeOfMorningstarAndMoon', 'HuskOfOpulentDreams'],
+		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'def_', 'eleMas', 'enerRech_'],
+	},
 };
 
 export const buildsList = Object.values(builds).flat();

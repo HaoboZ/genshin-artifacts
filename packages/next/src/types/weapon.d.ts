@@ -187,6 +187,7 @@ export type WeaponKey =
 	| 'AquaSimulacra' // Aqua Simulacra
 	| 'AstralVulturesCrimsonPlumage' // Astral Vulture's Crimson Plumage
 	| 'ElegyForTheEnd' // Elegy for the End
+	| 'GoldenFrostboundOath' // Golden Frostbound Oath
 	| 'HuntersPath' // Hunter's Path
 	| 'PolarStar' // Polar Star
 	| 'SilvershowerHeartstrings' // Silvershower Heartstrings
