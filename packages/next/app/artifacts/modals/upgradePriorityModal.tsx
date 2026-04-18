@@ -10,8 +10,17 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppSelector } from '@/store/hooks';
 import { type Build } from '@/types/data';
-import { Box, DialogContent, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
-import { useMemo } from 'react';
+import {
+	Box,
+	DialogContent,
+	DialogTitle,
+	FormControlLabel,
+	List,
+	ListItem,
+	ListItemText,
+	Switch,
+} from '@mui/material';
+import { useMemo, useState } from 'react';
 import { filter, groupBy, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
@@ -22,6 +31,7 @@ export default function UpgradePriorityModal() {
 	const { showModal } = useModal();
 	const { closeModal } = useModalControls();
 	const artifacts = useAppSelector(prop('good', 'artifacts'));
+	const [equippedOnly, setEquippedOnly] = useState(false);
 
 	const artifactsFiltered = useMemo(() => {
 		const artifactBuilds = groupBy(buildsList, ({ artifact }) => getFirst(artifact));
@@ -29,7 +39,10 @@ export default function UpgradePriorityModal() {
 
 		return pipe(
 			artifacts,
-			filter(({ level, rarity }) => level < rarity * 4),
+			filter(
+				({ level, location, rarity }) =>
+					level < rarity * 4 && (!equippedOnly || Boolean(location)),
+			),
 			map((artifact) => ({
 				...artifact,
 				...sortBy(
@@ -64,12 +77,21 @@ export default function UpgradePriorityModal() {
 			filter(({ maxMatching, potential }) => maxMatching || potential > 0.25),
 			sortBy([prop('maxMatching'), 'desc'], [prop('potential'), 'desc']),
 		);
-	}, [artifacts]);
+	}, [artifacts, equippedOnly]);
 
 	return (
 		<DialogWrapper>
 			<DialogTitle>Upgrade Artifact Priority</DialogTitle>
 			<DialogContent>
+				<FormControlLabel
+					control={
+						<Switch
+							checked={equippedOnly}
+							onChange={(_, checked) => setEquippedOnly(checked)}
+						/>
+					}
+					label='Equipped Only'
+				/>
 				<List>
 					{artifactsFiltered.map((artifact, i) => (
 						<ListItem key={i}>

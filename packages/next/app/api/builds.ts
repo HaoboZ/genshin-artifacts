@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/13/26
+// 4/17/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -1072,7 +1072,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	},
 	Aino: {
 		key: 'Aino',
-		role: 'Application Support',
+		role: 'Reaction Support',
 		weapon: ['FavoniusGreatsword', 'MakhairaAquamarine', ['FlameForgedInsight', 'MasterKey']],
 		group: 0,
 		artifact: [
@@ -1303,7 +1303,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	Columbina: [
 		{
 			key: 'Columbina',
-			role: 'Support',
+			role: 'Off-Field DPS & Buff Support',
 			weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
 			group: 0,
 			artifact: [
@@ -1319,7 +1319,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		},
 		{
 			key: 'Columbina',
-			role: 'Support',
+			role: 'Off-Field DPS & Buff Support',
 			weapon: [],
 			group: 1,
 			artifact: ['SilkenMoonsSerenade'],
