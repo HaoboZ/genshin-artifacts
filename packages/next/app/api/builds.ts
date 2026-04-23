@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/17/26
+// 4/22/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -2234,7 +2234,14 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'Off-Field DPS',
 		weapon: [
 			['PeakPatrolSong', 'UrakuMisugiri'],
-			['HarbingerOfDawn', 'FluteOfEzpitzal', 'PrimordialJadeCutter', 'CinnabarSpindle'],
+			'LightbearingMoonshard',
+			[
+				'FluteOfEzpitzal',
+				'HarbingerOfDawn',
+				'LightOfFoliarIncision',
+				'CinnabarSpindle',
+				'PrimordialJadeCutter',
+			],
 		],
 		group: 0,
 		artifact: [['HuskOfOpulentDreams', 'GoldenTroupe'], 'ArchaicPetra', 'TenacityOfTheMillelith'],
