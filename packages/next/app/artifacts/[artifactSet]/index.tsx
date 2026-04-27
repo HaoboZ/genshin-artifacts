@@ -30,12 +30,9 @@ export default function ArtifactSet({ artifactSet }: { artifactSet: ArtifactSetK
 					},
 				]}>
 				<Grid container spacing={1}>
-					<Grid size={6}>
-						<BestInSlot group={0} artifactSet={artifactSet} />
-					</Grid>
-					<Grid size={6}>
-						<BestInSlot group={1} artifactSet={artifactSet} />
-					</Grid>
+					{[0, 1, 2].map((i) => (
+						<BestInSlot key={i} group={i} artifactSet={artifactSet} />
+					))}
 				</Grid>
 			</PageSection>
 			<ArtifactList artifactSet={artifactSet} />

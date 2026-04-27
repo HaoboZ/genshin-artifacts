@@ -19,7 +19,7 @@ export default function StatChipArray({
 			{breadcrumbs ? (
 				<Breadcrumbs sx={{ p: 0 }}>
 					{arr.map((subArr, index) => (
-						<Stack key={index} direction='row' spacing={0.5}>
+						<Stack key={index} direction='row' spacing={0.5} sx={{ flexWrap: 'wrap' }}>
 							{makeArray(subArr).map((stat) => (
 								<Chip key={stat} label={mapStats ? statName[stat] : stat} />
 							))}
@@ -27,7 +27,7 @@ export default function StatChipArray({
 					))}
 				</Breadcrumbs>
 			) : (
-				<Stack direction='row' spacing={0.5}>
+				<Stack direction='row' spacing={0.5} sx={{ flexWrap: 'wrap' }}>
 					{makeArray(arr).map((stat: string) => (
 						<Chip key={stat} label={mapStats ? statName[stat] : stat} />
 					))}

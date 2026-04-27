@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 4/22/26
+// 4/26/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -187,7 +187,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['MailedFlower', 'LithicBlade', 'TheUnforged'],
 			['TidalShadow', 'UltimateOverlordsMegaMagicSword', 'MakhairaAquamarine'],
 		],
-		group: 1,
+		group: 2,
 		artifact: ['CrimsonWitchOfFlames', ['MarechausseeHunter', 'LongNightsOath'], 'GildedDreams'],
 		mainStat: {
 			sands: ['eleMas', 'atk_', 'enerRech_'],
@@ -249,7 +249,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'MissiveWindspear',
 			['WhiteTassel', 'BlackcliffPole', 'KitainCrossSpear', 'RightfulReward'],
 		],
-		group: 0,
+		group: 1,
 		artifact: [
 			['CrimsonWitchOfFlames', 'ShimenawasReminiscence'],
 			'GildedDreams',
@@ -348,7 +348,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'TidalShadow',
 			'Rainslasher',
 		],
-		group: 0,
+		group: 2,
 		artifact: [
 			'ObsidianCodex',
 			'ScrollOfTheHeroOfCinderCity',
@@ -392,7 +392,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'AlleyHunter',
 			['TheViridescentHunt', 'TheStringless', 'FadingTwilight'],
 		],
-		group: 0,
+		group: 1,
 		artifact: [
 			'GoldenTroupe',
 			'ADayCarvedFromRisingWinds',
@@ -414,7 +414,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['Akuoumaru', 'UltimateOverlordsMegaMagicSword'],
 			['LithicBlade', 'LuxuriousSeaLord', 'SkywardPride'],
 		],
-		group: 1,
+		group: 2,
 		artifact: ['EmblemOfSeveredFate', ['ScrollOfTheHeroOfCinderCity', 'NoblesseOblige']],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'atk_', 'eleMas'],
@@ -525,7 +525,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'Sethos',
 		role: 'Charged Attack DPS',
 		weapon: ['HuntersPath', 'AstralVulturesCrimsonPlumage', 'Slingshot'],
-		group: 0,
+		group: 2,
 		artifact: ['WanderersTroupe', 'GildedDreams'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['enerRech_', 'critRD_', 'eleMas', 'atk_'],
@@ -677,7 +677,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'CalamityOfEshu',
 			['FinaleOfTheDeep', 'TheBlackSword'],
 		],
-		group: 0,
+		group: 1,
 		artifact: ['FragmentOfHarmonicWhimsy', 'GladiatorsFinale', 'ThunderingFury'],
 		mainStat: { sands: ['atk_', 'eleMas'], goblet: 'electro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
@@ -776,7 +776,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'Moonpiercer',
 			'KitainCrossSpear',
 		],
-		group: 1,
+		group: 2,
 		artifact: [
 			'DeepwoodMemories',
 			'TenacityOfTheMillelith',
@@ -867,7 +867,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'ThrillingTalesOfDragonSlayers',
 			'PrototypeAmber',
 		],
-		group: 0,
+		group: 1,
 		artifact: [
 			'DeepwoodMemories',
 			['GildedDreams', 'GoldenTroupe'],
@@ -912,7 +912,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'ThrillingTalesOfDragonSlayers',
 			'AThousandFloatingDreams',
 		],
-		group: 1,
+		group: 2,
 		artifact: ['DeepwoodMemories', 'OceanHuedClam', 'Instructor', 'NoblesseOblige'],
 		mainStat: { sands: ['hp_', 'enerRech_'], goblet: 'hp_', circlet: ['hp_', 'heal_'] },
 		subStat: ['enerRech_', 'hp_', 'hp', 'critRate_'],
@@ -1046,7 +1046,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'SkywardSpine',
 			'BlackTassel',
 		],
-		group: 0,
+		group: 2,
 		artifact: ['ScrollOfTheHeroOfCinderCity', 'EmblemOfSeveredFate', 'Instructor'],
 		mainStat: {
 			sands: ['enerRech_', 'hp_'],
@@ -1256,7 +1256,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['WolfFang', 'HaranGeppakuFutsu', 'LightOfFoliarIncision', 'MistsplitterReforged'],
 			['SkywardBlade', 'TheDockhandsAssistant', 'HarbingerOfDawn'],
 		],
-		group: 1,
+		group: 0,
 		artifact: ['GoldenTroupe', 'TenacityOfTheMillelith'],
 		mainStat: {
 			sands: ['enerRech_', 'hp_'],
@@ -1364,7 +1364,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['TidalShadow', 'MakhairaAquamarine', 'BlackcliffSlasher'],
 			'FavoniusGreatsword',
 		],
-		group: 0,
+		group: 2,
 		artifact: ['NoblesseOblige', ['EmblemOfSeveredFate', 'GildedDreams']],
 		mainStat: {
 			sands: ['atk_', 'enerRech_', 'eleMas'],
@@ -1423,7 +1423,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'TheCatch',
 			'FavoniusLance',
 		],
-		group: 0,
+		group: 1,
 		artifact: [['BlizzardStrayer', 'EmblemOfSeveredFate'], 'NoblesseOblige'],
 		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critDMG_' },
 		subStat: ['enerRech_', 'critDMG_', 'atk_', 'critRate_'],
@@ -1439,7 +1439,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'KeyOfKhajNisut',
 			'FavoniusSword',
 		],
-		group: 0,
+		group: 2,
 		artifact: [
 			'TenacityOfTheMillelith',
 			'BlizzardStrayer',
@@ -1631,7 +1631,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'MissiveWindspear',
 			['PrototypeStarglitter', 'ProspectorsShovel'],
 		],
-		group: 0,
+		group: 2,
 		artifact: ['NoblesseOblige', 'ScrollOfTheHeroOfCinderCity'],
 		mainStat: { sands: ['atk_', 'enerRech_'], goblet: 'atk_', circlet: 'atk_' },
 		subStat: ['enerRech_', 'atk_', 'critRD_', 'atk'],
@@ -1646,7 +1646,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['MappaMare', 'TheWidsith', 'BalladOfTheBoundlessBlue'],
 			'FlowingPurity',
 		],
-		group: 0,
+		group: 2,
 		artifact: [
 			'MarechausseeHunter',
 			'ShimenawasReminiscence',
@@ -1699,7 +1699,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['PrimordialJadeWingedSpear', 'CrimsonMoonsSemblance', 'ProspectorsDrill'],
 			['TamayurateiNoOhanashi', 'MountainBracingBolt', 'WavebreakersFin'],
 		],
-		group: 1,
+		group: 2,
 		artifact: [
 			'GoldenTroupe',
 			'BlizzardStrayer',
@@ -1835,7 +1835,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'HakushinRing',
 			'PrototypeAmber',
 		],
-		group: 0,
+		group: 2,
 		artifact: ['ViridescentVenerer'],
 		mainStat: {
 			sands: ['atk_', 'enerRech_'],
@@ -1864,7 +1864,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'Jahoda',
 		role: 'Support',
 		weapon: ['FavoniusWarbow', 'ElegyForTheEnd', 'RainbowSerpentsRainBow', 'SnareHook'],
-		group: 0,
+		group: 2,
 		artifact: ['ViridescentVenerer', 'SilkenMoonsSerenade', 'DeepwoodMemories'],
 		mainStat: {
 			sands: ['enerRech_', 'atk_'],
@@ -2029,7 +2029,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'Frostbearer',
 			'PrototypeAmber',
 		],
-		group: 0,
+		group: 2,
 		artifact: [
 			'ViridescentVenerer',
 			'NoblesseOblige',
@@ -2193,7 +2193,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'Illuga',
 		role: 'Buff Support',
 		weapon: ['FavoniusLance', 'DragonsBane', 'KitainCrossSpear', 'EngulfingLightning'],
-		group: 0,
+		group: 2,
 		artifact: ['SilkenMoonsSerenade'],
 		mainStat: { sands: ['eleMas', 'enerRech_'], goblet: 'eleMas', circlet: 'eleMas' },
 		subStat: ['enerRech_', 'eleMas', 'critRate_'],
@@ -2282,7 +2282,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			],
 			'WolfFang',
 		],
-		group: 0,
+		group: 1,
 		artifact: ['GoldenTroupe', 'HuskOfOpulentDreams'],
 		mainStat: { sands: 'def_', goblet: 'geo_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'atk_', 'enerRech_'],
@@ -2317,7 +2317,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			'PeakPatrolSong',
 			['SplendorOfTranquilWaters', 'HaranGeppakuFutsu', 'AthameArtis', 'FluteOfEzpitzal'],
 		],
-		group: 1,
+		group: 2,
 		artifact: ['NightOfTheSkysUnveiling', 'HuskOfOpulentDreams'],
 		mainStat: { sands: 'def_', goblet: 'def_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'enerRech_', 'eleMas'],
@@ -2337,7 +2337,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 				'PolarStar',
 			],
 		],
-		group: 1,
+		group: 2,
 		artifact: ['AubadeOfMorningstarAndMoon', 'HuskOfOpulentDreams'],
 		mainStat: { sands: ['def_', 'enerRech_'], goblet: 'def_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'def_', 'eleMas', 'enerRech_'],
