@@ -714,7 +714,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['EngulfingLightning', 'BalladOfTheFjords'],
 			['VortexVanquisher', 'ProspectorsShovel', 'SacrificersStaff', 'SkywardSpine'],
 		],
-		group: 1,
+		group: 0,
 		artifact: [
 			'AubadeOfMorningstarAndMoon',
 			['GildedDreams', 'ADayCarvedFromRisingWinds'],
@@ -1305,7 +1305,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			key: 'Columbina',
 			role: 'Off-Field DPS & Buff Support',
 			weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
-			group: 0,
+			group: 1,
 			artifact: [
 				['AubadeOfMorningstarAndMoon', 'SilkenMoonsSerenade'],
 				'NightOfTheSkysUnveiling',
