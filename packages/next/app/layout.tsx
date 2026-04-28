@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { type Metadata, type Viewport } from 'next';
 import { Roboto } from 'next/font/google';
+import Script from 'next/script';
 import { type ReactNode } from 'react';
 import { type PackageJson } from 'type-fest';
 import _packageJson from '../package.json';
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		<html suppressHydrationWarning lang='en'>
 			<body className={roboto.variable}>
 				{process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
+				<Script src='https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js' />
 				<Providers>
 					<Header />
 					{children}

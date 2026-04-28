@@ -3,7 +3,6 @@
 import { Box, Stack, TextField } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import OneSignal from 'react-onesignal';
 
 const RespawnNotification = dynamic(() => import('@/components/respawnNotification'), {
 	ssr: false,
@@ -17,11 +16,12 @@ export default function Notifications() {
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
-		OneSignal.init({
-			appId: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
-			safari_web_id: process.env.NEXT_PUBLIC_ONESIGNAL_SAFARI_WEB_ID,
-			allowLocalhostAsSecureOrigin: process.env.NODE_ENV === 'development',
-		}).then();
+		window.OneSignalDeferred = window.OneSignalDeferred || [];
+		window.OneSignalDeferred.push(async (OneSignal) => {
+			await OneSignal.init({
+				appId: 'c7a78eb3-5b60-4dca-907b-8dc2da208e61',
+			});
+		});
 	}, []);
 
 	return (
