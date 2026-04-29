@@ -4,7 +4,7 @@ import { Roboto } from 'next/font/google';
 import Script from 'next/script';
 import { type ReactNode } from 'react';
 import { type PackageJson } from 'type-fest';
-import _packageJson from '../package.json';
+import _packageJson from '../../../package.json';
 import Header from './header';
 import Providers from './providers';
 
@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 	description: packageJson.description,
 	keywords: packageJson.keywords,
 	authors: packageJson.author as any,
+	icons: {
+		icon: '/icons/essence.png',
+		apple: '/icons/essence.png',
+		shortcut: '/icons/essence.png',
+	},
 };
 
 export const viewport: Viewport = {

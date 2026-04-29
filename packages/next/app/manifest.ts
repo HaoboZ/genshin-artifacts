@@ -3,7 +3,7 @@ import { type MetadataRoute } from 'next';
 export default function manifest(): MetadataRoute.Manifest {
 	return {
 		name: 'Genshin Artifacts',
-		short_name: 'GenshinArtifacts',
+		short_name: 'Genshin Artifacts',
 		description: 'A site that tracks your characters, artifacts, and levels.',
 		categories: ['Genshin Impact'],
 		scope: '/',
@@ -12,5 +12,13 @@ export default function manifest(): MetadataRoute.Manifest {
 		orientation: 'portrait',
 		theme_color: '#ffffff',
 		background_color: '#ffffff',
+		icons: [
+			{
+				src: '/icons/essence.png',
+				sizes: 'any',
+				type: 'image/png',
+				purpose: 'any',
+			},
+		],
 	};
 }
