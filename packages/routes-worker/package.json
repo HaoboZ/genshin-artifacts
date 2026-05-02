@@ -10,10 +10,10 @@
 		"backup:push": "node scripts/backup-sync.ts push"
 	},
 	"dependencies": {
-		"nanoid": "5.1.9"
+		"nanoid": "5.1.11"
 	},
 	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "0.14.7",
-		"wrangler": "4.83.0"
+		"@cloudflare/vitest-pool-workers": "0.15.2",
+		"wrangler": "4.87.0"
 	}
 }
