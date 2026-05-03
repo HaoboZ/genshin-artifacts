@@ -1,24 +1,27 @@
-import eslintNextPlugin from '@next/eslint-plugin-next';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import typescript from 'eslint-config-next/typescript';
 import prettier from 'eslint-config-prettier/flat';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-	{
-		plugins: { next: eslintNextPlugin },
-		settings: { next: { rootDir: 'packages/next' } },
-	},
 	...nextVitals,
 	...typescript,
-	prettier,
-	globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 	{
-		languageOptions: {
-			parserOptions: {
-				projectService: true,
-			},
+		settings: {
+			next: { rootDir: 'packages/next' },
 		},
+	},
+	prettier,
+	globalIgnores([
+		'packages/next/.next/**',
+		'packages/next/out/**',
+		'packages/next/build/**',
+		'packages/next/next-env.d.ts',
+		'packages/image-map-route/dist/**',
+		'packages/routes-worker/.wrangler',
+		'packages/routes-worker/worker-configuration.d.ts',
+	]),
+	{
 		rules: {
 			// react
 			'react/display-name': 'off',

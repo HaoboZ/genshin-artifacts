@@ -259,6 +259,7 @@ export default function MapEditor({
 							RenderPoint={RouteRenderPoint}
 							RenderPath={RouteRenderPath}
 							RenderExtra={RouteRenderExtra(text)}>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								alt={mapData.name}
 								src={resolveAssetUrl(mapData.image)}

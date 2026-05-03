@@ -32,7 +32,6 @@
 		"dayjs": "1.11.20",
 		"events": "3.3.0",
 		"nanoid": "5.1.9",
-		"next": "16.2.4",
 		"notistack": "3.0.2",
 		"object-hash": "3.0.0",
 		"pixelmatch": "7.1.0",

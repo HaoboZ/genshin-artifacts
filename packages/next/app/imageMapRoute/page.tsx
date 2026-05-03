@@ -91,6 +91,7 @@ export default function ImageMapRouteHome() {
 								{ x: 0.78, y: 0.48 },
 								{ x: 0.88, y: 0.56 },
 							]}>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								src='https://upload.wikimedia.org/wikipedia/commons/9/94/Football_field_diagram.webp'
 								alt='Field'

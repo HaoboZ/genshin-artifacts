@@ -17,7 +17,8 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"remeda": "2.33.7"
+		"remeda": "2.33.7",
+		"next": "16.2.4"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "16.2.4",
