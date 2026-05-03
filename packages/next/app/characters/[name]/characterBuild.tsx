@@ -118,7 +118,7 @@ export default function CharacterBuild({
 									{artifact && (
 										<Grid size={12}>
 											<PercentBar p={weightedPercent(build, artifact)}>
-												%p ({matching[0]}/${matching[1]})
+												%p ({matching[0]}/{matching[1]})
 											</PercentBar>
 										</Grid>
 									)}

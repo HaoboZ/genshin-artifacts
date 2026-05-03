@@ -1183,7 +1183,17 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		{
 			key: 'KamisatoAyato',
 			role: 'DPS',
-			weapon: [],
+			weapon: [
+				['HaranGeppakuFutsu', 'PrimordialJadeCutter'],
+				'MistsplitterReforged',
+				'LightOfFoliarIncision',
+				'TheBlackSword',
+				['SkywardBlade', 'SplendorOfTranquilWaters'],
+				'SummitShaper',
+				['FinaleOfTheDeep', 'KagotsurubeIsshin'],
+				'LionsRoar',
+				['HarbingerOfDawn', 'TheFlute', 'SwordOfNarzissenkreuz'],
+			],
 			group: 0,
 			artifact: ['EchoesOfAnOffering'],
 			mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
@@ -1320,7 +1330,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		{
 			key: 'Columbina',
 			role: 'Off-Field DPS & Buff Support',
-			weapon: [],
+			weapon: ['NocturnesCurtainCall', ['PrototypeAmber', 'SacrificialJade'], 'FavoniusCodex'],
 			group: 1,
 			artifact: ['SilkenMoonsSerenade'],
 			mainStat: {
