@@ -3,7 +3,7 @@ import PageSection from '@/components/page/pageSection';
 import PercentBar from '@/components/stats/percentBar';
 import StatChipArray from '@/components/stats/statChipArray';
 import makeArray from '@/helpers/makeArray';
-import { weightedPercent } from '@/helpers/stats';
+import { matchingSubStats, weightedPercent } from '@/helpers/stats';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { useAppSelector } from '@/store/hooks';
@@ -101,6 +101,7 @@ export default function CharacterBuild({
 					</Grid>
 					{artifactSlotOrder.map((slot) => {
 						const artifact = artifactsIndexed[slot];
+						const matching = matchingSubStats(build, artifact);
 
 						return (
 							<Grid key={slot} size={{ xs: 6, sm: 4 }}>
@@ -116,7 +117,9 @@ export default function CharacterBuild({
 									}}>
 									{artifact && (
 										<Grid size={12}>
-											<PercentBar p={weightedPercent(build, artifact)} />
+											<PercentBar p={weightedPercent(build, artifact)}>
+												%p ({matching[0]}/${matching[1]})
+											</PercentBar>
 										</Grid>
 									)}
 								</ArtifactStatCard>

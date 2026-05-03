@@ -7,7 +7,7 @@ import PageLink from '@/components/page/pageLink';
 import PageSection from '@/components/page/pageSection';
 import PercentBar from '@/components/stats/percentBar';
 import makeArray from '@/helpers/makeArray';
-import { maxPotentialPercent, maxWeightedPercent } from '@/helpers/stats';
+import { matchingSubStats, maxPotentialBuild, weightedPercent } from '@/helpers/stats';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
@@ -74,17 +74,22 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 						? Boolean(+(artifact.level === artifact.rarity * 4) - filtered.maxLevel + 1)
 						: true),
 			),
-			map((artifact) => ({
-				...artifact,
-				statRollPercent: maxWeightedPercent(
-					artifact,
-					artifact.location ? makeArray(builds[artifact.location]) : undefined,
-				),
-				potential: maxPotentialPercent(
-					artifact,
-					artifact.location ? makeArray(builds[artifact.location]) : undefined,
-				),
-			})),
+			map((artifact) => {
+				const artifactBuilds = artifact.location
+					? makeArray(builds[artifact.location]).filter(
+							({ buildIndex }) => buildIndex === artifact.buildIndex,
+						)
+					: undefined;
+				const { build, percent } = maxPotentialBuild(artifact, artifactBuilds);
+
+				return {
+					...artifact,
+					build,
+					statRollPercent: weightedPercent(build, artifact),
+					potential: percent,
+					matching: matchingSubStats(build, artifact),
+				};
+			}),
 			sortBy(
 				[
 					prop({ potential: 'potential', stats: 'statRollPercent', level: 'level' }[sortType]),
@@ -215,7 +220,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 				Great: {greatCount} / Good: {goodCount}
 			</Typography>
 			<Grid container spacing={1}>
-				{artifactPages[page]?.map(({ statRollPercent, potential, ...artifact }) => {
+				{artifactPages[page]?.map(({ statRollPercent, potential, matching, ...artifact }) => {
 					const isMarked = marked.find(({ id }) => artifact.id === id);
 
 					return (
@@ -245,7 +250,9 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 								}}>
 								<Grid container size={12} spacing={0}>
 									<Grid size={6}>
-										<PercentBar p={statRollPercent}>Stats: %p</PercentBar>
+										<PercentBar p={statRollPercent}>
+											Stats: %p ({matching[0]}/{matching[1]})
+										</PercentBar>
 									</Grid>
 									<Grid size={6}>
 										<PercentBar p={potential}>Potential: %p</PercentBar>

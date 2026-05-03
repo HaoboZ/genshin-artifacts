@@ -1,5 +1,5 @@
 import PercentBar from '@/components/stats/percentBar';
-import { maxPotentialPercent } from '@/helpers/stats';
+import { maxPotentialBuild } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -39,7 +39,7 @@ export default function ArtifactDeleteModal() {
 			filter(({ lock, location, level }) => lock && !location && !level),
 			map((artifact) => ({
 				...artifact,
-				potential: maxPotentialPercent(artifact),
+				potential: maxPotentialBuild(artifact).percent,
 			})),
 			filter(
 				({ potential, setKey, slotKey }) =>

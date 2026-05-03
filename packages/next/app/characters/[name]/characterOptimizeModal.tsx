@@ -121,7 +121,7 @@ export default function CharacterOptimizeModal({
 									<DoubleArrowIcon />
 								</Grid>
 								<Grid key={slot} size='grow'>
-									<ArtifactStatCard hideCharacter artifact={newArtifact} slot={slot}>
+									<ArtifactStatCard artifact={newArtifact} slot={slot}>
 										{newArtifact && (
 											<Grid size={12}>
 												<PercentBar p={weightedPercent(build, newArtifact)} />

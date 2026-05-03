@@ -7,7 +7,7 @@ import PercentBar from '@/components/stats/percentBar';
 import SubStatBar from '@/components/stats/subStatBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
 import getFirst from '@/helpers/getFirst';
-import { statArrMatch, weightedPercent } from '@/helpers/stats';
+import { matchingSubStats, statArrMatch, weightedPercent } from '@/helpers/stats';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
@@ -46,13 +46,23 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 						: getFirst(build.artifact) === artifact.setKey) &&
 					statArrMatch(build.mainStat[artifact.slotKey], artifact.mainStatKey),
 			),
-			map((build) => ({
-				build,
-				statRollPercent: weightedPercent(build, artifact),
-			})),
+			map((build) => {
+				const currentArtifact = artifacts.find(
+					({ location, buildIndex }) =>
+						location === build.key && buildIndex === build.buildIndex,
+				);
+
+				return {
+					build,
+					statRollPercent: weightedPercent(build, artifact),
+					matching: matchingSubStats(build, artifact),
+					currentArtifact,
+					currentMatching: matchingSubStats(build, currentArtifact),
+				};
+			}),
 			sortBy([prop('statRollPercent'), 'desc']),
 		);
-	}, [artifact, checked]);
+	}, [artifacts, artifact, checked]);
 
 	return (
 		<DialogWrapper>
@@ -94,11 +104,8 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 			</Box>
 			<DialogContent>
 				<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
-					{charactersTiered.map(({ build, statRollPercent }) => {
-						const currentArtifact = artifacts.find(
-							({ location, buildIndex }) => location === build.key && !buildIndex,
-						);
-						return (
+					{charactersTiered.map(
+						({ build, matching, statRollPercent, currentArtifact, currentMatching }) => (
 							<Grid key={build.key} container size={{ xs: 6, md: 4 }}>
 								<Grid size='auto'>
 									<CharacterImage
@@ -152,17 +159,19 @@ export default function ArtifactModal({ artifact }: { artifact: IArtifact }) {
 									<Grid size={6}>
 										{currentArtifact && (
 											<PercentBar p={weightedPercent(build, currentArtifact)}>
-												Current: %p
+												Current: %p ({currentMatching[0]}/{currentMatching[1]})
 											</PercentBar>
 										)}
 									</Grid>
 									<Grid size={6}>
-										<PercentBar p={statRollPercent}>New: %p</PercentBar>
+										<PercentBar p={statRollPercent}>
+											New: %p ({matching[0]}/{matching[1]})
+										</PercentBar>
 									</Grid>
 								</Grid>
 							</Grid>
-						);
-					})}
+						),
+					)}
 				</Grid>
 			</DialogContent>
 		</DialogWrapper>

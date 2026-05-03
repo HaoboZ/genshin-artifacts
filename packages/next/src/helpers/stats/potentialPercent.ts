@@ -1,7 +1,7 @@
 import { artifactSetsInfo } from '@/api/artifacts';
 import { buildsList } from '@/api/builds';
 import { statsAverage, statsMax } from '@/api/stats';
-import { sumBy } from 'remeda';
+import { filter, firstBy, map, pipe, prop, sumBy } from 'remeda';
 import { type Build } from '../../types/data';
 import { type IArtifact } from '../../types/good';
 import getFirst from '../getFirst';
@@ -32,12 +32,18 @@ export function potentialPercent(build: Build, artifact: IArtifact) {
 	return 0.25 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
 }
 
-export function maxPotentialPercent(artifact: IArtifact, builds: Build[] = buildsList) {
+export function maxPotentialBuild(artifact: IArtifact, builds: Build[] = buildsList) {
 	const setKey = artifact.setKey;
-	return Math.max(
-		...builds
-			.filter(({ artifact }) => getFirst(artifact) === setKey)
-			.map((build) => potentialPercent(build, artifact)),
-		0,
+
+	return (
+		pipe(
+			builds,
+			filter(({ artifact }) => getFirst(artifact) === setKey),
+			map((build) => ({
+				build,
+				percent: potentialPercent(build, artifact),
+			})),
+			firstBy([prop('percent'), 'desc']),
+		) ?? { build: null, percent: 0 }
 	);
 }

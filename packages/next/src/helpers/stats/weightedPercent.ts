@@ -1,10 +1,8 @@
 import { artifactSetsInfo } from '@/api/artifacts';
-import { buildsList } from '@/api/builds';
 import { statsMax } from '@/api/stats';
 import { sumBy } from 'remeda';
 import { type Build } from '../../types/data';
 import { type IArtifact } from '../../types/good';
-import getFirst from '../getFirst';
 import { getMaxStat } from './getMaxStat';
 import isMainStat from './isMainStat';
 import { weightedMultiplier } from './weightedMultiplier';
@@ -22,12 +20,4 @@ export function weightedPercent(build: Build, artifact: IArtifact) {
 		artifact.rarity === artifactSetsInfo[artifact.setKey].rarity ? 0.75 : 0.5;
 
 	return 0.25 + (stats / getMaxStat(build.subStat, artifact.mainStatKey)) * rarityMultiplier;
-}
-
-export function maxWeightedPercent(artifact: IArtifact, builds: Build[] = buildsList) {
-	const setKey = artifact.setKey;
-	return builds
-		.filter(({ artifact }) => getFirst(artifact) === setKey)
-		.map((build) => weightedPercent(build, artifact))
-		.reduce((a, b) => (a > b ? a : b), 0);
 }

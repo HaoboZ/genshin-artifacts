@@ -21,7 +21,7 @@ import {
 	Switch,
 } from '@mui/material';
 import { useMemo, useState } from 'react';
-import { filter, groupBy, map, pipe, prop, sortBy } from 'remeda';
+import { filter, firstBy, groupBy, map, pipe, prop, sortBy } from 'remeda';
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
 
@@ -45,34 +45,29 @@ export default function UpgradePriorityModal() {
 			),
 			map((artifact) => ({
 				...artifact,
-				...sortBy(
-					pipe(
-						(artifactBuilds[artifact.setKey] ?? []) as Build[],
-						map((build) => {
-							const matching = matchingSubStats(build, artifact);
+				...pipe(
+					(artifactBuilds[artifact.setKey] ?? []) as Build[],
+					map((build) => {
+						const currentArtifact = equippedArtifacts[build.key]?.find(
+							({ slotKey, buildIndex }) => artifact.slotKey === slotKey && !buildIndex,
+						);
+						const matching = matchingSubStats(build, artifact);
 
-							return {
-								build,
-								matching,
-								maxMatching: matching[0] === 4 || matching[0] >= matching[1],
-								potential: potentialPercent(build, artifact),
-								currentPotential: potentialPercent(
-									build,
-									equippedArtifacts[build.key]?.find(
-										({ slotKey, buildIndex }) =>
-											artifact.slotKey === slotKey && !buildIndex,
-									),
-								),
-							};
-						}),
-						filter(({ potential }) => Boolean(potential)),
+						return {
+							build,
+							matching,
+							maxMatching: matching[0] === 4 || matching[0] >= matching[1],
+							potential: potentialPercent(build, artifact),
+							currentMatching: matchingSubStats(build, currentArtifact),
+							currentPotential: potentialPercent(build, currentArtifact),
+						};
+					}),
+					filter(({ potential }) => Boolean(potential)),
+					firstBy(
+						[prop('maxMatching'), 'desc'],
+						({ potential, currentPotential }) => currentPotential - potential,
 					),
-					[prop('maxMatching'), 'desc'],
-					({ potential, currentPotential }) => {
-						if (currentPotential < potential) return (currentPotential - potential) * 10;
-						return potential > 0.5 ? -potential : currentPotential - potential;
-					},
-				)[0],
+				),
 			})),
 			filter(({ maxMatching, potential }) => maxMatching || potential > 0.25),
 			sortBy([prop('maxMatching'), 'desc'], [prop('potential'), 'desc']),
@@ -113,7 +108,10 @@ export default function UpgradePriorityModal() {
 										href={`/characters/${artifact.build.key}`}
 										onClick={() => closeModal()}>
 										<CharacterImage character={charactersInfo[artifact.build.key]} />
-										<PercentBar p={artifact.currentPotential}>Current: %p</PercentBar>
+										<PercentBar p={artifact.currentPotential}>
+											Current: %p ({artifact.currentMatching[0]}/
+											{artifact.currentMatching[1]})
+										</PercentBar>
 									</PageLink>
 								</Box>
 							)}
