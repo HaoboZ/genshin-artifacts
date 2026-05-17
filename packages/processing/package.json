@@ -11,6 +11,6 @@
 		"jimp": "1.6.1"
 	},
 	"devDependencies": {
-		"tsx": "4.21.0"
+		"tsx": "4.22.1"
 	}
 }
