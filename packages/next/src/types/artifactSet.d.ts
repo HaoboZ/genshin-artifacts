@@ -1,4 +1,6 @@
 export type ArtifactSetKey =
+	| 'DisenchantmentInDeepShadow' // Disenchantment in Deep Shadow
+	| 'CelestialGift' // Celestial Gift
 	| 'AubadeOfMorningstarAndMoon' // Aubade of Morningstar and Moon
 	| 'ADayCarvedFromRisingWinds' // A Day Carved From Rising Winds
 	| 'SilkenMoonsSerenade' // Silken Moon's Serenade

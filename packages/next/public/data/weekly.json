@@ -258,5 +258,25 @@
 				"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d1/Item_Elixir_of_the_Heretic.png"
 			}
 		]
+	},
+	{
+		"name": "Exalted Master of the Heretical Path",
+		"items": [
+			{
+				"key": "CounterfeitResin",
+				"name": "Counterfeit Resin",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Counterfeit_Resin.png"
+			},
+			{
+				"key": "TwistedWitheredBranch",
+				"name": "Twisted Withered Branch",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Item_Twisted_Withered_Branch.png"
+			},
+			{
+				"key": "ProfanedSprout",
+				"name": "Profaned Sprout",
+				"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Profaned_Sprout.png"
+			}
+		]
 	}
 ]

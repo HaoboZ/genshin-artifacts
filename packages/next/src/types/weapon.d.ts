@@ -96,6 +96,7 @@ export type WeaponKey =
 	| 'BloodsoakedRuins' // Bloodsoaked Ruins
 	| 'CalamityQueller' // Calamity Queller
 	| 'CrimsonMoonsSemblance' // Crimson Moon's Semblance
+	| 'DisasterAndRemorse' // Disaster and Remorse
 	| 'EngulfingLightning' // Engulfing Lightning
 	| 'FracturedHalo' // Fractured Halo
 	| 'LumidouceElegy' // Lumidouce Elegy
@@ -134,6 +135,7 @@ export type WeaponKey =
 	| 'IronPoint' // Iron Point
 	| 'BeginnersProtector' // Beginner's Protector
 	| 'AThousandFloatingDreams' // A Thousand Floating Dreams
+	| 'AngelosHeptades' // Angelos' Heptades
 	| 'CashflowSupervision' // Cashflow Supervision
 	| 'CranesEchoingCall' // Crane's Echoing Call
 	| 'EverlastingMoonglow' // Everlasting Moonglow

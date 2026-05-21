@@ -1,4 +1,32 @@
 {
+	"DisenchantmentInDeepShadow": {
+		"key": "DisenchantmentInDeepShadow",
+		"name": "Disenchantment in Deep Shadow",
+		"rarity": 5,
+		"effect2Pc": "ATK +18%.",
+		"effect4Pc": "Increases Superconduct Reaction DMG by 80%. When the wielder attacks opponents affected by Superconduct, this attack's CRIT Rate is increased by 16%. An all-new blessing may be obtained as you make your way toward Snezhnaya...",
+		"group": 25,
+		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Iridescence_That_Ceased_Amidst_Glory.png",
+		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/a/a1/Item_Sharpness_That_Ceased_Upon_Wondrous_Creation.png",
+		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/a/a9/Item_Moment_That_Ceased_Upon_Waking_From_Grand_Dreams.png",
+		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Item_Ovations_That_Ceased_Upon_Festivity.png",
+		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Item_Pendulum_That_Ceased_Amidst_a_Great_Fall.png",
+		"order": 0
+	},
+	"CelestialGift": {
+		"key": "CelestialGift",
+		"name": "Celestial Gift",
+		"rarity": 5,
+		"effect2Pc": "Energy Recharge + 20%.",
+		"effect4Pc": "If the equipping character has completed Witch's Homework, after they use an Elemental Skill, they also gain \"Light's Guidance\" for 20s: All nearby party members gain a 20% Elemental DMG Bonus corresponding to the equipping character's Elemental Type. The equipping character can trigger this effect while off-field. DMG Bonuses provided by Artifact Sets with the same name do not stack.When your party has the Hexerei: Secret Rite effect, Light's Guidance is upgraded to \"Mortal Hymn\": All nearby party members gain a 40% Elemental DMG Bonus corresponding to both the equipping character and the current active party member's Elemental Type instead. If both characters have the same Elemental Type, these bonuses will not stack.",
+		"group": 25,
+		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Item_Heavensent_Fragrance.png",
+		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_Heavensent_Demise.png",
+		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Item_Heavensent_Decree.png",
+		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Heavensent_Reward.png",
+		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/7/78/Item_Heavensent_Crown.png",
+		"order": 1
+	},
 	"AubadeOfMorningstarAndMoon": {
 		"key": "AubadeOfMorningstarAndMoon",
 		"name": "Aubade of Morningstar and Moon",
@@ -11,7 +39,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Item_Moonlit_Offering%27s_Final_Hour.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Moonlit_Offering%27s_Libation.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/54/Item_Moonlit_Offering%27s_Silver_Crown.png",
-		"order": 0
+		"order": 2
 	},
 	"ADayCarvedFromRisingWinds": {
 		"key": "ADayCarvedFromRisingWinds",
@@ -25,7 +53,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/bd/Item_A_Note_in_Spring%27s_Leich.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Item_Heldenepos%27s_Unspoken_Tale.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Minnesang_of_Love_and_Lament.png",
-		"order": 1
+		"order": 3
 	},
 	"SilkenMoonsSerenade": {
 		"key": "SilkenMoonsSerenade",
@@ -39,7 +67,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Item_Frost_Devotee%27s_Delirium.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Joyous_Glory_of_the_Pure.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Item_Holy_Crown_of_the_Believer.png",
-		"order": 2
+		"order": 4
 	},
 	"NightOfTheSkysUnveiling": {
 		"key": "NightOfTheSkysUnveiling",
@@ -53,7 +81,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/15/Item_Revelation%27s_Toll.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Item_Vessel_of_Plenty.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Crown_of_the_Befallen.png",
-		"order": 3
+		"order": 5
 	},
 	"FinaleOfTheDeepGalleries": {
 		"key": "FinaleOfTheDeepGalleries",
@@ -67,7 +95,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Deep_Gallery%27s_Moment_of_Oblivion.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Item_Deep_Gallery%27s_Bestowed_Banquet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Deep_Gallery%27s_Lost_Crown.png",
-		"order": 4
+		"order": 6
 	},
 	"LongNightsOath": {
 		"key": "LongNightsOath",
@@ -81,7 +109,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/bc/Item_Undying_One%27s_Mourning_Bell.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Item_A_Horn_Unwinded.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Item_Dyed_Tassel.png",
-		"order": 5
+		"order": 7
 	},
 	"ObsidianCodex": {
 		"key": "ObsidianCodex",
@@ -95,7 +123,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Myths_of_the_Night_Realm.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Pre-Banquet_of_the_Contenders.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Crown_of_the_Saints.png",
-		"order": 6
+		"order": 8
 	},
 	"ScrollOfTheHeroOfCinderCity": {
 		"key": "ScrollOfTheHeroOfCinderCity",
@@ -109,7 +137,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/3e/Item_Mystic%27s_Gold_Dial.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Wandering_Scholar%27s_Claw_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Demon-Warrior%27s_Feather_Mask.png",
-		"order": 7
+		"order": 9
 	},
 	"UnfinishedReverie": {
 		"key": "UnfinishedReverie",
@@ -123,7 +151,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Moment_of_Attainment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_The_Wine-Flask_Over_Which_the_Plan_Was_Hatched.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Crownless_Crown.png",
-		"order": 8
+		"order": 10
 	},
 	"FragmentOfHarmonicWhimsy": {
 		"key": "FragmentOfHarmonicWhimsy",
@@ -137,21 +165,21 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Item_The_Grand_Jape_of_the_Turning_of_Fate.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Ichor_Shower_Rhapsody.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Whimsical_Dance_of_the_Withered.png",
-		"order": 9
+		"order": 11
 	},
 	"NighttimeWhispersInTheEchoingWoods": {
 		"key": "NighttimeWhispersInTheEchoingWoods",
 		"name": "Nighttime Whispers in the Echoing Woods",
 		"rarity": 5,
 		"effect2Pc": "ATK +18%.",
-		"effect4Pc": "After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.",
+		"effect4Pc": "After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. When under a shield granted by the Crystallize reaction, or when Moondrifts formed by Lunar-Crystallize reactions are nearby, the above effect will be increased by 150%. When these conditions are no longer met, this additional increase disappears after 1s.",
 		"group": 19,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Selfless_Floral_Accessory.png",
 		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Honest_Quill.png",
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Item_Faithful_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/24/Item_Magnanimous_Ink_Bottle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Item_Compassionate_Ladies%27_Hat.png",
-		"order": 10
+		"order": 12
 	},
 	"SongOfDaysPast": {
 		"key": "SongOfDaysPast",
@@ -165,7 +193,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/62/Item_Echoing_Sound_From_Days_Past.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Item_Promised_Dream_of_Days_Past.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/db/Item_Poetry_of_Days_Past.png",
-		"order": 11
+		"order": 13
 	},
 	"GoldenTroupe": {
 		"key": "GoldenTroupe",
@@ -179,7 +207,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Golden_Era%27s_Prelude.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Item_Golden_Night%27s_Bustle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Golden_Troupe%27s_Reward.png",
-		"order": 12
+		"order": 14
 	},
 	"MarechausseeHunter": {
 		"key": "MarechausseeHunter",
@@ -193,7 +221,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Moment_of_Judgment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Item_Forgotten_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Item_Veteran%27s_Visage.png",
-		"order": 13
+		"order": 15
 	},
 	"VourukashasGlow": {
 		"key": "VourukashasGlow",
@@ -207,7 +235,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/d/d4/Item_Ancient_Abscission.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Item_Feast_of_Boundless_Joy.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Heart_of_Khvarena%27s_Brilliance.png",
-		"order": 14
+		"order": 16
 	},
 	"NymphsDream": {
 		"key": "NymphsDream",
@@ -221,7 +249,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Nymph%27s_Constancy.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Heroes%27_Tea_Party.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Fell_Dragon%27s_Monocle.png",
-		"order": 15
+		"order": 17
 	},
 	"FlowerOfParadiseLost": {
 		"key": "FlowerOfParadiseLost",
@@ -235,7 +263,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Item_A_Moment_Congealed.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Item_Secret-Keeper%27s_Magic_Bottle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Amethyst_Crown.png",
-		"order": 16
+		"order": 18
 	},
 	"DesertPavilionChronicle": {
 		"key": "DesertPavilionChronicle",
@@ -249,7 +277,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Item_Timepiece_of_the_Lost_Path.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Defender_of_the_Enchanting_Dream.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Legacy_of_the_Desert_High-Born.png",
-		"order": 17
+		"order": 19
 	},
 	"GildedDreams": {
 		"key": "GildedDreams",
@@ -263,7 +291,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_The_Sunken_Years.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Item_Honeyed_Final_Feast.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Shadow_of_the_Sand_King.png",
-		"order": 18
+		"order": 20
 	},
 	"DeepwoodMemories": {
 		"key": "DeepwoodMemories",
@@ -277,7 +305,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Item_A_Time_of_Insight.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Lamp_of_the_Lost.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Laurel_Coronet.png",
-		"order": 19
+		"order": 21
 	},
 	"EchoesOfAnOffering": {
 		"key": "EchoesOfAnOffering",
@@ -291,7 +319,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Item_Symbol_of_Felicitation.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/89/Item_Chalice_of_the_Font.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Flowing_Rings.png",
-		"order": 20
+		"order": 22
 	},
 	"VermillionHereafter": {
 		"key": "VermillionHereafter",
@@ -305,7 +333,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/12/Item_Solar_Relic.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/7/77/Item_Moment_of_the_Pact.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Item_Thundering_Poise.png",
-		"order": 21
+		"order": 23
 	},
 	"OceanHuedClam": {
 		"key": "OceanHuedClam",
@@ -319,7 +347,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Cowry_of_Parting.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Pearl_Cage.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/60/Item_Crown_of_Watatsumi.png",
-		"order": 22
+		"order": 24
 	},
 	"HuskOfOpulentDreams": {
 		"key": "HuskOfOpulentDreams",
@@ -333,7 +361,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Song_of_Life.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Calabash_of_Awakening.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/84/Item_Skeletal_Hat.png",
-		"order": 23
+		"order": 25
 	},
 	"EmblemOfSeveredFate": {
 		"key": "EmblemOfSeveredFate",
@@ -347,7 +375,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Storm_Cage.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Item_Scarlet_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Ornate_Kabuto.png",
-		"order": 24
+		"order": 26
 	},
 	"ShimenawasReminiscence": {
 		"key": "ShimenawasReminiscence",
@@ -361,7 +389,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Morning_Dew%27s_Moment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Hopeful_Heart.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Capricious_Visage.png",
-		"order": 25
+		"order": 27
 	},
 	"PaleFlame": {
 		"key": "PaleFlame",
@@ -375,7 +403,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Item_Moment_of_Cessation.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Surpassing_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Mocking_Mask.png",
-		"order": 26
+		"order": 28
 	},
 	"TenacityOfTheMillelith": {
 		"key": "TenacityOfTheMillelith",
@@ -389,7 +417,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Orichalceous_Time-Dial.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Noble%27s_Pledging_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Item_General%27s_Ancient_Helm.png",
-		"order": 27
+		"order": 29
 	},
 	"HeartOfDepth": {
 		"key": "HeartOfDepth",
@@ -403,7 +431,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Item_Copper_Compass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Goblet_of_Thundering_Deep.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Wine-Stained_Tricorne.png",
-		"order": 28
+		"order": 30
 	},
 	"BlizzardStrayer": {
 		"key": "BlizzardStrayer",
@@ -417,7 +445,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Item_Frozen_Homeland%27s_Demise.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Frost-Weaved_Dignity.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Item_Broken_Rime%27s_Echo.png",
-		"order": 29
+		"order": 31
 	},
 	"CrimsonWitchOfFlames": {
 		"key": "CrimsonWitchOfFlames",
@@ -431,7 +459,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Witch%27s_End_Time.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Witch%27s_Heart_Flames.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Witch%27s_Scorching_Hat.png",
-		"order": 30
+		"order": 32
 	},
 	"Lavawalker": {
 		"key": "Lavawalker",
@@ -445,7 +473,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Item_Lavawalker%27s_Torment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Lavawalker%27s_Epiphany.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Lavawalker%27s_Wisdom.png",
-		"order": 31
+		"order": 33
 	},
 	"ThunderingFury": {
 		"key": "ThunderingFury",
@@ -459,7 +487,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Hourglass_of_Thunder.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Omen_of_Thunderstorm.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Thunder_Summoner%27s_Crown.png",
-		"order": 32
+		"order": 34
 	},
 	"Thundersoother": {
 		"key": "Thundersoother",
@@ -473,7 +501,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Hour_of_Soothing_Thunder.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Thundersoother%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Thundersoother%27s_Diadem.png",
-		"order": 33
+		"order": 35
 	},
 	"RetracingBolide": {
 		"key": "RetracingBolide",
@@ -487,21 +515,21 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Item_Summer_Night%27s_Moment.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Summer_Night%27s_Waterballoon.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_Summer_Night%27s_Mask.png",
-		"order": 34
+		"order": 36
 	},
 	"ArchaicPetra": {
 		"key": "ArchaicPetra",
 		"name": "Archaic Petra",
 		"rarity": 5,
 		"effect2Pc": "Geo DMG Bonus +15%.",
-		"effect4Pc": "Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.",
+		"effect4Pc": "Upon obtaining an Elemental Shard created through Crystallize or triggering a Lunar-Crystallize reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.",
 		"group": 7,
 		"flower": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Flower_of_Creviced_Cliff.png",
 		"plume": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Feather_of_Jagged_Peaks.png",
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Sundial_of_Enduring_Jade.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Goblet_of_Chiseled_Crag.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Mask_of_Solitude_Basalt.png",
-		"order": 35
+		"order": 37
 	},
 	"ViridescentVenerer": {
 		"key": "ViridescentVenerer",
@@ -515,7 +543,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Viridescent_Venerer%27s_Determination.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Viridescent_Venerer%27s_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Item_Viridescent_Venerer%27s_Diadem.png",
-		"order": 36
+		"order": 38
 	},
 	"MaidenBeloved": {
 		"key": "MaidenBeloved",
@@ -529,7 +557,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Maiden%27s_Passing_Youth.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Maiden%27s_Fleeting_Leisure.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Maiden%27s_Fading_Beauty.png",
-		"order": 37
+		"order": 39
 	},
 	"BloodstainedChivalry": {
 		"key": "BloodstainedChivalry",
@@ -543,7 +571,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/8/8c/Item_Bloodstained_Final_Hour.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Bloodstained_Chevalier%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Bloodstained_Iron_Mask.png",
-		"order": 38
+		"order": 40
 	},
 	"NoblesseOblige": {
 		"key": "NoblesseOblige",
@@ -557,7 +585,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Item_Royal_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Royal_Silver_Urn.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Item_Royal_Masque.png",
-		"order": 39
+		"order": 41
 	},
 	"WanderersTroupe": {
 		"key": "WanderersTroupe",
@@ -571,7 +599,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Concert%27s_Final_Hour.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Wanderer%27s_String-Kettle.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/8/81/Item_Conductor%27s_Top_Hat.png",
-		"order": 40
+		"order": 42
 	},
 	"GladiatorsFinale": {
 		"key": "GladiatorsFinale",
@@ -585,7 +613,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Gladiator%27s_Longing.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Item_Gladiator%27s_Intoxication.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Item_Gladiator%27s_Triumphus.png",
-		"order": 41
+		"order": 43
 	},
 	"PrayersToSpringtime": {
 		"key": "PrayersToSpringtime",
@@ -594,7 +622,7 @@
 		"effect2Pc": "Affected by Cryo for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png",
-		"order": 42
+		"order": 44
 	},
 	"PrayersForIllumination": {
 		"key": "PrayersForIllumination",
@@ -603,7 +631,7 @@
 		"effect2Pc": "Affected by Pyro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png",
-		"order": 43
+		"order": 45
 	},
 	"PrayersForDestiny": {
 		"key": "PrayersForDestiny",
@@ -612,7 +640,7 @@
 		"effect2Pc": "Affected by Hydro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png",
-		"order": 44
+		"order": 46
 	},
 	"PrayersForWisdom": {
 		"key": "PrayersForWisdom",
@@ -621,7 +649,7 @@
 		"effect2Pc": "Affected by Electro for 40% less time.",
 		"group": 3,
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png",
-		"order": 45
+		"order": 47
 	},
 	"Scholar": {
 		"key": "Scholar",
@@ -635,7 +663,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Scholar%27s_Clock.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Scholar%27s_Ink_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Scholar%27s_Lens.png",
-		"order": 46
+		"order": 48
 	},
 	"Gambler": {
 		"key": "Gambler",
@@ -649,7 +677,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Item_Gambler%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Gambler%27s_Dice_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Gambler%27s_Earrings.png",
-		"order": 47
+		"order": 49
 	},
 	"MartialArtist": {
 		"key": "MartialArtist",
@@ -663,7 +691,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Martial_Artist%27s_Water_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Item_Martial_Artist%27s_Wine_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Item_Martial_Artist%27s_Bandana.png",
-		"order": 48
+		"order": 50
 	},
 	"BraveHeart": {
 		"key": "BraveHeart",
@@ -677,7 +705,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Fortitude_of_the_Brave.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Item_Outset_of_the_Brave.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Crown_of_the_Brave.png",
-		"order": 49
+		"order": 51
 	},
 	"DefendersWill": {
 		"key": "DefendersWill",
@@ -691,7 +719,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Guardian%27s_Clock.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Guardian%27s_Vessel.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Guardian%27s_Band.png",
-		"order": 50
+		"order": 52
 	},
 	"TheExile": {
 		"key": "TheExile",
@@ -705,7 +733,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Exile%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Exile%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Exile%27s_Circlet.png",
-		"order": 51
+		"order": 53
 	},
 	"Instructor": {
 		"key": "Instructor",
@@ -719,7 +747,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Instructor%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Instructor%27s_Tea_Cup.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Instructor%27s_Cap.png",
-		"order": 52
+		"order": 54
 	},
 	"Berserker": {
 		"key": "Berserker",
@@ -733,7 +761,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Berserker%27s_Timepiece.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Berserker%27s_Bone_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Item_Berserker%27s_Battle_Mask.png",
-		"order": 53
+		"order": 55
 	},
 	"TinyMiracle": {
 		"key": "TinyMiracle",
@@ -747,7 +775,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiny_Miracle%27s_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Tiny_Miracle%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/7/73/Item_Tiny_Miracle%27s_Earrings.png",
-		"order": 54
+		"order": 56
 	},
 	"ResolutionOfSojourner": {
 		"key": "ResolutionOfSojourner",
@@ -761,7 +789,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Sundial_of_the_Sojourner.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Goblet_of_the_Sojourner.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Crown_of_Parting.png",
-		"order": 55
+		"order": 57
 	},
 	"TravelingDoctor": {
 		"key": "TravelingDoctor",
@@ -775,7 +803,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Traveling_Doctor%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Traveling_Doctor%27s_Medicine_Pot.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Traveling_Doctor%27s_Handkerchief.png",
-		"order": 56
+		"order": 58
 	},
 	"LuckyDog": {
 		"key": "LuckyDog",
@@ -789,7 +817,7 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Lucky_Dog%27s_Hourglass.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Lucky_Dog%27s_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Lucky_Dog%27s_Silver_Circlet.png",
-		"order": 57
+		"order": 59
 	},
 	"Adventurer": {
 		"key": "Adventurer",
@@ -803,6 +831,6 @@
 		"sands": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Adventurer%27s_Pocket_Watch.png",
 		"goblet": "https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Adventurer%27s_Golden_Goblet.png",
 		"circlet": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Adventurer%27s_Bandana.png",
-		"order": 58
+		"order": 60
 	}
 }

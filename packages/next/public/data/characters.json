@@ -729,6 +729,16 @@
 		"talentMaterial": "Equity",
 		"weeklyMaterial": "Everamber"
 	},
+	"Nicole": {
+		"key": "Nicole",
+		"name": "Nicole",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Pyro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Nicole_Icon.png",
+		"talentMaterial": "Elysium",
+		"weeklyMaterial": "CounterfeitResin"
+	},
 	"Nilou": {
 		"key": "Nilou",
 		"name": "Nilou",
@@ -768,6 +778,16 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Ororon_Icon.png",
 		"talentMaterial": "Kindling",
 		"weeklyMaterial": "LightlessSilkString"
+	},
+	"Prune": {
+		"key": "Prune",
+		"name": "Prune",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"element": "Anemo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Prune_Icon.png",
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "MaskOfTheVirtuousDoctor"
 	},
 	"Qiqi": {
 		"key": "Qiqi",

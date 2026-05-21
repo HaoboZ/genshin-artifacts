@@ -37,4 +37,7 @@ export type MaterialKey =
 	| 'AscendedSampleQueen' // Ascended Sample: Queen
 	| 'MaskOfTheVirtuousDoctor' // Mask of the Virtuous Doctor
 	| 'MadmansRestraint' // Madman's Restraint
-	| 'ElixirOfTheHeretic'; // Elixir of the Heretic
+	| 'ElixirOfTheHeretic' // Elixir of the Heretic
+	| 'CounterfeitResin' // Counterfeit Resin
+	| 'TwistedWitheredBranch' // Twisted Withered Branch
+	| 'ProfanedSprout'; // Profaned Sprout

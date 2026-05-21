@@ -969,6 +969,16 @@
 		"stat": "CRIT Rate 22.1%",
 		"ability": "Grants a Bond of Life equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a Bond of Life, they gain a 12~28% DMG Bonus; if the value of the Bond of Life is greater than or equal to 30% of Max HP, then gain an additional 24~56% DMG."
 	},
+	"DisasterAndRemorse": {
+		"key": "DisasterAndRemorse",
+		"name": "Disaster and Remorse",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Disaster_and_Remorse.png",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"atk": 0,
+		"stat": "None",
+		"ability": "None"
+	},
 	"EngulfingLightning": {
 		"key": "EngulfingLightning",
 		"name": "Engulfing Lightning",
@@ -1349,6 +1359,16 @@
 		"stat": "Elemental Mastery 265",
 		"ability": "Party members other than the equipping character will provide the equipping character with buffs based on whether their Elemental Type is the same as the latter or not. If their Elemental Types are the same, increase Elemental Mastery by 32~64. If not, increase the equipping character's DMG Bonus from their Elemental Type by 10~26%. Each of the aforementioned effects can have up to 3 stacks. Additionally, all nearby party members other than the equipping character will have their Elemental Mastery increased by 40~48. Multiple such effects from multiple such weapons can stack."
 	},
+	"AngelosHeptades": {
+		"key": "AngelosHeptades",
+		"name": "Angelos' Heptades",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Weapon_Angelos%27_Heptades.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 741,
+		"stat": "ATK 16.5%",
+		"ability": "ATK is increased by 12~24%. After the equipping character creates a Shield, they gain \"Pathfinder's Light\" for 20s: Increases your active party member's DMG by 10~22% for every 1,000 ATK the equipping character has, up to a maximum of 26~58%. Additionally, when the equipping character creates a Shield, they will also gain \"Guide's Contentment\": Restores 14~18 Elemental Energy to the equipping character. The aforementioned effect can trigger once every 14s, and can also triggered when all types of chests are opened outside of combat. The equipping character may trigger this effect even when they are an off-field.Hexerei: Secret Rite: When your own Hexerei characters in the party are off-field, they can still gain 50% of the DMG Bonus provided by \"Pathfinder's Light.\""
+	},
 	"CashflowSupervision": {
 		"key": "CashflowSupervision",
 		"name": "Cashflow Supervision",
@@ -1425,7 +1445,7 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Weapon_Nightweaver%27s_Looking_Glass.png",
 		"rarity": 5,
 		"weaponType": "Catalyst",
-		"atk": 565,
+		"atk": 542,
 		"stat": "Elemental Mastery 265",
 		"ability": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 60~120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 60~120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 120~240%, their Hyperbloom and Burgeon DMG is increased by 80~160%, and their Lunar-Bloom DMG is increased by 40~80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field."
 	},

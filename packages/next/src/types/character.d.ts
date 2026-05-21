@@ -72,10 +72,12 @@ export type CharacterKey =
 	| 'Navia' // Navia
 	| 'Nefer' // Nefer
 	| 'Neuvillette' // Neuvillette
+	| 'Nicole' // Nicole
 	| 'Nilou' // Nilou
 	| 'Ningguang' // Ningguang
 	| 'Noelle' // Noelle
 	| 'Ororon' // Ororon
+	| 'Prune' // Prune
 	| 'Qiqi' // Qiqi
 	| 'RaidenShogun' // Raiden Shogun
 	| 'Razor' // Razor
