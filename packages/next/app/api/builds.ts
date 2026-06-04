@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 5/19/26
+// 6/3/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -1866,6 +1866,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		key: 'LanYan',
 		role: 'Shield & Buff Support',
 		weapon: [
+			'AngelosHeptades',
 			'StarcallersWatch',
 			'ThrillingTalesOfDragonSlayers',
 			'FavoniusCodex',
