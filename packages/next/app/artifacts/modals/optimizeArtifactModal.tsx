@@ -73,7 +73,7 @@ export default function OptimizeArtifactModal() {
 						filteredArtifacts,
 						filter(isNot(prop('astralMark'))),
 						map((artifact) => ({ artifact, weight: weightedPercent(build, artifact) })),
-						firstBy([prop('weight'), 'desc']),
+						firstBy([prop('weight'), 'desc'], [prop('artifact', 'level'), 'desc']),
 					) ?? {};
 				if (!weight) continue;
 
