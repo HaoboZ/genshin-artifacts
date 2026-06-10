@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 6/3/26
+// 6/9/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -1772,6 +1772,39 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		],
 		mainStat: { sands: 'atk_', goblet: ['cryo_dmg_', 'atk_'], circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_'],
+	},
+	Lohen: {
+		key: 'Lohen',
+		role: 'DPS',
+		weapon: [
+			'DisasterAndRemorse',
+			['FracturedHalo', 'PrimordialJadeWingedSpear', 'StaffOfHoma'],
+			['SymphonistOfScents', 'CrimsonMoonsSemblance', 'LumidouceElegy'],
+			'CalamityQueller',
+			['BloodsoakedRuins', 'StaffOfTheScarletSands'],
+			'SkywardSpine',
+			['Deathmatch', 'VortexVanquisher'],
+			['SacrificersStaff', 'BlackcliffPole'],
+			'EngulfingLightning',
+			[
+				'FavoniusLance',
+				'WhiteTassel',
+				'ProspectorsShovel',
+				'TamayurateiNoOhanashi',
+				'CrescentPike',
+				'PrototypeStarglitter',
+			],
+		],
+		group: 0,
+		artifact: [
+			'ADayCarvedFromRisingWinds',
+			'BlizzardStrayer',
+			'ShimenawasReminiscence',
+			'DesertPavilionChronicle',
+			'MarechausseeHunter',
+		],
+		mainStat: { sands: 'atk_', goblet: 'cryo_dmg_', circlet: 'critRD_' },
+		subStat: ['critRD_', 'atk_', 'atk', 'enerRech_'],
 	},
 	// Anemo
 	Sucrose: {

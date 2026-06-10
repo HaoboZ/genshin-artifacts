@@ -62,6 +62,7 @@ export type CharacterKey =
 	| 'Layla' // Layla
 	| 'Linnea' // Linnea
 	| 'Lisa' // Lisa
+	| 'Lohen' // Lohen
 	| 'Lynette' // Lynette
 	| 'Lyney' // Lyney
 	| 'Mavuika' // Mavuika

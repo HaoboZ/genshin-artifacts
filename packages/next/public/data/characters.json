@@ -629,6 +629,16 @@
 		"talentMaterial": "Ballad",
 		"weeklyMaterial": "DvalinsClaw"
 	},
+	"Lohen": {
+		"key": "Lohen",
+		"name": "Lohen",
+		"rarity": 5,
+		"weaponType": "Polearm",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Lohen_Icon.png",
+		"talentMaterial": "Resistance",
+		"weeklyMaterial": "AscendedSampleKnight"
+	},
 	"Lynette": {
 		"key": "Lynette",
 		"name": "Lynette",
