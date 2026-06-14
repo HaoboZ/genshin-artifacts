@@ -24,13 +24,13 @@
 		"prepack": "npm run build"
 	},
 	"dependencies": {
-		"remeda": "2.34.1",
+		"remeda": "2.39.0",
 		"rooks": "9.8.0"
 	},
 	"peerDependencies": {
 		"react": ">=18"
 	},
 	"devDependencies": {
-		"@types/react": "19.2.15"
+		"@types/react": "19.2.17"
 	}
 }
