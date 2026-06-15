@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 6/9/26
+// 6/14/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -344,6 +344,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'DPS & Buff Support',
 		weapon: [
 			'AThousandBlazingSuns',
+			'GestOfTheMightyWolf',
 			['RedhornStonethresher', 'Verdict'],
 			'BeaconOfTheReedSea',
 			['MailedFlower', 'WolfsGravestone', 'TheUnforged'],
@@ -355,8 +356,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		artifact: [
 			'ObsidianCodex',
 			'ScrollOfTheHeroOfCinderCity',
-			'MarechausseeHunter',
-			'DeepwoodMemories',
+			['MarechausseeHunter', 'DeepwoodMemories'],
 		],
 		mainStat: { sands: ['eleMas', 'atk_'], goblet: 'pyro_dmg_', circlet: 'critRD_' },
 		subStat: ['critRD_', 'atk_', 'eleMas'],
@@ -584,8 +584,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 				['HeartOfDepth', 'GladiatorsFinale', 'NymphsDream'],
 				'BlizzardStrayer',
 				'ThunderingFury',
-				'EchoesOfAnOffering',
-				'MarechausseeHunter',
+				['EchoesOfAnOffering', 'MarechausseeHunter'],
 			],
 			mainStat: { sands: 'atk_', goblet: 'hydro_dmg_', circlet: 'critRD_' },
 			subStat: ['critRD_', 'atk_', 'enerRech_', 'hp_', 'eleMas'],
@@ -1017,11 +1016,10 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 		role: 'Quickbloom/Hyperbloom DPS',
 		weapon: [
 			'StaffOfTheScarletSands',
-			'BalladOfTheFjords',
-			'PrimordialJadeWingedSpear',
-			'Deathmatch',
-			['LumidouceElegy', 'StaffOfHoma', 'WhiteTassel', 'MissiveWindspear'],
-			['KitainCrossSpear', 'DragonsBane'],
+			'DisasterAndRemorse',
+			['PrimordialJadeWingedSpear', 'BalladOfTheFjords'],
+			['LumidouceElegy', 'FracturedHalo', 'StaffOfHoma', 'WhiteTassel'],
+			['Deathmatch', 'SymphonistOfScents', 'KitainCrossSpear', 'MissiveWindspear'],
 			'SkywardSpine',
 			'FavoniusLance',
 		],
@@ -1786,6 +1784,7 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 			['Deathmatch', 'VortexVanquisher'],
 			['SacrificersStaff', 'BlackcliffPole'],
 			'EngulfingLightning',
+			'MissiveWindspear',
 			[
 				'FavoniusLance',
 				'WhiteTassel',
