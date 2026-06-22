@@ -4,7 +4,7 @@ import { type Build } from '@/types/data';
 import { type CharacterKey } from '@/types/good';
 
 // https://tinyurl.com/genshinbuilds
-// 6/14/26
+// 6/22/26
 export const builds: Record<CharacterKey, Build | Build[]> = {
 	Traveler: {
 		key: 'Traveler',
@@ -363,28 +363,27 @@ export const builds: Record<CharacterKey, Build | Build[]> = {
 	},
 	Durin: {
 		key: 'Durin',
-		role: 'Buff Support & Off-Field DPS',
+		role: 'Vaporize/Melt Off-Field DPS',
 		weapon: [
 			'AthameArtis',
 			['PrimordialJadeCutter', 'MistsplitterReforged'],
 			'HaranGeppakuFutsu',
-			['LightOfFoliarIncision', 'Absolution'],
+			['Absolution', 'LightOfFoliarIncision'],
 			'Azurelight',
-			['UrakuMisugiri', 'SplendorOfTranquilWaters', 'LightbearingMoonshard'],
-			'FreedomSworn',
+			['UrakuMisugiri', 'FreedomSworn', 'SplendorOfTranquilWaters', 'LightbearingMoonshard'],
 			'WolfFang',
-			['SummitShaper', 'LionsRoar', 'MoonweaversDawn', 'HarbingerOfDawn'],
+			['SummitShaper', 'HarbingerOfDawn'],
+			['MoonweaversDawn', 'IronSting', 'ToukabouShigure'],
 			'FinaleOfTheDeep',
 		],
 		group: 0,
 		artifact: [
-			['ADayCarvedFromRisingWinds', 'CelestialGift'],
-			'NoblesseOblige',
-			'EmblemOfSeveredFate',
-			'ScrollOfTheHeroOfCinderCity',
+			'ADayCarvedFromRisingWinds',
+			['GildedDreams', 'EmblemOfSeveredFate'],
+			'CrimsonWitchOfFlames',
 		],
 		mainStat: { sands: 'atk_', goblet: ['pyro_dmg_', 'atk_'], circlet: 'critRD_' },
-		subStat: ['critRD_', 'atk_', 'enerRech_'],
+		subStat: ['critRD_', 'atk_', 'eleMas', 'enerRech_'],
 	},
 	Nicole: {
 		key: 'Nicole',
