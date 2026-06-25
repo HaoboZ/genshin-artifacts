@@ -2,6 +2,7 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, prop } from 'remeda';
 import fetchPage from '../fetchPage';
+import { getImageUrl, required, requiredMatch, requiredText } from './helpers';
 
 const artifactLocation = {
 	// 4
@@ -26,7 +27,9 @@ const artifactLocation = {
 };
 
 export async function fetchArtifacts() {
-	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Artifact/Sets');
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Artifact/Sets', {
+		waitForSelector: '.wikitable tr',
+	});
 
 	const artifacts = [];
 	let group = 8;
@@ -34,26 +37,35 @@ export async function fetchArtifacts() {
 		const name = artifact.children[0].querySelector('a')?.textContent;
 		if (!name) continue;
 
-		const rarity = +artifact.children[1].textContent.match(/(\d+)★/)[1];
+		const rarity = +requiredMatch(
+			requiredText(artifact.children[1], `${name} rarity`),
+			/(\d+)★/,
+			`${name} rarity`,
+		)[1];
 		if (rarity < 3) continue;
 
 		const key = pascalCase(name.replaceAll("'", ''));
 		const bonus = [
-			...artifact.children[3].textContent.matchAll(/\d-Piece: (.*?)(?=\d-Piece:|$)/gs),
+			...requiredText(artifact.children[3], `${name} bonuses`).matchAll(
+				/\d-Piece: (.*?)(?=\d-Piece:|$)/gs,
+			),
 		];
 		const images = [...artifact.children[2].querySelectorAll('img')].toReversed();
 		artifacts.push({
 			key,
 			name,
 			rarity,
-			effect2Pc: bonus[0][1].trim(),
+			effect2Pc: required(bonus[0], `${name} 2-piece bonus`)[1].trim(),
 			effect4Pc: bonus[1]?.[1].trim(),
-			group: rarity === 5 ? Math.floor(group++ / 2) : artifactLocation[key],
-			flower: images[9]?.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
-			plume: images[7]?.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
-			sands: images[5]?.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
-			goblet: images[3]?.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
-			circlet: images[1].getAttribute('data-src').replace(/(\.png).*$/, '$1'),
+			group:
+				rarity === 5
+					? Math.floor(group++ / 2)
+					: required(artifactLocation[key], `${name} artifact location group`),
+			flower: images[9] && getImageUrl(images[9], `${name} flower image`),
+			plume: images[7] && getImageUrl(images[7], `${name} plume image`),
+			sands: images[5] && getImageUrl(images[5], `${name} sands image`),
+			goblet: images[3] && getImageUrl(images[3], `${name} goblet image`),
+			circlet: getImageUrl(images[1], `${name} circlet image`),
 		});
 	}
 	return artifacts.toReversed().map((artifact, order) => ({ ...artifact, order }));

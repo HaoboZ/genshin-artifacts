@@ -2,13 +2,22 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, prop } from 'remeda';
 import fetchPage from '../fetchPage';
+import { getImageUrl, required, requiredText } from './helpers';
 
 export async function fetchWeapons() {
-	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Weapon/List/By_Weapon_Type');
+	const dom = await fetchPage(
+		'https://genshin-impact.fandom.com/wiki/Weapon/List/By_Weapon_Type',
+		{
+			waitForSelector: '.article-table tr',
+		},
+	);
 
 	const weapons = [];
 	for (const weaponTypeTable of dom.window.document.querySelectorAll('.article-table')) {
-		const weaponType = weaponTypeTable.previousElementSibling.querySelector('a').title;
+		const weaponType = required(
+			weaponTypeTable.previousElementSibling?.querySelector('a'),
+			'weapon type heading link',
+		).title;
 		for (const { children } of weaponTypeTable.querySelectorAll('tr')) {
 			const name = children[1].querySelector('a')?.textContent;
 			if (!name) continue;
@@ -17,15 +26,13 @@ export async function fetchWeapons() {
 			weapons.push({
 				key: pascalCase(name.replaceAll("'", '')),
 				name,
-				image: children[0]
-					.querySelector('img')
-					.getAttribute('data-src')
-					.replace(/(\.png).*$/, '$1'),
-				rarity: +children[2].querySelector('img').alt[0],
+				image: getImageUrl(children[0].querySelector('img'), `${name} image`),
+				rarity: +required(children[2].querySelector('img'), `${name} rarity image`).alt[0],
 				weaponType,
-				atk: +(children[3].textContent.match(/\d+/)?.[0] ?? 0),
-				stat: children[4].textContent.match(/(.*)\(/)?.[1] ?? 'None',
-				ability: children[5].textContent.trim(),
+				atk: +(requiredText(children[3], `${name} attack`).match(/\d+/)?.[0] ?? 0),
+				stat:
+					requiredText(children[4], `${name} secondary stat`).match(/(.*)\(/)?.[1] ?? 'None',
+				ability: requiredText(children[5], `${name} ability`),
 			});
 		}
 	}

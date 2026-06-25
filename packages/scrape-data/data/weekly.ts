@@ -1,42 +1,53 @@
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import fetchPage from '../fetchPage';
+import { getImageUrl, required } from './helpers';
 
-export async function fetchWeekly(characters) {
+export async function fetchWeekly() {
 	const dom = await fetchPage(
 		'https://genshin-impact.fandom.com/wiki/Character_Level-Up_Material',
+		{ waitForSelector: '.wikitable td[rowspan="3"]' },
 	);
 
 	const weekly = [];
-	const bosses = dom.window.document.getElementsByClassName('wikitable')[1];
+	const characterWeeklyMaterials = {};
+	const bosses = required(
+		dom.window.document.getElementsByClassName('wikitable')[1],
+		'weekly boss table',
+	);
 	for (const boss of bosses.querySelectorAll('td[rowspan="3"]')) {
 		const matContainer = [
 			boss.nextElementSibling,
-			boss.parentElement.nextElementSibling.firstElementChild,
-			boss.parentElement.nextElementSibling.nextElementSibling.firstElementChild,
+			boss.parentElement?.nextElementSibling?.firstElementChild,
+			boss.parentElement?.nextElementSibling?.nextElementSibling?.firstElementChild,
 		];
 
 		weekly.push({
-			name: boss.querySelector('a').title.replace(' (Weekly Boss)', ''),
+			name: required(boss.querySelector('a'), 'weekly boss link').title.replace(
+				' (Weekly Boss)',
+				'',
+			),
 			items: matContainer.map((container) => {
-				const image = container.querySelector('img');
+				const materialContainer = required(container, 'weekly material container');
+				const image = required(materialContainer.querySelector('img'), 'weekly material image');
 				const key = pascalCase(image.alt.replace(/'/g, ''));
-				if (characters) {
-					for (const character of container.nextElementSibling.querySelectorAll('a')) {
-						const found = characters.find(({ name }) => name === character.title);
-						if (found) found.weeklyMaterial = key;
-					}
+				const characterContainer = required(
+					materialContainer.nextElementSibling,
+					`${image.alt} character container`,
+				);
+				for (const character of characterContainer.querySelectorAll('a')) {
+					characterWeeklyMaterials[character.title] = key;
 				}
 
 				return {
 					key,
 					name: image.alt,
-					image: image.getAttribute('data-src').replace(/(\.png).*$/, '$1'),
+					image: getImageUrl(image, `${image.alt} weekly material image`),
 				};
 			}),
 		});
 	}
-	return weekly;
+	return { weekly, characterWeeklyMaterials };
 }
 
 export function writeWeekly(weekly) {

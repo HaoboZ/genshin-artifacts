@@ -2,13 +2,18 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, pick, prop } from 'remeda';
 import fetchPage from '../fetchPage';
+import { getImageUrl, required } from './helpers';
 
 export async function fetchCharacters() {
-	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Character/List');
+	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Character/List', {
+		waitForSelector: '.mw-parser-output tbody tr',
+	});
 
 	const characters = [];
-	for (const { children } of dom.window.document.querySelector('.mw-parser-output tbody')
-		.children) {
+	for (const { children } of required(
+		dom.window.document.querySelector('.mw-parser-output tbody'),
+		'character table body',
+	).children) {
 		const character = children[1].querySelector('a');
 		if (!character) continue;
 
@@ -17,13 +22,12 @@ export async function fetchCharacters() {
 		const characterData = {
 			key: pascalCase(character.title),
 			name: character.title,
-			rarity: +children[2].querySelector('img').alt[0],
-			weaponType: children[4].querySelector('a').title,
+			rarity: +required(children[2].querySelector('img'), `${character.title} rarity image`)
+				.alt[0],
+			weaponType: required(children[4].querySelector('a'), `${character.title} weapon link`)
+				.title,
 			element: children[3].querySelector('a')?.title ?? 'None',
-			image: children[0]
-				.querySelector('img')
-				.getAttribute('data-src')
-				.replace(/(\.png).*$/, '$1'),
+			image: getImageUrl(children[0].querySelector('img'), `${character.title} image`),
 		};
 
 		if (characterData.name === 'Manekin') {

@@ -519,6 +519,16 @@
 		"stat": "None",
 		"ability": "None"
 	},
+	"ATeaspoonOfTranscendence": {
+		"key": "ATeaspoonOfTranscendence",
+		"name": "A Teaspoon of Transcendence",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Weapon_A_Teaspoon_of_Transcendence.png",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "ATK increased by 28~?%.Additionally, each time the equipping character hits an opponent with their Charged Attack, they attain \"Surmount\" for a short time: their Stellar-Conduct DMG is increased by 16~?% for 5s. This effect can stack once every 0.2s, max 3 stacks."
+	},
 	"AThousandBlazingSuns": {
 		"key": "AThousandBlazingSuns",
 		"name": "A Thousand Blazing Suns",

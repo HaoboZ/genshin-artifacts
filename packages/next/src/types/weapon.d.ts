@@ -51,6 +51,7 @@ export type WeaponKey =
 	| 'TravelersHandySword' // Traveler's Handy Sword
 	| 'SilverSword' // Silver Sword
 	| 'DullBlade' // Dull Blade
+	| 'ATeaspoonOfTranscendence' // A Teaspoon of Transcendence
 	| 'AThousandBlazingSuns' // A Thousand Blazing Suns
 	| 'BeaconOfTheReedSea' // Beacon of the Reed Sea
 	| 'FangOfTheMountainKing' // Fang of the Mountain King
