@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
 import { useDebouncedValue } from 'rooks';
 import usePasteImage from '../../hooks/usePasteImage';
-import { type IArtifact } from '../../types/good';
+import { type IArtifact } from '@/types/good';
 import cropBox from './cropBox';
 import fileToCanvas from './fileToCanvas';
 import findText from './findText';

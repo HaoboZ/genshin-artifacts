@@ -1,0 +1,261 @@
+{
+	"Aino": { "Reaction Support": { "group": 0 } },
+	"Albedo": { "Off-Field DPS": { "group": 0 } },
+	"Alhaitham": {
+		"Spread DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "eleMas", "atk_"] }
+	},
+	"Aloy": { "Burst Support": { "group": 0 } },
+	"Amber": {
+		"Buff Support": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] }
+	},
+	"AratakiItto": { "DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "def_", "atk_"] } },
+	"Arlecchino": { "DPS": { "group": 0 } },
+	"Baizhu": { "Heal Support": { "group": 2 } },
+	"Barbara": {
+		"Heal Support": {
+			"group": 0,
+			"artifact": [
+				["MaidenBeloved", "OceanHuedClam"],
+				["ScrollOfTheHeroOfCinderCity", "Instructor"]
+			]
+		}
+	},
+	"Beidou": { "Off-Field DPS": { "group": 2 } },
+	"Bennett": {
+		"Support": {
+			"group": 1,
+			"mainStat": {
+				"sands": ["enerRech_", "atk_", "hp_"],
+				"goblet": ["hp_", "pyro_dmg_"],
+				"circlet": ["heal_", "hp_", "critRD_"]
+			}
+		}
+	},
+	"Candace": { "Buff Support": { "group": 2 } },
+	"Charlotte": { "Heal Support": { "group": 0 } },
+	"Chasca": { "DPS": { "group": 0 } },
+	"Chevreuse": { "Buff Support": { "group": 1 } },
+	"Chiori": { "Off-Field DPS": { "group": 1 } },
+	"Chongyun": { "Burst Nuke": { "group": 2 } },
+	"Citlali": { "Buff Support": { "group": 0 } },
+	"Clorinde": { "DPS": { "group": 1 } },
+	"Collei": { "Reaction Support": { "group": 0 } },
+	"Columbina": {
+		"High Energy Requirement Off-Field DPS & Buff Support": {
+			"group": 1,
+			"artifact": ["AubadeOfMorningstarAndMoon", "SilkenMoonsSerenade"]
+		},
+		"Low Energy Requirement Off-Field DPS & Buff Support": { "group": 1 }
+	},
+	"Cyno": { "Aggravate DPS": { "omit": true }, "Quickbloom / Hyperbloom DPS": { "group": 1 } },
+	"Dahlia": { "Shield Support": { "group": 1 } },
+	"Dehya": { "Support": { "group": 0 } },
+	"Diluc": { "DPS": { "group": 0 } },
+	"Diona": { "Heal & Shield Support": { "group": 1 } },
+	"Dori": { "Heal Support": { "group": 1 } },
+	"Durin": {
+		"Buff Support & Off-Field DPS": { "omit": true },
+		"Vaporize/Melt Off-Field DPS": { "group": 0 }
+	},
+	"Emilie": { "Off-Field DPS": { "group": 0 } },
+	"Escoffier": {
+		"High Energy Requirement (Off-Field DPS, 1-2 Cryo Team Members)": { "group": 2 },
+		"Low Energy Requirement (Off-Field DPS, 3-4 Cryo Team Members)": { "omit": true }
+	},
+	"Eula": { "DPS": { "group": 0 } },
+	"Faruzan": { "Buff Support": { "group": 0 } },
+	"Fischl": {
+		"Off-Field Aggravate DPS": { "omit": true },
+		"Off-Field DPS": { "group": 1, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] }
+	},
+	"Flins": { "DPS": { "group": 1, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] } },
+	"Freminet": { "Cryo DPS": { "omit": true }, "Physical DPS": { "group": 1 } },
+	"Furina": { "Off-Field DPS & Buff Support": { "group": 0 } },
+	"Gaming": { "DPS": { "group": 2 } },
+	"Ganyu": {
+		"Freeze DPS": { "omit": true },
+		"Melt DPS": { "group": 0 },
+		"Mono Cryo DPS": { "omit": true }
+	},
+	"Gorou": { "Buff Support": { "group": 0 } },
+	"HuTao": { "DPS": { "group": 1 } },
+	"Iansan": { "Buff Support": { "group": 0 } },
+	"Ifa": { "Anemo DPS": { "group": 0 } },
+	"Illuga": { "Buff Support": { "group": 2 } },
+	"Ineffa": { "Off-field DPS & Buff & Shield Support": { "group": 0 } },
+	"Jahoda": { "Off-Field Reaction DPS & Heal Support": { "group": 2 } },
+	"Jean": { "Heal Support & Damage": { "group": 0 } },
+	"Kachina": { "Buff & Reaction Support": { "group": 1 } },
+	"KaedeharaKazuha": { "Reaction DPS & Buff Support": { "group": 1 } },
+	"Kaeya": {
+		"Freeze / Mono Cryo": { "omit": true },
+		"Reverse Melt": { "group": 0, "subStat": ["critRD_", "enerRech_", ["atk_", "eleMas"]] }
+	},
+	"KamisatoAyaka": { "DPS": { "group": 0 } },
+	"KamisatoAyato": {
+		"DPS": { "group": 0 },
+		"additional": [
+			{
+				"key": "KamisatoAyato",
+				"role": "DPS",
+				"weapon": ["HaranGeppakuFutsu"],
+				"artifact": ["EchoesOfAnOffering"],
+				"mainStat": { "sands": "atk_", "goblet": "hydro_dmg_", "circlet": "critRD_" },
+				"subStat": ["critRD_", "atk_", "enerRech_", "hp_", "eleMas"],
+				"group": 0,
+				"buildIndex": 1
+			}
+		]
+	},
+	"Kaveh": { "Bloom / Burgeon Driver": { "group": 0 } },
+	"Keqing": { "Aggravate DPS": { "group": 0 }, "Quickbloom DPS": { "omit": true } },
+	"Kinich": { "DPS": { "group": 0 } },
+	"Kirara": {
+		"Shield Support": { "group": 0, "subStat": ["hp_", "enerRech_", "critRate_", "hp"] }
+	},
+	"Klee": {
+		"DPS": {
+			"group": 0,
+			"artifact": [
+				["Lavawalker", "ADayCarvedFromRisingWinds"],
+				["EchoesOfAnOffering", "DesertPavilionChronicle"],
+				"WanderersTroupe",
+				"FragmentOfHarmonicWhimsy"
+			]
+		}
+	},
+	"KujouSara": { "Buff Support & Damage": { "group": 1 } },
+	"KukiShinobu": { "Hyperbloom": { "group": 0 } },
+	"LanYan": { "Shield & Buff Support": { "group": 2 } },
+	"Lauma": {
+		"Buff Support (High-Energy Requirement)": { "group": 0 },
+		"Buff Support (Low-Energy Requirement)": { "omit": true }
+	},
+	"Layla": { "Shield Support": { "omit": true }, "Shield Support and Damage": { "group": 2 } },
+	"Linnea": { "Off-Field DPS & Buff and Heal Support": { "group": 2 } },
+	"Lisa": {
+		"Aggravate DPS": {
+			"group": 0,
+			"artifact": [["Thundersoother", "ThunderingFury"], "GildedDreams"]
+		},
+		"Off-Field DPS & Support": { "group": 0, "omit": true }
+	},
+	"Lohen": { "DPS": { "group": 0 } },
+	"Lynette": { "Off-Field DPS": { "group": 0 } },
+	"Lyney": { "DPS": { "group": 0 } },
+	"Manekin": { "DPS": { "group": 0 } },
+	"Manekina": { "DPS": { "group": 0 } },
+	"Mavuika": { "DPS & Buff Support": { "group": 2 } },
+	"Mika": { "Heal & Buff Support": { "group": 1 } },
+	"Mona": { "Buff Support": { "group": 0 } },
+	"Mualani": { "Vaporize DPS": { "group": 1 } },
+	"Nahida": {
+		"Buff Support & Damage": {
+			"group": 1,
+			"subStat": [["critRD_", "eleMas"], "enerRech_", "atk_"]
+		}
+	},
+	"Navia": { "DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
+	"Nefer": { "DPS": { "group": 0 } },
+	"Neuvillette": { "DPS": { "group": 1, "subStat": [["critRD_", "hp_"], "enerRech_", "hp"] } },
+	"Nicole": { "Shield & Buff Support": { "group": 0 } },
+	"Nilou": {
+		"Bloom Support": { "group": 0, "artifact": ["VourukashasGlow", "DeepwoodMemories"] }
+	},
+	"Ningguang": { "DPS": { "group": 0 } },
+	"Noelle": {
+		"DPS": {
+			"group": 0,
+			"artifact": [
+				["RetracingBolide", "HuskOfOpulentDreams"],
+				"GladiatorsFinale",
+				"MarechausseeHunter"
+			]
+		},
+		"Driver": { "omit": true }
+	},
+	"Ororon": { "Off-Field DPS": { "group": 1 }, "Off-Field Reaction DPS": { "omit": true } },
+	"Prune": { "Buff Support": { "group": 2 } },
+	"Qiqi": { "Heal Support": { "group": 1 } },
+	"RaidenShogun": { "DPS & Energy Support": { "group": 0 } },
+	"Razor": { "DPS": { "group": 1 } },
+	"Rosaria": {
+		"Buff Support": { "omit": true },
+		"Freeze": { "group": 1 },
+		"Reverse Melt": { "omit": true }
+	},
+	"SangonomiyaKokomi": {
+		"Heal Support": {
+			"group": 0,
+			"artifact": [
+				["OceanHuedClam", "TenacityOfTheMillelith"],
+				"ScrollOfTheHeroOfCinderCity",
+				"SongOfDaysPast",
+				"MaidenBeloved"
+			]
+		}
+	},
+	"Sayu": { "Heal Support": { "group": 1 } },
+	"Sethos": { "Charged Attack DPS": { "group": 2 }, "Normal Attack DPS": { "omit": true } },
+	"Shenhe": { "Buff Support": { "group": 2 } },
+	"ShikanoinHeizou": { "Anemo DPS": { "group": 0 }, "Reaction DPS": { "omit": true } },
+	"Sigewinne": {
+		"Heal Support": {
+			"group": 0,
+			"artifact": [
+				["SongOfDaysPast", "OceanHuedClam", "ScrollOfTheHeroOfCinderCity"],
+				"TenacityOfTheMillelith"
+			]
+		}
+	},
+	"Skirk": { "DPS": { "group": 0 } },
+	"Sucrose": { "Elemental Mastery Support": { "group": 1 } },
+	"Tartaglia": { "DPS": { "group": 0 } },
+	"Thoma": { "Burgeon": { "group": 1 } },
+	"Tighnari": { "Quick Swap DPS": { "group": 1 } },
+	"Traveler": {
+		"Anemo - Anemo DPS": { "omit": true },
+		"Dendro - Reaction Support": { "omit": true },
+		"Electro - Energy Support": { "omit": true },
+		"Geo - Geo DPS": { "omit": true },
+		"Pyro - Buff Support": { "group": 1 }
+	},
+	"Varesa": { "Plunge DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
+	"Varka": { "DPS": { "group": 0 } },
+	"Venti": { "Off-Field DPS": { "group": 0 }, "On-Field DPS": { "group": 0 } },
+	"Wanderer": { "DPS": { "omit": true }, "DPS (With External ATK Buffs)": { "group": 0 } },
+	"Wriothesley": { "Melt DPS": { "group": 2 }, "Mono Cryo / Freeze DPS": { "omit": true } },
+	"Xiangling": { "Off-Field DPS": { "group": 1 }, "Off-Field Vaporize DPS": { "omit": true } },
+	"Xianyun": {
+		"High Energy Requirement Buff & Heal Support": { "omit": true },
+		"Low Energy Requirement Buff & Heal Support": { "group": 2 }
+	},
+	"Xiao": {
+		"DPS": {
+			"group": 0,
+			"artifact": [
+				["VermillionHereafter", "MarechausseeHunter", "LongNightsOath"],
+				"DesertPavilionChronicle"
+			],
+			"subStat": ["critRD_", "enerRech_", "atk_"]
+		}
+	},
+	"Xilonen": { "Buff & Reaction Support": { "group": 0 } },
+	"Xingqiu": {
+		"High Energy Requirement (Off-Field DPS)": { "omit": true },
+		"Low Energy Requirement (Off-Field DPS)": { "group": 0 }
+	},
+	"Xinyan": { "Physical DPS": { "group": 0 } },
+	"YaeMiko": { "Off-field Aggravate DPS": { "group": 1 }, "Off-field DPS": { "omit": true } },
+	"Yanfei": { "Vaporize DPS": { "group": 0 } },
+	"Yaoyao": { "Heal Support": { "group": 2, "subStat": ["hp_", "enerRech_", "critRate_", "hp"] } },
+	"Yelan": {
+		"High Energy Requirement (Off-Field DPS)": { "omit": true },
+		"Low Energy Requirement (Off-Field DPS)": { "group": 1 }
+	},
+	"Yoimiya": { "DPS": { "group": 0 } },
+	"YumemizukiMizuki": { "Reaction DPS": { "group": 1 } },
+	"YunJin": { "Buff Support": { "group": 1 } },
+	"Zhongli": { "Shield Support": { "group": 0 } },
+	"Zibai": { "DPS": { "group": 2 } }
+}

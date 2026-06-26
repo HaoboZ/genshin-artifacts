@@ -10,7 +10,7 @@ import {
 	type ICharacter,
 	type IGOOD,
 	type IWeapon,
-} from '../../types/good';
+} from '@/types/good';
 
 const initialState: IGOOD = {
 	format: 'GOOD',

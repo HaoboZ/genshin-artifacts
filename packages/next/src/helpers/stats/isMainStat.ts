@@ -1,5 +1,5 @@
-import { type Build } from '../../types/data';
-import { type IArtifact } from '../../types/good';
+import { type Build } from '@/types/data';
+import { type IArtifact } from '@/types/good';
 import getFirst from '../getFirst';
 import { statArrMatch } from './statArrMatch';
 

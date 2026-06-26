@@ -21,7 +21,7 @@ export default function CharacterTierImage({
 
 	const percent = useMemo(() => {
 		const weapon = good.weapons.find(({ location }) => location === characterKey);
-		const buildIndex = arrDeepIndex(build.weapon, weapon?.key);
+		const buildIndex = arrDeepIndex(build?.weapon, weapon?.key);
 		const artifacts = good.artifacts.filter(
 			({ location, buildIndex }) => location === characterKey && !buildIndex,
 		);

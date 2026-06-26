@@ -20,7 +20,7 @@ import { ImageMapRoute } from 'image-map-route';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
-import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../../../farming/render';
+import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '@/app/farming/render';
 import { mapColumns, type SortKey } from '../../maps/columns';
 import { CALC_EFFICIENCY_SECONDS } from '../../maps/formUtils';
 import { type MapData, type RouteData } from '../types';

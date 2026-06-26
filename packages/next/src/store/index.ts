@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { debounce } from '../helpers/delay';
+import { debounce } from '@/helpers/delay';
 import { loadState, saveState } from './persist';
 import good from './reducers/goodReducer';
 import main from './reducers/mainReducer';

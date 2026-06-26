@@ -1,11 +1,6 @@
 import { type WeaponType } from '@/app/weapons/weaponData';
 import { type ArtifactSetKey, type CharacterKey, type StatKey, type WeaponKey } from './good';
 
-export interface DElement {
-	key: string;
-	image: string;
-}
-
 export interface DCharacter {
 	key: CharacterKey;
 	name: string;
@@ -48,7 +43,6 @@ export interface Build {
 	key: CharacterKey;
 	role: string;
 	weapon: (WeaponKey | WeaponKey[])[];
-	group: number;
 	artifact: (ArtifactSetKey | ArtifactSetKey[])[];
 	mainStat: {
 		sands: StatKey | StatKey[];
@@ -56,5 +50,6 @@ export interface Build {
 		circlet: StatKey | StatKey[];
 	};
 	subStat: (StatKey | StatKey[])[];
+	group: number;
 	buildIndex?: number;
 }

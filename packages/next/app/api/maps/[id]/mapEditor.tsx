@@ -34,7 +34,7 @@ import {
 	useState,
 } from 'react';
 import { pick } from 'remeda';
-import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '../../../farming/[id]/render';
+import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '@/app/farming/[id]/render';
 import { type MapData, type Text } from '../../routes/types';
 
 function extractYoutubeVideoId(url: string) {
