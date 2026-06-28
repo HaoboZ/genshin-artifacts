@@ -33,7 +33,7 @@ import {
 	Switch,
 	Typography,
 } from '@mui/material';
-import { capitalCase, pascalSnakeCase } from 'change-case';
+import { capitalCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { capitalize, chunk, filter, map, pipe, prop, sortBy } from 'remeda';
 import RarityFilter from '../../characters/rarityFilter';
@@ -119,7 +119,7 @@ export default function ArtifactList({ artifactSet }: { artifactSet?: ArtifactSe
 			title={
 				artifactSet && (
 					<PageLink
-						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(setInfo.name)}`}
+						href={`https://genshin-impact.fandom.com/wiki/${setInfo.name.replace(/ /g, '_')}`}
 						target='_blank'
 						underline='none'
 						color='textPrimary'>

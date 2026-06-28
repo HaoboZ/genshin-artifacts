@@ -11,7 +11,6 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type DCharacter } from '@/types/data';
 import { Container, Grid, Stack, Switch } from '@mui/material';
-import { pascalSnakeCase } from 'change-case';
 import Image from 'next/image';
 import { clamp } from 'remeda';
 import CharacterImage from '../characterImage';
@@ -35,7 +34,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 			<PageTitle>
 				<Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
 					<PageLink
-						href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(characterData.name)}`}
+						href={`https://genshin-impact.fandom.com/wiki/${characterData.name.replace(/ /g, '_')}`}
 						target='_blank'
 						underline='none'
 						color='textPrimary'>

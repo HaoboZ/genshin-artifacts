@@ -20,7 +20,6 @@ import {
 	Switch,
 	Typography,
 } from '@mui/material';
-import { pascalSnakeCase } from 'change-case';
 import { Fragment, useMemo, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
@@ -73,7 +72,7 @@ export default function EditWeaponModal({ weapon }: { weapon: IWeapon }) {
 		<DialogWrapper>
 			<DialogTitle>
 				<PageLink
-					href={`https://genshin-impact.fandom.com/wiki/${pascalSnakeCase(weapon.key)}`}
+					href={`https://genshin-impact.fandom.com/wiki/${weapon.key.replace(/ /g, '_')}`}
 					target='_blank'
 					underline='none'
 					color='textPrimary'>
