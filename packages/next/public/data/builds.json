@@ -1197,16 +1197,7 @@
 		{
 			"key": "KamisatoAyato",
 			"role": "DPS",
-			"weapon": [
-				["HaranGeppakuFutsu", "PrimordialJadeCutter"],
-				"MistsplitterReforged",
-				"LightOfFoliarIncision",
-				["SkywardBlade", "SplendorOfTranquilWaters", "LightbearingMoonshard"],
-				"SummitShaper",
-				["FinaleOfTheDeep", "TheBlackSword", "KagotsurubeIsshin"],
-				"LionsRoar",
-				["HarbingerOfDawn", "TheFlute", "SwordOfNarzissenkreuz"]
-			],
+			"weapon": ["HaranGeppakuFutsu"],
 			"artifact": ["EchoesOfAnOffering"],
 			"mainStat": {
 				"sands": "atk_",

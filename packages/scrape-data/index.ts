@@ -1,10 +1,11 @@
 import { fetchArtifacts, writeArtifacts } from './data/artifacts';
-import { fetchAllBuilds, loadExistingBuilds, writeBuilds } from './builds/builds';
+import { fetchAllBuilds } from './builds/fetchAllBuilds';
 import { fetchCharacters, writeCharacters } from './data/characters';
 import { fetchElements, writeElements } from './data/elements';
 import { fetchTalents, writeTalents } from './data/talents';
 import { fetchWeapons, writeWeapons } from './data/weapons';
 import { fetchWeekly, writeWeekly } from './data/weekly';
+import { loadExistingBuilds, writeBuilds } from './builds/io';
 
 const fields = ['elements', 'characters', 'talents', 'weekly', 'artifacts', 'weapons'] as const;
 type Field = (typeof fields)[number];
@@ -43,15 +44,9 @@ try {
 
 	if (subcommand === 'builds') {
 		console.info('Builds');
-		// Always read existing builds.json so the scraper can preserve hand-edited
-		// `group` values on re-scrape ("edit, not override"). When specific characters
-		// are requested, the new entries are merged into the file; otherwise the file
-		// is replaced wholesale with the freshly-scraped entries.
 		const existing = loadExistingBuilds();
 		const builds = await fetchAllBuilds(rest, existing);
-		await writeBuilds(builds, { mergeWithExisting: rest.length > 0 });
-		console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
-		console.info('Completed');
+		writeBuilds(builds, existing);
 	} else {
 		const config = getConfig(subcommand);
 
@@ -85,7 +80,6 @@ try {
 		if (weeklyData) writeWeekly(weeklyData.weekly);
 		if (artifacts) writeArtifacts(artifacts);
 		if (weapons) writeWeapons(weapons);
-		console.info('Completed');
 	}
 } catch (error) {
 	console.error('An error has occurred ', error);
