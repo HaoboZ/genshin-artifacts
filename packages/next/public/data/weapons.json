@@ -527,7 +527,7 @@
 		"weaponType": "Claymore",
 		"atk": 674,
 		"stat": "CRIT DMG 44.1%",
-		"ability": "ATK increased by 28~?%.Additionally, each time the equipping character hits an opponent with their Charged Attack, they attain \"Surmount\" for a short time: their Stellar-Conduct DMG is increased by 16~?% for 5s. This effect can stack once every 0.2s, max 3 stacks."
+		"ability": "ATK increased by 28~56%.Additionally, each time the equipping character hits an opponent with their Charged Attack, they attain \"Surmount\" for a short time: their Stellar-Conduct DMG is increased by 16~32% for 5s. This effect can stack once every 0.2s, max 3 stacks."
 	},
 	"AThousandBlazingSuns": {
 		"key": "AThousandBlazingSuns",
@@ -1427,7 +1427,7 @@
 		"weaponType": "Catalyst",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by 12~24% for 16s. Max 3 stacks. This character will gain 12~24% All Elemental DMG Bonus when they possess 3 stacks."
+		"ability": "Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by 12~24% as well as their Stellar-Conduct DMG by 12~24% for 16s. Max 3 stacks. This character will gain 12~24% All Elemental DMG Bonus when they possess 3 stacks."
 	},
 	"LostPrayerToTheSacredWinds": {
 		"key": "LostPrayerToTheSacredWinds",

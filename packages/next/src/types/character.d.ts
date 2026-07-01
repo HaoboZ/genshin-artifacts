@@ -83,6 +83,7 @@ export type CharacterKey =
 	| 'RaidenShogun' // Raiden Shogun
 	| 'Razor' // Razor
 	| 'Rosaria' // Rosaria
+	| 'Sandrone' // Sandrone
 	| 'SangonomiyaKokomi' // Sangonomiya Kokomi
 	| 'Sayu' // Sayu
 	| 'Sethos' // Sethos

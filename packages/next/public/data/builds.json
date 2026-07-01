@@ -141,12 +141,13 @@
 		"role": "DPS",
 		"weapon": [
 			"CrimsonMoonsSemblance",
-			["PrimordialJadeWingedSpear", "StaffOfTheScarletSands"],
-			["StaffOfHoma", "LumidouceElegy", "CalamityQueller"],
-			"VortexVanquisher",
-			"Deathmatch",
-			"WhiteTassel",
-			"BalladOfTheFjords"
+			"StaffOfTheScarletSands",
+			["PrimordialJadeWingedSpear", "LumidouceElegy", "FracturedHalo"],
+			"StaffOfHoma",
+			["SymphonistOfScents", "VortexVanquisher"],
+			["Deathmatch", "BalladOfTheFjords"],
+			["CalamityQueller", "DisasterAndRemorse", "BloodsoakedRuins"],
+			["MissiveWindspear", "WhiteTassel"]
 		],
 		"artifact": [
 			"FragmentOfHarmonicWhimsy",
@@ -1672,6 +1673,7 @@
 			"WineAndSong"
 		],
 		"artifact": [
+			"CelestialGift",
 			"NoblesseOblige",
 			"Instructor",
 			["TenacityOfTheMillelith", "ScrollOfTheHeroOfCinderCity"]
@@ -1682,7 +1684,7 @@
 			"circlet": "critRate_"
 		},
 		"subStat": ["enerRech_", "critRate_", "atk_"],
-		"group": 0
+		"group": 1
 	},
 	"Mualani": {
 		"key": "Mualani",

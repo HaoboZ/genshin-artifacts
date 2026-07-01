@@ -48,7 +48,7 @@ try {
 		const builds = await fetchAllBuilds(rest, existing);
 		writeBuilds(builds, existing);
 	} else {
-		const config = getConfig(subcommand);
+		const config = getConfig(rest);
 
 		if (config.elements) console.info('Elements');
 		const elements = config.elements && (await fetchElements());

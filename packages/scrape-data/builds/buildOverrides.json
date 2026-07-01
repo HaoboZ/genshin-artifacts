@@ -147,7 +147,7 @@
 	"Manekina": { "DPS": { "group": 0 } },
 	"Mavuika": { "DPS & Buff Support": { "group": 2 } },
 	"Mika": { "Heal & Buff Support": { "group": 1 } },
-	"Mona": { "Buff Support": { "group": 0 } },
+	"Mona": { "Buff Support": { "group": 1 } },
 	"Mualani": { "Vaporize DPS": { "group": 1 } },
 	"Nahida": {
 		"Buff Support & Damage": {

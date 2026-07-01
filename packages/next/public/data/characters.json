@@ -839,6 +839,16 @@
 		"talentMaterial": "Ballad",
 		"weeklyMaterial": "ShadowOfTheWarrior"
 	},
+	"Sandrone": {
+		"key": "Sandrone",
+		"name": "Sandrone",
+		"rarity": 5,
+		"weaponType": "Claymore",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c8/Sandrone_Icon.png",
+		"talentMaterial": "Vagrancy",
+		"weeklyMaterial": "MadmansRestraint"
+	},
 	"SangonomiyaKokomi": {
 		"key": "SangonomiyaKokomi",
 		"name": "Sangonomiya Kokomi",
