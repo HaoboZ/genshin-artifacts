@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@next/eslint-plugin-next": "16.2.9",
 		"@types/eslint": "9.6.1",
-		"@types/node": "25.9.4",
+		"@types/node": "26.1.0",
 		"eslint": "9.39.4",
 		"eslint-config-next": "16.2.9",
 		"eslint-config-prettier": "10.1.8",
