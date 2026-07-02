@@ -45,7 +45,7 @@
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {
-		"@next/bundle-analyzer": "16.2.9",
+		"@next/bundle-analyzer": "16.2.10",
 		"@types/events": "3.0.3",
 		"@types/object-hash": "3.0.6",
 		"@types/pixelmatch": "5.2.6",
