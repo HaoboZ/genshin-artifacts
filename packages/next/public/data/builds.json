@@ -1956,38 +1956,14 @@
 		"subStat": ["enerRech_", "atk_", "critRate_"],
 		"group": 2
 	},
-	"Traveler": {
-		"key": "Traveler",
-		"role": "Pyro - Buff Support",
-		"weapon": [
-			"FavoniusSword",
-			"PeakPatrolSong",
-			["FreedomSworn", "KeyOfKhajNisut"],
-			"SacrificialSword"
-		],
-		"artifact": [
-			"ScrollOfTheHeroOfCinderCity",
-			["TenacityOfTheMillelith", "NoblesseOblige", "Instructor"]
-		],
-		"mainStat": {
-			"sands": ["enerRech_", "atk_"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
-		"subStat": ["enerRech_", "critRD_", "atk_", "def_"],
-		"group": 1
-	},
 	"Qiqi": {
 		"key": "Qiqi",
-		"role": "Heal Support",
+		"role": "Heal & Buff Support",
 		"weapon": [
-			"SacrificialSword",
 			"FavoniusSword",
 			"PeakPatrolSong",
 			"SkywardBlade",
-			"SapwoodBlade",
-			"FleuveCendreFerryman",
-			"AmenomaKageuchi"
+			["SapwoodBlade", "FleuveCendreFerryman", "AmenomaKageuchi"]
 		],
 		"artifact": [
 			"TenacityOfTheMillelith",
@@ -2084,6 +2060,26 @@
 		},
 		"subStat": ["enerRech_", "critDMG_", "atk_", "critRate_"],
 		"group": 1
+	},
+	"Sandrone": {
+		"key": "Sandrone",
+		"role": "DPS",
+		"weapon": [
+			"ATeaspoonOfTranscendence",
+			"AThousandBlazingSuns",
+			"Verdict",
+			"WolfsGravestone",
+			["RedhornStonethresher", "TheUnforged"],
+			["TidalShadow", "MailedFlower", "UltimateOverlordsMegaMagicSword"]
+		],
+		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
+		"mainStat": {
+			"sands": "atk_",
+			"goblet": "atk_",
+			"circlet": "critRD_"
+		},
+		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
+		"group": 0
 	},
 	"SangonomiyaKokomi": {
 		"key": "SangonomiyaKokomi",
@@ -2337,6 +2333,27 @@
 		"subStat": ["critRD_", ["eleMas", "atk_"], "enerRech_"],
 		"group": 1
 	},
+	"Traveler": {
+		"key": "Traveler",
+		"role": "Pyro - Buff Support",
+		"weapon": [
+			"FavoniusSword",
+			"PeakPatrolSong",
+			["FreedomSworn", "KeyOfKhajNisut"],
+			"SacrificialSword"
+		],
+		"artifact": [
+			"ScrollOfTheHeroOfCinderCity",
+			["TenacityOfTheMillelith", "NoblesseOblige", "Instructor"]
+		],
+		"mainStat": {
+			"sands": ["enerRech_", "atk_"],
+			"goblet": "pyro_dmg_",
+			"circlet": "critRD_"
+		},
+		"subStat": ["enerRech_", "critRD_", "atk_", "def_"],
+		"group": 1
+	},
 	"Varesa": {
 		"key": "Varesa",
 		"role": "Plunge DPS",
@@ -2448,31 +2465,35 @@
 	],
 	"Wanderer": {
 		"key": "Wanderer",
-		"role": "DPS (With External ATK Buffs)",
+		"role": "DPS",
 		"weapon": [
 			"TulaytullahsRemembrance",
-			"LostPrayerToTheSacredWinds",
-			"TheWidsith",
-			["KagurasVerity", "TomeOfTheEternalFlow", "SkywardAtlas", "MemoryOfDust"],
-			["SolarPearl", "DodocoTales"],
-			"BalladOfTheBoundlessBlue",
-			"BlackcliffAgate",
-			"EyeOfPerception",
-			["MappaMare", "Frostbearer"]
+			"ReliquaryOfTruth",
+			"VividNotions",
+			["SurfsUp", "LostPrayerToTheSacredWinds"],
+			["KagurasVerity", "CashflowSupervision"],
+			["NocturnesCurtainCall", "TomeOfTheEternalFlow"],
+			"MemoryOfDust",
+			"SkywardAtlas",
+			"AngelosHeptades",
+			["TheWidsith", "SolarPearl"],
+			"CranesEchoingCall",
+			["SacrificialJade", "DodocoTales"],
+			["BalladOfTheBoundlessBlue", "FlowingPurity"]
 		],
 		"artifact": [
 			"DesertPavilionChronicle",
 			"ShimenawasReminiscence",
 			"EchoesOfAnOffering",
 			"ViridescentVenerer",
-			["BlizzardStrayer", "Lavawalker"]
+			"BlizzardStrayer"
 		],
 		"mainStat": {
 			"sands": "atk_",
 			"goblet": "anemo_dmg_",
 			"circlet": "critRD_"
 		},
-		"subStat": ["critRD_", "atk_", "atk", "eleMas", "enerRech_"],
+		"subStat": ["critRD_", "atk_", "atk", "enerRech_"],
 		"group": 0
 	},
 	"Wriothesley": {

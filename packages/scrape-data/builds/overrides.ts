@@ -3,16 +3,6 @@ import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } fr
 
 const buildOverridesTyped = buildOverrides as BuildOverridesFile;
 
-// Find the matching existing build by role label
-export function findExistingBuild(
-	existing: ScrapedBuild | ScrapedBuild[] | undefined,
-	role: string,
-): ScrapedBuild | undefined {
-	if (!existing) return undefined;
-	if (Array.isArray(existing)) return existing.find((b) => b.role === role);
-	return existing.role === role ? existing : undefined;
-}
-
 // Resolve the configuration entry for `(key, role)`
 export function resolveGroupEntry(key: string, role: string): BuildEntry | undefined {
 	const roles = buildOverridesTyped[key];
@@ -28,7 +18,6 @@ export function resolveGroupEntry(key: string, role: string): BuildEntry | undef
 export function applyGroupEntry(
 	scraped: ScrapedBuild,
 	entry: BuildEntry | undefined,
-	existing: ScrapedBuild | undefined,
 ): ScrapedBuild | null {
 	if (entry?.omit) return null;
 
@@ -57,7 +46,7 @@ export function applyGroupEntry(
 	if (!Object.keys(scraped.overridden).length) {
 		delete scraped.overridden;
 	}
-	return { ...scraped, group: existing?.group ?? -1 };
+	return { ...scraped, group: entry?.group ?? -1 };
 }
 
 // Append the user-defined `additional` builds from buildOverrides.json
@@ -67,11 +56,10 @@ function applyAdditionalBuilds(key: string, out: ScrapedBuild[]): void {
 	for (const build of additional) out.push(build);
 }
 
-// Merge a freshly scraped build list with hand-edited `existing` data
+// Merge a freshly scraped build list with the buildOverrides configuration
 export function applyMerge(
 	key: string,
 	builds: ScrapedBuild[] | null,
-	existing: ScrapedBuild | ScrapedBuild[] | undefined,
 	discovered: DiscoveredRoles,
 ): ScrapedBuild | ScrapedBuild[] | null {
 	const merged: ScrapedBuild[] = [];
@@ -81,8 +69,7 @@ export function applyMerge(
 		if (entry === undefined) {
 			(discovered[key] ??= new Set()).add(scraped.role);
 		}
-		const existingBuild = findExistingBuild(existing, scraped.role);
-		const final = applyGroupEntry(scraped, entry, existingBuild);
+		const final = applyGroupEntry(scraped, entry);
 		if (!final) continue; // entry.omit
 		merged.push(final);
 	}
