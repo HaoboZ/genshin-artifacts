@@ -26,6 +26,7 @@ export default function ArtifactSetImage({
 				<Image
 					alt={artifactSet.name}
 					src={artifactSet.flower ?? artifactSet.circlet}
+					referrerPolicy='no-referrer'
 					width={size}
 					height={size}
 					className={`rarity${artifactSet.rarity}`}

@@ -18,7 +18,7 @@ export default function ElementFilter({
 			<ToggleButton value='none'>All</ToggleButton>
 			{Object.entries(elementsInfo).map(([key, image]) => (
 				<ToggleButton key={key} value={key} sx={{ p: 0.5 }}>
-					<Image alt={key} src={image} width={40} height={40} />
+					<Image alt={key} src={image} referrerPolicy='no-referrer' width={40} height={40} />
 				</ToggleButton>
 			))}
 		</ToggleButtonGroup>

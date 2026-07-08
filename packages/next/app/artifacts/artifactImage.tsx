@@ -29,6 +29,7 @@ export default function ArtifactImage({
 				<Image
 					alt={artifactSet?.name ?? slot ?? 'artifact'}
 					src={artifactSet?.[artifact?.slotKey ?? slot] ?? artifactSlotImages[slot]}
+					referrerPolicy='no-referrer'
 					width={size}
 					height={size}
 					className={`rarity${artifact?.rarity ?? artifactSet?.rarity}`}

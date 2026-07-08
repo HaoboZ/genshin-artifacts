@@ -65,6 +65,7 @@ export default function TalentsWeekly() {
 												<Image
 													alt={name}
 													src={image}
+													referrerPolicy='no-referrer'
 													width={50}
 													height={50}
 													style={{ alignSelf: 'center' }}

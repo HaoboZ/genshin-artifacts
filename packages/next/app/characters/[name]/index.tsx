@@ -44,6 +44,7 @@ export default function Character({ characterData }: { characterData: DCharacter
 						<Image
 							alt={characterData.element}
 							src={elementsInfo[characterData.element]}
+							referrerPolicy='no-referrer'
 							width={30}
 							height={30}
 						/>

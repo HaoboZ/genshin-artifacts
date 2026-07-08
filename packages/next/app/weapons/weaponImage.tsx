@@ -42,6 +42,7 @@ export default function WeaponImage({
 								: weaponInfo.image
 							: (weaponInfo?.image ?? weaponImages[type])
 					}
+					referrerPolicy='no-referrer'
 					width={size}
 					height={size}
 					className={`rarity${weaponInfo?.rarity}`}

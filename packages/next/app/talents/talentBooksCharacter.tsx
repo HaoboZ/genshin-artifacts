@@ -88,6 +88,7 @@ export default function TalentBooksCharacter({
 					<Image
 						alt={character.weeklyMaterial}
 						src={weeklyItems[character.weeklyMaterial]?.image}
+						referrerPolicy='no-referrer'
 						width={30}
 						height={30}
 						style={{ position: 'absolute', bottom: 0, right: 0, border: 1 }}

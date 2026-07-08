@@ -19,7 +19,13 @@ export default function SlotFilter({
 			<ToggleButton value='none'>All</ToggleButton>
 			{artifactSlotOrder.map((slot) => (
 				<ToggleButton key={slot} value={slot} sx={{ p: 0.5 }}>
-					<Image alt={slot} src={artifactSlotImages[slot]} width={40} height={40} />
+					<Image
+						alt={slot}
+						src={artifactSlotImages[slot]}
+						referrerPolicy='no-referrer'
+						width={40}
+						height={40}
+					/>
 				</ToggleButton>
 			))}
 		</ToggleButtonGroup>

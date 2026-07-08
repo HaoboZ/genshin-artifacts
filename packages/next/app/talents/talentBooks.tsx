@@ -77,7 +77,13 @@ export default function TalentBooks() {
 												flexDirection: 'column',
 												alignItems: 'center',
 											}}>
-											<Image alt={name} src={image} width={50} height={50} />
+											<Image
+												alt={name}
+												src={image}
+												referrerPolicy='no-referrer'
+												width={50}
+												height={50}
+											/>
 											{name}
 										</Box>
 									</TableCell>

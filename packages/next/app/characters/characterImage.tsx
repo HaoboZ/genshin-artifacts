@@ -26,6 +26,7 @@ export default function CharacterImage({
 				<Image
 					alt={character.name}
 					src={character.image}
+					referrerPolicy='no-referrer'
 					width={size}
 					height={size}
 					className={`rarity${character.rarity}`}

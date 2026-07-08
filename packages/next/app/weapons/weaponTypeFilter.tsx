@@ -22,7 +22,13 @@ export default function WeaponTypeFilter({
 			<ToggleButton value='none'>All</ToggleButton>
 			{weaponsTypes.map((weaponType) => (
 				<ToggleButton key={weaponType} value={weaponType} sx={{ p: 0 }}>
-					<Image alt={weaponType} src={weaponImages[weaponType]} width={50} height={50} />
+					<Image
+						alt={weaponType}
+						src={weaponImages[weaponType]}
+						referrerPolicy='no-referrer'
+						width={50}
+						height={50}
+					/>
 				</ToggleButton>
 			))}
 		</ToggleButtonGroup>
