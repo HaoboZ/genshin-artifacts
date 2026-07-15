@@ -700,11 +700,8 @@
 		}
 	},
 	"YaeMiko": {
-		"Off-field Aggravate DPS": {
-			"group": 1
-		},
-		"Off-field DPS": {
-			"omit": true
+		"Stellar-Conduct Off-Field DPS": {
+			"group": 0
 		}
 	},
 	"Yanfei": {

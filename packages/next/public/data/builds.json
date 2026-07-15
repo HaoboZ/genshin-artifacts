@@ -2695,29 +2695,32 @@
 	},
 	"YaeMiko": {
 		"key": "YaeMiko",
-		"role": "Off-field Aggravate DPS",
+		"role": "Stellar-Conduct Off-Field DPS",
 		"weapon": [
 			"KagurasVerity",
-			["AThousandFloatingDreams", "SunnyMorningSleepIn"],
-			"TomeOfTheEternalFlow",
-			["LostPrayerToTheSacredWinds", "SkywardAtlas", "TheWidsith", "TulaytullahsRemembrance"],
-			"SolarPearl",
-			"OathswornEye",
-			"HakushinRing",
-			"MappaMare"
+			["ReliquaryOfTruth", "VividNotions"],
+			["StarcallersWatch", "SunnyMorningSleepIn", "AThousandFloatingDreams"],
+			["SkywardAtlas", "AngelosHeptades"],
+			["TomeOfTheEternalFlow", "SurfsUp", "NocturnesCurtainCall", "TulaytullahsRemembrance"],
+			[
+				"CashflowSupervision",
+				"MemoryOfDust",
+				"LostPrayerToTheSacredWinds",
+				"NightweaversLookingGlass",
+				"CranesEchoingCall"
+			],
+			["DawningFrost", "TheWidsith"],
+			"WanderingEvenstar",
+			["FlowingPurity", "MappaMare"]
 		],
-		"artifact": [
-			["GildedDreams", "EmblemOfSeveredFate", "GoldenTroupe"],
-			"Thundersoother",
-			"TenacityOfTheMillelith"
-		],
+		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams", "GoldenTroupe"],
 		"mainStat": {
-			"sands": ["enerRech_", "eleMas", "atk_"],
-			"goblet": "electro_dmg_",
+			"sands": ["atk_", "eleMas"],
+			"goblet": ["atk_", "eleMas"],
 			"circlet": "critRD_"
 		},
-		"subStat": ["critRD_", "eleMas", "atk_", "enerRech_"],
-		"group": 1
+		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
+		"group": 0
 	},
 	"Yanfei": {
 		"key": "Yanfei",
