@@ -14,6 +14,7 @@ import { Fragment, useMemo } from 'react';
 import {
 	capitalize,
 	entries,
+	filter,
 	fromKeys,
 	groupBy,
 	join,
@@ -34,6 +35,20 @@ export default function ArtifactFarmModal() {
 	const incompleteArtifacts = useMemo(() => {
 		const artifactsIndexed = pipe(
 			artifacts,
+			filter((artifact) => {
+				if (!artifact.location) return true;
+				const build = buildsList.find(
+					(build) =>
+						build.key === artifact.location &&
+						getFirst(build.artifact) === artifact.setKey &&
+						build.buildIndex === artifact.buildIndex,
+				);
+				return (
+					!build ||
+					!isMainStat(build, artifact, true) ||
+					artifact.rarity !== artifactSetsInfo[artifact.setKey].rarity
+				);
+			}),
 			groupBy<IArtifact>(prop('setKey')),
 			mapValues((artifacts) =>
 				pipe(
@@ -56,17 +71,30 @@ export default function ArtifactFarmModal() {
 		for (const build of buildsList) {
 			const setKey = getFirst(build.artifact);
 			for (const slotKey of artifactSlotOrder) {
+				const equippedArtifact = artifacts.find(
+					(artifact) =>
+						artifact.location === build.key &&
+						artifact.setKey === setKey &&
+						artifact.slotKey === slotKey,
+				);
+				if (
+					equippedArtifact &&
+					isMainStat(build, equippedArtifact, true) &&
+					equippedArtifact.rarity === artifactSetsInfo[equippedArtifact.setKey].rarity
+				)
+					continue;
+
 				const stat =
 					{ flower: 'hp', plume: 'atk' }[slotKey] ?? getFirst(build.mainStat[slotKey]);
-				const artifacts = artifactsIndexed[setKey]?.[slotKey];
-				const index = artifacts?.findIndex((artifact) => isMainStat(build, artifact, true));
-				if (!artifacts?.length || index === -1) {
+				const slotArtifacts = artifactsIndexed[setKey]?.[slotKey];
+				const index = slotArtifacts?.findIndex((artifact) => isMainStat(build, artifact, true));
+				if (!slotArtifacts?.length || index === -1) {
 					incompleteArtifactSets[setKey].missing++;
 					incompleteArtifactSets[setKey].rarity++;
 					incompleteArtifactSets[setKey].slots[slotKey]?.add(stat);
 					continue;
 				}
-				const artifact = artifacts.splice(index, 1)[0];
+				const artifact = slotArtifacts.splice(index, 1)[0];
 				if (artifact.rarity !== artifactSetsInfo[artifact.setKey].rarity) {
 					incompleteArtifactSets[setKey].rarity++;
 					incompleteArtifactSets[setKey].slots[slotKey]?.add(stat);
@@ -123,8 +151,9 @@ export default function ArtifactFarmModal() {
 			const setKey = getFirst(build.artifact);
 			for (const slotKey of artifactSlotOrder) {
 				incompleteArtifactSets[setKey].total++;
-				const artifacts = artifactsIndexed[setKey]?.[slotKey];
-				const potential = artifacts?.map((artifact) => potentialPercent(build, artifact)) ?? [];
+				const slotArtifacts = artifactsIndexed[setKey]?.[slotKey];
+				const potential =
+					slotArtifacts?.map((artifact) => potentialPercent(build, artifact)) ?? [];
 
 				if (Math.max(...potential, 0) < 0.4) incompleteArtifactSets[setKey].bad++;
 			}
