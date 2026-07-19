@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "2.0.15",
+	"version": "2.0.16",
 	"private": true,
 	"scripts": {
 		"prepare": "husky",
@@ -23,15 +23,15 @@
 	"devDependencies": {
 		"@next/eslint-plugin-next": "16.2.10",
 		"@types/eslint": "9.6.1",
-		"@types/node": "25.9.4",
-		"eslint": "9.39.4",
+		"@types/node": "25.9.5",
+		"eslint": "9.39.5",
 		"eslint-config-next": "16.2.10",
 		"eslint-config-prettier": "10.1.8",
 		"husky": "9.1.7",
-		"lint-staged": "17.0.8",
-		"prettier": "3.9.4",
+		"lint-staged": "17.1.0",
+		"prettier": "3.9.5",
 		"type-fest": "5.8.0",
 		"typescript": "6.0.3",
-		"typescript-eslint": "8.62.1"
+		"typescript-eslint": "8.64.0"
 	}
 }
