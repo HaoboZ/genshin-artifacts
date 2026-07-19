@@ -116,7 +116,8 @@ export function parseSubStats(card: Element): (string | string[])[] {
 function readSetNames(row: Element): string[] {
 	const names: string[] = [];
 	for (const trigger of row.querySelectorAll('.info-popover-trigger')) {
-		if (trigger.querySelector('.artifact-piece-suffix')?.textContent?.includes('(2)')) continue;
+		const suffix = trigger.closest('.inline-info-label')?.querySelector('.artifact-piece-suffix');
+		if (suffix?.textContent?.includes('(2)')) continue;
 		const clone = trigger.cloneNode(true) as HTMLElement;
 		for (const note of clone.querySelectorAll('.note-link, .artifact-piece-suffix'))
 			note.remove();

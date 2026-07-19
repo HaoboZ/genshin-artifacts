@@ -398,13 +398,10 @@
 		"role": "Buff Support",
 		"weapon": [
 			"StarcallersWatch",
-			[
-				"ThrillingTalesOfDragonSlayers",
-				"FavoniusCodex",
-				"EtherlightSpindlelute",
-				"SacrificialFragments",
-				"WanderingEvenstar"
-			]
+			"AngelosHeptades",
+			["ThrillingTalesOfDragonSlayers", "WanderingEvenstar", "FavoniusCodex"],
+			["EtherlightSpindlelute", "SacrificialFragments"],
+			["BlackmarrowLantern", "FruitOfFulfillment"]
 		],
 		"artifact": ["ScrollOfTheHeroOfCinderCity", "TenacityOfTheMillelith", "Instructor"],
 		"mainStat": {
@@ -659,9 +656,14 @@
 		"weapon": [
 			"LumidouceElegy",
 			"CalamityQueller",
-			["SymphonistOfScents", "StaffOfHoma"],
+			["FracturedHalo", "SymphonistOfScents", "StaffOfHoma"],
 			["EngulfingLightning", "StaffOfTheScarletSands"],
-			["PrimordialJadeWingedSpear", "CrimsonMoonsSemblance"],
+			[
+				"PrimordialJadeWingedSpear",
+				"CrimsonMoonsSemblance",
+				"DisasterAndRemorse",
+				"BloodsoakedRuins"
+			],
 			"Deathmatch",
 			["SkywardSpine", "TamayurateiNoOhanashi"],
 			["MissiveWindspear", "LithicSpear", "ProspectorsDrill"],
@@ -695,7 +697,13 @@
 				"SkywardSpine",
 				"SacrificersStaff"
 			],
-			["PrimordialJadeWingedSpear", "CrimsonMoonsSemblance", "ProspectorsDrill"],
+			[
+				"PrimordialJadeWingedSpear",
+				"CrimsonMoonsSemblance",
+				"DisasterAndRemorse",
+				"BloodsoakedRuins",
+				"ProspectorsDrill"
+			],
 			["TamayurateiNoOhanashi", "MountainBracingBolt", "WavebreakersFin"]
 		],
 		"artifact": [
@@ -797,6 +805,7 @@
 			"StaffOfTheScarletSands",
 			["FracturedHalo", "StaffOfHoma"],
 			["SymphonistOfScents", "PrimordialJadeWingedSpear", "LumidouceElegy"],
+			"DisasterAndRemorse",
 			"CrimsonMoonsSemblance",
 			["VortexVanquisher", "Deathmatch", "BalladOfTheFjords", "CalamityQueller"],
 			[
@@ -863,8 +872,8 @@
 		"role": "DPS",
 		"weapon": [
 			"GestOfTheMightyWolf",
-			["SerpentSpine", "RedhornStonethresher", "AThousandBlazingSuns", "Verdict"],
-			"BeaconOfTheReedSea",
+			["ATeaspoonOfTranscendence", "RedhornStonethresher", "AThousandBlazingSuns", "Verdict"],
+			["BeaconOfTheReedSea", "SerpentSpine"],
 			["FruitfulHook", "WolfsGravestone", "Rainslasher"],
 			["MailedFlower", "LithicBlade", "TheUnforged"],
 			["TidalShadow", "UltimateOverlordsMegaMagicSword", "MakhairaAquamarine"]
@@ -930,17 +939,20 @@
 		"weapon": [
 			"StaffOfHoma",
 			"StaffOfTheScarletSands",
-			["BalladOfTheFjords", "LumidouceElegy"],
-			["DragonsBane", "Deathmatch"],
-			"PrimordialJadeWingedSpear",
-			"LithicSpear",
-			"MissiveWindspear",
-			["WhiteTassel", "BlackcliffPole", "KitainCrossSpear", "RightfulReward"]
+			["FracturedHalo", "DisasterAndRemorse"],
+			["LumidouceElegy", "PrimordialJadeWingedSpear", "SymphonistOfScents"],
+			["BalladOfTheFjords", "Deathmatch"],
+			["CrimsonMoonsSemblance", "BloodsoakedRuins", "CalamityQueller"],
+			"DragonsBane",
+			["MissiveWindspear", "VortexVanquisher"],
+			"BlackcliffPole",
+			["WhiteTassel", "LithicSpear"]
 		],
 		"artifact": [
-			["CrimsonWitchOfFlames", "ShimenawasReminiscence"],
+			"ShimenawasReminiscence",
+			"CrimsonWitchOfFlames",
 			"GildedDreams",
-			"MarechausseeHunter"
+			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
 		],
 		"mainStat": {
 			"sands": ["hp_", "eleMas"],
@@ -1017,7 +1029,7 @@
 			["LumidouceElegy", "SymphonistOfScents", "StaffOfHoma"],
 			"BloodsoakedRuins",
 			"CalamityQueller",
-			["PrimordialJadeWingedSpear", "CrimsonMoonsSemblance", "Deathmatch"],
+			["PrimordialJadeWingedSpear", "CrimsonMoonsSemblance", "DisasterAndRemorse", "Deathmatch"],
 			["EngulfingLightning", "BalladOfTheFjords"],
 			["VortexVanquisher", "ProspectorsShovel", "SacrificersStaff", "SkywardSpine"]
 		],
@@ -1262,8 +1274,9 @@
 		"weapon": [
 			"FangOfTheMountainKing",
 			["GestOfTheMightyWolf", "AThousandBlazingSuns", "BeaconOfTheReedSea"],
-			"SerpentSpine",
+			"ATeaspoonOfTranscendence",
 			"Verdict",
+			"SerpentSpine",
 			["EarthShaker", "WolfsGravestone", "RedhornStonethresher"]
 		],
 		"artifact": [["ObsidianCodex", "UnfinishedReverie"], "GoldenTroupe", "MarechausseeHunter"],
@@ -1920,9 +1933,10 @@
 		"role": "Off-Field DPS",
 		"weapon": [
 			["PolarStar", "TheFirstGreatMagic"],
+			"TheDaybreakChronicles",
 			["ThunderingPulse", "AquaSimulacra", "HuntersPath", "SkywardHarp"],
 			"AstralVulturesCrimsonPlumage",
-			["ChainBreaker", "AlleyHunter"],
+			["ChainBreaker", "AlleyHunter", "GoldenFrostboundOath"],
 			["RangeGauge", "SongOfStillness"],
 			["ElegyForTheEnd", "FadingTwilight"],
 			"FavoniusWarbow"
@@ -2003,7 +2017,7 @@
 			"circlet": "critRD_"
 		},
 		"subStat": ["critRD_", "atk_", "enerRech_", "eleMas"],
-		"group": -1
+		"group": 0
 	},
 	"Razor": {
 		"key": "Razor",
@@ -2011,7 +2025,7 @@
 		"weapon": [
 			"GestOfTheMightyWolf",
 			"AThousandBlazingSuns",
-			["BeaconOfTheReedSea", "Verdict", "RedhornStonethresher"],
+			["ATeaspoonOfTranscendence", "BeaconOfTheReedSea", "Verdict", "RedhornStonethresher"],
 			"FangOfTheMountainKing",
 			"SongOfBrokenPines",
 			["TalkingStick", "SerpentSpine"],
@@ -2040,7 +2054,7 @@
 		"weapon": [
 			"CalamityQueller",
 			"StaffOfHoma",
-			["CrimsonMoonsSemblance", "VortexVanquisher"],
+			["CrimsonMoonsSemblance", "BloodsoakedRuins", "VortexVanquisher"],
 			[
 				"PrimordialJadeWingedSpear",
 				"LumidouceElegy",
@@ -2069,8 +2083,8 @@
 			"AThousandBlazingSuns",
 			"Verdict",
 			"WolfsGravestone",
-			["RedhornStonethresher", "TheUnforged"],
-			["TidalShadow", "MailedFlower", "UltimateOverlordsMegaMagicSword"]
+			["BeaconOfTheReedSea", "RedhornStonethresher", "TheUnforged"],
+			["GestOfTheMightyWolf", "TidalShadow", "MailedFlower", "UltimateOverlordsMegaMagicSword"]
 		],
 		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
 		"mainStat": {
@@ -2318,9 +2332,10 @@
 		"weapon": [
 			"HuntersPath",
 			["AstralVulturesCrimsonPlumage", "AquaSimulacra", "PolarStar", "TheFirstGreatMagic"],
-			["SkywardHarp", "ThunderingPulse"],
+			"TheDaybreakChronicles",
+			["ThunderingPulse", "SkywardHarp", "GoldenFrostboundOath"],
 			["ElegyForTheEnd", "AmosBow", "FadingTwilight"],
-			["ScionOfTheBlazingSun", "TheViridescentHunt"],
+			["TheViridescentHunt", "ScionOfTheBlazingSun"],
 			["Slingshot", "RangeGauge", "WindblumeOde", "SongOfStillness"],
 			"PrototypeCrescent"
 		],
@@ -2418,7 +2433,14 @@
 				"AstralVulturesCrimsonPlumage",
 				["HuntersPath", "TheFirstGreatMagic", "AquaSimulacra", "SkywardHarp"],
 				"ThunderingPulse",
-				["MouunsMoon", "SongOfStillness", "TheStringless", "AlleyHunter"]
+				[
+					"SongOfStillness",
+					"GoldenFrostboundOath",
+					"MouunsMoon",
+					"ElegyForTheEnd",
+					"AlleyHunter",
+					"TheStringless"
+				]
 			],
 			"artifact": [
 				"ViridescentVenerer",
@@ -2442,10 +2464,12 @@
 			"weapon": [
 				"TheDaybreakChronicles",
 				"PolarStar",
-				["ThunderingPulse", "HuntersPath", "SkywardHarp", "AquaSimulacra"],
+				["HuntersPath", "ThunderingPulse", "SkywardHarp", "AquaSimulacra"],
 				["AstralVulturesCrimsonPlumage", "TheFirstGreatMagic"],
-				["AmosBow", "Slingshot", "SongOfStillness", "TheViridescentHunt"],
-				["Rust", "MouunsMoon"]
+				"GoldenFrostboundOath",
+				["SongOfStillness", "AmosBow", "Slingshot", "TheViridescentHunt"],
+				["Rust", "MouunsMoon"],
+				"Hamayumi"
 			],
 			"artifact": [
 				"ADayCarvedFromRisingWinds",
@@ -2596,6 +2620,8 @@
 				"CalamityQueller",
 				"Deathmatch",
 				"CrimsonMoonsSemblance",
+				"DisasterAndRemorse",
+				"BloodsoakedRuins",
 				"VortexVanquisher",
 				"SkywardSpine"
 			],
@@ -2795,11 +2821,15 @@
 		"role": "DPS",
 		"weapon": [
 			"ThunderingPulse",
-			["AquaSimulacra", "TheFirstGreatMagic"],
-			"PolarStar",
+			"TheDaybreakChronicles",
+			"AquaSimulacra",
 			["HuntersPath", "SkywardHarp"],
-			["Slingshot", "AmosBow"],
-			"Rust"
+			["TheFirstGreatMagic", "Slingshot"],
+			["PolarStar", "GoldenFrostboundOath"],
+			"AstralVulturesCrimsonPlumage",
+			"AmosBow",
+			"Rust",
+			"Hamayumi"
 		],
 		"artifact": [
 			"ShimenawasReminiscence",
