@@ -70,7 +70,7 @@
         "dayjs": "1.11.21",
         "events": "3.3.0",
         "image-map-route": "workspace:*",
-        "nanoid": "5.1.16",
+        "nanoid": "6.0.0",
         "notistack": "3.0.2",
         "object-hash": "3.0.0",
         "pixelmatch": "7.2.0",
@@ -107,7 +107,7 @@
     "packages/routes-worker": {
       "name": "@genshin-artifacts/routes-worker",
       "dependencies": {
-        "nanoid": "5.1.16",
+        "nanoid": "6.0.0",
       },
       "devDependencies": {
         "@cloudflare/vitest-pool-workers": "0.18.6",
@@ -1289,7 +1289,7 @@
 
     "ms": ["ms@2.1.3", "", {}, "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="],
 
-    "nanoid": ["nanoid@5.1.16", "", { "bin": { "nanoid": "bin/nanoid.js" } }, "sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ=="],
+    "nanoid": ["nanoid@6.0.0", "", { "bin": { "nanoid": "bin/nanoid.js" } }, "sha512-mkUH+rPkwU2qPadJ0oJZOjeZ5Mxn8Q1UhevwkTRWNuUZzyia3h4rhzK39hxaHTk0o2OxB8W2SQ6A8k23ZDi1pQ=="],
 
     "napi-postinstall": ["napi-postinstall@0.3.4", "", { "bin": { "napi-postinstall": "lib/cli.js" } }, "sha512-PHI5f1O0EP5xJ9gQmFGMS6IZcrVvTjpXjz7Na41gTE7eE2hK11lg04CECCYEEjdc17EV4DO+fkGEtt7TpTaTiQ=="],
 
