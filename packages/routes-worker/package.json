@@ -10,7 +10,7 @@
 		"backup:push": "node scripts/backup-sync.ts push"
 	},
 	"dependencies": {
-		"nanoid": "5.1.16"
+		"nanoid": "6.0.0"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "0.18.6",

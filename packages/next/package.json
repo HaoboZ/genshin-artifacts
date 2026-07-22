@@ -31,7 +31,7 @@
 		"change-case": "5.4.4",
 		"dayjs": "1.11.21",
 		"events": "3.3.0",
-		"nanoid": "5.1.16",
+		"nanoid": "6.0.0",
 		"notistack": "3.0.2",
 		"object-hash": "3.0.0",
 		"pixelmatch": "7.2.0",
