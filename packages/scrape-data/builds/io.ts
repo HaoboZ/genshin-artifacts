@@ -10,10 +10,12 @@ export const BUILD_OVERRIDES_JSON = resolve(HERE, './buildOverrides.json');
 export function loadExistingBuilds(): Record<string, ScrapedBuild | ScrapedBuild[]> {
 	if (!existsSync(BUILDS_JSON)) return {};
 	try {
-		return JSON.parse(readFileSync(BUILDS_JSON, 'utf8')) as Record<
+		const parsed = JSON.parse(readFileSync(BUILDS_JSON, 'utf8')) as Record<
 			string,
 			ScrapedBuild | ScrapedBuild[]
 		>;
+		delete parsed['@lastUpdated'];
+		return parsed;
 	} catch (error) {
 		console.warn(`Failed to read existing builds.json — starting from scratch: ${error}`);
 		return {};
@@ -24,7 +26,11 @@ export function writeBuilds(
 	builds: Record<string, ScrapedBuild | ScrapedBuild[]>,
 	existing: Record<string, ScrapedBuild | ScrapedBuild[]>,
 ) {
-	const final = { ...existing, ...builds };
+	const final: Record<string, unknown> = {
+		'@lastUpdated': new Date().toISOString().slice(0, 10),
+		...existing,
+		...builds,
+	};
 	writeFileSync(BUILDS_JSON, `${JSON.stringify(final, null, '\t')}\n`);
 	console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
 }
