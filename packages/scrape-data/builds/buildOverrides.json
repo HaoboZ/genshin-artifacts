@@ -208,13 +208,16 @@
 		}
 	},
 	"Furina": {
-		"Off-Field DPS & Buff Support": {
+		"High Energy Requirement (Off-Field DPS & Buff Support)": {
+			"omit": true
+		},
+		"Low Energy Requirement (Off-Field DPS & Buff Support)": {
 			"group": 0
 		}
 	},
 	"Gaming": {
 		"DPS": {
-			"group": 2
+			"group": 1
 		}
 	},
 	"Ganyu": {

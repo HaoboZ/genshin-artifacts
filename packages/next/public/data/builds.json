@@ -849,14 +849,18 @@
 	},
 	"Furina": {
 		"key": "Furina",
-		"role": "Off-Field DPS & Buff Support",
+		"role": "Low Energy Requirement (Off-Field DPS & Buff Support)",
 		"weapon": [
 			"SplendorOfTranquilWaters",
-			"PrimordialJadeCutter",
-			["FesteringDesire", "KeyOfKhajNisut", "UrakuMisugiri"],
-			["FleuveCendreFerryman", "FavoniusSword"],
-			["WolfFang", "HaranGeppakuFutsu", "LightOfFoliarIncision", "MistsplitterReforged"],
-			["SkywardBlade", "TheDockhandsAssistant", "HarbingerOfDawn"]
+			["PrimordialJadeCutter", "UrakuMisugiri"],
+			["FesteringDesire", "LightOfFoliarIncision"],
+			"LightbearingMoonshard",
+			"KeyOfKhajNisut",
+			["HaranGeppakuFutsu", "FleuveCendreFerryman"],
+			["WolfFang", "SerenitysCall"],
+			["AthameArtis", "MistsplitterReforged", "Absolution"],
+			["SkywardBlade", "FavoniusSword"],
+			["HarbingerOfDawn", "TheDockhandsAssistant"]
 		],
 		"artifact": ["GoldenTroupe", "TenacityOfTheMillelith"],
 		"mainStat": {
@@ -889,7 +893,7 @@
 			"circlet": "critRD_"
 		},
 		"subStat": ["enerRech_", "critRD_", "eleMas", "atk_"],
-		"group": 2
+		"group": 1
 	},
 	"Ganyu": {
 		"key": "Ganyu",
@@ -2725,11 +2729,15 @@
 		"weapon": [
 			"KagurasVerity",
 			["ReliquaryOfTruth", "VividNotions"],
-			["StarcallersWatch", "SunnyMorningSleepIn", "AThousandFloatingDreams"],
+			[
+				"StarcallersWatch",
+				"SunnyMorningSleepIn",
+				"CashflowSupervision",
+				"AThousandFloatingDreams"
+			],
 			["SkywardAtlas", "AngelosHeptades"],
 			["TomeOfTheEternalFlow", "SurfsUp", "NocturnesCurtainCall", "TulaytullahsRemembrance"],
 			[
-				"CashflowSupervision",
 				"MemoryOfDust",
 				"LostPrayerToTheSacredWinds",
 				"NightweaversLookingGlass",
