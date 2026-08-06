@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-02",
+	"@lastUpdated": "2026-08-06",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -38,11 +38,7 @@
 			"ArchaicPetra",
 			"TenacityOfTheMillelith"
 		],
-		"mainStat": {
-			"sands": "def_",
-			"goblet": ["def_", "geo_dmg_"],
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "def_", "goblet": ["def_", "geo_dmg_"], "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "enerRech_", "atk_"],
 		"group": 0
 	},
@@ -62,15 +58,9 @@
 			"SkywardBlade"
 		],
 		"artifact": ["GildedDreams", "DeepwoodMemories", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": ["eleMas", "atk_"],
-			"goblet": "dendro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["eleMas", "atk_"], "goblet": "dendro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "eleMas", "atk_"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "eleMas", "atk_"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "eleMas", "atk_"] },
 		"group": 0
 	},
 	"Aloy": {
@@ -93,11 +83,7 @@
 			"EmblemOfSeveredFate",
 			["NoblesseOblige", "ScrollOfTheHeroOfCinderCity"]
 		],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "cryo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "cryo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -106,15 +92,9 @@
 		"role": "Buff Support",
 		"weapon": ["ElegyForTheEnd", "FavoniusWarbow", "SacrificialBow", "TheViridescentHunt"],
 		"artifact": ["NoblesseOblige", "Instructor", "ScrollOfTheHeroOfCinderCity", "TheExile"],
-		"mainStat": {
-			"sands": ["enerRech_", "atk_"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["enerRech_", "atk_"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
 		"group": 0
 	},
 	"AratakiItto": {
@@ -126,15 +106,9 @@
 			["Whiteblind", "SkywardPride"]
 		],
 		"artifact": ["HuskOfOpulentDreams", "DesertPavilionChronicle", "RetracingBolide"],
-		"mainStat": {
-			"sands": "def_",
-			"goblet": "geo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "def_", "goblet": "geo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "def_", "atk_"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "def_", "atk_"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "def_", "atk_"] },
 		"group": 0
 	},
 	"Arlecchino": {
@@ -156,11 +130,7 @@
 			"DesertPavilionChronicle",
 			"EchoesOfAnOffering"
 		],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "eleMas", "atk_"],
 		"group": 0
 	},
@@ -176,11 +146,7 @@
 			"AThousandFloatingDreams"
 		],
 		"artifact": ["DeepwoodMemories", "OceanHuedClam", "Instructor", "NoblesseOblige"],
-		"mainStat": {
-			"sands": ["hp_", "enerRech_"],
-			"goblet": "hp_",
-			"circlet": ["hp_", "heal_"]
-		},
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": ["hp_", "heal_"] },
 		"subStat": ["enerRech_", "hp_", "hp", "critRate_"],
 		"group": 2
 	},
@@ -198,11 +164,7 @@
 			["MaidenBeloved", "OceanHuedClam"],
 			["ScrollOfTheHeroOfCinderCity", "Instructor"]
 		],
-		"mainStat": {
-			"sands": "hp_",
-			"goblet": "hp_",
-			"circlet": "heal_"
-		},
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "heal_" },
 		"subStat": ["hp_", "hp"],
 		"overridden": {
 			"artifact": ["OceanHuedClam", ["ScrollOfTheHeroOfCinderCity", "Instructor"]]
@@ -317,11 +279,7 @@
 			"RangeGauge"
 		],
 		"artifact": ["ObsidianCodex", "ViridescentVenerer", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -340,11 +298,7 @@
 			["ScrollOfTheHeroOfCinderCity", "OceanHuedClam", "SongOfDaysPast"],
 			"MaidenBeloved"
 		],
-		"mainStat": {
-			"sands": ["hp_", "enerRech_"],
-			"goblet": "hp_",
-			"circlet": ["hp_", "heal_"]
-		},
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": ["hp_", "heal_"] },
 		"subStat": ["enerRech_", "hp_", "critRate_", "hp", "eleMas"],
 		"group": 1
 	},
@@ -365,11 +319,7 @@
 			"WolfFang"
 		],
 		"artifact": ["GoldenTroupe", "HuskOfOpulentDreams"],
-		"mainStat": {
-			"sands": "def_",
-			"goblet": "geo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "def_", "goblet": "geo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "atk_", "enerRech_"],
 		"group": 1
 	},
@@ -424,11 +374,7 @@
 			["FinaleOfTheDeep", "TheBlackSword"]
 		],
 		"artifact": ["FragmentOfHarmonicWhimsy", "GladiatorsFinale", "ThunderingFury"],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "electro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 1
 	},
@@ -457,15 +403,9 @@
 			"role": "High Energy Requirement Off-Field DPS & Buff Support",
 			"weapon": ["NocturnesCurtainCall", ["PrototypeAmber", "SacrificialJade"], "FavoniusCodex"],
 			"artifact": ["AubadeOfMorningstarAndMoon", "SilkenMoonsSerenade"],
-			"mainStat": {
-				"sands": ["hp_", "enerRech_"],
-				"goblet": "hp_",
-				"circlet": "critRD_"
-			},
+			"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": "critRD_" },
 			"subStat": ["enerRech_", "critRD_", "hp_", "eleMas"],
-			"overridden": {
-				"artifact": ["SilkenMoonsSerenade", "AubadeOfMorningstarAndMoon"]
-			},
+			"overridden": { "artifact": ["SilkenMoonsSerenade", "AubadeOfMorningstarAndMoon"] },
 			"group": 1
 		},
 		{
@@ -477,11 +417,7 @@
 				["PrototypeAmber", "DawningFrost", "KagurasVerity", "LostPrayerToTheSacredWinds"]
 			],
 			"artifact": ["SilkenMoonsSerenade", "AubadeOfMorningstarAndMoon"],
-			"mainStat": {
-				"sands": "hp_",
-				"goblet": "hp_",
-				"circlet": "critRD_"
-			},
+			"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "critRD_" },
 			"subStat": ["enerRech_", "critRD_", "hp_", "eleMas"],
 			"group": 1,
 			"buildIndex": 1
@@ -524,11 +460,7 @@
 			"SkyriderSword"
 		],
 		"artifact": ["NoblesseOblige", "ScrollOfTheHeroOfCinderCity"],
-		"mainStat": {
-			"sands": ["enerRech_", "hp_"],
-			"goblet": "hp_",
-			"circlet": "hp_"
-		},
+		"mainStat": { "sands": ["enerRech_", "hp_"], "goblet": "hp_", "circlet": "hp_" },
 		"subStat": ["enerRech_", "hp_", "critRate_", "hp"],
 		"group": 1
 	},
@@ -547,11 +479,7 @@
 			"Instructor",
 			"DeepwoodMemories"
 		],
-		"mainStat": {
-			"sands": "hp_",
-			"goblet": "hp_",
-			"circlet": ["hp_", "critRate_"]
-		},
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": ["hp_", "critRate_"] },
 		"subStat": ["hp_", "hp", "critRate_"],
 		"group": 0
 	},
@@ -573,11 +501,7 @@
 			"GladiatorsFinale",
 			"MarechausseeHunter"
 		],
-		"mainStat": {
-			"sands": ["eleMas", "atk_"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["eleMas", "atk_"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -597,11 +521,7 @@
 			"Instructor",
 			"TenacityOfTheMillelith"
 		],
-		"mainStat": {
-			"sands": ["enerRech_", "hp_"],
-			"goblet": "hp_",
-			"circlet": ["hp_", "heal_"]
-		},
+		"mainStat": { "sands": ["enerRech_", "hp_"], "goblet": "hp_", "circlet": ["hp_", "heal_"] },
 		"subStat": ["enerRech_", "hp_", "critRate_", "hp"],
 		"group": 1
 	},
@@ -643,11 +563,7 @@
 			["GildedDreams", "EmblemOfSeveredFate"],
 			"CrimsonWitchOfFlames"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": ["pyro_dmg_", "atk_"],
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": ["pyro_dmg_", "atk_"], "circlet": "critRD_" },
 		"subStat": ["critRD_", ["atk_", "eleMas"], "enerRech_"],
 		"group": 0
 	},
@@ -672,11 +588,7 @@
 			"KitainCrossSpear"
 		],
 		"artifact": ["UnfinishedReverie", "DeepwoodMemories", "GoldenTroupe"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "dendro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "dendro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -737,11 +649,7 @@
 			"SkyriderGreatsword"
 		],
 		"artifact": ["PaleFlame", "GladiatorsFinale"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "physical_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "physical_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_"],
 		"group": 0
 	},
@@ -761,11 +669,7 @@
 			"EmblemOfSeveredFate",
 			["GoldenTroupe", "TenacityOfTheMillelith"]
 		],
-		"mainStat": {
-			"sands": "enerRech_",
-			"goblet": "anemo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "enerRech_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRate_", "critDMG_", "atk_"],
 		"group": 0
 	},
@@ -787,15 +691,9 @@
 			"Thundersoother",
 			"TenacityOfTheMillelith"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "electro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
 		"group": 1
 	},
 	"Flins": {
@@ -818,33 +716,34 @@
 			]
 		],
 		"artifact": ["NightOfTheSkysUnveiling", "GildedDreams"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
 		"group": 1
 	},
 	"Freminet": {
 		"key": "Freminet",
 		"role": "Physical DPS",
 		"weapon": [
-			["SkywardPride", "FangOfTheMountainKing", "AThousandBlazingSuns"],
-			["SongOfBrokenPines", "Verdict", "WolfsGravestone"],
-			["BeaconOfTheReedSea", "RedhornStonethresher"],
-			["SerpentSpine", "TheUnforged"],
-			["PrototypeArchaic", "TidalShadow", "SnowTombedStarsilver"]
+			"GestOfTheMightyWolf",
+			["AThousandBlazingSuns", "FangOfTheMountainKing"],
+			["ATeaspoonOfTranscendence", "BeaconOfTheReedSea"],
+			"Verdict",
+			["SongOfBrokenPines", "RedhornStonethresher"],
+			["SkywardPride", "WolfsGravestone", "TheUnforged"],
+			["SerpentSpine", "TidalShadow"],
+			["MailedFlower", "PrototypeArchaic", "SnowTombedStarsilver", "LithicBlade"],
+			"UltimateOverlordsMegaMagicSword",
+			["TalkingStick", "BlackcliffSlasher"]
 		],
-		"artifact": ["PaleFlame", "GoldenTroupe", "GladiatorsFinale", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "physical_dmg_",
-			"circlet": "critRD_"
-		},
+		"artifact": [
+			"PaleFlame",
+			"DisenchantmentInDeepShadow",
+			["GoldenTroupe", "ADayCarvedFromRisingWinds"],
+			["GladiatorsFinale", "BlizzardStrayer", "GildedDreams"],
+			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
+		],
+		"mainStat": { "sands": "atk_", "goblet": "physical_dmg_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"],
 		"group": 1
 	},
@@ -913,11 +812,7 @@
 			["ShimenawasReminiscence", "GildedDreams"],
 			"UnfinishedReverie"
 		],
-		"mainStat": {
-			"sands": ["eleMas", "atk_"],
-			"goblet": "cryo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["eleMas", "atk_"], "goblet": "cryo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "eleMas", "atk_"],
 		"group": 0
 	},
@@ -959,11 +854,7 @@
 			"GildedDreams",
 			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
 		],
-		"mainStat": {
-			"sands": ["hp_", "eleMas"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["hp_", "eleMas"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "eleMas", "hp_", "atk_"],
 		"group": 1
 	},
@@ -1004,11 +895,7 @@
 			["FlowingPurity", "SunnyMorningSleepIn", "MappaMare", "TheWidsith", "MemoryOfDust"]
 		],
 		"artifact": ["ObsidianCodex", "ViridescentVenerer", "ScrollOfTheHeroOfCinderCity"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "anemo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -1017,11 +904,7 @@
 		"role": "Buff Support",
 		"weapon": ["FavoniusLance", "DragonsBane", "KitainCrossSpear", "EngulfingLightning"],
 		"artifact": ["SilkenMoonsSerenade"],
-		"mainStat": {
-			"sands": ["eleMas", "enerRech_"],
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": ["eleMas", "enerRech_"], "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["enerRech_", "eleMas", "critRate_"],
 		"group": 2
 	},
@@ -1043,11 +926,7 @@
 			["GildedDreams", "ADayCarvedFromRisingWinds"],
 			["SilkenMoonsSerenade", "TenacityOfTheMillelith"]
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -1118,11 +997,7 @@
 			["IronSting", "ToukabouShigure", "SkyriderSword"]
 		],
 		"artifact": ["ViridescentVenerer", "ThunderingFury"],
-		"mainStat": {
-			"sands": ["eleMas", "enerRech_"],
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": ["eleMas", "enerRech_"], "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["enerRech_", "eleMas", "critRate_"],
 		"group": 1
 	},
@@ -1158,9 +1033,7 @@
 			"circlet": "critRD_"
 		},
 		"subStat": ["critRD_", "enerRech_", ["atk_", "eleMas"]],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", ["atk_", "eleMas"]]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", ["atk_", "eleMas"]] },
 		"group": 0
 	},
 	"KamisatoAyaka": {
@@ -1176,11 +1049,7 @@
 			"HarbingerOfDawn"
 		],
 		"artifact": ["BlizzardStrayer"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "cryo_dmg_",
-			"circlet": ["critDMG_", "atk_"]
-		},
+		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": ["critDMG_", "atk_"] },
 		"subStat": ["critDMG_", "atk_", "enerRech_", "critRate_"],
 		"group": 0
 	},
@@ -1204,11 +1073,7 @@
 				"ThunderingFury",
 				["EchoesOfAnOffering", "MarechausseeHunter"]
 			],
-			"mainStat": {
-				"sands": "atk_",
-				"goblet": "hydro_dmg_",
-				"circlet": "critRD_"
-			},
+			"mainStat": { "sands": "atk_", "goblet": "hydro_dmg_", "circlet": "critRD_" },
 			"subStat": ["critRD_", "atk_", "enerRech_", "hp_", "eleMas"],
 			"group": 0
 		},
@@ -1217,11 +1082,7 @@
 			"role": "DPS",
 			"weapon": ["HaranGeppakuFutsu"],
 			"artifact": ["EchoesOfAnOffering"],
-			"mainStat": {
-				"sands": "atk_",
-				"goblet": "hydro_dmg_",
-				"circlet": "critRD_"
-			},
+			"mainStat": { "sands": "atk_", "goblet": "hydro_dmg_", "circlet": "critRD_" },
 			"subStat": ["critRD_", "atk_", "enerRech_", "hp_", "eleMas"],
 			"group": 0,
 			"buildIndex": 1
@@ -1265,11 +1126,7 @@
 			["IronSting", "FinaleOfTheDeep", "SummitShaper", "LionsRoar"]
 		],
 		"artifact": ["ThunderingFury", ["Thundersoother", "GildedDreams"]],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "electro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", ["atk_", "eleMas"], "enerRech_"],
 		"group": 0
 	},
@@ -1285,11 +1142,7 @@
 			["EarthShaker", "WolfsGravestone", "RedhornStonethresher"]
 		],
 		"artifact": [["ObsidianCodex", "UnfinishedReverie"], "GoldenTroupe", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "dendro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "dendro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -1311,9 +1164,7 @@
 			"circlet": ["hp_", "critRate_"]
 		},
 		"subStat": ["hp_", "enerRech_", "critRate_", "hp"],
-		"overridden": {
-			"subStat": ["enerRech_", "hp_", "critRate_", "hp"]
-		},
+		"overridden": { "subStat": ["enerRech_", "hp_", "critRate_", "hp"] },
 		"group": 0
 	},
 	"Klee": {
@@ -1335,11 +1186,7 @@
 			"WanderersTroupe",
 			"FragmentOfHarmonicWhimsy"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRD_", "atk_"],
 		"overridden": {
 			"artifact": [
@@ -1391,11 +1238,7 @@
 			["DarkIronSword", "SapwoodBlade"]
 		],
 		"artifact": ["FlowerOfParadiseLost", "GildedDreams", "ThunderingFury"],
-		"mainStat": {
-			"sands": "eleMas",
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["eleMas", "hp_", "enerRech_"],
 		"group": 0
 	},
@@ -1433,11 +1276,7 @@
 			"NightOfTheSkysUnveiling",
 			"GildedDreams"
 		],
-		"mainStat": {
-			"sands": ["enerRech_", "eleMas"],
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": ["enerRech_", "eleMas"], "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["enerRech_", "eleMas", "critRD_"],
 		"group": 0
 	},
@@ -1487,11 +1326,7 @@
 			]
 		],
 		"artifact": ["AubadeOfMorningstarAndMoon", "HuskOfOpulentDreams"],
-		"mainStat": {
-			"sands": ["def_", "enerRech_"],
-			"goblet": "def_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["def_", "enerRech_"], "goblet": "def_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "eleMas", "enerRech_"],
 		"group": 2
 	},
@@ -1511,15 +1346,9 @@
 			"MappaMare"
 		],
 		"artifact": [["Thundersoother", "ThunderingFury"], "GildedDreams"],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "electro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", ["atk_", "eleMas"], "enerRech_"],
-		"overridden": {
-			"artifact": ["ThunderingFury", "GildedDreams", "Thundersoother"]
-		},
+		"overridden": { "artifact": ["ThunderingFury", "GildedDreams", "Thundersoother"] },
 		"group": 0
 	},
 	"Lohen": {
@@ -1552,11 +1381,7 @@
 			"DesertPavilionChronicle",
 			"MarechausseeHunter"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "cryo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "atk", "enerRech_"],
 		"group": 0
 	},
@@ -1569,11 +1394,7 @@
 			"FreedomSworn"
 		],
 		"artifact": ["ViridescentVenerer", "EmblemOfSeveredFate", "NoblesseOblige"],
-		"mainStat": {
-			"sands": ["enerRech_", "atk_"],
-			"goblet": "anemo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["enerRech_", "atk_"], "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRate_", "critDMG_", "atk_"],
 		"group": 0
 	},
@@ -1584,21 +1405,20 @@
 			["TheFirstGreatMagic", "AstralVulturesCrimsonPlumage"],
 			"AquaSimulacra",
 			"ThunderingPulse",
-			"SkywardHarp",
+			["GoldenFrostboundOath", "SkywardHarp"],
+			"TheDaybreakChronicles",
 			"AmosBow",
-			["PolarStar", "SongOfStillness", "PrototypeCrescent"]
+			"PolarStar",
+			["SongOfStillness", "PrototypeCrescent"],
+			["RangeGauge", "FlowerWreathedFeathers"]
 		],
 		"artifact": [
 			"MarechausseeHunter",
-			["Lavawalker", "VermillionHereafter", "ShimenawasReminiscence"],
-			["RetracingBolide", "DesertPavilionChronicle"],
-			"WanderersTroupe"
+			"ShimenawasReminiscence",
+			"ADayCarvedFromRisingWinds",
+			["VermillionHereafter", "Lavawalker"]
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "pyro_dmg_",
-			"circlet": "critDMG_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "pyro_dmg_", "circlet": "critDMG_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -1607,11 +1427,7 @@
 		"role": "DPS",
 		"weapon": ["TravelersHandySword"],
 		"artifact": ["BloodstainedChivalry"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "physical_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "physical_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -1620,11 +1436,7 @@
 		"role": "DPS",
 		"weapon": ["DarkIronSword"],
 		"artifact": ["GladiatorsFinale"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_", "eleMas"],
 		"group": 0
 	},
@@ -1646,11 +1458,7 @@
 			"ScrollOfTheHeroOfCinderCity",
 			["MarechausseeHunter", "DeepwoodMemories"]
 		],
-		"mainStat": {
-			"sands": ["eleMas", "atk_"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["eleMas", "atk_"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas"],
 		"group": 2
 	},
@@ -1752,9 +1560,7 @@
 			"circlet": ["eleMas", "critRD_"]
 		},
 		"subStat": [["critRD_", "eleMas"], "enerRech_", "atk_"],
-		"overridden": {
-			"subStat": ["enerRech_", ["critRD_", "eleMas"], "atk_"]
-		},
+		"overridden": { "subStat": ["enerRech_", ["critRD_", "eleMas"], "atk_"] },
 		"group": 1
 	},
 	"Navia": {
@@ -1775,15 +1581,9 @@
 			"PrototypeArchaic"
 		],
 		"artifact": ["NighttimeWhispersInTheEchoingWoods", "GoldenTroupe", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "geo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "atk_"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_"] },
 		"group": 0
 	},
 	"Nefer": {
@@ -1804,11 +1604,7 @@
 			"TheWidsith"
 		],
 		"artifact": ["NightOfTheSkysUnveiling"],
-		"mainStat": {
-			"sands": "eleMas",
-			"goblet": "eleMas",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "critRD_" },
 		"subStat": ["critRD_", "eleMas"],
 		"group": 0
 	},
@@ -1839,9 +1635,7 @@
 			"circlet": ["critRD_", "hp_"]
 		},
 		"subStat": [["critRD_", "hp_"], "enerRech_", "hp"],
-		"overridden": {
-			"subStat": ["enerRech_", ["critRD_", "hp_"], "hp"]
-		},
+		"overridden": { "subStat": ["enerRech_", ["critRD_", "hp_"], "hp"] },
 		"group": 1
 	},
 	"Nicole": {
@@ -1870,15 +1664,9 @@
 		"role": "Bloom Support",
 		"weapon": ["KeyOfKhajNisut", "TheDockhandsAssistant", "SerenitysCall"],
 		"artifact": ["VourukashasGlow", "DeepwoodMemories"],
-		"mainStat": {
-			"sands": "hp_",
-			"goblet": "hp_",
-			"circlet": "hp_"
-		},
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "hp_" },
 		"subStat": ["hp_", "hp", "eleMas"],
-		"overridden": {
-			"artifact": ["DeepwoodMemories"]
-		},
+		"overridden": { "artifact": ["DeepwoodMemories"] },
 		"group": 0
 	},
 	"Ningguang": {
@@ -1901,11 +1689,7 @@
 			"ArchaicPetra",
 			["Thundersoother", "Lavawalker"]
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "geo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -1918,11 +1702,7 @@
 			"GladiatorsFinale",
 			"MarechausseeHunter"
 		],
-		"mainStat": {
-			"sands": ["def_", "atk_"],
-			"goblet": "geo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["def_", "atk_"], "goblet": "geo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "def_"],
 		"overridden": {
 			"artifact": [
@@ -2072,11 +1852,7 @@
 			"FavoniusLance"
 		],
 		"artifact": [["BlizzardStrayer", "EmblemOfSeveredFate"], "NoblesseOblige"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "cryo_dmg_",
-			"circlet": "critDMG_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "cryo_dmg_", "circlet": "critDMG_" },
 		"subStat": ["enerRech_", "critDMG_", "atk_", "critRate_"],
 		"group": 1
 	},
@@ -2092,11 +1868,7 @@
 			["GestOfTheMightyWolf", "TidalShadow", "MailedFlower", "UltimateOverlordsMegaMagicSword"]
 		],
 		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -2115,11 +1887,7 @@
 			"SongOfDaysPast",
 			"MaidenBeloved"
 		],
-		"mainStat": {
-			"sands": ["enerRech_", "hp_"],
-			"goblet": "hp_",
-			"circlet": ["heal_", "hp_"]
-		},
+		"mainStat": { "sands": ["enerRech_", "hp_"], "goblet": "hp_", "circlet": ["heal_", "hp_"] },
 		"subStat": ["enerRech_", "hp_", "atk_", "hp"],
 		"overridden": {
 			"artifact": [
@@ -2185,11 +1953,7 @@
 			["PrototypeStarglitter", "ProspectorsShovel"]
 		],
 		"artifact": ["NoblesseOblige", "ScrollOfTheHeroOfCinderCity"],
-		"mainStat": {
-			"sands": ["atk_", "enerRech_"],
-			"goblet": "atk_",
-			"circlet": "atk_"
-		},
+		"mainStat": { "sands": ["atk_", "enerRech_"], "goblet": "atk_", "circlet": "atk_" },
 		"subStat": ["enerRech_", "atk_", "critRD_", "atk"],
 		"group": 2
 	},
@@ -2204,11 +1968,7 @@
 			["FavoniusCodex", "ThrillingTalesOfDragonSlayers", "HakushinRing", "PrototypeAmber"]
 		],
 		"artifact": ["ViridescentVenerer", "GoldenTroupe", "DesertPavilionChronicle"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "anemo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_", "eleMas"],
 		"group": 0
 	},
@@ -2223,11 +1983,7 @@
 			["SongOfDaysPast", "OceanHuedClam", "ScrollOfTheHeroOfCinderCity"],
 			"TenacityOfTheMillelith"
 		],
-		"mainStat": {
-			"sands": "hp_",
-			"goblet": "hp_",
-			"circlet": ["hp_", "critRate_"]
-		},
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": ["hp_", "critRate_"] },
 		"subStat": ["hp_", "hp", "critRate_"],
 		"overridden": {
 			"artifact": [
@@ -2256,11 +2012,7 @@
 			"BlizzardStrayer",
 			"MarechausseeHunter"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": ["cryo_dmg_", "atk_"],
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": ["cryo_dmg_", "atk_"], "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_"],
 		"group": 0
 	},
@@ -2276,11 +2028,7 @@
 			"FavoniusCodex"
 		],
 		"artifact": ["ViridescentVenerer", "Instructor"],
-		"mainStat": {
-			"sands": "eleMas",
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["eleMas", "enerRech_", "atk_", "critRD_"],
 		"group": 1
 	},
@@ -2303,11 +2051,7 @@
 			["WindblumeOde", "Hamayumi", "MouunsMoon", "Rust"]
 		],
 		"artifact": ["NymphsDream", "HeartOfDepth", "ShimenawasReminiscence"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "hydro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "hydro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -2323,11 +2067,7 @@
 			"RightfulReward"
 		],
 		"artifact": ["FlowerOfParadiseLost", "GildedDreams", "CrimsonWitchOfFlames"],
-		"mainStat": {
-			"sands": ["enerRech_", "eleMas"],
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": ["enerRech_", "eleMas"], "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["enerRech_", "eleMas", "hp_", "hp", "critRate_"],
 		"group": 1
 	},
@@ -2366,11 +2106,7 @@
 			"ScrollOfTheHeroOfCinderCity",
 			["TenacityOfTheMillelith", "NoblesseOblige", "Instructor"]
 		],
-		"mainStat": {
-			"sands": ["enerRech_", "atk_"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["enerRech_", "atk_"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRD_", "atk_", "def_"],
 		"group": 1
 	},
@@ -2389,15 +2125,9 @@
 			["SolarPearl", "BlackcliffAgate", "DawningFrost", "FlowingPurity"]
 		],
 		"artifact": ["LongNightsOath", "ObsidianCodex", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "electro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_"],
-		"overridden": {
-			"subStat": ["enerRech_", "critRD_", "atk_"]
-		},
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_"] },
 		"group": 0
 	},
 	"Varka": {
@@ -2420,11 +2150,7 @@
 			"DesertPavilionChronicle",
 			"GladiatorsFinale"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "atk_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_"],
 		"group": 0
 	},
@@ -2482,11 +2208,7 @@
 				"EchoesOfAnOffering",
 				"ViridescentVenerer"
 			],
-			"mainStat": {
-				"sands": "atk_",
-				"goblet": "anemo_dmg_",
-				"circlet": "critRD_"
-			},
+			"mainStat": { "sands": "atk_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 			"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 			"group": 0,
 			"buildIndex": 1
@@ -2517,11 +2239,7 @@
 			"ViridescentVenerer",
 			"BlizzardStrayer"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": "anemo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "atk", "enerRech_"],
 		"group": 0
 	},
@@ -2541,11 +2259,7 @@
 			"GildedDreams",
 			"EchoesOfAnOffering"
 		],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "cryo_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "cryo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", ["atk_", "eleMas"]],
 		"group": 2
 	},
@@ -2601,11 +2315,7 @@
 			"NoblesseOblige",
 			["OceanHuedClam", "SongOfDaysPast", "ScrollOfTheHeroOfCinderCity"]
 		],
-		"mainStat": {
-			"sands": ["atk_", "enerRech_"],
-			"goblet": "atk_",
-			"circlet": "atk_"
-		},
+		"mainStat": { "sands": ["atk_", "enerRech_"], "goblet": "atk_", "circlet": "atk_" },
 		"subStat": ["enerRech_", "atk_", "atk", "critRate_"],
 		"group": 2
 	},
@@ -2640,11 +2350,7 @@
 			["VermillionHereafter", "MarechausseeHunter", "LongNightsOath"],
 			"DesertPavilionChronicle"
 		],
-		"mainStat": {
-			"sands": "atk_",
-			"goblet": ["anemo_dmg_", "atk_"],
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "atk_", "goblet": ["anemo_dmg_", "atk_"], "circlet": "critRD_" },
 		"subStat": ["critRD_", "enerRech_", "atk_"],
 		"overridden": {
 			"artifact": [
@@ -2693,11 +2399,7 @@
 			["NymphsDream", "ADayCarvedFromRisingWinds"],
 			"BlizzardStrayer"
 		],
-		"mainStat": {
-			"sands": ["enerRech_", "atk_"],
-			"goblet": "hydro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["enerRech_", "atk_"], "goblet": "hydro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "enerRech_"],
 		"group": 0
 	},
@@ -2767,11 +2469,7 @@
 			["FlowingPurity", "TheWidsith", "DawningFrost"]
 		],
 		"artifact": ["CrimsonWitchOfFlames", "GildedDreams", "WanderersTroupe", "MarechausseeHunter"],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -2794,15 +2492,9 @@
 			"FlowerOfParadiseLost",
 			"GildedDreams"
 		],
-		"mainStat": {
-			"sands": ["hp_", "enerRech_"],
-			"goblet": "hp_",
-			"circlet": "heal_"
-		},
+		"mainStat": { "sands": ["hp_", "enerRech_"], "goblet": "hp_", "circlet": "heal_" },
 		"subStat": ["hp_", "enerRech_", "critRate_", "hp"],
-		"overridden": {
-			"subStat": ["enerRech_", "hp_", "critRate_", "hp"]
-		},
+		"overridden": { "subStat": ["enerRech_", "hp_", "critRate_", "hp"] },
 		"group": 2
 	},
 	"Yelan": {
@@ -2846,11 +2538,7 @@
 			"GildedDreams",
 			"EchoesOfAnOffering"
 		],
-		"mainStat": {
-			"sands": ["atk_", "eleMas"],
-			"goblet": "pyro_dmg_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "pyro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
@@ -2865,11 +2553,7 @@
 			["HakushinRing", "WanderingEvenstar", "MagicGuide"]
 		],
 		"artifact": ["ViridescentVenerer"],
-		"mainStat": {
-			"sands": ["eleMas", "enerRech_"],
-			"goblet": "eleMas",
-			"circlet": "eleMas"
-		},
+		"mainStat": { "sands": ["eleMas", "enerRech_"], "goblet": "eleMas", "circlet": "eleMas" },
 		"subStat": ["enerRech_", "eleMas", "critRate_"],
 		"group": 1
 	},
@@ -2899,11 +2583,7 @@
 			["DeepwoodMemories", "Instructor"],
 			"TenacityOfTheMillelith"
 		],
-		"mainStat": {
-			"sands": "hp_",
-			"goblet": "hp_",
-			"circlet": ["hp_", "critRate_"]
-		},
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": ["hp_", "critRate_"] },
 		"subStat": ["hp_", "hp", "enerRech_"],
 		"group": 0
 	},
@@ -2919,11 +2599,7 @@
 			["SplendorOfTranquilWaters", "HaranGeppakuFutsu", "AthameArtis", "FluteOfEzpitzal"]
 		],
 		"artifact": ["NightOfTheSkysUnveiling", "HuskOfOpulentDreams"],
-		"mainStat": {
-			"sands": "def_",
-			"goblet": "def_",
-			"circlet": "critRD_"
-		},
+		"mainStat": { "sands": "def_", "goblet": "def_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "enerRech_", "eleMas"],
 		"group": 2
 	}

@@ -46,7 +46,7 @@ try {
 		console.info('Builds');
 		const existing = loadExistingBuilds();
 		const builds = await fetchAllBuilds(rest, existing);
-		writeBuilds(builds, existing);
+		await writeBuilds(builds, existing);
 	} else {
 		const config = getConfig(rest);
 

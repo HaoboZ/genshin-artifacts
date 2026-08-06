@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import prettier from 'prettier';
 import type { BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -22,7 +23,7 @@ export function loadExistingBuilds(): Record<string, ScrapedBuild | ScrapedBuild
 	}
 }
 
-export function writeBuilds(
+export async function writeBuilds(
 	builds: Record<string, ScrapedBuild | ScrapedBuild[]>,
 	existing: Record<string, ScrapedBuild | ScrapedBuild[]>,
 ) {
@@ -31,7 +32,12 @@ export function writeBuilds(
 		...existing,
 		...builds,
 	};
-	writeFileSync(BUILDS_JSON, `${JSON.stringify(final, null, '\t')}\n`);
+	const config = await prettier.resolveConfig(BUILDS_JSON);
+	const formatted = await prettier.format(JSON.stringify(final), {
+		...config,
+		filepath: BUILDS_JSON,
+	});
+	writeFileSync(BUILDS_JSON, formatted);
 	console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
 }
 
