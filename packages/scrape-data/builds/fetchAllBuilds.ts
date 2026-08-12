@@ -37,6 +37,6 @@ export async function fetchAllBuilds(
 			if (existing) out[lookupKey] = existing;
 		}
 	}
-	saveDiscoveredRoles(discovered);
+	await saveDiscoveredRoles(discovered);
 	return out;
 }

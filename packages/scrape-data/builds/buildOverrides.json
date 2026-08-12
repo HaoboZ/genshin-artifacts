@@ -482,16 +482,13 @@
 		}
 	},
 	"Noelle": {
-		"DPS": {
+		"Lunar-Crystallize DPS": {
 			"group": 0,
 			"artifact": [
 				["RetracingBolide", "HuskOfOpulentDreams"],
-				"GladiatorsFinale",
-				"MarechausseeHunter"
+				["NighttimeWhispersInTheEchoingWoods", "RetracingBolide", "GladiatorsFinale"],
+				["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 			]
-		},
-		"Driver": {
-			"omit": true
 		}
 	},
 	"Ororon": {

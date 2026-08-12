@@ -52,7 +52,7 @@ function loadBuildOverridesFromDisk(): BuildOverridesFile {
 }
 
 // Add any roles the scraper encountered that weren't in buildOverrides.json
-export function saveDiscoveredRoles(discovered: DiscoveredRoles): void {
+export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
 	const keys = Object.keys(discovered).filter((k) => discovered[k].size > 0);
 	if (keys.length === 0) return;
 	const file = loadBuildOverridesFromDisk();
@@ -66,6 +66,11 @@ export function saveDiscoveredRoles(discovered: DiscoveredRoles): void {
 		}
 	}
 	if (added === 0) return;
-	writeFileSync(BUILD_OVERRIDES_JSON, `${JSON.stringify(file, null, '\t')}\n`);
+	const config = await prettier.resolveConfig(BUILD_OVERRIDES_JSON);
+	const formatted = await prettier.format(JSON.stringify(file), {
+		...config,
+		filepath: BUILD_OVERRIDES_JSON,
+	});
+	writeFileSync(BUILD_OVERRIDES_JSON, formatted);
 	console.info(`Added ${added} new role(s) to buildOverrides.json — review and assign overrides.`);
 }

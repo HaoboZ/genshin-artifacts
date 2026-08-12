@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-06",
+	"@lastUpdated": "2026-08-12",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1695,20 +1695,34 @@
 	},
 	"Noelle": {
 		"key": "Noelle",
-		"role": "DPS",
-		"weapon": ["RedhornStonethresher", "SerpentSpine", "SkywardPride", "Whiteblind"],
+		"role": "Lunar-Crystallize DPS",
+		"weapon": [
+			"RedhornStonethresher",
+			"GestOfTheMightyWolf",
+			"SerpentSpine",
+			["BeaconOfTheReedSea", "AThousandBlazingSuns"],
+			["ATeaspoonOfTranscendence", "Verdict", "Whiteblind"],
+			"SkywardPride",
+			["FlameForgedInsight", "BlackcliffSlasher"],
+			"MasterKey",
+			"FavoniusGreatsword"
+		],
 		"artifact": [
 			["RetracingBolide", "HuskOfOpulentDreams"],
-			"GladiatorsFinale",
-			"MarechausseeHunter"
+			["NighttimeWhispersInTheEchoingWoods", "RetracingBolide", "GladiatorsFinale"],
+			["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 		],
-		"mainStat": { "sands": ["def_", "atk_"], "goblet": "geo_dmg_", "circlet": "critRD_" },
-		"subStat": ["critRD_", "enerRech_", "def_"],
+		"mainStat": {
+			"sands": ["def_", "eleMas", "enerRech_"],
+			"goblet": "geo_dmg_",
+			"circlet": "critRD_"
+		},
+		"subStat": ["enerRech_", "critRD_", "def_", "eleMas"],
 		"overridden": {
 			"artifact": [
 				"HuskOfOpulentDreams",
-				["RetracingBolide", "GladiatorsFinale"],
-				"MarechausseeHunter"
+				["NighttimeWhispersInTheEchoingWoods", "RetracingBolide", "GladiatorsFinale"],
+				["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 			]
 		},
 		"group": 0
