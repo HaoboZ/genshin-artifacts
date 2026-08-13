@@ -63,12 +63,12 @@ export function applyMerge(
 	discovered: DiscoveredRoles,
 ): ScrapedBuild | ScrapedBuild[] | null {
 	const merged: ScrapedBuild[] = [];
+	// The scraper only returns panels marked "Best Role", so this set is the
+	// complete list of override entries that should remain for this character.
+	const roles = (discovered[key] ??= new Set());
 	for (const scraped of builds ?? []) {
 		const entry = resolveGroupEntry(key, scraped.role);
-		// Record this role for buildOverrides auto-population if it's not already configured.
-		if (entry === undefined) {
-			(discovered[key] ??= new Set()).add(scraped.role);
-		}
+		roles.add(scraped.role);
 		const final = applyGroupEntry(scraped, entry);
 		if (!final) continue; // entry.omit
 		merged.push(final);

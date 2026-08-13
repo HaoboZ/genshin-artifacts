@@ -51,12 +51,13 @@ function loadBuildOverridesFromDisk(): BuildOverridesFile {
 	}
 }
 
-// Add any roles the scraper encountered that weren't in buildOverrides.json
+// Synchronize override roles with the scraper's current Best Role panels.
 export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
-	const keys = Object.keys(discovered).filter((k) => discovered[k].size > 0);
+	const keys = Object.keys(discovered);
 	if (keys.length === 0) return;
 	const file = loadBuildOverridesFromDisk();
 	let added = 0;
+	let removed = 0;
 	for (const key of keys) {
 		file[key] ??= {};
 		for (const role of discovered[key]) {
@@ -64,8 +65,14 @@ export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
 			file[key][role] = { group: -1 };
 			added++;
 		}
+		for (const role of Object.keys(file[key])) {
+			if (role === 'additional' || discovered[key].has(role)) continue;
+			delete file[key][role];
+			removed++;
+		}
+		if (Object.keys(file[key]).length === 0) delete file[key];
 	}
-	if (added === 0) return;
+	if (added === 0 && removed === 0) return;
 	const config = await prettier.resolveConfig(BUILD_OVERRIDES_JSON);
 	const formatted = await prettier.format(JSON.stringify(file), {
 		...config,

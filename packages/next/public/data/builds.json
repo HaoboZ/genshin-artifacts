@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-12",
+	"@lastUpdated": "2026-08-13",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -758,7 +758,7 @@
 			"KeyOfKhajNisut",
 			["HaranGeppakuFutsu", "FleuveCendreFerryman"],
 			["WolfFang", "SerenitysCall"],
-			["AthameArtis", "MistsplitterReforged", "Absolution"],
+			["AthameArtis", "ExaiphanesBlade", "MistsplitterReforged", "Absolution"],
 			["SkywardBlade", "FavoniusSword"],
 			["HarbingerOfDawn", "TheDockhandsAssistant"]
 		],
@@ -2419,26 +2419,15 @@
 	},
 	"Xinyan": {
 		"key": "Xinyan",
-		"role": "Physical DPS",
-		"weapon": [
-			"RedhornStonethresher",
-			"SkywardPride",
-			"SerpentSpine",
-			"TheUnforged",
-			"SongOfBrokenPines",
-			"WolfsGravestone",
-			"LuxuriousSeaLord",
-			"SnowTombedStarsilver",
-			"PrototypeArchaic"
+		"role": "Shield Support",
+		"weapon": ["SacrificialGreatsword", "Whiteblind", "FavoniusGreatsword"],
+		"artifact": [
+			["TenacityOfTheMillelith", "ScrollOfTheHeroOfCinderCity"],
+			"HuskOfOpulentDreams"
 		],
-		"artifact": ["PaleFlame"],
-		"mainStat": {
-			"sands": ["atk_", "enerRech_"],
-			"goblet": "physical_dmg_",
-			"circlet": "critRD_"
-		},
-		"subStat": ["critRD_", "atk_", "enerRech_", "def_"],
-		"group": 0
+		"mainStat": { "sands": ["def_", "enerRech_"], "goblet": "def_", "circlet": "def_" },
+		"subStat": ["enerRech_", ["atk_", "def_"], "critRD_"],
+		"group": 2
 	},
 	"YaeMiko": {
 		"key": "YaeMiko",
@@ -2446,25 +2435,31 @@
 		"weapon": [
 			"KagurasVerity",
 			["ReliquaryOfTruth", "VividNotions"],
+			["CashflowSupervision", "EchoesOfTheHeart"],
 			[
-				"StarcallersWatch",
-				"SunnyMorningSleepIn",
-				"CashflowSupervision",
-				"AThousandFloatingDreams"
+				"AngelosHeptades",
+				"SkywardAtlas",
+				"NocturnesCurtainCall",
+				"SurfsUp",
+				"TomeOfTheEternalFlow"
 			],
-			["SkywardAtlas", "AngelosHeptades"],
-			["TomeOfTheEternalFlow", "SurfsUp", "NocturnesCurtainCall", "TulaytullahsRemembrance"],
+			["StarcallersWatch", "SunnyMorningSleepIn", "TulaytullahsRemembrance"],
+			"AThousandFloatingDreams",
 			[
-				"MemoryOfDust",
+				"CranesEchoingCall",
 				"LostPrayerToTheSacredWinds",
-				"NightweaversLookingGlass",
-				"CranesEchoingCall"
+				"MemoryOfDust",
+				"NightweaversLookingGlass"
 			],
-			["DawningFrost", "TheWidsith"],
-			"WanderingEvenstar",
-			["FlowingPurity", "MappaMare"]
+			"DawningFrost",
+			"ClashOfKings"
 		],
-		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams", "GoldenTroupe"],
+		"artifact": [
+			"DisenchantmentInDeepShadow",
+			"GildedDreams",
+			"GoldenTroupe",
+			"HeartOfTheFurnace"
+		],
 		"mainStat": {
 			"sands": ["atk_", "eleMas"],
 			"goblet": ["atk_", "eleMas"],
