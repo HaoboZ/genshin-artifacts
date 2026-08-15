@@ -39,6 +39,16 @@
 		"stat": "CRIT Rate 22.1%",
 		"ability": "Within 12s after an Elemental Skill is used, ATK is increased by 24~48%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24~48%, and CRIT DMG will be increased by 40~80%."
 	},
+	"ExaiphanesBlade": {
+		"key": "ExaiphanesBlade",
+		"name": "Exaiphanes Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Exaiphanes_Blade.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 608,
+		"stat": "CRIT Rate 33.1%",
+		"ability": "When the Traveler equips this, their CRIT DMG increases by ?~?% for every Element they have resonated with. Additionally, the Traveler's ATK will also increase by 16~?% for 8~?s, and regenerate 3~? Elemental Energy, after they attack and hit an opponent. This effect can trigger once every 5~?s. This can be triggered even when the character is not on the field."
+	},
 	"FreedomSworn": {
 		"key": "FreedomSworn",
 		"name": "Freedom-Sworn",
@@ -159,6 +169,16 @@
 		"stat": "CRIT DMG 88.2%",
 		"ability": "Normal Attack DMG is increased by 16~32% and Elemental Skill DMG is increased by 24~48%. After a nearby active character deals Geo DMG, the aforementioned effects increase by 100% for 15s. Additionally, the wielder's DEF is increased by 20~40%."
 	},
+	"WhitelakeFrostfeather": {
+		"key": "WhitelakeFrostfeather",
+		"name": "Whitelake Frostfeather",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Weapon_Whitelake_Frostfeather.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT Rate 22.1%",
+		"ability": "When the equipping character hits an opponent with their Elemental Skill, they gain \"Lake-Hued Lament\": ATK increases by 8~16% for 8s. This effect can trigger once every 0.1s. Max 3 stacks, and each stack's duration is independent.At 3 stacks, the CRIT DMG of any Stellar Glimmer reaction DMG caused by the equipping character is increased by 50~110%, and triggering Stellar Glimmer reactions or Stellar Glimmer reaction DMG will also restore 4~6 Elemental Energy to the character. This Energy recovery effect can trigger once every 3.5s.This effect can be triggered even when the equipping character is off-field."
+	},
 	"AmenomaKageuchi": {
 		"key": "AmenomaKageuchi",
 		"name": "Amenoma Kageuchi",
@@ -198,6 +218,16 @@
 		"atk": 454,
 		"stat": "DEF 69.0%",
 		"ability": "Elemental Skill DMG is increased by 40~80% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG."
+	},
+	"Emberwell": {
+		"key": "Emberwell",
+		"name": "Emberwell",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Weapon_Emberwell.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "Elemental Mastery 165",
+		"ability": "Triggering an Elemental Reaction increases the equipping character's ATK by ?~32% for 12s. Triggering a Stellar Glimmer reaction increases their Stellar Glimmer reaction DMG dealt by ?~32% for 12s. The aforementioned effects can trigger even when the character is not on the field."
 	},
 	"FavoniusSword": {
 		"key": "FavoniusSword",
@@ -248,6 +278,16 @@
 		"atk": 454,
 		"stat": "DEF 69.0%",
 		"ability": "Using an Elemental Skill increases DEF by 16~32% for 15s."
+	},
+	"HereticsMoltenBlade": {
+		"key": "HereticsMoltenBlade",
+		"name": "Heretic's Molten Blade",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Weapon_Heretic%27s_Molten_Blade.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "After the equipping character uses their Elemental Skill, they gain \"Gleam of First Light.\" While active, Gleam of First Light tracks their distance traveled. Each second, the equipping character gains an ATK Bonus ranging from 18~36% to 36~72% based on the distance traveled during the previous second. Gleam of First Light lasts 14s, can be triggered once every 14s, and is removed when the equipping character leaves the field."
 	},
 	"IronSting": {
 		"key": "IronSting",
@@ -357,7 +397,7 @@
 		"weaponType": "Sword",
 		"atk": 440,
 		"stat": "ATK 35.2%",
-		"ability": "Effective only on the following platform:\"PlayStation Network\"Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66."
+		"ability": "Effective only on the following platform:\"PlayStation™Network\"Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66."
 	},
 	"SwordOfNarzissenkreuz": {
 		"key": "SwordOfNarzissenkreuz",
@@ -457,7 +497,7 @@
 		"weaponType": "Sword",
 		"atk": 401,
 		"stat": "Elemental Mastery 141",
-		"ability": "Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, Lunar-Charged, or Electro-infused Swirl reaction, ATK is increased by 20~?% for 12s."
+		"ability": "Upon causing an Overloaded, Superconduct, Stellar-Conduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, Lunar-Charged, or Electro-infused Swirl reaction, ATK is increased by 20~?% for 12s."
 	},
 	"FilletBlade": {
 		"key": "FilletBlade",
@@ -659,6 +699,16 @@
 		"stat": "CRIT DMG 55.1%",
 		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
 	},
+	"BladeOfAtonement": {
+		"key": "BladeOfAtonement",
+		"name": "Blade of Atonement",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Weapon_Blade_of_Atonement.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Triggering an Elemental Reaction increases the equipping character's Elemental Mastery by ?~128 for 12s, while triggering a Stellar Glimmer reaction increases their ATK by ?~32% for 12s. The aforementioned effects can trigger even when the character is not on the field."
+	},
 	"EarthShaker": {
 		"key": "EarthShaker",
 		"name": "Earth Shaker",
@@ -698,6 +748,16 @@
 		"atk": 565,
 		"stat": "Energy Recharge 30.6%",
 		"ability": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Lunar-Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 60~120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack."
+	},
+	"ForgedByTheGoldenMelody": {
+		"key": "ForgedByTheGoldenMelody",
+		"name": "Forged by the Golden Melody",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/26/Weapon_Forged_by_the_Golden_Melody.png",
+		"rarity": 4,
+		"weaponType": "Claymore",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Every 10s, the equipping character plays a \"Harmonic Movement\" of the corresponding type for a boost in the following order: +18~36% ATK > +120~240 Elemental Mastery > +28~56% Stellar Glimmer reaction DMG. Each instance of Harmonic Movement lasts 10s. This effect can trigger even when the equipping character is not on the field.Triggering a Stellar Glimmer reaction will also grant an additional 12-second instance of \"Harmonic Movement: Contrapuntal\" with the same effects as the Harmonic Movement active when Stellar Glimmer is triggered. This effect stacks with the original Harmonic Movement effect, and can trigger once every 12s."
 	},
 	"FruitfulHook": {
 		"key": "FruitfulHook",
@@ -1179,6 +1239,16 @@
 		"stat": "DEF 51.7%",
 		"ability": "Using an Elemental Skill increases DEF by 16~32% for 15s."
 	},
+	"Frostbreath": {
+		"key": "Frostbreath",
+		"name": "Frostbreath",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/73/Weapon_Frostbreath.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 510,
+		"stat": "Energy Recharge 45.9%",
+		"ability": "Triggering a Cryo or Hydro-related elemental reaction increases the equipping character's ATK by 20~40% for the next 15s, as well as regenerates 6~12 Elemental Energy for other members of their party. This effect can trigger once every 16s."
+	},
 	"KitainCrossSpear": {
 		"key": "KitainCrossSpear",
 		"name": "Kitain Cross Spear",
@@ -1289,6 +1359,16 @@
 		"stat": "CRIT Rate 9.2%",
 		"ability": "For 6s after an Elemental Skill hits an opponent, ATK is increased by 8~16% and Energy Recharge is increased by 6~12%. Max 3 stacks. This effect can be triggered even when the equipping character is off-field."
 	},
+	"SongOfTheVigil": {
+		"key": "SongOfTheVigil",
+		"name": "Song of the Vigil",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Song_of_the_Vigil.png",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"atk": 565,
+		"stat": "Elemental Mastery 110",
+		"ability": "Triggering an Elemental Reaction regenerates ?~8 Elemental Energy for the equipping character. This effect can trigger once every 9s. On the other hand, triggering a Stellar Glimmer reaction increases their ATK by ?~40% for 12s. The aforementioned effects can trigger even when the character is not on the field."
+	},
 	"TamayurateiNoOhanashi": {
 		"key": "TamayurateiNoOhanashi",
 		"name": "Tamayuratei no Ohanashi",
@@ -1387,7 +1467,7 @@
 		"weaponType": "Catalyst",
 		"atk": 674,
 		"stat": "CRIT Rate 22.1%",
-		"ability": "ATK is increased by 16~32%. When current HP increases or decreases, Normal Attack DMG will be increased by 16~32% and Charged Attack DMG will be increased by 14~28% for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by 8~16%."
+		"ability": "ATK is increased by 16~32%. When current HP increases or decreases, Normal Attack DMG is increased by 16~32%, Charged Attack DMG is increased by 14~28%, and Stellar-Conduct DMG is increased by 14~28% for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by 8~16%."
 	},
 	"CranesEchoingCall": {
 		"key": "CranesEchoingCall",
@@ -1427,7 +1507,7 @@
 		"weaponType": "Catalyst",
 		"atk": 608,
 		"stat": "CRIT DMG 66.2%",
-		"ability": "Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by 12~24% as well as their Stellar-Conduct DMG by 12~24% for 16s. Max 3 stacks. This character will gain 12~24% All Elemental DMG Bonus when they possess 3 stacks."
+		"ability": "Using an Elemental Skill grants the Kagura Dance effect, increasing the wielding character's Elemental Skill DMG by 12~24% as well as their Stellar-Conduct DMG by 12~24% for 24s. Max 3 stacks. This character will gain a 12~24% All Elemental DMG Bonus when they possess 3 stacks."
 	},
 	"LostPrayerToTheSacredWinds": {
 		"key": "LostPrayerToTheSacredWinds",
@@ -1589,6 +1669,16 @@
 		"stat": "Elemental Mastery 221",
 		"ability": "Bloom DMG is increased by 48~96%, and Lunar-Bloom DMG is increased by 12~24%. Moonsign: Ascendant Gleam: Lunar-Bloom DMG is increased by an additional 12~24%."
 	},
+	"ClashOfKings": {
+		"key": "ClashOfKings",
+		"name": "Clash of Kings",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Clash_of_Kings.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Using an Elemental Skill grants the equipping character \"Laws of the Board,\" which increases their ATK by 20~40% and their Elemental Mastery by 100~200. This effect lasts 6s and can trigger once every 12s. Does not stack. The duration of this effect will also be extended by 6s if the equipping character hits an opponent with a Charged Attack while it is active. The effect can be extended for max 6s in this way."
+	},
 	"DawningFrost": {
 		"key": "DawningFrost",
 		"name": "Dawning Frost",
@@ -1608,6 +1698,16 @@
 		"atk": 454,
 		"stat": "ATK 55.1%",
 		"ability": "Normal Attack hits on opponents increase Charged Attack DMG by 16~32% for 6s. Charged Attack hits on opponents increase ATK by 8~16% for 6s."
+	},
+	"EchoesOfTheHeart": {
+		"key": "EchoesOfTheHeart",
+		"name": "Echoes of the Heart",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Echoes_of_the_Heart.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 565,
+		"stat": "ATK 27.6%",
+		"ability": "Triggering an Elemental Reaction increases the equipping character's Elemental Mastery by 60~120 for 12s, while triggering a Stellar Glimmer reaction increases their Stellar Glimmer reaction DMG dealt by 16~32% for 12s. The aforementioned effects can trigger even when the character is not on the field."
 	},
 	"EtherlightSpindlelute": {
 		"key": "EtherlightSpindlelute",
@@ -2039,6 +2139,16 @@
 		"stat": "Physical DMG Bonus 69.0%",
 		"ability": "Normal Attack and Charged Attack hits increase ATK by 4~8% and Normal ATK SPD by 1.2~2.4% for 6s. Max 4 stacks. Can only occur once every 0.3s."
 	},
+	"CovenantOfFrostAndSnow": {
+		"key": "CovenantOfFrostAndSnow",
+		"name": "Covenant of Frost and Snow",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Weapon_Covenant_of_Frost_and_Snow.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "DEF 51.7%",
+		"ability": "For 12s after the equipping character uses an Elemental Skill, their Elemental Mastery is increased by ?~240."
+	},
 	"EndOfTheLine": {
 		"key": "EndOfTheLine",
 		"name": "End of the Line",
@@ -2099,6 +2209,16 @@
 		"stat": "ATK 27.6%",
 		"ability": "The character's Elemental Mastery will increase by 40~80 within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can be triggered once every 0.5s."
 	},
+	"JadeVista": {
+		"key": "JadeVista",
+		"name": "Jade Vista",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Weapon_Jade_Vista.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "For every party member other than the equipping character:Who is of the same Elemental Type as the equipper: The equipping character's Elemental Mastery is increased by 64~128;Who is not of the same Elemental Type as the equipper: The equipping character's ATK increases by 12~24%. The two effects described above can stack up to 3 times in total, with Elemental Mastery buffs applied first."
+	},
 	"KingsSquire": {
 		"key": "KingsSquire",
 		"name": "King's Squire",
@@ -2137,7 +2257,7 @@
 		"weaponType": "Bow",
 		"atk": 510,
 		"stat": "ATK 41.3%",
-		"ability": "Effective only on the following platform:\"PlayStation Network\"Dealing Cryo DMG to opponents increases this character's Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks. Additionally, when Aloy equips Predator, ATK is increased by 66."
+		"ability": "Effective only on the following platform:\"PlayStation™Network\"Dealing Cryo DMG to opponents increases this character's Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks. Additionally, when Aloy equips Predator, ATK is increased by 66."
 	},
 	"PrototypeCrescent": {
 		"key": "PrototypeCrescent",

@@ -3,6 +3,7 @@ export type WeaponKey =
 	| 'AquilaFavonia' // Aquila Favonia
 	| 'AthameArtis' // Athame Artis
 	| 'Azurelight' // Azurelight
+	| 'ExaiphanesBlade' // Exaiphanes Blade
 	| 'FreedomSworn' // Freedom-Sworn
 	| 'HaranGeppakuFutsu' // Haran Geppaku Futsu
 	| 'KeyOfKhajNisut' // Key of Khaj-Nisut
@@ -15,15 +16,18 @@ export type WeaponKey =
 	| 'SplendorOfTranquilWaters' // Splendor of Tranquil Waters
 	| 'SummitShaper' // Summit Shaper
 	| 'UrakuMisugiri' // Uraku Misugiri
+	| 'WhitelakeFrostfeather' // Whitelake Frostfeather
 	| 'AmenomaKageuchi' // Amenoma Kageuchi
 	| 'BlackcliffLongsword' // Blackcliff Longsword
 	| 'CalamityOfEshu' // Calamity of Eshu
 	| 'CinnabarSpindle' // Cinnabar Spindle
+	| 'Emberwell' // Emberwell
 	| 'FavoniusSword' // Favonius Sword
 	| 'FesteringDesire' // Festering Desire
 	| 'FinaleOfTheDeep' // Finale of the Deep
 	| 'FleuveCendreFerryman' // Fleuve Cendre Ferryman
 	| 'FluteOfEzpitzal' // Flute of Ezpitzal
+	| 'HereticsMoltenBlade' // Heretic's Molten Blade
 	| 'IronSting' // Iron Sting
 	| 'KagotsurubeIsshin' // Kagotsurube Isshin
 	| 'LionsRoar' // Lion's Roar
@@ -65,10 +69,12 @@ export type WeaponKey =
 	| 'UltimateOverlordsMegaMagicSword' // "Ultimate Overlord's Mega Magic Sword"
 	| 'Akuoumaru' // Akuoumaru
 	| 'BlackcliffSlasher' // Blackcliff Slasher
+	| 'BladeOfAtonement' // Blade of Atonement
 	| 'EarthShaker' // Earth Shaker
 	| 'FavoniusGreatsword' // Favonius Greatsword
 	| 'FlameForgedInsight' // Flame-Forged Insight
 	| 'ForestRegalia' // Forest Regalia
+	| 'ForgedByTheGoldenMelody' // Forged by the Golden Melody
 	| 'FruitfulHook' // Fruitful Hook
 	| 'KatsuragikiriNagamasa' // Katsuragikiri Nagamasa
 	| 'LithicBlade' // Lithic Blade
@@ -117,6 +123,7 @@ export type WeaponKey =
 	| 'DragonspineSpear' // Dragonspine Spear
 	| 'FavoniusLance' // Favonius Lance
 	| 'FootprintOfTheRainbow' // Footprint of the Rainbow
+	| 'Frostbreath' // Frostbreath
 	| 'KitainCrossSpear' // Kitain Cross Spear
 	| 'LithicSpear' // Lithic Spear
 	| 'MissiveWindspear' // Missive Windspear
@@ -128,6 +135,7 @@ export type WeaponKey =
 	| 'RightfulReward' // Rightful Reward
 	| 'RoyalSpear' // Royal Spear
 	| 'SacrificersStaff' // Sacrificer's Staff
+	| 'SongOfTheVigil' // Song of the Vigil
 	| 'TamayurateiNoOhanashi' // Tamayuratei no Ohanashi
 	| 'WavebreakersFin' // Wavebreaker's Fin
 	| 'BlackTassel' // Black Tassel
@@ -158,8 +166,10 @@ export type WeaponKey =
 	| 'BalladOfTheBoundlessBlue' // Ballad of the Boundless Blue
 	| 'BlackcliffAgate' // Blackcliff Agate
 	| 'BlackmarrowLantern' // Blackmarrow Lantern
+	| 'ClashOfKings' // Clash of Kings
 	| 'DawningFrost' // Dawning Frost
 	| 'DodocoTales' // Dodoco Tales
+	| 'EchoesOfTheHeart' // Echoes of the Heart
 	| 'EtherlightSpindlelute' // Etherlight Spindlelute
 	| 'EyeOfPerception' // Eye of Perception
 	| 'FavoniusCodex' // Favonius Codex
@@ -203,12 +213,14 @@ export type WeaponKey =
 	| 'ChainBreaker' // Chain Breaker
 	| 'Cloudforged' // Cloudforged
 	| 'CompoundBow' // Compound Bow
+	| 'CovenantOfFrostAndSnow' // Covenant of Frost and Snow
 	| 'EndOfTheLine' // End of the Line
 	| 'FadingTwilight' // Fading Twilight
 	| 'FavoniusWarbow' // Favonius Warbow
 	| 'FlowerWreathedFeathers' // Flower-Wreathed Feathers
 	| 'Hamayumi' // Hamayumi
 	| 'IbisPiercer' // Ibis Piercer
+	| 'JadeVista' // Jade Vista
 	| 'KingsSquire' // King's Squire
 	| 'MitternachtsWaltz' // Mitternachts Waltz
 	| 'MouunsMoon' // Mouun's Moon

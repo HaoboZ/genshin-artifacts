@@ -124,5 +124,23 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Item_Philosophies_of_Vagrancy.png",
 		"location": "Nod-Krai",
 		"day": 3
+	},
+	{
+		"name": "Charity",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Philosophies_of_Charity.png",
+		"location": "Snezhnaya",
+		"day": 1
+	},
+	{
+		"name": "Fortitude",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Item_Philosophies_of_Fortitude.png",
+		"location": "Snezhnaya",
+		"day": 2
+	},
+	{
+		"name": "Glory",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Item_Philosophies_of_Glory.png",
+		"location": "Snezhnaya",
+		"day": 3
 	}
 ]

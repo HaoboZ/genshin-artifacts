@@ -39,6 +39,16 @@
 		"talentMaterial": "Freedom",
 		"weeklyMaterial": "MoltenMoment"
 	},
+	"Alyosha": {
+		"key": "Alyosha",
+		"name": "Alyosha",
+		"rarity": 4,
+		"weaponType": "Polearm",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Alyosha_Icon.png",
+		"talentMaterial": "Fortitude",
+		"weeklyMaterial": "ElixirOfTheHeretic"
+	},
 	"Amber": {
 		"key": "Amber",
 		"name": "Amber",
@@ -778,6 +788,16 @@
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8e/Noelle_Icon.png",
 		"talentMaterial": "Resistance",
 		"weeklyMaterial": "DvalinsClaw"
+	},
+	"Odette": {
+		"key": "Odette",
+		"name": "Odette",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Odette_Icon.png",
+		"talentMaterial": "Charity",
+		"weeklyMaterial": "TwistedWitheredBranch"
 	},
 	"Ororon": {
 		"key": "Ororon",

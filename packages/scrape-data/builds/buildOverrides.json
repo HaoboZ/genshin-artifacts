@@ -5,6 +5,7 @@
 		"Spread DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "eleMas", "atk_"] }
 	},
 	"Aloy": { "Burst Support": { "group": 0 } },
+	"Alyosha": { "Buff Support": { "group": 1 } },
 	"Amber": {
 		"Buff Support": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] }
 	},
@@ -47,7 +48,7 @@
 		},
 		"Low Energy Requirement Off-Field DPS & Buff Support": { "group": 1 }
 	},
-	"Cyno": { "Aggravate DPS": { "omit": true }, "Quickbloom / Hyperbloom DPS": { "group": 1 } },
+	"Cyno": { "Stellar-Conduct DPS": { "group": 1 } },
 	"Dahlia": { "Shield Support": { "group": 1 } },
 	"Dehya": { "Support": { "group": 0 } },
 	"Diluc": { "DPS": { "group": 0 } },
@@ -176,6 +177,7 @@
 			]
 		}
 	},
+	"Odette": { "Off-field DPS": { "group": 0 } },
 	"Ororon": { "Off-Field DPS": { "group": 1 }, "Off-Field Reaction DPS": { "omit": true } },
 	"Prune": { "Buff Support": { "group": 2 } },
 	"Qiqi": { "Heal & Buff Support": { "group": 1 } },
@@ -221,7 +223,8 @@
 		"Dendro - Reaction Support": { "omit": true },
 		"Electro - Energy Support": { "omit": true },
 		"Geo - Geo DPS": { "omit": true },
-		"Pyro - Buff Support": { "group": 1 }
+		"Pyro - Buff Support": { "group": 1 },
+		"Cryo - Stellar Glimmer DPS": { "omit": true }
 	},
 	"Varesa": { "Plunge DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
 	"Varka": { "DPS": { "group": 0 } },

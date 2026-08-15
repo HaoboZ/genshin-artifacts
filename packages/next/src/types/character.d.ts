@@ -3,6 +3,7 @@ export type CharacterKey =
 	| 'Albedo' // Albedo
 	| 'Alhaitham' // Alhaitham
 	| 'Aloy' // Aloy
+	| 'Alyosha' // Alyosha
 	| 'Amber' // Amber
 	| 'AratakiItto' // Arataki Itto
 	| 'Arlecchino' // Arlecchino
@@ -77,6 +78,7 @@ export type CharacterKey =
 	| 'Nilou' // Nilou
 	| 'Ningguang' // Ningguang
 	| 'Noelle' // Noelle
+	| 'Odette' // Odette
 	| 'Ororon' // Ororon
 	| 'Prune' // Prune
 	| 'Qiqi' // Qiqi

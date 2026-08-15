@@ -66,7 +66,7 @@ export async function fetchAllSlugs(): Promise<string[]> {
 }
 
 export function getTravelerElement(slug: string): string | null {
-	const m = slug.match(/^(anemo|dendro|electro|geo|hydro|pyro)-traveler$/);
+	const m = slug.match(/^(anemo|cryo|dendro|electro|geo|hydro|pyro)-traveler$/);
 	return m ? pascalCase(m[1]) : null;
 }
 

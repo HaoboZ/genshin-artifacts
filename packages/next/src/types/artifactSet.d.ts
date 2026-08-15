@@ -1,8 +1,10 @@
 export type ArtifactSetKey =
+	| 'HeartOfTheFurnace' // Heart of the Furnace
+	| 'ScarletProof' // Scarlet Proof
 	| 'DisenchantmentInDeepShadow' // Disenchantment in Deep Shadow
 	| 'CelestialGift' // Celestial Gift
-	| 'AubadeOfMorningstarAndMoon' // Aubade of Morningstar and Moon
 	| 'ADayCarvedFromRisingWinds' // A Day Carved From Rising Winds
+	| 'AubadeOfMorningstarAndMoon' // Aubade of Morningstar and Moon
 	| 'SilkenMoonsSerenade' // Silken Moon's Serenade
 	| 'NightOfTheSkysUnveiling' // Night of the Sky's Unveiling
 	| 'FinaleOfTheDeepGalleries' // Finale of the Deep Galleries

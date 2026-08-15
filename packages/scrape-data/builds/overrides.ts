@@ -3,6 +3,10 @@ import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } fr
 
 const buildOverridesTyped = buildOverrides as BuildOverridesFile;
 
+export function getKnownRoles(key: string): string[] {
+	return Object.keys(buildOverridesTyped[key] ?? {}).filter((role) => role !== 'additional');
+}
+
 // Resolve the configuration entry for `(key, role)`
 export function resolveGroupEntry(key: string, role: string): BuildEntry | undefined {
 	const roles = buildOverridesTyped[key];

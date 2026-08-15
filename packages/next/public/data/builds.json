@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-13",
+	"@lastUpdated": "2026-08-15",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -86,6 +86,27 @@
 		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "cryo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
+	},
+	"Alyosha": {
+		"key": "Alyosha",
+		"role": "Buff Support",
+		"weapon": [
+			"SymphonistOfScents",
+			"Frostbreath",
+			"FavoniusLance",
+			"EngulfingLightning",
+			"TamayurateiNoOhanashi",
+			"SkywardSpine",
+			"SongOfTheVigil"
+		],
+		"artifact": ["HeartOfTheFurnace", "NoblesseOblige"],
+		"mainStat": {
+			"sands": ["atk_", "enerRech_"],
+			"goblet": "atk_",
+			"circlet": ["atk_", "critRate_"]
+		},
+		"subStat": ["enerRech_", "atk_", "critRate_"],
+		"group": 1
 	},
 	"Amber": {
 		"key": "Amber",
@@ -425,28 +446,24 @@
 	],
 	"Cyno": {
 		"key": "Cyno",
-		"role": "Quickbloom / Hyperbloom DPS",
+		"role": "Stellar-Conduct DPS",
 		"weapon": [
 			"StaffOfTheScarletSands",
-			"DisasterAndRemorse",
-			["PrimordialJadeWingedSpear", "BalladOfTheFjords"],
-			["LumidouceElegy", "FracturedHalo", "StaffOfHoma", "WhiteTassel"],
-			["Deathmatch", "SymphonistOfScents", "KitainCrossSpear", "MissiveWindspear"],
-			"SkywardSpine",
-			"FavoniusLance"
+			"FracturedHalo",
+			["PrimordialJadeWingedSpear", "LumidouceElegy", "StaffOfHoma"],
+			["SymphonistOfScents", "DisasterAndRemorse"],
+			"CalamityQueller",
+			["CrimsonMoonsSemblance", "BloodsoakedRuins"],
+			"VortexVanquisher",
+			"Deathmatch",
+			"BalladOfTheFjords",
+			["SkywardSpine", "SacrificersStaff"],
+			"MissiveWindspear",
+			"SongOfTheVigil"
 		],
-		"artifact": [
-			"ThunderingFury",
-			["GildedDreams", "FlowerOfParadiseLost"],
-			"GladiatorsFinale",
-			"MarechausseeHunter"
-		],
-		"mainStat": {
-			"sands": "eleMas",
-			"goblet": ["electro_dmg_", "eleMas"],
-			"circlet": ["critRD_", "eleMas"]
-		},
-		"subStat": ["enerRech_", "eleMas", "critRD_", "atk_"],
+		"artifact": ["DisenchantmentInDeepShadow", ["GildedDreams", "ADayCarvedFromRisingWinds"]],
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
+		"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"],
 		"group": 1
 	},
 	"Dahlia": {
@@ -732,7 +749,14 @@
 			["SongOfBrokenPines", "RedhornStonethresher"],
 			["SkywardPride", "WolfsGravestone", "TheUnforged"],
 			["SerpentSpine", "TidalShadow"],
-			["MailedFlower", "PrototypeArchaic", "SnowTombedStarsilver", "LithicBlade"],
+			[
+				"MailedFlower",
+				"PrototypeArchaic",
+				"ForgedByTheGoldenMelody",
+				"SnowTombedStarsilver",
+				"LithicBlade",
+				"BladeOfAtonement"
+			],
 			"UltimateOverlordsMegaMagicSword",
 			["TalkingStick", "BlackcliffSlasher"]
 		],
@@ -1701,7 +1725,7 @@
 			"GestOfTheMightyWolf",
 			"SerpentSpine",
 			["BeaconOfTheReedSea", "AThousandBlazingSuns"],
-			["ATeaspoonOfTranscendence", "Verdict", "Whiteblind"],
+			["ATeaspoonOfTranscendence", "Verdict", "ForgedByTheGoldenMelody", "Whiteblind"],
 			"SkywardPride",
 			["FlameForgedInsight", "BlackcliffSlasher"],
 			"MasterKey",
@@ -1725,6 +1749,34 @@
 				["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 			]
 		},
+		"group": 0
+	},
+	"Odette": {
+		"key": "Odette",
+		"role": "Off-field DPS",
+		"weapon": [
+			"WhitelakeFrostfeather",
+			["Azurelight", "PrimordialJadeCutter", "Absolution"],
+			["UrakuMisugiri", "LightOfFoliarIncision", "MistsplitterReforged"],
+			[
+				"HaranGeppakuFutsu",
+				"LightbearingMoonshard",
+				"SplendorOfTranquilWaters",
+				"ExaiphanesBlade",
+				"AthameArtis"
+			],
+			["SummitShaper", "FinaleOfTheDeep", "Emberwell"],
+			["AquilaFavonia", "FreedomSworn"],
+			"WolfFang"
+		],
+		"artifact": [
+			"HeartOfTheFurnace",
+			"DisenchantmentInDeepShadow",
+			["BlizzardStrayer", "TenacityOfTheMillelith"],
+			"ADayCarvedFromRisingWinds"
+		],
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
+		"subStat": ["critRD_", "atk_", "eleMas"],
 		"group": 0
 	},
 	"Ororon": {
