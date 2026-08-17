@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-15",
+	"@lastUpdated": "2026-08-17",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1928,10 +1928,17 @@
 		"weapon": [
 			"ATeaspoonOfTranscendence",
 			"AThousandBlazingSuns",
+			"BladeOfAtonement",
 			"Verdict",
 			"WolfsGravestone",
 			["BeaconOfTheReedSea", "RedhornStonethresher", "TheUnforged"],
-			["GestOfTheMightyWolf", "TidalShadow", "MailedFlower", "UltimateOverlordsMegaMagicSword"]
+			[
+				"GestOfTheMightyWolf",
+				"TidalShadow",
+				"MailedFlower",
+				"ForgedByTheGoldenMelody",
+				"UltimateOverlordsMegaMagicSword"
+			]
 		],
 		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
@@ -2493,9 +2500,11 @@
 				"SkywardAtlas",
 				"NocturnesCurtainCall",
 				"SurfsUp",
-				"TomeOfTheEternalFlow"
+				"TomeOfTheEternalFlow",
+				"StarcallersWatch",
+				"SunnyMorningSleepIn",
+				"TulaytullahsRemembrance"
 			],
-			["StarcallersWatch", "SunnyMorningSleepIn", "TulaytullahsRemembrance"],
 			"AThousandFloatingDreams",
 			[
 				"CranesEchoingCall",
