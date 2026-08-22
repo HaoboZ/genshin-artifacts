@@ -106,7 +106,7 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 				<Image
 					fill
 					alt='teyvat'
-					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat.png`}
+					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat70.png`}
 					style={{ objectFit: 'contain' }}
 				/>
 			</ImageMapRoute>

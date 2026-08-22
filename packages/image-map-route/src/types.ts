@@ -35,6 +35,12 @@ export type ImageMapRouteProps = {
 		scale?: number;
 		offset?: { x: number; y: number };
 	};
+	/**
+	 * The natural width divided by the natural height of an image rendered with
+	 * `object-fit: contain`. Coordinates are drawn against the contained image,
+	 * rather than any letterboxing in the route container.
+	 */
+	imageAspectRatio?: number;
 	innerChildren?: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 

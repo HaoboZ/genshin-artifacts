@@ -8,6 +8,7 @@ import { mouseToContainer } from './utils/mouseToContainer';
 export default function ImageMapRouteContainer({
 	containerRef,
 	containerSize,
+	imageSize,
 	scale,
 	setScale,
 	mapOffset,
@@ -20,6 +21,7 @@ export default function ImageMapRouteContainer({
 }: {
 	containerRef: RefObject<HTMLDivElement>;
 	containerSize: DOMRect;
+	imageSize: DOMRect;
 	scale: number;
 	setScale: Dispatch<number>;
 	mapOffset: Point;
@@ -50,7 +52,7 @@ export default function ImageMapRouteContainer({
 		hasMoved.current = true;
 		const newX = clientX - dragStart.current.x;
 		const newY = clientY - dragStart.current.y;
-		setMapOffset(clampPosition(containerSize, newX, newY, scale));
+		setMapOffset(clampPosition(containerSize, newX, newY, scale, imageSize));
 	};
 
 	const performZoom = (zoomCenter: Point, scaleDelta: number) => {
@@ -69,14 +71,20 @@ export default function ImageMapRouteContainer({
 		const newY = mouseY - centerY - imagePointY * newScale;
 
 		setScale(newScale);
-		setMapOffset(clampPosition(containerSize, newX, newY, newScale));
+		setMapOffset(clampPosition(containerSize, newX, newY, newScale, imageSize));
 	};
 
 	const handleClick = (click: { x: number; y: number }) => {
 		if (!containerSize) return;
 		const liveRect = containerRef.current?.getBoundingClientRect() ?? containerSize;
 		onClickRoute?.(
-			mouseToContainer({ clientX: click.x, clientY: click.y }, liveRect, mapOffset, scale),
+			mouseToContainer(
+				{ clientX: click.x, clientY: click.y },
+				liveRect,
+				mapOffset,
+				scale,
+				imageSize,
+			),
 		);
 	};
 
@@ -114,7 +122,7 @@ export default function ImageMapRouteContainer({
 		element.addEventListener('wheel', handleWheel, { passive: false });
 		return () => element.removeEventListener('wheel', handleWheel);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [containerRef, containerSize, scale, mapOffset]);
+	}, [containerRef, containerSize, imageSize, scale, mapOffset]);
 
 	return (
 		<div
@@ -139,7 +147,7 @@ export default function ImageMapRouteContainer({
 
 				if (!containerSize) return;
 				const liveRect = e.currentTarget.getBoundingClientRect();
-				onHoverRoute?.(mouseToContainer(e, liveRect, mapOffset, scale));
+				onHoverRoute?.(mouseToContainer(e, liveRect, mapOffset, scale, imageSize));
 			}}
 			onMouseUp={endDrag}
 			onClick={(e) => {
@@ -149,7 +157,7 @@ export default function ImageMapRouteContainer({
 				}
 				if (!containerSize) return;
 				const liveRect = e.currentTarget.getBoundingClientRect();
-				onClickRoute?.(mouseToContainer(e, liveRect, mapOffset, scale));
+				onClickRoute?.(mouseToContainer(e, liveRect, mapOffset, scale, imageSize));
 			}}
 			onContextMenu={(e) => e.preventDefault()}
 			onTouchStart={(e) => {
