@@ -1,9 +1,7 @@
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
-import { charactersInfo } from '@/api/characters';
-import { capitalCase } from 'change-case';
 import { flatMap } from 'remeda';
 import { type Bbox, createScheduler, createWorker } from 'tesseract.js';
-import { type ArtifactSetKey, type CharacterKey, type IArtifact, type StatKey } from '@/types/good';
+import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/types/good';
 import setupContext from './setupContext';
 
 const mainStatsScan: Record<string, StatKey> = {
@@ -147,14 +145,6 @@ export default async function findText(canvas: HTMLCanvasElement, newCanvas?: HT
 										if (!artifact.unactivatedSubstats) artifact.unactivatedSubstats = [];
 										artifact.unactivatedSubstats.push(artifact.substats.pop());
 									}
-								}
-								break;
-							}
-							case 'character': {
-								const match = text.match(/equipped: (\w+( \w+)*)/);
-								if (match) {
-									artifact.location = capitalCase(match[1]) as CharacterKey;
-									if (!charactersInfo[artifact.location]) artifact.location = 'Traveler';
 								}
 								break;
 							}

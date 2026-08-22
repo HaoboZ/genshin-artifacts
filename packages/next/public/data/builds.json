@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-17",
+	"@lastUpdated": "2026-08-22",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1758,13 +1758,7 @@
 			"WhitelakeFrostfeather",
 			["Azurelight", "PrimordialJadeCutter", "Absolution"],
 			["UrakuMisugiri", "LightOfFoliarIncision", "MistsplitterReforged"],
-			[
-				"HaranGeppakuFutsu",
-				"LightbearingMoonshard",
-				"SplendorOfTranquilWaters",
-				"ExaiphanesBlade",
-				"AthameArtis"
-			],
+			["HaranGeppakuFutsu", "LightbearingMoonshard", "SplendorOfTranquilWaters", "AthameArtis"],
 			["SummitShaper", "FinaleOfTheDeep", "Emberwell"],
 			["AquilaFavonia", "FreedomSworn"],
 			"WolfFang"
@@ -1777,6 +1771,30 @@
 		],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas"],
+		"overridden": {
+			"weapon": [
+				"WhitelakeFrostfeather",
+				["Azurelight", "PrimordialJadeCutter", "Absolution"],
+				[
+					"MistsplitterReforged",
+					"LightOfFoliarIncision",
+					"UrakuMisugiri",
+					"FinaleOfTheDeep",
+					"HaranGeppakuFutsu",
+					"FreedomSworn"
+				],
+				[
+					"LightbearingMoonshard",
+					"SplendorOfTranquilWaters",
+					"SummitShaper",
+					"ExaiphanesBlade",
+					"AthameArtis"
+				],
+				"Emberwell",
+				"AquilaFavonia",
+				"WolfFang"
+			]
+		},
 		"group": 0
 	},
 	"Ororon": {
@@ -2173,7 +2191,7 @@
 			"FavoniusSword",
 			"PeakPatrolSong",
 			["FreedomSworn", "KeyOfKhajNisut"],
-			"SacrificialSword"
+			"ExaiphanesBlade"
 		],
 		"artifact": [
 			"ScrollOfTheHeroOfCinderCity",
@@ -2318,23 +2336,29 @@
 	},
 	"Wriothesley": {
 		"key": "Wriothesley",
-		"role": "Melt DPS",
+		"role": "Stellar-Conduct DPS",
 		"weapon": [
-			["CashflowSupervision", "TulaytullahsRemembrance"],
-			["AThousandFloatingDreams", "LostPrayerToTheSacredWinds", "TomeOfTheEternalFlow"],
-			"SkywardAtlas",
-			["MappaMare", "TheWidsith", "BalladOfTheBoundlessBlue"],
-			"FlowingPurity"
+			"CashflowSupervision",
+			"ReliquaryOfTruth",
+			"ClashOfKings",
+			["MemoryOfDust", "VividNotions"],
+			"LostPrayerToTheSacredWinds",
+			["EchoesOfTheHeart", "AngelosHeptades", "TulaytullahsRemembrance", "KagurasVerity"],
+			["TomeOfTheEternalFlow", "SurfsUp", "SkywardAtlas"],
+			["CranesEchoingCall", "StarcallersWatch"],
+			"AThousandFloatingDreams",
+			["SacrificialJade", "TheWidsith"]
 		],
 		"artifact": [
+			"DisenchantmentInDeepShadow",
 			"MarechausseeHunter",
-			"ShimenawasReminiscence",
-			"GildedDreams",
-			"EchoesOfAnOffering"
+			"ADayCarvedFromRisingWinds",
+			"BlizzardStrayer",
+			"GildedDreams"
 		],
-		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "cryo_dmg_", "circlet": "critRD_" },
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", ["atk_", "eleMas"]],
-		"group": 2
+		"group": 0
 	},
 	"Xiangling": {
 		"key": "Xiangling",
@@ -2614,17 +2638,25 @@
 	},
 	"YumemizukiMizuki": {
 		"key": "YumemizukiMizuki",
-		"role": "Reaction DPS",
+		"role": "Stellar Swirl DPS",
 		"weapon": [
 			"SunnyMorningSleepIn",
+			"ReliquaryOfTruth",
 			"StarcallersWatch",
-			"AThousandFloatingDreams",
-			["SacrificialFragments", "FavoniusCodex", "FruitOfFulfillment"],
-			["HakushinRing", "WanderingEvenstar", "MagicGuide"]
+			["SacrificialJade", "DawningFrost"],
+			[
+				"AThousandFloatingDreams",
+				"NocturnesCurtainCall",
+				"TomeOfTheEternalFlow",
+				"ClashOfKings"
+			],
+			["KagurasVerity", "LostPrayerToTheSacredWinds", "NightweaversLookingGlass", "TheWidsith"],
+			"SacrificialFragments",
+			["MagicGuide", "EchoesOfTheHeart", "WanderingEvenstar"]
 		],
-		"artifact": ["ViridescentVenerer"],
-		"mainStat": { "sands": ["eleMas", "enerRech_"], "goblet": "eleMas", "circlet": "eleMas" },
-		"subStat": ["enerRech_", "eleMas", "critRate_"],
+		"artifact": ["GildedDreams", "ScarletProof"],
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "critRD_" },
+		"subStat": ["critRD_", "eleMas", "enerRech_"],
 		"group": 1
 	},
 	"YunJin": {
