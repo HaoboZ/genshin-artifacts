@@ -2,7 +2,10 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, prop } from 'remeda';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required, requiredMatch, requiredText } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
+import { requiredMatch } from './utils/requiredMatch';
+import { requiredText } from './utils/requiredText';
 
 const artifactLocation = {
 	// 4

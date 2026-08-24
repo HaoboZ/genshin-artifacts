@@ -1,14 +1,37 @@
-import buildOverrides from './buildOverrides.json';
-import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
+import buildOverrides from '../buildOverrides.json';
+import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from '../types';
 
 const buildOverridesTyped = buildOverrides as BuildOverridesFile;
 
-export function getKnownRoles(key: string): string[] {
-	return Object.keys(buildOverridesTyped[key] ?? {}).filter((role) => role !== 'additional');
+// Merge a freshly scraped build list with the buildOverrides configuration
+export function applyMerge(
+	key: string,
+	builds: ScrapedBuild[] | null,
+	discovered: DiscoveredRoles,
+): ScrapedBuild | ScrapedBuild[] | null {
+	const merged: ScrapedBuild[] = [];
+	// The scraper only returns panels marked "Best Role", so this set is the
+	// complete list of override entries that should remain for this character.
+	const roles = (discovered[key] ??= new Set());
+	for (const scraped of builds ?? []) {
+		const entry = resolveGroupEntry(key, scraped.role);
+		roles.add(scraped.role);
+		const final = applyGroupEntry(scraped, entry);
+		if (!final) continue; // entry.omit
+		merged.push(final);
+	}
+
+	applyAdditionalBuilds(key, merged);
+
+	if (merged.length === 0) return null;
+	for (let i = 1; i < merged.length; i++) {
+		merged[i].buildIndex = i;
+	}
+	return merged.length === 1 ? merged[0] : merged;
 }
 
 // Resolve the configuration entry for `(key, role)`
-export function resolveGroupEntry(key: string, role: string): BuildEntry | undefined {
+function resolveGroupEntry(key: string, role: string): BuildEntry | undefined {
 	const roles = buildOverridesTyped[key];
 	if (!roles) return undefined;
 	if (role === 'additional') return undefined;
@@ -19,7 +42,7 @@ export function resolveGroupEntry(key: string, role: string): BuildEntry | undef
 }
 
 // Apply buildOverrides entry to a scraped build
-export function applyGroupEntry(
+function applyGroupEntry(
 	scraped: ScrapedBuild,
 	entry: BuildEntry | undefined,
 ): ScrapedBuild | null {
@@ -58,31 +81,4 @@ function applyAdditionalBuilds(key: string, out: ScrapedBuild[]): void {
 	const additional = buildOverridesTyped[key]?.additional;
 	if (!additional?.length) return;
 	for (const build of additional) out.push(build);
-}
-
-// Merge a freshly scraped build list with the buildOverrides configuration
-export function applyMerge(
-	key: string,
-	builds: ScrapedBuild[] | null,
-	discovered: DiscoveredRoles,
-): ScrapedBuild | ScrapedBuild[] | null {
-	const merged: ScrapedBuild[] = [];
-	// The scraper only returns panels marked "Best Role", so this set is the
-	// complete list of override entries that should remain for this character.
-	const roles = (discovered[key] ??= new Set());
-	for (const scraped of builds ?? []) {
-		const entry = resolveGroupEntry(key, scraped.role);
-		roles.add(scraped.role);
-		const final = applyGroupEntry(scraped, entry);
-		if (!final) continue; // entry.omit
-		merged.push(final);
-	}
-
-	applyAdditionalBuilds(key, merged);
-
-	if (merged.length === 0) return null;
-	for (let i = 1; i < merged.length; i++) {
-		merged[i].buildIndex = i;
-	}
-	return merged.length === 1 ? merged[0] : merged;
 }

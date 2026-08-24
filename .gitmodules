@@ -1,0 +1,3 @@
+[submodule "packages/scrape-data/genshin-builds"]
+	path = packages/scrape-data/genshin-builds
+	url = https://github.com/Genshin-Impact-Helper-Team/genshin-builds.git

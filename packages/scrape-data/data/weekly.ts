@@ -1,7 +1,8 @@
 import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
 
 export async function fetchWeekly() {
 	const dom = await fetchPage(

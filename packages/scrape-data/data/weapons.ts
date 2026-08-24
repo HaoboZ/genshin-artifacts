@@ -2,7 +2,9 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, prop } from 'remeda';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required, requiredText } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
+import { requiredText } from './utils/requiredText';
 
 export async function fetchWeapons() {
 	const dom = await fetchPage(

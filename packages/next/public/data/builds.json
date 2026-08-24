@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-22",
+	"@lastUpdated": "2026-08-24",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -194,17 +194,23 @@
 	},
 	"Beidou": {
 		"key": "Beidou",
-		"role": "Off-Field DPS",
+		"role": "High Energy Requirement (Off-Field DPS)",
 		"weapon": [
 			"AThousandBlazingSuns",
-			["WolfsGravestone", "FangOfTheMountainKing", "RedhornStonethresher"],
-			"TheUnforged",
-			["BeaconOfTheReedSea", "Verdict"],
-			["TidalShadow", "SerpentSpine"],
-			["Akuoumaru", "UltimateOverlordsMegaMagicSword"],
-			["LithicBlade", "LuxuriousSeaLord", "SkywardPride"]
+			["ATeaspoonOfTranscendence", "BeaconOfTheReedSea"],
+			["Verdict", "GestOfTheMightyWolf", "WolfsGravestone", "UltimateOverlordsMegaMagicSword"],
+			["TheUnforged", "TidalShadow"],
+			"SkywardPride",
+			["KatsuragikiriNagamasa", "RedhornStonethresher", "FangOfTheMountainKing", "SerpentSpine"],
+			["FavoniusGreatsword", "BladeOfAtonement"],
+			"Akuoumaru"
 		],
-		"artifact": ["EmblemOfSeveredFate", ["ScrollOfTheHeroOfCinderCity", "NoblesseOblige"]],
+		"artifact": [
+			"EmblemOfSeveredFate",
+			"ADayCarvedFromRisingWinds",
+			["NoblesseOblige", "ScrollOfTheHeroOfCinderCity"],
+			"HeartOfTheFurnace"
+		],
 		"mainStat": {
 			"sands": ["atk_", "enerRech_"],
 			"goblet": "electro_dmg_",
@@ -1756,12 +1762,20 @@
 		"role": "Off-field DPS",
 		"weapon": [
 			"WhitelakeFrostfeather",
-			["Azurelight", "PrimordialJadeCutter", "Absolution"],
-			["UrakuMisugiri", "LightOfFoliarIncision", "MistsplitterReforged"],
-			["HaranGeppakuFutsu", "LightbearingMoonshard", "SplendorOfTranquilWaters", "AthameArtis"],
-			["SummitShaper", "FinaleOfTheDeep", "Emberwell"],
-			["AquilaFavonia", "FreedomSworn"],
-			"WolfFang"
+			"PrimordialJadeCutter",
+			["Azurelight", "Absolution"],
+			[
+				"MistsplitterReforged",
+				"SummitShaper",
+				"HaranGeppakuFutsu",
+				"FreedomSworn",
+				"LightOfFoliarIncision",
+				"AthameArtis"
+			],
+			["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
+			["AquilaFavonia", "FinaleOfTheDeep"],
+			"WolfFang",
+			"Emberwell"
 		],
 		"artifact": [
 			"HeartOfTheFurnace",
@@ -1774,25 +1788,21 @@
 		"overridden": {
 			"weapon": [
 				"WhitelakeFrostfeather",
-				["Azurelight", "PrimordialJadeCutter", "Absolution"],
+				"PrimordialJadeCutter",
+				["Azurelight", "Absolution"],
 				[
 					"MistsplitterReforged",
-					"LightOfFoliarIncision",
-					"UrakuMisugiri",
-					"FinaleOfTheDeep",
-					"HaranGeppakuFutsu",
-					"FreedomSworn"
-				],
-				[
-					"LightbearingMoonshard",
-					"SplendorOfTranquilWaters",
 					"SummitShaper",
-					"ExaiphanesBlade",
-					"AthameArtis"
+					"HaranGeppakuFutsu",
+					"FreedomSworn",
+					"LightOfFoliarIncision",
+					"AthameArtis",
+					"ExaiphanesBlade"
 				],
-				"Emberwell",
-				"AquilaFavonia",
-				"WolfFang"
+				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
+				["AquilaFavonia", "FinaleOfTheDeep"],
+				"WolfFang",
+				"Emberwell"
 			]
 		},
 		"group": 0

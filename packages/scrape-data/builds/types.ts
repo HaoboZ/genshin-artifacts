@@ -1,4 +1,3 @@
-// Shape of one per-role entry inside `buildOverrides.json`
 export type BuildEntry = Partial<ScrapedBuild> & { omit?: true };
 
 export type WeaponGroup = string | string[];
@@ -20,7 +19,6 @@ export type ScrapedBuild = {
 	overridden?: BuildEntry;
 };
 
-// One character's block in `buildOverrides.json`
 export type CharacterBuildOverride = Record<string, BuildEntry | number | ScrapedBuild[]> & {
 	additional?: ScrapedBuild[];
 };

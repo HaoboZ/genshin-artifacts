@@ -1,41 +1,30 @@
-import { applyMerge, getKnownRoles } from './overrides';
-import { fetchAllSlugs, fetchBuild, getTravelerElement } from './scraper';
+import { applyMerge } from './utils/applyMerge';
+import { fetchBuild } from './fetchBuild';
+import { getBuildKey } from './utils/getBuildKey';
 import type { DiscoveredRoles, ScrapedBuild } from './types';
 import { saveDiscoveredRoles } from './io';
-import { pascalCase } from 'change-case';
+import { mergeBuilds } from './utils/mergeBuilds';
+import { existsSync, readdirSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const CONTENT = resolve(HERE, '../genshin-builds/src/content');
 
 export async function fetchAllBuilds(
-	slugFilter?: string[],
 	existingBuilds: Record<string, ScrapedBuild | ScrapedBuild[]> = {},
 ): Promise<Record<string, ScrapedBuild | ScrapedBuild[]>> {
-	const slugs = slugFilter?.length ? slugFilter : await fetchAllSlugs();
-	const isPartialTravelerScrape = Boolean(slugFilter?.some((slug) => getTravelerElement(slug)));
+	const slugs = await fetchAllSlugs();
 	const out: Record<string, ScrapedBuild | ScrapedBuild[]> = {};
 	const discovered: DiscoveredRoles = {};
 
 	for (const slug of slugs) {
-		console.info(`Scraping ${slug}...`);
+		console.info(`Reading ${slug}...`);
 		// Traveler variants collapse into a single `Traveler` build array
-		const lookupKey = getTravelerElement(slug) ? 'Traveler' : pascalCase(slug);
+		const lookupKey = getBuildKey(slug);
 		try {
 			const { key, builds } = await fetchBuild(slug);
-			const travelerElement = getTravelerElement(slug);
-			if (isPartialTravelerScrape && travelerElement) {
-				const roles = (discovered[key] ??= new Set());
-				for (const build of toBuildArray(existingBuilds[key])) roles.add(build.role);
-				for (const role of getKnownRoles(key)) roles.add(role);
-			}
 			const value = applyMerge(key, builds, discovered);
-			if (isPartialTravelerScrape && travelerElement) {
-				const replaced = replaceTravelerElement(
-					out[key] ?? existingBuilds[key],
-					value,
-					travelerElement,
-				);
-				if (replaced === undefined) delete out[key];
-				else out[key] = replaced;
-				continue;
-			}
 			if (value === null) continue;
 			if (out[key] === undefined) {
 				out[key] = value;
@@ -54,31 +43,20 @@ export async function fetchAllBuilds(
 	return out;
 }
 
-function toBuildArray(value: ScrapedBuild | ScrapedBuild[] | undefined): ScrapedBuild[] {
-	if (!value) return [];
-	return Array.isArray(value) ? value : [value];
-}
-
-function mergeBuilds(
-	previous: ScrapedBuild | ScrapedBuild[] | undefined,
-	next: ScrapedBuild | ScrapedBuild[],
-): ScrapedBuild | ScrapedBuild[] {
-	const merged = new Map(toBuildArray(previous).map((build) => [build.role, build]));
-	for (const build of toBuildArray(next)) merged.set(build.role, build);
-	const builds = [...merged.values()].map((build, i) =>
-		i === 0 ? { ...build, buildIndex: undefined } : { ...build, buildIndex: i },
-	);
-	return builds.length === 1 ? builds[0] : builds;
-}
-
-function replaceTravelerElement(
-	previous: ScrapedBuild | ScrapedBuild[] | undefined,
-	next: ScrapedBuild | ScrapedBuild[] | null,
-	element: string,
-): ScrapedBuild | ScrapedBuild[] | undefined {
-	const rolePrefix = `${element} - `;
-	const retained = toBuildArray(previous).filter((build) => !build.role.startsWith(rolePrefix));
-	if (next === null && retained.length === 0) return undefined;
-	if (next === null) return mergeBuilds(retained, retained);
-	return mergeBuilds(retained, next);
+async function fetchAllSlugs(): Promise<string[]> {
+	const slugs: string[] = [];
+	for (const element of readdirSync(CONTENT, { withFileTypes: true })) {
+		if (!element.isDirectory() || element.name === 'site') continue;
+		for (const rarity of readdirSync(join(CONTENT, element.name), { withFileTypes: true })) {
+			if (!rarity.isDirectory()) continue;
+			for (const character of readdirSync(join(CONTENT, element.name, rarity.name), {
+				withFileTypes: true,
+			})) {
+				const path = join(CONTENT, element.name, rarity.name, character.name);
+				if (!character.isDirectory() || !existsSync(join(path, 'metadata.json'))) continue;
+				slugs.push(character.name === 'traveler' ? `${element.name}-traveler` : character.name);
+			}
+		}
+	}
+	return [...new Set(slugs)];
 }

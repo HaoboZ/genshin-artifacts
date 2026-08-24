@@ -2,7 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import prettier from 'prettier';
-import type { BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
+import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 export const BUILDS_JSON = resolve(HERE, '../../next/public/data/builds.json');
@@ -27,11 +27,11 @@ export async function writeBuilds(
 	builds: Record<string, ScrapedBuild | ScrapedBuild[]>,
 	existing: Record<string, ScrapedBuild | ScrapedBuild[]>,
 ) {
-	const final: Record<string, unknown> = {
+	const final = normalizeBuilds({
 		'@lastUpdated': new Date().toISOString().slice(0, 10),
 		...existing,
 		...builds,
-	};
+	});
 	const config = await prettier.resolveConfig(BUILDS_JSON);
 	const formatted = await prettier.format(JSON.stringify(final), {
 		...config,
@@ -39,6 +39,58 @@ export async function writeBuilds(
 	});
 	writeFileSync(BUILDS_JSON, formatted);
 	console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
+}
+
+function normalizeBuilds(
+	builds: Record<string, string | ScrapedBuild | ScrapedBuild[]>,
+): Record<string, string | ScrapedBuild | ScrapedBuild[]> {
+	return Object.fromEntries(
+		Object.entries(builds).map(([key, value]) => [
+			key,
+			typeof value === 'string'
+				? value
+				: Array.isArray(value)
+					? value.map(normalizeBuild)
+					: normalizeBuild(value),
+		]),
+	);
+}
+
+function normalizeBuild(build: ScrapedBuild): ScrapedBuild {
+	return {
+		...build,
+		weapon: collapseSingleOuterArray(build.weapon),
+		artifact: collapseSingleOuterArray(build.artifact),
+		mainStat: {
+			sands: collapseSingleOuterArray(build.mainStat.sands),
+			goblet: collapseSingleOuterArray(build.mainStat.goblet),
+			circlet: collapseSingleOuterArray(build.mainStat.circlet),
+		},
+		subStat: collapseSingleOuterArray(build.subStat),
+		overridden: build.overridden && normalizeOverride(build.overridden),
+	};
+}
+
+function normalizeOverride(override: BuildEntry): BuildEntry {
+	return {
+		...override,
+		...(override.weapon && { weapon: collapseSingleOuterArray(override.weapon) }),
+		...(override.artifact && { artifact: collapseSingleOuterArray(override.artifact) }),
+		...(override.mainStat && {
+			mainStat: {
+				...override.mainStat,
+				sands: collapseSingleOuterArray(override.mainStat.sands),
+				goblet: collapseSingleOuterArray(override.mainStat.goblet),
+				circlet: collapseSingleOuterArray(override.mainStat.circlet),
+			},
+		}),
+		...(override.subStat && { subStat: collapseSingleOuterArray(override.subStat) }),
+	};
+}
+
+function collapseSingleOuterArray<T>(value: T): T {
+	if (!Array.isArray(value) || value.length !== 1 || !Array.isArray(value[0])) return value;
+	return value[0] as T;
 }
 
 function loadBuildOverridesFromDisk(): BuildOverridesFile {

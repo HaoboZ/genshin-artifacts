@@ -1,6 +1,8 @@
 import { writeFileSync } from 'fs';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required, requiredText } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
+import { requiredText } from './utils/requiredText';
 
 const talentDays = {
 	'Monday/Thursday': 1,

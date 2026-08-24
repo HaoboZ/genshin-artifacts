@@ -1,7 +1,8 @@
 import { writeFileSync } from 'fs';
 import { mapToObj } from 'remeda';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
 
 export async function fetchElements() {
 	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Element', {

@@ -2,7 +2,8 @@ import { pascalCase } from 'change-case';
 import { writeFileSync } from 'fs';
 import { indexBy, pick, prop } from 'remeda';
 import fetchPage from '../fetchPage';
-import { getImageUrl, required } from './helpers';
+import { getImageUrl } from './utils/getImageUrl';
+import { required } from './utils/required';
 
 export async function fetchCharacters() {
 	const dom = await fetchPage('https://genshin-impact.fandom.com/wiki/Character/List', {

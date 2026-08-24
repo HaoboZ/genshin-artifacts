@@ -21,7 +21,10 @@
 			]
 		}
 	},
-	"Beidou": { "Off-Field DPS": { "group": 2 } },
+	"Beidou": {
+		"High Energy Requirement (Off-Field DPS)": { "group": 2 },
+		"Low Energy Requirement (Off-Field DPS)": { "omit": true }
+	},
 	"Bennett": {
 		"Support": {
 			"group": 1,
@@ -182,17 +185,20 @@
 			"group": 0,
 			"weapon": [
 				"WhitelakeFrostfeather",
-				["Azurelight", "PrimordialJadeCutter", "Absolution"],
-				["UrakuMisugiri", "LightOfFoliarIncision", "MistsplitterReforged"],
+				"PrimordialJadeCutter",
+				["Azurelight", "Absolution"],
 				[
+					"MistsplitterReforged",
+					"SummitShaper",
 					"HaranGeppakuFutsu",
-					"LightbearingMoonshard",
-					"SplendorOfTranquilWaters",
+					"FreedomSworn",
+					"LightOfFoliarIncision",
 					"AthameArtis"
 				],
-				["SummitShaper", "FinaleOfTheDeep", "Emberwell"],
-				["AquilaFavonia", "FreedomSworn"],
-				"WolfFang"
+				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
+				["AquilaFavonia", "FinaleOfTheDeep"],
+				"WolfFang",
+				"Emberwell"
 			]
 		}
 	},
@@ -237,10 +243,10 @@
 	"Thoma": { "Burgeon": { "group": 1 } },
 	"Tighnari": { "Quick Swap DPS": { "group": 1 } },
 	"Traveler": {
-		"Anemo - Anemo DPS": { "omit": true },
+		"Anemo - Anemo Quickswap Support": { "omit": true },
 		"Dendro - Reaction Support": { "omit": true },
 		"Electro - Energy Support": { "omit": true },
-		"Geo - Geo DPS": { "omit": true },
+		"Geo - Geo Quickswap DPS & Support": { "omit": true },
 		"Pyro - Buff Support": { "group": 1 },
 		"Cryo - Stellar Glimmer DPS": { "omit": true }
 	},
