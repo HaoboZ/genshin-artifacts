@@ -12,6 +12,20 @@ import {
 	type IWeapon,
 } from '@/types/good';
 
+const travelerKeys = new Set([
+	'TravelerAnemo',
+	'TravelerGeo',
+	'TravelerElectro',
+	'TravelerDendro',
+	'TravelerHydro',
+	'TravelerPyro',
+	'TravelerCryo',
+]);
+
+function normalizeCharacterKey(key: string): CharacterKey {
+	return travelerKeys.has(key) ? 'Traveler' : (key as CharacterKey);
+}
+
 const initialState: IGOOD = {
 	format: 'GOOD',
 	version: 3,
@@ -30,13 +44,24 @@ const goodSlice = createSlice({
 			return initialState;
 		},
 		import(state, { payload }: PayloadAction<IGOOD>) {
-			if (payload.characters) state.characters = payload.characters;
+			if (payload.characters) {
+				state.characters = payload.characters.map((character) => ({
+					...character,
+					key: normalizeCharacterKey(character.key),
+				}));
+			}
 			if (payload.artifacts) {
-				state.artifacts = payload.artifacts;
+				state.artifacts = payload.artifacts.map((artifact) => ({
+					...artifact,
+					location: normalizeCharacterKey(artifact.location),
+				}));
 				state.artifacts.forEach((artifact) => (artifact.id = nanoid()));
 			}
 			if (payload.weapons) {
-				state.weapons = payload.weapons;
+				state.weapons = payload.weapons.map((weapon) => ({
+					...weapon,
+					location: normalizeCharacterKey(weapon.location),
+				}));
 				state.weapons.forEach((weapon) => (weapon.id = nanoid()));
 			}
 			if (payload.materials) {
