@@ -6,10 +6,10 @@
 		"start": "tsx ./index.ts"
 	},
 	"dependencies": {
-		"playwright": "1.62.1",
-		"sharp": "0.35.3"
+		"playwright": "1.63.0",
+		"sharp": "0.35.4"
 	},
 	"devDependencies": {
-		"tsx": "4.23.12"
+		"tsx": "4.23.13"
 	}
 }
