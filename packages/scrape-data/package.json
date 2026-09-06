@@ -3,7 +3,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "tsx ./index.ts"
+		"start": "git submodule update --remote --merge && tsx ./index.ts"
 	},
 	"dependencies": {
 		"change-case": "5.4.4",

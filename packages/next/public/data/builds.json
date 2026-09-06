@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-08-24",
+	"@lastUpdated": "2026-09-06",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -913,18 +913,20 @@
 		"role": "Anemo DPS",
 		"weapon": [
 			"TulaytullahsRemembrance",
-			"VividNotions",
-			["SkywardAtlas", "SurfsUp"],
-			[
-				"TomeOfTheEternalFlow",
-				"AThousandFloatingDreams",
-				"KagurasVerity",
-				"LostPrayerToTheSacredWinds",
-				"CashflowSupervision"
-			],
-			["FlowingPurity", "SunnyMorningSleepIn", "MappaMare", "TheWidsith", "MemoryOfDust"]
+			"LostPrayerToTheSacredWinds",
+			"SurfsUp",
+			["ReliquaryOfTruth", "VividNotions"],
+			["CashflowSupervision", "TomeOfTheEternalFlow", "NocturnesCurtainCall"],
+			["SkywardAtlas", "KagurasVerity"],
+			["AngelosHeptades", "MemoryOfDust"],
+			["FlowingPurity", "CranesEchoingCall", "TheWidsith"]
 		],
-		"artifact": ["ObsidianCodex", "ViridescentVenerer", "ScrollOfTheHeroOfCinderCity"],
+		"artifact": [
+			"ObsidianCodex",
+			["ScrollOfTheHeroOfCinderCity", "ViridescentVenerer"],
+			"ADayCarvedFromRisingWinds",
+			["ScarletProof", "MarechausseeHunter"]
+		],
 		"mainStat": { "sands": "atk_", "goblet": "anemo_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
@@ -1801,7 +1803,7 @@
 				],
 				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
 				["AquilaFavonia", "FinaleOfTheDeep"],
-				"WolfFang",
+				"HereticsMoltenBlade",
 				"Emberwell"
 			]
 		},
@@ -2237,7 +2239,7 @@
 		"weapon": [
 			"GestOfTheMightyWolf",
 			["BeaconOfTheReedSea", "AThousandBlazingSuns"],
-			"RedhornStonethresher",
+			["RedhornStonethresher", "ATeaspoonOfTranscendence"],
 			"Verdict",
 			"SongOfBrokenPines",
 			["SerpentSpine", "WolfsGravestone"],
@@ -2350,14 +2352,13 @@
 		"weapon": [
 			"CashflowSupervision",
 			"ReliquaryOfTruth",
-			"ClashOfKings",
 			["MemoryOfDust", "VividNotions"],
 			"LostPrayerToTheSacredWinds",
-			["EchoesOfTheHeart", "AngelosHeptades", "TulaytullahsRemembrance", "KagurasVerity"],
-			["TomeOfTheEternalFlow", "SurfsUp", "SkywardAtlas"],
-			["CranesEchoingCall", "StarcallersWatch"],
-			"AThousandFloatingDreams",
-			["SacrificialJade", "TheWidsith"]
+			"EchoesOfTheHeart",
+			["AngelosHeptades", "SurfsUp", "TulaytullahsRemembrance"],
+			["KagurasVerity", "SkywardAtlas", "TomeOfTheEternalFlow"],
+			["StarcallersWatch", "CranesEchoingCall", "AThousandFloatingDreams"],
+			["SacrificialJade", "NightweaversLookingGlass", "TheWidsith", "ClashOfKings"]
 		],
 		"artifact": [
 			"DisenchantmentInDeepShadow",
@@ -2653,14 +2654,20 @@
 			"SunnyMorningSleepIn",
 			"ReliquaryOfTruth",
 			"StarcallersWatch",
-			["SacrificialJade", "DawningFrost"],
 			[
 				"AThousandFloatingDreams",
 				"NocturnesCurtainCall",
 				"TomeOfTheEternalFlow",
+				"SacrificialJade"
+			],
+			"DawningFrost",
+			[
+				"KagurasVerity",
+				"LostPrayerToTheSacredWinds",
+				"NightweaversLookingGlass",
+				"TheWidsith",
 				"ClashOfKings"
 			],
-			["KagurasVerity", "LostPrayerToTheSacredWinds", "NightweaversLookingGlass", "TheWidsith"],
 			"SacrificialFragments",
 			["MagicGuide", "EchoesOfTheHeart", "WanderingEvenstar"]
 		],
