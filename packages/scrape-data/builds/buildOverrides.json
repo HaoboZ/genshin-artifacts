@@ -162,7 +162,7 @@
 			"subStat": [["critRD_", "eleMas"], "enerRech_", "atk_"]
 		}
 	},
-	"Navia": { "DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
+	"Navia": { "DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] } },
 	"Nefer": { "DPS": { "group": 0 } },
 	"Neuvillette": { "DPS": { "group": 1, "subStat": [["critRD_", "hp_"], "enerRech_", "hp"] } },
 	"Nicole": { "Shield & Buff Support": { "group": 0 } },

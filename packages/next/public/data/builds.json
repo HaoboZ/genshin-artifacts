@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-09-06",
+	"@lastUpdated": "2026-09-13",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1600,22 +1600,27 @@
 		"role": "DPS",
 		"weapon": [
 			["Verdict", "AThousandBlazingSuns"],
-			"SerpentSpine",
-			"BeaconOfTheReedSea",
-			"SkywardPride",
+			"GestOfTheMightyWolf",
+			["ATeaspoonOfTranscendence", "BeaconOfTheReedSea"],
 			"RedhornStonethresher",
-			"FangOfTheMountainKing",
-			["WolfsGravestone", "TheUnforged"],
-			"TalkingStick",
+			"SerpentSpine",
+			["WolfsGravestone", "TheUnforged", "FangOfTheMountainKing"],
 			"TidalShadow",
-			"UltimateOverlordsMegaMagicSword",
+			["SongOfBrokenPines", "ForgedByTheGoldenMelody"],
+			"SkywardPride",
+			["UltimateOverlordsMegaMagicSword", "TalkingStick", "BlackcliffSlasher"],
 			"EarthShaker",
 			"PrototypeArchaic"
 		],
-		"artifact": ["NighttimeWhispersInTheEchoingWoods", "GoldenTroupe", "MarechausseeHunter"],
+		"artifact": [
+			"NighttimeWhispersInTheEchoingWoods",
+			"GoldenTroupe",
+			"ADayCarvedFromRisingWinds",
+			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
+		],
 		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": "critRD_" },
-		"subStat": ["critRD_", "enerRech_", "atk_"],
-		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_"] },
+		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
 		"group": 0
 	},
 	"Nefer": {
@@ -2351,14 +2356,13 @@
 		"role": "Stellar-Conduct DPS",
 		"weapon": [
 			"CashflowSupervision",
-			"ReliquaryOfTruth",
+			["ReliquaryOfTruth", "SurfsUp"],
 			["MemoryOfDust", "VividNotions"],
-			"LostPrayerToTheSacredWinds",
-			"EchoesOfTheHeart",
-			["AngelosHeptades", "SurfsUp", "TulaytullahsRemembrance"],
-			["KagurasVerity", "SkywardAtlas", "TomeOfTheEternalFlow"],
-			["StarcallersWatch", "CranesEchoingCall", "AThousandFloatingDreams"],
-			["SacrificialJade", "NightweaversLookingGlass", "TheWidsith", "ClashOfKings"]
+			["LostPrayerToTheSacredWinds", "TulaytullahsRemembrance", "EchoesOfTheHeart"],
+			"AngelosHeptades",
+			["KagurasVerity", "TomeOfTheEternalFlow", "StarcallersWatch", "ClashOfKings"],
+			["SkywardAtlas", "CranesEchoingCall"],
+			["AThousandFloatingDreams", "TheWidsith"]
 		],
 		"artifact": [
 			"DisenchantmentInDeepShadow",
