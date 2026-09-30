@@ -42,7 +42,7 @@
 	"Chiori": { "Off-Field DPS": { "group": 1 } },
 	"Chongyun": { "Burst Nuke": { "group": 2 } },
 	"Citlali": { "Buff Support": { "group": 0 } },
-	"Clorinde": { "DPS": { "group": 1 } },
+	"Clorinde": { "Electro DPS (Dendro Teams)": { "group": 1 }, "Electro DPS": { "omit": true } },
 	"Collei": { "Reaction Support": { "group": 0 } },
 	"Columbina": {
 		"High Energy Requirement Off-Field DPS & Buff Support": {
@@ -185,6 +185,7 @@
 			"group": 0,
 			"weapon": [
 				"WhitelakeFrostfeather",
+				"BeyondTheChrysalis",
 				"PrimordialJadeCutter",
 				["Azurelight", "Absolution"],
 				[
@@ -196,8 +197,8 @@
 					"AthameArtis"
 				],
 				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
-				["AquilaFavonia", "FinaleOfTheDeep"],
-				"WolfFang",
+				["SilverLight", "AquilaFavonia", "NewBough", "FinaleOfTheDeep"],
+				"HereticsMoltenBlade",
 				"Emberwell"
 			]
 		}
@@ -248,7 +249,8 @@
 		"Electro - Energy Support": { "omit": true },
 		"Geo - Geo Quickswap DPS & Support": { "omit": true },
 		"Pyro - Buff Support": { "group": 1 },
-		"Cryo - Stellar Glimmer DPS": { "omit": true }
+		"Cryo - Stellar Glimmer DPS": { "omit": true },
+		"Hydro - Support": { "omit": true }
 	},
 	"Varesa": { "Plunge DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
 	"Varka": { "DPS": { "group": 0 } },
@@ -287,5 +289,6 @@
 	"YumemizukiMizuki": { "Stellar Swirl DPS": { "group": 1 } },
 	"YunJin": { "Buff Support": { "group": 1 } },
 	"Zhongli": { "Shield Support": { "group": 0 } },
-	"Zibai": { "DPS": { "group": 2 } }
+	"Zibai": { "DPS": { "group": 2 } },
+	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } }
 }

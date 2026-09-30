@@ -3,6 +3,7 @@ export type WeaponKey =
 	| 'AquilaFavonia' // Aquila Favonia
 	| 'AthameArtis' // Athame Artis
 	| 'Azurelight' // Azurelight
+	| 'BeyondTheChrysalis' // Beyond the Chrysalis
 	| 'ExaiphanesBlade' // Exaiphanes Blade
 	| 'FreedomSworn' // Freedom-Sworn
 	| 'HaranGeppakuFutsu' // Haran Geppaku Futsu
@@ -32,11 +33,13 @@ export type WeaponKey =
 	| 'KagotsurubeIsshin' // Kagotsurube Isshin
 	| 'LionsRoar' // Lion's Roar
 	| 'MoonweaversDawn' // Moonweaver's Dawn
+	| 'NewBough' // New Bough
 	| 'PrototypeRancour' // Prototype Rancour
 	| 'RoyalLongsword' // Royal Longsword
 	| 'SacrificialSword' // Sacrificial Sword
 	| 'SapwoodBlade' // Sapwood Blade
 	| 'SerenitysCall' // Serenity's Call
+	| 'SilverLight' // Silver Light
 	| 'SturdyBone' // Sturdy Bone
 	| 'SwordOfDescension' // Sword of Descension
 	| 'SwordOfNarzissenkreuz' // Sword of Narzissenkreuz
@@ -148,6 +151,7 @@ export type WeaponKey =
 	| 'CashflowSupervision' // Cashflow Supervision
 	| 'CranesEchoingCall' // Crane's Echoing Call
 	| 'EverlastingMoonglow' // Everlasting Moonglow
+	| 'HymnOfTheMaelstrom' // Hymn of the Maelstrom
 	| 'JadefallsSplendor' // Jadefall's Splendor
 	| 'KagurasVerity' // Kagura's Verity
 	| 'LostPrayerToTheSacredWinds' // Lost Prayer to the Sacred Winds
@@ -189,6 +193,7 @@ export type WeaponKey =
 	| 'WanderingEvenstar' // Wandering Evenstar
 	| 'WaveridingWhirl' // Waveriding Whirl
 	| 'WineAndSong' // Wine and Song
+	| 'WintersHeavyHeart' // Winter's Heavy Heart
 	| 'EmeraldOrb' // Emerald Orb
 	| 'MagicGuide' // Magic Guide
 	| 'OtherworldlyStory' // Otherworldly Story
@@ -210,6 +215,7 @@ export type WeaponKey =
 	| 'ThunderingPulse' // Thundering Pulse
 	| 'AlleyHunter' // Alley Hunter
 	| 'BlackcliffWarbow' // Blackcliff Warbow
+	| 'BreezeborneRefrain' // Breezeborne Refrain
 	| 'ChainBreaker' // Chain Breaker
 	| 'Cloudforged' // Cloudforged
 	| 'CompoundBow' // Compound Bow

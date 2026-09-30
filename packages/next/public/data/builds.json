@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-09-13",
+	"@lastUpdated": "2026-09-30",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -392,15 +392,31 @@
 	},
 	"Clorinde": {
 		"key": "Clorinde",
-		"role": "DPS",
+		"role": "Electro DPS (Dendro Teams)",
 		"weapon": [
 			"Absolution",
-			["LightOfFoliarIncision", "HaranGeppakuFutsu"],
-			["MistsplitterReforged", "PrimordialJadeCutter", "UrakuMisugiri", "FreedomSworn"],
+			"BeyondTheChrysalis",
+			"HaranGeppakuFutsu",
+			"MistsplitterReforged",
+			"LightOfFoliarIncision",
+			"UrakuMisugiri",
 			"CalamityOfEshu",
-			["FinaleOfTheDeep", "TheBlackSword"]
+			[
+				"Azurelight",
+				"LightbearingMoonshard",
+				"SplendorOfTranquilWaters",
+				"PrimordialJadeCutter"
+			],
+			["FreedomSworn", "AthameArtis", "WhitelakeFrostfeather"],
+			"ExaiphanesBlade",
+			["HereticsMoltenBlade", "SummitShaper", "NewBough"],
+			["HarbingerOfDawn", "FinaleOfTheDeep", "TheBlackSword", "LionsRoar"]
 		],
-		"artifact": ["FragmentOfHarmonicWhimsy", "GladiatorsFinale", "ThunderingFury"],
+		"artifact": [
+			["FragmentOfHarmonicWhimsy", "ThunderingFury"],
+			"EchoesOfAnOffering",
+			"GladiatorsFinale"
+		],
 		"mainStat": { "sands": ["atk_", "eleMas"], "goblet": "electro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 1
@@ -1769,6 +1785,7 @@
 		"role": "Off-field DPS",
 		"weapon": [
 			"WhitelakeFrostfeather",
+			"BeyondTheChrysalis",
 			"PrimordialJadeCutter",
 			["Azurelight", "Absolution"],
 			[
@@ -1780,8 +1797,8 @@
 				"AthameArtis"
 			],
 			["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
-			["AquilaFavonia", "FinaleOfTheDeep"],
-			"WolfFang",
+			["SilverLight", "AquilaFavonia", "NewBough", "FinaleOfTheDeep"],
+			"HereticsMoltenBlade",
 			"Emberwell"
 		],
 		"artifact": [
@@ -1795,6 +1812,7 @@
 		"overridden": {
 			"weapon": [
 				"WhitelakeFrostfeather",
+				"BeyondTheChrysalis",
 				"PrimordialJadeCutter",
 				["Azurelight", "Absolution"],
 				[
@@ -1807,7 +1825,7 @@
 					"ExaiphanesBlade"
 				],
 				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
-				["AquilaFavonia", "FinaleOfTheDeep"],
+				["SilverLight", "AquilaFavonia", "NewBough", "FinaleOfTheDeep"],
 				"HereticsMoltenBlade",
 				"Emberwell"
 			]
@@ -2224,13 +2242,12 @@
 		"weapon": [
 			"VividNotions",
 			"ReliquaryOfTruth",
-			"KagurasVerity",
-			"LostPrayerToTheSacredWinds",
-			["TomeOfTheEternalFlow", "SurfsUp", "CashflowSupervision"],
-			["TulaytullahsRemembrance", "CranesEchoingCall"],
-			["TheWidsith", "SkywardAtlas"],
-			"SacrificialJade",
-			["SolarPearl", "BlackcliffAgate", "DawningFrost", "FlowingPurity"]
+			["KagurasVerity", "LostPrayerToTheSacredWinds"],
+			["TomeOfTheEternalFlow", "NocturnesCurtainCall", "SurfsUp", "CashflowSupervision"],
+			["CranesEchoingCall", "TulaytullahsRemembrance"],
+			["TheWidsith", "ClashOfKings", "AngelosHeptades"],
+			["SkywardAtlas", "WintersHeavyHeart"],
+			["SacrificialJade", "SolarPearl", "BlackcliffAgate", "DawningFrost", "FlowingPurity"]
 		],
 		"artifact": ["LongNightsOath", "ObsidianCodex", "MarechausseeHunter"],
 		"mainStat": { "sands": "atk_", "goblet": "electro_dmg_", "circlet": "critRD_" },
@@ -2542,7 +2559,8 @@
 				"TomeOfTheEternalFlow",
 				"StarcallersWatch",
 				"SunnyMorningSleepIn",
-				"TulaytullahsRemembrance"
+				"TulaytullahsRemembrance",
+				"WintersHeavyHeart"
 			],
 			"AThousandFloatingDreams",
 			[
@@ -2658,21 +2676,12 @@
 			"SunnyMorningSleepIn",
 			"ReliquaryOfTruth",
 			"StarcallersWatch",
-			[
-				"AThousandFloatingDreams",
-				"NocturnesCurtainCall",
-				"TomeOfTheEternalFlow",
-				"SacrificialJade"
-			],
-			"DawningFrost",
-			[
-				"KagurasVerity",
-				"LostPrayerToTheSacredWinds",
-				"NightweaversLookingGlass",
-				"TheWidsith",
-				"ClashOfKings"
-			],
+			["NocturnesCurtainCall", "TomeOfTheEternalFlow", "AThousandFloatingDreams"],
+			"SacrificialJade",
+			["DawningFrost", "NightweaversLookingGlass", "WintersHeavyHeart", "ClashOfKings"],
+			["KagurasVerity", "LostPrayerToTheSacredWinds", "TheWidsith"],
 			"SacrificialFragments",
+			"BlackmarrowLantern",
 			["MagicGuide", "EchoesOfTheHeart", "WanderingEvenstar"]
 		],
 		"artifact": ["GildedDreams", "ScarletProof"],
@@ -2725,5 +2734,39 @@
 		"mainStat": { "sands": "def_", "goblet": "def_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "enerRech_", "eleMas"],
 		"group": 2
+	},
+	"Vesna": {
+		"key": "Vesna",
+		"role": "",
+		"weapon": [],
+		"artifact": ["ScarletProof", ""],
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
+		"subStat": [],
+		"group": -1
+	},
+	"Vodyanitsa": {
+		"key": "Vodyanitsa",
+		"role": "Heal and Buff Support",
+		"weapon": [
+			"HymnOfTheMaelstrom",
+			"ThrillingTalesOfDragonSlayers",
+			[
+				"PrototypeAmber",
+				"SacrificialJade",
+				"AshGravenDrinkingHorn",
+				"JadefallsSplendor",
+				"EverlastingMoonglow"
+			],
+			"WaveridingWhirl"
+		],
+		"artifact": [
+			"TenacityOfTheMillelith",
+			"ScrollOfTheHeroOfCinderCity",
+			["SongOfDaysPast", "OceanHuedClam"],
+			["SilkenMoonsSerenade", "DeepwoodMemories"]
+		],
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "hp_" },
+		"subStat": ["hp_", "hp", "enerRech_"],
+		"group": 0
 	}
 }

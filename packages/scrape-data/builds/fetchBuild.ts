@@ -37,13 +37,17 @@ export async function fetchBuild(
 	const key = getBuildKey(character.slug);
 	const travelerElement = getTravelerElement(slug);
 	const builds: ScrapedBuild[] = [];
-	for (const entry of readdirSync(character.path, { withFileTypes: true })) {
-		if (!entry.isDirectory()) continue;
+	const buildEntries = readdirSync(character.path, { withFileTypes: true }).filter((entry) =>
+		entry.isDirectory(),
+	);
+	const hasSingleBuild = buildEntries.length === 1;
+	for (const entry of buildEntries) {
 		const buildPath = join(character.path, entry.name);
 		const notes = readOptionalJson<{ best?: boolean; name?: { en?: string } }>(
 			join(buildPath, 'build-notes.json'),
 		);
-		if (!notes?.best) continue;
+		const hasRole = Boolean(notes?.name?.en?.trim());
+		if (!notes?.best && (!hasSingleBuild || !hasRole)) continue;
 		const baseRole = resolveTokens(notes.name?.en ?? capitalCase(entry.name));
 		builds.push({
 			key,

@@ -39,6 +39,16 @@
 		"stat": "CRIT Rate 22.1%",
 		"ability": "Within 12s after an Elemental Skill is used, ATK is increased by 24~48%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 24~48%, and CRIT DMG will be increased by 40~80%."
 	},
+	"BeyondTheChrysalis": {
+		"key": "BeyondTheChrysalis",
+		"name": "Beyond the Chrysalis",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/db/Weapon_Beyond_the_Chrysalis.png",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"atk": 674,
+		"stat": "CRIT DMG 44.1%",
+		"ability": "Each time the equipping character uses their Elemental Skill or Elemental Burst, they gain one of the following three effects in sequence:Winds of Devotion: Increases the equipping character's CRIT DMG by 56~120% for 10s;Winds of Defiance: Increases Stellar Swirl reaction DMG dealt by the equipping character by 36~72% for 10s; andWinds of Plenty: Regenerates 5~7 Elemental Energy for the equipping character. Up to 5~7 Elemental Energy can be regenerated in this way every 4s.The aforementioned effects are removed and the sequence is reset when the equipping character leaves the field."
+	},
 	"ExaiphanesBlade": {
 		"key": "ExaiphanesBlade",
 		"name": "Exaiphanes Blade",
@@ -329,6 +339,16 @@
 		"stat": "ATK 27.6%",
 		"ability": "Increases Elemental Burst DMG by 20~40%. When the equipping character's Energy Capacity does not exceed 60/40, their Elemental Burst DMG is increased by an additional 16/28~32/56%."
 	},
+	"NewBough": {
+		"key": "NewBough",
+		"name": "New Bough",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_New_Bough.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "When the equipping character hits the opponent with an attack within 12s after using the Elemental Skill, they gain the \"Verdant\" effect, which increases their ATK by 4~8% and their Elemental Mastery by 20~40. This effect lasts 6s and can trigger once every second. Max 3 stacks. The aforementioned effects can still trigger even when the equipping character is not on the field.Radiance: Stellar Glimmer: The effect of \"Verdant\" is changed to: Increases ATK by 6~12% as well as Stellar Glimmer reaction DMG dealt by the equipping character by 8~16%."
+	},
 	"PrototypeRancour": {
 		"key": "PrototypeRancour",
 		"name": "Prototype Rancour",
@@ -378,6 +398,16 @@
 		"atk": 454,
 		"stat": "Energy Recharge 61.3%",
 		"ability": "Upon causing an Elemental Reaction, increases Max HP by 16~32% for 12s. Moonsign: Ascendant Gleam: Max HP from this effect is further increased by 16~32%. This effect can be triggered even if the equipping character is off-field."
+	},
+	"SilverLight": {
+		"key": "SilverLight",
+		"name": "Silver Light",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d1/Weapon_Silver_Light.png",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"atk": 510,
+		"stat": "ATK 41.3%",
+		"ability": "Increases Elemental Mastery by 52~104 for 12s after Elemental Skill use. Max 2 stacks, and each stack's duration is independent of the others."
 	},
 	"SturdyBone": {
 		"key": "SturdyBone",
@@ -1489,6 +1519,16 @@
 		"stat": "HP 49.6%",
 		"ability": "Healing Bonus increased by 10~20%, Normal Attack DMG is increased by 1~3.0% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s."
 	},
+	"HymnOfTheMaelstrom": {
+		"key": "HymnOfTheMaelstrom",
+		"name": "Hymn of the Maelstrom",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Hymn_of_the_Maelstrom.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "HP 66.2%",
+		"ability": "Increases Healing Bonus by 4~8%.When performing healing, the equipping character gains the \"Vatsamonga's Vatic Vintage\" effect, which increases Max HP by 4~8% as well as increases the currently active party member's ATK by 0.4~0.8% for every 1,000 Max HP the equipping character has over 40,000. A maximum of 8~16% ATK can be gained in this way. This effect lasts 10s, max 3 stacks.When a nearby party member triggers a Frozen or Stellar Swirl reaction, the aforementioned Max HP and ATK boosts will be further increased by 75% for the next 5s.The aforementioned effects can still trigger even when the equipping character is not on the field."
+	},
 	"JadefallsSplendor": {
 		"key": "JadefallsSplendor",
 		"name": "Jadefall's Splendor",
@@ -1899,6 +1939,16 @@
 		"stat": "Energy Recharge 30.6%",
 		"ability": "Hitting an opponent with a Normal Attack decreases the Stamina consumption of Sprint or Alternate Sprint by 14~22% for 5s. Additionally, using a Sprint or Alternate Sprint ability increases ATK by 20~40% for 5s."
 	},
+	"WintersHeavyHeart": {
+		"key": "WintersHeavyHeart",
+		"name": "Winter's Heavy Heart",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Weapon_Winter%27s_Heavy_Heart.png",
+		"rarity": 4,
+		"weaponType": "Catalyst",
+		"atk": 510,
+		"stat": "CRIT DMG 55.1%",
+		"ability": "The equipping character gains \"Silver-Tinged Blood Pact\": The equipping character's Elemental Mastery is increased by 24~48 for every Cryo character present in the party. For every Electro character present in the party, the equipping character's ATK is increased by 4.8~9.6%. Up to 4 Cryo or Electro characters can provide the above buffs.Radiance: Stellar Glimmer: The effect of Silver-Tinged Blood Pact is changed to: For every Cryo or Electro character present in the party, the equipping character gains a 20~40-point Elemental Mastery boost and deals 6~12% increased Stellar Glimmer reaction DMG."
+	},
 	"EmeraldOrb": {
 		"key": "EmeraldOrb",
 		"name": "Emerald Orb",
@@ -2108,6 +2158,16 @@
 		"atk": 565,
 		"stat": "CRIT DMG 36.8%",
 		"ability": "After defeating an opponent, ATK is increased by 12~24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others."
+	},
+	"BreezeborneRefrain": {
+		"key": "BreezeborneRefrain",
+		"name": "Breezeborne Refrain",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_Breezeborne_Refrain.png",
+		"rarity": 4,
+		"weaponType": "Bow",
+		"atk": 510,
+		"stat": "CRIT Rate 27.6%",
+		"ability": "Increases Energy Recharge by 20~40%. When the equipping character hits the opponent with their Elemental Skill or Elemental Burst, they gain a stack of \"Hymn of the Pure.\" This effect can trigger once every 0.03s, max 3 stacks, and at 3 stacks, all instances of \"Hymn of the Pure\" are cleared to give the equipping character \"Thus Lied the Viper\" instead. This grants nearby party members a 24~48% Stellar Glimmer reaction DMG boost for 12s, during which no stacks of \"Hymn of the Pure\" can be obtained. The aforementioned effects can still trigger even when the equipping character is not on the field."
 	},
 	"ChainBreaker": {
 		"key": "ChainBreaker",

@@ -1017,6 +1017,26 @@
 		"talentMaterial": "Ballad",
 		"weeklyMaterial": "TailOfBoreas"
 	},
+	"Vesna": {
+		"key": "Vesna",
+		"name": "Vesna",
+		"rarity": 5,
+		"weaponType": "Sword",
+		"element": "Anemo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/95/Vesna_Icon.png",
+		"talentMaterial": "Glory",
+		"weeklyMaterial": "ProfanedSprout"
+	},
+	"Vodyanitsa": {
+		"key": "Vodyanitsa",
+		"name": "Vodyanitsa",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Hydro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Vodyanitsa_Icon.png",
+		"talentMaterial": "Fortitude",
+		"weeklyMaterial": "MadmansRestraint"
+	},
 	"Wanderer": {
 		"key": "Wanderer",
 		"name": "Wanderer",

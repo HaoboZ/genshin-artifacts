@@ -101,6 +101,8 @@ export type CharacterKey =
 	| 'Varesa' // Varesa
 	| 'Varka' // Varka
 	| 'Venti' // Venti
+	| 'Vesna' // Vesna
+	| 'Vodyanitsa' // Vodyanitsa
 	| 'Wanderer' // Wanderer
 	| 'Manekina' // Manekina
 	| 'Manekin' // Manekin
