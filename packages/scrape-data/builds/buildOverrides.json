@@ -285,7 +285,7 @@
 		"High Energy Requirement (Off-Field DPS)": { "omit": true },
 		"Low Energy Requirement (Off-Field DPS)": { "group": 1 }
 	},
-	"Yoimiya": { "DPS": { "group": 0 } },
+	"Yoimiya": { "Overload DPS": { "omit": true }, "Vaporize/Melt DPS": { "group": 0 } },
 	"YumemizukiMizuki": { "Stellar Swirl DPS": { "group": 1 } },
 	"YunJin": { "Buff Support": { "group": 1 } },
 	"Zhongli": { "Shield Support": { "group": 0 } },

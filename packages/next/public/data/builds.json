@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-09-30",
+	"@lastUpdated": "2026-10-04",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -2163,20 +2163,28 @@
 		"role": "DPS",
 		"weapon": [
 			"PolarStar",
+			"TheDaybreakChronicles",
 			[
 				"HuntersPath",
-				"AquaSimulacra",
 				"SkywardHarp",
 				"ThunderingPulse",
+				"AquaSimulacra",
 				"AstralVulturesCrimsonPlumage"
 			],
 			"TheFirstGreatMagic",
+			["GoldenFrostboundOath", "JadeVista"],
 			"TheViridescentHunt",
-			["KingsSquire", "AmosBow", "TheStringless"],
-			["ScionOfTheBlazingSun", "BlackcliffWarbow", "ChainBreaker"],
-			["WindblumeOde", "Hamayumi", "MouunsMoon", "Rust"]
+			"AmosBow",
+			["SongOfStillness", "ScionOfTheBlazingSun", "KingsSquire"],
+			"BreezeborneRefrain",
+			"ChainBreaker"
 		],
-		"artifact": ["NymphsDream", "HeartOfDepth", "ShimenawasReminiscence"],
+		"artifact": [
+			"NymphsDream",
+			"ADayCarvedFromRisingWinds",
+			"HeartOfDepth",
+			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
+		],
 		"mainStat": { "sands": "atk_", "goblet": "hydro_dmg_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
@@ -2646,16 +2654,16 @@
 	},
 	"Yoimiya": {
 		"key": "Yoimiya",
-		"role": "DPS",
+		"role": "Vaporize/Melt DPS",
 		"weapon": [
-			"ThunderingPulse",
-			"TheDaybreakChronicles",
+			["ThunderingPulse", "TheDaybreakChronicles"],
 			"AquaSimulacra",
+			"TheFirstGreatMagic",
 			["HuntersPath", "SkywardHarp"],
-			["TheFirstGreatMagic", "Slingshot"],
+			"Slingshot",
 			["PolarStar", "GoldenFrostboundOath"],
-			"AstralVulturesCrimsonPlumage",
-			"AmosBow",
+			["JadeVista", "AstralVulturesCrimsonPlumage"],
+			["Hamayumi", "AmosBow"],
 			"Rust",
 			"Hamayumi"
 		],
