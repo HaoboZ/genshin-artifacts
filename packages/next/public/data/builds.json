@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-10-04",
+	"@lastUpdated": "2026-10-07",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1762,7 +1762,7 @@
 		],
 		"artifact": [
 			["RetracingBolide", "HuskOfOpulentDreams"],
-			["NighttimeWhispersInTheEchoingWoods", "RetracingBolide", "GladiatorsFinale"],
+			["NighttimeWhispersInTheEchoingWoods", "GladiatorsFinale"],
 			["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 		],
 		"mainStat": {
@@ -2745,12 +2745,25 @@
 	},
 	"Vesna": {
 		"key": "Vesna",
-		"role": "",
-		"weapon": [],
-		"artifact": ["ScarletProof", ""],
+		"role": "Stellar Swirl DPS",
+		"weapon": [
+			"BeyondTheChrysalis",
+			"WhitelakeFrostfeather",
+			"Absolution",
+			"LightOfFoliarIncision",
+			"MistsplitterReforged",
+			["Azurelight", "SplendorOfTranquilWaters", "UrakuMisugiri", "LightbearingMoonshard"],
+			["NewBough", "FreedomSworn"],
+			["Emberwell", "PrimordialJadeCutter", "SummitShaper"],
+			["HaranGeppakuFutsu", "FinaleOfTheDeep"],
+			["SilverLight", "AthameArtis", "ExaiphanesBlade"],
+			"HereticsMoltenBlade"
+		],
+		"artifact": ["ScarletProof"],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
-		"subStat": [],
-		"group": -1
+		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
+		"group": 0
 	},
 	"Vodyanitsa": {
 		"key": "Vodyanitsa",

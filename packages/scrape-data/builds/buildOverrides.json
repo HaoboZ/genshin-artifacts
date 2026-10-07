@@ -175,7 +175,7 @@
 			"group": 0,
 			"artifact": [
 				["RetracingBolide", "HuskOfOpulentDreams"],
-				["NighttimeWhispersInTheEchoingWoods", "RetracingBolide", "GladiatorsFinale"],
+				["NighttimeWhispersInTheEchoingWoods", "GladiatorsFinale"],
 				["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 			]
 		}
@@ -290,5 +290,8 @@
 	"YunJin": { "Buff Support": { "group": 1 } },
 	"Zhongli": { "Shield Support": { "group": 0 } },
 	"Zibai": { "DPS": { "group": 2 } },
-	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } }
+	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } },
+	"Vesna": {
+		"Stellar Swirl DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] }
+	}
 }
