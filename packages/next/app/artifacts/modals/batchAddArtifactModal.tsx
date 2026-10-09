@@ -1,10 +1,5 @@
-import cropBox from '@/components/scanner/cropBox';
-import findText from '@/components/scanner/findText';
-import getRarity from '@/components/scanner/getRarity';
-import isMarked from '@/components/scanner/isMarked';
+import { extractArtifact } from '@/components/scanner/artifactScan';
 import matchPixels from '@/components/scanner/matchPixels';
-import preprocessImage from '@/components/scanner/preprocessImage';
-import resizeScale from '@/components/scanner/resizeScale';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
@@ -31,12 +26,12 @@ export default function BatchAddArtifactModal() {
 			<DialogTitle>Add Artifacts</DialogTitle>
 			<DialogContent>
 				<Grid container spacing={1}>
-					<Grid size={4}>
+					<Grid size={5}>
 						<Box
 							sx={{
 								border: 1,
 								width: '100%',
-								aspectRatio: '10/17',
+								aspectRatio: '16 / 9',
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',
@@ -66,9 +61,6 @@ export default function BatchAddArtifactModal() {
 										ctx.drawImage(videoRef.current, 0, 0);
 										detecting = true;
 										try {
-											cropBox(preprocessImage(canvas), canvas);
-											canvas = resizeScale(canvas);
-
 											if (prevCanvas && (await matchPixels(canvas, prevCanvas)) < 1000)
 												throw Error('Identical detected');
 											canvasRef.current.width = canvas.width;
@@ -77,15 +69,13 @@ export default function BatchAddArtifactModal() {
 											ctx.drawImage(canvas, 0, 0);
 											prevCanvas = canvas;
 
-											const artifact = await findText(canvasRef.current);
+											const artifact = await extractArtifact(canvasRef.current);
 											setArtifacts((artifacts) => ({
 												...artifacts,
 												[hash(artifact, { excludeKeys: (key) => key === 'id' })]: {
 													id: nanoid(),
 													location: '',
 													...(artifact as IArtifact),
-													rarity: getRarity(canvas),
-													...isMarked(canvas),
 												},
 											}));
 										} catch (e) {
@@ -118,7 +108,7 @@ export default function BatchAddArtifactModal() {
 							)}
 						</Box>
 					</Grid>
-					<Grid size={8}>
+					<Grid size={7}>
 						<Grid container spacing={1} sx={{ overflowY: 'auto' }}>
 							{Object.entries(artifacts)
 								.toReversed()

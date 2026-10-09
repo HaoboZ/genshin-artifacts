@@ -5,13 +5,7 @@ import { type Dispatch, type SetStateAction, useCallback, useState } from 'react
 import { useDebouncedValue } from 'rooks';
 import usePasteImage from '../../hooks/usePasteImage';
 import { type IArtifact } from '@/types/good';
-import cropBox from './cropBox';
-import fileToCanvas from './fileToCanvas';
-import findText from './findText';
-import getRarity from './getRarity';
-import isMarked from './isMarked';
-import preprocessImage from './preprocessImage';
-import resizeScale from './resizeScale';
+import { extractArtifact } from './artifactScan';
 
 export default function Scanner({
 	setArtifact,
@@ -27,16 +21,19 @@ export default function Scanner({
 		try {
 			setIsLoading(true);
 
-			let canvas = await fileToCanvas(file);
-			cropBox(preprocessImage(canvas), canvas);
-			canvas = resizeScale(canvas);
-			const artifact = await findText(canvas);
+			const artifact = await extractArtifact(file);
 
 			setArtifact((prevArtifact) => ({
 				...prevArtifact,
 				...artifact,
-				rarity: getRarity(canvas),
-				...isMarked(canvas),
+				substats: [
+					...artifact.substats,
+					...(artifact.unactivatedSubstats ?? []).map((substat) => ({
+						...substat,
+						unactivated: true,
+					})),
+				],
+				unactivatedSubstats: undefined,
 			}));
 		} catch (e) {
 			const error = e?.response?.data || e?.message || e;
