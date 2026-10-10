@@ -8,7 +8,7 @@ type LoadedCanvasImage = {
 	close: () => void;
 };
 
-async function loadCanvasImage(image: ImageInput): Promise<LoadedCanvasImage> {
+async function loadCanvasImage(image: ImageInput) {
 	if (typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement)
 		return { source: image, width: image.width, height: image.height, close: () => {} };
 	const bitmap = await createImageBitmap(image as Blob);
@@ -20,17 +20,14 @@ async function loadCanvasImage(image: ImageInput): Promise<LoadedCanvasImage> {
 	};
 }
 
-export async function createCanvasSurface(
-	width: number,
-	height: number,
-): Promise<HTMLCanvasElement> {
+export async function createCanvasSurface(width: number, height: number) {
 	const canvas = document.createElement('canvas');
 	canvas.width = width;
 	canvas.height = height;
 	return canvas;
 }
 
-export async function serializeCanvas(canvas: HTMLCanvasElement): Promise<Blob> {
+export async function serializeCanvas(canvas: HTMLCanvasElement) {
 	return new Promise<Blob>((resolve, reject) =>
 		canvas.toBlob(
 			(blob) => (blob ? resolve(blob) : reject(new Error('Could not encode cropped image.'))),
@@ -39,9 +36,7 @@ export async function serializeCanvas(canvas: HTMLCanvasElement): Promise<Blob> 
 	);
 }
 
-export async function getImageDimensions(
-	image: ImageInput,
-): Promise<{ width: number; height: number }> {
+export async function getImageDimensions(image: ImageInput) {
 	if (typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement)
 		return { width: image.width, height: image.height };
 	if (image instanceof Uint8Array && image.length >= 24) {
@@ -83,7 +78,7 @@ export async function createCanvasCrop(
 	rectangle: PanelRectangle,
 	scale = 1,
 	threshold = false,
-): Promise<Blob | undefined> {
+) {
 	const bitmap = await loadCanvasImage(file);
 	try {
 		const canvas = await createCanvasSurface(rectangle.width * scale, rectangle.height * scale);

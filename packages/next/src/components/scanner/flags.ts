@@ -1,14 +1,10 @@
 import type { IArtifact } from '@/types/good';
 import { findArtifactPanelAnchor, getOcrLines } from './panel';
-import { getImageDimensions } from './image';
 import type { OcrBlocks, OcrWord } from './types';
 
 type ArtifactFlags = Pick<IArtifact, 'lock' | 'astralMark'>;
 
-export async function detectArtifactFlags(
-	file: File | Blob | HTMLCanvasElement,
-	ocr: OcrBlocks,
-): Promise<ArtifactFlags> {
+export async function detectArtifactFlags(file: File | Blob | HTMLCanvasElement, ocr: OcrBlocks) {
 	const defaults: ArtifactFlags = { lock: false, astralMark: false };
 	const lines = getOcrLines(ocr);
 	const panelAnchor = findArtifactPanelAnchor(ocr);

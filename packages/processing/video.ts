@@ -15,8 +15,8 @@ function parseTimeToSeconds(timemark: string): number {
 	return 0;
 }
 
-export async function probeVideo(inputFile: string, ffprobePath: string): Promise<number | null> {
-	return new Promise((resolve) => {
+export async function probeVideo(inputFile: string, ffprobePath: string) {
+	return new Promise<number>((resolve) => {
 		const proc = spawn(
 			ffprobePath,
 			['-v', 'quiet', '-print_format', 'json', '-show_format', inputFile],

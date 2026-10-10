@@ -29,9 +29,7 @@ type Item = string | { name: string; pieces?: number };
 type Group = { items?: Item[]; choices?: { items: Item[] }[]; choose?: boolean };
 type ConditionalEntry = Group | { groups?: Group[] };
 
-export async function fetchBuild(
-	slug: string,
-): Promise<{ key: string; builds: ScrapedBuild[] | null }> {
+export async function fetchBuild(slug: string) {
 	const character = findCharacter(slug);
 	if (!character) throw new Error(`Character source not found for ${slug}`);
 	const key = getBuildKey(character.slug);

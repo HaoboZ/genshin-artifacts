@@ -7,7 +7,7 @@ export async function detectArtifactRarity(
 	fallback: number,
 	width: number,
 	height: number,
-): Promise<number> {
+) {
 	const anchor = findArtifactPanelAnchor(ocr);
 	if (!anchor || typeof document === 'undefined' || typeof createImageBitmap === 'undefined')
 		return fallback;

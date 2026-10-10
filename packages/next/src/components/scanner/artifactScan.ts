@@ -12,20 +12,20 @@ type ArtifactInput = File | Blob | HTMLCanvasElement;
 let workerPromise: Promise<OcrWorker> | undefined;
 let extractionQueue: Promise<void> = Promise.resolve();
 
-export async function extractArtifact(file: ArtifactInput): Promise<IArtifact> {
+export async function extractArtifact(file: ArtifactInput) {
 	return withWorker((worker) => readArtifact(worker, file));
 }
 
 /** Read selected images sequentially while reusing one OCR worker. */
-export async function extractArtifacts(files: Iterable<File>): Promise<IArtifact[]> {
+export async function extractArtifacts(files: Iterable<File>) {
 	return withWorker(async (worker) => {
-		const artifacts: IArtifact[] = [];
+		const artifacts: Partial<IArtifact>[] = [];
 		for (const file of files) artifacts.push(await readArtifact(worker, file));
 		return artifacts;
 	});
 }
 
-function withWorker<T>(operation: (worker: OcrWorker) => Promise<T>): Promise<T> {
+function withWorker<T>(operation: (worker: OcrWorker) => Promise<T>) {
 	const result = extractionQueue.then(async () => operation(await getWorker()));
 	extractionQueue = result.then(
 		() => undefined,
@@ -34,7 +34,7 @@ function withWorker<T>(operation: (worker: OcrWorker) => Promise<T>): Promise<T>
 	return result;
 }
 
-function getWorker(): Promise<OcrWorker> {
+function getWorker() {
 	if (!workerPromise) {
 		workerPromise = createWorker('eng').catch((error) => {
 			workerPromise = undefined;
@@ -44,14 +44,14 @@ function getWorker(): Promise<OcrWorker> {
 	return workerPromise;
 }
 
-export async function closeArtifactScanner(): Promise<void> {
+export async function closeArtifactScanner() {
 	await extractionQueue;
 	const worker = await workerPromise?.catch(() => undefined);
 	workerPromise = undefined;
 	await worker?.terminate();
 }
 
-async function readArtifact(worker: OcrWorker, file: ArtifactInput): Promise<IArtifact> {
+async function readArtifact(worker: OcrWorker, file: ArtifactInput) {
 	const { width, height } = await getImageDimensions(file);
 	const failures: string[] = [];
 	let supplementalSetText: string | undefined;
@@ -60,7 +60,7 @@ async function readArtifact(worker: OcrWorker, file: ArtifactInput): Promise<IAr
 	for (const rectangle of crops) {
 		try {
 			const sparsePage = await recognize(worker, file, rectangle, PSM.SPARSE_TEXT);
-			let artifact: IArtifact;
+			let artifact: Partial<IArtifact>;
 			try {
 				artifact = parseArtifactText(sparsePage.data.text);
 			} catch (error) {
@@ -78,14 +78,7 @@ async function readArtifact(worker: OcrWorker, file: ArtifactInput): Promise<IAr
 			const fullPage = await recognize(worker, file, rectangle, PSM.AUTO);
 			const supplementalStats =
 				artifact.unactivatedSubstats.length === 0
-					? await recognizeSupplementalStats(
-							worker,
-							file,
-							rectangle,
-							anchor,
-							height,
-							artifact,
-						)
+					? await recognizeSupplementalStats(worker, file, rectangle, anchor, height, artifact)
 					: [];
 			const combinedOcr: OcrBlocks = {
 				blocks: [...(sparsePage.data.blocks ?? []), ...(fullPage.data.blocks ?? [])],
@@ -123,7 +116,7 @@ async function recognizeSetHeading(
 	file: ArtifactInput,
 	width: number,
 	height: number,
-): Promise<string> {
+) {
 	const top = Math.floor(height * 0.52);
 	const crop: PanelRectangle = {
 		left: 0,
@@ -153,7 +146,7 @@ async function recognizeSupplementalStats(
 	panel: PanelRectangle,
 	anchor: ReturnType<typeof findArtifactPanelAnchor>,
 	imageHeight: number,
-	artifact: IArtifact,
+	artifact: Partial<IArtifact>,
 ) {
 	const top = anchor
 		? Math.max(0, Math.floor(anchor.line.bbox.y1 + imageHeight * 0.2))
@@ -199,7 +192,7 @@ async function recognizeArtifactLevel(
 	anchor: ReturnType<typeof findArtifactPanelAnchor>,
 	width: number,
 	height: number,
-): Promise<number | undefined> {
+) {
 	if (!anchor) return undefined;
 	const wideLayout = width / height >= 1.5;
 	const levelOffset = wideLayout ? width * 0.105 : height * 0.22;
@@ -220,14 +213,14 @@ async function recognizeArtifactLevel(
 }
 
 function combineResults(
-	artifact: IArtifact,
+	artifact: Partial<IArtifact>,
 	alternateText: string,
 	preciseLevel: number | undefined,
 	supplementalStats: IArtifact['unactivatedSubstats'],
 	rarity: number,
 	flags: Pick<IArtifact, 'lock' | 'astralMark'>,
-): IArtifact {
-	let alternate: IArtifact | undefined;
+): Partial<IArtifact> {
+	let alternate: Partial<IArtifact> | undefined;
 	try {
 		alternate = parseArtifactText(alternateText);
 	} catch {

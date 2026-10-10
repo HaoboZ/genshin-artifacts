@@ -13,7 +13,7 @@ const CONTENT = resolve(HERE, '../genshin-builds/src/content');
 
 export async function fetchAllBuilds(
 	existingBuilds: Record<string, ScrapedBuild | ScrapedBuild[]> = {},
-): Promise<Record<string, ScrapedBuild | ScrapedBuild[]>> {
+) {
 	const slugs = await fetchAllSlugs();
 	const out: Record<string, ScrapedBuild | ScrapedBuild[]> = {};
 	const discovered: DiscoveredRoles = {};
@@ -43,7 +43,7 @@ export async function fetchAllBuilds(
 	return out;
 }
 
-async function fetchAllSlugs(): Promise<string[]> {
+async function fetchAllSlugs() {
 	const slugs: string[] = [];
 	for (const element of readdirSync(CONTENT, { withFileTypes: true })) {
 		if (!element.isDirectory() || element.name === 'site') continue;

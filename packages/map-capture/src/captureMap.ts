@@ -6,11 +6,7 @@ import { getCenterFromUrl, hardDrag } from './utils';
 
 const OUTPUT_DIR = 'shots';
 
-export default async function captureMap(
-	page: Page,
-	stepRatio = 0.75,
-	saveToDisk = false,
-): Promise<Shot[]> {
+export default async function captureMap(page: Page, stepRatio = 0.75, saveToDisk = false) {
 	// Calculate step sizes based on viewport and ratio
 	const viewport = page.viewportSize()!;
 	const stepPx = viewport.width * stepRatio;

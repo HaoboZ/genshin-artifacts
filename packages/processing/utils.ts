@@ -1,5 +1,4 @@
 import fs from 'fs/promises';
-import type { Stats } from 'node:fs';
 import path from 'path';
 
 export const SUPPORTED_EXTENSIONS = {
@@ -18,7 +17,7 @@ function sanitizeInputPath(inputPath: string): string {
 	return s;
 }
 
-async function getPathStat(inputPath: string): Promise<Stats> {
+async function getPathStat(inputPath: string) {
 	try {
 		return await fs.stat(inputPath);
 	} catch {
@@ -27,7 +26,7 @@ async function getPathStat(inputPath: string): Promise<Stats> {
 	}
 }
 
-async function globFiles(dir: string, extensions: readonly string[]): Promise<string[]> {
+async function globFiles(dir: string, extensions: readonly string[]) {
 	const patterns = extensions.map((ext) => `*${ext}`);
 	const results = await Promise.all(
 		patterns.map((pattern) => Array.fromAsync(fs.glob(pattern, { cwd: dir }))),
@@ -35,7 +34,7 @@ async function globFiles(dir: string, extensions: readonly string[]): Promise<st
 	return [...new Set(results.flat())];
 }
 
-export async function ensureOutputDir(outputPath: string): Promise<void> {
+export async function ensureOutputDir(outputPath: string) {
 	const dir = path.extname(outputPath) ? path.dirname(outputPath) : outputPath;
 	await fs.mkdir(path.resolve(process.cwd(), dir), { recursive: true });
 }

@@ -23,7 +23,7 @@ function getOutputPaths(): { ffmpeg: string; ffprobe: string } {
 	};
 }
 
-function checkFfmpegWorks(ffmpegPath: string): Promise<boolean> {
+function checkFfmpegWorks(ffmpegPath: string) {
 	return new Promise((resolve) => {
 		const proc = spawn(ffmpegPath, ['-version'], { stdio: 'pipe' });
 		proc.on('close', (code) => resolve(code === 0));
@@ -31,7 +31,7 @@ function checkFfmpegWorks(ffmpegPath: string): Promise<boolean> {
 	});
 }
 
-async function downloadFfmpegToOutput(): Promise<{ ffmpeg: string; ffprobe: string }> {
+async function downloadFfmpegToOutput() {
 	const outputDir = getOutputFfmpegDir();
 	await ensureOutputDir('output/ffmpeg');
 
@@ -66,7 +66,7 @@ async function downloadFfmpegToOutput(): Promise<{ ffmpeg: string; ffprobe: stri
  * Resolves ffmpeg and ffprobe paths. Downloads to output/ffmpeg/ if not found.
  * Priority: output/ffmpeg/ → system PATH
  */
-export async function getFfmpegPaths(): Promise<{ ffmpeg: string; ffprobe: string }> {
+export async function getFfmpegPaths() {
 	// Check output/ffmpeg/ (downloaded on previous run)
 	const outputPaths = getOutputPaths();
 	if (fs.existsSync(outputPaths.ffmpeg) && fs.existsSync(outputPaths.ffprobe)) {
