@@ -98,7 +98,7 @@ type ArtifactFlags = Pick<IArtifact, 'lock' | 'astralMark'>;
 export function parseArtifactText(
 	text: string,
 	flags: ArtifactFlags = { lock: false, astralMark: false },
-): IArtifact {
+): Partial<IArtifact> {
 	const lines = text
 		.split(/\r?\n/)
 		.map((line) => line.trim())
@@ -169,7 +169,6 @@ export function parseArtifactText(
 	return {
 		setKey,
 		slotKey,
-		location: '',
 		mainStatKey: mainStat,
 		rarity: stars ? Math.min(stars, 5) : artifactSetsInfo[setKey].rarity,
 		level,
