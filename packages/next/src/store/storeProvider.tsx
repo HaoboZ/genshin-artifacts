@@ -1,9 +1,19 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { store } from './index';
+import { initialState, rehydrateStore, store, type RootState } from './index';
+import { loadState } from './persist';
 
 export default function StoreProvider({ children }: { children: ReactNode }) {
-	return <Provider store={store}>{children}</Provider>;
+	useEffect(() => {
+		const savedState = loadState();
+		if (savedState) rehydrateStore(savedState as RootState);
+	}, []);
+
+	return (
+		<Provider store={store} serverState={initialState}>
+			{children}
+		</Provider>
+	);
 }

@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TalentBooksCharacter from './talentBooksCharacter';
 
 const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];
@@ -27,10 +27,12 @@ const levelFilters = ['All', '<9', '9-10', '10'];
 
 export default function TalentBooks() {
 	const [owned, setOwned] = useState(false);
-	const [farmable, setFarmable] = useState(() => {
+	const [farmable, setFarmable] = useState(0);
+
+	useEffect(() => {
 		const day: number = dayjs().day();
-		return (day > 3 ? day - 3 : day) % 4;
-	});
+		setFarmable((day > 3 ? day - 3 : day) % 4);
+	}, []);
 	const [lvl, setLvl] = useState(1);
 
 	const characters = useCharacters({ owned });
