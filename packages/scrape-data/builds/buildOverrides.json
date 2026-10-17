@@ -194,7 +194,8 @@
 					"HaranGeppakuFutsu",
 					"FreedomSworn",
 					"LightOfFoliarIncision",
-					"AthameArtis"
+					"AthameArtis",
+					"KeyOfKhajNisut"
 				],
 				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
 				["SilverLight", "AquilaFavonia", "NewBough", "FinaleOfTheDeep"],
@@ -292,6 +293,6 @@
 	"Zibai": { "DPS": { "group": 2 } },
 	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } },
 	"Vesna": {
-		"Stellar Swirl DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_", "eleMas"] }
+		"Stellar Swirl DPS": { "group": 0 }
 	}
 }

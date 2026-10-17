@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-10-07",
+	"@lastUpdated": "2026-10-17",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1794,7 +1794,8 @@
 				"HaranGeppakuFutsu",
 				"FreedomSworn",
 				"LightOfFoliarIncision",
-				"AthameArtis"
+				"AthameArtis",
+				"KeyOfKhajNisut"
 			],
 			["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
 			["SilverLight", "AquilaFavonia", "NewBough", "FinaleOfTheDeep"],
@@ -1822,6 +1823,7 @@
 					"FreedomSworn",
 					"LightOfFoliarIncision",
 					"AthameArtis",
+					"KeyOfKhajNisut",
 					"ExaiphanesBlade"
 				],
 				["UrakuMisugiri", "LightbearingMoonshard", "SplendorOfTranquilWaters"],
@@ -2664,8 +2666,7 @@
 			["PolarStar", "GoldenFrostboundOath"],
 			["JadeVista", "AstralVulturesCrimsonPlumage"],
 			["Hamayumi", "AmosBow"],
-			"Rust",
-			"Hamayumi"
+			"Rust"
 		],
 		"artifact": [
 			"ShimenawasReminiscence",
@@ -2759,10 +2760,9 @@
 			["SilverLight", "AthameArtis", "ExaiphanesBlade"],
 			"HereticsMoltenBlade"
 		],
-		"artifact": ["ScarletProof"],
+		"artifact": ["ScarletProof", "ADayCarvedFromRisingWinds"],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
-		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
-		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
+		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
 	},
 	"Vodyanitsa": {
