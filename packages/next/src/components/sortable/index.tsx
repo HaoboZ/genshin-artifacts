@@ -11,6 +11,7 @@ import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import { type Dispatch, type ReactNode, useEffect, useMemo, useState } from 'react';
 import { prop } from 'remeda';
+
 import SortableItem from './sortableItem';
 
 export default function Sortable<Item>({

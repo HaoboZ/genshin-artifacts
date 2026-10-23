@@ -1,4 +1,5 @@
 import { clamp } from 'remeda';
+
 import { type Point, type Spot } from '../types';
 
 // Calculate closest point on path with segment info and snapping

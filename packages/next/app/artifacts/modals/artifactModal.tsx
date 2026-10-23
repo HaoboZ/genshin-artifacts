@@ -1,3 +1,15 @@
+import {
+	Box,
+	DialogContent,
+	DialogTitle,
+	FormControlLabel,
+	Grid,
+	Switch,
+	Typography,
+} from '@mui/material';
+import { useMemo, useState } from 'react';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
+
 import { artifactSetsInfo, useArtifacts } from '@/api/artifacts';
 import { buildsList } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
@@ -13,17 +25,7 @@ import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
-import {
-	Box,
-	DialogContent,
-	DialogTitle,
-	FormControlLabel,
-	Grid,
-	Switch,
-	Typography,
-} from '@mui/material';
-import { useMemo, useState } from 'react';
-import { filter, map, pipe, prop, sortBy } from 'remeda';
+
 import CharacterImage from '../../characters/characterImage';
 import ArtifactActions from '../artifactActions';
 import ArtifactImage from '../artifactImage';

@@ -1,0 +1,37 @@
+[fmt]
+bracketSameLine = true
+endOfLine = "auto"
+quoteProps = "consistent"
+singleQuote = true
+jsxSingleQuote = true
+trailingComma = "all"
+sortImports = true
+sortPackageJson = true
+ignorePatterns = [
+	"**/*.jsonc",
+	"packages/next/.next",
+	"packages/next/out",
+	"packages/next/build",
+	"packages/next/next-env.d.ts",
+	"packages/image-map-route/dist",
+	"packages/routes-worker/.wrangler",
+	"packages/routes-worker/worker-configuration.d.ts",
+	"packages/scrape-data/genshin-builds",
+]
+
+[lint]
+ignorePatterns = [
+	"packages/next/.next",
+	"packages/next/out",
+	"packages/next/build",
+	"packages/next/next-env.d.ts",
+	"packages/image-map-route/dist",
+	"packages/routes-worker/.wrangler",
+	"packages/routes-worker/worker-configuration.d.ts",
+	"packages/scrape-data/genshin-builds",
+]
+
+[lint.rules]
+"@typescript-eslint/consistent-type-imports" = ["error", { fixStyle = "inline-type-imports" }]
+"@typescript-eslint/no-explicit-any" = "off"
+"@typescript-eslint/no-unsafe-function-type" = "off"

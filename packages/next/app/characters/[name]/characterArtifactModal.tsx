@@ -1,3 +1,7 @@
+import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
+import { Fragment, useMemo, useState } from 'react';
+import { capitalize, filter, map, pipe, prop, sortBy } from 'remeda';
+
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
@@ -8,9 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type Build } from '@/types/data';
 import { type IArtifact, type SlotKey } from '@/types/good';
-import { Box, DialogContent, DialogTitle, FormControlLabel, Grid, Switch } from '@mui/material';
-import { Fragment, useMemo, useState } from 'react';
-import { capitalize, filter, map, pipe, prop, sortBy } from 'remeda';
+
 import ArtifactActions from '../../artifacts/artifactActions';
 import ArtifactStatCard from '../../artifacts/artifactStatCard';
 

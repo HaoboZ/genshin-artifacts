@@ -1,4 +1,5 @@
 import { pascalCase } from 'change-case';
+
 import { getTravelerElement } from './getTravelerElement';
 
 const BUILD_KEY_ALIASES: Record<string, string> = { 'shogun-raiden': 'RaidenShogun' };

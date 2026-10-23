@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+
 import sharp, { type Sharp } from 'sharp';
 
 export default async function processAndSave(image: Sharp, url: string) {

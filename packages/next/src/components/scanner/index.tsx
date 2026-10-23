@@ -3,8 +3,10 @@ import { useNProgress } from '@tanem/react-nprogress';
 import { useSnackbar } from 'notistack';
 import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
 import { useDebouncedValue } from 'rooks';
-import usePasteImage from '../../hooks/usePasteImage';
+
 import { type IArtifact } from '@/types/good';
+
+import usePasteImage from '../../hooks/usePasteImage';
 import { extractArtifact } from './artifactScan';
 
 export default function Scanner({

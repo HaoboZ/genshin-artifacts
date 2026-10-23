@@ -1,5 +1,6 @@
 import { type RefObject, useCallback, useState } from 'react';
 import { useDidMount } from 'rooks';
+
 import useResizeObserver from './useResizeObserver';
 
 export default function useBoundingClientRect(ref: RefObject<HTMLElement>): DOMRect {

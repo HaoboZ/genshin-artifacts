@@ -1,3 +1,5 @@
+import { Fragment, useMemo } from 'react';
+
 import { builds } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import OverlayText from '@/components/overlayText';
@@ -6,7 +8,7 @@ import arrDeepIndex from '@/helpers/arrDeepIndex';
 import getFirst from '@/helpers/getFirst';
 import { weightedPercent } from '@/helpers/stats';
 import { type CharacterKey, type IGOOD } from '@/types/good';
-import { Fragment, useMemo } from 'react';
+
 import CharacterImage from './characterImage';
 
 export default function CharacterTierImage({

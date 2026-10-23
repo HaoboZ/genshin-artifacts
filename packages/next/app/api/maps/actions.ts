@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { cookies } from 'next/headers';
+
 import { type MapData } from '../routes/types';
 
 export async function upsertMap(mapData: MapData) {

@@ -1,7 +1,9 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+
 import prettier from 'prettier';
+
 import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));

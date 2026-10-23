@@ -1,14 +1,3 @@
-import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
-import { artifactSlotStats, statName, statsMax, subStats } from '@/api/stats';
-import AutocompleteField from '@/components/form/autocompleteField';
-import InputField from '@/components/form/inputField';
-import SelectField from '@/components/form/selectField';
-import SwitchField from '@/components/form/switchField';
-import Scanner from '@/components/scanner';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/types/good';
 import {
 	Button,
 	Checkbox,
@@ -26,6 +15,19 @@ import {
 import { type Dispatch, Fragment, type SetStateAction } from 'react';
 import { type FieldPath, type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
 import { clamp } from 'remeda';
+
+import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
+import { artifactSlotStats, statName, statsMax, subStats } from '@/api/stats';
+import AutocompleteField from '@/components/form/autocompleteField';
+import InputField from '@/components/form/inputField';
+import SelectField from '@/components/form/selectField';
+import SwitchField from '@/components/form/switchField';
+import Scanner from '@/components/scanner';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type ArtifactSetKey, type IArtifact, type StatKey } from '@/types/good';
+
 import ArtifactImage from './artifactImage';
 
 export default function ArtifactForm({ onSubmit }: { onSubmit: SubmitHandler<IArtifact> }) {

@@ -1,7 +1,8 @@
-import { elementsInfo } from '@/api/elements';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
 import { type Dispatch } from 'react';
+
+import { elementsInfo } from '@/api/elements';
 
 export default function ElementFilter({
 	element,

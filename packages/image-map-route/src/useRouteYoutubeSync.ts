@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { type Point, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 

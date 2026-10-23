@@ -1,6 +1,7 @@
 'use client';
 
 import { EventEmitter } from 'events';
+
 import { createContext, type ReactNode, useContext, useState } from 'react';
 
 const EventsContext = createContext<EventEmitter>(null);

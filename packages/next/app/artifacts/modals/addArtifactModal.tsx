@@ -1,3 +1,9 @@
+import { DialogTitle } from '@mui/material';
+import { nanoid } from 'nanoid';
+import { useMemo } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { omit, partition, prop } from 'remeda';
+
 import { artifactSetsInfo } from '@/api/artifacts';
 import { useModal } from '@/providers/modal';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
@@ -6,11 +12,7 @@ import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
-import { DialogTitle } from '@mui/material';
-import { nanoid } from 'nanoid';
-import { useMemo } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { omit, partition, prop } from 'remeda';
+
 import ArtifactForm from '../artifactForm';
 
 const ArtifactModal = dynamicModal(() => import('./artifactModal'));

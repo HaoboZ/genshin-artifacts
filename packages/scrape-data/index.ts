@@ -1,11 +1,11 @@
-import { fetchArtifacts, writeArtifacts } from './data/artifacts';
 import { fetchAllBuilds } from './builds/fetchAllBuilds';
+import { loadExistingBuilds, writeBuilds } from './builds/io';
+import { fetchArtifacts, writeArtifacts } from './data/artifacts';
 import { fetchCharacters, writeCharacters } from './data/characters';
 import { fetchElements, writeElements } from './data/elements';
 import { fetchTalents, writeTalents } from './data/talents';
 import { fetchWeapons, writeWeapons } from './data/weapons';
 import { fetchWeekly, writeWeekly } from './data/weekly';
-import { loadExistingBuilds, writeBuilds } from './builds/io';
 
 const fields = [
 	'elements',

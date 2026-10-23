@@ -1,15 +1,3 @@
-import { buildsList } from '@/api/builds';
-import { charactersInfo } from '@/api/characters';
-import PageLink from '@/components/page/pageLink';
-import PercentBar from '@/components/stats/percentBar';
-import getFirst from '@/helpers/getFirst';
-import { matchingSubStats, potentialPercent } from '@/helpers/stats';
-import { useModal } from '@/providers/modal';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import dynamicModal from '@/providers/modal/dynamicModal';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppSelector } from '@/store/hooks';
-import { type Build } from '@/types/data';
 import {
 	Box,
 	DialogContent,
@@ -22,6 +10,20 @@ import {
 } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { filter, firstBy, groupBy, map, pipe, prop, sortBy } from 'remeda';
+
+import { buildsList } from '@/api/builds';
+import { charactersInfo } from '@/api/characters';
+import PageLink from '@/components/page/pageLink';
+import PercentBar from '@/components/stats/percentBar';
+import getFirst from '@/helpers/getFirst';
+import { matchingSubStats, potentialPercent } from '@/helpers/stats';
+import { useModal } from '@/providers/modal';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import dynamicModal from '@/providers/modal/dynamicModal';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppSelector } from '@/store/hooks';
+import { type Build } from '@/types/data';
+
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
 

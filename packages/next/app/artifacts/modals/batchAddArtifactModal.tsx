@@ -1,3 +1,8 @@
+import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
+import { nanoid } from 'nanoid';
+import hash from 'object-hash';
+import { useRef, useState } from 'react';
+
 import { extractArtifact } from '@/components/scanner/artifactScan';
 import matchPixels from '@/components/scanner/matchPixels';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
@@ -5,10 +10,7 @@ import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
-import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
-import { nanoid } from 'nanoid';
-import hash from 'object-hash';
-import { useRef, useState } from 'react';
+
 import ArtifactStatCard from '../artifactStatCard';
 
 export default function BatchAddArtifactModal() {
@@ -53,7 +55,7 @@ export default function BatchAddArtifactModal() {
 									let prevCanvas: HTMLCanvasElement;
 									const interval = setInterval(async () => {
 										if (detecting) return;
-										let canvas = document.createElement('canvas');
+										const canvas = document.createElement('canvas');
 										const ctx = canvas.getContext('2d');
 
 										canvas.width = videoRef.current.videoWidth;

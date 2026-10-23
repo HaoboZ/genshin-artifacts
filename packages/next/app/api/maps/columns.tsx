@@ -1,17 +1,10 @@
 import type { GridColDef } from '@mui/x-data-grid';
 import { toTitleCase } from 'remeda';
+
 import type { MapData } from '../routes/types';
 
 export type SortKey =
-	| 'name'
-	| 'owner'
-	| 'notes'
-	| 'type'
-	| 'background'
-	| 'spots'
-	| 'mora'
-	| 'time'
-	| 'efficiency';
+	'name' | 'owner' | 'notes' | 'type' | 'background' | 'spots' | 'mora' | 'time' | 'efficiency';
 export type RouteMapRow = MapData & { order?: number; actions?: never };
 
 export const mapColumns: GridColDef<RouteMapRow>[] = [

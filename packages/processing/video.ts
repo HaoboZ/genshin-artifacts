@@ -1,5 +1,6 @@
 import { spawn } from 'child_process';
 import path from 'path';
+
 import { ensureOutputDir } from './utils';
 
 function parseTimeToSeconds(timemark: string): number {

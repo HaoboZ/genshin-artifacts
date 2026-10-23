@@ -1,3 +1,7 @@
+import { Grid, Stack, Typography } from '@mui/material';
+import { Fragment, useMemo } from 'react';
+import { capitalize, sortBy } from 'remeda';
+
 import { buildsList } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
 import { statName } from '@/api/stats';
@@ -7,9 +11,7 @@ import getFirst from '@/helpers/getFirst';
 import makeArray from '@/helpers/makeArray';
 import useParamState from '@/hooks/useParamState';
 import { type ArtifactSetKey, type SlotKey } from '@/types/good';
-import { Grid, Stack, Typography } from '@mui/material';
-import { Fragment, useMemo } from 'react';
-import { capitalize, sortBy } from 'remeda';
+
 import CharacterImage from '../../characters/characterImage';
 import getArtifactSetBuild from '../getArtifactSetBuild';
 

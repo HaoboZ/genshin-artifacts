@@ -1,6 +1,3 @@
-import FormattedTextField from '@/components/formattedTextField';
-import VideoPlayer from '@/components/videoPlayer';
-import useHistory from '@/hooks/useHistory';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import {
 	Accordion,
@@ -34,7 +31,12 @@ import {
 	useState,
 } from 'react';
 import { pick } from 'remeda';
+
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from '@/app/farming/[id]/render';
+import FormattedTextField from '@/components/formattedTextField';
+import VideoPlayer from '@/components/videoPlayer';
+import useHistory from '@/hooks/useHistory';
+
 import { type MapData, type Text } from '../../routes/types';
 
 function extractYoutubeVideoId(url: string) {

@@ -1,4 +1,5 @@
 import { type ComponentType, Fragment } from 'react';
+
 import { type Point, type RenderPathProps } from './types';
 
 function DefaultRenderPath({ point1, point2, containerSize }: RenderPathProps) {

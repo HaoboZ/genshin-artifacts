@@ -1,3 +1,9 @@
+import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
+import { nanoid } from 'nanoid';
+import { useMemo } from 'react';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import { filter, map, pipe, prop, sortBy } from 'remeda';
+
 import { buildsList } from '@/api/builds';
 import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
@@ -8,11 +14,7 @@ import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IWeapon, type WeaponKey } from '@/types/good';
-import { Autocomplete, DialogTitle, Grid, TextField } from '@mui/material';
-import { nanoid } from 'nanoid';
-import { useMemo } from 'react';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import { filter, map, pipe, prop, sortBy } from 'remeda';
+
 import CharacterImage from '../../characters/characterImage';
 import WeaponForm from '../weaponForm';
 

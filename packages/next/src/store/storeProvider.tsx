@@ -2,7 +2,8 @@
 
 import { type ReactNode, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { initialState, rehydrateStore, store, type RootState } from './index';
+
+import { initialState, rehydrateStore, type RootState, store } from './index';
 import { loadState } from './persist';
 
 export default function StoreProvider({ children }: { children: ReactNode }) {

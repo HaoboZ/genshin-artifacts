@@ -1,9 +1,10 @@
+import { useMemo } from 'react';
+import { filter, pipe, prop, sortBy } from 'remeda';
+
 import data from '@/public/data/artifacts.json';
 import { useAppSelector } from '@/store/hooks';
 import { type DArtifact } from '@/types/data';
 import { type ArtifactSetKey, type SlotKey } from '@/types/good';
-import { useMemo } from 'react';
-import { filter, pipe, prop, sortBy } from 'remeda';
 
 export const artifactSetsInfo: Record<ArtifactSetKey, DArtifact> = data as any;
 

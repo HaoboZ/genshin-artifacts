@@ -1,8 +1,10 @@
+import { Container, Grid } from '@mui/material';
+import { prop, sortBy } from 'remeda';
+
 import { fetchRouteData } from '@/api/routes/fetchRouteData';
 import type { RouteData } from '@/api/routes/types';
 import PageTitle from '@/components/page/pageTitle';
-import { Container, Grid } from '@mui/material';
-import { prop, sortBy } from 'remeda';
+
 import WorldMap from './farming/worldMap';
 import Notifications from './notifications';
 

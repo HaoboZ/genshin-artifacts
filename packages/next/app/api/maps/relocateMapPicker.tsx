@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import { ImageMapRoute, type Point } from 'image-map-route';
 import Image from 'next/image';
+
 import { MapRenderExtra, MapRenderPoint } from '../../farming/render';
 
 export default function RelocateMapPicker({

@@ -1,7 +1,9 @@
-import { fetchRouteData } from '@/api/routes/fetchRouteData';
-import { type RouteData } from '@/api/routes/types';
 import { Box } from '@mui/material';
 import { prop, sortBy } from 'remeda';
+
+import { fetchRouteData } from '@/api/routes/fetchRouteData';
+import { type RouteData } from '@/api/routes/types';
+
 import WorldMap from './worldMap';
 
 export const dynamic = 'force-dynamic';

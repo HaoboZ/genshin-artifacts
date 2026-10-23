@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google';
 import Script from 'next/script';
 import { type ReactNode } from 'react';
 import { type PackageJson } from 'type-fest';
+
 import _packageJson from '../../../package.json';
 import Header from './header';
 import Providers from './providers';

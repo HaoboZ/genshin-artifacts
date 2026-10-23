@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+
 import { getAllMapsFromDb, saveMapToDb } from '../db';
 import { error, invalidateResourceCache, json } from '../utils';
 import { handleMapIdEndpoint, parseMapBody } from './mapId';

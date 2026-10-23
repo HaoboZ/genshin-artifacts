@@ -1,9 +1,10 @@
 'use client';
 
-import PageSection from '@/components/page/pageSection';
-import PageTitle from '@/components/page/pageTitle';
 import { Button, Container, Grid, Paper, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
+
+import PageSection from '@/components/page/pageSection';
+import PageTitle from '@/components/page/pageTitle';
 
 const examples = [
 	{

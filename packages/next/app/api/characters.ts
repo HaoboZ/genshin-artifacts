@@ -1,10 +1,12 @@
+import { useMemo } from 'react';
+import { filter, map, pipe, prop, sortBy, values } from 'remeda';
+
 import getFirst from '@/helpers/getFirst';
 import data from '@/public/data/characters.json';
 import { useAppSelector } from '@/store/hooks';
 import { type Build, type DCharacter } from '@/types/data';
 import { type ArtifactSetKey, type CharacterKey, type ICharacter } from '@/types/good';
-import { useMemo } from 'react';
-import { filter, map, pipe, prop, sortBy, values } from 'remeda';
+
 import { builds } from './builds';
 
 export const charactersInfo: Record<CharacterKey, DCharacter> = data as any;

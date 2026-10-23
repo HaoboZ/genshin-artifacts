@@ -1,5 +1,6 @@
-import { Jimp } from 'jimp';
 import path from 'path';
+
+import { Jimp } from 'jimp';
 
 export async function processImageFile(inputFile: string, outputDir: string) {
 	const outputFile = path.resolve(outputDir, path.basename(inputFile)) as `${string}.${string}`;

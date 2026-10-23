@@ -1,5 +1,6 @@
-import useAsyncLoading from '@/components/loaders/useAsyncLoading';
 import { Button } from '@mui/material';
+
+import useAsyncLoading from '@/components/loaders/useAsyncLoading';
 
 export default function UploadFile({
 	onUpload,

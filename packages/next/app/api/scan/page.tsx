@@ -1,13 +1,14 @@
 'use client';
 
-import PageSection from '@/components/page/pageSection';
-import PageTitle from '@/components/page/pageTitle';
-import fileToCanvas from '@/components/scanner/fileToCanvas';
-import { extractArtifact } from '@/components/scanner/artifactScan';
-import matchPixels from '@/components/scanner/matchPixels';
-import { type IArtifact } from '@/types/good';
 import { Box, Button, Container, Stack } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
+
+import PageSection from '@/components/page/pageSection';
+import PageTitle from '@/components/page/pageTitle';
+import { extractArtifact } from '@/components/scanner/artifactScan';
+import fileToCanvas from '@/components/scanner/fileToCanvas';
+import matchPixels from '@/components/scanner/matchPixels';
+import { type IArtifact } from '@/types/good';
 
 export default function InternalScan() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -27,12 +28,6 @@ export default function InternalScan() {
 		containerRef.current.innerHTML = '';
 		containerRef.current.appendChild(canvases[currentIndex]);
 	}, [currentIndex, canvases]);
-
-	function addCanvas(newCanvas: HTMLCanvasElement) {
-		Object.assign(newCanvas.style, { height: '500px' });
-		setCanvases((prev) => [...prev.slice(0, currentIndex + 1), newCanvas]);
-		setCurrentIndex(currentIndex + 1);
-	}
 
 	return (
 		<Container>

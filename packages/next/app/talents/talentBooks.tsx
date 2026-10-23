@@ -1,9 +1,5 @@
 'use client';
 
-import { useCharacters } from '@/api/characters';
-import { talentsInfo } from '@/api/talents';
-import Dropdown from '@/components/dropdown';
-import PageSection from '@/components/page/pageSection';
 import {
 	Box,
 	Checkbox,
@@ -20,6 +16,12 @@ import {
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+
+import { useCharacters } from '@/api/characters';
+import { talentsInfo } from '@/api/talents';
+import Dropdown from '@/components/dropdown';
+import PageSection from '@/components/page/pageSection';
+
 import TalentBooksCharacter from './talentBooksCharacter';
 
 const farmableDays = ['All', 'Mon/Thu', 'Tue/Fri', 'Wed/Sat'];

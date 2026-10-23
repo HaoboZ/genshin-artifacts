@@ -1,8 +1,9 @@
+import { groupBy, map, pipe, prop, reduce, take } from 'remeda';
+
 import getFirst from '@/helpers/getFirst';
 import makeArray from '@/helpers/makeArray';
 import { type Build } from '@/types/data';
 import { type ArtifactSetKey, type StatKey } from '@/types/good';
-import { groupBy, map, pipe, prop, reduce, take } from 'remeda';
 
 export default function getArtifactSetBuild(
 	characterBuilds: Build[],

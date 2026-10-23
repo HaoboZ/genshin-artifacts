@@ -1,8 +1,10 @@
 import { spawn } from 'child_process';
-import extract from 'extract-zip';
 import fs from 'fs';
 import fsAsync from 'fs/promises';
 import path from 'path';
+
+import extract from 'extract-zip';
+
 import { ensureOutputDir } from './utils';
 
 const ffmpegName = 'ffmpeg.exe';

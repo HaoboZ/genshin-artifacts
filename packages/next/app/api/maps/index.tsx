@@ -1,7 +1,5 @@
 'use client';
 
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
 	Button,
@@ -18,6 +16,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy, toTitleCase } from 'remeda';
+
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+
 import { type MapData } from '../routes/types';
 import { deleteMap } from './actions';
 import { mapColumns, type SortKey } from './columns';

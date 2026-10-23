@@ -1,3 +1,8 @@
+import { AvatarGroup, Grid, Stack, Typography } from '@mui/material';
+import Link from 'next/link';
+import { useMemo } from 'react';
+import { indexBy, prop } from 'remeda';
+
 import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
 import PageSection from '@/components/page/pageSection';
 import PercentBar from '@/components/stats/percentBar';
@@ -9,10 +14,7 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 import { useAppSelector } from '@/store/hooks';
 import { type Build } from '@/types/data';
 import { type ICharacter } from '@/types/good';
-import { AvatarGroup, Grid, Stack, Typography } from '@mui/material';
-import Link from 'next/link';
-import { useMemo } from 'react';
-import { indexBy, prop } from 'remeda';
+
 import ArtifactSetImage from '../../artifacts/artifactSetImage';
 import ArtifactStatCard from '../../artifacts/artifactStatCard';
 import CharacterWeaponTier from './characterWeaponTier';

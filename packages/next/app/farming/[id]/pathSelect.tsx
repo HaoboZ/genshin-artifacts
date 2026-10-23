@@ -1,7 +1,8 @@
-import { type RouteData } from '@/api/routes/types';
 import { Box, Button, MenuItem, Select, Stack } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { type Dispatch } from 'react';
+
+import { type RouteData } from '@/api/routes/types';
 
 export default function PathSelect({
 	route,

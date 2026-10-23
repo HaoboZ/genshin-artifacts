@@ -1,6 +1,8 @@
+import { AvatarGroup, Box, Stack } from '@mui/material';
+
 import makeArray from '@/helpers/makeArray';
 import { type Build } from '@/types/data';
-import { AvatarGroup, Box, Stack } from '@mui/material';
+
 import WeaponImage from '../../weapons/weaponImage';
 
 export default function CharacterWeaponTier({ build }: { build: Build }) {

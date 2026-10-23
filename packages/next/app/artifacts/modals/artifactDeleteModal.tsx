@@ -1,9 +1,3 @@
-import PercentBar from '@/components/stats/percentBar';
-import { maxPotentialBuild } from '@/helpers/stats';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
 import {
 	Button,
 	DialogActions,
@@ -16,6 +10,14 @@ import {
 import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
+
+import PercentBar from '@/components/stats/percentBar';
+import { maxPotentialBuild } from '@/helpers/stats';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+
 import ArtifactStatCard from '../artifactStatCard';
 
 export default function ArtifactDeleteModal() {

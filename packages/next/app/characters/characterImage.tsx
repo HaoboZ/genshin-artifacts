@@ -1,7 +1,8 @@
-import { type DCharacter } from '@/types/data';
 import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { type ReactNode } from 'react';
+
+import { type DCharacter } from '@/types/data';
 
 export default function CharacterImage({
 	character,

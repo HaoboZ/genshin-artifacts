@@ -1,9 +1,5 @@
 'use client';
 
-import CodeSnippet from '@/components/codeSnippet';
-import PageSection from '@/components/page/pageSection';
-import PageSidebar from '@/components/page/pageSidebar';
-import PageTitle from '@/components/page/pageTitle';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import {
 	Accordion,
@@ -20,6 +16,11 @@ import {
 	TableRow,
 	Typography,
 } from '@mui/material';
+
+import CodeSnippet from '@/components/codeSnippet';
+import PageSection from '@/components/page/pageSection';
+import PageSidebar from '@/components/page/pageSidebar';
+import PageTitle from '@/components/page/pageTitle';
 
 const sideMenuItems = [
 	{ id: 'ImageMapRoute', label: 'ImageMapRoute' },

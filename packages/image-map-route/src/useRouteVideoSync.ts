@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useVideo } from 'rooks';
+
 import { type Point, type Spot } from './types';
 import { findSpotByTime, findTimeBySpot } from './utils';
 

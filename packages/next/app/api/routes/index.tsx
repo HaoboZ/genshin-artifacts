@@ -1,7 +1,5 @@
 'use client';
 
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import { Button, Container, IconButton, Paper, Stack, TextField } from '@mui/material';
 import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
@@ -9,6 +7,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { sortBy } from 'remeda';
+
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+
 import { deleteRoute } from './actions';
 import { type RouteData } from './types';
 

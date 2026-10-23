@@ -1,14 +1,3 @@
-import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
-import { buildsList } from '@/api/builds';
-import { statName } from '@/api/stats';
-import OverlayText from '@/components/overlayText';
-import PageSection from '@/components/page/pageSection';
-import getFirst from '@/helpers/getFirst';
-import { potentialPercent } from '@/helpers/stats';
-import isMainStat from '@/helpers/stats/isMainStat';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import { useAppSelector } from '@/store/hooks';
-import { type ArtifactSetKey, type IArtifact } from '@/types/good';
 import { DialogContent, DialogTitle, Grid, Typography } from '@mui/material';
 import { Fragment, useMemo } from 'react';
 import {
@@ -27,6 +16,19 @@ import {
 	sumBy,
 	values,
 } from 'remeda';
+
+import { artifactSetsInfo, artifactSlotOrder } from '@/api/artifacts';
+import { buildsList } from '@/api/builds';
+import { statName } from '@/api/stats';
+import OverlayText from '@/components/overlayText';
+import PageSection from '@/components/page/pageSection';
+import getFirst from '@/helpers/getFirst';
+import { potentialPercent } from '@/helpers/stats';
+import isMainStat from '@/helpers/stats/isMainStat';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import { useAppSelector } from '@/store/hooks';
+import { type ArtifactSetKey, type IArtifact } from '@/types/good';
+
 import ArtifactSetImage from '../artifactSetImage';
 
 export default function ArtifactFarmModal() {

@@ -1,14 +1,16 @@
 'use client';
 
+import { Lock as LockIcon } from '@mui/icons-material';
+import { Container, Grid, Stack, TextField } from '@mui/material';
+import { useState } from 'react';
+
 import { useWeapons, type WeaponType } from '@/api/weapons';
 import PageSection from '@/components/page/pageSection';
 import PageTitle from '@/components/page/pageTitle';
 import useParamState from '@/hooks/useParamState';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
-import { Lock as LockIcon } from '@mui/icons-material';
-import { Container, Grid, Stack, TextField } from '@mui/material';
-import { useState } from 'react';
+
 import RarityFilter from '../characters/rarityFilter';
 import WeaponCharacterImage from './weaponCharacterImage';
 import WeaponTypeFilter from './weaponTypeFilter';

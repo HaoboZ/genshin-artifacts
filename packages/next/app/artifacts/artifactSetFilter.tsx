@@ -1,11 +1,13 @@
 'use client';
 
-import { artifactSetsInfo } from '@/api/artifacts';
 import { Button, ButtonGroup, Grid } from '@mui/material';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { groupBy, pipe, prop, reverse, sortBy, values } from 'remeda';
+
+import { artifactSetsInfo } from '@/api/artifacts';
+
 import ArtifactSetImage from './artifactSetImage';
 
 export default function ArtifactSetFilter() {

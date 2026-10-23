@@ -1,4 +1,5 @@
 import { MenuItem, type MenuItemProps } from '@mui/material';
+
 import useAsyncLoading from './useAsyncLoading';
 
 export default function AsyncMenuItem({ onClick, ...props }: MenuItemProps) {

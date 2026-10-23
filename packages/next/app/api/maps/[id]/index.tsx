@@ -3,6 +3,7 @@
 import { Container, Grid } from '@mui/material';
 import type { Point } from 'image-map-route';
 import { useState } from 'react';
+
 import { type MapData, type Text } from '../../routes/types';
 import MapControls from './controls';
 import MapEditor from './mapEditor';

@@ -1,9 +1,10 @@
-import AsyncButton from '@/components/loaders/asyncButton';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
 import { DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import { capitalize } from 'remeda';
+
+import AsyncButton from '@/components/loaders/asyncButton';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
 
 export default function AddItemModal({
 	title,

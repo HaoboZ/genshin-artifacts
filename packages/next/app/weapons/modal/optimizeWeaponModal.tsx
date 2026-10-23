@@ -1,14 +1,3 @@
-import { builds } from '@/api/builds';
-import { charactersInfo, useCharacters } from '@/api/characters';
-import PercentBar from '@/components/stats/percentBar';
-import arrDeepIndex from '@/helpers/arrDeepIndex';
-import getFirst from '@/helpers/getFirst';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type Build } from '@/types/data';
-import { type ICharacter, type IWeapon } from '@/types/good';
 import {
 	Button,
 	DialogActions,
@@ -21,6 +10,19 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
+
+import { builds } from '@/api/builds';
+import { charactersInfo, useCharacters } from '@/api/characters';
+import PercentBar from '@/components/stats/percentBar';
+import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type Build } from '@/types/data';
+import { type ICharacter, type IWeapon } from '@/types/good';
+
 import CharacterImage from '../../characters/characterImage';
 import WeaponImage from '../weaponImage';
 

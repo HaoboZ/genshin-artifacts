@@ -1,9 +1,5 @@
 'use client';
 
-import { type RouteData } from '@/api/routes/types';
-import RatioContainer from '@/components/ratioContainer';
-import useFetchState from '@/hooks/useFetchState';
-import useParamState from '@/hooks/useParamState';
 import { Box, Button, MenuItem, Select } from '@mui/material';
 import {
 	calculateCenterZoom,
@@ -16,6 +12,12 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
+
+import { type RouteData } from '@/api/routes/types';
+import RatioContainer from '@/components/ratioContainer';
+import useFetchState from '@/hooks/useFetchState';
+import useParamState from '@/hooks/useParamState';
+
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from './render';
 
 export default function WorldMap({ routesData, top }: { routesData: RouteData[]; top?: boolean }) {

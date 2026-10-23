@@ -1,12 +1,6 @@
 import type { PanelRectangle } from './types';
 
 type ImageInput = File | Blob | HTMLCanvasElement | Uint8Array;
-type LoadedCanvasImage = {
-	source: CanvasImageSource;
-	width: number;
-	height: number;
-	close: () => void;
-};
 
 async function loadCanvasImage(image: ImageInput) {
 	if (typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement)

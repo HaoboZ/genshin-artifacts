@@ -1,5 +1,6 @@
 import { Close as CloseIcon } from '@mui/icons-material';
 import { Dialog, type DialogProps, IconButton } from '@mui/material';
+
 import useModalControls from './useModalControls';
 
 export default function DialogWrapper({ children, ...props }: Omit<DialogProps, 'open'>) {

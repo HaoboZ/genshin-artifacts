@@ -1,6 +1,3 @@
-import { type RouteData } from '@/api/routes/types';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
 import { DialogContent, DialogTitle } from '@mui/material';
 import {
 	calculateCenterZoom,
@@ -13,6 +10,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
+
+import { type RouteData } from '@/api/routes/types';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '../render';
 
 export default function MapModal({

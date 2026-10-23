@@ -1,5 +1,7 @@
-import { charactersInfo } from '@/api/characters';
 import { notFound } from 'next/navigation';
+
+import { charactersInfo } from '@/api/characters';
+
 import Character from './index';
 
 export default async function CharacterPage({ params }: { params: Promise<{ name: string }> }) {

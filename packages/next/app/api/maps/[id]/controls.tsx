@@ -1,7 +1,3 @@
-import AsyncButton from '@/components/loaders/asyncButton';
-import PageBack from '@/components/page/pageBack';
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
 import { Save as SaveIcon, Tune as TuneIcon } from '@mui/icons-material';
 import { Paper, Stack } from '@mui/material';
 import { type Point } from 'image-map-route';
@@ -9,6 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import { isDeepEqual } from 'remeda';
 import { useKeys, useWindowEventListener } from 'rooks';
+
+import AsyncButton from '@/components/loaders/asyncButton';
+import PageBack from '@/components/page/pageBack';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+
 import { type MapData, type Text } from '../../routes/types';
 import { addFile, upsertMap } from '../actions';
 import UploadFile from './uploadFile';

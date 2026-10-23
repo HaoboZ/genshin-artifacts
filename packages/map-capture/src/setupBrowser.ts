@@ -32,7 +32,9 @@ async function clickIfExists(page: Page, selector: string) {
 	try {
 		const el = await page.waitForSelector(selector, { timeout: 10000 });
 		if (el) await el.click();
-	} catch {}
+	} catch {
+		/* empty */
+	}
 }
 
 async function removeQueries(page: Page, queries: string[]) {

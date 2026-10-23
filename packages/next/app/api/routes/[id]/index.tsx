@@ -1,8 +1,5 @@
 'use client';
 
-import FormattedTextField from '@/components/formattedTextField';
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import {
 	Container,
@@ -20,7 +17,12 @@ import { ImageMapRoute } from 'image-map-route';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
+
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '@/app/farming/render';
+import FormattedTextField from '@/components/formattedTextField';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+
 import { mapColumns, type SortKey } from '../../maps/columns';
 import { CALC_EFFICIENCY_SECONDS } from '../../maps/formUtils';
 import { type MapData, type RouteData } from '../types';

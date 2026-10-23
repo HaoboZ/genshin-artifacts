@@ -1,11 +1,5 @@
 'use client';
 
-import { useCharacters } from '@/api/characters';
-import { weeklyInfo, weeklyRequirement } from '@/api/talents';
-import NumberSpinner from '@/components/numberSpinner';
-import PageSection from '@/components/page/pageSection';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
 import {
 	Box,
 	Table,
@@ -17,6 +11,13 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { filter, flat, groupBy, map, pipe, prop, sumBy } from 'remeda';
+
+import { useCharacters } from '@/api/characters';
+import { weeklyInfo, weeklyRequirement } from '@/api/talents';
+import NumberSpinner from '@/components/numberSpinner';
+import PageSection from '@/components/page/pageSection';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
 
 export default function TalentsWeekly() {
 	const dispatch = useAppDispatch();

@@ -1,13 +1,3 @@
-import { artifactSlotOrder } from '@/api/artifacts';
-import { buildsList } from '@/api/builds';
-import { charactersInfo, useCharacters } from '@/api/characters';
-import getFirst from '@/helpers/getFirst';
-import { weightedPercent } from '@/helpers/stats';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type CharacterKey, type IArtifact } from '@/types/good';
 import {
 	Button,
 	DialogActions,
@@ -20,6 +10,18 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { filter, firstBy, groupBy, isNot, map, mapValues, pipe, prop, sortBy } from 'remeda';
+
+import { artifactSlotOrder } from '@/api/artifacts';
+import { buildsList } from '@/api/builds';
+import { charactersInfo, useCharacters } from '@/api/characters';
+import getFirst from '@/helpers/getFirst';
+import { weightedPercent } from '@/helpers/stats';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type CharacterKey, type IArtifact } from '@/types/good';
+
 import CharacterImage from '../../characters/characterImage';
 import ArtifactStatCard from '../artifactStatCard';
 

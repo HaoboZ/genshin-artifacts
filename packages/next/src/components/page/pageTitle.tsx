@@ -1,5 +1,6 @@
 import { Box, Typography, type TypographyProps } from '@mui/material';
 import { type ReactNode } from 'react';
+
 import PageActions, { type ActionProps } from './pageActions';
 
 export type PageTitleProps = {

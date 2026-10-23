@@ -1,37 +1,31 @@
 {
 	"name": "genshin-artifacts",
+	"version": "2.0.26",
+	"private": true,
 	"description": "Genshin Artifacts",
 	"author": {
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "2.0.26",
-	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
 		"prepare": "husky",
+		"lint": "bun lint",
+		"lint:fix": "bun lint --fix",
 		"next-dev": "cd packages/next && bun run dev",
 		"scrape-data": "cd packages/scrape-data && bun run start",
 		"map-capture": "cd packages/map-capture && bun run start"
 	},
-	"workspaces": [
-		"packages/*"
-	],
 	"dependencies": {
-		"remeda": "2.52.0",
-		"next": "16.4.2"
+		"next": "16.4.2",
+		"remeda": "2.52.0"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "16.4.2",
-		"@types/eslint": "9.6.1",
 		"@types/node": "26.6.5",
-		"eslint": "10.13.0",
-		"eslint-config-next": "16.4.2",
-		"eslint-config-prettier": "10.1.8",
 		"husky": "9.1.7",
-		"lint-staged": "17.6.0",
-		"prettier": "3.9.10",
 		"type-fest": "5.10.0",
-		"typescript": "7.0.2",
-		"typescript-eslint": "8.71.2"
+		"typescript": "7.0.2"
 	}
 }

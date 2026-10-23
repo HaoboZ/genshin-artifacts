@@ -10,27 +10,27 @@ permissions:
 jobs:
    publish:
       runs-on: ubuntu-latest
-      
+
       steps:
-         -  name: Checkout repository
-            uses: actions/checkout@v7
-         
-         -  name: Setup Node
-            uses: actions/setup-node@v7
-            with:
-               node-version: 24
-               registry-url: "https://registry.npmjs.org"
-         
-         -  name: Setup Bun
-            uses: oven-sh/setup-bun@v2
-         
-         -  name: Install dependencies
-            run: bun install --filter image-map-route
-         
-         -  name: Build image-map-route
-            run: bun run build
-            working-directory: packages/image-map-route
-         
-         -  name: Publish to npm
-            run: npm publish --access public
-            working-directory: packages/image-map-route
+         - name: Checkout repository
+           uses: actions/checkout@v7
+
+         - name: Setup Node
+           uses: actions/setup-node@v7
+           with:
+              node-version: 24
+              registry-url: 'https://registry.npmjs.org'
+
+         - name: Setup Bun
+           uses: oven-sh/setup-bun@v2
+
+         - name: Install dependencies
+           run: bun install --filter image-map-route
+
+         - name: Build image-map-route
+           run: bun run build
+           working-directory: packages/image-map-route
+
+         - name: Publish to npm
+           run: npm publish --access public
+           working-directory: packages/image-map-route

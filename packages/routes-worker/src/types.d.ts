@@ -7,13 +7,7 @@ declare global {
 export type MapType = 'extend' | 'scan';
 
 export type BackgroundType =
-	| 'mondstadt'
-	| 'liyue'
-	| 'inazuma'
-	| 'sumeru'
-	| 'fontaine'
-	| 'natlan'
-	| 'nod_krai';
+	'mondstadt' | 'liyue' | 'inazuma' | 'sumeru' | 'fontaine' | 'natlan' | 'nod_krai';
 
 export type Point = {
 	x: number;

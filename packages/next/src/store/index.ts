@@ -1,5 +1,7 @@
 import { combineReducers, configureStore, type UnknownAction } from '@reduxjs/toolkit';
+
 import { debounce } from '@/helpers/delay';
+
 import { saveState } from './persist';
 import good from './reducers/goodReducer';
 import main from './reducers/mainReducer';

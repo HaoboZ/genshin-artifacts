@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+
 import useBoundingClientRect from './hooks/useBoundingClientRect';
 import useControlledState from './hooks/useControlledState';
 import ImageMapRouteContainer from './imageMapRouteContainer';
@@ -6,8 +7,8 @@ import ImageMapRoutePaths from './imageMapRoutePaths';
 import ImageMapRoutePoints from './imageMapRoutePoints';
 import { type ImageMapRouteProps, type Spot } from './types';
 import { calculateCenterZoom } from './utils';
-import { getClosestPointOnPath } from './utils/getClosestPointOnPath';
 import { clampPosition } from './utils/clampPosition';
+import { getClosestPointOnPath } from './utils/getClosestPointOnPath';
 import { getContainedImageRect } from './utils/getContainedImageRect';
 
 export default function ImageMapRoute({

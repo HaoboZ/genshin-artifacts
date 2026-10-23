@@ -1,12 +1,5 @@
 'use client';
 
-import { type MapData, type RouteData } from '@/api/routes/types';
-import VideoPlayer from '@/components/videoPlayer';
-import useEventListener from '@/hooks/useEventListener';
-import useFetchState from '@/hooks/useFetchState';
-import useParamState from '@/hooks/useParamState';
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import {
@@ -20,6 +13,15 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { prop, sumBy } from 'remeda';
 import { useMeasure } from 'rooks';
+
+import { type MapData, type RouteData } from '@/api/routes/types';
+import VideoPlayer from '@/components/videoPlayer';
+import useEventListener from '@/hooks/useEventListener';
+import useFetchState from '@/hooks/useFetchState';
+import useParamState from '@/hooks/useParamState';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+
 import PathSelect from './pathSelect';
 import { RouteRenderExtra, RouteRenderPath, RouteRenderPoint } from './render';
 

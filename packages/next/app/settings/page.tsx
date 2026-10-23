@@ -1,13 +1,14 @@
 'use client';
 
-import PageTitle from '@/components/page/pageTitle';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { mainActions } from '@/store/reducers/mainReducer';
 import { Box, Button, ButtonGroup, Container, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { prop } from 'remeda';
 import { useWindowEventListener } from 'rooks';
+
+import PageTitle from '@/components/page/pageTitle';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { mainActions } from '@/store/reducers/mainReducer';
 
 export default function Settings() {
 	const main = useAppSelector(prop('main'));

@@ -1,11 +1,13 @@
 'use client';
 
+import { Grid } from '@mui/material';
+import { Fragment } from 'react';
+
 import PageSection from '@/components/page/pageSection';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { type ArtifactSetKey } from '@/types/good';
-import { Grid } from '@mui/material';
-import { Fragment } from 'react';
+
 import ArtifactList from './artifactList';
 import BestInSlot from './bestInSlot';
 

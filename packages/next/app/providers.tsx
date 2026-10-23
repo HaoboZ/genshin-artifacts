@@ -1,11 +1,12 @@
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { type ReactNode } from 'react';
+
 import ComponentComposer, { component } from '@/helpers/componentComposer';
 import EventsProvider from '@/providers/eventsProvider';
 import ModalProvider from '@/providers/modal';
 import ClientSnackbarProvider from '@/providers/snackbar';
 import ThemeProvider from '@/providers/theme';
 import StoreProvider from '@/store/storeProvider';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { type ReactNode } from 'react';
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (

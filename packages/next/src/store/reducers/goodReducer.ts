@@ -1,9 +1,10 @@
-import { weeklyInfo } from '@/api/talents';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import hash from 'object-hash';
 import { differenceWith, pick, prop, uniqueBy } from 'remeda';
 import { type PartialDeep } from 'type-fest';
+
+import { weeklyInfo } from '@/api/talents';
 import {
 	type CharacterKey,
 	type IArtifact,

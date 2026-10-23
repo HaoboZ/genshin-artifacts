@@ -1,9 +1,11 @@
 'use client';
 
-import PageBack from '@/components/page/pageBack';
 import { Button, Container, Stack, TextField } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
+
+import PageBack from '@/components/page/pageBack';
+
 import { saveAuthToken } from './actions';
 
 export default function Home() {

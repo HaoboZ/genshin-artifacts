@@ -1,3 +1,8 @@
+import { DoubleArrow as DoubleArrowIcon } from '@mui/icons-material';
+import { Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
+import { useMemo } from 'react';
+import { entries, filter, firstBy, map, pipe, prop } from 'remeda';
+
 import { artifactSlotOrder } from '@/api/artifacts';
 import { charactersInfo } from '@/api/characters';
 import PercentBar from '@/components/stats/percentBar';
@@ -10,10 +15,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import type { Build } from '@/types/data';
 import { type IArtifact, type IWeapon, type SlotKey } from '@/types/good';
-import { DoubleArrow as DoubleArrowIcon } from '@mui/icons-material';
-import { Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
-import { useMemo } from 'react';
-import { entries, filter, firstBy, map, pipe, prop } from 'remeda';
+
 import ArtifactStatCard from '../../artifacts/artifactStatCard';
 import WeaponCard from './weaponCard';
 

@@ -1,10 +1,11 @@
+import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
+import Image from 'next/image';
+import { Fragment } from 'react';
+
 import { weaponImages, weaponsInfo, type WeaponType } from '@/api/weapons';
 import OverlayText from '@/components/overlayText';
 import { type DWeapon } from '@/types/data';
 import { type IWeapon } from '@/types/good';
-import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
-import Image from 'next/image';
-import { Fragment } from 'react';
 
 export default function WeaponImage({
 	weapon,

@@ -1,6 +1,7 @@
 import type { Dispatch, HTMLAttributes, ReactNode, RefObject, TouchList } from 'react';
 import { useEffect, useRef } from 'react';
 import { clamp } from 'remeda';
+
 import { type Point } from './types';
 import { clampPosition } from './utils/clampPosition';
 import { mouseToContainer } from './utils/mouseToContainer';

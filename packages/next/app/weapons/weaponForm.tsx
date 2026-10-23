@@ -1,10 +1,3 @@
-import { weaponsInfo } from '@/api/weapons';
-import InputField from '@/components/form/inputField';
-import SwitchField from '@/components/form/switchField';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type IWeapon } from '@/types/good';
 import {
 	Box,
 	Button,
@@ -16,6 +9,15 @@ import {
 } from '@mui/material';
 import { Fragment, type ReactNode } from 'react';
 import { type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
+
+import { weaponsInfo } from '@/api/weapons';
+import InputField from '@/components/form/inputField';
+import SwitchField from '@/components/form/switchField';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type IWeapon } from '@/types/good';
+
 import WeaponImage from './weaponImage';
 
 export default function WeaponForm({

@@ -1,4 +1,5 @@
 import type { IArtifact } from '@/types/good';
+
 import { findArtifactPanelAnchor, getOcrLines } from './panel';
 import type { OcrBlocks, OcrWord } from './types';
 

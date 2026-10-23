@@ -1,6 +1,3 @@
-import InputField from '@/components/form/inputField';
-import NumberSpinnerField from '@/components/form/numberSpinnerField';
-import SelectField from '@/components/form/selectField';
 import {
 	Box,
 	Button,
@@ -16,6 +13,11 @@ import Image from 'next/image';
 import { useMemo } from 'react';
 import { FormProvider, type SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toTitleCase } from 'remeda';
+
+import InputField from '@/components/form/inputField';
+import NumberSpinnerField from '@/components/form/numberSpinnerField';
+import SelectField from '@/components/form/selectField';
+
 import { type BackgroundType, type MapData } from '../routes/types';
 import { addFile, upsertMap } from './actions';
 import { calcEfficiency, LOCATION_TYPES, MAP_TYPES } from './formUtils';

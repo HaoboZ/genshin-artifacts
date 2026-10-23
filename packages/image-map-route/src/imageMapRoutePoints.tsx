@@ -1,4 +1,5 @@
 import { type ComponentType, Fragment } from 'react';
+
 import { type Point, type RenderPointProps, type Spot } from './types';
 
 function DefaultRenderPoint({ point, containerSize, type }: RenderPointProps) {

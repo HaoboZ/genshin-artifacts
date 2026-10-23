@@ -1,5 +1,6 @@
 import { Box, type BoxProps, Divider, Typography, type TypographyProps } from '@mui/material';
 import { type ReactNode } from 'react';
+
 import PageActions, { type ActionProps } from './pageActions';
 
 export default function PageSection({

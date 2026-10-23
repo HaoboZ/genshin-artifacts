@@ -1,4 +1,5 @@
 import { type StatKey } from '@/types/good';
+
 import arrDeepIndex from '../arrDeepIndex';
 import makeArray from '../makeArray';
 

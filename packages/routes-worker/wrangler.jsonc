@@ -8,7 +8,7 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-01-01",
 	"observability": {
-		"enabled": true
+		"enabled": true,
 	},
 	"vars": { "AUTH_TOKEN": "SECRET" },
 	"r2_buckets": [

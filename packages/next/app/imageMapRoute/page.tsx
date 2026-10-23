@@ -1,11 +1,12 @@
 'use client';
 
+import { Box, Container, Stack, Typography } from '@mui/material';
+import { ImageMapRoute } from 'image-map-route';
+
 import CodeSnippet from '@/components/codeSnippet';
 import PageSection from '@/components/page/pageSection';
 import PageSidebar from '@/components/page/pageSidebar';
 import PageTitle from '@/components/page/pageTitle';
-import { Box, Container, Stack, Typography } from '@mui/material';
-import { ImageMapRoute } from 'image-map-route';
 
 const installSnippet = `npm i image-map-route
 # or

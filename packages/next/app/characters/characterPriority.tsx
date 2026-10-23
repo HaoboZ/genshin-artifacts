@@ -1,12 +1,14 @@
+import { Grid, Paper, Typography } from '@mui/material';
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
+import { filter, isIncludedIn, isNot, mapValues, omit, prop } from 'remeda';
+
 import { charactersInfo } from '@/api/characters';
 import MultiSortable from '@/components/sortable/multiSortable';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { mainActions } from '@/store/reducers/mainReducer';
 import { type CharacterKey } from '@/types/good';
-import { Grid, Paper, Typography } from '@mui/material';
-import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
-import { filter, isIncludedIn, isNot, mapValues, omit, prop } from 'remeda';
+
 import CharacterTierImage from './characterTierImage';
 
 export default function CharacterPriority({

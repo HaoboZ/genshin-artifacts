@@ -1,13 +1,15 @@
+import { DialogTitle } from '@mui/material';
+import { useMemo } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { omit, partition, prop } from 'remeda';
+
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { store } from '@/store';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type IArtifact } from '@/types/good';
-import { DialogTitle } from '@mui/material';
-import { useMemo } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { omit, partition, prop } from 'remeda';
+
 import ArtifactForm from '../artifactForm';
 
 export default function EditArtifactModal({ id }: { id: string }) {

@@ -1,4 +1,5 @@
 import { writeFileSync } from 'fs';
+
 import fetchPage from '../fetchPage';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';

@@ -1,8 +1,9 @@
+import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
+import Image from 'next/image';
+
 import { artifactSetsInfo, artifactSlotImages } from '@/api/artifacts';
 import OverlayText from '@/components/overlayText';
 import { type IArtifact, type SlotKey } from '@/types/good';
-import { Avatar, type AvatarProps, Tooltip } from '@mui/material';
-import Image from 'next/image';
 
 export default function ArtifactImage({
 	artifact,

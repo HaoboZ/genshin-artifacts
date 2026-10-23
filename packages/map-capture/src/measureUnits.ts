@@ -1,4 +1,5 @@
 import { type Page } from 'playwright';
+
 import { getCenterFromUrl, hardDrag } from './utils';
 
 export default async function measureUnits(page: Page, stepRatio = 0.75) {

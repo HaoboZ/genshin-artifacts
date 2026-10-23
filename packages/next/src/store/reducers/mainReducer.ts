@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+
 import { type CharacterKey } from '../../types/good';
 
 type State = {

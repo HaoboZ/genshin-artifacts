@@ -1,11 +1,13 @@
 import { createWorker, PSM } from 'tesseract.js';
+
 import type { IArtifact } from '@/types/good';
+
 import { detectArtifactFlags } from './flags';
 import { createCanvasCrop, getImageDimensions, getPanelCropCandidates } from './image';
-import { parseArtifactText, parseSubstats } from './parser';
 import { findArtifactPanelAnchor } from './panel';
-import type { OcrBlocks, PanelRectangle } from './types';
+import { parseArtifactText, parseSubstats } from './parser';
 import { detectArtifactRarity } from './rarity';
+import type { OcrBlocks, PanelRectangle } from './types';
 
 type OcrWorker = Awaited<ReturnType<typeof createWorker>>;
 type ArtifactInput = File | Blob | HTMLCanvasElement;

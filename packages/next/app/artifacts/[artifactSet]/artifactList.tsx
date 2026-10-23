@@ -1,19 +1,5 @@
 'use client';
 
-import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
-import { builds } from '@/api/builds';
-import Dropdown from '@/components/dropdown';
-import PageLink from '@/components/page/pageLink';
-import PageSection from '@/components/page/pageSection';
-import PercentBar from '@/components/stats/percentBar';
-import makeArray from '@/helpers/makeArray';
-import { matchingSubStats, maxPotentialBuild, weightedPercent } from '@/helpers/stats';
-import useParamState from '@/hooks/useParamState';
-import { useModal } from '@/providers/modal';
-import dynamicModal from '@/providers/modal/dynamicModal';
-import { useAppDispatch } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type ArtifactSetKey, type SlotKey } from '@/types/good';
 import {
 	ArrowDownward as ArrowDownwardIcon,
 	ArrowUpward as ArrowUpwardIcon,
@@ -36,6 +22,22 @@ import {
 import { capitalCase } from 'change-case';
 import { useMemo, useState } from 'react';
 import { capitalize, chunk, filter, map, pipe, prop, sortBy } from 'remeda';
+
+import { artifactSetsInfo, artifactSlotOrder, useArtifacts } from '@/api/artifacts';
+import { builds } from '@/api/builds';
+import Dropdown from '@/components/dropdown';
+import PageLink from '@/components/page/pageLink';
+import PageSection from '@/components/page/pageSection';
+import PercentBar from '@/components/stats/percentBar';
+import makeArray from '@/helpers/makeArray';
+import { matchingSubStats, maxPotentialBuild, weightedPercent } from '@/helpers/stats';
+import useParamState from '@/hooks/useParamState';
+import { useModal } from '@/providers/modal';
+import dynamicModal from '@/providers/modal/dynamicModal';
+import { useAppDispatch } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type ArtifactSetKey, type SlotKey } from '@/types/good';
+
 import RarityFilter from '../../characters/rarityFilter';
 import ArtifactStatCard from '../artifactStatCard';
 import SlotFilter from './slotFilter';

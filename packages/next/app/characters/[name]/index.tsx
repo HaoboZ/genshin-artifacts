@@ -1,5 +1,9 @@
 'use client';
 
+import { Container, Grid, Stack, Switch } from '@mui/material';
+import Image from 'next/image';
+import { clamp } from 'remeda';
+
 import { builds } from '@/api/builds';
 import { elementsInfo } from '@/api/elements';
 import FormattedTextField from '@/components/formattedTextField';
@@ -10,9 +14,7 @@ import makeArray from '@/helpers/makeArray';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
 import { type DCharacter } from '@/types/data';
-import { Container, Grid, Stack, Switch } from '@mui/material';
-import Image from 'next/image';
-import { clamp } from 'remeda';
+
 import CharacterImage from '../characterImage';
 import CharacterBuild from './characterBuild';
 

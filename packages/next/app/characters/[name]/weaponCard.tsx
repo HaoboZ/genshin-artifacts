@@ -1,11 +1,13 @@
+import { Card, CardContent, type CardProps, Grid, Typography } from '@mui/material';
+import { Fragment, useMemo } from 'react';
+
 import { charactersInfo } from '@/api/characters';
 import { weaponsInfo } from '@/api/weapons';
 import PercentBar from '@/components/stats/percentBar';
 import arrDeepIndex from '@/helpers/arrDeepIndex';
 import { type Build } from '@/types/data';
 import { type IWeapon } from '@/types/good';
-import { Card, CardContent, type CardProps, Grid, Typography } from '@mui/material';
-import { Fragment, useMemo } from 'react';
+
 import WeaponImage from '../../weapons/weaponImage';
 
 export default function WeaponCard({

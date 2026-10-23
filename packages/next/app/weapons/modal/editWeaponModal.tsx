@@ -1,15 +1,3 @@
-import { builds, buildsList } from '@/api/builds';
-import { charactersInfo } from '@/api/characters';
-import { weaponsInfo } from '@/api/weapons';
-import PageLink from '@/components/page/pageLink';
-import PercentBar from '@/components/stats/percentBar';
-import arrDeepIndex from '@/helpers/arrDeepIndex';
-import getFirst from '@/helpers/getFirst';
-import DialogWrapper from '@/providers/modal/dialogWrapper';
-import useModalControls from '@/providers/modal/useModalControls';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { goodActions } from '@/store/reducers/goodReducer';
-import { type IWeapon } from '@/types/good';
 import {
 	Box,
 	Button,
@@ -23,6 +11,20 @@ import {
 import { Fragment, useMemo, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { filter, map, pipe, prop, sortBy } from 'remeda';
+
+import { builds, buildsList } from '@/api/builds';
+import { charactersInfo } from '@/api/characters';
+import { weaponsInfo } from '@/api/weapons';
+import PageLink from '@/components/page/pageLink';
+import PercentBar from '@/components/stats/percentBar';
+import arrDeepIndex from '@/helpers/arrDeepIndex';
+import getFirst from '@/helpers/getFirst';
+import DialogWrapper from '@/providers/modal/dialogWrapper';
+import useModalControls from '@/providers/modal/useModalControls';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { goodActions } from '@/store/reducers/goodReducer';
+import { type IWeapon } from '@/types/good';
+
 import CharacterWeaponTier from '../../characters/[name]/characterWeaponTier';
 import CharacterImage from '../../characters/characterImage';
 import WeaponForm from '../weaponForm';

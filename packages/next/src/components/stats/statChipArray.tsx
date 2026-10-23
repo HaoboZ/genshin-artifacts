@@ -1,5 +1,7 @@
-import { statName } from '@/api/stats';
 import { Breadcrumbs, Chip, Stack, Typography } from '@mui/material';
+
+import { statName } from '@/api/stats';
+
 import makeArray from '../../helpers/makeArray';
 
 export default function StatChipArray({

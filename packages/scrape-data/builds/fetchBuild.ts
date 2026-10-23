@@ -1,7 +1,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import { capitalCase, pascalCase } from 'change-case';
+
 import { mapStats } from './mapStats';
 import type { ArtifactGroup, ScrapedBuild, WeaponGroup } from './types';
 import { getBuildKey } from './utils/getBuildKey';

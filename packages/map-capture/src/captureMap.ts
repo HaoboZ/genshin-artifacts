@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+
 import { type Page } from 'playwright';
+
 import { type Shot } from '../types';
 import { getCenterFromUrl, hardDrag } from './utils';
 

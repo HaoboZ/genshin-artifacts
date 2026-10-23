@@ -1,12 +1,13 @@
-import { applyMerge } from './utils/applyMerge';
-import { fetchBuild } from './fetchBuild';
-import { getBuildKey } from './utils/getBuildKey';
-import type { DiscoveredRoles, ScrapedBuild } from './types';
-import { saveDiscoveredRoles } from './io';
-import { mergeBuilds } from './utils/mergeBuilds';
 import { existsSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { fetchBuild } from './fetchBuild';
+import { saveDiscoveredRoles } from './io';
+import type { DiscoveredRoles, ScrapedBuild } from './types';
+import { applyMerge } from './utils/applyMerge';
+import { getBuildKey } from './utils/getBuildKey';
+import { mergeBuilds } from './utils/mergeBuilds';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CONTENT = resolve(HERE, '../genshin-builds/src/content');

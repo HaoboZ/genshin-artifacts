@@ -1,5 +1,9 @@
 'use client';
 
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
+import Link from 'next/link';
+import { prop, sortBy } from 'remeda';
+
 import { artifactSetsInfo } from '@/api/artifacts';
 import { buildsList } from '@/api/builds';
 import { charactersInfo, useCharacters } from '@/api/characters';
@@ -9,9 +13,7 @@ import getFirst from '@/helpers/getFirst';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 import { useAppSelector } from '@/store/hooks';
-import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
-import Link from 'next/link';
-import { prop, sortBy } from 'remeda';
+
 import CharacterImage from '../characters/characterImage';
 import ArtifactSetImage from './artifactSetImage';
 
