@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-10-17",
+	"@lastUpdated": "2026-10-31",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -338,8 +338,12 @@
 			[
 				"HarbingerOfDawn",
 				"CinnabarSpindle",
+				"FluteOfEzpitzal",
 				"LightOfFoliarIncision",
 				"HaranGeppakuFutsu",
+				"ExaiphanesBlade",
+				"WhitelakeFrostfeather",
+				"BeyondTheChrysalis",
 				"MistsplitterReforged",
 				"SplendorOfTranquilWaters"
 			],
@@ -1753,11 +1757,10 @@
 			"RedhornStonethresher",
 			"GestOfTheMightyWolf",
 			"SerpentSpine",
-			["BeaconOfTheReedSea", "AThousandBlazingSuns"],
-			["ATeaspoonOfTranscendence", "Verdict", "ForgedByTheGoldenMelody", "Whiteblind"],
-			"SkywardPride",
-			["FlameForgedInsight", "BlackcliffSlasher"],
-			"MasterKey",
+			["BeaconOfTheReedSea", "AThousandBlazingSuns", "ATeaspoonOfTranscendence", "Whiteblind"],
+			"Verdict",
+			["SkywardPride", "ForgedByTheGoldenMelody"],
+			"BlackcliffSlasher",
 			"FavoniusGreatsword"
 		],
 		"artifact": [
@@ -1766,11 +1769,11 @@
 			["NightOfTheSkysUnveiling", "MarechausseeHunter"]
 		],
 		"mainStat": {
-			"sands": ["def_", "eleMas", "enerRech_"],
+			"sands": ["def_", "atk_", "enerRech_"],
 			"goblet": "geo_dmg_",
 			"circlet": "critRD_"
 		},
-		"subStat": ["enerRech_", "critRD_", "def_", "eleMas"],
+		"subStat": ["enerRech_", "critRD_", "def_", "atk_", "eleMas"],
 		"overridden": {
 			"artifact": [
 				"HuskOfOpulentDreams",

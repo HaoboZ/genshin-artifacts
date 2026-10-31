@@ -1,14 +1,21 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { execFileSync } from 'node:child_process';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-
-import prettier from 'prettier';
 
 import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 export const BUILDS_JSON = resolve(HERE, '../../next/public/data/builds.json');
 export const BUILD_OVERRIDES_JSON = resolve(HERE, './buildOverrides.json');
+
+function formatJson(value: unknown, filepath: string): string {
+	return execFileSync('bun', ['fmt', '--stdin-filepath', filepath], {
+		input: JSON.stringify(value),
+		encoding: 'utf8',
+		maxBuffer: 10 * 1024 * 1024,
+	});
+}
 
 export function loadExistingBuilds(): Record<string, ScrapedBuild | ScrapedBuild[]> {
 	if (!existsSync(BUILDS_JSON)) return {};
@@ -34,11 +41,7 @@ export async function writeBuilds(
 		...existing,
 		...builds,
 	});
-	const config = await prettier.resolveConfig(BUILDS_JSON);
-	const formatted = await prettier.format(JSON.stringify(final), {
-		...config,
-		filepath: BUILDS_JSON,
-	});
+	const formatted = formatJson(final, BUILDS_JSON);
 	writeFileSync(BUILDS_JSON, formatted);
 	console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
 }
@@ -127,11 +130,7 @@ export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
 		if (Object.keys(file[key]).length === 0) delete file[key];
 	}
 	if (added === 0 && removed === 0) return;
-	const config = await prettier.resolveConfig(BUILD_OVERRIDES_JSON);
-	const formatted = await prettier.format(JSON.stringify(file), {
-		...config,
-		filepath: BUILD_OVERRIDES_JSON,
-	});
+	const formatted = formatJson(file, BUILD_OVERRIDES_JSON);
 	writeFileSync(BUILD_OVERRIDES_JSON, formatted);
 	console.info(`Added ${added} new role(s) to buildOverrides.json — review and assign overrides.`);
 }
