@@ -3,14 +3,13 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "git submodule update --remote && tsx ./index.ts"
+		"start": "git submodule update --remote && bun ./index.ts"
 	},
 	"dependencies": {
 		"change-case": "5.4.4",
 		"jsdom": "30.1.3"
 	},
 	"devDependencies": {
-		"@types/jsdom": "30.0.0",
-		"tsx": "4.23.15"
+		"@types/jsdom": "30.0.0"
 	}
 }

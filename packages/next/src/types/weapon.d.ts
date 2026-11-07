@@ -161,6 +161,7 @@ export type WeaponKey =
 	| 'ReliquaryOfTruth' // Reliquary of Truth
 	| 'SkywardAtlas' // Skyward Atlas
 	| 'StarcallersWatch' // Starcaller's Watch
+	| 'StarsealedEdict' // Starsealed Edict
 	| 'SunnyMorningSleepIn' // Sunny Morning Sleep-In
 	| 'SurfsUp' // Surf's Up
 	| 'TomeOfTheEternalFlow' // Tome of the Eternal Flow

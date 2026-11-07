@@ -3,13 +3,10 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "tsx ./index.ts"
+		"start": "bun ./index.ts"
 	},
 	"dependencies": {
 		"playwright": "1.64.1",
 		"sharp": "0.35.5"
-	},
-	"devDependencies": {
-		"tsx": "4.23.15"
 	}
 }

@@ -689,6 +689,16 @@
 		"talentMaterial": "Ballad",
 		"weeklyMaterial": "MirrorOfMushin"
 	},
+	"Mitya": {
+		"key": "Mitya",
+		"name": "Mitya",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Mitya_Icon.png",
+		"talentMaterial": "Charity",
+		"weeklyMaterial": "MaskOfTheVirtuousDoctor"
+	},
 	"Mona": {
 		"key": "Mona",
 		"name": "Mona",
@@ -986,6 +996,16 @@
 		"weaponType": "Sword",
 		"element": "None",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png"
+	},
+	"Valeriy": {
+		"key": "Valeriy",
+		"name": "Valeriy",
+		"rarity": 4,
+		"weaponType": "Sword",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Valeriy_Icon.png",
+		"talentMaterial": "Glory",
+		"weeklyMaterial": "CounterfeitResin"
 	},
 	"Varesa": {
 		"key": "Varesa",

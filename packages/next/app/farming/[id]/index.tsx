@@ -95,7 +95,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 				<Image
 					fill
 					alt='background'
-					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}.png`}
+					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/${routeData.mapsData[selectedMap].background}.webp`}
 					style={{ objectFit: 'cover', opacity: 0.5 }}
 				/>
 			)}

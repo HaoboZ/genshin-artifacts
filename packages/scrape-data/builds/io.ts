@@ -50,14 +50,16 @@ function normalizeBuilds(
 	builds: Record<string, string | ScrapedBuild | ScrapedBuild[]>,
 ): Record<string, string | ScrapedBuild | ScrapedBuild[]> {
 	return Object.fromEntries(
-		Object.entries(builds).map(([key, value]) => [
-			key,
-			typeof value === 'string'
-				? value
-				: Array.isArray(value)
-					? value.map(normalizeBuild)
-					: normalizeBuild(value),
-		]),
+		Object.entries(builds)
+			.sort(([a], [b]) => a.localeCompare(b))
+			.map(([key, value]) => [
+				key,
+				typeof value === 'string'
+					? value
+					: Array.isArray(value)
+						? value.map(normalizeBuild)
+						: normalizeBuild(value),
+			]),
 	);
 }
 
@@ -130,7 +132,10 @@ export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
 		if (Object.keys(file[key]).length === 0) delete file[key];
 	}
 	if (added === 0 && removed === 0) return;
-	const formatted = formatJson(file, BUILD_OVERRIDES_JSON);
+	const sortedFile = Object.fromEntries(
+		Object.entries(file).sort(([a], [b]) => a.localeCompare(b)),
+	);
+	const formatted = formatJson(sortedFile, BUILD_OVERRIDES_JSON);
 	writeFileSync(BUILD_OVERRIDES_JSON, formatted);
 	console.info(`Added ${added} new role(s) to buildOverrides.json — review and assign overrides.`);
 }

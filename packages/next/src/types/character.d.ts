@@ -68,6 +68,7 @@ export type CharacterKey =
 	| 'Lyney' // Lyney
 	| 'Mavuika' // Mavuika
 	| 'Mika' // Mika
+	| 'Mitya' // Mitya
 	| 'Mona' // Mona
 	| 'Mualani' // Mualani
 	| 'Nahida' // Nahida
@@ -98,6 +99,7 @@ export type CharacterKey =
 	| 'Thoma' // Thoma
 	| 'Tighnari' // Tighnari
 	| 'Traveler' // Traveler
+	| 'Valeriy' // Valeriy
 	| 'Varesa' // Varesa
 	| 'Varka' // Varka
 	| 'Venti' // Venti

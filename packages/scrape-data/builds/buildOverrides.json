@@ -51,7 +51,7 @@
 		},
 		"Low Energy Requirement Off-Field DPS & Buff Support": { "group": 1 }
 	},
-	"Cyno": { "Stellar-Conduct DPS": { "group": 1 } },
+	"Cyno": { "Stellar-Conduct DPS": { "group": 2 } },
 	"Dahlia": { "Shield Support": { "group": 1 } },
 	"Dehya": { "Support": { "group": 0 } },
 	"Diluc": { "DPS": { "group": 0 } },
@@ -154,6 +154,7 @@
 	"Manekina": { "DPS": { "group": 0 } },
 	"Mavuika": { "DPS & Buff Support": { "group": 2 } },
 	"Mika": { "Heal & Buff Support": { "group": 1 } },
+	"Mitya": { "On-Field DPS": { "group": 1 } },
 	"Mona": { "Buff Support": { "group": 1 } },
 	"Mualani": { "Vaporize DPS": { "group": 1 } },
 	"Nahida": {
@@ -253,9 +254,12 @@
 		"Cryo - Stellar Glimmer DPS": { "omit": true },
 		"Hydro - Support": { "omit": true }
 	},
+	"Valeriy": { "Buff & Shield Support": { "group": 1 } },
 	"Varesa": { "Plunge DPS": { "group": 0, "subStat": ["critRD_", "enerRech_", "atk_"] } },
 	"Varka": { "DPS": { "group": 0 } },
 	"Venti": { "Off-Field DPS": { "group": 0 }, "On-Field DPS": { "group": 0 } },
+	"Vesna": { "Stellar Swirl DPS": { "group": 0 } },
+	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } },
 	"Wanderer": { "DPS": { "group": 0 } },
 	"Wriothesley": { "Stellar-Conduct DPS": { "group": 0 } },
 	"Xiangling": { "Off-Field DPS": { "group": 1 }, "Off-Field Vaporize DPS": { "omit": true } },
@@ -290,9 +294,5 @@
 	"YumemizukiMizuki": { "Stellar Swirl DPS": { "group": 1 } },
 	"YunJin": { "Buff Support": { "group": 1 } },
 	"Zhongli": { "Shield Support": { "group": 0 } },
-	"Zibai": { "DPS": { "group": 2 } },
-	"Vodyanitsa": { "Heal and Buff Support": { "group": 0 } },
-	"Vesna": {
-		"Stellar Swirl DPS": { "group": 0 }
-	}
+	"Zibai": { "DPS": { "group": 2 } }
 }

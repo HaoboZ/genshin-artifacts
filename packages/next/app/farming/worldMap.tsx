@@ -15,6 +15,7 @@ import { filter, map, pick, pipe } from 'remeda';
 
 import { type RouteData } from '@/api/routes/types';
 import RatioContainer from '@/components/ratioContainer';
+import { TEYVAT_MAP_IMAGE_URL } from '@/constants/map';
 import useFetchState from '@/hooks/useFetchState';
 import useParamState from '@/hooks/useParamState';
 
@@ -105,12 +106,7 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 					})
 				}
 				style={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
-				<Image
-					fill
-					alt='teyvat'
-					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat70.png`}
-					style={{ objectFit: 'contain' }}
-				/>
+				<Image fill alt='teyvat' src={TEYVAT_MAP_IMAGE_URL} style={{ objectFit: 'contain' }} />
 			</ImageMapRoute>
 		</RatioContainer>
 	);

@@ -11,6 +11,7 @@ export const LOCATION_TYPES: BackgroundType[] = [
 	'fontaine',
 	'natlan',
 	'nod_krai',
+	'snezhnaya',
 ];
 
 export const CALC_EFFICIENCY_SECONDS = 6;

@@ -10,8 +10,7 @@ export default async function processAndSave(image: Sharp, url: string) {
 	image = await cropPixels(image, 6);
 	image = await renderPng(image);
 	image = await renderPng(image.trim());
-	image = await halfSize(image);
-	await image.png().toFile(url);
+	await image.webp({ quality: 90, effort: 6 }).toFile(url);
 }
 
 async function cropPixels(image: Sharp, pixels: number) {
@@ -22,11 +21,6 @@ async function cropPixels(image: Sharp, pixels: number) {
 		width: width - pixels * 2,
 		height: height - pixels * 2,
 	});
-}
-
-async function halfSize(image: Sharp) {
-	const { width } = await image.metadata();
-	return image.resize({ width: Math.floor(width / 2) });
 }
 
 async function renderPng(image: Sharp) {

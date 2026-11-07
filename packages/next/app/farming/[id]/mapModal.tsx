@@ -12,6 +12,7 @@ import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
 
 import { type RouteData } from '@/api/routes/types';
+import { TEYVAT_MAP_IMAGE_URL } from '@/constants/map';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 
@@ -68,7 +69,7 @@ export default function MapModal({
 					<Image
 						fill
 						alt='teyvat'
-						src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat70.png`}
+						src={TEYVAT_MAP_IMAGE_URL}
 						style={{ objectFit: 'contain' }}
 					/>
 				</ImageMapRoute>

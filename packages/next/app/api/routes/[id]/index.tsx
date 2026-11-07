@@ -20,6 +20,7 @@ import { filter, indexBy, pipe, prop, sortBy, toTitleCase } from 'remeda';
 
 import { MapRenderExtra, MapRenderPath, MapRenderPoint } from '@/app/farming/render';
 import FormattedTextField from '@/components/formattedTextField';
+import { TEYVAT_MAP_IMAGE_URL } from '@/constants/map';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 
@@ -201,7 +202,7 @@ export default function Route({
 						<Image
 							fill
 							alt='teyvat'
-							src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat70.png`}
+							src={TEYVAT_MAP_IMAGE_URL}
 							style={{ objectFit: 'contain' }}
 						/>
 					</ImageMapRoute>

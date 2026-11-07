@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-10-31",
+	"@lastUpdated": "2026-11-07",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -490,7 +490,7 @@
 		"artifact": ["DisenchantmentInDeepShadow", ["GildedDreams", "ADayCarvedFromRisingWinds"]],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["enerRech_", "critRD_", "atk_", "eleMas"],
-		"group": 1
+		"group": 2
 	},
 	"Dahlia": {
 		"key": "Dahlia",
@@ -1223,14 +1223,15 @@
 		"key": "Klee",
 		"role": "DPS",
 		"weapon": [
+			"StarsealedEdict",
 			"ReliquaryOfTruth",
-			["LostPrayerToTheSacredWinds", "KagurasVerity", "VividNotions"],
-			["TomeOfTheEternalFlow", "CashflowSupervision"],
-			["TulaytullahsRemembrance", "SurfsUp"],
-			"SkywardAtlas",
-			["TheWidsith", "SolarPearl"],
-			"SacrificialJade",
-			"FlowingPurity"
+			["KagurasVerity", "LostPrayerToTheSacredWinds"],
+			["SurfsUp", "VividNotions"],
+			["NocturnesCurtainCall", "TomeOfTheEternalFlow"],
+			["CashflowSupervision", "TulaytullahsRemembrance"],
+			["SkywardAtlas", "TheWidsith", "SolarPearl"],
+			["ClashOfKings", "AngelosHeptades"],
+			["FlowingPurity", "SacrificialJade"]
 		],
 		"artifact": [
 			["Lavawalker", "ADayCarvedFromRisingWinds"],
@@ -1243,9 +1244,9 @@
 		"overridden": {
 			"artifact": [
 				"ADayCarvedFromRisingWinds",
-				"Lavawalker",
-				["EchoesOfAnOffering", "DesertPavilionChronicle"],
-				"WanderersTroupe",
+				["CelestialGift", "Lavawalker"],
+				"EchoesOfAnOffering",
+				"DesertPavilionChronicle",
 				"FragmentOfHarmonicWhimsy"
 			]
 		},
@@ -1538,6 +1539,34 @@
 			"circlet": ["heal_", "critRate_"]
 		},
 		"subStat": ["enerRech_", "critRate_", "hp_", "hp"],
+		"group": 1
+	},
+	"Mitya": {
+		"key": "Mitya",
+		"role": "On-Field DPS",
+		"weapon": [
+			"StarsealedEdict",
+			"ReliquaryOfTruth",
+			"SunnyMorningSleepIn",
+			"StarcallersWatch",
+			"EtherlightSpindlelute",
+			["DawningFrost", "AThousandFloatingDreams"],
+			[
+				"ClashOfKings",
+				"TomeOfTheEternalFlow",
+				"SurfsUp",
+				"NocturnesCurtainCall",
+				"KagurasVerity"
+			],
+			["WintersHeavyHeart", "SacrificialJade"],
+			"NightweaversLookingGlass",
+			"TheWidsith",
+			"LostPrayerToTheSacredWinds",
+			["BlackmarrowLantern", "SacrificialFragments"]
+		],
+		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "critRD_" },
+		"subStat": [["critRD_", "eleMas"], "enerRech_"],
 		"group": 1
 	},
 	"Mona": {
@@ -2249,12 +2278,25 @@
 		"subStat": ["enerRech_", "critRD_", "atk_", "def_"],
 		"group": 1
 	},
+	"Valeriy": {
+		"key": "Valeriy",
+		"role": "Buff & Shield Support",
+		"weapon": ["FavoniusSword"],
+		"artifact": ["HeartOfTheFurnace"],
+		"mainStat": {
+			"sands": ["atk_", "enerRech_"],
+			"goblet": "atk_",
+			"circlet": ["atk_", "critRate_"]
+		},
+		"subStat": ["atk_", "enerRech_", "atk"],
+		"group": 1
+	},
 	"Varesa": {
 		"key": "Varesa",
 		"role": "Plunge DPS",
 		"weapon": [
 			"VividNotions",
-			"ReliquaryOfTruth",
+			["StarsealedEdict", "ReliquaryOfTruth"],
 			["KagurasVerity", "LostPrayerToTheSacredWinds"],
 			["TomeOfTheEternalFlow", "NocturnesCurtainCall", "SurfsUp", "CashflowSupervision"],
 			["CranesEchoingCall", "TulaytullahsRemembrance"],
@@ -2352,6 +2394,52 @@
 			"buildIndex": 1
 		}
 	],
+	"Vesna": {
+		"key": "Vesna",
+		"role": "Stellar Swirl DPS",
+		"weapon": [
+			"BeyondTheChrysalis",
+			"WhitelakeFrostfeather",
+			"Absolution",
+			"LightOfFoliarIncision",
+			"MistsplitterReforged",
+			["Azurelight", "SplendorOfTranquilWaters", "UrakuMisugiri", "LightbearingMoonshard"],
+			["NewBough", "FreedomSworn"],
+			["Emberwell", "PrimordialJadeCutter", "SummitShaper"],
+			["HaranGeppakuFutsu", "FinaleOfTheDeep"],
+			["SilverLight", "AthameArtis", "ExaiphanesBlade"],
+			"HereticsMoltenBlade"
+		],
+		"artifact": ["ScarletProof", "ADayCarvedFromRisingWinds"],
+		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
+		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
+		"group": 0
+	},
+	"Vodyanitsa": {
+		"key": "Vodyanitsa",
+		"role": "Heal and Buff Support",
+		"weapon": [
+			"HymnOfTheMaelstrom",
+			"ThrillingTalesOfDragonSlayers",
+			[
+				"PrototypeAmber",
+				"SacrificialJade",
+				"AshGravenDrinkingHorn",
+				"JadefallsSplendor",
+				"EverlastingMoonglow"
+			],
+			"WaveridingWhirl"
+		],
+		"artifact": [
+			"TenacityOfTheMillelith",
+			"ScrollOfTheHeroOfCinderCity",
+			["SongOfDaysPast", "OceanHuedClam"],
+			["SilkenMoonsSerenade", "DeepwoodMemories"]
+		],
+		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "hp_" },
+		"subStat": ["hp_", "hp", "enerRech_"],
+		"group": 0
+	},
 	"Wanderer": {
 		"key": "Wanderer",
 		"role": "DPS",
@@ -2561,6 +2649,7 @@
 		"key": "YaeMiko",
 		"role": "Stellar-Conduct Off-Field DPS",
 		"weapon": [
+			"StarsealedEdict",
 			"KagurasVerity",
 			["ReliquaryOfTruth", "VividNotions"],
 			["CashflowSupervision", "EchoesOfTheHeart"],
@@ -2746,51 +2835,5 @@
 		"mainStat": { "sands": "def_", "goblet": "def_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "def_", "enerRech_", "eleMas"],
 		"group": 2
-	},
-	"Vesna": {
-		"key": "Vesna",
-		"role": "Stellar Swirl DPS",
-		"weapon": [
-			"BeyondTheChrysalis",
-			"WhitelakeFrostfeather",
-			"Absolution",
-			"LightOfFoliarIncision",
-			"MistsplitterReforged",
-			["Azurelight", "SplendorOfTranquilWaters", "UrakuMisugiri", "LightbearingMoonshard"],
-			["NewBough", "FreedomSworn"],
-			["Emberwell", "PrimordialJadeCutter", "SummitShaper"],
-			["HaranGeppakuFutsu", "FinaleOfTheDeep"],
-			["SilverLight", "AthameArtis", "ExaiphanesBlade"],
-			"HereticsMoltenBlade"
-		],
-		"artifact": ["ScarletProof", "ADayCarvedFromRisingWinds"],
-		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
-		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
-		"group": 0
-	},
-	"Vodyanitsa": {
-		"key": "Vodyanitsa",
-		"role": "Heal and Buff Support",
-		"weapon": [
-			"HymnOfTheMaelstrom",
-			"ThrillingTalesOfDragonSlayers",
-			[
-				"PrototypeAmber",
-				"SacrificialJade",
-				"AshGravenDrinkingHorn",
-				"JadefallsSplendor",
-				"EverlastingMoonglow"
-			],
-			"WaveridingWhirl"
-		],
-		"artifact": [
-			"TenacityOfTheMillelith",
-			"ScrollOfTheHeroOfCinderCity",
-			["SongOfDaysPast", "OceanHuedClam"],
-			["SilkenMoonsSerenade", "DeepwoodMemories"]
-		],
-		"mainStat": { "sands": "hp_", "goblet": "hp_", "circlet": "hp_" },
-		"subStat": ["hp_", "hp", "enerRech_"],
-		"group": 0
 	}
 }

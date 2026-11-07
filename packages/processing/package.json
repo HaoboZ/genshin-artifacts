@@ -3,14 +3,11 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "tsx ./index.ts",
+		"start": "bun ./index.ts",
 		"build": "bun build ./index.ts --compile --outfile=dist/processing.exe"
 	},
 	"dependencies": {
 		"extract-zip": "2.0.1",
 		"jimp": "1.6.1"
-	},
-	"devDependencies": {
-		"tsx": "4.23.15"
 	}
 }

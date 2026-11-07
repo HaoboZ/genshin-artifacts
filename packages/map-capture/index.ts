@@ -8,5 +8,5 @@ const { browser, page } = await setupBrowser(1280, 720);
 const { unitsPerPixelX, unitsPerPixelY } = await measureUnits(page);
 const shots = await captureMap(page);
 const image = await stitchShots(shots, unitsPerPixelX, unitsPerPixelY);
-await processAndSave(image, 'output/teyvat.png');
+await processAndSave(image, 'output/teyvat.webp');
 await browser.close();

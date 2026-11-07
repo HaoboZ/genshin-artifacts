@@ -2,6 +2,8 @@ import { Grid } from '@mui/material';
 import { ImageMapRoute, type Point } from 'image-map-route';
 import Image from 'next/image';
 
+import { TEYVAT_MAP_IMAGE_URL } from '@/constants/map';
+
 import { MapRenderExtra, MapRenderPoint } from '../../farming/render';
 
 export default function RelocateMapPicker({
@@ -21,12 +23,7 @@ export default function RelocateMapPicker({
 				RenderPoint={MapRenderPoint}
 				RenderExtra={MapRenderExtra}
 				style={{ aspectRatio: '16 / 9' }}>
-				<Image
-					fill
-					alt='teyvat'
-					src={`${process.env.NEXT_PUBLIC_ROUTE_URL}/images/teyvat70.png`}
-					style={{ objectFit: 'contain' }}
-				/>
+				<Image fill alt='teyvat' src={TEYVAT_MAP_IMAGE_URL} style={{ objectFit: 'contain' }} />
 			</ImageMapRoute>
 		</Grid>
 	);

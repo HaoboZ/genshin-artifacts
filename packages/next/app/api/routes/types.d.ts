@@ -1,7 +1,15 @@
 import type { Point } from 'image-map-route';
 
 export type BackgroundType =
-	'none' | 'mondstadt' | 'liyue' | 'inazuma' | 'sumeru' | 'fontaine' | 'natlan' | 'nod_krai';
+	| 'none'
+	| 'mondstadt'
+	| 'liyue'
+	| 'inazuma'
+	| 'sumeru'
+	| 'fontaine'
+	| 'natlan'
+	| 'nod_krai'
+	| 'snezhnaya';
 
 export type MapType = 'none' | 'extend' | 'scan';
 

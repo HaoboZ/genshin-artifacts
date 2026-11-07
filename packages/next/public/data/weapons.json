@@ -57,7 +57,7 @@
 		"weaponType": "Sword",
 		"atk": 608,
 		"stat": "CRIT Rate 33.1%",
-		"ability": "When the Traveler equips this, their ATK will increase by 16% for 8s after they hit an opponent. At the same time, they will also regenerate 3 Elemental Energy~CRIT DMG increases by ?% for every Element they have resonated with. Additionally, the Traveler's ATK will also increase by ?% for ?s, and regenerate ? Elemental Energy, after they attack and hit an opponent. This effect can trigger once every 5~?s. This can be triggered even when the character is not on the field."
+		"ability": "When the Traveler equips this, their ATK will increase by 16% for 8s after they hit an opponent. At the same time, they will also regenerate 3 Elemental Energy~CRIT DMG increases by 6% for every Element they have resonated with. Additionally, the Traveler's ATK will also increase by 40% for 8s, and regenerate 5 Elemental Energy, after they attack and hit an opponent. This effect can trigger once every 5~5s. This can be triggered even when the character is not on the field."
 	},
 	"FreedomSworn": {
 		"key": "FreedomSworn",
@@ -1618,6 +1618,16 @@
 		"atk": 542,
 		"stat": "Elemental Mastery 265",
 		"ability": "Increases Elemental Mastery by 100~200. Gain the \"Mirror of Night\" effect within 15s after the equipping character creates a shield: The current active party member deals 28~56% increased DMG to nearby opponents. You can gain the \"Mirror of Night\" effect once every 14s."
+	},
+	"StarsealedEdict": {
+		"key": "StarsealedEdict",
+		"name": "Starsealed Edict",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Starsealed_Edict.png",
+		"rarity": 5,
+		"weaponType": "Catalyst",
+		"atk": 542,
+		"stat": "CRIT DMG 88.2%",
+		"ability": "CRIT DMG increased by 24~48%. When using an Elemental Skill, the equipping character gains the Crystal Compounding effect: Increases Elemental Mastery by 48~96 for 20s. During this time, the equipping character gains a stack of Law of Combustion when a nearby party member triggers an Elemental Reaction. Each stack increases Elemental Mastery by an additional 24~48. Max 3 stacks. Radiance: Stellar-Conduct: Each Law of Combustion stack also increases the CRIT DMG of the equipping character's Stellar-Conduct reactions by 12~24%. This effect can be triggered even when the equipping character is off-field."
 	},
 	"SunnyMorningSleepIn": {
 		"key": "SunnyMorningSleepIn",
