@@ -1,6 +1,6 @@
 {
 	"name": "genshin-artifacts",
-	"version": "2.0.27",
+	"version": "2.0.28",
 	"private": true,
 	"description": "Genshin Artifacts",
 	"author": {
@@ -19,11 +19,11 @@
 		"map-capture": "cd packages/map-capture && bun run start"
 	},
 	"dependencies": {
-		"next": "16.4.3",
-		"remeda": "2.54.1"
+		"next": "16.4.5",
+		"remeda": "2.58.0"
 	},
 	"devDependencies": {
-		"@types/node": "26.6.5",
+		"@types/node": "26.6.6",
 		"husky": "9.1.7",
 		"type-fest": "5.10.0",
 		"typescript": "7.0.2"

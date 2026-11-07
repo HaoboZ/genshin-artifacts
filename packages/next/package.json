@@ -22,11 +22,11 @@
 		"@mui/material": "9.5.0",
 		"@mui/material-nextjs": "9.5.0",
 		"@mui/x-data-grid": "^9.0.0",
-		"@reduxjs/toolkit": "2.13.0",
-		"@tanem/react-nprogress": "7.1.8",
+		"@reduxjs/toolkit": "2.14.0",
+		"@tanem/react-nprogress": "7.1.10",
 		"@vercel/analytics": "2.0.1",
 		"@vercel/blob": "2.8.2",
-		"axios": "1.20.0",
+		"axios": "1.21.0",
 		"change-case": "5.4.4",
 		"dayjs": "1.11.23",
 		"events": "3.3.0",
@@ -39,19 +39,19 @@
 		"react-dom": "19.3.1",
 		"react-hook-form": "7.91.0",
 		"react-onesignal": "3.5.6",
-		"react-redux": "9.3.0",
+		"react-redux": "9.3.1",
 		"redux": "5.0.1",
 		"rooks": "9.9.0",
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {
-		"@next/bundle-analyzer": "16.4.3",
+		"@next/bundle-analyzer": "16.4.5",
 		"@types/events": "3.0.3",
 		"@types/object-hash": "3.0.6",
 		"@types/pixelmatch": "7.1.0",
 		"@types/react": "19.3.0",
 		"@types/react-redux": "7.1.35",
 		"mirada": "0.0.15",
-		"sass": "1.106.1"
+		"sass": "1.108.1"
 	}
 }
