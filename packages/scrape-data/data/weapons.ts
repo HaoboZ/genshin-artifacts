@@ -1,9 +1,8 @@
-import { writeFileSync } from 'fs';
-
 import { pascalCase } from 'change-case';
 import { indexBy, prop } from 'remeda';
 
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 import { requiredText } from './utils/requiredText';
@@ -44,11 +43,11 @@ export async function fetchWeapons() {
 }
 
 export function writeWeapons(weapons: any[]) {
-	writeFileSync(
+	writeText(
 		'../next/public/data/weapons.json',
 		`${JSON.stringify(indexBy(weapons, prop('key')), null, '\t')}\n`,
 	);
-	writeFileSync(
+	writeText(
 		'../next/src/types/weapon.d.ts',
 		`export type WeaponKey =${weapons
 			.map(

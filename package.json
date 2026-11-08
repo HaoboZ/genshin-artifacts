@@ -13,10 +13,7 @@
 	"scripts": {
 		"prepare": "husky",
 		"lint": "bun lint",
-		"lint:fix": "bun lint --fix",
-		"next-dev": "cd packages/next && bun run dev",
-		"scrape-data": "cd packages/scrape-data && bun run start",
-		"map-capture": "cd packages/map-capture && bun run start"
+		"lint:fix": "bun lint --fix"
 	},
 	"dependencies": {
 		"remeda": "2.54.1"

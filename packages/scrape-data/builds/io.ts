@@ -1,8 +1,9 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
+import { writeText } from '../writeText';
 import type { BuildEntry, BuildOverridesFile, DiscoveredRoles, ScrapedBuild } from './types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -42,7 +43,7 @@ export async function writeBuilds(
 		...builds,
 	});
 	const formatted = formatJson(final, BUILDS_JSON);
-	writeFileSync(BUILDS_JSON, formatted);
+	writeText(BUILDS_JSON, formatted);
 	console.info(`Wrote ${Object.keys(builds).length} builds to ../next/public/data/builds.json`);
 }
 
@@ -136,6 +137,6 @@ export async function saveDiscoveredRoles(discovered: DiscoveredRoles) {
 		Object.entries(file).sort(([a], [b]) => a.localeCompare(b)),
 	);
 	const formatted = formatJson(sortedFile, BUILD_OVERRIDES_JSON);
-	writeFileSync(BUILD_OVERRIDES_JSON, formatted);
+	writeText(BUILD_OVERRIDES_JSON, formatted);
 	console.info(`Added ${added} new role(s) to buildOverrides.json — review and assign overrides.`);
 }

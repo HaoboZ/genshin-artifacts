@@ -1,9 +1,8 @@
-import { writeFileSync } from 'fs';
-
 import { pascalCase } from 'change-case';
 import { indexBy, prop } from 'remeda';
 
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 import { requiredMatch } from './utils/requiredMatch';
@@ -77,11 +76,11 @@ export async function fetchArtifacts() {
 }
 
 export function writeArtifacts(artifacts: any[]) {
-	writeFileSync(
+	writeText(
 		'../next/public/data/artifacts.json',
 		`${JSON.stringify(indexBy(artifacts, prop('key')), null, '\t')}\n`,
 	);
-	writeFileSync(
+	writeText(
 		'../next/src/types/artifactSet.d.ts',
 		`export type ArtifactSetKey =${artifacts
 			.map(

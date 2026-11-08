@@ -1,9 +1,8 @@
-import { writeFileSync } from 'fs';
-
 import { pascalCase } from 'change-case';
 import { indexBy, pick, prop } from 'remeda';
 
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 
@@ -51,11 +50,11 @@ export async function fetchCharacters() {
 }
 
 export function writeCharacters(characters: any[]) {
-	writeFileSync(
+	writeText(
 		'../next/public/data/characters.json',
 		`${JSON.stringify(indexBy(characters, prop('key')), null, '\t')}\n`,
 	);
-	writeFileSync(
+	writeText(
 		'../next/src/types/character.d.ts',
 		`export type CharacterKey =${characters
 			.map(

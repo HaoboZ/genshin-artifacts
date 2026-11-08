@@ -1,8 +1,7 @@
-import { writeFileSync } from 'fs';
-
 import { mapToObj } from 'remeda';
 
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 
@@ -19,5 +18,5 @@ export async function fetchElements() {
 }
 
 export function writeElements(elements) {
-	writeFileSync('../next/public/data/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
+	writeText('../next/public/data/elements.json', `${JSON.stringify(elements, null, '\t')}\n`);
 }

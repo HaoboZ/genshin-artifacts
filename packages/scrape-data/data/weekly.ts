@@ -1,8 +1,7 @@
-import { writeFileSync } from 'fs';
-
 import { pascalCase } from 'change-case';
 
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 
@@ -54,7 +53,7 @@ export async function fetchWeekly() {
 }
 
 export function writeWeekly(weekly) {
-	writeFileSync('../next/public/data/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
+	writeText('../next/public/data/weekly.json', `${JSON.stringify(weekly, null, '\t')}\n`);
 	const entries = weekly.flatMap(({ items }) =>
 		items.map(({ name, key }) => `\n\t| '${key}' // ${name}`),
 	);
@@ -62,8 +61,5 @@ export function writeWeekly(weekly) {
 	// Add semicolon to the last union entry
 	entries[entries.length - 1] = entries[entries.length - 1].replace(/^(\n\t\| '[^']+')/, '$1;');
 
-	writeFileSync(
-		'../next/src/types/materials.d.ts',
-		`export type MaterialKey =${entries.join('')}\n`,
-	);
+	writeText('../next/src/types/materials.d.ts', `export type MaterialKey =${entries.join('')}\n`);
 }

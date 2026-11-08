@@ -3,7 +3,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "git submodule update --remote && bun ./index.ts"
+		"update-patch": "bun ./index.ts -- characters weapons",
+		"update-patch-detailed": "bun ./index.ts -- characters weapons talents weekly artifacts",
+		"update-builds": "git submodule update --remote && bun ./index.ts -- builds"
 	},
 	"dependencies": {
 		"change-case": "5.4.4",

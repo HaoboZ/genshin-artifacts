@@ -1,6 +1,5 @@
-import { writeFileSync } from 'fs';
-
 import fetchPage from '../fetchPage';
+import { writeText } from '../writeText';
 import { getImageUrl } from './utils/getImageUrl';
 import { required } from './utils/required';
 import { requiredText } from './utils/requiredText';
@@ -46,5 +45,5 @@ export async function fetchTalents() {
 }
 
 export function writeTalents(talents) {
-	writeFileSync('../next/public/data/talents.json', `${JSON.stringify(talents, null, '\t')}\n`);
+	writeText('../next/public/data/talents.json', `${JSON.stringify(talents, null, '\t')}\n`);
 }
