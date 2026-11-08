@@ -10,16 +10,19 @@ import {
 	TextField,
 } from '@mui/material';
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { useSnackbar } from 'notistack';
+import { useMemo, useState } from 'react';
 import { FormProvider, type SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toTitleCase } from 'remeda';
 
 import InputField from '@/components/form/inputField';
 import NumberSpinnerField from '@/components/form/numberSpinnerField';
 import SelectField from '@/components/form/selectField';
+import reportError from '@/helpers/reportError';
 
 import { type BackgroundType, type MapData } from '../routes/types';
-import { addFile, upsertMap } from './actions';
+import { upsertMap } from './actions';
+import { uploadMapFile } from './fileUpload';
 import { calcEfficiency, LOCATION_TYPES, MAP_TYPES } from './formUtils';
 import RelocateMapPicker from './relocateMapPicker';
 
@@ -52,6 +55,8 @@ export default function MapDataForm({
 		[initialValues],
 	);
 	const methods = useForm<MapDataFormValues>({ defaultValues });
+	const [createdMapId, setCreatedMapId] = useState('');
+	const { enqueueSnackbar } = useSnackbar();
 	const { control, setValue, handleSubmit, formState } = methods;
 	const [file, x, y] = useWatch({ name: ['file', 'x', 'y'], control });
 
@@ -61,32 +66,37 @@ export default function MapDataForm({
 		<FormProvider {...methods}>
 			<form
 				onSubmit={handleSubmit(async (formValues) => {
-					if (!formValues.name) throw Error('Missing Name');
-					if (!initialValues?.id && !formValues.file) throw Error('Missing Map Image');
+					try {
+						if (!formValues.name) throw Error('Missing Name');
+						if (!initialValues?.id && !formValues.file) throw Error('Missing Map Image');
 
-					const id = initialValues?.id ?? '';
-					const mapData: MapData = {
-						...initialValues,
-						id,
-						name: formValues.name,
-						owner: formValues.owner || undefined,
-						notes: formValues.notes || undefined,
-						type: formValues.type === 'none' ? undefined : formValues.type,
-						background: formValues.location === 'none' ? undefined : formValues.location,
-						spots: formValues.spots,
-						mora: formValues.mora,
-						time: formValues.time,
-						efficiency: calcEfficiency(formValues.spots, formValues.time),
-						x: formValues.x,
-						y: formValues.y,
-						points: initialValues?.points ?? [],
-					};
+						const id = initialValues?.id ?? createdMapId;
+						const mapData: MapData = {
+							...initialValues,
+							id,
+							name: formValues.name,
+							owner: formValues.owner || undefined,
+							notes: formValues.notes || undefined,
+							type: formValues.type === 'none' ? undefined : formValues.type,
+							background: formValues.location === 'none' ? undefined : formValues.location,
+							spots: formValues.spots,
+							mora: formValues.mora,
+							time: formValues.time,
+							efficiency: calcEfficiency(formValues.spots, formValues.time),
+							x: formValues.x,
+							y: formValues.y,
+							points: initialValues?.points ?? [],
+						};
 
-					mapData.id = await upsertMap(mapData);
-					if (formValues.file) {
-						await addFile(mapData.id, formValues.file);
+						mapData.id = await upsertMap(mapData);
+						setCreatedMapId(mapData.id);
+						if (formValues.file) {
+							await uploadMapFile(mapData.id, formValues.file);
+						}
+						await onSubmit?.(mapData);
+					} catch (error) {
+						reportError(error, enqueueSnackbar);
 					}
-					onSubmit?.(mapData);
 				})}>
 				<DialogContent>
 					<Grid container spacing={1} sx={{ pt: 1 }}>

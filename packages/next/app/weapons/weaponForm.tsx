@@ -7,12 +7,14 @@ import {
 	Stack,
 	Typography,
 } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { Fragment, type ReactNode } from 'react';
 import { type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
 
 import { weaponsInfo } from '@/api/weapons';
 import InputField from '@/components/form/inputField';
 import SwitchField from '@/components/form/switchField';
+import reportError from '@/helpers/reportError';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
@@ -32,12 +34,20 @@ export default function WeaponForm({
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 	const { control, handleSubmit } = useFormContext<IWeapon>();
+	const { enqueueSnackbar } = useSnackbar();
 	const values = useWatch({ control });
 
 	const weapon = weaponsInfo[values.key];
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form
+			onSubmit={handleSubmit(async (weapon) => {
+				try {
+					await onSubmit(weapon);
+				} catch (error) {
+					reportError(error, enqueueSnackbar);
+				}
+			})}>
 			<DialogContent>
 				<Stack spacing={1}>
 					{values.key && (

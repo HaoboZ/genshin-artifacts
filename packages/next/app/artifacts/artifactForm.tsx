@@ -12,6 +12,7 @@ import {
 	Stack,
 	TextField,
 } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { type Dispatch, Fragment, type SetStateAction } from 'react';
 import { type FieldPath, type SubmitHandler, useFormContext, useWatch } from 'react-hook-form';
 import { clamp } from 'remeda';
@@ -23,6 +24,7 @@ import InputField from '@/components/form/inputField';
 import SelectField from '@/components/form/selectField';
 import SwitchField from '@/components/form/switchField';
 import Scanner from '@/components/scanner';
+import reportError from '@/helpers/reportError';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
 import { goodActions } from '@/store/reducers/goodReducer';
@@ -34,6 +36,7 @@ export default function ArtifactForm({ onSubmit }: { onSubmit: SubmitHandler<IAr
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
 	const { control, setValue, handleSubmit, reset, getValues } = useFormContext<IArtifact>();
+	const { enqueueSnackbar } = useSnackbar();
 	const values = useWatch({ control }) as IArtifact;
 	const setArtifactValue: <FieldName extends FieldPath<IArtifact>>(
 		name: FieldName,
@@ -49,7 +52,14 @@ export default function ArtifactForm({ onSubmit }: { onSubmit: SubmitHandler<IAr
 	const artifactSet = artifactSetsInfo[values.setKey];
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form
+			onSubmit={handleSubmit(async (artifact) => {
+				try {
+					await onSubmit(artifact);
+				} catch (error) {
+					reportError(error, enqueueSnackbar);
+				}
+			})}>
 			<DialogContent sx={{ pb: 0 }}>
 				<Grid container spacing={1} sx={{ my: 1 }}>
 					<Grid size={{ xs: 12, sm: 6 }} sx={{ display: 'flex', alignItems: 'center' }}>

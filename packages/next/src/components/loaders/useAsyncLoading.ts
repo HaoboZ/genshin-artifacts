@@ -1,6 +1,8 @@
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 
+import reportError from '@/helpers/reportError';
+
 export default function useAsyncLoading(): [
 	boolean,
 	<F extends (...args: any[]) => any>(func: F) => F,
@@ -17,9 +19,7 @@ export default function useAsyncLoading(): [
 					setLoading(true);
 					return await func(...args);
 				} catch (e) {
-					const error = e?.response?.data?.error || e?.message || e;
-					console.error(error);
-					enqueueSnackbar(error, { variant: 'error' });
+					reportError(e, enqueueSnackbar);
 				} finally {
 					setLoading(false);
 				}

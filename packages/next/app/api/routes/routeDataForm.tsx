@@ -1,6 +1,9 @@
 import { Button, DialogActions, DialogContent, Grid, TextField } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { useMemo } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+
+import reportError from '@/helpers/reportError';
 
 import { upsertRoute } from './actions';
 import { type RouteData } from './types';
@@ -26,23 +29,28 @@ export default function RouteDataForm({
 		}),
 		[initialValues],
 	);
+	const { enqueueSnackbar } = useSnackbar();
 	const { register, handleSubmit, formState } = useForm<RouteDataFormValues>({ defaultValues });
 
 	return (
 		<form
 			onSubmit={handleSubmit(async (values) => {
-				if (!values.name) throw Error('Missing Name');
+				try {
+					if (!values.name) throw Error('Missing Name');
 
-				const routeData: RouteData = {
-					...initialValues,
-					id: initialValues?.id ?? '',
-					name: values.name,
-					owner: values.owner || undefined,
-					notes: values.notes || undefined,
-					maps: initialValues?.maps ?? [],
-				};
-				routeData.id = await upsertRoute(routeData);
-				onSubmit?.(routeData);
+					const routeData: RouteData = {
+						...initialValues,
+						id: initialValues?.id ?? '',
+						name: values.name,
+						owner: values.owner || undefined,
+						notes: values.notes || undefined,
+						maps: initialValues?.maps ?? [],
+					};
+					routeData.id = await upsertRoute(routeData);
+					await onSubmit?.(routeData);
+				} catch (error) {
+					reportError(error, enqueueSnackbar);
+				}
 			})}>
 			<DialogContent>
 				<Grid container spacing={1} sx={{ pt: 1 }}>

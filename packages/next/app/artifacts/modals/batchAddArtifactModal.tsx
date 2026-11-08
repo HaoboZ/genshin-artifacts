@@ -1,10 +1,12 @@
 import { Box, Button, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { nanoid } from 'nanoid';
+import { useSnackbar } from 'notistack';
 import hash from 'object-hash';
 import { useRef, useState } from 'react';
 
 import { extractArtifact } from '@/components/scanner/artifactScan';
 import matchPixels from '@/components/scanner/matchPixels';
+import reportError from '@/helpers/reportError';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 import { useAppDispatch } from '@/store/hooks';
@@ -16,6 +18,7 @@ import ArtifactStatCard from '../artifactStatCard';
 export default function BatchAddArtifactModal() {
 	const dispatch = useAppDispatch();
 	const { closeModal } = useModalControls();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -81,7 +84,9 @@ export default function BatchAddArtifactModal() {
 												},
 											}));
 										} catch (e) {
-											console.error(e);
+											if (!(e instanceof Error) || e.message !== 'Identical detected') {
+												reportError(e, enqueueSnackbar);
+											}
 										}
 										detecting = false;
 									}, 1000);
@@ -92,7 +97,7 @@ export default function BatchAddArtifactModal() {
 									setCapturing(true);
 									await videoRef.current.play();
 								} catch (err) {
-									console.error('Error: ' + err);
+									reportError(err, enqueueSnackbar);
 								}
 							}}>
 							{capturing ? (

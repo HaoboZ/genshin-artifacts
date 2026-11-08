@@ -13,30 +13,11 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 
 import { type MapData, type Text } from '../../routes/types';
 import { upsertMap } from '../actions';
+import { uploadMapFile } from '../fileUpload';
 import { calcEfficiency } from '../formUtils';
 import UploadFile from './uploadFile';
 
 const EditMapDataModal = dynamicModal(() => import('../editMapDataModal'));
-
-async function uploadMapFile(id: string, file: File | FormData) {
-	const token = document.cookie
-		.split('; ')
-		.find((cookie) => cookie.startsWith('AUTH_TOKEN='))
-		?.slice('AUTH_TOKEN='.length);
-	if (!token) throw new Error('Authentication token is missing. Set it on the auth page first.');
-
-	const response = await fetch(`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${id}`, {
-		method: 'PUT',
-		headers: {
-			Authorization: `Bearer ${decodeURIComponent(token)}`,
-			...(file instanceof File ? { 'Content-Type': file.type } : {}),
-		},
-		body: file,
-	});
-	if (!response.ok) {
-		throw new Error((await response.text()) || `Upload failed (${response.status})`);
-	}
-}
 
 export default function MapControls({
 	mapData,
