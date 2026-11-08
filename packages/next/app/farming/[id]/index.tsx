@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { prop, sumBy } from 'remeda';
 import { useMeasure } from 'rooks';
 
+import { mapUrl } from '@/api/routes/fetchRouteData';
 import { type MapData, type RouteData } from '@/api/routes/types';
 import VideoPlayer from '@/components/videoPlayer';
 import useEventListener from '@/hooks/useEventListener';
@@ -34,7 +35,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const [mapData] = useFetchState<MapData>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${routeData.maps[selectedMap]}`,
+		routeData.maps[selectedMap] ? mapUrl(routeData.maps[selectedMap]) : null,
 	);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -52,6 +53,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
 		setPoints(mapData.points);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded]);
 
 	const [spots, totalSpots] = useMemo(() => {
@@ -72,6 +74,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 			videoRef.current.play();
 		}, 2000);
 		return () => clearTimeout(timeout);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	// Autoplay

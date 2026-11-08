@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { getAllRoutesFromDb, saveRouteToDb } from '../db';
-import { error, invalidateResourceCache, json } from '../utils';
+import { cachedJson, error, invalidateResourceCache, json } from '../utils';
 import { handleRouteIdEndpoint, parseRouteBody } from './routeId';
 
 export async function handleRoutesEndpoint(request: Request, env: Env, pathname: string) {
@@ -12,13 +12,7 @@ export async function handleRoutesEndpoint(request: Request, env: Env, pathname:
 
 	switch (request.method) {
 		case 'GET': {
-			const cached = await caches.default.match(request.url);
-			if (cached) return cached;
-
-			const response = json(await getAllRoutesFromDb(env));
-			response.headers.set('Cache-Control', 'public, max-age=3600');
-			await caches.default.put(request.url, response.clone());
-			return response;
+			return cachedJson(request, () => getAllRoutesFromDb(env));
 		}
 		case 'POST': {
 			const routeData = await parseRouteBody(request, nanoid());

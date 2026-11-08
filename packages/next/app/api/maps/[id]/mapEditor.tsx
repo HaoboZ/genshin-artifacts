@@ -96,6 +96,7 @@ export default function MapEditor({
 		if (!selectedPoint) return;
 		setPoints((prev) => prev.filter((_, i) => i !== selectedPointIndex));
 		setSelectedPointIndex(Math.max(0, selectedPointIndex - 1));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [points]);
 
 	const updateSelectedPoint = (field: keyof Point, value: number | string | undefined) => {

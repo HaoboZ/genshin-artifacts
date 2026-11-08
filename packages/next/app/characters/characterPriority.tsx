@@ -58,6 +58,7 @@ export default function CharacterPriority({
 
 	useEffect(() => {
 		dispatch(mainActions.setPriority(omit(characters, ['unSorted'])));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [characters]);
 
 	return (

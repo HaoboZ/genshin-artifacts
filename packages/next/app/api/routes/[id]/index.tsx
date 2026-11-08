@@ -183,6 +183,7 @@ export default function Route({
 				),
 			},
 		];
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [routeMaps]);
 
 	return (

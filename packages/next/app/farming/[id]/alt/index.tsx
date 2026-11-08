@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { prop, sumBy } from 'remeda';
 
+import { mapUrl } from '@/api/routes/fetchRouteData';
 import { type MapData, type RouteData } from '@/api/routes/types';
 import RatioContainer from '@/components/ratioContainer';
 import VideoPlayer from '@/components/videoPlayer';
@@ -33,7 +34,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 
 	const [selectedMap, setSelectedMap] = useParamState('map', 0);
 	const [mapData] = useFetchState<MapData>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/maps/${routeData.maps[selectedMap]}`,
+		routeData.maps[selectedMap] ? mapUrl(routeData.maps[selectedMap]) : null,
 	);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -49,6 +50,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
 		setPoints(mapData.points);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded]);
 
 	const [spots, totalSpots] = useMemo(() => {
@@ -66,6 +68,7 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 		if (!points) return;
 		const timeout = setTimeout(() => videoRef.current.play(), 2000);
 		return () => clearTimeout(timeout);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	return (

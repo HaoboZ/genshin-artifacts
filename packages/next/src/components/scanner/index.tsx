@@ -44,6 +44,7 @@ export default function Scanner({
 		} finally {
 			setIsLoading(false);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	usePasteImage((items) => scanFile(items[0].getAsFile()));

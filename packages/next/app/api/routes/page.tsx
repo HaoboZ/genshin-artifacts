@@ -1,10 +1,9 @@
-import { fetchRouteData } from './fetchRouteData';
+import { fetchRoutes } from './fetchRouteData';
 import RouteList from './index';
-import type { RouteData } from './types';
 
 export const dynamic = 'force-dynamic';
 
 export default async function RouteListPage() {
-	const routesData = await fetchRouteData<RouteData[]>('routes');
+	const routesData = await fetchRoutes();
 	return <RouteList items={routesData} />;
 }

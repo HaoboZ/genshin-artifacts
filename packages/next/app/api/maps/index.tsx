@@ -107,6 +107,7 @@ export default function MapList({ items }: { items: MapData[] }) {
 				),
 			},
 		];
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

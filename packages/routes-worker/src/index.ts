@@ -26,9 +26,9 @@ export default {
 
 		try {
 			let response: Response;
-			if (pathname.startsWith('/routes')) {
+			if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
 				response = await handleRoutesEndpoint(request, env, pathname);
-			} else if (pathname.startsWith('/maps')) {
+			} else if (pathname === '/maps' || /^\/maps\/[^/]+$/.test(pathname)) {
 				response = await handleMapsEndpoint(request, env, pathname, ctx);
 			} else if (pathname.startsWith('/assets/') || pathname.startsWith('/images/')) {
 				response = await handleAssetRequest(request, env, pathname);

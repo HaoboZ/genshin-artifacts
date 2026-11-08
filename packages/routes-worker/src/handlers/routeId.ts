@@ -1,6 +1,6 @@
 import { deleteRouteFromDb, getRouteFromDb, saveRouteToDb } from '../db';
 import { type RouteData } from '../types';
-import { error, invalidateResourceCache, json } from '../utils';
+import { cachedJson, error, invalidateResourceCache, json } from '../utils';
 
 export async function parseRouteBody(request: Request, id: string) {
 	try {
@@ -30,13 +30,7 @@ export async function handleRouteIdEndpoint(
 ) {
 	switch (request.method) {
 		case 'GET': {
-			const cached = await caches.default.match(request.url);
-			if (cached) return cached;
-
-			const response = json(await getRouteFromDb(env, routeId));
-			response.headers.set('Cache-Control', 'public, max-age=3600');
-			await caches.default.put(request.url, response.clone());
-			return response;
+			return cachedJson(request, () => getRouteFromDb(env, routeId));
 		}
 		case 'POST': {
 			const routeData = await parseRouteBody(request, routeId);

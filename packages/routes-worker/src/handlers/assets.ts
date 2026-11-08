@@ -5,40 +5,66 @@ export async function handleAssetRequest(request: Request, env: Env, pathname: s
 
 	const rangeHeader = request.headers.get('Range');
 	if (!rangeHeader) {
-		const cached = await caches.default.match(request.url);
+		const cached = await caches.default.match(request);
 		if (cached) return cached;
 	}
 
+	const key = pathname.slice(1);
 	const options: R2GetOptions = {};
+	let requestedRange: { start: number; end?: number } | undefined;
+	let assetSize: number | undefined;
 	if (rangeHeader) {
-		const match = rangeHeader.match(/bytes=(\d+)-(\d*)/);
-		if (match) {
-			const start = parseInt(match[1]);
-			const end = match[2] ? parseInt(match[2]) : undefined;
-			options.range = { offset: start, length: end ? end - start + 1 : undefined };
+		const match = /^bytes=(\d+)-(\d*)$/.exec(rangeHeader.trim());
+		if (!match) return rangeNotSatisfiable();
+		requestedRange = {
+			start: Number(match[1]),
+			end: match[2] === '' ? undefined : Number(match[2]),
+		};
+		if (
+			!Number.isSafeInteger(requestedRange.start) ||
+			(requestedRange.end !== undefined &&
+				(!Number.isSafeInteger(requestedRange.end) ||
+					requestedRange.end < requestedRange.start))
+		) {
+			return rangeNotSatisfiable();
 		}
+		const metadata = await env.BUCKET.head(key);
+		if (!metadata) return error('Not Found', 404);
+		assetSize = metadata.size;
+		if (requestedRange.start >= assetSize) return rangeNotSatisfiable(assetSize);
+		options.range = {
+			offset: requestedRange.start,
+			length:
+				Math.min(requestedRange.end ?? assetSize - 1, assetSize - 1) - requestedRange.start + 1,
+		};
 	}
 
-	const key = pathname.slice(1);
 	const object = await env.BUCKET.get(key, options);
 	if (!object) return error('Not Found', 404);
 
-	const headers = new Headers();
-	headers.set('Content-Type', object.httpMetadata?.contentType || 'application/octet-stream');
-	headers.set('Accept-Ranges', 'bytes');
-	headers.set('ETag', object.etag);
-	headers.set('Cache-Control', object.httpMetadata?.cacheControl || 'public, max-age=604800');
+	const headers = new Headers({
+		'Content-Type': object.httpMetadata?.contentType || 'application/octet-stream',
+		'Accept-Ranges': 'bytes',
+		'ETag': object.etag,
+		'Cache-Control': object.httpMetadata?.cacheControl || 'public, max-age=604800',
+	});
 
-	if (rangeHeader && options.range) {
-		const range = options.range as { offset: number; length?: number };
-		const end = range.length ? range.offset + range.length - 1 : object.size - 1;
-		headers.set('Content-Range', `bytes ${range.offset}-${end}/${object.size}`);
-		headers.set('Content-Length', (end - range.offset + 1).toString());
+	if (requestedRange) {
+		const totalSize = assetSize ?? object.size;
+		const start = requestedRange.start;
+		const end = Math.min(requestedRange.end ?? totalSize - 1, totalSize - 1);
+		headers.set('Content-Range', `bytes ${start}-${end}/${totalSize}`);
+		headers.set('Content-Length', String(end - start + 1));
 		return new Response(object.body, { status: 206, headers });
 	}
 
-	headers.set('Content-Length', object.size.toString());
+	headers.set('Content-Length', String(object.size));
 	const response = new Response(object.body, { headers });
-	if (!rangeHeader) await caches.default.put(request.url, response.clone());
+	await caches.default.put(request, response.clone());
 	return response;
+}
+
+function rangeNotSatisfiable(size?: number) {
+	const headers = size === undefined ? undefined : { 'Content-Range': `bytes */${size}` };
+	return new Response(null, { status: 416, headers });
 }

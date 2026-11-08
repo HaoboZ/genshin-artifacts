@@ -23,5 +23,6 @@ export default function SortableItem({ id, item, renderItem }) {
 			},
 			listeners,
 		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [item, renderItem, ...Object.values(trans)]);
 }

@@ -61,33 +61,74 @@ export async function getAllRoutesFromDb(env: Env) {
 }
 
 export async function getRouteFromDb(env: Env, id: string) {
-	const route = await env.DB.prepare('SELECT id, name, owner, notes FROM routes WHERE id = ?')
-		.bind(id)
-		.first<RouteRow>();
-	if (!route) throw error('Route not found', 404);
-
-	const maps = await env.DB.prepare(
-		'SELECT map_id, sort_order FROM route_maps WHERE route_id = ? ORDER BY sort_order, map_id',
+	const result = await env.DB.prepare(
+		`SELECT r.id, r.name, r.owner, r.notes, rm.map_id, m.name AS map_name, m.owner AS map_owner,
+			m.notes AS map_notes, m.type AS map_type, m.text AS map_text, m.background AS map_background,
+			m.spots AS map_spots, m.mora AS map_mora, m.time AS map_time, m.efficiency AS map_efficiency,
+			m.x AS map_x, m.y AS map_y, m.image AS map_image, m.video AS map_video, m.points AS map_points
+		 FROM routes r
+		 LEFT JOIN route_maps rm ON rm.route_id = r.id
+		 LEFT JOIN maps m ON m.id = rm.map_id
+		 WHERE r.id = ?
+		 ORDER BY rm.sort_order, rm.map_id`,
 	)
 		.bind(id)
-		.all<{ map_id: string; sort_order: number }>();
+		.all<
+			RouteRow & {
+				map_id: string | null;
+				map_name: string | null;
+				map_owner: string | null;
+				map_notes: string | null;
+				map_type: string | null;
+				map_text: string | null;
+				map_background: string | null;
+				map_spots: number | null;
+				map_mora: number | null;
+				map_time: number | null;
+				map_efficiency: number | null;
+				map_x: number | null;
+				map_y: number | null;
+				map_image: string | null;
+				map_video: string | null;
+				map_points: string | null;
+			}
+		>();
+	const rows = result.results;
+	const route = rows[0];
+	if (!route) throw error('Route not found', 404);
 
-	const mapIds = maps.results.map((row) => row.map_id);
-	const mapsData: MapData[] = [];
-	for (const mapId of mapIds) {
-		try {
-			mapsData.push(await getMapFromDb(env, mapId));
-		} catch {
-			// Keep route readable even if related map was removed externally.
-		}
-	}
+	const maps = rows.filter((row) => row.map_id !== null);
+	const mapsData = maps.flatMap((row) =>
+		row.map_name === null
+			? []
+			: [
+					{
+						id: row.map_id!,
+						name: row.map_name,
+						owner: row.map_owner ?? undefined,
+						notes: row.map_notes ?? undefined,
+						type: normalizeMapType(row.map_type) ?? undefined,
+						text: row.map_text ? parseJson<Text[]>(row.map_text, []) : undefined,
+						background: normalizeBackground(row.map_background) ?? undefined,
+						spots: row.map_spots ?? 0,
+						mora: row.map_mora ?? 0,
+						time: row.map_time ?? 0,
+						efficiency: row.map_efficiency ?? 0,
+						x: row.map_x ?? undefined,
+						y: row.map_y ?? undefined,
+						image: row.map_image ?? undefined,
+						video: row.map_video ?? undefined,
+						points: parseJson<Point[]>(row.map_points ?? '[]', []),
+					} satisfies MapData,
+				],
+	);
 
 	return {
 		id: route.id,
 		name: route.name,
 		owner: route.owner ?? undefined,
 		notes: route.notes ?? undefined,
-		maps: mapIds,
+		maps: maps.map((row) => row.map_id!),
 		mapsData,
 	} satisfies RouteData;
 }
@@ -104,19 +145,14 @@ export async function saveRouteToDb(env: Env, routeData: RouteData) {
 				updated_at = CURRENT_TIMESTAMP`,
 		).bind(routeData.id, routeData.name, routeData.owner ?? null, routeData.notes ?? null),
 		env.DB.prepare('DELETE FROM route_maps WHERE route_id = ?').bind(routeData.id),
-	]);
-
-	if (!routeData.maps.length) return;
-
-	await env.DB.batch(
-		routeData.maps.map((mapId, sortOrder) =>
+		...routeData.maps.map((mapId, sortOrder) =>
 			env.DB.prepare(
 				`INSERT INTO route_maps (route_id, map_id, sort_order)
 				 VALUES (?, ?, ?)
 				 ON CONFLICT(route_id, map_id) DO UPDATE SET sort_order = excluded.sort_order`,
 			).bind(routeData.id, mapId, sortOrder),
 		),
-	);
+	]);
 }
 
 export async function getRouteIdsByMapId(env: Env, mapId: string) {

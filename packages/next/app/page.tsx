@@ -1,15 +1,14 @@
 import { Container, Grid } from '@mui/material';
 import { prop, sortBy } from 'remeda';
 
-import { fetchRouteData } from '@/api/routes/fetchRouteData';
-import type { RouteData } from '@/api/routes/types';
+import { fetchRoutes } from '@/api/routes/fetchRouteData';
 import PageTitle from '@/components/page/pageTitle';
 
 import WorldMap from './farming/worldMap';
 import Notifications from './notifications';
 
 export default async function MainPage() {
-	const routesData = await fetchRouteData<RouteData[]>('routes');
+	const routesData = await fetchRoutes();
 
 	return (
 		<Container>

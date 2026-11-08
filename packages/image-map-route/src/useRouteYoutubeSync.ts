@@ -50,6 +50,7 @@ export default function useRouteYoutubeSync(points: Point[]) {
 		player?.seekTo?.(0, true);
 		lastTimeRef.current = 0;
 		setTime(0);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	const syncTimeFromPlayer = useCallback((player: YoutubePlayerLike) => {

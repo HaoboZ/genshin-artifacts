@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { getAllMapsFromDb, saveMapToDb } from '../db';
-import { error, invalidateResourceCache, json } from '../utils';
+import { cachedJson, error, invalidateResourceCache, json } from '../utils';
 import { handleMapIdEndpoint, parseMapBody } from './mapId';
 
 export async function handleMapsEndpoint(
@@ -17,13 +17,7 @@ export async function handleMapsEndpoint(
 
 	switch (request.method) {
 		case 'GET': {
-			const cached = await caches.default.match(request.url);
-			if (cached) return cached;
-
-			const response = json(await getAllMapsFromDb(env));
-			response.headers.set('Cache-Control', 'public, max-age=3600');
-			await caches.default.put(request.url, response.clone());
-			return response;
+			return cachedJson(request, () => getAllMapsFromDb(env));
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, nanoid());

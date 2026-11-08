@@ -1,11 +1,10 @@
-import { fetchRouteData } from '../../routes/fetchRouteData';
-import type { MapData } from '../../routes/types';
+import { fetchMap } from '../../routes/fetchRouteData';
 import Map from './index';
 
 export const dynamic = 'force-dynamic';
 
 export default async function MapPage({ params }: { params: Promise<{ id: string }> }) {
 	const { id } = await params;
-	const mapData = await fetchRouteData<MapData>(`maps/${id}`);
+	const mapData = await fetchMap(id);
 	return <Map mapData={mapData} />;
 }

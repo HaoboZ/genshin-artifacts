@@ -1,9 +1,15 @@
 import { nanoid } from 'nanoid';
-import { prop } from 'remeda';
 
 import { deleteMapFromDb, getMapFromDb, getRouteIdsByMapId, saveMapToDb } from '../db';
 import { type MapData } from '../types';
-import { error, invalidateCache, invalidateResourceCache, json, toAssetKey } from '../utils';
+import {
+	cachedJson,
+	error,
+	invalidateCache,
+	invalidateResourceCache,
+	json,
+	toAssetKey,
+} from '../utils';
 
 const ALLOWED_EXTENSIONS = {
 	png: 'image/png',
@@ -32,13 +38,7 @@ export async function handleMapIdEndpoint(
 ) {
 	switch (request.method) {
 		case 'GET': {
-			const cached = await caches.default.match(request.url);
-			if (cached) return cached;
-
-			const response = json(await getMapFromDb(env, mapId));
-			response.headers.set('Cache-Control', 'public, max-age=3600');
-			await caches.default.put(request.url, response.clone());
-			return response;
+			return cachedJson(request, () => getMapFromDb(env, mapId));
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, mapId);
@@ -54,6 +54,7 @@ export async function handleMapIdEndpoint(
 				? await uploadMultipart(request, env, existingMap, ctx)
 				: await uploadMedia(request, env, existingMap, contentType, ctx);
 			await invalidateResourceCache(origin, 'maps', mapId);
+			await invalidateRelatedRoutes(env, origin, mapId);
 			return response;
 		}
 		case 'DELETE': {
@@ -108,14 +109,15 @@ async function uploadMedia(
 
 	const type = contentType.startsWith('image/') ? 'image' : 'video';
 	const key = `${nanoid()}.${ext}`;
+	const oldAssetKey = toAssetKey(mapData[type]);
 	const body = await request.arrayBuffer();
 	await env.BUCKET.put(`assets/${key}`, body, { httpMetadata: { contentType } });
-	await env.BUCKET.delete(toAssetKey(mapData[type]));
+	if (oldAssetKey) await env.BUCKET.delete(oldAssetKey);
 	mapData[type] = key;
 	await saveMapToDb(env, mapData);
 
 	const origin = new URL(request.url).origin;
-	invalidateCache(ctx, origin, [key]);
+	invalidateCache(ctx, origin, [`assets/${key}`, ...(oldAssetKey ? [oldAssetKey] : [])]);
 	return json({ success: true, key, url: `/assets/${key}` });
 }
 
@@ -128,7 +130,15 @@ async function uploadMultipart(
 	const formData = await request.formData();
 	const uploaded: { key: string; url: string }[] = [];
 	const errors: string[] = [];
-	const uploads: Promise<void>[] = [];
+	const pending: {
+		name: string;
+		type: 'image' | 'video';
+		key: string;
+		file: File;
+		contentType: string;
+	}[] = [];
+	const seenTypes = new Set<'image' | 'video'>();
+	const oldAssetsByType = { image: toAssetKey(mapData.image), video: toAssetKey(mapData.video) };
 
 	for (const [name, value] of formData.entries()) {
 		if (!(value instanceof File)) {
@@ -144,26 +154,34 @@ async function uploadMultipart(
 
 		const mappedType = ALLOWED_EXTENSIONS[ext];
 		const type = mappedType.startsWith('image/') ? 'image' : 'video';
+		if (seenTypes.has(type)) {
+			errors.push(`${name}: only one ${type} file can be uploaded at a time`);
+			continue;
+		}
+		seenTypes.add(type);
 		const key = `${nanoid()}.${ext}`;
-
-		uploads.push(
-			value.arrayBuffer().then(async (buffer) => {
-				await env.BUCKET.put(`assets/${key}`, buffer, {
-					httpMetadata: { contentType: mappedType },
-				});
-				uploaded.push({ key, url: `/assets/${key}` });
-				await env.BUCKET.delete(toAssetKey(mapData[type]));
-				mapData[type] = key;
-			}),
-		);
+		pending.push({ name, type, key, file: value, contentType: mappedType });
 	}
 
-	await Promise.all(uploads);
+	const completedUploads = await Promise.all(
+		pending.map(async ({ type, key, file, contentType }) => {
+			const buffer = await file.arrayBuffer();
+			await env.BUCKET.put(`assets/${key}`, buffer, { httpMetadata: { contentType } });
+			mapData[type] = key;
+			return { key, url: `/assets/${key}` };
+		}),
+	);
+	uploaded.push(...completedUploads);
+	const replacedTypes = new Set(pending.map(({ type }) => type));
+	const oldAssets = [...replacedTypes]
+		.map((type) => oldAssetsByType[type])
+		.filter((key): key is string => Boolean(key));
 	await saveMapToDb(env, mapData);
+	if (oldAssets.length) await env.BUCKET.delete(oldAssets);
 
 	if (uploaded.length > 0) {
 		const origin = new URL(request.url).origin;
-		invalidateCache(ctx, origin, uploaded.map(prop('key')));
+		invalidateCache(ctx, origin, [...uploaded.map(({ key }) => `assets/${key}`), ...oldAssets]);
 	}
 
 	return json({

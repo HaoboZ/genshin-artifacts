@@ -23,6 +23,7 @@ export default function useRouteVideoSync(points: Point[]) {
 		videoControls.pause();
 		videoControls.setCurrentTime(0);
 		setTime(0);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	useEffect(() => {

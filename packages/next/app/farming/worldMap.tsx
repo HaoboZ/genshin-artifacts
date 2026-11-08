@@ -13,6 +13,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { filter, map, pick, pipe } from 'remeda';
 
+import { routeUrl } from '@/api/routes/fetchRouteData';
 import { type RouteData } from '@/api/routes/types';
 import RatioContainer from '@/components/ratioContainer';
 import { TEYVAT_MAP_IMAGE_URL } from '@/constants/map';
@@ -30,9 +31,7 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 		routesData.find(({ owner }) => owner === 'main').id,
 	);
 
-	const [routeData] = useFetchState<RouteData>(
-		`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${selectedRoute}`,
-	);
+	const [routeData] = useFetchState<RouteData>(routeUrl(selectedRoute));
 
 	const points = useMemo(() => {
 		if (!routeData) return null;
