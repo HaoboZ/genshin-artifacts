@@ -42,14 +42,12 @@ export default function useParamState<T>(
 			if (isEmpty(obj)) return '?';
 			return `?${new URLSearchParams(obj).toString()}`;
 		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[searchParams, key, initialState],
 	);
 
 	const currentValue = useMemo(() => {
 		const param = searchParams.get(key);
 		return param !== null ? deserialize(param) : initialState;
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchParams, key, initialState]);
 
 	return [

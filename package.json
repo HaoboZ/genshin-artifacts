@@ -19,7 +19,6 @@
 		"map-capture": "cd packages/map-capture && bun run start"
 	},
 	"dependencies": {
-		"next": "16.4.3",
 		"remeda": "2.54.1"
 	},
 	"devDependencies": {

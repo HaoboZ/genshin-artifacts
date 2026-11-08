@@ -5,7 +5,7 @@ import {
 	SkipPrevious as SkipPreviousIcon,
 } from '@mui/icons-material';
 import { Box, type BoxProps, IconButton } from '@mui/material';
-import { type RefObject, useState } from 'react';
+import { type RefObject, useEffect, useState } from 'react';
 import { useKey } from 'rooks';
 
 const fps = 60;
@@ -18,10 +18,19 @@ export default function VideoPlayer({
 	...props
 }: {
 	ref: RefObject<HTMLVideoElement>;
-	src: string;
+	src: string | null;
 	seekFrames?: number;
 } & BoxProps) {
 	const [isHovering, setIsHovering] = useState(false);
+
+	useEffect(() => {
+		if (src) return;
+		const video = ref.current;
+		if (!video) return;
+		video.pause();
+		video.removeAttribute('src');
+		video.load();
+	}, [ref, src]);
 
 	useKey(['Space'], (e) => {
 		const target = e.target as HTMLElement;
@@ -65,12 +74,19 @@ export default function VideoPlayer({
 					transition: 'opacity 0.3s ease',
 				},
 				...sx,
+				'display': src ? undefined : 'none',
 			}}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
 			{...props}>
-			<video ref={ref} playsInline controls src={src} style={{ width: '100%' }} />
-			{seekFrames && (
+			<video
+				ref={ref}
+				playsInline
+				controls={Boolean(src)}
+				src={src ?? undefined}
+				style={{ width: '100%', display: src ? undefined : 'none' }}
+			/>
+			{src && seekFrames && (
 				<Box
 					sx={{
 						'position': 'absolute',
