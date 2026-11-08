@@ -8,6 +8,7 @@ export default function SortableItem({ id, item, renderItem }) {
 	});
 
 	const trans = transform ?? { x: 0, y: 0, scaleX: 1, scaleY: 1 };
+
 	return useMemo(() => {
 		return renderItem(
 			item,
@@ -22,6 +23,5 @@ export default function SortableItem({ id, item, renderItem }) {
 			},
 			listeners,
 		);
-		// eslint-disable-next-line react-hooks/use-memo, react-hooks/exhaustive-deps
 	}, [item, renderItem, ...Object.values(trans)]);
 }

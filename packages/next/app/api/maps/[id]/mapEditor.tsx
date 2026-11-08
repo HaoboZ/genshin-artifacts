@@ -1,4 +1,4 @@
-import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+﻿import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import {
 	Accordion,
 	AccordionDetails,
@@ -92,15 +92,11 @@ export default function MapEditor({
 
 	const selectedPoint = points[selectedPointIndex];
 
-	const handleDeletePoint = useCallback(
-		() => {
-			if (!selectedPoint) return;
-			setPoints((prev) => prev.filter((_, i) => i !== selectedPointIndex));
-			setSelectedPointIndex(Math.max(0, selectedPointIndex - 1));
-		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[points],
-	);
+	const handleDeletePoint = useCallback(() => {
+		if (!selectedPoint) return;
+		setPoints((prev) => prev.filter((_, i) => i !== selectedPointIndex));
+		setSelectedPointIndex(Math.max(0, selectedPointIndex - 1));
+	}, [points]);
 
 	const updateSelectedPoint = (field: keyof Point, value: number | string | undefined) => {
 		if (!selectedPoint) return;
@@ -261,7 +257,6 @@ export default function MapEditor({
 							RenderPoint={RouteRenderPoint}
 							RenderPath={RouteRenderPath}
 							RenderExtra={RouteRenderExtra(text)}>
-							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								alt={mapData.name}
 								src={resolveAssetUrl(mapData.image)}
@@ -448,11 +443,55 @@ export default function MapEditor({
 										}>
 										<ListItemButton
 											selected={selectedPointIndex === index}
-											onClick={() => setSelectedPointIndex(index)}>
-											#{index + 1}{' '}
-											{point.start !== undefined ? `${point.start.toFixed(2)}s` : '―'} →{' '}
-											{point.marked !== undefined ? `${point.marked.toFixed(2)}s` : '―'}{' '}
-											→ {point.end !== undefined ? `${point.end.toFixed(2)}s` : '―'}
+											onClick={() => setSelectedPointIndex(index)}
+											sx={{
+												display: 'grid',
+												gridTemplateColumns: '1.2em 2ch 1em 6ch 2ch 6ch 2ch 6ch',
+											}}>
+											<Typography
+												component='span'
+												variant='body2'
+												sx={{ textAlign: 'center' }}>
+												{point.marked !== undefined ? '✱' : ''}
+											</Typography>
+											<Typography component='span' variant='body2'>
+												#{index + 1}
+											</Typography>
+											<span />
+											<Typography
+												component='span'
+												variant='body2'
+												sx={{ textAlign: 'center' }}>
+												{point.start !== undefined ? `${point.start.toFixed(2)}s` : '―'}
+											</Typography>
+											<Typography
+												component='span'
+												variant='body2'
+												color='text.secondary'
+												sx={{ textAlign: 'center' }}>
+												→
+											</Typography>
+											<Typography
+												component='span'
+												variant='body2'
+												sx={{ textAlign: 'center' }}>
+												{point.marked !== undefined
+													? `${point.marked.toFixed(2)}s`
+													: '―'}
+											</Typography>
+											<Typography
+												component='span'
+												variant='body2'
+												color='text.secondary'
+												sx={{ textAlign: 'center' }}>
+												→
+											</Typography>
+											<Typography
+												component='span'
+												variant='body2'
+												sx={{ textAlign: 'center' }}>
+												{point.end !== undefined ? `${point.end.toFixed(2)}s` : '―'}
+											</Typography>
 										</ListItemButton>
 									</ListItem>
 								);

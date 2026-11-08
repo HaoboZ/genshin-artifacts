@@ -2,7 +2,7 @@ import { type RenderPathProps, type RenderPointProps } from 'image-map-route';
 import { useSearchParams } from 'next/navigation';
 
 function getColor(type: string) {
-	return { hover: 'white', active: 'black', extend: 'red', scan: 'blue' }[type] ?? 'lime';
+	return { hover: 'white', active: 'black', extend: 'red', extra: 'blue' }[type] ?? 'lime';
 }
 
 export function MapRenderPoint({ point, containerSize, type, percentage }: RenderPointProps) {

@@ -4,7 +4,7 @@ declare global {
 	}
 }
 
-export type MapType = 'extend' | 'scan';
+export type MapType = 'extend' | 'extra';
 
 export type BackgroundType =
 	'mondstadt' | 'liyue' | 'inazuma' | 'sumeru' | 'fontaine' | 'natlan' | 'nod_krai' | 'snezhnaya';

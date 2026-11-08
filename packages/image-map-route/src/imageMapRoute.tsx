@@ -81,7 +81,6 @@ export default function ImageMapRoute({
 		}, 1000);
 
 		return () => clearTimeout(animationFrame);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [deps, Boolean(points), imageSize?.width, imageSize?.height]);
 
 	useEffect(() => {
@@ -97,7 +96,6 @@ export default function ImageMapRoute({
 			const { offset } = calculateCenterZoom(activeSpot.point, imageSize, scale);
 			setMapOffset(clampPosition(containerSize, offset.x, offset.y, scale, imageSize));
 		});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [followActiveSpot, activeSpot?.point, imageSize?.width, imageSize?.height, scale]);
 
 	return (

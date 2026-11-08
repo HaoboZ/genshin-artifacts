@@ -49,7 +49,6 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
 		setPoints(mapData.points);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded]);
 
 	const [spots, totalSpots] = useMemo(() => {
@@ -67,7 +66,6 @@ export default function FarmingRouteAlt({ routeData }: { routeData: RouteData })
 		if (!points) return;
 		const timeout = setTimeout(() => videoRef.current.play(), 2000);
 		return () => clearTimeout(timeout);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	return (

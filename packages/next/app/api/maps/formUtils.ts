@@ -1,6 +1,6 @@
 import { type BackgroundType, type MapType } from '../routes/types';
 
-export const MAP_TYPES: MapType[] = ['none', 'extend', 'scan'];
+export const MAP_TYPES: MapType[] = ['none', 'extend', 'extra'];
 
 export const LOCATION_TYPES: BackgroundType[] = [
 	'none',

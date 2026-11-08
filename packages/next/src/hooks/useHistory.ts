@@ -17,7 +17,6 @@ export default function useHistory<S>(state: S, setState?: Dispatch<SetStateActi
 			return [...truncated, structuredClone(state)];
 		});
 		setIndex((index) => index + 1);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [state]);
 
 	useKeys(['Control', 'z'], (e) => {

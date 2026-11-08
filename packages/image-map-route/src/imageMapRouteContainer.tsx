@@ -122,7 +122,6 @@ export default function ImageMapRouteContainer({
 
 		element.addEventListener('wheel', handleWheel, { passive: false });
 		return () => element.removeEventListener('wheel', handleWheel);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [containerRef, containerSize, imageSize, scale, mapOffset]);
 
 	return (

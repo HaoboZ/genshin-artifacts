@@ -15,7 +15,6 @@ export default function SortableContainer({ id, items, renderItems, renderItem }
 			setNodeRef,
 			id,
 		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items, id, renderItems, renderItem]);
 
 	return (

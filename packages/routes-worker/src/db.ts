@@ -227,7 +227,7 @@ function mapRowToMapData(row: MapRow): MapData {
 function normalizeMapType(value: unknown): MapType | undefined {
 	if (typeof value !== 'string') return undefined;
 	const type = value.toLowerCase();
-	if (['extend', 'scan'].includes(type)) return type as MapType;
+	if (['extend', 'extra'].includes(type)) return type as MapType;
 	return undefined;
 }
 

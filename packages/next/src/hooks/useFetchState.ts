@@ -18,7 +18,6 @@ export default function useFetchState<S>(
 				setState(defaultState);
 			}
 		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [url]);
 
 	return [state, setState];

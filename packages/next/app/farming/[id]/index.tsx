@@ -52,7 +52,6 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 	useEffect(() => {
 		if (!mapData || !isLoaded) return;
 		setPoints(mapData.points);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoaded]);
 
 	const [spots, totalSpots] = useMemo(() => {
@@ -73,7 +72,6 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 			videoRef.current.play();
 		}, 2000);
 		return () => clearTimeout(timeout);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [Boolean(points)]);
 
 	// Autoplay

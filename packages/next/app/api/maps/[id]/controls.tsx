@@ -13,6 +13,7 @@ import dynamicModal from '@/providers/modal/dynamicModal';
 
 import { type MapData, type Text } from '../../routes/types';
 import { addFile, upsertMap } from '../actions';
+import { calcEfficiency } from '../formUtils';
 import UploadFile from './uploadFile';
 
 const EditMapDataModal = dynamicModal(() => import('../editMapDataModal'));
@@ -69,8 +70,16 @@ export default function MapControls({
 			</AsyncButton>
 			<UploadFile
 				multiple
-				onUpload={async (formData) => {
+				onUpload={async (formData, videoDuration) => {
 					await addFile(mapData.id, formData);
+					if (videoDuration !== undefined && Number.isFinite(videoDuration)) {
+						const time = Math.round(videoDuration * 10) / 10;
+						await upsertMap({
+							...mapData,
+							time,
+							efficiency: calcEfficiency(mapData.spots ?? 0, time),
+						});
+					}
 					router.refresh();
 				}}
 			/>
