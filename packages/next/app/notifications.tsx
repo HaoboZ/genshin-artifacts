@@ -62,7 +62,7 @@ export default function Notifications() {
 					</Box>
 					<Typography variant='h6'>Respawn reminders</Typography>
 				</Stack>
-				<Box className='onesignal-customlink-container' sx={{ minHeight: 0 }} />
+				<Box className='onesignal-customlink-container' sx={{ minHeight: '0 !important' }} />
 				<Stack spacing={1}>
 					{timers.map((timer) => (
 						<RespawnNotification key={timer.storageKey} {...timer} />
