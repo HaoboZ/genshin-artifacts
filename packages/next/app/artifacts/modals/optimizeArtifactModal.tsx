@@ -79,8 +79,8 @@ export default function OptimizeArtifactModal() {
 					) ?? {};
 				if (!weight) continue;
 
-				if (currentArtifact?.id === artifact.id) {
-					filteredArtifacts.splice(filteredArtifacts.indexOf(artifact), 1);
+				if (currentArtifact && weightedPercent(build, currentArtifact) >= weight) {
+					filteredArtifacts.splice(filteredArtifacts.indexOf(currentArtifact), 1);
 					continue;
 				}
 
