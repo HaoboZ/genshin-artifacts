@@ -2,9 +2,9 @@
 	"name": "@genshin-artifacts/next",
 	"private": true,
 	"scripts": {
-		"predev": "npm --workspace image-map-route run build",
+		"predev": "bun --filter image-map-route build",
 		"dev": "next dev",
-		"prebuild": "npm --workspace image-map-route run build",
+		"prebuild": "bun --filter image-map-route build",
 		"build": "next build",
 		"test": "bun test",
 		"start": "next start",

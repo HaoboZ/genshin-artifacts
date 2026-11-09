@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-11-07",
+	"@lastUpdated": "2026-11-08",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -2282,13 +2282,13 @@
 		"key": "Valeriy",
 		"role": "Buff & Shield Support",
 		"weapon": ["FavoniusSword"],
-		"artifact": ["HeartOfTheFurnace"],
+		"artifact": ["", ""],
 		"mainStat": {
 			"sands": ["atk_", "enerRech_"],
 			"goblet": "atk_",
 			"circlet": ["atk_", "critRate_"]
 		},
-		"subStat": ["atk_", "enerRech_", "atk"],
+		"subStat": [],
 		"group": 1
 	},
 	"Varesa": {
