@@ -2282,13 +2282,13 @@
 		"key": "Valeriy",
 		"role": "Buff & Shield Support",
 		"weapon": ["FavoniusSword"],
-		"artifact": ["", ""],
+		"artifact": ["HeartOfTheFurnace"],
 		"mainStat": {
 			"sands": ["atk_", "enerRech_"],
 			"goblet": "atk_",
 			"circlet": ["atk_", "critRate_"]
 		},
-		"subStat": [],
+		"subStat": ["atk_", "enerRech_", "atk"],
 		"group": 1
 	},
 	"Varesa": {

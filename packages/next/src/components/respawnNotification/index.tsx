@@ -4,6 +4,7 @@ import { useState } from 'react';
 import OneSignal from 'react-onesignal';
 import { useIntervalWhen, useLocalstorageState } from 'rooks';
 
+import AsyncButton from '@/components/loaders/asyncButton';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 
@@ -73,17 +74,17 @@ export default function RespawnNotification({
 						</Typography>
 					</Grid>
 					<Grid size={6}>
-						<Button
+						<AsyncButton
 							fullWidth
-							variant='contained'
+							variant={isScheduled ? 'outlined' : 'contained'}
 							size='small'
 							onClick={() => {
 								const date = new Date();
 								date.setHours(date.getHours() + hours);
 								void setReminder(date);
 							}}>
-							Start
-						</Button>
+							{isScheduled ? 'Reset' : 'Start'}
+						</AsyncButton>
 					</Grid>
 					<Grid size={6}>
 						<Button

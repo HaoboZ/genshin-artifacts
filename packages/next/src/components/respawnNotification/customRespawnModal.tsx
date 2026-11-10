@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
+import AsyncButton from '@/components/loaders/asyncButton';
 import DialogWrapper from '@/providers/modal/dialogWrapper';
 import useModalControls from '@/providers/modal/useModalControls';
 
@@ -51,7 +52,7 @@ export default function CustomRespawnModal({
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={closeModal}>Back</Button>
-				<Button
+				<AsyncButton
 					variant='contained'
 					disabled={!customTime || new Date(customTime).getTime() <= Date.now()}
 					onClick={async () => {
@@ -59,7 +60,7 @@ export default function CustomRespawnModal({
 						closeModal();
 					}}>
 					Set reminder
-				</Button>
+				</AsyncButton>
 			</DialogActions>
 		</DialogWrapper>
 	);
