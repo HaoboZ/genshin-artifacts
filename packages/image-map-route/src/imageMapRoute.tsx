@@ -25,6 +25,7 @@ export default function ImageMapRoute({
 	getAnimatedPosition,
 	imageAspectRatio,
 	followActiveSpot,
+	allowOutOfBounds = false,
 	children,
 	...props
 }: ImageMapRouteProps) {
@@ -66,7 +67,11 @@ export default function ImageMapRoute({
 		const { scale, offset } = getInitialPosition(imageSize);
 		if (scale) setScale(scale);
 		if (offset)
-			setMapOffset(clampPosition(containerSize, offset.x, offset.y, scale ?? 1, imageSize));
+			setMapOffset(
+				allowOutOfBounds
+					? offset
+					: clampPosition(containerSize, offset.x, offset.y, scale ?? 1, imageSize),
+			);
 		setIsAnimating(false);
 
 		if (!getAnimatedPosition) return;
@@ -75,7 +80,11 @@ export default function ImageMapRoute({
 			const { scale, offset } = getAnimatedPosition(imageSize);
 			if (scale) setScale(scale);
 			if (offset)
-				setMapOffset(clampPosition(containerSize, offset.x, offset.y, scale ?? 1, imageSize));
+				setMapOffset(
+					allowOutOfBounds
+						? offset
+						: clampPosition(containerSize, offset.x, offset.y, scale ?? 1, imageSize),
+				);
 			setIsAnimating(true);
 			setTimeout(() => setIsAnimating(false), 2000);
 		}, 1000);

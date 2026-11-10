@@ -23,6 +23,7 @@ export type ImageMapRouteProps = {
 	activeSpot?: Spot;
 	setActiveSpot?: Dispatch<Spot>;
 	followActiveSpot?: boolean;
+	allowOutOfBounds?: boolean;
 	RenderPoint?: ComponentType<RenderPointProps>;
 	RenderPath?: ComponentType<RenderPathProps>;
 	RenderExtra?: ComponentType<RenderExtraProps>;

@@ -98,13 +98,19 @@ export default function WorldMap({ routesData, top }: { routesData: RouteData[];
 				RenderPath={MapRenderPath}
 				RenderExtra={MapRenderExtra}
 				getInitialPosition={(containerSize) => calculateOptimalZoom(points, containerSize, 0.9)}
+				allowOutOfBounds={searchParams.has('recording')}
 				getAnimatedPosition={
 					!searchParams.has('recording') &&
 					((containerSize) => {
 						return calculateCenterZoom(points[0], containerSize, 3);
 					})
 				}
-				style={{ width: '100%', height: '100%', opacity: points ? 1 : 0 }}>
+				style={{
+					width: '100%',
+					height: '100%',
+					opacity: points ? 1 : 0,
+					backgroundColor: '#10181E',
+				}}>
 				<Image fill alt='teyvat' src={TEYVAT_MAP_IMAGE_URL} style={{ objectFit: 'contain' }} />
 			</ImageMapRoute>
 		</RatioContainer>
