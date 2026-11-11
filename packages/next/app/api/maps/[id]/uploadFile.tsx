@@ -12,7 +12,7 @@ export default function UploadFile({
 	const [loading, onChangeLoading] = useAsyncLoading();
 
 	const getVideoDuration = (file: File) =>
-		new Promise<number>((resolve, reject) => {
+		new Promise<number>((resolve) => {
 			const video = document.createElement('video');
 			const url = URL.createObjectURL(file);
 			video.preload = 'metadata';
@@ -22,7 +22,7 @@ export default function UploadFile({
 			};
 			video.onerror = () => {
 				URL.revokeObjectURL(url);
-				reject(new Error('Unable to read video duration'));
+				resolve(undefined);
 			};
 			video.src = url;
 		});
