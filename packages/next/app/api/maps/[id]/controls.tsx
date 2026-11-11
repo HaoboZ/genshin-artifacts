@@ -72,7 +72,6 @@ export default function MapControls({
 			<UploadFile
 				multiple
 				onUpload={async (formData, videoDuration) => {
-					await uploadMapFile(mapData.id, formData);
 					if (videoDuration !== undefined && Number.isFinite(videoDuration)) {
 						const time = Math.round(videoDuration * 10) / 10;
 						await upsertMap({
@@ -81,6 +80,7 @@ export default function MapControls({
 							efficiency: calcEfficiency(mapData.spots ?? 0, time),
 						});
 					}
+					await uploadMapFile(mapData.id, formData);
 					router.refresh();
 				}}
 			/>
