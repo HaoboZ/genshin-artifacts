@@ -41,7 +41,7 @@ export const mapColumns: GridColDef<RouteMapRow>[] = [
 		width: 75,
 		type: 'number',
 		sortable: true,
-		cellClassName: ({ value, row }) => (value === row.spots ? 'mora-match' : ''),
+		cellClassName: ({ value, row }) => (value >= row.spots ? 'mora-match' : ''),
 	},
 	{ field: 'time', headerName: 'Time', width: 75, type: 'number', sortable: true },
 	{
