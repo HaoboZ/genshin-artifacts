@@ -31,3 +31,10 @@ export async function deleteRoute(id: string) {
 		headers: { Authorization: `Bearer ${cookieStore.get('AUTH_TOKEN').value}` },
 	});
 }
+
+export async function clearCache() {
+	const cookieStore = await cookies();
+	await axios.post(`${process.env.NEXT_PUBLIC_ROUTE_URL}/cache/clear`, null, {
+		headers: { Authorization: `Bearer ${cookieStore.get('AUTH_TOKEN')?.value}` },
+	});
+}

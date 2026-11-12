@@ -5,13 +5,15 @@ import { Button, Container, IconButton, Paper, Stack, TextField } from '@mui/mat
 import { DataGrid, type GridColDef, type GridSortModel } from '@mui/x-data-grid';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 import { sortBy } from 'remeda';
 
+import useAsyncLoading from '@/components/loaders/useAsyncLoading';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 
-import { deleteRoute } from './actions';
+import { clearCache, deleteRoute } from './actions';
 import { type RouteData } from './types';
 
 const AddRouteDataModal = dynamicModal(() => import('./addRouteDataModal'));
@@ -23,6 +25,9 @@ type RouteRow = RouteData & { actions?: never };
 export default function RouteList({ items }: { items: RouteData[] }) {
 	const router = useRouter();
 	const { showModal } = useModal();
+	const { enqueueSnackbar } = useSnackbar();
+	const [clearingCache, withLoading] = useAsyncLoading();
+
 	const [sortKey, setSortKey] = useState<SortKey>('name');
 	const [direction, setDirection] = useState<'asc' | 'desc'>('asc');
 	const [search, setSearch] = useState('');
@@ -128,6 +133,15 @@ export default function RouteList({ items }: { items: RouteData[] }) {
 				</Button>
 				<Button component={Link} href='/api/routes/auth' variant='contained'>
 					Authorize
+				</Button>
+				<Button
+					variant='outlined'
+					disabled={clearingCache}
+					onClick={withLoading(async () => {
+						await clearCache();
+						enqueueSnackbar('Cache cleared', { variant: 'success' });
+					})}>
+					{clearingCache ? 'Clearing…' : 'Clear Cache'}
 				</Button>
 			</Stack>
 			<DataGrid

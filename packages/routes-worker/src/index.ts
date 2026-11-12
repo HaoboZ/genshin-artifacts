@@ -1,5 +1,6 @@
 import { requireAuth } from './auth';
 import { handleAssetRequest } from './handlers/assets';
+import { handleCacheClear } from './handlers/cache';
 import { handleMapsEndpoint } from './handlers/maps';
 import { handleRoutesEndpoint } from './handlers/routes';
 import { error } from './utils';
@@ -26,7 +27,9 @@ export default {
 
 		try {
 			let response: Response;
-			if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
+			if (pathname === '/cache/clear') {
+				response = await handleCacheClear(request, env);
+			} else if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
 				response = await handleRoutesEndpoint(request, env, pathname);
 			} else if (pathname === '/maps' || /^\/maps\/[^/]+$/.test(pathname)) {
 				response = await handleMapsEndpoint(request, env, pathname, ctx);
