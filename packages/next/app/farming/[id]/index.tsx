@@ -82,7 +82,7 @@ export default function FarmingRoute({ routeData }: { routeData: RouteData }) {
 		if (!searchParams.has('recording')) return;
 		setTimeout(() => {
 			setSelectedMap(selectedMap + 1);
-		}, 1000);
+		}, 2000);
 	});
 
 	const ratio = measurements.innerWidth / measurements.innerHeight;
