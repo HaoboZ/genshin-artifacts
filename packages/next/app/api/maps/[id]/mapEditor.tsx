@@ -25,7 +25,6 @@ import {
 	type Dispatch,
 	Fragment,
 	type SetStateAction,
-	useCallback,
 	useEffect,
 	useMemo,
 	useState,
@@ -92,12 +91,11 @@ export default function MapEditor({
 
 	const selectedPoint = points[selectedPointIndex];
 
-	const handleDeletePoint = useCallback(() => {
+	const handleDeletePoint = () => {
 		if (!selectedPoint) return;
 		setPoints((prev) => prev.filter((_, i) => i !== selectedPointIndex));
 		setSelectedPointIndex(Math.max(0, selectedPointIndex - 1));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [points]);
+	};
 
 	const updateSelectedPoint = (field: keyof Point, value: number | string | undefined) => {
 		if (!selectedPoint) return;
@@ -129,7 +127,8 @@ export default function MapEditor({
 			window.removeEventListener('keydown', onKeyDown);
 			window.removeEventListener('keyup', onKeyUp);
 		};
-	}, [handleDeletePoint, selectedPointIndex]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedPointIndex]);
 
 	const markedCount = useMemo(
 		() => points.filter((p) => p?.marked !== undefined).length,
