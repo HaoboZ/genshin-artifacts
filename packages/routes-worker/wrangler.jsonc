@@ -6,10 +6,11 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "routes-worker",
 	"main": "src/index.ts",
-	"compatibility_date": "2026-01-01",
+	"compatibility_date": "2026-11-12",
 	"observability": {
 		"enabled": true
 	},
+	"cache": { "enabled": true },
 	"vars": { "AUTH_TOKEN": "SECRET" },
 	"r2_buckets": [
 		{

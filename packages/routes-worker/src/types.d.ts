@@ -1,6 +1,15 @@
 declare global {
-	interface CacheStorage {
-		default: Cache;
+	interface ExecutionContext {
+		cache: {
+			purge(options: {
+				purgeEverything?: boolean;
+				pathPrefixes?: string[];
+				tags?: string[];
+			}): Promise<{
+				success: boolean;
+				errors?: { code: number; message: string }[];
+			}>;
+		};
 	}
 }
 

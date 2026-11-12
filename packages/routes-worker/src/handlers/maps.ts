@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { getAllMapsFromDb, saveMapToDb } from '../db';
-import { cachedJson, error, invalidateResourceCache, json } from '../utils';
+import { cacheableJson, error, invalidateResourceCache, json } from '../utils';
 import { handleMapIdEndpoint, parseMapBody } from './mapId';
 
 export async function handleMapsEndpoint(
@@ -10,19 +10,18 @@ export async function handleMapsEndpoint(
 	pathname: string,
 	ctx: ExecutionContext,
 ) {
-	const origin = new URL(request.url).origin;
 	const mapId = getMapId(pathname);
 
-	if (mapId) return handleMapIdEndpoint(request, env, mapId, origin, ctx);
+	if (mapId) return handleMapIdEndpoint(request, env, mapId, ctx);
 
 	switch (request.method) {
 		case 'GET': {
-			return cachedJson(request, () => getAllMapsFromDb(env));
+			return cacheableJson(() => getAllMapsFromDb(env));
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, nanoid());
 			await saveMapToDb(env, mapData);
-			await invalidateResourceCache(origin, 'maps', mapData.id);
+			await invalidateResourceCache(ctx, 'maps');
 			return json(mapData, 201);
 		}
 		default:

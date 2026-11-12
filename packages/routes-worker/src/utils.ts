@@ -1,7 +1,7 @@
 export function json(data: unknown, status = 200) {
 	return new Response(JSON.stringify(data), {
 		status,
-		headers: { 'Content-Type': 'application/json' },
+		headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
 	});
 }
 
@@ -9,33 +9,24 @@ export function error(message: string, status = 400) {
 	return json({ error: message }, status);
 }
 
-export async function cachedJson(request: Request, load: () => Promise<unknown>) {
-	const cacheUrl = new URL(request.url);
-	cacheUrl.search = '';
-	const cacheKey = new Request(cacheUrl, request);
-	const cached = await caches.default.match(cacheKey);
-	if (cached) return cached;
-
+export async function cacheableJson(load: () => Promise<unknown>) {
 	const response = json(await load());
 	response.headers.set('Cache-Control', 'public, max-age=3600');
-	await caches.default.put(cacheKey, response.clone());
 	return response;
 }
 
-export async function invalidateResourceCache(
-	origin: string,
-	resource: 'routes' | 'maps',
-	id?: string,
-) {
-	const keys = [
-		`${origin}/${resource}`,
-		id ? `${origin}/${resource}/${encodeURIComponent(id)}` : null,
-	].filter(Boolean) as string[];
-	await Promise.all(keys.map((key) => caches.default.delete(key)));
+export async function invalidateResourceCache(ctx: ExecutionContext, resource: 'routes' | 'maps') {
+	const pathPrefixes = resource === 'maps' ? ['/maps', '/routes'] : ['/routes'];
+	return purgeWorkerCache(ctx, pathPrefixes);
 }
 
-export function invalidateCache(ctx: ExecutionContext, origin: string, keys: string[]) {
-	ctx.waitUntil(Promise.all(keys.map((key) => caches.default.delete(`${origin}/${key}`))));
+export async function purgeWorkerCache(ctx: ExecutionContext, pathPrefixes: string[]) {
+	const result = await ctx.cache.purge({ pathPrefixes });
+	if (!result.success) {
+		console.error('Worker cache purge failed', result.errors);
+		throw error('Worker cache purge failed', 502);
+	}
+	return result;
 }
 
 export function toAssetKey(key?: string) {

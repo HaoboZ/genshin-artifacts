@@ -28,9 +28,9 @@ export default {
 		try {
 			let response: Response;
 			if (pathname === '/cache/clear') {
-				response = await handleCacheClear(request, env);
+				response = await handleCacheClear(request, ctx);
 			} else if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
-				response = await handleRoutesEndpoint(request, env, pathname);
+				response = await handleRoutesEndpoint(request, env, pathname, ctx);
 			} else if (pathname === '/maps' || /^\/maps\/[^/]+$/.test(pathname)) {
 				response = await handleMapsEndpoint(request, env, pathname, ctx);
 			} else if (pathname.startsWith('/assets/') || pathname.startsWith('/images/')) {

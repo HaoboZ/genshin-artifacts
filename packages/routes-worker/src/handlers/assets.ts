@@ -4,10 +4,6 @@ export async function handleAssetRequest(request: Request, env: Env, pathname: s
 	if (request.method !== 'GET') return error('Method Not Allowed', 405);
 
 	const rangeHeader = request.headers.get('Range');
-	if (!rangeHeader) {
-		const cached = await caches.default.match(request);
-		if (cached) return cached;
-	}
 
 	const key = pathname.slice(1);
 	const options: R2GetOptions = {};
@@ -59,9 +55,7 @@ export async function handleAssetRequest(request: Request, env: Env, pathname: s
 	}
 
 	headers.set('Content-Length', String(object.size));
-	const response = new Response(object.body, { headers });
-	await caches.default.put(request, response.clone());
-	return response;
+	return new Response(object.body, { headers });
 }
 
 function rangeNotSatisfiable(size?: number) {

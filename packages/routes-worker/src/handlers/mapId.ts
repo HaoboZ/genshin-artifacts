@@ -1,15 +1,8 @@
 import { nanoid } from 'nanoid';
 
-import { deleteMapFromDb, getMapFromDb, getRouteIdsByMapId, saveMapToDb } from '../db';
+import { deleteMapFromDb, getMapFromDb, saveMapToDb } from '../db';
 import { type MapData } from '../types';
-import {
-	cachedJson,
-	error,
-	invalidateCache,
-	invalidateResourceCache,
-	json,
-	toAssetKey,
-} from '../utils';
+import { cacheableJson, error, invalidateResourceCache, json, toAssetKey } from '../utils';
 
 const ALLOWED_EXTENSIONS = {
 	png: 'image/png',
@@ -33,42 +26,33 @@ export async function handleMapIdEndpoint(
 	request: Request,
 	env: Env,
 	mapId: string,
-	origin: string,
 	ctx: ExecutionContext,
 ) {
 	switch (request.method) {
 		case 'GET': {
-			return cachedJson(request, () => getMapFromDb(env, mapId));
+			return cacheableJson(() => getMapFromDb(env, mapId));
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, mapId);
 			await saveMapToDb(env, mapData);
-			await invalidateResourceCache(origin, 'maps', mapId);
-			await invalidateRelatedRoutes(env, origin, mapId);
+			await invalidateResourceCache(ctx, 'maps');
 			return json(mapData);
 		}
 		case 'PUT': {
 			const existingMap = await getMapFromDb(env, mapId);
 			const contentType = request.headers.get('Content-Type') || '';
 			const response = contentType.startsWith('multipart/form-data')
-				? await uploadMultipart(request, env, existingMap, ctx)
-				: await uploadMedia(request, env, existingMap, contentType, ctx);
-			await invalidateResourceCache(origin, 'maps', mapId);
-			await invalidateRelatedRoutes(env, origin, mapId);
+				? await uploadMultipart(request, env, existingMap)
+				: await uploadMedia(request, env, existingMap, contentType);
+			await invalidateResourceCache(ctx, 'maps');
 			return response;
 		}
 		case 'DELETE': {
-			const impactedRouteIds = await getRouteIdsByMapId(env, mapId);
 			const { image, video } = await getMapFromDb(env, mapId);
 			const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
 			if (assetKeys.length) await env.BUCKET.delete(assetKeys);
 			await deleteMapFromDb(env, mapId);
-			invalidateCache(ctx, origin, [...assetKeys, `maps/${mapId}`]);
-
-			await invalidateResourceCache(origin, 'maps', mapId);
-			await Promise.all(
-				impactedRouteIds.map((id) => invalidateResourceCache(origin, 'routes', id)),
-			);
+			await invalidateResourceCache(ctx, 'maps');
 			return json({ success: true, deleted: [...assetKeys, `maps/${mapId}`] });
 		}
 		default:
@@ -90,18 +74,7 @@ export async function parseMapBody(request: Request, id: string) {
 	}
 }
 
-async function invalidateRelatedRoutes(env: Env, origin: string, mapId: string) {
-	const routeIds = await getRouteIdsByMapId(env, mapId);
-	await Promise.all(routeIds.map((id) => invalidateResourceCache(origin, 'routes', id)));
-}
-
-async function uploadMedia(
-	request: Request,
-	env: Env,
-	mapData: MapData,
-	contentType: string,
-	ctx: ExecutionContext,
-) {
+async function uploadMedia(request: Request, env: Env, mapData: MapData, contentType: string) {
 	const ext = CONTENT_TYPE_TO_EXT[contentType];
 	if (!ext) {
 		return error(`Invalid content type. Allowed: ${Object.keys(CONTENT_TYPE_TO_EXT).join(', ')}`);
@@ -116,17 +89,10 @@ async function uploadMedia(
 	mapData[type] = key;
 	await saveMapToDb(env, mapData);
 
-	const origin = new URL(request.url).origin;
-	invalidateCache(ctx, origin, [`assets/${key}`, ...(oldAssetKey ? [oldAssetKey] : [])]);
 	return json({ success: true, key, url: `/assets/${key}` });
 }
 
-async function uploadMultipart(
-	request: Request,
-	env: Env,
-	mapData: MapData,
-	ctx: ExecutionContext,
-) {
+async function uploadMultipart(request: Request, env: Env, mapData: MapData) {
 	const formData = await request.formData();
 	const uploaded: { key: string; url: string }[] = [];
 	const errors: string[] = [];
@@ -178,11 +144,6 @@ async function uploadMultipart(
 		.filter((key): key is string => Boolean(key));
 	await saveMapToDb(env, mapData);
 	if (oldAssets.length) await env.BUCKET.delete(oldAssets);
-
-	if (uploaded.length > 0) {
-		const origin = new URL(request.url).origin;
-		invalidateCache(ctx, origin, [...uploaded.map(({ key }) => `assets/${key}`), ...oldAssets]);
-	}
 
 	return json({
 		success: uploaded.length > 0,

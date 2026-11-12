@@ -1,6 +1,6 @@
 import { deleteRouteFromDb, getRouteFromDb, saveRouteToDb } from '../db';
 import { type RouteData } from '../types';
-import { cachedJson, error, invalidateResourceCache, json } from '../utils';
+import { cacheableJson, error, invalidateResourceCache, json } from '../utils';
 
 export async function parseRouteBody(request: Request, id: string) {
 	try {
@@ -26,21 +26,21 @@ export async function handleRouteIdEndpoint(
 	request: Request,
 	env: Env,
 	routeId: string,
-	origin: string,
+	ctx: ExecutionContext,
 ) {
 	switch (request.method) {
 		case 'GET': {
-			return cachedJson(request, () => getRouteFromDb(env, routeId));
+			return cacheableJson(() => getRouteFromDb(env, routeId));
 		}
 		case 'POST': {
 			const routeData = await parseRouteBody(request, routeId);
 			await saveRouteToDb(env, routeData);
-			await invalidateResourceCache(origin, 'routes', routeId);
+			await invalidateResourceCache(ctx, 'routes');
 			return json(routeData);
 		}
 		case 'DELETE': {
 			await deleteRouteFromDb(env, routeId);
-			await invalidateResourceCache(origin, 'routes', routeId);
+			await invalidateResourceCache(ctx, 'routes');
 			return json({ success: true, deleted: `routes/${routeId}` });
 		}
 		default:
