@@ -24,7 +24,7 @@
 		"prepack": "bun build"
 	},
 	"dependencies": {
-		"remeda": "2.58.0",
+		"remeda": "2.61.0",
 		"rooks": "9.9.0"
 	},
 	"devDependencies": {

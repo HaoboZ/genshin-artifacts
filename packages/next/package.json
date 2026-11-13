@@ -23,22 +23,22 @@
 		"@mui/material-nextjs": "9.5.0",
 		"@mui/x-data-grid": "^9.0.0",
 		"@reduxjs/toolkit": "2.14.0",
-		"@tanem/react-nprogress": "7.1.10",
+		"@tanem/react-nprogress": "7.1.11",
 		"@vercel/analytics": "2.0.1",
-		"@vercel/blob": "2.8.2",
-		"axios": "1.21.0",
+		"@vercel/blob": "2.9.0",
+		"axios": "1.21.1",
 		"change-case": "5.4.4",
 		"dayjs": "1.11.23",
 		"events": "3.3.0",
 		"image-map-route": "workspace:*",
 		"nanoid": "6.0.2",
-		"next": "16.4.5",
+		"next": "16.4.6",
 		"notistack": "3.0.2",
 		"object-hash": "3.0.0",
 		"pixelmatch": "8.0.0",
 		"react": "19.3.1",
 		"react-dom": "19.3.1",
-		"react-hook-form": "7.91.0",
+		"react-hook-form": "7.92.0",
 		"react-onesignal": "3.5.6",
 		"react-redux": "9.3.1",
 		"redux": "5.0.1",
@@ -46,13 +46,13 @@
 		"tesseract.js": "7.0.0"
 	},
 	"devDependencies": {
-		"@next/bundle-analyzer": "16.4.5",
+		"@next/bundle-analyzer": "16.4.6",
 		"@types/events": "3.0.3",
 		"@types/object-hash": "3.0.6",
 		"@types/pixelmatch": "7.1.0",
 		"@types/react": "19.3.0",
 		"@types/react-redux": "7.1.35",
 		"mirada": "0.0.15",
-		"sass": "1.108.1"
+		"sass": "1.108.2"
 	}
 }
