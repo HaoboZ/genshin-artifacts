@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-11-08",
+	"@lastUpdated": "2026-11-15",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1565,7 +1565,7 @@
 			["BlackmarrowLantern", "SacrificialFragments"]
 		],
 		"artifact": ["DisenchantmentInDeepShadow", "GildedDreams"],
-		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": "critRD_" },
+		"mainStat": { "sands": "eleMas", "goblet": "eleMas", "circlet": ["critRD_", "eleMas"] },
 		"subStat": [["critRD_", "eleMas"], "enerRech_"],
 		"group": 1
 	},
@@ -1648,9 +1648,9 @@
 		"key": "Navia",
 		"role": "DPS",
 		"weapon": [
-			["Verdict", "AThousandBlazingSuns"],
+			"Verdict",
 			"GestOfTheMightyWolf",
-			["ATeaspoonOfTranscendence", "BeaconOfTheReedSea"],
+			["ATeaspoonOfTranscendence", "AThousandBlazingSuns", "BeaconOfTheReedSea"],
 			"RedhornStonethresher",
 			"SerpentSpine",
 			["WolfsGravestone", "TheUnforged", "FangOfTheMountainKing"],
@@ -1668,8 +1668,8 @@
 			["MarechausseeHunter", "NightOfTheSkysUnveiling"]
 		],
 		"mainStat": { "sands": "atk_", "goblet": "geo_dmg_", "circlet": "critRD_" },
-		"subStat": ["critRD_", "enerRech_", "atk_", "eleMas"],
-		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_", "eleMas"] },
+		"subStat": ["critRD_", "enerRech_", "atk_"],
+		"overridden": { "subStat": ["enerRech_", "critRD_", "atk_"] },
 		"group": 0
 	},
 	"Nefer": {
@@ -1799,7 +1799,7 @@
 		],
 		"mainStat": {
 			"sands": ["def_", "atk_", "enerRech_"],
-			"goblet": "geo_dmg_",
+			"goblet": ["geo_dmg_", "def_"],
 			"circlet": "critRD_"
 		},
 		"subStat": ["enerRech_", "critRD_", "def_", "atk_", "eleMas"],
@@ -2281,14 +2281,27 @@
 	"Valeriy": {
 		"key": "Valeriy",
 		"role": "Buff & Shield Support",
-		"weapon": ["FavoniusSword"],
-		"artifact": ["HeartOfTheFurnace"],
+		"weapon": [
+			"SummitShaper",
+			"AquilaFavonia",
+			["Azurelight", "SkywardBlade"],
+			"FinaleOfTheDeep",
+			["MistsplitterReforged", "Absolution"],
+			"SapwoodBlade",
+			"AthameArtis",
+			"FreedomSworn",
+			"FavoniusSword"
+		],
+		"artifact": [
+			["HeartOfTheFurnace", "NoblesseOblige", "Instructor"],
+			"ADayCarvedFromRisingWinds"
+		],
 		"mainStat": {
 			"sands": ["atk_", "enerRech_"],
 			"goblet": "atk_",
 			"circlet": ["atk_", "critRate_"]
 		},
-		"subStat": ["atk_", "enerRech_", "atk"],
+		"subStat": ["enerRech_", "atk_", "critRate_", "atk"],
 		"group": 1
 	},
 	"Varesa": {
@@ -2410,7 +2423,7 @@
 			["SilverLight", "AthameArtis", "ExaiphanesBlade"],
 			"HereticsMoltenBlade"
 		],
-		"artifact": ["ScarletProof", "ADayCarvedFromRisingWinds"],
+		"artifact": ["ScarletProof", "GildedDreams", "ADayCarvedFromRisingWinds"],
 		"mainStat": { "sands": "atk_", "goblet": "atk_", "circlet": "critRD_" },
 		"subStat": ["critRD_", "atk_", "eleMas", "enerRech_"],
 		"group": 0
@@ -2774,6 +2787,7 @@
 		"key": "YumemizukiMizuki",
 		"role": "Stellar Swirl DPS",
 		"weapon": [
+			"StarsealedEdict",
 			"SunnyMorningSleepIn",
 			"ReliquaryOfTruth",
 			"StarcallersWatch",
