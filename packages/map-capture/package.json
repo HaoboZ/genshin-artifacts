@@ -6,7 +6,7 @@
 		"start": "bun ./index.ts"
 	},
 	"dependencies": {
-		"playwright": "1.65.0",
+		"playwright": "1.65.1",
 		"sharp": "0.35.5"
 	}
 }
