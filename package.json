@@ -21,7 +21,7 @@
 	"devDependencies": {
 		"@types/node": "26.6.6",
 		"husky": "9.1.7",
-		"type-fest": "5.10.0",
+		"type-fest": "6.0.3",
 		"typescript": "7.0.2"
 	}
 }
