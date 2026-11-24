@@ -108,14 +108,16 @@ def probe_video(input_file: Path, ffprobe: str) -> float | None:
 
 
 def process_image(input_file: Path) -> None:
-    output_file = Path.cwd() / "output" / "image" / input_file.name
+    output_file = Path.cwd() / "output" / "image" / f"{input_file.stem}.webp"
     print(f"Cropping image: {input_file}")
     try:
         with Image.open(input_file) as image:
             width, height = image.size
             crop_size = min(width, height, 900)
             left, top = (width - crop_size) // 2, (height - crop_size) // 2
-            image.crop((left, top, left + crop_size, top + crop_size)).save(output_file)
+            image.crop((left, top, left + crop_size, top + crop_size)).save(
+                output_file, format="WEBP", quality=88, method=6
+            )
         print(f"\tDone: {output_file}")
     except (UnidentifiedImageError, OSError) as error:
         print(f"\tError processing {input_file}: {error}")

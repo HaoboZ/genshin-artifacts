@@ -99,6 +99,7 @@ export default function ArtifactForm({ onSubmit }: { onSubmit: SubmitHandler<IAr
 							label='Type'
 							onChange={(e) => {
 								const nextSlot = e.target.value as keyof typeof artifactSlotStats;
+								setArtifactValue('slotKey', nextSlot);
 								setArtifactValue('mainStatKey', artifactSlotStats[nextSlot].stats[0]);
 							}}>
 							{artifactSlotOrder.map((key) => (
