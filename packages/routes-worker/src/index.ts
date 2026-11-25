@@ -2,6 +2,7 @@ import { requireAuth } from './auth';
 import { handleAssetRequest } from './handlers/assets';
 import { handleCacheClear } from './handlers/cache';
 import { handleMapsEndpoint } from './handlers/maps';
+import { handleNotificationsEndpoint } from './handlers/notifications';
 import { handleRoutesEndpoint } from './handlers/routes';
 import { error } from './utils';
 
@@ -22,7 +23,7 @@ export default {
 
 		try {
 			let user = null;
-			if (request.method !== 'GET' || pathname === '/auth') {
+			if (request.method !== 'GET' || pathname === '/auth' || pathname === '/notifications') {
 				const authResult = await requireAuth(request, env);
 				if (authResult instanceof Response) return addCors(authResult);
 				user = authResult;
@@ -34,6 +35,8 @@ export default {
 				});
 			} else if (pathname === '/cache/clear') {
 				response = await handleCacheClear(request, ctx);
+			} else if (pathname === '/notifications' || /^\/notifications\/[^/]+$/.test(pathname)) {
+				response = await handleNotificationsEndpoint(request, env, pathname, user);
 			} else if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
 				response = await handleRoutesEndpoint(request, env, pathname, ctx, user);
 			} else if (pathname === '/maps' || /^\/maps\/[^/]+$/.test(pathname)) {

@@ -1,14 +1,13 @@
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
 import { useState } from 'react';
-import OneSignal from 'react-onesignal';
-import { useIntervalWhen, useLocalstorageState } from 'rooks';
+import { useIntervalWhen } from 'rooks';
 
 import AsyncButton from '@/components/loaders/asyncButton';
 import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 
-import { cancelNotification, sendNotification } from './notificationActions';
+import { type ReminderSchedule, scheduleReminder } from './notificationActions';
 
 const CustomRespawnModal = dynamicModal(() => import('./customRespawnModal'));
 
@@ -17,29 +16,31 @@ export default function RespawnNotification({
 	item,
 	icon,
 	hours,
+	reminder,
+	onReminderChange,
 }: {
 	storageKey: string;
 	item: string;
 	icon?: string;
 	hours: number;
+	reminder?: ReminderSchedule;
+	onReminderChange: (reminder: ReminderSchedule) => void | Promise<void>;
 }) {
 	const [now, setNow] = useState(() => new Date());
-	const [respawn, setRespawn] = useLocalstorageState<{ id: string; time: number }>(storageKey);
 	const { showModal } = useModal();
 
 	useIntervalWhen(() => setNow(new Date()), 1000);
 
-	const isScheduled = !!respawn && respawn.time > +now;
-	const scheduledDate = isScheduled ? new Date(respawn.time) : undefined;
+	const isScheduled = !!reminder && reminder.time > +now;
+	const scheduledDate = isScheduled ? new Date(reminder.time) : undefined;
 
 	const setReminder = async (date: Date) => {
-		const id = await sendNotification(OneSignal.User.externalId ?? '', {
+		const schedule = await scheduleReminder(storageKey, {
 			title: `${item} Respawned`,
 			icon,
-			time: date.toUTCString(),
+			time: +date,
 		});
-		if (respawn?.id) await cancelNotification(respawn.id);
-		setRespawn({ id, time: +date });
+		await onReminderChange(schedule);
 	};
 
 	return (
@@ -78,10 +79,10 @@ export default function RespawnNotification({
 							fullWidth
 							variant={isScheduled ? 'outlined' : 'contained'}
 							size='small'
-							onClick={() => {
+							onClick={async () => {
 								const date = new Date();
 								date.setHours(date.getHours() + hours);
-								void setReminder(date);
+								await setReminder(date);
 							}}>
 							{isScheduled ? 'Reset' : 'Start'}
 						</AsyncButton>

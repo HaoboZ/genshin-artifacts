@@ -39,3 +39,13 @@ CREATE TABLE users (
   admin INTEGER NOT NULL DEFAULT 0 CHECK (admin IN (0, 1)),
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
+
+CREATE TABLE notification_reminders (
+  user_id TEXT NOT NULL,
+  key TEXT NOT NULL,
+  notification_id TEXT NOT NULL,
+  scheduled_at INTEGER NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, key),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)

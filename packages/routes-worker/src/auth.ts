@@ -2,7 +2,7 @@ import { createRemoteJWKSet, jwtVerify } from 'jose';
 
 import { error } from './utils';
 
-export type AuthUser = { email: string; admin: boolean };
+export type AuthUser = { id: string; email: string; admin: boolean };
 const firebaseKeys = createRemoteJWKSet(
 	new URL(
 		'https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com',
@@ -42,7 +42,7 @@ export async function authenticate(request: Request, env: Env): Promise<AuthUser
 	const user = await env.DB.prepare('SELECT admin FROM users WHERE id = ?')
 		.bind(payload.sub)
 		.first<{ admin: number }>();
-	return { email, admin: user?.admin === 1 };
+	return { id: payload.sub, email, admin: user?.admin === 1 };
 }
 
 export async function requireAuth(request: Request, env: Env): Promise<AuthUser | Response> {

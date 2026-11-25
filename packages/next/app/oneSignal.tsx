@@ -3,8 +3,15 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import Script from 'next/script';
 import { useEffect } from 'react';
+import type { OneSignalDeferredLoadedCallback } from 'react-onesignal';
 
 import { auth } from '@/firebase';
+
+declare global {
+	interface Window {
+		OneSignalDeferred?: OneSignalDeferredLoadedCallback[];
+	}
+}
 
 let oneSignalInit: Promise<void> | undefined;
 

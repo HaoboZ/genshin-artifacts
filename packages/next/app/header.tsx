@@ -31,7 +31,12 @@ export default function Header() {
 					}
 					variant='scrollable'
 					scrollButtons='auto'
-					allowScrollButtonsMobile>
+					allowScrollButtonsMobile
+					sx={{
+						'& .MuiTab-root': { color: 'common.white' },
+						'& .MuiTab-root.Mui-selected': { color: 'common.white' },
+						'& .MuiTabs-indicator': { backgroundColor: 'common.white' },
+					}}>
 					{navigationItems.map(({ label, href }) => (
 						<Tab key={href} component={Link} href={href} value={href} label={label} />
 					))}
