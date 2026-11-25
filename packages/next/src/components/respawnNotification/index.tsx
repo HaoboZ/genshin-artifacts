@@ -33,7 +33,7 @@ export default function RespawnNotification({
 	const scheduledDate = isScheduled ? new Date(respawn.time) : undefined;
 
 	const setReminder = async (date: Date) => {
-		const id = await sendNotification(OneSignal.User.onesignalId, {
+		const id = await sendNotification(OneSignal.User.externalId ?? '', {
 			title: `${item} Respawned`,
 			icon,
 			time: date.toUTCString(),

@@ -20,19 +20,24 @@ export default {
 			});
 		}
 
-		if (request.method !== 'GET') {
-			const authError = requireAuth(request, env);
-			if (authError) return addCors(authError);
-		}
-
 		try {
+			let user = null;
+			if (request.method !== 'GET' || pathname === '/auth') {
+				const authResult = await requireAuth(request, env);
+				if (authResult instanceof Response) return addCors(authResult);
+				user = authResult;
+			}
 			let response: Response;
-			if (pathname === '/cache/clear') {
+			if (pathname === '/auth' && request.method === 'GET') {
+				response = new Response(JSON.stringify(user), {
+					headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+				});
+			} else if (pathname === '/cache/clear') {
 				response = await handleCacheClear(request, ctx);
 			} else if (pathname === '/routes' || /^\/routes\/[^/]+$/.test(pathname)) {
-				response = await handleRoutesEndpoint(request, env, pathname, ctx);
+				response = await handleRoutesEndpoint(request, env, pathname, ctx, user);
 			} else if (pathname === '/maps' || /^\/maps\/[^/]+$/.test(pathname)) {
-				response = await handleMapsEndpoint(request, env, pathname, ctx);
+				response = await handleMapsEndpoint(request, env, pathname, ctx, user);
 			} else if (pathname.startsWith('/assets/') || pathname.startsWith('/images/')) {
 				response = await handleAssetRequest(request, env, pathname);
 			} else {

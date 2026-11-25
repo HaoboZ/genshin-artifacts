@@ -5,10 +5,14 @@ import { cookies } from 'next/headers';
 
 import { type RouteData } from './types';
 
+async function authHeaders() {
+	const token = (await cookies()).get('AUTH_TOKEN')?.value;
+	if (!token) throw new Error('Sign in with Google to manage routes.');
+	return { Authorization: `Bearer ${token}` };
+}
+
 export async function upsertRoute(routeData: RouteData) {
-	const cookieStore = await cookies();
-	const token = cookieStore.get('AUTH_TOKEN')?.value;
-	const headers = { Authorization: `Bearer ${token}` };
+	const headers = await authHeaders();
 
 	if (routeData.id) {
 		await axios.post(`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${routeData.id}`, routeData, {
@@ -26,15 +30,13 @@ export async function upsertRoute(routeData: RouteData) {
 }
 
 export async function deleteRoute(id: string) {
-	const cookieStore = await cookies();
 	await axios.delete(`${process.env.NEXT_PUBLIC_ROUTE_URL}/routes/${id}`, {
-		headers: { Authorization: `Bearer ${cookieStore.get('AUTH_TOKEN').value}` },
+		headers: await authHeaders(),
 	});
 }
 
 export async function clearCache() {
-	const cookieStore = await cookies();
 	await axios.post(`${process.env.NEXT_PUBLIC_ROUTE_URL}/cache/clear`, null, {
-		headers: { Authorization: `Bearer ${cookieStore.get('AUTH_TOKEN')?.value}` },
+		headers: await authHeaders(),
 	});
 }

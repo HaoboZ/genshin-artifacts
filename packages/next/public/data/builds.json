@@ -1,5 +1,5 @@
 {
-	"@lastUpdated": "2026-11-23",
+	"@lastUpdated": "2026-11-25",
 	"Aino": {
 		"key": "Aino",
 		"role": "Reaction Support",
@@ -1368,7 +1368,8 @@
 		"role": "Off-Field DPS & Buff and Heal Support",
 		"weapon": [
 			"GoldenFrostboundOath",
-			["ElegyForTheEnd", "AquaSimulacra", "HuntersPath"],
+			"CovenantOfFrostAndSnow",
+			["ElegyForTheEnd", "AquaSimulacra", "JadeVista", "HuntersPath"],
 			[
 				"Slingshot",
 				"AstralVulturesCrimsonPlumage",

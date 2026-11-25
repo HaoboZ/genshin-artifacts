@@ -10,6 +10,7 @@
 		"backup:push": "node scripts/backup-sync.ts push"
 	},
 	"dependencies": {
+		"jose": "6.2.18",
 		"nanoid": "6.0.2"
 	},
 	"devDependencies": {

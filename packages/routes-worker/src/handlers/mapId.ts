@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 
+import type { AuthUser } from '../auth';
 import { deleteMapFromDb, getMapFromDb, saveMapToDb } from '../db';
 import { type MapData } from '../types';
 import { cacheableJson, error, invalidateResourceCache, json, toAssetKey } from '../utils';
@@ -27,6 +28,7 @@ export async function handleMapIdEndpoint(
 	env: Env,
 	mapId: string,
 	ctx: ExecutionContext,
+	user: AuthUser,
 ) {
 	switch (request.method) {
 		case 'GET': {
@@ -34,12 +36,22 @@ export async function handleMapIdEndpoint(
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, mapId);
+			let existing;
+			try {
+				existing = await getMapFromDb(env, mapId);
+			} catch (cause) {
+				if (!(cause instanceof Response) || cause.status !== 404) throw cause;
+			}
+			if (existing && !user.admin && existing.owner !== user.email)
+				return error('Forbidden', 403);
+			mapData.owner = user.admin ? existing?.owner : user.email;
 			await saveMapToDb(env, mapData);
 			await invalidateResourceCache(ctx, 'maps');
 			return json(mapData);
 		}
 		case 'PUT': {
 			const existingMap = await getMapFromDb(env, mapId);
+			if (!user.admin && existingMap.owner !== user.email) return error('Forbidden', 403);
 			const contentType = request.headers.get('Content-Type') || '';
 			const response = contentType.startsWith('multipart/form-data')
 				? await uploadMultipart(request, env, existingMap)
@@ -48,7 +60,9 @@ export async function handleMapIdEndpoint(
 			return response;
 		}
 		case 'DELETE': {
-			const { image, video } = await getMapFromDb(env, mapId);
+			const existingMap = await getMapFromDb(env, mapId);
+			if (!user.admin && existingMap.owner !== user.email) return error('Forbidden', 403);
+			const { image, video } = existingMap;
 			const assetKeys = [toAssetKey(image), toAssetKey(video)].filter(Boolean);
 			if (assetKeys.length) await env.BUCKET.delete(assetKeys);
 			await deleteMapFromDb(env, mapId);

@@ -21,8 +21,7 @@ import SelectField from '@/components/form/selectField';
 import reportError from '@/helpers/reportError';
 
 import { type BackgroundType, type MapData } from '../routes/types';
-import { upsertMap } from './actions';
-import { uploadMapFile } from './fileUpload';
+import { addFile, upsertMap } from './actions';
 import { calcEfficiency, LOCATION_TYPES, MAP_TYPES } from './formUtils';
 import RelocateMapPicker from './relocateMapPicker';
 
@@ -41,7 +40,6 @@ export default function MapDataForm({
 	const defaultValues = useMemo<MapDataFormValues>(
 		() => ({
 			name: initialValues?.name ?? '',
-			owner: initialValues?.owner ?? '',
 			notes: initialValues?.notes ?? '',
 			type: initialValues?.type ?? 'none',
 			location: initialValues?.background ?? 'none',
@@ -75,7 +73,6 @@ export default function MapDataForm({
 							...initialValues,
 							id,
 							name: formValues.name,
-							owner: formValues.owner || undefined,
 							notes: formValues.notes || undefined,
 							type: formValues.type === 'none' ? undefined : formValues.type,
 							background: formValues.location === 'none' ? undefined : formValues.location,
@@ -91,7 +88,7 @@ export default function MapDataForm({
 						mapData.id = await upsertMap(mapData);
 						setCreatedMapId(mapData.id);
 						if (formValues.file) {
-							await uploadMapFile(mapData.id, formValues.file);
+							await addFile(mapData.id, formValues.file);
 						}
 						await onSubmit?.(mapData);
 					} catch (error) {
@@ -102,9 +99,6 @@ export default function MapDataForm({
 					<Grid container spacing={1} sx={{ pt: 1 }}>
 						<Grid size={{ xs: 12, sm: 6 }}>
 							<InputField name='name' label='Name' />
-						</Grid>
-						<Grid size={{ xs: 12, sm: 6 }}>
-							<InputField name='owner' label='Owner' />
 						</Grid>
 						<Grid size={12}>
 							<InputField name='notes' label='Notes' multiline minRows={2} />

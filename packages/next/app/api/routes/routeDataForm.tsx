@@ -10,7 +10,6 @@ import { type RouteData } from './types';
 
 export type RouteDataFormValues = {
 	name: string;
-	owner: string;
 	notes: string;
 };
 
@@ -24,7 +23,6 @@ export default function RouteDataForm({
 	const defaultValues = useMemo<RouteDataFormValues>(
 		() => ({
 			name: initialValues?.name ?? '',
-			owner: initialValues?.owner ?? '',
 			notes: initialValues?.notes ?? '',
 		}),
 		[initialValues],
@@ -42,7 +40,6 @@ export default function RouteDataForm({
 						...initialValues,
 						id: initialValues?.id ?? '',
 						name: values.name,
-						owner: values.owner || undefined,
 						notes: values.notes || undefined,
 						maps: initialValues?.maps ?? [],
 					};
@@ -56,9 +53,6 @@ export default function RouteDataForm({
 				<Grid container spacing={1} sx={{ pt: 1 }}>
 					<Grid size={6}>
 						<TextField fullWidth label='Name' {...register('name')} />
-					</Grid>
-					<Grid size={6}>
-						<TextField fullWidth label='Owner' {...register('owner')} />
 					</Grid>
 					<Grid size={12}>
 						<TextField fullWidth label='Notes' multiline minRows={2} {...register('notes')} />

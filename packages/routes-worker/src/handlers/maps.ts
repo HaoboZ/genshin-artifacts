@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 
+import type { AuthUser } from '../auth';
 import { getAllMapsFromDb, saveMapToDb } from '../db';
 import { cacheableJson, error, invalidateResourceCache, json } from '../utils';
 import { handleMapIdEndpoint, parseMapBody } from './mapId';
@@ -9,10 +10,11 @@ export async function handleMapsEndpoint(
 	env: Env,
 	pathname: string,
 	ctx: ExecutionContext,
+	user: AuthUser | null,
 ) {
 	const mapId = getMapId(pathname);
 
-	if (mapId) return handleMapIdEndpoint(request, env, mapId, ctx);
+	if (mapId) return handleMapIdEndpoint(request, env, mapId, ctx, user!);
 
 	switch (request.method) {
 		case 'GET': {
@@ -20,6 +22,7 @@ export async function handleMapsEndpoint(
 		}
 		case 'POST': {
 			const mapData = await parseMapBody(request, nanoid());
+			mapData.owner = user!.admin ? undefined : user!.email;
 			await saveMapToDb(env, mapData);
 			await invalidateResourceCache(ctx, 'maps');
 			return json(mapData, 201);

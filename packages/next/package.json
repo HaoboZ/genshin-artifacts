@@ -30,6 +30,7 @@
 		"change-case": "5.4.4",
 		"dayjs": "1.11.23",
 		"events": "3.3.0",
+		"firebase": "13.4.0",
 		"image-map-route": "workspace:*",
 		"nanoid": "6.0.2",
 		"next": "16.4.6",

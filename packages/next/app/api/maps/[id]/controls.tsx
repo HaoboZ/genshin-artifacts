@@ -12,8 +12,7 @@ import { useModal } from '@/providers/modal';
 import dynamicModal from '@/providers/modal/dynamicModal';
 
 import { type MapData, type Text } from '../../routes/types';
-import { upsertMap } from '../actions';
-import { uploadMapFile } from '../fileUpload';
+import { addFile, upsertMap } from '../actions';
 import { calcEfficiency } from '../formUtils';
 import UploadFile from './uploadFile';
 
@@ -80,7 +79,7 @@ export default function MapControls({
 							efficiency: calcEfficiency(mapData.spots ?? 0, time),
 						});
 					}
-					await uploadMapFile(mapData.id, formData);
+					await addFile(mapData.id, formData);
 					router.refresh();
 				}}
 			/>

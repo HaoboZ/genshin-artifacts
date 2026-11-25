@@ -7,7 +7,7 @@ declare namespace Cloudflare {
 	}
 
 	interface Env {
-		AUTH_TOKEN: 'SECRET';
+		FIREBASE_PROJECT_ID: 'genshin-artifacts';
 		BUCKET: R2Bucket;
 		DB: D1Database;
 	}

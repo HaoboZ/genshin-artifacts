@@ -145,8 +145,8 @@ export default function MapList({ items }: { items: MapData[] }) {
 				<Button component={Link} href='/api/routes' variant='contained'>
 					Routes
 				</Button>
-				<Button component={Link} href='/api/routes/auth' variant='contained'>
-					Authorize
+				<Button component={Link} href='/settings' variant='contained'>
+					Settings
 				</Button>
 			</Stack>
 			<DataGrid

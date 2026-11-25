@@ -1,8 +1,17 @@
 'use client';
 
-import { Button, ButtonGroup } from '@mui/material';
+import { AppBar, Tab, Tabs, Toolbar } from '@mui/material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+const navigationItems = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Characters', href: '/characters' },
+	{ label: 'Talents', href: '/talents' },
+	{ label: 'Artifacts', href: '/artifacts' },
+	{ label: 'Weapons', href: '/weapons' },
+	{ label: 'Settings', href: '/settings' },
+];
 
 export default function Header() {
 	const pathname = usePathname();
@@ -11,27 +20,23 @@ export default function Header() {
 		return null;
 
 	return (
-		<header>
-			<ButtonGroup variant='contained' color='primary'>
-				<Button component={Link} href='/'>
-					Home
-				</Button>
-				<Button component={Link} href='/characters'>
-					Characters
-				</Button>
-				<Button component={Link} href='/talents'>
-					Talents
-				</Button>
-				<Button component={Link} href='/artifacts'>
-					Artifacts
-				</Button>
-				<Button component={Link} href='/weapons'>
-					Weapons
-				</Button>
-				<Button component={Link} href='/settings'>
-					Settings
-				</Button>
-			</ButtonGroup>
-		</header>
+		<AppBar position='static' elevation={0}>
+			<Toolbar sx={{ justifyContent: 'center' }}>
+				<Tabs
+					value={
+						navigationItems.find(
+							({ href }) =>
+								pathname === href || (href !== '/' && pathname.startsWith(`${href}/`)),
+						)?.href ?? false
+					}
+					variant='scrollable'
+					scrollButtons='auto'
+					allowScrollButtonsMobile>
+					{navigationItems.map(({ label, href }) => (
+						<Tab key={href} component={Link} href={href} value={href} label={label} />
+					))}
+				</Tabs>
+			</Toolbar>
+		</AppBar>
 	);
 }

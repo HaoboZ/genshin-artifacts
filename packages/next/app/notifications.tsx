@@ -3,7 +3,6 @@
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
 
 const RespawnNotification = dynamic(() => import('@/components/respawnNotification'), {
 	ssr: false,
@@ -37,13 +36,6 @@ const timers = [
 ];
 
 export default function Notifications() {
-	useEffect(() => {
-		window.OneSignalDeferred = window.OneSignalDeferred || [];
-		window.OneSignalDeferred.push(async (OneSignal) => {
-			await OneSignal.init({ appId: 'c7a78eb3-5b60-4dca-907b-8dc2da208e61' });
-		});
-	}, []);
-
 	return (
 		<Paper variant='outlined' sx={{ p: { xs: 1.5, sm: 2 }, borderRadius: 3 }}>
 			<Stack sx={{ gap: 2 }}>

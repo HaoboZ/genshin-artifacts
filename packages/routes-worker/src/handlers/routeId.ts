@@ -1,3 +1,4 @@
+import type { AuthUser } from '../auth';
 import { deleteRouteFromDb, getRouteFromDb, saveRouteToDb } from '../db';
 import { type RouteData } from '../types';
 import { cacheableJson, error, invalidateResourceCache, json } from '../utils';
@@ -27,6 +28,7 @@ export async function handleRouteIdEndpoint(
 	env: Env,
 	routeId: string,
 	ctx: ExecutionContext,
+	user: AuthUser,
 ) {
 	switch (request.method) {
 		case 'GET': {
@@ -34,11 +36,23 @@ export async function handleRouteIdEndpoint(
 		}
 		case 'POST': {
 			const routeData = await parseRouteBody(request, routeId);
+			let existing;
+			try {
+				existing = await getRouteFromDb(env, routeId);
+			} catch (cause) {
+				if (!(cause instanceof Response) || cause.status !== 404) throw cause;
+			}
+			if (existing && !user.admin && existing.owner !== user.email)
+				return error('Forbidden', 403);
+			if (!user.admin) routeData.owner = user.email;
+			else routeData.owner = existing?.owner;
 			await saveRouteToDb(env, routeData);
 			await invalidateResourceCache(ctx, 'routes');
 			return json(routeData);
 		}
 		case 'DELETE': {
+			const existing = await getRouteFromDb(env, routeId);
+			if (!user.admin && existing.owner !== user.email) return error('Forbidden', 403);
 			await deleteRouteFromDb(env, routeId);
 			await invalidateResourceCache(ctx, 'routes');
 			return json({ success: true, deleted: `routes/${routeId}` });

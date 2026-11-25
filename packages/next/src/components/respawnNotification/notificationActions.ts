@@ -3,21 +3,21 @@
 import axios from 'axios';
 
 export async function sendNotification(
-	user: string,
+	externalId: string,
 	data: {
 		title: string;
 		icon?: string;
 		time?: string;
 	},
 ) {
-	if (!user) throw Error('No user available');
+	if (!externalId) throw Error('Sign in to link this reminder to your devices');
 
 	const res = await axios.post(
 		'https://api.onesignal.com/notifications',
 		{
 			app_id: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
 			contents: { en: data.title },
-			include_aliases: { onesignal_id: [user] },
+			include_aliases: { external_id: [externalId] },
 			target_channel: 'push',
 			chrome_web_icon: data.icon && process.env.NEXT_PUBLIC_VERCEL_URL + data.icon,
 			send_after: data.time,
