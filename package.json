@@ -1,6 +1,6 @@
 {
 	"name": "genshin-artifacts",
-	"version": "2.0.29",
+	"version": "2.0.30",
 	"private": true,
 	"description": "Genshin Artifacts",
 	"author": {
@@ -16,10 +16,10 @@
 		"lint:fix": "bun lint --fix"
 	},
 	"dependencies": {
-		"remeda": "2.62.2"
+		"remeda": "2.62.4"
 	},
 	"devDependencies": {
-		"@types/node": "26.6.6",
+		"@types/node": "26.6.11",
 		"husky": "9.1.7",
 		"type-fest": "5.10.0",
 		"typescript": "7.0.2"

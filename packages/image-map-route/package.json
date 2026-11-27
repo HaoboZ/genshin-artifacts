@@ -24,11 +24,11 @@
 		"prepack": "bun build"
 	},
 	"dependencies": {
-		"remeda": "2.62.2",
+		"remeda": "2.62.4",
 		"rooks": "9.9.0"
 	},
 	"devDependencies": {
-		"@types/react": "19.3.0"
+		"@types/react": "19.3.3"
 	},
 	"peerDependencies": {
 		"react": ">=18"
