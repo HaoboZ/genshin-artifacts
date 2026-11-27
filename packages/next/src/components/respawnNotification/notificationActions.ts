@@ -1,6 +1,7 @@
 'use server';
 
 import axios from 'axios';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
 export type ReminderSchedule = { key: string; id: string; time: number };
@@ -16,26 +17,6 @@ async function getAuth() {
 async function getExistingSchedules(routeUrl: string, headers: { Authorization: string }) {
 	const { data } = await axios.get<ReminderSchedule[]>(`${routeUrl}/notifications`, { headers });
 	return data;
-}
-
-export async function getReminderSchedules() {
-	const token = (await cookies()).get('AUTH_TOKEN')?.value;
-	const routeUrl = process.env.NEXT_PUBLIC_ROUTE_URL?.replace(/\/+$/, '');
-	if (!token) return { authenticated: false, schedules: [] as ReminderSchedule[] };
-	if (!routeUrl) throw new Error('NEXT_PUBLIC_ROUTE_URL is not configured.');
-	return {
-		authenticated: true,
-		schedules: await getExistingSchedules(routeUrl, { Authorization: `Bearer ${token}` }),
-	};
-}
-
-export async function importReminderSchedule(schedule: ReminderSchedule) {
-	const { routeUrl, headers } = await getAuth();
-	await axios.put(
-		`${routeUrl}/notifications/${encodeURIComponent(schedule.key)}`,
-		{ id: schedule.id, time: schedule.time },
-		{ headers },
-	);
 }
 
 export async function scheduleReminder(
@@ -80,6 +61,7 @@ export async function scheduleReminder(
 	}
 
 	if (previous?.id) await cancelNotification(previous.id);
+	revalidatePath('/');
 	return { key, id: notification.id as string, time: data.time } satisfies ReminderSchedule;
 }
 
@@ -89,6 +71,7 @@ export async function cancelReminder(key: string) {
 	const previous = existingSchedules.find((reminder) => reminder.key === key);
 	await axios.delete(`${routeUrl}/notifications/${encodeURIComponent(key)}`, { headers });
 	if (previous?.id) await cancelNotification(previous.id);
+	revalidatePath('/');
 }
 
 async function cancelNotification(id: string) {

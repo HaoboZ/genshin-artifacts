@@ -1,3 +1,5 @@
+'use client';
+
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
 import { useState } from 'react';

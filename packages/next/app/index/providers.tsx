@@ -12,7 +12,7 @@ import ClientSnackbarProvider from '@/providers/snackbar';
 import ThemeProvider from '@/providers/theme';
 import StoreProvider from '@/store/storeProvider';
 
-import { saveAuthToken } from './settings/authActions';
+import { saveAuthToken } from '../settings/authActions';
 
 export default function Providers({ children }: { children: ReactNode }) {
 	useEffect(

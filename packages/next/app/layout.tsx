@@ -6,8 +6,8 @@ import { type PackageJson } from 'type-fest';
 
 import _packageJson from '../../../package.json';
 import Header from './header';
-import OneSignal from './oneSignal';
-import Providers from './providers';
+import OneSignal from './index/oneSignal';
+import Providers from './index/providers';
 
 const packageJson = _packageJson as PackageJson;
 
